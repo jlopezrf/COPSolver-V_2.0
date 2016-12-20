@@ -22,9 +22,9 @@ public class ParamManager extends OptionsParser{
  				Option("S", "seed", "seed. Default 0"),
  				Option("sm", "solver_mode", "Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."),
  				//jason options
- 				Option("me", "Control Strategy" ,"In parallel mode, with master node 1, without 0. Default 0."),
+ 				Option("ce", "Control Strategy" ,"In parallel mode, with master node 1, without 0. Default 0."),
  				//end jason options
- 				Option("sl", "solver", "Solver to use"),
+ 				Option("sl", "solver", "Solver to use"), //Jason: Can I make that this parameter have many values?(p.e: AS,RoTS,RS;AS,RoTS,RS)
  				Option("of", "out_format", "output format: csv 0, info 1"),
  				Option("tf", "target_from", "Flag to receive target cost form file. default 0 from command line, 1 take optimal from file, 2 take BKS from file "),
  				Option("tc", "target_cost", "target (c)ost from Command Line Parameter. default 0"),

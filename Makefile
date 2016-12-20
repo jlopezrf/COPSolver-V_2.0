@@ -88,9 +88,9 @@ endif
 
 
 xxx_main_xxx.cc:
-	@echo '#include <bin/Main.h>' > xxx_main_xxx.cc
+	@echo '#include <cpls/Main.h>' > xxx_main_xxx.cc
 	@echo '#include <x10aux/bootstrap.h>' >>xxx_main_xxx.cc
-	@echo 'extern "C" { int main(int ac, char **av) { return ::x10aux::template_main< ::csp::model::Main>(ac,av); } }' >>xxx_main_xxx.cc
+	@echo 'extern "C" { int main(int ac, char **av) { return ::x10aux::template_main< ::cpls::Main>(ac,av); } }' >>xxx_main_xxx.cc
 
 
 Main: $(OBJS) xxx_main_xxx.o

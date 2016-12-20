@@ -7,7 +7,7 @@ import cpls.solver.RoTSearch;
 import cpls.solver.RandomSearch;
 import cpls.CPLSOptionsEnum;
 
-public class HeuristicFactory{
+public struct HeuristicFactory{
  	public static def make(kind:Int):HeuristicSolver{
  		switch(kind){
  			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:   return new AdaptiveSearch(1n); //TODO:Organize the parameters of this constructors
