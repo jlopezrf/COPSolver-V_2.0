@@ -2,7 +2,6 @@ package cpls.entities;
 
 import cpls.solver.HeuristicSolver;
 import cpls.problem.ProblemGenericModel;
-import cpls.NodeConfig;
 
 public class CPLSNode(nodeRole:Int){
  	
@@ -15,8 +14,8 @@ public class CPLSNode(nodeRole:Int){
  		property(nodeRole);
  	}
  
- 	public def initialize(){
- 
+ 	public def initialize(idNode:Int){
+ 		Console.OUT.println("Nodo inicializado en el proceso" + idNode);
  	}
  
  	public def setHeuristicSolver(hs:HeuristicSolver){
