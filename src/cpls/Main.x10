@@ -66,7 +66,7 @@ public class Main {
  			problemParam = CPLSOptionsEnum.SupportedProblems.QA_PROBLEM;
  		}else{
  			problemParam = CPLSOptionsEnum.SupportedProblems.UNKNOWN_PROBLEM;
- 			Console.OUT.println("Error: Type a valid CSP example: MSP, CAP, AIP, LNP, NPP , SMP, HRP or QAP"); 
+ 			Console.OUT.println("Error: Type a valid CSP example: MSP, CAP, AIP, LNP, NPP , SMP, HRP or QAP");
  		}
  		return problemParam;
  	}
@@ -89,7 +89,7 @@ public class Main {
  	public static def heuristicsAndRolesDefinition(solverIn:String, numberOfTeams:Int, nodesPerTeam:Int, whitMasterNode:boolean):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
  		val nodeConfigs = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
- 		var eachTeam:Rail[String] = solverIn.split(";");
+ 		var eachTeam:Rail[String] = solverIn.split("|");
  		var eachNode:Rail[String];
  		
  		for(var i:long=0; i<eachTeam.size -1; i++){

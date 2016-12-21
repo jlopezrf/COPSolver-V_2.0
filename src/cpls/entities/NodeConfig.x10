@@ -20,8 +20,17 @@ public class NodeConfig{
  	public def setRol(rol:Int){
  		this.rol = rol;
  	}
+ 
+ 	public def getRol(){
+ 		return this.rol;
+ 	}
  	
  	public def setHeuristic(heuristic:Int){
  		this.heuristic = heuristic;
  	}
+ 
+ 	public def getHeuristic(){
+ 		return this.heuristic;
+ 	}
+ 
 }

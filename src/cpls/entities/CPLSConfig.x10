@@ -16,6 +16,10 @@ public class CPLSConfig {
  		this.isThereAMasterNode = isThereAMasterNode;
  	}
  	
+ 	public def getIsThereAMasterNode(){
+ 		return this.isThereAMasterNode;
+ 	}
+ 	
  	public def setConfigNodes(configNodes:Array_2[NodeConfig]){
  		this.configNodes = configNodes;
  	}
@@ -23,4 +27,5 @@ public class CPLSConfig {
  	public def getConfigNodes(){
  		return this.configNodes;
  	}
+ 	
 }
