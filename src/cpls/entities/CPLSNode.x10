@@ -3,19 +3,17 @@ package cpls.entities;
 import cpls.solver.HeuristicSolver;
 import cpls.problem.ProblemGenericModel;
 
-public class CPLSNode(nodeRole:Int){
+public class CPLSNode{
  	
- 	protected val nodeConfig = nodeRole;
-
+ 	protected var nodeConfig:NodeConfig;
  	protected var heuristicSolver:HeuristicSolver;
  	protected var problemModel:ProblemGenericModel;
  
  	public def this(nodeRole:Int){
- 		property(nodeRole);
  	}
  
- 	public def initialize(idNode:Int){
- 		Console.OUT.println("Nodo inicializado en el proceso" + idNode);
+ 	public def initialize(config:NodeConfig, idPlace:Int){
+ 		Console.OUT.println("Nodo inicializado en el proceso" + idPlace);
  	}
  
  	public def setHeuristicSolver(hs:HeuristicSolver){
@@ -26,4 +24,4 @@ public class CPLSNode(nodeRole:Int){
  		this.problemModel = pm;
  	}
 }
-public type CPLSNode(nodeRole:Int) = CPLSNode{self.nodeRole==nodeRole};
+public type CPLSNode(nodeRole:Int) = CPLSNode{};

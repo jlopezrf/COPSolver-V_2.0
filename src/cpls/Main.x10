@@ -34,8 +34,7 @@ public class Main {
  		configCPLS.setIsThereAMasterNode(whitMasterNode);
  		//*********************************************************************// 		
  		NodeInstancer.installSolvers(configCPLS);
- 		
- 
+ 		 
     }
  
  	public static def problemDetect(problem:String):Int{
@@ -89,12 +88,12 @@ public class Main {
  	public static def heuristicsAndRolesDefinition(solverIn:String, numberOfTeams:Int, nodesPerTeam:Int, whitMasterNode:boolean):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
  		val nodeConfigs = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
- 		var eachTeam:Rail[String] = solverIn.split("|");
+ 		var eachTeam:Rail[String] = solverIn.split("/");
  		var eachNode:Rail[String];
  		
- 		for(var i:long=0; i<eachTeam.size -1; i++){
+ 		for(var i:long=0; i<eachTeam.size; i++){
  			eachNode = eachTeam(i).split(",");
-			 for(var j:long=0; i<eachNode.size -1; i++){
+			 for(var j:long=0; j<eachNode.size; j++){
 				 nodeConfigs(i,j).setHeuristic(whichHeuristic(eachNode(j)));
 				 if(whitMasterNode && i==0){
 					 if(j==0){
@@ -103,8 +102,7 @@ public class Main {
 						 nodeConfigs(i,j).setRol(CPLSOptionsEnum.NodeRoles.HEAD_NODE);
 					 }else{
 						 nodeConfigs(i,j).setRol(CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
-					 }
-					 
+					 }				 
 				 }else{
 					if(j==0){
 						nodeConfigs(i,j).setRol(CPLSOptionsEnum.NodeRoles.HEAD_NODE);

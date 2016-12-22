@@ -1,11 +1,12 @@
 package cpls.entities;
 
 import cpls.problem.ProblemGenericModel;
-import x10.array.Array_2; 
+import x10.array.Array_2;
+import cpls.entities.NodeConfig;
 
 public class CPLSConfig {
  	private var isThereAMasterNode:boolean;
- 	private var configNodes:Array_2[NodeConfig];
+ 	private var configNodes:Array_2[cpls.entities.NodeConfig];
  	private var problemModel:ProblemGenericModel;
  
  	public def setProblemModel(problemModel:ProblemGenericModel){
@@ -24,7 +25,7 @@ public class CPLSConfig {
  		this.configNodes = configNodes;
  	}
  	
- 	public def getConfigNodes(){
+ 	public def getConfigNodes():Array_2[cpls.entities.NodeConfig]{
  		return this.configNodes;
  	}
  	
