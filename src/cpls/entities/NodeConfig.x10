@@ -1,28 +1,20 @@
 package cpls.entities;
 
+import cpls.HeuristicFactory;
 import cpls.CPLSOptionsEnum.NodeRoles;
 import cpls.CPLSOptionsEnum.HeuristicsSupported;
 
 public class NodeConfig{
  	
- 	private var rol:Int;
  	private var heuristic:Int;
+ 	private var outTeamTime:Long;
  	
- 	public def this(rol:Int, heuristic:Int){
- 		this.rol = rol;
+ 	public def this(heuristic:Int){
  		this.heuristic = heuristic;
  	}
  
  	public def this(){
- 
- 	}
- 	
- 	public def setRol(rol:Int){
- 		this.rol = rol;
- 	}
- 
- 	public def getRol(){
- 		return this.rol;
+ 		this.heuristic = 0n;
  	}
  	
  	public def setHeuristic(heuristic:Int){
@@ -33,4 +25,12 @@ public class NodeConfig{
  		return this.heuristic;
  	}
  
+ 	public def setOutTeamTime(outTeamTime:Long){
+ 		this.outTeamTime = outTeamTime;
+ 	}
+ 
+ 	public def getOutTeamTime(){
+ 		return this.outTeamTime;
+ 	}
+
 }

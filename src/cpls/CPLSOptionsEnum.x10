@@ -28,4 +28,14 @@ public struct CPLSOptionsEnum {
  		public static val HEAD_NODE = 1n;
  		public static val MASTER_NODE = 2n;
  	}
+ 	
+ 	public static struct PoolLevels{
+ 		public static val HIGH=0n;
+ 		public static val MEDIUM=1n;
+ 		public static val LOW=2n;
+ 	}
+ 	
+ 	public static struct PoolModes{
+ 		public static val SMART = 1;
+ 	}
 }
