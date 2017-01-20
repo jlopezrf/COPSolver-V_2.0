@@ -14,7 +14,7 @@ public class HeadNode extends CPLSNode{
 		super();
 	}
 	public def initialize(config:NodeConfig, idPlace:Int, teamPoolConfig:PoolConfig){
-		//this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
+		super.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
 		this.teamPool = new SmartPool(teamPoolConfig.getProblemSize(), teamPoolConfig.getPoolSize(), teamPoolConfig.getPoolMode(), teamPoolConfig.getMinDist());
 		Console.OUT.println("Head Inicializado en lo nodo: " + idPlace + ", con la heuristica: " +
 				HeuristicFactory.getHeuristicName(config.getHeuristic()));
@@ -22,5 +22,14 @@ public class HeadNode extends CPLSNode{
 
 	public def setMasterNodeIndicator(isThereAMasterNode:Boolean){
  		this.isThereAMasterNode = isThereAMasterNode;
+	}
+	
+	public def start(){
+		Console.OUT.println("Se envía la señal de start en el Head");
+		super.heuristicSolver.solve();
+	}
+	
+	public def getBestConf(){
+		teamPool.getBestConf();
 	}
 }
