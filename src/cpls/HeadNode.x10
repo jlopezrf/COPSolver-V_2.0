@@ -23,4 +23,6 @@ public class HeadNode extends CPLSNode{
 	public def setMasterNodeIndicator(isThereAMasterNode:Boolean){
  		this.isThereAMasterNode = isThereAMasterNode;
 	}
+
+ 	public def start(){}
 }

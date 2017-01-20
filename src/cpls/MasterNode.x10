@@ -18,4 +18,5 @@ public class MasterNode extends CPLSNode{
  		Console.OUT.println("Master Inicializado en lo nodo: " + idPlace + ", con la heuristica: " +
  				HeuristicFactory.getHeuristicName(config.getHeuristic()));
  	}
+ 	public def start(){}
 }
