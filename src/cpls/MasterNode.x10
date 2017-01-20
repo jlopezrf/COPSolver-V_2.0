@@ -23,4 +23,5 @@ public class MasterNode extends CPLSNode{
  		Console.OUT.println("Se envía la señal de start en el Master");
  		super.heuristicSolver.solve();
  	}
+
 }

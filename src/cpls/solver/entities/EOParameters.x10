@@ -1,11 +1,15 @@
 package cpls.solver.entities;
 
-public class EOParameters {
+public class EOParameters extends HeuristicParameters{
 	private var tauUserSel:Double;
 	private var pdfUserSel:Int;
 	private var selSecond:Int;
 
-	public def this(tauUserSel:Double, pdfUserSel:Int, selSecond:Int){
+ 	public def this(){
+ 
+ 	}	
+
+ 	public def this(tauUserSel:Double, pdfUserSel:Int, selSecond:Int){
 		this.tauUserSel = tauUserSel;
 		this.pdfUserSel = pdfUserSel;
 		this.selSecond = selSecond;

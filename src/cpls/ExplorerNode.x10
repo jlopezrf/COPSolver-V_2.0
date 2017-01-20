@@ -18,4 +18,6 @@ public class ExplorerNode extends CPLSNode{
  		Console.OUT.println("Se envía la señal de start en el Explorer");
  		super.heuristicSolver.solve();
  	}
+
+
 }

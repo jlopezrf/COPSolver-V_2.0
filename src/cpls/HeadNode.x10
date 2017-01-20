@@ -32,4 +32,5 @@ public class HeadNode extends CPLSNode{
 	public def getBestConf(){
 		teamPool.getBestConf();
 	}
+
 }

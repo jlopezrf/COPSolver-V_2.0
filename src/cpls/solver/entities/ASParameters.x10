@@ -1,6 +1,6 @@
 package cpls.solver.entities;
 
-public class ASParameters {
+public class ASParameters extends HeuristicParameters{
 
  	private var nVarToReset:Long;
  	private var resetPercent:Int;
@@ -10,6 +10,10 @@ public class ASParameters {
  	private var resetLimit:Int;
  	private var probSelectLocMin:Int;
  	private var firstBest:Boolean;
+ 
+ 	public def this(){
+ 
+ 	}
  
  	public def this(nVarToReset:Long, resetPercent:Int, exhaustive:Boolean, freezeLocMin:Int, freezeSwap:Int,
  					resetLimit:Int, probSelectLocMin:Int, firstBest:Boolean){

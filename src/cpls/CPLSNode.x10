@@ -20,6 +20,11 @@ public abstract class CPLSNode{
  	val stats = new GlobalStats();
  	val sampleAccStats = new GlobalStats();
  	val genAccStats = new GlobalStats();
+ 	var time:Long;
+ 	/***********************************************************/
+ 
+ 	/*********Variables la comunicación entre los nodos*********/
+ 	var interTeamKill:Boolean = false;
  	/***********************************************************/
  
  	public def this(){
@@ -43,9 +48,9 @@ public abstract class CPLSNode{
  		this.pointersComunication = pointersComunication;
  	}
  
- 	public def addPointerComm(ponterToPlaces:PlaceLocalHandle[CPLSNode]){
- 		//Console.OUT.println("Se setea un conjunto de apuntadores a los demás nodos.");
- 		this.pointersComunication.add(ponterToPlaces);
+
+ 	public def addPointerComm(pointerToPlaces:PlaceLocalHandle[CPLSNode]){
+ 		this.pointersComunication.add(pointerToPlaces);
  	}
  	
  	public def configHeuristic(problemModel:ProblemGenericModel){
@@ -62,7 +67,10 @@ public abstract class CPLSNode{
  		this.heuristicSolver.solve();
  	}
  	
- 	/*public def start(seedIn :Long, targetCost : Long, strictLow: Boolean ):void{ 
+ 	public def start(){}
+ 	
+ 	/*public def start(seedIn :Long, targetCost : Long, strictLow: Boolean ):void{
+
  	 	stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
@@ -76,23 +84,16 @@ public abstract class CPLSNode{
  	 	if(this instanceof MasterNode){
  	 		async{
  	 			System.sleep(iniDelay);
- 	 			interTeamActivity(random.nextLong());
+
+ 	 			//Jason: Organizar este método. interTeamActivity(random.nextLong());
  	 		} 
  	 	}
- 	 	//Jason: Cambiando un poco esta parte 	 
- 	 	//if (nodeConfig.getOutTeamTime() > 0 && nTeams > 1n && here.id == commM.LOCAL_MIN_NODE){
- 	 		//// if (outTeamTime > 0 && nTeams > 1n && here.id >= nTeams && here.id < nTeams+nTeams) 
- 	 		//async{
- 	 		//	System.sleep(iniDelay);
- 	 		//	interTeamActivity(refPlaces, random.nextLong());
- 	 		//} 
- 	 	//}
- 	 
- 	 	csp_ = cspGen(); // use the supplied generator to generate the problem
- 	 	csp_.setSeed(random.nextLong()); //This is important to ensure different paths into each problem
- 	  
+
+ 	 	//Jason: Elimine una porción de código que verificaba si habían varios teams y si era nodo que maneja LocalMin pool	 
+ 	  	//Jason: También eliminé una parte que era la construcción del modelo del problema y su inicialización con una semilla random
+
  	 	time = -System.nanoTime();
- 	 	cost = solver.solve(csp_, targetCost, strictLow);
+ 	 	cost = heuristicSolver.solve(targetCost, strictLow);
  	 	time += System.nanoTime();
  	  
  	 	interTeamKill = true;
@@ -117,6 +118,7 @@ public abstract class CPLSNode{
  	 		solString = "Solution "+here+ " is "+(csp_.verify(solver.getBestConfiguration())? "perfect !!!" : "not perfect, maybe wrong ...");
  	 		Rail.copy(solver.getBestConfiguration(),bestSolHere as Valuation(sz));
  	 	}			
+
  	 }*/
  	
  	 /*public def interTeamActivity(seed:Long){
@@ -221,5 +223,8 @@ public abstract class CPLSNode{
  		 
  		 
  	 }*/
+
+ 	 }
+
 }
 public type CPLSNode(nodeRole:Int) = CPLSNode{};
