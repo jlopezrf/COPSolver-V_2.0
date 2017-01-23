@@ -25,6 +25,8 @@ class EOSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::HeuristicSolver::solve;
+    
     void _constructor();
     
     static ::cpls::solver::EOSearch* _make();

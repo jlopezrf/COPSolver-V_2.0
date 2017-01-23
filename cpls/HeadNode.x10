@@ -28,4 +28,9 @@ public class HeadNode extends CPLSNode{
 		Console.OUT.println("Se envía la señal de start en el Head");
 		super.heuristicSolver.solve();
 	}
+	
+	public def getBestConf(){
+		teamPool.getBestConf();
+	}
+
 }

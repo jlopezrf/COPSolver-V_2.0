@@ -40,6 +40,12 @@ class Any;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace cpls { namespace util { 
+template<class TPMGL(T)> class Maybe;
+} } 
+namespace cpls { namespace entities { 
+class State;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -63,6 +69,7 @@ class HeadNode : public ::cpls::CPLSNode   {
                             ::cpls::entities::PoolConfig* teamPoolConfig);
     virtual void setMasterNodeIndicator(x10_boolean isThereAMasterNode);
     virtual void start();
+    virtual void getBestConf();
     virtual ::cpls::HeadNode* cpls__HeadNode____this__cpls__HeadNode(
       );
     virtual void __fieldInitializers_cpls_HeadNode();

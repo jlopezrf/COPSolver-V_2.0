@@ -5,22 +5,22 @@
 #include <x10/lang/Int.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 8 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
 
-//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
 
-//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
 void cpls::NodeConfig::_constructor(x10_int rol, x10_int heuristic) {
     
-    //#line 6 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+    //#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
     ::cpls::NodeConfig* this__5 = this;
     ::x10aux::nullCheck(this__5)->FMGL(rol) = ((x10_int)0);
     ::x10aux::nullCheck(this__5)->FMGL(heuristic) = ((x10_int)0);
     
-    //#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+    //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
     this->FMGL(rol) = rol;
     
-    //#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
     this->FMGL(heuristic) = heuristic;
 }
 ::cpls::NodeConfig* cpls::NodeConfig::_make(x10_int rol, x10_int heuristic)
@@ -32,15 +32,15 @@ void cpls::NodeConfig::_constructor(x10_int rol, x10_int heuristic) {
 
 
 
-//#line 16 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
 x10_int cpls::NodeConfig::getRol() {
     
-    //#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
     return this->FMGL(rol);
     
 }
 
-//#line 6 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/NodeConfig.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeConfig.x10"
 ::cpls::NodeConfig* cpls::NodeConfig::cpls__NodeConfig____this__cpls__NodeConfig(
   ) {
     return this;

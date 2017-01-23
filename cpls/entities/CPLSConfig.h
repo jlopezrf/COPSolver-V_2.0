@@ -22,6 +22,12 @@
 #define X10_LANG_INT_H_NODEPS
 #include <x10/lang/Int.h>
 #undef X10_LANG_INT_H_NODEPS
+#define X10_LANG_DOUBLE_H_NODEPS
+#include <x10/lang/Double.h>
+#undef X10_LANG_DOUBLE_H_NODEPS
+#define X10_LANG_DOUBLE_H_NODEPS
+#include <x10/lang/Double.h>
+#undef X10_LANG_DOUBLE_H_NODEPS
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array_2;
 } } 
@@ -34,15 +40,6 @@ class ProblemGenericModel;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace cpls { namespace solver { namespace entities { 
-class ASParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class EOParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class RoTSParameters;
-} } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -80,13 +77,19 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     x10_long FMGL(update);
     
-    ::cpls::solver::entities::ASParameters* FMGL(asParam);
+    x10_long FMGL(seed);
     
-    ::cpls::solver::entities::EOParameters* FMGL(eoParam);
+    x10_long FMGL(targetCost);
     
-    ::cpls::solver::entities::RoTSParameters* FMGL(roTSParam);
+    x10_boolean FMGL(strictLow);
     
     x10_long FMGL(outTeamTime);
+    
+    x10_double FMGL(minDistance);
+    
+    x10_long FMGL(iniDelay);
+    
+    x10_double FMGL(affectedPer);
     
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
     virtual ::cpls::problem::ProblemGenericModel* getPoblemModel();
@@ -101,15 +104,12 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual ::cpls::entities::PoolConfig* getTeamsPoolConfig();
     virtual void setOutTeamTime(x10_long outTeamTime);
     virtual x10_long getOutTeamTime();
-    virtual void setASParameters(::cpls::solver::entities::ASParameters* asParam);
-    virtual ::cpls::solver::entities::ASParameters* getASParameters(
-      );
-    virtual void setEOParameters(::cpls::solver::entities::EOParameters* eoParam);
-    virtual ::cpls::solver::entities::EOParameters* getEOParameters(
-      );
-    virtual void setRoTSParameters(::cpls::solver::entities::RoTSParameters* roTSParam);
-    virtual ::cpls::solver::entities::RoTSParameters* getRoTSParameters(
-      );
+    virtual void setMinDistance(x10_double minDistance);
+    virtual x10_double getMinDistance();
+    virtual void setIniDelay(x10_long iniDelay);
+    virtual x10_long getIniDelay();
+    virtual void setAffectedPer(x10_double affectedPer);
+    virtual x10_double getAffectedPer();
     virtual x10_long getMaxTime();
     virtual x10_long getPMaxIters();
     virtual x10_int getMaxRestarts();
@@ -128,6 +128,12 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual void setVerify(x10_boolean verify);
     virtual void setReport(x10_long report);
     virtual void setUpdate(x10_long update);
+    virtual void setSeed(x10_long seed);
+    virtual x10_long getSeed();
+    virtual void setTargetCost(x10_long targetCost);
+    virtual x10_long getTargetCost();
+    virtual void setStrictLow(x10_boolean strictLow);
+    virtual x10_boolean getStrictLow();
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
       );
     void _constructor();

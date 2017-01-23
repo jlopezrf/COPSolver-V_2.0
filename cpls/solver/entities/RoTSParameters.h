@@ -4,6 +4,9 @@
 #include <x10rt.h>
 
 
+#define CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
+#include <cpls/solver/entities/HeuristicParameters.h>
+#undef CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
 #define X10_LANG_DOUBLE_H_NODEPS
 #include <x10/lang/Double.h>
 #undef X10_LANG_DOUBLE_H_NODEPS
@@ -15,13 +18,18 @@ class Synthetic;
 } } 
 namespace cpls { namespace solver { namespace entities { 
 
-class RoTSParameters : public ::x10::lang::X10Class   {
+class RoTSParameters : public ::cpls::solver::entities::HeuristicParameters
+  {
     public:
     RTT_H_DECLS_CLASS
     
     x10_double FMGL(tabuDurationFactorUS);
     
     x10_double FMGL(aspirationFactorUS);
+    
+    void _constructor();
+    
+    static ::cpls::solver::entities::RoTSParameters* _make();
     
     void _constructor(x10_double tabuDurationFactorUS, x10_double aspirationFactorUS);
     

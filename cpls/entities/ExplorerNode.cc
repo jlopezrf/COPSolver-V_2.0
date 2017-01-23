@@ -12,26 +12,26 @@
 #include <x10/lang/String.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
 void cpls::entities::ExplorerNode::_constructor(x10_int size) {
     
-    //#line 5 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
     ::cpls::entities::CPLSNode* this__367 = this;
     
-    //#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
+    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
     x10_int nodeRole__368 = size;
     
-    //#line 14 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
+    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
     ::x10aux::nullCheck(this__367)->FMGL(nodeRole) = nodeRole__368;
     
-    //#line 6 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
+    //#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/CPLSNode.x10"
     ::x10aux::nullCheck(this__367)->FMGL(nodeConfig) = ::x10aux::nullCheck(this__367)->FMGL(nodeRole);
     ::x10aux::nullCheck(this__367)->FMGL(heuristicSolver) = (::x10aux::class_cast_unchecked< ::cpls::solver::HeuristicSolver*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
     ::x10aux::nullCheck(this__367)->FMGL(problemModel) = (::x10aux::class_cast_unchecked< ::cpls::problem::ProblemGenericModel*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
     
-    //#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
     
-    //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
     ::cpls::entities::ExplorerNode* this__366 = this;
     
 }
@@ -44,15 +44,15 @@ void cpls::entities::ExplorerNode::_constructor(x10_int size) {
 
 
 
-//#line 7 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
 void cpls::entities::ExplorerNode::initialize(x10_int idNode) {
     
-    //#line 8 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
       reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__369 = ::x10aux::makeStringLit("Explorer Inicializado en lo nodo: "); strLit__369; })), idNode)));
 }
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/ExplorerNode.x10"
 ::cpls::entities::ExplorerNode* cpls::entities::ExplorerNode::cpls__entities__ExplorerNode____this__cpls__entities__ExplorerNode(
   ) {
     return this;

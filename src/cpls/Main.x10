@@ -57,7 +57,39 @@ public class Main {
  		configCPLS.setModParams(opts("-M", 1n));
  		configCPLS.setChangeOnDiver(opts("-CD", 1n));
  		configCPLS.setVerify(opts("-v", 0n) == 1n);
- 
+ 		configCPLS.setSeed(opts("-S", System.nanoTime()));
+ 		
+ 		/*************************In/Out forms of params************************/
+ 		val outFormat	   = opts("-of", 1n);
+ 		val costFromF      = opts("-tf", 0);
+ 		val tCostFromCL    = opts("-tc", 0n);
+ 		val testNb         = opts("-b", 10n);
+ 		
+ 		var c : Long = 0;
+ 		var sl : Boolean = false;
+ 		if ( costFromF == 0 ) { // target cost loaded from command line parameter
+ 			if (tCostFromCL >= 0){ // get lower or equal to target 
+ 				c = tCostFromCL;
+ 				sl = false;
+ 			} else { 
+ 				c = tCostFromCL * -1;
+ 				sl = true;
+ 			}
+ 		} 	//Jason: Comento esta parte por la lectura de parametros desde archivo
+ 			//else { // target cost loaded from file
+ 			//sl = costFromF < 0; // strictly lower true for negative numbers
+ 			//if ( costFromF == 1  || costFromF == -1  ) // try to get optimal cost
+ 			//	c = opt; 
+ 			//else
+ 			//	c = bks;
+ 			//Console.OUT.println("Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
+ 			//}
+ 		val tCost = c >= 0 ? c : 0; // if negative cost put default value
+ 		val sLow = sl;
+ 		/***********************************************************************/
+ 		configCPLS.setTargetCost(tCost);
+ 		configCPLS.setStrictLow(sLow);
+ 		
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -201,13 +233,14 @@ public class Main {
 			 			nodeConfigs(i,j) = new ExplorerConfig();
 			 		}
 			 	}
-				nodeConfigs(i,j).setHeuristicParameters(whichHeuristic(eachNode(j)));
+				nodeConfigs(i,j).setHeuristicParameters(whichHeuristicParam(eachNode(j)));
+ 				nodeConfigs(i,j).setHeuristic(whichHeuristicInt(eachNode(j)));
 			 }
  		}
  		return nodeConfigs;
  	}
  
-	public static def whichHeuristic(solverIn:String):HeuristicParameters{
+	public static def whichHeuristicParam(solverIn:String):HeuristicParameters{
 		//Console.OUT.println("Imprimiendo desde whichHeuristic (String): " + solverIn);
 	 	var heuParam:HeuristicParameters;
 		if (solverIn.equalsIgnoreCase("AS"))
@@ -223,5 +256,21 @@ public class Main {
 			//Console.OUT.println("Imprimiendo desde whichHeuristic (Int): " + solParam);
 		return heuParam;
 	 }
+
+ 	public static def whichHeuristicInt(solverIn:String):Int{
+ 		var heuParam:Int;
+ 		if (solverIn.equalsIgnoreCase("AS"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
+ 		else if(solverIn.equals("EO"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
+ 		else if(solverIn.equals("RoTS"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
+ 		else if(solverIn.equals("HY"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
+ 		else
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
+ 		//Console.OUT.println("Imprimiendo desde whichHeuristic (Int): " + solParam);
+ 		return heuParam;
+ 	}
 
 }

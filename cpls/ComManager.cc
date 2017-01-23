@@ -5,11 +5,11 @@
 #include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/ComManager.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ComManager.x10"
 
-//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/ComManager.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ComManager.x10"
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/ComManager.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ComManager.x10"
 ::cpls::ComManager* cpls::ComManager::cpls__ComManager____this__cpls__ComManager(
   ) {
     return this;

@@ -74,19 +74,19 @@ public class NodeInstancer{
  				//Console.OUT.println("Se ingresa a setear los apuntadores en el master");
  				masterNode.addPointerComm(headNodes);
 	 			masterNode.addPointerComm(explorersNodes);
-	 			//masterNode.configHeuristic(configCPLS.getPoblemModel());
+	 			masterNode.configHeuristic(configCPLS.getPoblemModel());
 	 		}
 	 		for (p in headersGroup) at (p) async{
 	 			//Console.OUT.println("Se ingresa a setear los apuntadores en los headers");
 	 				(headNodes() as HeadNode).setMasterNodeIndicator(configCPLS.getIsThereAMasterNode());
 	 				headNodes().addPointerComm(headNodes);
 	 				headNodes().addPointerComm(explorersNodes);
-	 				//headNodes().configHeuristic(configCPLS.getPoblemModel());
+	 				headNodes().configHeuristic(configCPLS.getPoblemModel());
 	 		}
 	 		for (p in explorersGroup) at (p) async{
 	 			//Console.OUT.println("Se ingresa a setear los apuntadores en los explorers");
 	 			explorersNodes().addPointerComm(headNodes);
-	 			//explorersNodes().configHeuristic(configCPLS.getPoblemModel());
+	 			explorersNodes().configHeuristic(configCPLS.getPoblemModel());
 	 		}
  		}
  		//****************************************************************************************************************//
@@ -95,13 +95,13 @@ public class NodeInstancer{
  		//****************************************************************************************************************//
  		finish{
  			if(configCPLS.getIsThereAMasterNode()){
- 				masterNode.start();
+ 				masterNode.start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
  			}
  			for (p in headersGroup) at (p) async{
- 				headNodes().start();
+ 				headNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
  			}
  			for (p in explorersGroup) at (p) async{
- 				explorersNodes().start();
+ 				explorersNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
  			}
  		}
  		//****************************************************************************************************************//

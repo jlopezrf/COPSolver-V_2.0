@@ -6,8 +6,10 @@ import cpls.ParamManager;
 import cpls.problem.ProblemGenericModel;
 import cpls.problem.*;
 import cpls.entities.NodeConfig;
+import cpls.entities.*;
 import cpls.entities.CPLSConfig;
 import cpls.entities.PoolConfig;
+import cpls.solver.entities.*;
 import cpls.solver.entities.ASParameters;
 import cpls.solver.entities.EOParameters;
 import cpls.solver.entities.RoTSParameters;
@@ -55,7 +57,39 @@ public class Main {
  		configCPLS.setModParams(opts("-M", 1n));
  		configCPLS.setChangeOnDiver(opts("-CD", 1n));
  		configCPLS.setVerify(opts("-v", 0n) == 1n);
- 
+ 		configCPLS.setSeed(opts("-S", System.nanoTime()));
+ 		
+ 		/*************************In/Out forms of params************************/
+ 		val outFormat	   = opts("-of", 1n);
+ 		val costFromF      = opts("-tf", 0);
+ 		val tCostFromCL    = opts("-tc", 0n);
+ 		val testNb         = opts("-b", 10n);
+ 		
+ 		var c : Long = 0;
+ 		var sl : Boolean = false;
+ 		if ( costFromF == 0 ) { // target cost loaded from command line parameter
+ 			if (tCostFromCL >= 0){ // get lower or equal to target 
+ 				c = tCostFromCL;
+ 				sl = false;
+ 			} else { 
+ 				c = tCostFromCL * -1;
+ 				sl = true;
+ 			}
+ 		} 	//Jason: Comento esta parte por la lectura de parametros desde archivo
+ 			//else { // target cost loaded from file
+ 			//sl = costFromF < 0; // strictly lower true for negative numbers
+ 			//if ( costFromF == 1  || costFromF == -1  ) // try to get optimal cost
+ 			//	c = opt; 
+ 			//else
+ 			//	c = bks;
+ 			//Console.OUT.println("Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
+ 			//}
+ 		val tCost = c >= 0 ? c : 0; // if negative cost put default value
+ 		val sLow = sl;
+ 		/***********************************************************************/
+ 		configCPLS.setTargetCost(tCost);
+ 		configCPLS.setStrictLow(sLow);
+ 		
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -74,23 +108,34 @@ public class Main {
  										opts("--AS_resetLimit",5n),
  										opts("--AS_probSelecLocMin", 0n),
  										opts("--AS_firstBest",0n) == 1n);
- 		configCPLS.setASParameters(asParam);
  		//********************************************************************//
  		//**************************Parameters for EOSearch*******************//
  		val eoParam = new EOParameters(opts("--EO_tau", (1.0 + 1.0 / Math.log(problemModel.size))),
  										opts("--EO_pdf", -1n),
  										opts("--EO_selSec", 1n));
- 		configCPLS.setEOParameters(eoParam);
  		//********************************************************************//
  		//***********************Parameters for RoTS**************************//
  		val roTSParam = new RoTSParameters(opts("--RoTS_tabu_duration", -1.0),
  											opts("--RoTS_aspiration", -1.0));
- 		configCPLS.setRoTSParameters(roTSParam);
+ 		//*********************************************************************//
+ 		//******************Setting params to NodeConfigs**********************//
+ 		for(a in nodeConfigs){
+ 			if(a.getHeuristicParameters() instanceof ASParameters){
+ 				a.setHeuristicParameters(asParam);
+ 			}else if(a.getHeuristicParameters() instanceof EOParameters){
+ 				a.setHeuristicParameters(eoParam);
+ 			}else if(a.getHeuristicParameters() instanceof RoTSParameters){
+ 				a.setHeuristicParameters(roTSParam);
+ 			} 				
+ 		}
  		//*********************************************************************//
  		
  		//******************InterTeam Communication Parameters*****************//
  		//Jason: Maybe this is only necessary for Master or Header Nodes, REVIEW !!
  		configCPLS.setOutTeamTime(opts("-I", 0));
+ 		configCPLS.setMinDistance(opts("-D", 0.3));
+ 		configCPLS.setIniDelay(opts("-W", 0));
+ 		configCPLS.setAffectedPer(opts("-A", 1.0));
  		//*********************************************************************//
  		NodeInstancer.installSolvers(configCPLS);
  		 
@@ -157,35 +202,75 @@ public class Main {
  
  	public static def heuristicsAndRolesDefinition(solverIn:String, numberOfTeams:Int, nodesPerTeam:Int, whitMasterNode:boolean):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
- 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
+ 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new ExplorerConfig());	
  		var eachTeam:Rail[String] = solverIn.split("/");
  		var eachNode:Rail[String];
 
  		for(var i:long=0; i<eachTeam.size; i++){
  			eachNode = eachTeam(i).split(",");
 			 for(var j:long=0; j<eachNode.size; j++){
-			 	//Console.OUT.println("Heuristicas String: " + eachNode(j));
-				nodeConfigs(i,j) = new NodeConfig(whichHeuristic(eachNode(j)));
+
+			 	if(whitMasterNode){
+			 		if(i == 0){
+			 			if(j == 0){
+			 				nodeConfigs(i,j) = new MasterConfig();
+			 			}else if(j == 1){
+			 				nodeConfigs(i,j) = new HeadConfig();
+			 			}else{
+			 				nodeConfigs(i,j) = new ExplorerConfig();
+			 			}
+			 		}else{
+			 			if(j == 0){
+			 				nodeConfigs(i,j) = new HeadConfig();
+			 			}else{
+			 				nodeConfigs(i,j) = new ExplorerConfig();
+			 			}
+			 		}
+			 	}else{
+			 		if(j == 0){
+			 			nodeConfigs(i,j) = new HeadConfig();
+			 		}else{
+			 			nodeConfigs(i,j) = new ExplorerConfig();
+			 		}
+			 	}
+				nodeConfigs(i,j).setHeuristicParameters(whichHeuristicParam(eachNode(j)));
+ 				nodeConfigs(i,j).setHeuristic(whichHeuristicInt(eachNode(j)));
 			 }
  		}
  		return nodeConfigs;
  	}
  
-	 public static def whichHeuristic(solverIn:String):Int{
-	 	//Console.OUT.println("Imprimiendo desde whichHeuristic (String): " + solverIn);
-		 var solParam:Int;
-		 if (solverIn.equalsIgnoreCase("AS"))
-		 	solParam = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
-		 else if(solverIn.equals("EO"))
-		 	solParam = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
-		 else if(solverIn.equals("RoTS"))
-		 	solParam = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
-		 else if(solverIn.equals("HY"))
-		 	solParam = CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
-		 else
-		 	solParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
-		 //Console.OUT.println("Imprimiendo desde whichHeuristic (Int): " + solParam);
-		 return solParam;
+	public static def whichHeuristicParam(solverIn:String):HeuristicParameters{
+		//Console.OUT.println("Imprimiendo desde whichHeuristic (String): " + solverIn);
+	 	var heuParam:HeuristicParameters;
+		if (solverIn.equalsIgnoreCase("AS"))
+			heuParam = new ASParameters();// CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
+		else if(solverIn.equals("EO"))
+		 	heuParam = new EOParameters();//CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
+		else if(solverIn.equals("RoTS"))
+		 	heuParam = new RoTSParameters(); //CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
+		else if(solverIn.equals("HY"))
+		 	heuParam = new RoTSParameters();//CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
+		else
+		 	heuParam = new RoTSParameters();//CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
+			//Console.OUT.println("Imprimiendo desde whichHeuristic (Int): " + solParam);
+		return heuParam;
 	 }
+
+ 	public static def whichHeuristicInt(solverIn:String):Int{
+ 		var heuParam:Int;
+ 		if (solverIn.equalsIgnoreCase("AS"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
+ 		else if(solverIn.equals("EO"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
+ 		else if(solverIn.equals("RoTS"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
+ 		else if(solverIn.equals("HY"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
+ 		else
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
+ 		//Console.OUT.println("Imprimiendo desde whichHeuristic (Int): " + solParam);
+ 		return heuParam;
+ 	}
 
 }

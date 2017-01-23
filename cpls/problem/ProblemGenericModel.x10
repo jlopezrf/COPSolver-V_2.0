@@ -143,7 +143,11 @@ public class ProblemGenericModel(size:Long){
   		Utils.show("Solution",conf);
   	}
   
-  	public def verify(conf:Valuation(size)):Boolean=false;
+  	//public def verify(conf:Valuation(size)):Boolean=false;
+  	public def verify(conf:Valuation(size)):Boolean{
+  		Console.OUT.println("Se ingresa al Verify de ProblemGenericModel");
+  		return true;
+  	}
   
   	public def getVariables():Valuation(size){
   		return variables;

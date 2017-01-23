@@ -4,6 +4,9 @@
 #include <x10rt.h>
 
 
+#define CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
+#include <cpls/solver/entities/HeuristicParameters.h>
+#undef CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
 #define X10_LANG_LONG_H_NODEPS
 #include <x10/lang/Long.h>
 #undef X10_LANG_LONG_H_NODEPS
@@ -27,7 +30,8 @@ class Synthetic;
 } } 
 namespace cpls { namespace solver { namespace entities { 
 
-class ASParameters : public ::x10::lang::X10Class   {
+class ASParameters : public ::cpls::solver::entities::HeuristicParameters
+  {
     public:
     RTT_H_DECLS_CLASS
     
@@ -46,6 +50,10 @@ class ASParameters : public ::x10::lang::X10Class   {
     x10_int FMGL(probSelectLocMin);
     
     x10_boolean FMGL(firstBest);
+    
+    void _constructor();
+    
+    static ::cpls::solver::entities::ASParameters* _make();
     
     void _constructor(x10_long nVarToReset, x10_int resetPercent, x10_boolean exhaustive,
                       x10_int freezeLocMin, x10_int freezeSwap, x10_int resetLimit,

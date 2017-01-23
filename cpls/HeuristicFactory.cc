@@ -38,13 +38,13 @@ public:
 ::x10aux::itable_entry cpls::HeuristicFactory::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::HeuristicFactory::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::HeuristicFactory")};
 ::x10aux::itable_entry cpls::HeuristicFactory::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::HeuristicFactory_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::HeuristicFactory")};
 
-//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
 ::cpls::solver::HeuristicSolver* cpls::HeuristicFactory::make(x10_int kind) {
     
-    //#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+    //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
     switch (kind) {
         
-        //#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)2): ;
         {
             {
@@ -54,7 +54,7 @@ public:
                 
             }
         }
-        //#line 14 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)3): ;
         {
             {
@@ -64,7 +64,7 @@ public:
                 
             }
         }
-        //#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)4): ;
         {
             {
@@ -74,7 +74,7 @@ public:
                 
             }
         }
-        //#line 16 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)1): ;
         {
             {
@@ -84,7 +84,7 @@ public:
                 
             }
         }
-        //#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         default: ;
         {
             {
@@ -97,51 +97,51 @@ public:
     }
 }
 
-//#line 21 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+//#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
 ::x10::lang::String* cpls::HeuristicFactory::getHeuristicName(x10_int kind) {
     
-    //#line 22 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
     switch (kind) {
         
-        //#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)2): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__67 = ::x10aux::makeStringLit("AS_SOL"); strLit__67; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__561 = ::x10aux::makeStringLit("AS_SOL"); strLit__561; }));
             
         }
-        //#line 24 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)3): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__68 = ::x10aux::makeStringLit("EO_SOL"); strLit__68; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__562 = ::x10aux::makeStringLit("EO_SOL"); strLit__562; }));
             
         }
-        //#line 25 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)4): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__69 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__69; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__563 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__563; }));
             
         }
-        //#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         case ((x10_int)1): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__70 = ::x10aux::makeStringLit("RS_SOL"); strLit__70; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__564 = ::x10aux::makeStringLit("RS_SOL"); strLit__564; }));
             
         }
-        //#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+        //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         default: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__71 = ::x10aux::makeStringLit("Default"); strLit__71; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__565 = ::x10aux::makeStringLit("Default"); strLit__565; }));
             
         }
     }
 }
 
-//#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
 ::x10::lang::String* cpls::HeuristicFactory::typeName(){
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::HeuristicFactory::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__72 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__72; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__566 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__566; }));
     
 }
 x10_boolean cpls::HeuristicFactory::equals(::x10::lang::Any* other) {
@@ -149,8 +149,8 @@ x10_boolean cpls::HeuristicFactory::equals(::x10::lang::Any* other) {
         return false;
         
     }
-    ::cpls::HeuristicFactory this__56 = (*this);
-    ::cpls::HeuristicFactory other__57 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
+    ::cpls::HeuristicFactory this__550 = (*this);
+    ::cpls::HeuristicFactory other__551 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
     return true;
     
 }
@@ -159,8 +159,8 @@ x10_boolean cpls::HeuristicFactory::_struct_equals(::x10::lang::Any* other) {
         return false;
         
     }
-    ::cpls::HeuristicFactory this__58 = (*this);
-    ::cpls::HeuristicFactory other__59 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
+    ::cpls::HeuristicFactory this__552 = (*this);
+    ::cpls::HeuristicFactory other__553 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
     return true;
     
 }

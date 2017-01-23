@@ -54,48 +54,92 @@ class GlobalStats : public ::x10::lang::X10Class   {
     
     x10_long FMGL(dTarget);
     
+    virtual void setDTarget(x10_long dTarget);
+    virtual x10_long getDTarget();
     x10_long FMGL(cost);
     
+    virtual void setCost(x10_long cost);
+    virtual x10_long getCost();
     x10_int FMGL(team);
     
+    virtual void setTeam(x10_int team);
+    virtual x10_int getTeam();
     x10_int FMGL(explorer);
     
+    virtual void setExplorer(x10_int explorer);
+    virtual x10_int getExplorer();
     x10_double FMGL(time);
     
+    virtual void setTime(x10_double time);
+    virtual x10_double getTime();
     x10_long FMGL(iters);
     
+    virtual void setIters(x10_long iters);
+    virtual x10_long getIters();
     x10_int FMGL(locmin);
     
+    virtual void setLocMin(x10_int locmin);
+    virtual x10_int getLocMin();
     x10_long FMGL(swaps);
     
+    virtual void setSwaps(x10_long swaps);
+    virtual x10_long getSwaps();
     x10_int FMGL(reset);
     
+    virtual void setReset(x10_int reset);
+    virtual x10_int getReset();
     x10_long FMGL(same);
     
+    virtual void setSame(x10_long same);
+    virtual x10_long getSame();
     x10_int FMGL(restart);
     
+    virtual void setRestart(x10_int restart);
+    virtual x10_int getRestart();
     x10_int FMGL(change);
     
+    virtual void setChange(x10_int change);
+    virtual x10_int getChange();
     x10_int FMGL(forceRestart);
     
+    virtual void setForceRestart(x10_int forceRestart);
+    virtual x10_int getForceRestart();
     x10_int FMGL(accPS);
     
+    virtual void setAccPS(x10_int accPS);
+    virtual x10_int getAccPS();
     x10_int FMGL(groupR);
     
+    virtual void setGroupR(x10_int groupR);
+    virtual x10_int getGroupR();
     x10_boolean FMGL(target);
     
+    virtual void setTarget(x10_boolean target);
+    virtual x10_boolean getTarget();
     x10_int FMGL(fftarget);
     
+    virtual void setFFTarget(x10_int fftarget);
+    virtual x10_int getFFTarget();
     x10_int FMGL(ntarget);
     
+    virtual void setNTarget(x10_int ntarget);
+    virtual x10_int getNTarget();
     x10_long FMGL(vectorSize);
     
+    virtual void setVectorSize(x10_long vectorSize);
+    virtual x10_long getVectorSize();
     x10_int FMGL(bp);
     
+    virtual void setBp(x10_int bp);
+    virtual x10_int getBP();
     x10_int FMGL(singles);
     
+    virtual void setSingles(x10_int singles);
+    virtual x10_int getSingles();
     ::x10::lang::Rail< x10_int >* FMGL(sstate);
     
+    virtual void setSState(::x10::lang::Rail< x10_int >* sstate);
+    virtual ::x10::lang::Rail< x10_int >* getSState();
     virtual void setStats(x10_long co, x10_int p, x10_int e, x10_double t,
                           x10_int it, x10_int loc, x10_int sw, x10_int re,
                           x10_int sa, x10_int rs, x10_int ch, x10_int fr,

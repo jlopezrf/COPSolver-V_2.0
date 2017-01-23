@@ -15,53 +15,96 @@ import cpls.CPLSOptionsEnum;
 public class GlobalStats{
 	 
 	 /** Desired Target */
-	 var dTarget : Long = 0;	
-	 
+	 private var dTarget : Long = 0;	
+	 public def setDTarget(dTarget:Long){this.dTarget = dTarget;}
+	 public def getDTarget(){return this.dTarget;}
 	 /** Final Cost of solution */
-	 var cost : Long = 0;	
+	 private var cost : Long = 0;
+	 public def setCost(cost:Long){this.cost = cost;}
+	 public def getCost(){return this.cost;}
 	 /** Team id solution */
-	 var team : Int = -1n;
+	 private var team : Int = -1n;
+	 public def setTeam(team:Int){this.team = team;}
+	 public def getTeam(){return this.team;}
 	 /** explorer id solution */
-	 var explorer : Int = -1n;
+	 private var explorer : Int = -1n;
+	 public def setExplorer(explorer:Int){this.explorer = explorer;}
+	 public def getExplorer(){return this.explorer;}
 	 /** time to reach the solution */
-	 var time : Double = 0.0d;
+	 private var time : Double = 0.0d;
+	 public def setTime(time:Double){this.time = time;}
+	 public def getTime(){return this.time;}
 	 /** Number of iterations */
-	 var iters : Long = 0;
+	 private var iters : Long = 0;
+	 public def setIters(iters:Long){this.iters = iters;}
+	 public def getIters(){return this.iters;}
 	 /** Number of local minimum */
-	 var locmin : Int = 0n;
+	 private var locmin : Int = 0n;
+	 public def setLocMin(locmin:Int){this.locmin = locmin;}
+	 public def getLocMin(){return this.locmin;}
 	 /** Number of swaps */
-	 var swaps : Long = 0;
+	 private var swaps : Long = 0;
+	 public def setSwaps(swaps:Long){this.swaps = swaps;}
+	 public def getSwaps(){return this.swaps;}
 	 /** Number of resets */
-	 var reset : Int = 0n;
+	 private var reset : Int = 0n;
+	 public def setReset(reset:Int){this.reset = reset;}
+	 public def getReset(){return this.reset;}
 	 /** number of same variables */
-	 var same : Long = 0;
+	 private var same : Long = 0;
+	 public def setSame(same:Long){this.same = same;}
+	 public def getSame(){return same;}
 	 /** number of restarts */  
-	 var restart : Int = 0n;
+	 private var restart : Int = 0n;
+	 public def setRestart(restart:Int){this.restart = restart;}
+	 public def getRestart(){return restart;}
 	 /** Number time to change vector due to communication */ 
-	 var change : Int = 0n;
+	 private var change : Int = 0n;
+	 public def setChange(change:Int){this.change = change;}
+	 public def getChange(){return this.change;}
 	 /** number of restarts */  
-	 var forceRestart:Int = 0n;
+	 private var forceRestart:Int = 0n;
+	 public def setForceRestart(forceRestart:Int){this.forceRestart = forceRestart;}
+	 public def getForceRestart(){return forceRestart;}
 	 /** acc perfect Solutions best cost == 0*/
-	 var accPS:Int = 0n;
+	 private var accPS:Int = 0n;
+	 public def setAccPS(accPS:Int){this.accPS = accPS;}
+	 public def getAccPS(){return accPS;}
 	 /** number of restart of the group */
-	 var groupR:Int = 0n;
+	 private var groupR:Int = 0n;
+	 public def setGroupR(groupR:Int){this.groupR = groupR;}
+	 public def getGroupR(){return this.groupR;}
 	 /** taget succeded ?  best cost <= target cost*/
-	 var target:Boolean = false;
+	 private var target:Boolean = false;
+	 public def setTarget(target:Boolean){this.target = target;}
+	 public def getTarget(){return this.target;}
 	 /** far from target - target cost - best cost*/
-	 var fftarget:Int = 0n;
+	 private var fftarget:Int = 0n;
+	 public def setFFTarget(fftarget:Int){this.fftarget = fftarget;}
+	 public def getFFTarget(){return this.fftarget;}
 	 /** number of targets accomplished */
-	 var ntarget:Int = 0n;
+	 private var ntarget:Int = 0n;
+	 public def setNTarget(ntarget:Int){this.ntarget = ntarget;}
+	 public def getNTarget(){return this.ntarget;}
 	 /** Vector Size */
-	 var vectorSize:Long = 1;
+	 private var vectorSize:Long = 1;
+	 public def setVectorSize(vectorSize:Long){this.vectorSize = vectorSize;}
+	 public def getVectorSize(){return this.vectorSize;}
 	 
 	 /** Variables for SMTI */
 	 /** number of BP */
-	 var bp:Int = 0n;
+	 private var bp:Int = 0n;
+	 public def setBp(bp:Int){this.bp =bp;}
+	 public def getBP(){return this.bp;}
 	 /** number of singles */
-	 var singles:Int = 0n;
+	 private var singles:Int = 0n;
+	 public def setSingles(singles:Int){this.singles = singles;}
+	 public def getSingles(){return this.singles;}
 	 
 	 /** Solver State **/
-	 var sstate:Rail[Int]{self.size==3} = new Rail[Int](3, -1n);
+	 private var sstate:Rail[Int]{self.size==3} = new Rail[Int](3, -1n);
+	 public def setSState(sstate:Rail[Int]){this.sstate = sstate;}
+	 public def getSState(){return this.sstate;}
 	 
 	 
 	//transient val monitor:Monitor  = new Monitor("CSPStats");

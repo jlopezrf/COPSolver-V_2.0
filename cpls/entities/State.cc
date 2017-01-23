@@ -12,9 +12,9 @@
 #include <x10/compiler/Synthetic.h>
 #include <x10/lang/Boolean.h>
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
 
-//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
 namespace cpls { namespace entities { 
 class State_ibox0 : public ::x10::lang::IBox< ::cpls::entities::State> {
 public:
@@ -72,9 +72,9 @@ x10_boolean cpls::entities::State::_struct_equals(::x10::lang::Any* other) {
     
 }
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
 
-//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
 void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang::Rail< x10_int >* vector,
                                          x10_int place, ::x10::lang::Rail< x10_int >* solverState) {
     FMGL(sz) = sz;
@@ -83,7 +83,7 @@ void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang
     FMGL(place) = place;
     FMGL(solverState) = solverState;
     
-    //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
     ::cpls::entities::State this__722 = (*this);
     
 }
@@ -100,7 +100,7 @@ void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang
 
 
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
 void ::cpls::entities::State::_serialize(::cpls::entities::State this_, ::x10aux::serialization_buffer& buf) {
     buf.write(this_->FMGL(sz));
     buf.write(this_->FMGL(cost));

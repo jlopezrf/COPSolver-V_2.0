@@ -7,9 +7,6 @@
 #define CPLS_SOLVER_HEURISTICSOLVER_H_NODEPS
 #include <cpls/solver/HeuristicSolver.h>
 #undef CPLS_SOLVER_HEURISTICSOLVER_H_NODEPS
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
-} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

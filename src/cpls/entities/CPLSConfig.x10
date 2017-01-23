@@ -25,6 +25,9 @@ public class CPLSConfig {
  	private var verify:Boolean;
  	private var report:Long;
  	private var update:Long;
+ 	private var seed:Long;
+ 	private var targetCost:Long;
+ 	private var strictLow:Boolean;
  
  	//Heurustic Parameters Objects
  	//private var pointersComunication:ArrayList[PlaceLocalHandle[CPLSNode]];
@@ -79,5 +82,11 @@ public class CPLSConfig {
 	public def setChangeOnDiver(changeOnDiver:Int){this.changeOnDiver = changeOnDiver;}
 	public def setVerify(verify:Boolean){this.verify = verify;}
 	public def setReport(report:Long){this.report = report;}
-	public def setUpdate(update:Long){this.update = update;} 	
+	public def setUpdate(update:Long){this.update = update;}
+	public def setSeed(seed:Long){this.seed = seed;}
+	public def getSeed(){return this.seed;}
+	public def setTargetCost(targetCost:Long){this.targetCost = targetCost;}
+	public def getTargetCost(){return this.targetCost;}
+	public def setStrictLow(strictLow:Boolean){this.strictLow = strictLow;}
+	public def getStrictLow(){return this.strictLow;}
 }

@@ -100,6 +100,9 @@ class Abort;
 namespace x10 { namespace compiler { 
 class CompilerFlags;
 } } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
+} } 
 namespace cpls { 
 class HeadNode;
 } 

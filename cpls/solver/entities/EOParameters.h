@@ -4,6 +4,9 @@
 #include <x10rt.h>
 
 
+#define CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
+#include <cpls/solver/entities/HeuristicParameters.h>
+#undef CPLS_SOLVER_ENTITIES_HEURISTICPARAMETERS_H_NODEPS
 #define X10_LANG_DOUBLE_H_NODEPS
 #include <x10/lang/Double.h>
 #undef X10_LANG_DOUBLE_H_NODEPS
@@ -21,7 +24,8 @@ class Synthetic;
 } } 
 namespace cpls { namespace solver { namespace entities { 
 
-class EOParameters : public ::x10::lang::X10Class   {
+class EOParameters : public ::cpls::solver::entities::HeuristicParameters
+  {
     public:
     RTT_H_DECLS_CLASS
     
@@ -30,6 +34,10 @@ class EOParameters : public ::x10::lang::X10Class   {
     x10_int FMGL(pdfUserSel);
     
     x10_int FMGL(selSecond);
+    
+    void _constructor();
+    
+    static ::cpls::solver::entities::EOParameters* _make();
     
     void _constructor(x10_double tauUserSel, x10_int pdfUserSel, x10_int selSecond);
     

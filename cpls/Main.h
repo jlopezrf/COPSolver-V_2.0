@@ -37,6 +37,9 @@ class NodeConfig;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
+namespace x10 { namespace util { 
+class Timer;
+} } 
 namespace x10 { namespace lang { 
 class Math;
 } } 
@@ -48,6 +51,15 @@ class EOParameters;
 } } } 
 namespace cpls { namespace solver { namespace entities { 
 class RoTSParameters;
+} } } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Iterator;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace cpls { namespace solver { namespace entities { 
+class HeuristicParameters;
 } } } 
 namespace cpls { 
 class NodeInstancer;
@@ -67,11 +79,17 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
+namespace cpls { namespace entities { 
+class ExplorerConfig;
+} } 
+namespace cpls { namespace entities { 
+class MasterConfig;
+} } 
 namespace x10 { namespace lang { 
 class Unsafe;
 } } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
+namespace cpls { namespace entities { 
+class HeadConfig;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -87,7 +105,9 @@ class Main : public ::x10::lang::X10Class   {
     static ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* heuristicsAndRolesDefinition(
       ::x10::lang::String* solverIn, x10_int numberOfTeams, x10_int nodesPerTeam,
       x10_boolean whitMasterNode);
-    static x10_int whichHeuristic(::x10::lang::String* solverIn);
+    static ::cpls::solver::entities::HeuristicParameters*
+      whichHeuristicParam(::x10::lang::String* solverIn);
+    static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(
       );
     void _constructor();

@@ -12,6 +12,7 @@ public class MasterNode extends CPLSNode{
 	public def this(){
  		super();
  	}
+
  	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig){
  		super.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
  		this.cplsPool = new SmartPool(cplsPoolConfig.getProblemSize(), cplsPoolConfig.getPoolSize(), cplsPoolConfig.getPoolMode(), cplsPoolConfig.getMinDist());

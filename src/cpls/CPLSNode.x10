@@ -8,6 +8,8 @@ import cpls.problem.ProblemGenericModel;
 import cpls.measurements.GlobalStats;
 import cpls.util.Logger;
 import x10.util.Random;
+import cpls.util.Valuation;
+import x10.util.concurrent.AtomicBoolean; 
 
 public abstract class CPLSNode{
  	
@@ -27,12 +29,21 @@ public abstract class CPLSNode{
  	var interTeamKill:Boolean = false;
  	/***********************************************************/
  
+ 	val winnerLatch = new AtomicBoolean(false);
+ 	var bcost : Long;
+ 	var verify:Boolean = false;
+ 	var bestSolHere : Rail[Int];
+ 	var solString : String =  new String();
+ 	var cGroupReset:Int = 0n;
+ 	
  	public def this(){
  		this.pointersComunication = new ArrayList[PlaceLocalHandle[CPLSNode]]();
  	}
  
  	public def initialize(config:NodeConfig, idPlace:Int, poolConfig:PoolConfig){
+ 		Console.OUT.println("Se inicializa con la heurisica" + HeuristicFactory.getHeuristicName(config.getHeuristic()));
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
+ 		this.bestSolHere = new Rail[Int](heuristicSolver.getSizeProblem(), 0n);	
  		Console.OUT.println("Nodo inicializado en el proceso" + idPlace);
  	}
  
@@ -54,6 +65,7 @@ public abstract class CPLSNode{
  	}
  	
  	public def configHeuristic(problemModel:ProblemGenericModel){
+ 		Console.OUT.println("Se ingresa a setear el ProblemModel en " + here.id);
  		this.heuristicSolver.setProblemModel(problemModel);
  	}
  	
@@ -67,10 +79,8 @@ public abstract class CPLSNode{
  		this.heuristicSolver.solve();
  	}
  	
- 	public def start(){}
- 	
- 	/*public def start(seedIn :Long, targetCost : Long, strictLow: Boolean ):void{
-
+ 	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean ):void{
+ 		Console.OUT.println("Se ingresa al start en " + here.id);
  	 	stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
@@ -81,13 +91,12 @@ public abstract class CPLSNode{
  	 
  	 	heuristicSolver.setSeed(random.nextLong()); 
  	 
- 	 	if(this instanceof MasterNode){
- 	 		async{
- 	 			System.sleep(iniDelay);
-
- 	 			//Jason: Organizar este método. interTeamActivity(random.nextLong());
- 	 		} 
- 	 	}
+ 	 	//if(this instanceof MasterNode){
+ 	 	//	async{
+ 	 	//		System.sleep(iniDelay);
+ 	 	//		//Jason: Organizar este método. interTeamActivity(random.nextLong());
+ 	 	//	} 
+ 	 	//}
 
  	 	//Jason: Elimine una porción de código que verificaba si habían varios teams y si era nodo que maneja LocalMin pool	 
  	  	//Jason: También eliminé una parte que era la construcción del modelo del problema y su inicialización con una semilla random
@@ -102,24 +111,76 @@ public abstract class CPLSNode{
  	 		// A solution has been found! Huzzah! 
  	 		// Light the candles! Kill the blighters!
  	 		val home = here.id;
- 	 		val winner = at(Place.FIRST_PLACE) refPlaces().announceWinner( refPlaces, home );
+ 	 		val winner = at(Place.FIRST_PLACE) announceWinner(home);
  	 
  	 		bcost = cost;
  	 
  	 		if (winner){ 
- 	 			setStats_(refPlaces);
+ 	 			setStats_();
  	 			if (verify){
- 	 				csp_.displaySolution(solver.getBestConfiguration());
+ 	 				heuristicSolver.displaySolution();
  	 				Console.OUT.println(", Solution is " + 
- 	 				(csp_.verify(solver.getBestConfiguration())? "perfect !!!" : "not perfect "));
+ 	 				(heuristicSolver.verify() ? "perfect !!!" : "not perfect "));
  	 			} 
  	 		}
  	 	}else{
- 	 		solString = "Solution "+here+ " is "+(csp_.verify(solver.getBestConfiguration())? "perfect !!!" : "not perfect, maybe wrong ...");
- 	 		Rail.copy(solver.getBestConfiguration(),bestSolHere as Valuation(sz));
+ 	 		solString = "Solution "+here+ " is "+(heuristicSolver.verify()? "perfect !!!" : "not perfect, maybe wrong ...");
+ 	 		val sz = heuristicSolver.getSizeProblem();
+ 	 		Rail.copy(heuristicSolver.getBestConfiguration(),bestSolHere as Valuation(sz));
  	 	}			
 
- 	 }*/
+ 	 }
+ 	
+ 	public def setStats_()
+ 	{
+ 		val winPlace = here.id;
+ 		val time = time/1e9;
+ 		val c = new GlobalStats();
+ 		heuristicSolver.reportStats(c);
+ 		
+ 		//val head = here.id % nTeams;
+ 		//val gR = at(Place(head)) refPlaces().getGroupReset();
+ 		
+ 		//val gReset = (c.getForceRestart() > gR) ? c.getForceRestart() : gR;
+ 		
+ 		//val fft = c.getCost() - tcost;
+ 		c.setTime(time);
+ 		c.setTeam(winPlace as Int);
+ 		//c.setGroupR(gReset);
+ 		//c.setFFTarget(fft as Int);
+ 		c.setExplorer(0n); //To notify that there was a solution
+ 		
+ 		at (Place.FIRST_PLACE) /*async*/ 
+ 			setStats(c);
+ 		//refPlaces().setStats(cost, winPlace as Int, 0n, time, iters, locmin, swaps, reset, same, restart, change,fr, 
+ 		//bp as Int, singles as Int, gReset, target, fft);
+ 	}
+ 	
+ 	public def setStats(c : GlobalStats){
+ 		stats.setStats(c);
+ 		accStats(stats);
+ 	}
+ 	
+ 	public def accStats( c : GlobalStats ):void 
+ 	{
+ 		genAccStats.accStats(c);
+ 		sampleAccStats.accStats(c);
+ 	}
+ 	
+ 	public def getGroupReset():Int{
+ 		return this.cGroupReset;
+ 	}
+ 	
+ 	public def announceWinner(p:Long):Boolean {
+ 		val result = winnerLatch.compareAndSet(false, true);
+ 		if (result) 
+ 		{
+ 			for (k in Place.places()) 
+ 				if (p != k.id){Console.OUT.println("Acá debo implementar un Kill");}
+ 					//at(k) kill(); // at(k) async ss().kill();  // Testing the use of this async v1
+ 		}
+ 		return result;
+ 	}
  	
  	 /*public def interTeamActivity(seed:Long){
 	 	val r = new Random(seed);
@@ -223,8 +284,5 @@ public abstract class CPLSNode{
  		 
  		 
  	 }*/
-
- 	 }
-
 }
 public type CPLSNode(nodeRole:Int) = CPLSNode{};

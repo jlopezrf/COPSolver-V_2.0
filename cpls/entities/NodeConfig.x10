@@ -3,10 +3,12 @@ package cpls.entities;
 import cpls.HeuristicFactory;
 import cpls.CPLSOptionsEnum.NodeRoles;
 import cpls.CPLSOptionsEnum.HeuristicsSupported;
+import cpls.solver.entities.HeuristicParameters;
 
-public class NodeConfig{
+public abstract class NodeConfig{
  	
  	private var heuristic:Int;
+ 	private var heuristicParameters:HeuristicParameters;
  	private var outTeamTime:Long;
  	
  	public def this(heuristic:Int){
@@ -31,6 +33,14 @@ public class NodeConfig{
  
  	public def getOutTeamTime(){
  		return this.outTeamTime;
+ 	}
+ 
+ 	public def setHeuristicParameters(heuristicParameters:HeuristicParameters){
+ 		this.heuristicParameters = heuristicParameters;
+ 	}
+ 
+ 	public def getHeuristicParameters(){
+ 		return this.heuristicParameters;
  	}
 
 }

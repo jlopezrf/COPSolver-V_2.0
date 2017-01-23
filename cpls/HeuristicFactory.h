@@ -79,7 +79,7 @@ class HeuristicFactory   {
         
     }
     void _constructor() {
-        ::cpls::HeuristicFactory this__60 = (*this);
+        ::cpls::HeuristicFactory this__554 = (*this);
         
     }
     static ::cpls::HeuristicFactory _make() {

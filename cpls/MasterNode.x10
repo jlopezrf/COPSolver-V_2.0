@@ -12,6 +12,7 @@ public class MasterNode extends CPLSNode{
 	public def this(){
  		super();
  	}
+
  	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig){
  		super.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
  		this.cplsPool = new SmartPool(cplsPoolConfig.getProblemSize(), cplsPoolConfig.getPoolSize(), cplsPoolConfig.getPoolMode(), cplsPoolConfig.getMinDist());
@@ -23,4 +24,5 @@ public class MasterNode extends CPLSNode{
  		Console.OUT.println("Se envía la señal de start en el Master");
  		super.heuristicSolver.solve();
  	}
+
 }

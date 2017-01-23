@@ -33,7 +33,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum")};
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum::typeName(){
     return ::x10aux::type_name((*this));
 }
@@ -116,7 +116,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__SupportedProblems::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__SupportedProblems::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__SupportedProblems")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__SupportedProblems::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__SupportedProblems_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__SupportedProblems")};
 
-//#line 6 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__do_init)() {
     FMGL(UNKNOWN_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -132,7 +132,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__exception);
 
-//#line 7 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__do_init)() {
     FMGL(MAGIC_SQUARE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -148,7 +148,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__init)(
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__exception);
 
-//#line 8 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__do_init)() {
     FMGL(COSTAS_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -164,7 +164,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__exception);
 
-//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__do_init)() {
     FMGL(ALL_INTERVAL_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -180,7 +180,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__init)(
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__exception);
 
-//#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__do_init)() {
     FMGL(LANGFORD_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -196,7 +196,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__exception);
 
-//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__do_init)() {
     FMGL(PARTIT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -212,7 +212,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__exception);
 
-//#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__do_init)() {
     FMGL(STABLE_MARRIAGE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -228,7 +228,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__ini
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__exception);
 
-//#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__do_init)() {
     FMGL(HOSPITAL_RESIDENT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -244,7 +244,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__i
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__exception);
 
-//#line 14 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__do_init)() {
     FMGL(QA_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -260,7 +260,7 @@ void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__exception);
 
-//#line 5 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__SupportedProblems::typeName(){
     return ::x10aux::type_name((*this));
 }
@@ -348,7 +348,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__HeuristicsSupported::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__HeuristicsSupported::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__HeuristicsSupported")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__HeuristicsSupported::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__HeuristicsSupported_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__HeuristicsSupported")};
 
-//#line 18 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__do_init)() {
     FMGL(UNKNOWN_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -364,7 +364,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__exception);
 
-//#line 19 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__do_init)() {
     FMGL(RS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -380,7 +380,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__exception);
 
-//#line 20 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__do_init)() {
     FMGL(AS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -396,7 +396,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__exception);
 
-//#line 21 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__do_init)() {
     FMGL(EO_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -412,7 +412,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__exception);
 
-//#line 22 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__do_init)() {
     FMGL(RoTS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -428,7 +428,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__exception);
 
-//#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__do_init)() {
     FMGL(Hybrid_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -444,7 +444,7 @@ void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__exception);
 
-//#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__HeuristicsSupported::typeName(
   ){
     return ::x10aux::type_name((*this));
@@ -534,7 +534,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__NodeRoles::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__NodeRoles::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__NodeRoles")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__NodeRoles::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__NodeRoles_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__NodeRoles")};
 
-//#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__do_init)() {
     FMGL(EXPLORER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -550,7 +550,7 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__exception);
 
-//#line 28 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__do_init)() {
     FMGL(HEAD_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -566,7 +566,7 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__exception);
 
-//#line 29 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__do_init)() {
     FMGL(MASTER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -582,7 +582,7 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__exception);
 
-//#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__NodeRoles::typeName(){
     return ::x10aux::type_name((*this));
 }
@@ -667,7 +667,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolLevels::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolLevels::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolLevels")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolLevels::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolLevels_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolLevels")};
 
-//#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__do_init)() {
     FMGL(HIGH__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -683,7 +683,7 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__exception);
 
-//#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__do_init)() {
     FMGL(MEDIUM__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -699,7 +699,7 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__exception);
 
-//#line 35 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__do_init)() {
     FMGL(LOW__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -715,7 +715,7 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__exception);
 
-//#line 32 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolLevels::typeName(){
     return ::x10aux::type_name((*this));
 }
@@ -801,7 +801,7 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolModes::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolModes::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolModes")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolModes::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolModes_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolModes")};
 
-//#line 39 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 x10_long cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART);
 void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__do_init)() {
     FMGL(SMART__status) = ::x10aux::StaticInitController::INITIALIZING;
@@ -817,7 +817,7 @@ void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__exception);
 
-//#line 38 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
+//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolModes::typeName(){
     return ::x10aux::type_name((*this));
 }
