@@ -17,8 +17,7 @@ void cpls::solver::RoTSearch::_constructor() {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-    ::cpls::solver::RoTSearch* this__751 = this;
-    
+    this->cpls::solver::RoTSearch::__fieldInitializers_cpls_solver_RoTSearch();
 }
 ::cpls::solver::RoTSearch* cpls::solver::RoTSearch::_make() {
     ::cpls::solver::RoTSearch* this_ = new (::x10aux::alloc_z< ::cpls::solver::RoTSearch>()) ::cpls::solver::RoTSearch();
@@ -32,7 +31,7 @@ void cpls::solver::RoTSearch::_constructor() {
 void cpls::solver::RoTSearch::solve() {
     
     //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__752 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RoTS"); strLit__752; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__24114 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RoTS"); strLit__24114; }))));
 }
 
 //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"

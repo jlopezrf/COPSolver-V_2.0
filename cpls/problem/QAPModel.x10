@@ -17,6 +17,20 @@ public class QAPModel extends ProblemGenericModel{
  	
  	public def this(size:Long):QAPModel(size){
  		super(size);
+ 		Console.OUT.println("Constructor de QAPModel invocado");
+ 	}
+ 
+ 	public def this(size:Long, inPathDataProblem:String, inPathVectorSol:String, baseValue:Int, inSeed:Long){
+ 		super(size);
+ 		super.inSeed = inSeed;
+ 		super.inPathDataProblem = inPathDataProblem;
+ 		super.inPathVectorSol = inPathVectorSol;
+ 		Console.OUT.println("Valor del path de entrada: " + inPathDataProblem);
+ 		super.baseValue = baseValue;
+ 		this.flow = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
+ 		this.dist = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
+ 		delta = new Array_2 [Long](size, size , 0);
+ 		Console.OUT.println("Por lo menos termina el contructor de QAPModel");
  	}
 
  	public def this (size :Long, mf:Rail[Rail[Int]], md:Rail[Rail[Int]] ) : QAPModel(size){
@@ -139,7 +153,7 @@ public class QAPModel extends ProblemGenericModel{
  		*  @param mDist distance matrix  (parameter by reference)
  		*  @return true if success, false if filePath is a directory
  	*/
- 	static def loadData(filePath : String, mFlow:Rail[Rail[Int]], mDist:Rail[Rail[Int]]):Boolean{
+ 	public def loadData(filePath : String):Boolean{
  		var loadTime:Long = -System.nanoTime();
  		val filep = new File(filePath);
  		if (filep.isDirectory()) return false;
@@ -160,7 +174,7 @@ public class QAPModel extends ProblemGenericModel{
  		Logger.info(()=>{"file: "+filePath+" size: "+sizeF+" bound: "+vb+" opt: "+vopt+" bks: "+bks});
 
  		//Load Problem
- 		readMatrix(fr, sizeF,  mFlow, mDist);
+ 		readMatrix(fr, sizeF);
  		fr.close();
  		return true;
  	}
@@ -183,7 +197,7 @@ public class QAPModel extends ProblemGenericModel{
  		return x;
  	}
 
- 	static def readMatrix(fr:FileReader, sizeF:Int,  mF:Rail[Rail[Int]], mD:Rail[Rail[Int]]){
+ 	private def readMatrix(fr:FileReader, sizeF:Int){
  		try{
  			var i : Int = 0n;
  			var j : Int;
@@ -191,6 +205,7 @@ public class QAPModel extends ProblemGenericModel{
  			var fLine:Int = 0n;
  			var dLine:Int = 0n;
  			for (line in fr.lines()){// It seems that the end of line characters '\n' are removed from the line
+ 				Console.OUT.println("Línea: " + line);
  				i++;
  				buffer = ""; j = 0n;
  				if (i >= 2n && i < sizeF + 2){
@@ -198,7 +213,7 @@ public class QAPModel extends ProblemGenericModel{
  						if(char == ' '){
  							if(!buffer.equals("")){
  								if (j < sizeF){
- 									mF(fLine)(j++) = Int.parse(buffer);
+ 									this.flow(fLine)(j++) = Int.parse(buffer);
  								}
  							}
  							buffer = "";
@@ -208,7 +223,7 @@ public class QAPModel extends ProblemGenericModel{
  					}
  					// Get the last number before the end of line  
  					if(!buffer.equals("")){
- 						mF(fLine)(j++) = Int.parse(buffer);
+ 						flow(fLine)(j++) = Int.parse(buffer);
  					}
  					fLine++;
  				}else if (i > sizeF + 2 && i <= sizeF * 2 + 2){
@@ -218,7 +233,7 @@ public class QAPModel extends ProblemGenericModel{
  						if( char == ' '){
  							if(!buffer.equals("")){
  								if (j < sizeF){
- 									mD(dLine)(j++)= Int.parse(buffer);
+ 									dist(dLine)(j++)= Int.parse(buffer);
  									//Console.OUT.println("mDist "+(dLine)+","+(j-1)+" = "+(mD(dLine)(j-1)));
  								}
  							}
@@ -229,7 +244,7 @@ public class QAPModel extends ProblemGenericModel{
  					}
  					// Get the last number before the end of line  
  					if(!buffer.equals("")) {
- 						mD(dLine)(j++)= Int.parse(buffer);
+ 						dist(dLine)(j++)= Int.parse(buffer);
  						//Console.OUT.println("mDist "+(dLine)+","+(j-1)+" = "+(mD(dLine)(j-1)));
  					}
  					dLine++;

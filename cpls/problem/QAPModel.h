@@ -22,21 +22,6 @@ template<class TPMGL(T)> class Rail;
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array_2;
 } } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
-} } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
-namespace x10 { namespace io { 
-class File;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -45,6 +30,18 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+class String;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
+} } 
+namespace x10 { namespace lang { 
+class System;
+} } 
+namespace x10 { namespace io { 
+class File;
 } } 
 namespace x10 { namespace io { 
 class FileReader;
@@ -95,10 +92,20 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
     
     static ::cpls::problem::QAPModel* _make(x10_long size);
     
+    void _constructor(x10_long size, ::x10::lang::String* inPathDataProblem,
+                      ::x10::lang::String* inPathVectorSol, x10_int baseValue,
+                      x10_long inSeed);
+    
+    static ::cpls::problem::QAPModel* _make(x10_long size, ::x10::lang::String* inPathDataProblem,
+                                            ::x10::lang::String* inPathVectorSol,
+                                            x10_int baseValue,
+                                            x10_long inSeed);
+    
     void _constructor(x10_long size, ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
                       ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* md);
     
-    static ::cpls::problem::QAPModel* _make(x10_long size, ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
+    static ::cpls::problem::QAPModel* _make(x10_long size,
+                                            ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
                                             ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* md);
     
     virtual x10_long computeDelta(x10_long i, x10_long j);
@@ -109,13 +116,9 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
                                 x10_long i2);
     virtual void executedSwap(x10_long i1, x10_long i2);
     virtual x10_long costOnVariable(x10_long i);
-    static x10_boolean loadData(::x10::lang::String* filePath,
-                                ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mFlow,
-                                ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mDist);
+    virtual x10_boolean loadData(::x10::lang::String* filePath);
     static ::x10::lang::Rail< x10_int >* readParameters(::x10::lang::String* line);
-    static void readMatrix(::x10::io::FileReader* fr, x10_int sizeF,
-                           ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mF,
-                           ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mD);
+    void readMatrix(::x10::io::FileReader* fr, x10_int sizeF);
     virtual x10_boolean verify(::x10::lang::Rail< x10_int >* match);
     void printMatrices();
     virtual ::cpls::problem::QAPModel* cpls__problem__QAPModel____this__cpls__problem__QAPModel(

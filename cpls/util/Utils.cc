@@ -9,27 +9,27 @@
 void cpls::util::Utils::show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d) {
     
     //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__640 = ::x10aux::makeStringLit(" in "); strLit__640; }))), ::x10::lang::Place::_make(::x10aux::here)->FMGL(id)), (__extension__ ({ static ::x10::lang::String* strLit__641 = ::x10aux::makeStringLit(" : "); strLit__641; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__23881 = ::x10aux::makeStringLit(" in "); strLit__23881; }))), ::x10::lang::Place::_make(::x10aux::here)->FMGL(id)), (__extension__ ({ static ::x10::lang::String* strLit__23882 = ::x10aux::makeStringLit(" : "); strLit__23882; }))));
     
     //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-    ::x10::lang::Rail< x10_int >* rail__634 = d;
-    x10_long i__279max__635 = (x10_long)(::x10aux::nullCheck(rail__634)->FMGL(size));
+    ::x10::lang::Rail< x10_int >* rail__19400 = d;
+    x10_long i__19384min__19401 = ((x10_long)0ll);
+    x10_long i__19384max__19402 = (x10_long)(::x10aux::nullCheck(rail__19400)->FMGL(size));
     {
-        x10_long i__636;
-        for (i__636 = ((x10_long)0ll); ((i__636) < (i__279max__635)); i__636 =
-                                                                        ((i__636) + (((x10_long)1ll))))
-        {
-            x10_long k__637 = i__636;
+        x10_long i__19403;
+        for (i__19403 = i__19384min__19401; ((i__19403) < (i__19384max__19402));
+             i__19403 = ((i__19403) + (((x10_long)1ll)))) {
+            x10_long k__19404 = i__19403;
             
             //#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__642 = ::x10aux::makeStringLit(" "); strLit__642; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                  k__637)));
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__23883 = ::x10aux::makeStringLit(" "); strLit__23883; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                      k__19404)));
         }
     }
     
     //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__644 = ::x10aux::makeStringLit(""); strLit__644; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__23885 = ::x10aux::makeStringLit(""); strLit__23885; }))));
 }
 
 //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
@@ -39,8 +39,7 @@ void cpls::util::Utils::show(::x10::lang::String* s, ::x10::lang::Rail< x10_int 
     
 }
 void cpls::util::Utils::_constructor() {
-    ::cpls::util::Utils* this__638 = this;
-    
+    this->cpls::util::Utils::__fieldInitializers_cpls_util_Utils();
 }
 ::cpls::util::Utils* cpls::util::Utils::_make() {
     ::cpls::util::Utils* this_ = new (::x10aux::alloc_z< ::cpls::util::Utils>()) ::cpls::util::Utils();

@@ -65,7 +65,7 @@ public abstract class CPLSNode{
  	}
  	
  	public def configHeuristic(problemModel:ProblemGenericModel){
- 		Console.OUT.println("Se ingresa a setear el ProblemModel en " + here.id);
+ 		//Console.OUT.println("Se ingresa a setear el ProblemModel en " + here.id);
  		this.heuristicSolver.setProblemModel(problemModel);
  	}
  	

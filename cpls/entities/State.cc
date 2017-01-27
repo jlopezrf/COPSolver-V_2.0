@@ -42,7 +42,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::entities::State::toString() {
-    return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__729 = ::x10aux::makeStringLit("struct cpls.entities.State:"); strLit__729; })), (__extension__ ({ static ::x10::lang::String* strLit__730 = ::x10aux::makeStringLit(" sz="); strLit__730; }))), (*this)->FMGL(sz)), (__extension__ ({ static ::x10::lang::String* strLit__731 = ::x10aux::makeStringLit(" cost="); strLit__731; }))), (*this)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__732 = ::x10aux::makeStringLit(" vector="); strLit__732; }))), (*this)->FMGL(vector)), (__extension__ ({ static ::x10::lang::String* strLit__733 = ::x10aux::makeStringLit(" place="); strLit__733; }))), (*this)->FMGL(place)), (__extension__ ({ static ::x10::lang::String* strLit__734 = ::x10aux::makeStringLit(" solverState="); strLit__734; }))), (*this)->FMGL(solverState));
+    return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__24100 = ::x10aux::makeStringLit("struct cpls.entities.State:"); strLit__24100; })), (__extension__ ({ static ::x10::lang::String* strLit__24101 = ::x10aux::makeStringLit(" sz="); strLit__24101; }))), (*this)->FMGL(sz)), (__extension__ ({ static ::x10::lang::String* strLit__24102 = ::x10aux::makeStringLit(" cost="); strLit__24102; }))), (*this)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__24103 = ::x10aux::makeStringLit(" vector="); strLit__24103; }))), (*this)->FMGL(vector)), (__extension__ ({ static ::x10::lang::String* strLit__24104 = ::x10aux::makeStringLit(" place="); strLit__24104; }))), (*this)->FMGL(place)), (__extension__ ({ static ::x10::lang::String* strLit__24105 = ::x10aux::makeStringLit(" solverState="); strLit__24105; }))), (*this)->FMGL(solverState));
     
 }
 x10_int cpls::entities::State::hashCode() {
@@ -84,8 +84,7 @@ void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang
     FMGL(solverState) = solverState;
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
-    ::cpls::entities::State this__722 = (*this);
-    
+    (*this)->cpls::entities::State::__fieldInitializers_cpls_entities_State();
 }
 ::cpls::entities::State cpls::entities::State::_make(x10_long sz,
                                                      x10_long cost,

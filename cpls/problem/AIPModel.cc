@@ -10,22 +10,12 @@
 void cpls::problem::AIPModel::_constructor(x10_long sz) {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
-    ::cpls::problem::ProblemGenericModel* this__993 = this;
-    
-    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/ProblemGenericModel.x10"
-    x10_long sizeProblem__994 = sz;
-    
-    //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/ProblemGenericModel.x10"
-    ::x10aux::nullCheck(this__993)->FMGL(size) = sizeProblem__994;
-    
-    //#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/ProblemGenericModel.x10"
-    ::x10aux::nullCheck(this__993)->cpls::problem::ProblemGenericModel::__fieldInitializers_cpls_problem_ProblemGenericModel();
+    (this)->::cpls::problem::ProblemGenericModel::_constructor(sz);
     
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
-    ::cpls::problem::AIPModel* this__992 = this;
-    
+    this->cpls::problem::AIPModel::__fieldInitializers_cpls_problem_AIPModel();
 }
 ::cpls::problem::AIPModel* cpls::problem::AIPModel::_make(x10_long sz) {
     ::cpls::problem::AIPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::AIPModel>()) ::cpls::problem::AIPModel();

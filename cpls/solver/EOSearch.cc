@@ -17,8 +17,7 @@ void cpls::solver::EOSearch::_constructor() {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-    ::cpls::solver::EOSearch* this__751 = this;
-    
+    this->cpls::solver::EOSearch::__fieldInitializers_cpls_solver_EOSearch();
 }
 ::cpls::solver::EOSearch* cpls::solver::EOSearch::_make() {
     ::cpls::solver::EOSearch* this_ = new (::x10aux::alloc_z< ::cpls::solver::EOSearch>()) ::cpls::solver::EOSearch();
@@ -32,7 +31,7 @@ void cpls::solver::EOSearch::_constructor() {
 void cpls::solver::EOSearch::solve() {
     
     //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__752 = ::x10aux::makeStringLit("Heuristic Solve invocado desde EO"); strLit__752; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__24113 = ::x10aux::makeStringLit("Heuristic Solve invocado desde EO"); strLit__24113; }))));
 }
 
 //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"

@@ -49,8 +49,8 @@ class FailedDynamicCheckException;
 namespace x10 { namespace lang { 
 class Runtime;
 } } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
 namespace cpls { namespace util { 
 class Logger;

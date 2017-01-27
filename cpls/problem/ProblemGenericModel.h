@@ -68,14 +68,17 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     
     ::x10::util::Random* FMGL(r);
     
-    ::x10::lang::String* FMGL(inPath);
+    ::x10::lang::String* FMGL(inPathDataProblem);
+    
+    ::x10::lang::String* FMGL(inPathVectorSol);
     
     void _constructor(x10_long sizeProblem);
     
     static ::cpls::problem::ProblemGenericModel* _make(x10_long sizeProblem);
     
     virtual void setBaseValue(x10_int baseValue);
-    virtual void setInPath(::x10::lang::String* inPath);
+    virtual void setInPathDataProblem(::x10::lang::String* inPathDataProblem);
+    virtual void setInPathVectorSol(::x10::lang::String* inPathVectorSol);
     virtual void setSeed(x10_long seed);
     virtual x10_long getSize();
     virtual x10_long costOnVariable(x10_long i);

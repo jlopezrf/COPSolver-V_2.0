@@ -2,6 +2,7 @@ package cpls;
 
 import cpls.util.RandomTools;
 import cpls.util.Logger;
+import cpls.util.CPLSFileReader;
 import cpls.ParamManager;
 import cpls.problem.ProblemGenericModel;
 import cpls.problem.*;
@@ -14,16 +15,25 @@ import cpls.solver.entities.ASParameters;
 import cpls.solver.entities.EOParameters;
 import cpls.solver.entities.RoTSParameters;
 import x10.array.Array_2;
+import cpls.util.CPLSFileReader;
 
 public class Main {
  	
  	public static def main(args: Rail[String]) {
- 
  		var opts:ParamManager = new ParamManager(args);
+ 		//val path = opts("-f","."); TODO: Jason. Esto lo hago cuando quiera resolver todas las instancias de una carpeta
+ 		//var listOfInstances : Rail[String] = CPLSFileReader.loadDir(path);
  		var configCPLS:CPLSConfig = new CPLSConfig();
- 		
+ 
+ 		//********************Params for ProblemGenericModel********************//
+ 		//val baseValue = opts("-bv", 1n);
+ 		//val inPath = opts("-if",".");
+ 		//**********************************************************************//
+ 
  		//*********************Model Problem Creation**************************//
  		val problemModel = COPProblemModelFactory.make(opts);
+ 		//problemModel.setBaseValue(baseValue);
+ 		//problemModel.setInPath(inPath);
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
  		
@@ -59,12 +69,13 @@ public class Main {
  		configCPLS.setVerify(opts("-v", 0n) == 1n);
  		configCPLS.setSeed(opts("-S", System.nanoTime()));
  		
- 		/*************************In/Out forms of params************************/
+ 		//*************************In/Out forms of params************************//
  		val outFormat	   = opts("-of", 1n);
  		val costFromF      = opts("-tf", 0);
  		val tCostFromCL    = opts("-tc", 0n);
  		val testNb         = opts("-b", 10n);
- 		
+ 		//**********************************************************************//
+
  		var c : Long = 0;
  		var sl : Boolean = false;
  		if ( costFromF == 0 ) { // target cost loaded from command line parameter
@@ -162,10 +173,10 @@ public class Main {
  			Logger.debug(()=>{"Stable Marriage Problem"});
  			problemParam = CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM;
  		}else if(problem.equals("HRP")){
- 			Logger.debug(()=>{"Stable Marriage Problem"});
+ 			Logger.debug(()=>{"HRP Problem"});
  			problemParam = CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM;
  		}else if(problem.equals("QAP")){
- 			Logger.debug(()=>{"Stable Marriage Problem"});
+ 			Logger.debug(()=>{"QAP Problem"});
  			problemParam = CPLSOptionsEnum.SupportedProblems.QA_PROBLEM;
  		}else{
  			problemParam = CPLSOptionsEnum.SupportedProblems.UNKNOWN_PROBLEM;
@@ -179,8 +190,9 @@ public class Main {
  			val problemString = opts("-p", "MSP");
  			val problem = problemDetect(problemString);
  			val size = opts("-s", 10);
- 			val baseValue = opts("-bv", 1n);
- 			val inPath = opts("-if",".");
+ 			val baseValue = opts("-bv", 0n);
+ 			val inPathDataProblem = opts("-f",".");
+ 			val inPathVectorSol =  opts("-if",".");
  			val inSeed = opts("-S", System.nanoTime());
  			switch(problem as Int){
  				case CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM: return new MSPModel(size);
@@ -190,10 +202,14 @@ public class Main {
  				case CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
- 					var problemModel:QAPModel = new QAPModel(size);
- 					problemModel.setBaseValue(baseValue);
- 					problemModel.setInPath(inPath);
- 					problemModel.setSeed(inSeed);
+ 					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem);
+ 					val n1 = params(0) < 0 ? 1 : params(0);
+ 					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue, inSeed);
+ 					problemModel.initialize();
+ 					problemModel.loadData(inPathDataProblem);
+ 					//problemModel.setBaseValue(baseValue);
+ 					//problemModel.setInPath(inPath);
+ 					//problemModel.setSeed(inSeed);
  					return problemModel;
  				default: return new PNPModel(size);
  			}

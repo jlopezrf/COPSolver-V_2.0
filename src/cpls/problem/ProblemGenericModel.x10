@@ -12,18 +12,25 @@ public class ProblemGenericModel(size:Long){
  	protected var baseValue:Int;
  	protected var inSeed:Long;
  	protected var r:Random;
- 	protected var inPath:String;
+ 	protected var inPathDataProblem:String;
+ 	protected var inPathVectorSol:String;
  
  	public def this(sizeProblem:Long){
  		property(sizeProblem);
+ 		this.r = new Random(); //TODO: Jason. Verificar si es necesario crear este Random con una semilla
+ 		Console.OUT.println("Constructor de ProblemGenericModelInvocado");
  	}
 
  	public def setBaseValue(baseValue:Int){
  		this.baseValue = baseValue;
  	}
  
- 	public def setInPath(inPath:String){
- 		this.inPath = inPath;
+ 	public def setInPathDataProblem(inPathDataProblem:String){
+ 		this.inPathDataProblem = inPathDataProblem;
+ 	}
+ 
+ 	public def setInPathVectorSol(inPathVectorSol:String){
+ 		this.inPathVectorSol = inPathVectorSol;
  	}
 
  	public def setSeed(seed:Long){
@@ -76,9 +83,9 @@ public class ProblemGenericModel(size:Long){
   	}
   
   	public def initialize(){
-  		if (!inPath.equalsIgnoreCase(".")){
+  		if (!inPathVectorSol.equalsIgnoreCase(".")){
   			//initialize from inVector
-  			val fileIn = new FileReader(new File(inPath));
+  			val fileIn = new FileReader(new File(inPathVectorSol));
   			val line = fileIn.readLine();
   			var i : Int;
   			var j : Long = 0;
@@ -97,7 +104,7 @@ public class ProblemGenericModel(size:Long){
   				//Console.OUT.println("var "+(j-1)+" = "+variables(j-1));
   			}
   			if(j < this.size)
-  				Console.OUT.println("ModelAS ERROR: The input vector is shorter than the variables array");  
+  				Console.OUT.println("ModelAS ERROR: The input vector is shorter than the variables array. Valor j: " + j);  
   				// check permutation, if a value is repeated, then its not a valid permutation
   				val permutV = new Rail[Int](this.size, 0n);
   				for (mi in variables.range()){
@@ -111,8 +118,8 @@ public class ProblemGenericModel(size:Long){
   		}else{
   			for(k in variables.range()){
   				variables(k) = this.baseValue + k as Int;
+  				Console.OUT.println("Variables position " + k + ": " + variables(k));
   			}
-  			//Main.show("before ini",variables);
   			for( var i:Long = this.size - 1 ; i > 0 ; i-- ){
   				val j = r.nextLong( i + 1 );
   				swapVariables(i,j);

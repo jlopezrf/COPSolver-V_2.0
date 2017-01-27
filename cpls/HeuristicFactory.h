@@ -10,6 +10,9 @@
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace cpls { namespace solver { 
 class AdaptiveSearch;
 } } 
@@ -79,8 +82,7 @@ class HeuristicFactory   {
         
     }
     void _constructor() {
-        ::cpls::HeuristicFactory this__554 = (*this);
-        
+        (*this)->cpls::HeuristicFactory::__fieldInitializers_cpls_HeuristicFactory();
     }
     static ::cpls::HeuristicFactory _make() {
         ::cpls::HeuristicFactory this_; 

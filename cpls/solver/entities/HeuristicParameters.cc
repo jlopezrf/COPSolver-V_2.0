@@ -11,8 +11,7 @@
     
 }
 void cpls::solver::entities::HeuristicParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__3 = this;
-    
+    this->cpls::solver::entities::HeuristicParameters::__fieldInitializers_cpls_solver_entities_HeuristicParameters();
 }
 
 void cpls::solver::entities::HeuristicParameters::__fieldInitializers_cpls_solver_entities_HeuristicParameters(

@@ -22,9 +22,12 @@ class OptionsParser;
 namespace cpls { 
 class Main;
 } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
 namespace cpls { namespace problem { 
 class MSPModel;
 } } 
@@ -39,6 +42,12 @@ class LNPModel;
 } } 
 namespace cpls { namespace problem { 
 class SMTIModel;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
+namespace cpls { namespace util { 
+class CPLSFileReader;
 } } 
 namespace cpls { namespace problem { 
 class QAPModel;
@@ -99,8 +108,7 @@ class Main__COPProblemModelFactory   {
         
     }
     void _constructor() {
-        ::cpls::Main__COPProblemModelFactory this__20906 = (*this);
-        
+        (*this)->cpls::Main__COPProblemModelFactory::__fieldInitializers_cpls_Main_COPProblemModelFactory();
     }
     static ::cpls::Main__COPProblemModelFactory _make() {
         ::cpls::Main__COPProblemModelFactory this_; 

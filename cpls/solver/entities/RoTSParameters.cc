@@ -12,12 +12,10 @@
 
 //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
 void cpls::solver::entities::RoTSParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__17 = this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
-    ::cpls::solver::entities::RoTSParameters* this__16 = this;
-    ::x10aux::nullCheck(this__16)->FMGL(tabuDurationFactorUS) = 0.0;
-    ::x10aux::nullCheck(this__16)->FMGL(aspirationFactorUS) = 0.0;
+    this->cpls::solver::entities::RoTSParameters::__fieldInitializers_cpls_solver_entities_RoTSParameters();
 }
 ::cpls::solver::entities::RoTSParameters* cpls::solver::entities::RoTSParameters::_make(
   ) {
@@ -31,15 +29,10 @@ void cpls::solver::entities::RoTSParameters::_constructor() {
 //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
 void cpls::solver::entities::RoTSParameters::_constructor(x10_double tabuDurationFactorUS,
                                                           x10_double aspirationFactorUS) {
-    ::cpls::solver::entities::HeuristicParameters* this__19 =
-      this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
-    ::cpls::solver::entities::RoTSParameters* this__18 = this;
-    ::x10aux::nullCheck(this__18)->FMGL(tabuDurationFactorUS) =
-      0.0;
-    ::x10aux::nullCheck(this__18)->FMGL(aspirationFactorUS) =
-      0.0;
+    this->cpls::solver::entities::RoTSParameters::__fieldInitializers_cpls_solver_entities_RoTSParameters();
     
     //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
     this->FMGL(tabuDurationFactorUS) = tabuDurationFactorUS;

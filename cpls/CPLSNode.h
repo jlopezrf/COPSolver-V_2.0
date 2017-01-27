@@ -73,8 +73,8 @@ class Runtime;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;

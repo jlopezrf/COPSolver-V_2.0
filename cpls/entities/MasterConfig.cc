@@ -4,7 +4,6 @@
 
 #include <cpls/entities/NodeConfig.h>
 #include <x10/compiler/Synthetic.h>
-#include <cpls/solver/entities/HeuristicParameters.h>
 
 //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/MasterConfig.x10"
 ::cpls::entities::MasterConfig* cpls::entities::MasterConfig::cpls__entities__MasterConfig____this__cpls__entities__MasterConfig(
@@ -13,19 +12,8 @@
     
 }
 void cpls::entities::MasterConfig::_constructor() {
-    ::cpls::entities::NodeConfig* this__10 = this;
-    
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    ::x10aux::nullCheck(this__10)->FMGL(heuristic) = ((x10_int)0);
-    ::x10aux::nullCheck(this__10)->FMGL(heuristicParameters) = (::x10aux::class_cast_unchecked< ::cpls::solver::entities::HeuristicParameters*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__10)->FMGL(outTeamTime) = ((x10_long)0ll);
-    
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    ::x10aux::nullCheck(this__10)->FMGL(heuristic) = ((x10_int)0);
-    
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/MasterConfig.x10"
-    ::cpls::entities::MasterConfig* this__9 = this;
-    
+    (this)->::cpls::entities::NodeConfig::_constructor();
+    this->cpls::entities::MasterConfig::__fieldInitializers_cpls_entities_MasterConfig();
 }
 ::cpls::entities::MasterConfig* cpls::entities::MasterConfig::_make(
   ) {

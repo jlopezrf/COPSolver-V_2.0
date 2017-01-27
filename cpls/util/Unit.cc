@@ -38,7 +38,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::util::Unit::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__51 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__51; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__24131 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__24131; }));
     
 }
 x10_boolean cpls::util::Unit::equals(::x10::lang::Any* other) {
@@ -46,9 +46,7 @@ x10_boolean cpls::util::Unit::equals(::x10::lang::Any* other) {
         return false;
         
     }
-    ::cpls::util::Unit this__40 = (*this);
-    ::cpls::util::Unit other__41 = ::x10aux::class_cast< ::cpls::util::Unit>(other);
-    return true;
+    return (*this)->cpls::util::Unit::equals(::x10aux::class_cast< ::cpls::util::Unit>(other));
     
 }
 x10_boolean cpls::util::Unit::_struct_equals(::x10::lang::Any* other) {
@@ -56,9 +54,7 @@ x10_boolean cpls::util::Unit::_struct_equals(::x10::lang::Any* other) {
         return false;
         
     }
-    ::cpls::util::Unit this__42 = (*this);
-    ::cpls::util::Unit other__43 = ::x10aux::class_cast< ::cpls::util::Unit>(other);
-    return true;
+    return (*this)->cpls::util::Unit::_struct_equals(::x10aux::class_cast< ::cpls::util::Unit>(other));
     
 }
 

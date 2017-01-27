@@ -9,16 +9,12 @@
 void cpls::solver::SingleSolHeuristic::_constructor() {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::HeuristicSolver* this__937 = this;
-    
-    //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10aux::nullCheck(this__937)->cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSolver();
+    (this)->::cpls::solver::HeuristicSolver::_constructor();
     
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::SingleSolHeuristic* this__936 = this;
-    
+    this->cpls::solver::SingleSolHeuristic::__fieldInitializers_cpls_solver_SingleSolHeuristic();
 }
 ::cpls::solver::SingleSolHeuristic* cpls::solver::SingleSolHeuristic::_make(
   ) {

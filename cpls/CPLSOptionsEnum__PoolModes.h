@@ -69,8 +69,7 @@ class CPLSOptionsEnum__PoolModes   {
         
     }
     void _constructor() {
-        ::cpls::CPLSOptionsEnum__PoolModes this__219 = (*this);
-        
+        (*this)->cpls::CPLSOptionsEnum__PoolModes::__fieldInitializers_cpls_CPLSOptionsEnum_PoolModes();
     }
     static ::cpls::CPLSOptionsEnum__PoolModes _make() {
         ::cpls::CPLSOptionsEnum__PoolModes this_; 

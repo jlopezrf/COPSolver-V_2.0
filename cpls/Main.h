@@ -37,8 +37,8 @@ class NodeConfig;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
 namespace x10 { namespace lang { 
 class Math;
@@ -70,6 +70,9 @@ class Logger;
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -85,12 +88,12 @@ class ExplorerConfig;
 namespace cpls { namespace entities { 
 class MasterConfig;
 } } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
 namespace cpls { namespace entities { 
 class HeadConfig;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

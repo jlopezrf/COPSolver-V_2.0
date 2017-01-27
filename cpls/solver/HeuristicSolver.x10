@@ -140,11 +140,12 @@ public abstract class HeuristicSolver{
  		this.target = tCost;
  		this.strictLow = sLow;
  		this.targetSucc = false;
- 		problemModel.initialize(); 
+ 		//problemModel.initialize(); 
  		//Main.show("initial= ",csp.variables);
  		this.nSwap = 0n;
  		this.nIter = 0n;
  		this.nRestart = 0n;
+ 		this.bestConf = new Rail[Int](problemModel.getSize(), 0n);
  		
  		// clear Tot stats
  		this.nIterTot = 0n;

@@ -20,11 +20,7 @@ void cpls::entities::PoolConfig::_constructor(x10_long problemSize, x10_int pool
                                               x10_int poolMode, x10_double minDist) {
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/PoolConfig.x10"
-    ::cpls::entities::PoolConfig* this__5 = this;
-    ::x10aux::nullCheck(this__5)->FMGL(problemSize) = ((x10_long)0ll);
-    ::x10aux::nullCheck(this__5)->FMGL(poolSize) = ((x10_int)0);
-    ::x10aux::nullCheck(this__5)->FMGL(poolMode) = ((x10_int)0);
-    ::x10aux::nullCheck(this__5)->FMGL(minDist) = 0.0;
+    this->cpls::entities::PoolConfig::__fieldInitializers_cpls_entities_PoolConfig();
     
     //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/PoolConfig.x10"
     this->FMGL(problemSize) = problemSize;

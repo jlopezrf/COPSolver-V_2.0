@@ -22,9 +22,6 @@ class NodeConfig;
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Iterator;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
-} } 
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array;
 } } 
@@ -49,8 +46,11 @@ class String;
 namespace cpls { 
 class NodeInstancer__NodeFactory;
 } 
+namespace cpls { 
+class CPLSOptionsEnum__NodeRoles;
+} 
 namespace x10 { namespace lang { 
-class Unsafe;
+class Place;
 } } 
 namespace cpls { namespace entities { 
 class PoolConfig;
@@ -69,9 +69,6 @@ class FinishState;
 } } 
 namespace x10 { namespace lang { 
 class CheckedThrowable;
-} } 
-namespace x10 { namespace lang { 
-class Place;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Iterable;
