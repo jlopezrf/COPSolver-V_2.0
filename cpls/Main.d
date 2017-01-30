@@ -5,9 +5,8 @@ cpls/Main.o: cpls/Main.cc cpls/Main.h cpls/ParamManager.h \
  cpls/solver/entities/HeuristicParameters.h \
  cpls/solver/entities/EOParameters.h \
  cpls/solver/entities/RoTSParameters.h cpls/NodeInstancer.h \
- cpls/util/Logger.h cpls/CPLSOptionsEnum__SupportedProblems.h \
- cpls/entities/ExplorerConfig.h cpls/entities/MasterConfig.h \
- cpls/entities/HeadConfig.h cpls/CPLSOptionsEnum__HeuristicsSupported.h \
+ cpls/util/Logger.h cpls/entities/ExplorerConfig.h \
+ cpls/entities/MasterConfig.h cpls/entities/HeadConfig.h \
  cpls/problem/MSPModel.h cpls/problem/CAPModel.h cpls/problem/AIPModel.h \
  cpls/problem/LNPModel.h cpls/problem/SMTIModel.h \
  cpls/util/CPLSFileReader.h cpls/problem/QAPModel.h \

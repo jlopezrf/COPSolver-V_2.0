@@ -13,12 +13,6 @@ class NodeConfig;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace cpls { 
-class HeuristicFactory;
-} 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -28,8 +22,8 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace x10 { namespace lang { 
-class String;
+namespace cpls { namespace solver { 
+class HeuristicSolver;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -47,7 +41,8 @@ class ExplorerNode : public ::cpls::CPLSNode   {
     static ::cpls::ExplorerNode* _make();
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
-                            ::cpls::entities::PoolConfig* configPool);
+                            ::cpls::entities::PoolConfig* configPool,
+                            x10_long problemSize);
     virtual void start();
     virtual ::cpls::ExplorerNode* cpls__ExplorerNode____this__cpls__ExplorerNode(
       );

@@ -34,7 +34,7 @@ public class NodeInstancer{
  		if(configCPLS.getIsThereAMasterNode()){
  			numExplorers = numExplorers - 1;
  			masterNode = NodeFactory.make(CPLSOptionsEnum.NodeRoles.MASTER_NODE);
- 			masterNode.initialize(configNodes(0,0), Place.FIRST_PLACE.id as Int, configCPLS.getCPLSPoolConfig());
+ 			masterNode.initialize(configNodes(0,0), Place.FIRST_PLACE.id as Int, configCPLS.getCPLSPoolConfig(), configCPLS.getProblemModel().getSize());
  			//Console.OUT.println("Heuristica del master: " + HeuristicFactory.getHeuristicName(configNodes(0,0).getHeuristic()));
  		}
  		var explorersGroup:PlaceGroup = PlaceGroup.make(numExplorers);
@@ -48,20 +48,20 @@ public class NodeInstancer{
  		finish{	
  			for (p in headersGroup) at (p) async{
  				if(configCPLS.getIsThereAMasterNode() && p.id()==0){
- 					headNodes().initialize(configNodes(p.id(), 1), p.id() as Int, configCPLS.getTeamsPoolConfig());
+ 					headNodes().initialize(configNodes(p.id(), 1), p.id() as Int, configCPLS.getTeamsPoolConfig(),  configCPLS.getProblemModel().getSize());
  				}else{
- 					headNodes().initialize(configNodes(p.id(),0), p.id() as Int, configCPLS.getTeamsPoolConfig());
+ 					headNodes().initialize(configNodes(p.id(),0), p.id() as Int, configCPLS.getTeamsPoolConfig(),  configCPLS.getProblemModel().getSize());
  				}
  			}
  			for (p in explorersGroup) at (p) async{
  				if(configCPLS.getIsThereAMasterNode()){
  					val indice_i = (p.id() as Int + 1) / (configNodes.numElems_2 - 1);
  					val indice_j = ((p.id() as Int + 1) % (configNodes.numElems_2 - 1)) + 1;
- 					explorersNodes().initialize(configNodes(indice_i,indice_j), p.id() as Int, null);
+ 					explorersNodes().initialize(configNodes(indice_i,indice_j), p.id() as Int, null,  configCPLS.getProblemModel().getSize());
  				}else{
  					val indice_i = p.id() as Int / (configNodes.numElems_2 -1);
  					val indice_j = p.id() as Int % (configNodes.numElems_2 - 1);
- 					explorersNodes().initialize(configNodes(indice_i,indice_j + 1), p.id() as Int, null);
+ 					explorersNodes().initialize(configNodes(indice_i,indice_j + 1), p.id() as Int, null,  configCPLS.getProblemModel().getSize());
  					//Console.OUT.println("Explorer Place: " + p);
  				}
  			}
@@ -74,19 +74,19 @@ public class NodeInstancer{
  				//Console.OUT.println("Se ingresa a setear los apuntadores en el master");
  				masterNode.addPointerComm(headNodes);
 	 			masterNode.addPointerComm(explorersNodes);
-	 			masterNode.configHeuristic(configCPLS.getPoblemModel());
+	 			masterNode.configHeuristic(configCPLS.getProblemModel());
 	 		}
 	 		for (p in headersGroup) at (p) async{
 	 			//Console.OUT.println("Se ingresa a setear los apuntadores en los headers");
 	 				(headNodes() as HeadNode).setMasterNodeIndicator(configCPLS.getIsThereAMasterNode());
 	 				headNodes().addPointerComm(headNodes);
 	 				headNodes().addPointerComm(explorersNodes);
-	 				headNodes().configHeuristic(configCPLS.getPoblemModel());
+	 				headNodes().configHeuristic(configCPLS.getProblemModel());
 	 		}
 	 		for (p in explorersGroup) at (p) async{
 	 			//Console.OUT.println("Se ingresa a setear los apuntadores en los explorers");
 	 			explorersNodes().addPointerComm(headNodes);
-	 			explorersNodes().configHeuristic(configCPLS.getPoblemModel());
+	 			explorersNodes().configHeuristic(configCPLS.getProblemModel());
 	 		}
  		}
  		//****************************************************************************************************************//
@@ -95,13 +95,13 @@ public class NodeInstancer{
  		//****************************************************************************************************************//
  		finish{
  			if(configCPLS.getIsThereAMasterNode()){
- 				masterNode.start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
+ 				masterNode.start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow(), configCPLS.getIterations());
  			}
  			for (p in headersGroup) at (p) async{
- 				headNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
+ 				headNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow(), configCPLS.getIterations());
  			}
  			for (p in explorersGroup) at (p) async{
- 				explorersNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
+ 				explorersNodes().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow(), configCPLS.getIterations());
  			}
  		}
  		//****************************************************************************************************************//

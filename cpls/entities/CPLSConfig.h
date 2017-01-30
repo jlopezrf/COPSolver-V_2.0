@@ -83,6 +83,8 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     x10_boolean FMGL(strictLow);
     
+    x10_long FMGL(iterations);
+    
     x10_long FMGL(outTeamTime);
     
     x10_double FMGL(minDistance);
@@ -92,7 +94,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     x10_double FMGL(affectedPer);
     
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
-    virtual ::cpls::problem::ProblemGenericModel* getPoblemModel();
+    virtual ::cpls::problem::ProblemGenericModel* getProblemModel();
     virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
     virtual void setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig);
     virtual void setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig);
@@ -134,6 +136,8 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual x10_long getTargetCost();
     virtual void setStrictLow(x10_boolean strictLow);
     virtual x10_boolean getStrictLow();
+    virtual void setIterations(x10_long iterations);
+    virtual x10_long getIterations();
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
       );
     void _constructor();

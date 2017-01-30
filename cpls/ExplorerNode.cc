@@ -6,12 +6,11 @@
 #include <cpls/entities/NodeConfig.h>
 #include <x10/lang/Int.h>
 #include <cpls/entities/PoolConfig.h>
-#include <cpls/HeuristicFactory.h>
-#include <cpls/solver/HeuristicSolver.h>
+#include <x10/lang/Long.h>
 #include <x10/io/Printer.h>
 #include <x10/io/Console.h>
 #include <x10/lang/Any.h>
-#include <x10/lang/String.h>
+#include <cpls/solver/HeuristicSolver.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
@@ -23,7 +22,8 @@ void cpls::ExplorerNode::_constructor() {
     //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
     
     //#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
-    this->cpls::ExplorerNode::__fieldInitializers_cpls_ExplorerNode();
+    ::cpls::ExplorerNode* this__1769 = this;
+    
 }
 ::cpls::ExplorerNode* cpls::ExplorerNode::_make() {
     ::cpls::ExplorerNode* this_ = new (::x10aux::alloc_z< ::cpls::ExplorerNode>()) ::cpls::ExplorerNode();
@@ -35,16 +35,11 @@ void cpls::ExplorerNode::_constructor() {
 
 //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
 void cpls::ExplorerNode::initialize(::cpls::entities::NodeConfig* config,
-                                    x10_int idPlace, ::cpls::entities::PoolConfig* configPool) {
+                                    x10_int idPlace, ::cpls::entities::PoolConfig* configPool,
+                                    x10_long problemSize) {
     
     //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
-    this->::cpls::CPLSNode::FMGL(heuristicSolver) = ::cpls::HeuristicFactory::make(
-                                                      ::x10aux::nullCheck(config)->getHeuristic());
-    
-    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__23973 = ::x10aux::makeStringLit("Explorer Inicializado en lo nodo: "); strLit__23973; })), idPlace), (__extension__ ({ static ::x10::lang::String* strLit__23974 = ::x10aux::makeStringLit(", con la heuristica: "); strLit__23974; }))), ::cpls::HeuristicFactory::getHeuristicName(
-                                                                                                                                                                                                                                                                                                                                                                                                                                 ::x10aux::nullCheck(config)->getHeuristic()))));
+    ::cpls::CPLSNode::initialize(config, idPlace, configPool, problemSize);
 }
 
 //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
@@ -52,7 +47,7 @@ void cpls::ExplorerNode::start() {
     
     //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__23975 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__23975; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__1770 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__1770; }))));
     
     //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();

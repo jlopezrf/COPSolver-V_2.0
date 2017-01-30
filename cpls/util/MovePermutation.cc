@@ -13,7 +13,9 @@
 void cpls::util::MovePermutation::_constructor(x10_long f, x10_long s) {
     
     //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-    this->cpls::util::MovePermutation::__fieldInitializers_cpls_util_MovePermutation();
+    ::cpls::util::MovePermutation* this__5 = this;
+    ::x10aux::nullCheck(this__5)->FMGL(first) = ((x10_long)-1ll);
+    ::x10aux::nullCheck(this__5)->FMGL(second) = ((x10_long)-1ll);
     
     //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
     this->FMGL(first) = f;

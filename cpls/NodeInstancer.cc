@@ -8,6 +8,7 @@
 #include <x10/array/Array_2.h>
 #include <cpls/entities/NodeConfig.h>
 #include <x10/lang/Iterator.h>
+#include <x10/lang/Rail.h>
 #include <x10/array/Array.h>
 #include <x10/lang/Boolean.h>
 #include <x10/lang/Long.h>
@@ -18,15 +19,16 @@
 #include <x10/lang/Any.h>
 #include <x10/lang/String.h>
 #include <cpls/NodeInstancer__NodeFactory.h>
-#include <cpls/CPLSOptionsEnum__NodeRoles.h>
+#include <x10/lang/Unsafe.h>
 #include <x10/lang/Int.h>
-#include <x10/lang/Place.h>
 #include <cpls/entities/PoolConfig.h>
+#include <cpls/problem/ProblemGenericModel.h>
 #include <x10/lang/PlaceLocalHandle.h>
 #include <x10/lang/Fun_0_0.h>
 #include <x10/lang/Runtime.h>
 #include <x10/lang/FinishState.h>
 #include <x10/lang/CheckedThrowable.h>
+#include <x10/lang/Place.h>
 #include <x10/lang/Iterable.h>
 #include <x10/lang/VoidFun_0_0.h>
 #include <x10/lang/Error.h>
@@ -36,7 +38,6 @@
 #include <x10/compiler/Finalization.h>
 #include <x10/compiler/Abort.h>
 #include <x10/compiler/CompilerFlags.h>
-#include <cpls/problem/ProblemGenericModel.h>
 #include <cpls/HeadNode.h>
 #include <x10/compiler/Synthetic.h>
 #ifndef CPLS_NODEINSTANCER__CLOSURE__1_CLOSURE
@@ -55,7 +56,7 @@ class cpls_NodeInstancer__closure__1 : public ::x10::lang::Closure {
     ::cpls::CPLSNode* __apply() {
         
         //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        return ::cpls::NodeInstancer__NodeFactory::make(::cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__get)());
+        return ::cpls::NodeInstancer__NodeFactory::make(((x10_int)1));
         
     }
     
@@ -106,7 +107,7 @@ class cpls_NodeInstancer__closure__2 : public ::x10::lang::Closure {
     ::cpls::CPLSNode* __apply() {
         
         //#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        return ::cpls::NodeInstancer__NodeFactory::make(::cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__get)());
+        return ::cpls::NodeInstancer__NodeFactory::make(((x10_int)0));
         
     }
     
@@ -159,37 +160,65 @@ class cpls_NodeInstancer__closure__3 : public ::x10::lang::Closure {
             
             //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             if ((::x10aux::nullCheck(configCPLS)->getIsThereAMasterNode() &&
-                (::x10aux::struct_equals(p->x10::lang::Place::id(), ((x10_long)0ll)))))
+                (::x10aux::struct_equals(p->FMGL(id), ((x10_long)0ll)))))
             {
                 
                 //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                 ::x10aux::nullCheck(headNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->initialize(
-                  ::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::__apply(
-                    p->x10::lang::Place::id(), ((x10_long)1ll)),
-                  ((x10_int) (p->x10::lang::Place::id())),
-                  ::x10aux::nullCheck(configCPLS)->getTeamsPoolConfig());
+                  (__extension__ ({
+                      
+                      //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      x10_long i__4843 = p->FMGL(id);
+                      ::cpls::entities::NodeConfig* ret__4845;
+                      
+                      //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      ret__4845 = (::x10aux::nullCheck(configNodes)->FMGL(raw))->unchecked_apply((__extension__ ({
+                          
+                          //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                          x10_long i__4911 = i__4843;
+                          ((((x10_long)1ll)) + (((i__4911) * (::x10aux::nullCheck(configNodes)->FMGL(numElems_2)))));
+                      }))
+                      );
+                      ret__4845;
+                  }))
+                  , ((x10_int) (p->FMGL(id))), ::x10aux::nullCheck(configCPLS)->getTeamsPoolConfig(),
+                  ::x10aux::nullCheck(::x10aux::nullCheck(configCPLS)->getProblemModel())->getSize());
             } else {
                 
                 //#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                 ::x10aux::nullCheck(headNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->initialize(
-                  ::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::__apply(
-                    p->x10::lang::Place::id(), ((x10_long)0ll)),
-                  ((x10_int) (p->x10::lang::Place::id())),
-                  ::x10aux::nullCheck(configCPLS)->getTeamsPoolConfig());
+                  (__extension__ ({
+                      
+                      //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      x10_long i__4849 = p->FMGL(id);
+                      ::cpls::entities::NodeConfig* ret__4851;
+                      
+                      //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      ret__4851 = (::x10aux::nullCheck(configNodes)->FMGL(raw))->unchecked_apply((__extension__ ({
+                          
+                          //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                          x10_long i__4912 = i__4849;
+                          ((((x10_long)0ll)) + (((i__4912) * (::x10aux::nullCheck(configNodes)->FMGL(numElems_2)))));
+                      }))
+                      );
+                      ret__4851;
+                  }))
+                  , ((x10_int) (p->FMGL(id))), ::x10aux::nullCheck(configCPLS)->getTeamsPoolConfig(),
+                  ::x10aux::nullCheck(::x10aux::nullCheck(configCPLS)->getProblemModel())->getSize());
             }
             
         }
-        catch (::x10::lang::CheckedThrowable* __exc262) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc262)) {
+        catch (::x10::lang::CheckedThrowable* __exc1) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc1)) {
                 ::x10::lang::Error* __lowerer__var__0__ =
-                  static_cast< ::x10::lang::Error*>(__exc262);
+                  static_cast< ::x10::lang::Error*>(__exc1);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__0__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__1__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc262);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc1);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__1__)));
@@ -262,44 +291,77 @@ class cpls_NodeInstancer__closure__4 : public ::x10::lang::Closure {
             {
                 
                 //#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-                x10_long indice_i = ((((((x10_long)(((x10_int) (p->x10::lang::Place::id()))))) + (((x10_long)1ll)))) / ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
+                x10_long indice_i = ((((((x10_long)(((x10_int) (p->FMGL(id)))))) + (((x10_long)1ll)))) / ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
                 
                 //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-                x10_long indice_j = ((((((((x10_long)(((x10_int) (p->x10::lang::Place::id()))))) + (((x10_long)1ll)))) % ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))))) + (((x10_long)1ll)));
+                x10_long indice_j = ((((((((x10_long)(((x10_int) (p->FMGL(id)))))) + (((x10_long)1ll)))) % ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))))) + (((x10_long)1ll)));
                 
                 //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                 ::x10aux::nullCheck(explorersNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->initialize(
-                  ::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::__apply(
-                    indice_i, indice_j), ((x10_int) (p->x10::lang::Place::id())),
-                  ::x10aux::class_cast_unchecked< ::cpls::entities::PoolConfig*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+                  (__extension__ ({
+                      
+                      //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      x10_long i__4855 = indice_i;
+                      x10_long j__4856 = indice_j;
+                      ::cpls::entities::NodeConfig* ret__4857;
+                      
+                      //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      ret__4857 = (::x10aux::nullCheck(configNodes)->FMGL(raw))->unchecked_apply((__extension__ ({
+                          
+                          //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                          x10_long i__4913 = i__4855;
+                          x10_long j__4914 = j__4856;
+                          ((j__4914) + (((i__4913) * (::x10aux::nullCheck(configNodes)->FMGL(numElems_2)))));
+                      }))
+                      );
+                      ret__4857;
+                  }))
+                  , ((x10_int) (p->FMGL(id))), ::x10aux::class_cast_unchecked< ::cpls::entities::PoolConfig*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)),
+                  ::x10aux::nullCheck(::x10aux::nullCheck(configCPLS)->getProblemModel())->getSize());
             } else {
                 
                 //#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-                x10_long indice_i = ((((x10_long)(((x10_int) (p->x10::lang::Place::id()))))) / ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
+                x10_long indice_i = ((((x10_long)(((x10_int) (p->FMGL(id)))))) / ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
                 
                 //#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-                x10_long indice_j = ((((x10_long)(((x10_int) (p->x10::lang::Place::id()))))) % ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
+                x10_long indice_j = ((((x10_long)(((x10_int) (p->FMGL(id)))))) % ::x10aux::zeroCheck(((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
                 
                 //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                 ::x10aux::nullCheck(explorersNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->initialize(
-                  ::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::__apply(
-                    indice_i, ((indice_j) + (((x10_long)1ll)))),
-                  ((x10_int) (p->x10::lang::Place::id())),
-                  ::x10aux::class_cast_unchecked< ::cpls::entities::PoolConfig*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+                  (__extension__ ({
+                      
+                      //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      x10_long i__4861 = indice_i;
+                      x10_long j__4862 = ((indice_j) + (((x10_long)1ll)));
+                      ::cpls::entities::NodeConfig* ret__4863;
+                      
+                      //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                      ret__4863 = (::x10aux::nullCheck(configNodes)->FMGL(raw))->unchecked_apply((__extension__ ({
+                          
+                          //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                          x10_long i__4915 = i__4861;
+                          x10_long j__4916 = j__4862;
+                          ((j__4916) + (((i__4915) * (::x10aux::nullCheck(configNodes)->FMGL(numElems_2)))));
+                      }))
+                      );
+                      ret__4863;
+                  }))
+                  , ((x10_int) (p->FMGL(id))), ::x10aux::class_cast_unchecked< ::cpls::entities::PoolConfig*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)),
+                  ::x10aux::nullCheck(::x10aux::nullCheck(configCPLS)->getProblemModel())->getSize());
             }
             
         }
-        catch (::x10::lang::CheckedThrowable* __exc263) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc263)) {
+        catch (::x10::lang::CheckedThrowable* __exc2) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc2)) {
                 ::x10::lang::Error* __lowerer__var__0__ =
-                  static_cast< ::x10::lang::Error*>(__exc263);
+                  static_cast< ::x10::lang::Error*>(__exc2);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__0__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__1__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc263);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc2);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__1__)));
@@ -381,19 +443,19 @@ class cpls_NodeInstancer__closure__5 : public ::x10::lang::Closure {
             
             //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             ::x10aux::nullCheck(headNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->configHeuristic(
-              ::x10aux::nullCheck(configCPLS)->getPoblemModel());
+              ::x10aux::nullCheck(configCPLS)->getProblemModel());
         }
-        catch (::x10::lang::CheckedThrowable* __exc266) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc266)) {
+        catch (::x10::lang::CheckedThrowable* __exc5) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc5)) {
                 ::x10::lang::Error* __lowerer__var__1__ =
-                  static_cast< ::x10::lang::Error*>(__exc266);
+                  static_cast< ::x10::lang::Error*>(__exc5);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__1__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__2__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc266);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc5);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__2__)));
@@ -464,19 +526,19 @@ class cpls_NodeInstancer__closure__6 : public ::x10::lang::Closure {
             
             //#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             ::x10aux::nullCheck(explorersNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->configHeuristic(
-              ::x10aux::nullCheck(configCPLS)->getPoblemModel());
+              ::x10aux::nullCheck(configCPLS)->getProblemModel());
         }
-        catch (::x10::lang::CheckedThrowable* __exc267) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc267)) {
+        catch (::x10::lang::CheckedThrowable* __exc6) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc6)) {
                 ::x10::lang::Error* __lowerer__var__1__ =
-                  static_cast< ::x10::lang::Error*>(__exc267);
+                  static_cast< ::x10::lang::Error*>(__exc6);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__1__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__2__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc267);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc6);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__2__)));
@@ -544,19 +606,20 @@ class cpls_NodeInstancer__closure__7 : public ::x10::lang::Closure {
             //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             ::x10aux::nullCheck(headNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->start(
               ::x10aux::nullCheck(configCPLS)->getSeed(), ::x10aux::nullCheck(configCPLS)->getTargetCost(),
-              ::x10aux::nullCheck(configCPLS)->getStrictLow());
+              ::x10aux::nullCheck(configCPLS)->getStrictLow(),
+              ::x10aux::nullCheck(configCPLS)->getIterations());
         }
-        catch (::x10::lang::CheckedThrowable* __exc270) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc270)) {
+        catch (::x10::lang::CheckedThrowable* __exc9) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc9)) {
                 ::x10::lang::Error* __lowerer__var__2__ =
-                  static_cast< ::x10::lang::Error*>(__exc270);
+                  static_cast< ::x10::lang::Error*>(__exc9);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__2__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__3__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc270);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc9);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__3__)));
@@ -621,19 +684,20 @@ class cpls_NodeInstancer__closure__8 : public ::x10::lang::Closure {
             //#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             ::x10aux::nullCheck(explorersNodes->x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*>::__apply())->start(
               ::x10aux::nullCheck(configCPLS)->getSeed(), ::x10aux::nullCheck(configCPLS)->getTargetCost(),
-              ::x10aux::nullCheck(configCPLS)->getStrictLow());
+              ::x10aux::nullCheck(configCPLS)->getStrictLow(),
+              ::x10aux::nullCheck(configCPLS)->getIterations());
         }
-        catch (::x10::lang::CheckedThrowable* __exc271) {
-            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc271)) {
+        catch (::x10::lang::CheckedThrowable* __exc10) {
+            if (::x10aux::instanceof< ::x10::lang::Error*>(__exc10)) {
                 ::x10::lang::Error* __lowerer__var__2__ =
-                  static_cast< ::x10::lang::Error*>(__exc271);
+                  static_cast< ::x10::lang::Error*>(__exc10);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(__lowerer__var__2__));
                 }
             } else
             if (true) {
                 ::x10::lang::CheckedThrowable* __lowerer__var__3__ =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc271);
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc10);
                 {
                     ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::Exception::ensureException(
                                                                    __lowerer__var__3__)));
@@ -686,18 +750,20 @@ class cpls_NodeInstancer__closure__8 : public ::x10::lang::Closure {
 void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPLS) {
     
     //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-    ::cpls::CPLSNode* masterNode = ::cpls::MasterNode::_make();
+    ::cpls::MasterNode* a__462 =  (new (::x10aux::alloc_z< ::cpls::MasterNode>()) ::cpls::MasterNode());
+    (a__462)->::cpls::MasterNode::_constructor();
+    ::cpls::CPLSNode* masterNode = a__462;
     
     //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
     ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes = ::x10aux::nullCheck(configCPLS)->getConfigNodes();
     
     //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
     {
-        ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>* conf__19491;
-        for (conf__19491 = ::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::iterator();
-             ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>::hasNext(::x10aux::nullCheck(conf__19491));
+        ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>* conf__505;
+        for (conf__505 = ::x10aux::nullCheck(configNodes)->FMGL(raw)->x10::lang::Rail< ::cpls::entities::NodeConfig* >::iterator();
+             ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>::hasNext(::x10aux::nullCheck(conf__505));
              ) {
-            ::cpls::entities::NodeConfig* conf = ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>::next(::x10aux::nullCheck(conf__19491));
+            ::cpls::entities::NodeConfig* conf = ::x10::lang::Iterator< ::cpls::entities::NodeConfig*>::next(::x10aux::nullCheck(conf__505));
             
             //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
             ::x10aux::nullCheck(conf)->setOutTeamTime(::x10aux::nullCheck(configCPLS)->getOutTeamTime());
@@ -705,12 +771,24 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
     }
     
     //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-    ::x10::lang::PlaceGroup* headersGroup = ::x10::lang::PlaceGroup::make(
-                                              ::x10aux::nullCheck(configNodes)->FMGL(numElems_1));
+    ::x10::lang::PlaceGroup* headersGroup = (__extension__ ({
+        
+        //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/lang/PlaceGroup.x10"
+        x10_long numPlaces__1669 = ::x10aux::nullCheck(configNodes)->FMGL(numElems_1);
+        (__extension__ ({
+            ::x10::lang::PlaceGroup__SimplePlaceGroup* alloc__1670 =
+               (new (::x10aux::alloc_z< ::x10::lang::PlaceGroup__SimplePlaceGroup>()) ::x10::lang::PlaceGroup__SimplePlaceGroup());
+            (alloc__1670)->::x10::lang::PlaceGroup__SimplePlaceGroup::_constructor(
+              numPlaces__1669);
+            alloc__1670;
+        }))
+        ;
+    }))
+    ;
     
     //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__23895 = ::x10aux::makeStringLit("Numero de Teams: "); strLit__23895; })), ::x10aux::nullCheck(headersGroup)->x10::lang::PlaceGroup::size())));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__4973 = ::x10aux::makeStringLit("Numero de Teams: "); strLit__4973; })), ::x10aux::nullCheck(headersGroup)->numPlaces())));
     
     //#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
     x10_long numExplorers = ((::x10aux::nullCheck(configNodes)->FMGL(numElems_1)) * (((::x10aux::nullCheck(configNodes)->FMGL(numElems_2)) - (((x10_long)1ll)))));
@@ -724,19 +802,42 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
         
         //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
         masterNode = ::cpls::NodeInstancer__NodeFactory::make(
-                       ::cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__get)());
+                       ((x10_int)2));
         
         //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        ::x10aux::nullCheck(masterNode)->initialize(::x10aux::nullCheck(configNodes)->x10::array::Array_2< ::cpls::entities::NodeConfig*>::__apply(
-                                                      ((x10_long)0ll),
-                                                      ((x10_long)0ll)),
-                                                    ((x10_int) (::x10::lang::Place::FMGL(FIRST_PLACE__get)()->FMGL(id))),
-                                                    ::x10aux::nullCheck(configCPLS)->getCPLSPoolConfig());
+        ::x10aux::nullCheck(masterNode)->initialize((__extension__ ({
+                                                        
+                                                        //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                                                        ::cpls::entities::NodeConfig* ret__2997;
+                                                        
+                                                        //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
+                                                        ret__2997 =
+                                                          (::x10aux::nullCheck(configNodes)->FMGL(raw))->unchecked_apply((__extension__ ({
+                                                            ((((x10_long)0ll)) + (((((x10_long)0ll)) * (::x10aux::nullCheck(configNodes)->FMGL(numElems_2)))));
+                                                        }))
+                                                        );
+                                                        ret__2997;
+                                                    }))
+                                                    , ((x10_int) (((x10_long)0ll))),
+                                                    ::x10aux::nullCheck(configCPLS)->getCPLSPoolConfig(),
+                                                    ::x10aux::nullCheck(::x10aux::nullCheck(configCPLS)->getProblemModel())->getSize());
     }
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-    ::x10::lang::PlaceGroup* explorersGroup = ::x10::lang::PlaceGroup::make(
-                                                numExplorers);
+    ::x10::lang::PlaceGroup* explorersGroup = (__extension__ ({
+        
+        //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/lang/PlaceGroup.x10"
+        x10_long numPlaces__4498 = numExplorers;
+        (__extension__ ({
+            ::x10::lang::PlaceGroup__SimplePlaceGroup* alloc__4499 =
+               (new (::x10aux::alloc_z< ::x10::lang::PlaceGroup__SimplePlaceGroup>()) ::x10::lang::PlaceGroup__SimplePlaceGroup());
+            (alloc__4499)->::x10::lang::PlaceGroup__SimplePlaceGroup::_constructor(
+              numPlaces__4498);
+            alloc__4499;
+        }))
+        ;
+    }))
+    ;
     
     //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
     ::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> headNodes =
@@ -753,7 +854,7 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
         ::x10::lang::Runtime::ensureNotInAtomic();
         ::x10::lang::FinishState* x10____var0 = ::x10::lang::Runtime::startFinish();
         {
-            ::x10::lang::CheckedThrowable* throwable__19536 =
+            ::x10::lang::CheckedThrowable* throwable__4955 =
               ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
             try {
                 try {
@@ -761,11 +862,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                         //#line 49 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19493;
-                            for (p__19493 = ::x10aux::nullCheck(headersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19493));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__507;
+                            for (p__507 = ::x10aux::nullCheck(headersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__507));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19493));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__507));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__3)))cpls_NodeInstancer__closure__3(configCPLS, p, headNodes, configNodes))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -774,11 +875,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                         //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19495;
-                            for (p__19495 = ::x10aux::nullCheck(explorersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19495));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__509;
+                            for (p__509 = ::x10aux::nullCheck(explorersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__509));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19495));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__509));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__4)))cpls_NodeInstancer__closure__4(configCPLS, p, configNodes, explorersNodes))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -787,10 +888,10 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                     }
                 }
-                catch (::x10::lang::CheckedThrowable* __exc264) {
+                catch (::x10::lang::CheckedThrowable* __exc3) {
                     if (true) {
                         ::x10::lang::CheckedThrowable* __lowerer__var__0__ =
-                          static_cast< ::x10::lang::CheckedThrowable*>(__exc264);
+                          static_cast< ::x10::lang::CheckedThrowable*>(__exc3);
                         {
                             ::x10::lang::Runtime::pushException(
                               __lowerer__var__0__);
@@ -801,22 +902,22 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 }
                 ::x10::compiler::Finalization::plausibleThrow();
             }
-            catch (::x10::lang::CheckedThrowable* __exc265) {
+            catch (::x10::lang::CheckedThrowable* __exc4) {
                 if (true) {
-                    ::x10::lang::CheckedThrowable* formal__19537 =
-                      static_cast< ::x10::lang::CheckedThrowable*>(__exc265);
+                    ::x10::lang::CheckedThrowable* formal__4956 =
+                      static_cast< ::x10::lang::CheckedThrowable*>(__exc4);
                     {
-                        throwable__19536 = formal__19537;
+                        throwable__4955 = formal__4956;
                     }
                 } else
                 throw;
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19536)))
+                                          throwable__4955)))
             {
-                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__19536))
+                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__4955))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19536));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4955));
                 }
                 
             }
@@ -824,11 +925,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 ::x10::lang::Runtime::stopFinish(x10____var0);
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19536)))
+                                          throwable__4955)))
             {
-                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__19536)))
+                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__4955)))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19536));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4955));
                 }
                 
             }
@@ -841,7 +942,7 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
         ::x10::lang::Runtime::ensureNotInAtomic();
         ::x10::lang::FinishState* x10____var1 = ::x10::lang::Runtime::startFinish();
         {
-            ::x10::lang::CheckedThrowable* throwable__19539 =
+            ::x10::lang::CheckedThrowable* throwable__4958 =
               ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
             try {
                 try {
@@ -861,16 +962,16 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                             
                             //#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                             ::x10aux::nullCheck(masterNode)->configHeuristic(
-                              ::x10aux::nullCheck(configCPLS)->getPoblemModel());
+                              ::x10aux::nullCheck(configCPLS)->getProblemModel());
                         }
                         
                         //#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19497;
-                            for (p__19497 = ::x10aux::nullCheck(headersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19497));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__511;
+                            for (p__511 = ::x10aux::nullCheck(headersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__511));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19497));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__511));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__5)))cpls_NodeInstancer__closure__5(headNodes, configCPLS, explorersNodes))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -879,11 +980,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                         //#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19499;
-                            for (p__19499 = ::x10aux::nullCheck(explorersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19499));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__513;
+                            for (p__513 = ::x10aux::nullCheck(explorersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__513));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19499));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__513));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__6)))cpls_NodeInstancer__closure__6(explorersNodes, headNodes, configCPLS))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -892,10 +993,10 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                     }
                 }
-                catch (::x10::lang::CheckedThrowable* __exc268) {
+                catch (::x10::lang::CheckedThrowable* __exc7) {
                     if (true) {
                         ::x10::lang::CheckedThrowable* __lowerer__var__1__ =
-                          static_cast< ::x10::lang::CheckedThrowable*>(__exc268);
+                          static_cast< ::x10::lang::CheckedThrowable*>(__exc7);
                         {
                             ::x10::lang::Runtime::pushException(
                               __lowerer__var__1__);
@@ -906,22 +1007,22 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 }
                 ::x10::compiler::Finalization::plausibleThrow();
             }
-            catch (::x10::lang::CheckedThrowable* __exc269) {
+            catch (::x10::lang::CheckedThrowable* __exc8) {
                 if (true) {
-                    ::x10::lang::CheckedThrowable* formal__19540 =
-                      static_cast< ::x10::lang::CheckedThrowable*>(__exc269);
+                    ::x10::lang::CheckedThrowable* formal__4959 =
+                      static_cast< ::x10::lang::CheckedThrowable*>(__exc8);
                     {
-                        throwable__19539 = formal__19540;
+                        throwable__4958 = formal__4959;
                     }
                 } else
                 throw;
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19539)))
+                                          throwable__4958)))
             {
-                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__19539))
+                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__4958))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19539));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4958));
                 }
                 
             }
@@ -929,11 +1030,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 ::x10::lang::Runtime::stopFinish(x10____var1);
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19539)))
+                                          throwable__4958)))
             {
-                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__19539)))
+                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__4958)))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19539));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4958));
                 }
                 
             }
@@ -946,7 +1047,7 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
         ::x10::lang::Runtime::ensureNotInAtomic();
         ::x10::lang::FinishState* x10____var2 = ::x10::lang::Runtime::startFinish();
         {
-            ::x10::lang::CheckedThrowable* throwable__19542 =
+            ::x10::lang::CheckedThrowable* throwable__4961 =
               ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
             try {
                 try {
@@ -960,16 +1061,17 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                             ::x10aux::nullCheck(masterNode)->start(
                               ::x10aux::nullCheck(configCPLS)->getSeed(),
                               ::x10aux::nullCheck(configCPLS)->getTargetCost(),
-                              ::x10aux::nullCheck(configCPLS)->getStrictLow());
+                              ::x10aux::nullCheck(configCPLS)->getStrictLow(),
+                              ::x10aux::nullCheck(configCPLS)->getIterations());
                         }
                         
                         //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19501;
-                            for (p__19501 = ::x10aux::nullCheck(headersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19501));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__515;
+                            for (p__515 = ::x10aux::nullCheck(headersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__515));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19501));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__515));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__7)))cpls_NodeInstancer__closure__7(headNodes, configCPLS))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -978,11 +1080,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                         //#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
                         {
-                            ::x10::lang::Iterator< ::x10::lang::Place>* p__19503;
-                            for (p__19503 = ::x10aux::nullCheck(explorersGroup)->iterator();
-                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__19503));
+                            ::x10::lang::Iterator< ::x10::lang::Place>* p__517;
+                            for (p__517 = ::x10aux::nullCheck(explorersGroup)->iterator();
+                                 ::x10::lang::Iterator< ::x10::lang::Place>::hasNext(::x10aux::nullCheck(p__517));
                                  ) {
-                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__19503));
+                                ::x10::lang::Place p = ::x10::lang::Iterator< ::x10::lang::Place>::next(::x10aux::nullCheck(p__517));
                                 ::x10::lang::Runtime::runAsync(
                                   p, reinterpret_cast< ::x10::lang::VoidFun_0_0*>((new (::x10aux::alloc< ::x10::lang::VoidFun_0_0>(sizeof(cpls_NodeInstancer__closure__8)))cpls_NodeInstancer__closure__8(explorersNodes, configCPLS))),
                                   ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Profile*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -991,10 +1093,10 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                         
                     }
                 }
-                catch (::x10::lang::CheckedThrowable* __exc272) {
+                catch (::x10::lang::CheckedThrowable* __exc11) {
                     if (true) {
                         ::x10::lang::CheckedThrowable* __lowerer__var__2__ =
-                          static_cast< ::x10::lang::CheckedThrowable*>(__exc272);
+                          static_cast< ::x10::lang::CheckedThrowable*>(__exc11);
                         {
                             ::x10::lang::Runtime::pushException(
                               __lowerer__var__2__);
@@ -1005,22 +1107,22 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 }
                 ::x10::compiler::Finalization::plausibleThrow();
             }
-            catch (::x10::lang::CheckedThrowable* __exc273) {
+            catch (::x10::lang::CheckedThrowable* __exc12) {
                 if (true) {
-                    ::x10::lang::CheckedThrowable* formal__19543 =
-                      static_cast< ::x10::lang::CheckedThrowable*>(__exc273);
+                    ::x10::lang::CheckedThrowable* formal__4962 =
+                      static_cast< ::x10::lang::CheckedThrowable*>(__exc12);
                     {
-                        throwable__19542 = formal__19543;
+                        throwable__4961 = formal__4962;
                     }
                 } else
                 throw;
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19542)))
+                                          throwable__4961)))
             {
-                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__19542))
+                if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__4961))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19542));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4961));
                 }
                 
             }
@@ -1028,11 +1130,11 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
                 ::x10::lang::Runtime::stopFinish(x10____var2);
             }
             if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                          throwable__19542)))
+                                          throwable__4961)))
             {
-                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__19542)))
+                if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__4961)))
                 {
-                    ::x10aux::throwException(::x10aux::nullCheck(throwable__19542));
+                    ::x10aux::throwException(::x10aux::nullCheck(throwable__4961));
                 }
                 
             }
@@ -1048,7 +1150,8 @@ void cpls::NodeInstancer::installSolvers(::cpls::entities::CPLSConfig* configCPL
     
 }
 void cpls::NodeInstancer::_constructor() {
-    this->cpls::NodeInstancer::__fieldInitializers_cpls_NodeInstancer();
+    ::cpls::NodeInstancer* this__4922 = this;
+    ::x10aux::nullCheck(this__4922)->FMGL(masterNode) = (::x10aux::class_cast_unchecked< ::cpls::CPLSNode*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
 }
 ::cpls::NodeInstancer* cpls::NodeInstancer::_make() {
     ::cpls::NodeInstancer* this_ = new (::x10aux::alloc_z< ::cpls::NodeInstancer>()) ::cpls::NodeInstancer();
@@ -1144,7 +1247,6 @@ const ::x10aux::serialization_id_t cpls_NodeInstancer__closure__8::_serializatio
 #include <x10/lang/Any.h>
 #include <x10/lang/Int.h>
 #include <cpls/CPLSNode.h>
-#include <cpls/CPLSOptionsEnum__NodeRoles.h>
 #include <cpls/ExplorerNode.h>
 #include <cpls/HeadNode.h>
 #include <cpls/MasterNode.h>
@@ -1184,28 +1286,44 @@ public:
     switch (nodeRole) {
         
         //#line 113 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        case 0/*::cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__get)()*/: ;
+        case ((x10_int)0): ;
         {
-            return ::cpls::ExplorerNode::_make();
-            
+            {
+                ::cpls::ExplorerNode* alloc__463 =  (new (::x10aux::alloc_z< ::cpls::ExplorerNode>()) ::cpls::ExplorerNode());
+                (alloc__463)->::cpls::ExplorerNode::_constructor();
+                return alloc__463;
+                
+            }
         }
         //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        case 1/*::cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__get)()*/: ;
+        case ((x10_int)1): ;
         {
-            return ::cpls::HeadNode::_make();
-            
+            {
+                ::cpls::HeadNode* alloc__464 =  (new (::x10aux::alloc_z< ::cpls::HeadNode>()) ::cpls::HeadNode());
+                (alloc__464)->::cpls::HeadNode::_constructor();
+                return alloc__464;
+                
+            }
         }
         //#line 115 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
-        case 2/*::cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__get)()*/: ;
+        case ((x10_int)2): ;
         {
-            return ::cpls::MasterNode::_make();
-            
+            {
+                ::cpls::MasterNode* alloc__465 =  (new (::x10aux::alloc_z< ::cpls::MasterNode>()) ::cpls::MasterNode());
+                (alloc__465)->::cpls::MasterNode::_constructor();
+                return alloc__465;
+                
+            }
         }
         //#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/NodeInstancer.x10"
         default: ;
         {
-            return ::cpls::ExplorerNode::_make();
-            
+            {
+                ::cpls::ExplorerNode* alloc__466 =  (new (::x10aux::alloc_z< ::cpls::ExplorerNode>()) ::cpls::ExplorerNode());
+                (alloc__466)->::cpls::ExplorerNode::_constructor();
+                return alloc__466;
+                
+            }
         }
     }
 }
@@ -1215,7 +1333,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::NodeInstancer__NodeFactory::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__23912 = ::x10aux::makeStringLit("struct cpls.NodeInstancer.NodeFactory"); strLit__23912; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__4980 = ::x10aux::makeStringLit("struct cpls.NodeInstancer.NodeFactory"); strLit__4980; }));
     
 }
 x10_boolean cpls::NodeInstancer__NodeFactory::equals(::x10::lang::Any* other) {
@@ -1224,7 +1342,9 @@ x10_boolean cpls::NodeInstancer__NodeFactory::equals(::x10::lang::Any* other) {
         return false;
         
     }
-    return (*this)->cpls::NodeInstancer__NodeFactory::equals(::x10aux::class_cast< ::cpls::NodeInstancer__NodeFactory>(other));
+    ::cpls::NodeInstancer__NodeFactory this__4917 = (*this);
+    ::cpls::NodeInstancer__NodeFactory other__4918 = ::x10aux::class_cast< ::cpls::NodeInstancer__NodeFactory>(other);
+    return true;
     
 }
 x10_boolean cpls::NodeInstancer__NodeFactory::_struct_equals(::x10::lang::Any* other) {
@@ -1233,7 +1353,9 @@ x10_boolean cpls::NodeInstancer__NodeFactory::_struct_equals(::x10::lang::Any* o
         return false;
         
     }
-    return (*this)->cpls::NodeInstancer__NodeFactory::_struct_equals(::x10aux::class_cast< ::cpls::NodeInstancer__NodeFactory>(other));
+    ::cpls::NodeInstancer__NodeFactory this__4919 = (*this);
+    ::cpls::NodeInstancer__NodeFactory other__4920 = ::x10aux::class_cast< ::cpls::NodeInstancer__NodeFactory>(other);
+    return true;
     
 }
 

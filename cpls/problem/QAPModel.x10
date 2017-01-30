@@ -17,7 +17,7 @@ public class QAPModel extends ProblemGenericModel{
  	
  	public def this(size:Long):QAPModel(size){
  		super(size);
- 		Console.OUT.println("Constructor de QAPModel invocado");
+ 		//Console.OUT.println("Constructor de QAPModel invocado");
  	}
  
  	public def this(size:Long, inPathDataProblem:String, inPathVectorSol:String, baseValue:Int, inSeed:Long){
@@ -25,12 +25,12 @@ public class QAPModel extends ProblemGenericModel{
  		super.inSeed = inSeed;
  		super.inPathDataProblem = inPathDataProblem;
  		super.inPathVectorSol = inPathVectorSol;
- 		Console.OUT.println("Valor del path de entrada: " + inPathDataProblem);
+ 		//Console.OUT.println("Valor del path de entrada: " + inPathDataProblem);
  		super.baseValue = baseValue;
  		this.flow = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
  		this.dist = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
  		delta = new Array_2 [Long](size, size , 0);
- 		Console.OUT.println("Por lo menos termina el contructor de QAPModel");
+ 		//Console.OUT.println("Por lo menos termina el contructor de QAPModel");
  	}
 
  	public def this (size :Long, mf:Rail[Rail[Int]], md:Rail[Rail[Int]] ) : QAPModel(size){
@@ -98,6 +98,7 @@ public class QAPModel extends ProblemGenericModel{
  					for(i = 0; i < size; i++)
  						for(j = i + 1; j < size; j++)
  							delta(i,j) = computeDelta(i, j);
+ 		Console.OUT.println("Costo de la solución: " + r);
  		return r;
  	}
 
@@ -205,7 +206,7 @@ public class QAPModel extends ProblemGenericModel{
  			var fLine:Int = 0n;
  			var dLine:Int = 0n;
  			for (line in fr.lines()){// It seems that the end of line characters '\n' are removed from the line
- 				Console.OUT.println("Línea: " + line);
+ 				//Console.OUT.println("Línea: " + line);
  				i++;
  				buffer = ""; j = 0n;
  				if (i >= 2n && i < sizeF + 2){

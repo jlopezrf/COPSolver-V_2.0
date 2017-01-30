@@ -125,7 +125,8 @@ class CPLSOptionsEnum__SupportedProblems   {
         
     }
     void _constructor() {
-        (*this)->cpls::CPLSOptionsEnum__SupportedProblems::__fieldInitializers_cpls_CPLSOptionsEnum_SupportedProblems();
+        ::cpls::CPLSOptionsEnum__SupportedProblems this__199 = (*this);
+        
     }
     static ::cpls::CPLSOptionsEnum__SupportedProblems _make() {
         ::cpls::CPLSOptionsEnum__SupportedProblems this_; 

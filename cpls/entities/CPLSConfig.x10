@@ -28,6 +28,7 @@ public class CPLSConfig {
  	private var seed:Long;
  	private var targetCost:Long;
  	private var strictLow:Boolean;
+ 	private var iterations:Long;
  
  	//Heurustic Parameters Objects
  	//private var pointersComunication:ArrayList[PlaceLocalHandle[CPLSNode]];
@@ -42,7 +43,7 @@ public class CPLSConfig {
  	private var affectedPer:Double;
  
  	public def setProblemModel(problemModel:ProblemGenericModel){this.problemModel = problemModel;}
- 	public def getPoblemModel(){return this.problemModel;}
+ 	public def getProblemModel(){return this.problemModel;}
  	public def setConfigNodes(configNodes:Array_2[NodeConfig]){this.configNodes = configNodes;}
  	public def setCPLSPoolConfig(cplsPoolConfig:PoolConfig){this.cplsPoolConfig = cplsPoolConfig;}
  	public def setTeamsPoolConfig(teamsPoolConfig:PoolConfig){this.teamsPoolConfig = teamsPoolConfig;}
@@ -89,4 +90,6 @@ public class CPLSConfig {
 	public def getTargetCost(){return this.targetCost;}
 	public def setStrictLow(strictLow:Boolean){this.strictLow = strictLow;}
 	public def getStrictLow(){return this.strictLow;}
+ 	public def setIterations(iterations:Long){this.iterations = iterations;}
+ 	public def getIterations(){return this.iterations;}
 }

@@ -3,9 +3,6 @@
 #include <cpls/solver/AdaptiveSearch.h>
 
 #include <cpls/solver/SingleSolHeuristic.h>
-#include <x10/io/Printer.h>
-#include <x10/io/Console.h>
-#include <x10/lang/Any.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
@@ -17,7 +14,8 @@ void cpls::solver::AdaptiveSearch::_constructor() {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
-    this->cpls::solver::AdaptiveSearch::__fieldInitializers_cpls_solver_AdaptiveSearch();
+    ::cpls::solver::AdaptiveSearch* this__250 = this;
+    
 }
 ::cpls::solver::AdaptiveSearch* cpls::solver::AdaptiveSearch::_make() {
     ::cpls::solver::AdaptiveSearch* this_ = new (::x10aux::alloc_z< ::cpls::solver::AdaptiveSearch>()) ::cpls::solver::AdaptiveSearch();
@@ -26,13 +24,6 @@ void cpls::solver::AdaptiveSearch::_constructor() {
 }
 
 
-
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
-void cpls::solver::AdaptiveSearch::solve() {
-    
-    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__24112 = ::x10aux::makeStringLit("Heuristic Solve invocado desde AS"); strLit__24112; }))));
-}
 
 //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
 ::cpls::solver::AdaptiveSearch* cpls::solver::AdaptiveSearch::cpls__solver__AdaptiveSearch____this__cpls__solver__AdaptiveSearch(

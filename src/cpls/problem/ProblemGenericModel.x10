@@ -18,7 +18,7 @@ public class ProblemGenericModel(size:Long){
  	public def this(sizeProblem:Long){
  		property(sizeProblem);
  		this.r = new Random(); //TODO: Jason. Verificar si es necesario crear este Random con una semilla
- 		Console.OUT.println("Constructor de ProblemGenericModelInvocado");
+ 		//Console.OUT.println("Constructor de ProblemGenericModelInvocado");
  	}
 
  	public def setBaseValue(baseValue:Int){
@@ -118,7 +118,7 @@ public class ProblemGenericModel(size:Long){
   		}else{
   			for(k in variables.range()){
   				variables(k) = this.baseValue + k as Int;
-  				Console.OUT.println("Variables position " + k + ": " + variables(k));
+  				//Console.OUT.println("Variables position " + k + ": " + variables(k));
   			}
   			for( var i:Long = this.size - 1 ; i > 0 ; i-- ){
   				val j = r.nextLong( i + 1 );

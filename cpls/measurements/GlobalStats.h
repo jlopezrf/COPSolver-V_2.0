@@ -31,9 +31,6 @@
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
 } } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -46,9 +43,6 @@ class String;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__SupportedProblems;
-} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

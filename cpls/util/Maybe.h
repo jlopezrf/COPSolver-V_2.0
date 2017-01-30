@@ -83,7 +83,7 @@ template<class TPMGL(T)> class Maybe;
 template<class TPMGL(T)> void cpls::util::Maybe<TPMGL(T)>::_constructor(TPMGL(T) t) {
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
-    this->cpls::util::template Maybe<TPMGL(T)>::__fieldInitializers_cpls_util_Maybe();
+    ::cpls::util::Maybe<TPMGL(T)>* this__3 = this;
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
     this->FMGL(data) = t;

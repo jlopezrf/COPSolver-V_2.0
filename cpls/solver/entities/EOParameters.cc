@@ -15,10 +15,13 @@
 
 //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
 void cpls::solver::entities::EOParameters::_constructor() {
-    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
+    ::cpls::solver::entities::HeuristicParameters* this__17 = this;
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
-    this->cpls::solver::entities::EOParameters::__fieldInitializers_cpls_solver_entities_EOParameters();
+    ::cpls::solver::entities::EOParameters* this__16 = this;
+    ::x10aux::nullCheck(this__16)->FMGL(tauUserSel) = 0.0;
+    ::x10aux::nullCheck(this__16)->FMGL(pdfUserSel) = ((x10_int)0);
+    ::x10aux::nullCheck(this__16)->FMGL(selSecond) = ((x10_int)0);
 }
 ::cpls::solver::entities::EOParameters* cpls::solver::entities::EOParameters::_make(
   ) {
@@ -33,10 +36,13 @@ void cpls::solver::entities::EOParameters::_constructor() {
 void cpls::solver::entities::EOParameters::_constructor(x10_double tauUserSel,
                                                         x10_int pdfUserSel,
                                                         x10_int selSecond) {
-    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
+    ::cpls::solver::entities::HeuristicParameters* this__19 = this;
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
-    this->cpls::solver::entities::EOParameters::__fieldInitializers_cpls_solver_entities_EOParameters();
+    ::cpls::solver::entities::EOParameters* this__18 = this;
+    ::x10aux::nullCheck(this__18)->FMGL(tauUserSel) = 0.0;
+    ::x10aux::nullCheck(this__18)->FMGL(pdfUserSel) = ((x10_int)0);
+    ::x10aux::nullCheck(this__18)->FMGL(selSecond) = ((x10_int)0);
     
     //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
     this->FMGL(tauUserSel) = tauUserSel;

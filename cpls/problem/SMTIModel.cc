@@ -15,7 +15,8 @@ void cpls::problem::SMTIModel::_constructor(x10_long sz) {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
-    this->cpls::problem::SMTIModel::__fieldInitializers_cpls_problem_SMTIModel();
+    ::cpls::problem::SMTIModel* this__1002 = this;
+    
 }
 ::cpls::problem::SMTIModel* cpls::problem::SMTIModel::_make(x10_long sz) {
     ::cpls::problem::SMTIModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::SMTIModel>()) ::cpls::problem::SMTIModel();

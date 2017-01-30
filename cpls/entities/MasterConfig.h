@@ -10,6 +10,9 @@
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
+namespace cpls { namespace solver { namespace entities { 
+class HeuristicParameters;
+} } } 
 namespace cpls { namespace entities { 
 
 class MasterConfig : public ::cpls::entities::NodeConfig   {

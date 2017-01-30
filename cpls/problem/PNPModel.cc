@@ -15,7 +15,8 @@ void cpls::problem::PNPModel::_constructor(x10_long sz) {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/PNPModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/PNPModel.x10"
-    this->cpls::problem::PNPModel::__fieldInitializers_cpls_problem_PNPModel();
+    ::cpls::problem::PNPModel* this__1002 = this;
+    
 }
 ::cpls::problem::PNPModel* cpls::problem::PNPModel::_make(x10_long sz) {
     ::cpls::problem::PNPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::PNPModel>()) ::cpls::problem::PNPModel();

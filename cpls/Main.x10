@@ -68,7 +68,7 @@ public class Main {
  		configCPLS.setChangeOnDiver(opts("-CD", 1n));
  		configCPLS.setVerify(opts("-v", 0n) == 1n);
  		configCPLS.setSeed(opts("-S", System.nanoTime()));
- 		
+ 		configCPLS.setIterations(opts("-b", 10n));
  		//*************************In/Out forms of params************************//
  		val outFormat	   = opts("-of", 1n);
  		val costFromF      = opts("-tf", 0);

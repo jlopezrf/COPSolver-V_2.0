@@ -49,6 +49,12 @@ class String;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
+namespace cpls { 
+class HeuristicFactory;
+} 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -58,23 +64,17 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace cpls { 
-class HeuristicFactory;
-} 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
+namespace x10 { namespace util { 
+class Random;
+} } 
+namespace x10 { namespace util { 
+class Timer;
 } } 
 namespace x10 { namespace lang { 
 class Place;
 } } 
 namespace x10 { namespace lang { 
 class Runtime;
-} } 
-namespace x10 { namespace util { 
-class Random;
-} } 
-namespace x10 { namespace lang { 
-class System;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
@@ -143,7 +143,8 @@ class CPLSNode : public ::x10::lang::X10Class   {
     void _constructor();
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
-                            ::cpls::entities::PoolConfig* poolConfig);
+                            ::cpls::entities::PoolConfig* cplsPoolConfig,
+                            x10_long problemSize);
     virtual void setHeuristicSolver(::cpls::solver::HeuristicSolver* hs);
     virtual void setPlaceId(x10_int placeId);
     virtual void setPointersCommunication(::x10::util::ArrayList< ::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> >* pointersComunication);
@@ -151,7 +152,8 @@ class CPLSNode : public ::x10::lang::X10Class   {
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel);
     virtual void sendkill();
     virtual void start();
-    virtual void start(x10_long seedIn, x10_long targetCost, x10_boolean strictLow);
+    virtual void start(x10_long seedIn, x10_long targetCost, x10_boolean strictLow,
+                       x10_long iterations);
     virtual void setStats_();
     virtual void setStats(::cpls::measurements::GlobalStats* c);
     virtual void accStats(::cpls::measurements::GlobalStats* c);

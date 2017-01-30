@@ -4,12 +4,12 @@
 
 #include <x10/lang/Long.h>
 #include <x10/util/Random.h>
+#include <x10/util/Timer.h>
 #include <x10/lang/Int.h>
 #include <x10/lang/Rail.h>
 #include <x10/lang/Fun_0_1.h>
 #include <x10/lang/Boolean.h>
 #include <x10/lang/Double.h>
-#include <x10/lang/System.h>
 #include <x10/compiler/Synthetic.h>
 #ifndef CPLS_UTIL_RANDOMTOOLS__CLOSURE__1_CLOSURE
 #define CPLS_UTIL_RANDOMTOOLS__CLOSURE__1_CLOSURE
@@ -71,13 +71,30 @@ class cpls_util_RandomTools__closure__1 : public ::x10::lang::Closure {
 void cpls::util::RandomTools::_constructor(x10_long seedIn) {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
-    this->cpls::util::RandomTools::__fieldInitializers_cpls_util_RandomTools();
+    ::cpls::util::RandomTools* this__2040 = this;
+    ::x10aux::nullCheck(this__2040)->FMGL(seed) = ((x10_long)0ll);
+    ::x10aux::nullCheck(this__2040)->FMGL(r) = (__extension__ ({
+        
+        //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
+        ::x10::util::Random* alloc__2039 =  (new (::x10aux::alloc_z< ::x10::util::Random>()) ::x10::util::Random());
+        
+        //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+        (alloc__2039)->::x10::util::Random::_constructor(::x10::lang::RuntimeNatives::nanoTime());
+        alloc__2039;
+    }))
+    ;
     
     //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
     this->FMGL(seed) = seedIn;
     
     //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
-    this->FMGL(r)->x10::util::Random::setSeed(seedIn);
+    ::x10::util::Random* this__2041 = this->FMGL(r);
+    
+    //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+    x10_long seed__2042 = seedIn;
+    
+    //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+    this__2041->x10::util::Random::init(seed__2042);
 }
 ::cpls::util::RandomTools* cpls::util::RandomTools::_make(x10_long seedIn)
 {
@@ -92,7 +109,13 @@ void cpls::util::RandomTools::_constructor(x10_long seedIn) {
 void cpls::util::RandomTools::setSeed(x10_long s) {
     
     //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
-    this->FMGL(r)->x10::util::Random::setSeed(s);
+    ::x10::util::Random* this__2043 = this->FMGL(r);
+    
+    //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+    x10_long seed__2044 = s;
+    
+    //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+    this__2043->x10::util::Random::init(seed__2044);
     
     //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
     this->FMGL(seed) = s;
@@ -203,7 +226,7 @@ x10_double cpls::util::RandomTools::randomDouble() {
 x10_long cpls::util::RandomTools::getRandomSeed() {
     
     //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
-    return ::x10::lang::System::nanoTime();
+    return ::x10::lang::RuntimeNatives::nanoTime();
     
 }
 
@@ -216,7 +239,16 @@ x10_long cpls::util::RandomTools::getRandomSeed() {
 void cpls::util::RandomTools::__fieldInitializers_cpls_util_RandomTools(
   ) {
     this->FMGL(seed) = ((x10_long)0ll);
-    this->FMGL(r) = ::x10::util::Random::_make();
+    this->FMGL(r) = (__extension__ ({
+        
+        //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/RandomTools.x10"
+        ::x10::util::Random* alloc__307 =  (new (::x10aux::alloc_z< ::x10::util::Random>()) ::x10::util::Random());
+        
+        //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
+        (alloc__307)->::x10::util::Random::_constructor(::x10::lang::RuntimeNatives::nanoTime());
+        alloc__307;
+    }))
+    ;
 }
 const ::x10aux::serialization_id_t cpls::util::RandomTools::_serialization_id = 
     ::x10aux::DeserializationDispatcher::addDeserializer(::cpls::util::RandomTools::_deserializer, ::x10aux::CLOSURE_KIND_NOT_ASYNC);

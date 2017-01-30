@@ -7,15 +7,6 @@
 #define CPLS_SOLVER_SINGLESOLHEURISTIC_H_NODEPS
 #include <cpls/solver/SingleSolHeuristic.h>
 #undef CPLS_SOLVER_SINGLESOLHEURISTIC_H_NODEPS
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class Any;
-} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -25,13 +16,10 @@ class AdaptiveSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
     
-    using ::cpls::solver::HeuristicSolver::solve;
-    
     void _constructor();
     
     static ::cpls::solver::AdaptiveSearch* _make();
     
-    virtual void solve();
     virtual ::cpls::solver::AdaptiveSearch* cpls__solver__AdaptiveSearch____this__cpls__solver__AdaptiveSearch(
       );
     virtual void __fieldInitializers_cpls_solver_AdaptiveSearch();

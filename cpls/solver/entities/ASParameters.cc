@@ -26,7 +26,7 @@
 
 //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
 void cpls::solver::entities::ASParameters::_constructor() {
-    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
+    ::cpls::solver::entities::HeuristicParameters* this__10 = this;
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
     this->cpls::solver::entities::ASParameters::__fieldInitializers_cpls_solver_entities_ASParameters();
@@ -49,7 +49,8 @@ void cpls::solver::entities::ASParameters::_constructor(x10_long nVarToReset,
                                                         x10_int resetLimit,
                                                         x10_int probSelectLocMin,
                                                         x10_boolean firstBest) {
-    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
+    ::cpls::solver::entities::HeuristicParameters* this__11 =
+      this;
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
     this->cpls::solver::entities::ASParameters::__fieldInitializers_cpls_solver_entities_ASParameters();

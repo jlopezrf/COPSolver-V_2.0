@@ -22,12 +22,6 @@ class NodeConfig;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace cpls { 
-class HeuristicFactory;
-} 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -37,8 +31,8 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace x10 { namespace lang { 
-class String;
+namespace cpls { namespace solver { 
+class HeuristicSolver;
 } } 
 namespace cpls { namespace util { 
 template<class TPMGL(T)> class Maybe;
@@ -66,7 +60,8 @@ class HeadNode : public ::cpls::CPLSNode   {
     static ::cpls::HeadNode* _make();
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
-                            ::cpls::entities::PoolConfig* teamPoolConfig);
+                            ::cpls::entities::PoolConfig* teamPoolConfig,
+                            x10_long problemSize);
     virtual void setMasterNodeIndicator(x10_boolean isThereAMasterNode);
     virtual void start();
     virtual void getBestConf();

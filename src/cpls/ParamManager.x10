@@ -24,7 +24,7 @@ public class ParamManager extends OptionsParser{
  				//jason options
  				Option("ce", "Control Strategy" ,"In parallel mode, with master node 1, without 0. Default 1."),
  				//end jason options
- 				Option("sl", "solver", "Solver to use"), //Jason: Can I make that this parameter have many values?(p.e: AS,RoTS,RS;AS,RoTS,RS)
+ 				Option("sl", "solver", "Solver to use"), //Jason: Can I make that this parameter have many values?(p.e: AS,RoTS,RS/AS,RoTS,RS)
  				Option("of", "out_format", "output format: csv 0, info 1"),
  				Option("tf", "target_from", "Flag to receive target cost form file. default 0 from command line, 1 take optimal from file, 2 take BKS from file "),
  				Option("tc", "target_cost", "target (c)ost from Command Line Parameter. default 0"),
@@ -34,8 +34,8 @@ public class ParamManager extends OptionsParser{
  				Option("ca", "comp_AVG", "compute AVG cost for each run at each place"),
  				// CPLS 
  				Option("N", "nodes_per_team", "nodes_per_team parameter. Default 4."),
- 				Option("U", "update", "Update Interval Intra-team Communication (iterations) . Default 0 - no communication."),
- 				Option("R", "report", "Report Interval Intra-team Communication (iterations) . Default 0 - no communication."),
+ 				Option("U", "update", "Update Interval Intra-team Communication (iterations). Default 0 - no communication."),
+ 				Option("R", "report", "Report Interval Intra-team Communication (iterations). Default 0 - no communication."),
  				Option("C", "p_change_vector", "Probability to change vector in Intra-Team Communication "),
  				Option("I", "Inter_Team_Interval", "Inter-team Communication Interval (miliseconds) . Default 0 - no communication."),
  				Option("D", "Inter_Team_Distance", "minimum permisible distance."),

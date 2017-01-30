@@ -17,7 +17,10 @@
 void cpls::entities::NodeConfig::_constructor(x10_int heuristic) {
     
     //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    this->cpls::entities::NodeConfig::__fieldInitializers_cpls_entities_NodeConfig();
+    ::cpls::entities::NodeConfig* this__8 = this;
+    ::x10aux::nullCheck(this__8)->FMGL(heuristic) = ((x10_int)0);
+    ::x10aux::nullCheck(this__8)->FMGL(heuristicParameters) = (::x10aux::class_cast_unchecked< ::cpls::solver::entities::HeuristicParameters*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::x10aux::nullCheck(this__8)->FMGL(outTeamTime) = ((x10_long)0ll);
     
     //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
     this->FMGL(heuristic) = heuristic;
@@ -28,7 +31,10 @@ void cpls::entities::NodeConfig::_constructor(x10_int heuristic) {
 void cpls::entities::NodeConfig::_constructor() {
     
     //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    this->cpls::entities::NodeConfig::__fieldInitializers_cpls_entities_NodeConfig();
+    ::cpls::entities::NodeConfig* this__9 = this;
+    ::x10aux::nullCheck(this__9)->FMGL(heuristic) = ((x10_int)0);
+    ::x10aux::nullCheck(this__9)->FMGL(heuristicParameters) = (::x10aux::class_cast_unchecked< ::cpls::solver::entities::HeuristicParameters*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::x10aux::nullCheck(this__9)->FMGL(outTeamTime) = ((x10_long)0ll);
     
     //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
     this->FMGL(heuristic) = ((x10_int)0);

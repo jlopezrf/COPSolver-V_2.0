@@ -16,12 +16,6 @@ class NodeConfig;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace cpls { 
-class HeuristicFactory;
-} 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -31,8 +25,8 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace x10 { namespace lang { 
-class String;
+namespace cpls { namespace solver { 
+class HeuristicSolver;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -52,7 +46,8 @@ class MasterNode : public ::cpls::CPLSNode   {
     static ::cpls::MasterNode* _make();
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
-                            ::cpls::entities::PoolConfig* cplsPoolConfig);
+                            ::cpls::entities::PoolConfig* cplsPoolConfig,
+                            x10_long problemSize);
     virtual void start();
     virtual ::cpls::MasterNode* cpls__MasterNode____this__cpls__MasterNode(
       );

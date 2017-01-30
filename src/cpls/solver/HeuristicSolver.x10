@@ -86,6 +86,7 @@ public abstract class HeuristicSolver{
  		initVar(tCost, sLow);
  		// Initialize Cost
  		this.currentCost = problemModel.costOfSolution(true);
+ 		Console.OUT.println("Current cost: " + this.currentCost);
  		// Copy the first match to bestConf vector
  		val size = problemModel.getSize();
  		Rail.copy(problemModel.getVariables(), bestConf as Valuation(size));
@@ -104,6 +105,7 @@ public abstract class HeuristicSolver{
  					nRestart++;
  					problemModel.initialize(); 
  					currentCost = problemModel.costOfSolution(true);
+ 					Console.OUT.println("Current cost: " + currentCost);
  					updateTotStats();
  					restartVar();
  					continue;
@@ -221,7 +223,7 @@ public abstract class HeuristicSolver{
  	}
  	
  	public def verify(){
- 		Console.OUT.println("Se ingresa al Verify del HeuristicSolver");
+ 		//Console.OUT.println("Se ingresa al Verify del HeuristicSolver");
  		return problemModel.verify(getBestConfiguration());
  	}
  	

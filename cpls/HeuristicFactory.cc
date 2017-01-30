@@ -5,7 +5,6 @@
 #include <x10/lang/Any.h>
 #include <x10/lang/Int.h>
 #include <cpls/solver/HeuristicSolver.h>
-#include <cpls/CPLSOptionsEnum__HeuristicsSupported.h>
 #include <cpls/solver/AdaptiveSearch.h>
 #include <cpls/solver/EOSearch.h>
 #include <cpls/solver/RoTSearch.h>
@@ -46,34 +45,54 @@ public:
     switch (kind) {
         
         //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 2/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)()*/: ;
+        case ((x10_int)2): ;
         {
-            return ::cpls::solver::AdaptiveSearch::_make();
-            
+            {
+                ::cpls::solver::AdaptiveSearch* alloc__26 =  (new (::x10aux::alloc_z< ::cpls::solver::AdaptiveSearch>()) ::cpls::solver::AdaptiveSearch());
+                (alloc__26)->::cpls::solver::AdaptiveSearch::_constructor();
+                return alloc__26;
+                
+            }
         }
         //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 3/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)()*/: ;
+        case ((x10_int)3): ;
         {
-            return ::cpls::solver::EOSearch::_make();
-            
+            {
+                ::cpls::solver::EOSearch* alloc__27 =  (new (::x10aux::alloc_z< ::cpls::solver::EOSearch>()) ::cpls::solver::EOSearch());
+                (alloc__27)->::cpls::solver::EOSearch::_constructor();
+                return alloc__27;
+                
+            }
         }
         //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 4/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()*/: ;
+        case ((x10_int)4): ;
         {
-            return ::cpls::solver::RoTSearch::_make();
-            
+            {
+                ::cpls::solver::RoTSearch* alloc__28 =  (new (::x10aux::alloc_z< ::cpls::solver::RoTSearch>()) ::cpls::solver::RoTSearch());
+                (alloc__28)->::cpls::solver::RoTSearch::_constructor();
+                return alloc__28;
+                
+            }
         }
         //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 1/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__get)()*/: ;
+        case ((x10_int)1): ;
         {
-            return ::cpls::solver::RandomSearch::_make();
-            
+            {
+                ::cpls::solver::RandomSearch* alloc__29 =  (new (::x10aux::alloc_z< ::cpls::solver::RandomSearch>()) ::cpls::solver::RandomSearch());
+                (alloc__29)->::cpls::solver::RandomSearch::_constructor();
+                return alloc__29;
+                
+            }
         }
         //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         default: ;
         {
-            return ::cpls::solver::RandomSearch::_make();
-            
+            {
+                ::cpls::solver::RandomSearch* alloc__30 =  (new (::x10aux::alloc_z< ::cpls::solver::RandomSearch>()) ::cpls::solver::RandomSearch());
+                (alloc__30)->::cpls::solver::RandomSearch::_constructor();
+                return alloc__30;
+                
+            }
         }
     }
 }
@@ -85,33 +104,33 @@ public:
     switch (kind) {
         
         //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 2/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)()*/: ;
+        case ((x10_int)2): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__23946 = ::x10aux::makeStringLit("AS_SOL"); strLit__23946; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__304 = ::x10aux::makeStringLit("AS_SOL"); strLit__304; }));
             
         }
         //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 3/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)()*/: ;
+        case ((x10_int)3): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__23947 = ::x10aux::makeStringLit("EO_SOL"); strLit__23947; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__305 = ::x10aux::makeStringLit("EO_SOL"); strLit__305; }));
             
         }
         //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 4/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()*/: ;
+        case ((x10_int)4): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__23948 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__23948; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__306 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__306; }));
             
         }
         //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
-        case 1/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__get)()*/: ;
+        case ((x10_int)1): ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__23949 = ::x10aux::makeStringLit("RS_SOL"); strLit__23949; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__307 = ::x10aux::makeStringLit("RS_SOL"); strLit__307; }));
             
         }
         //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeuristicFactory.x10"
         default: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__23950 = ::x10aux::makeStringLit("Default"); strLit__23950; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__308 = ::x10aux::makeStringLit("Default"); strLit__308; }));
             
         }
     }
@@ -122,7 +141,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::HeuristicFactory::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__23951 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__23951; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__309 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__309; }));
     
 }
 x10_boolean cpls::HeuristicFactory::equals(::x10::lang::Any* other) {
@@ -130,7 +149,9 @@ x10_boolean cpls::HeuristicFactory::equals(::x10::lang::Any* other) {
         return false;
         
     }
-    return (*this)->cpls::HeuristicFactory::equals(::x10aux::class_cast< ::cpls::HeuristicFactory>(other));
+    ::cpls::HeuristicFactory this__293 = (*this);
+    ::cpls::HeuristicFactory other__294 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
+    return true;
     
 }
 x10_boolean cpls::HeuristicFactory::_struct_equals(::x10::lang::Any* other) {
@@ -138,7 +159,9 @@ x10_boolean cpls::HeuristicFactory::_struct_equals(::x10::lang::Any* other) {
         return false;
         
     }
-    return (*this)->cpls::HeuristicFactory::_struct_equals(::x10aux::class_cast< ::cpls::HeuristicFactory>(other));
+    ::cpls::HeuristicFactory this__295 = (*this);
+    ::cpls::HeuristicFactory other__296 = ::x10aux::class_cast< ::cpls::HeuristicFactory>(other);
+    return true;
     
 }
 

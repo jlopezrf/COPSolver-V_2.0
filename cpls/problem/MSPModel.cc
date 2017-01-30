@@ -15,7 +15,8 @@ void cpls::problem::MSPModel::_constructor(x10_long sz) {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
-    this->cpls::problem::MSPModel::__fieldInitializers_cpls_problem_MSPModel();
+    ::cpls::problem::MSPModel* this__1002 = this;
+    
 }
 ::cpls::problem::MSPModel* cpls::problem::MSPModel::_make(x10_long sz) {
     ::cpls::problem::MSPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::MSPModel>()) ::cpls::problem::MSPModel();

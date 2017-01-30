@@ -17,7 +17,6 @@ public abstract class CPLSNode{
  	protected var heuristicSolver:HeuristicSolver;
  	private var pointersComunication:ArrayList[PlaceLocalHandle[CPLSNode]];
  	private var myPlaceId:Int;
- 
  	/*********Variables para el reporte de estadísticas*********/
  	val stats = new GlobalStats();
  	val sampleAccStats = new GlobalStats();
@@ -40,11 +39,12 @@ public abstract class CPLSNode{
  		this.pointersComunication = new ArrayList[PlaceLocalHandle[CPLSNode]]();
  	}
  
- 	public def initialize(config:NodeConfig, idPlace:Int, poolConfig:PoolConfig){
- 		Console.OUT.println("Se inicializa con la heurisica" + HeuristicFactory.getHeuristicName(config.getHeuristic()));
+ 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long){
+ 		//Console.OUT.println("Se inicializa con la heurisica" + HeuristicFactory.getHeuristicName(config.getHeuristic()));
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
- 		this.bestSolHere = new Rail[Int](heuristicSolver.getSizeProblem(), 0n);	
- 		Console.OUT.println("Nodo inicializado en el proceso" + idPlace);
+ 		this.bestSolHere = new Rail[Int](problemSize, 0n);
+ 		this.myPlaceId = idPlace;
+ 		//Console.OUT.println("Nodo inicializado en el proceso" + idPlace);
  	}
  
  	public def setHeuristicSolver(hs:HeuristicSolver){
@@ -79,8 +79,8 @@ public abstract class CPLSNode{
  		this.heuristicSolver.solve();
  	}
  	
- 	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean ):void{
- 		Console.OUT.println("Se ingresa al start en " + here.id);
+ 	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean, iterations:Long):void{
+ 		//Console.OUT.println("Se ingresa al start en " + here.id);
  	 	stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
@@ -88,8 +88,6 @@ public abstract class CPLSNode{
  	 	val random = new Random(seedIn);
  	 
  	 	var cost:Long = Long.MAX_VALUE;
- 	 
- 	 	heuristicSolver.setSeed(random.nextLong()); 
  	 
  	 	//if(this instanceof MasterNode){
  	 	//	async{
@@ -100,36 +98,40 @@ public abstract class CPLSNode{
 
  	 	//Jason: Elimine una porción de código que verificaba si habían varios teams y si era nodo que maneja LocalMin pool	 
  	  	//Jason: También eliminé una parte que era la construcción del modelo del problema y su inicialización con una semilla random
-
- 	 	time = -System.nanoTime();
- 	 	cost = heuristicSolver.solve(targetCost, strictLow);
- 	 	time += System.nanoTime();
+ 	 	for(var i:Long = 0; i < iterations; i++){
+ 	 		heuristicSolver.setSeed(random.nextLong());
+ 	 		time = -System.nanoTime();
+ 	 		cost = heuristicSolver.solve(targetCost, strictLow);
+ 	 		Console.OUT.println("Costo en el start() de CPLSNODE (Placeid:" + myPlaceId + "): " + cost);
+ 	 		time += System.nanoTime();
  	  
- 	 	interTeamKill = true;
+ 	 		interTeamKill = true;
  	 
- 	 	if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
- 	 		// A solution has been found! Huzzah! 
- 	 		// Light the candles! Kill the blighters!
- 	 		val home = here.id;
- 	 		val winner = at(Place.FIRST_PLACE) announceWinner(home);
+ 	 		if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
+ 	 			// A solution has been found! Huzzah! 
+ 	 			// Light the candles! Kill the blighters!
+ 	 			val home = here.id;
+ 	 			val winner = at(Place.FIRST_PLACE) announceWinner(home);
  	 
- 	 		bcost = cost;
+ 	 			bcost = cost;
  	 
- 	 		if (winner){ 
- 	 			setStats_();
- 	 			if (verify){
- 	 				heuristicSolver.displaySolution();
- 	 				Console.OUT.println(", Solution is " + 
- 	 				(heuristicSolver.verify() ? "perfect !!!" : "not perfect "));
- 	 			} 
- 	 		}
- 	 	}else{
- 	 		solString = "Solution "+here+ " is "+(heuristicSolver.verify()? "perfect !!!" : "not perfect, maybe wrong ...");
- 	 		val sz = heuristicSolver.getSizeProblem();
- 	 		Rail.copy(heuristicSolver.getBestConfiguration(),bestSolHere as Valuation(sz));
- 	 	}			
-
- 	 }
+ 	 			if (winner){ 
+ 	 				setStats_();
+ 	 				if (verify){
+ 	 					heuristicSolver.displaySolution();
+ 	 					Console.OUT.println(", Solution is " + 
+ 	 					(heuristicSolver.verify() ? "perfect !!!" : "not perfect "));
+ 	 				} 
+ 	 			}
+ 	 		}else{
+ 	 			solString = "Solution "+here+ " is "+(heuristicSolver.verify()? "perfect !!!" : "not perfect, maybe wrong ...");
+ 	 			val sz = heuristicSolver.getSizeProblem();
+ 	 			//Console.OUT.println("Antes del Rail.Copy del método start()");
+ 	 			Rail.copy(heuristicSolver.getBestConfiguration(),bestSolHere as Valuation(sz));
+ 	 			//Console.OUT.println("Después del Rail.Copy del método start()");
+ 	 		}			
+ 		}
+ 	}
  	
  	public def setStats_()
  	{
