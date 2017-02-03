@@ -25,12 +25,10 @@ public class QAPModel extends ProblemGenericModel{
  		super.inSeed = inSeed;
  		super.inPathDataProblem = inPathDataProblem;
  		super.inPathVectorSol = inPathVectorSol;
- 		//Console.OUT.println("Valor del path de entrada: " + inPathDataProblem);
  		super.baseValue = baseValue;
  		this.flow = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
  		this.dist = new Rail[Rail[Int]](size, (Long) => new Rail[Int]( size, 0n ));
  		delta = new Array_2 [Long](size, size , 0);
- 		//Console.OUT.println("Por lo menos termina el contructor de QAPModel");
  	}
 
  	public def this (size :Long, mf:Rail[Rail[Int]], md:Rail[Rail[Int]] ) : QAPModel(size){
@@ -98,7 +96,6 @@ public class QAPModel extends ProblemGenericModel{
  					for(i = 0; i < size; i++)
  						for(j = i + 1; j < size; j++)
  							delta(i,j) = computeDelta(i, j);
- 		Console.OUT.println("Costo de la solución: " + r);
  		return r;
  	}
 

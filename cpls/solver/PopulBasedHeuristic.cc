@@ -5,20 +5,16 @@
 #include <cpls/solver/HeuristicSolver.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/PopulBasedHeuristic.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
 void cpls::solver::PopulBasedHeuristic::_constructor() {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/PopulBasedHeuristic.x10"
-    ::cpls::solver::HeuristicSolver* this__955 = this;
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
+    (this)->::cpls::solver::HeuristicSolver::_constructor();
     
-    //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10aux::nullCheck(this__955)->cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSolver();
+    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/PopulBasedHeuristic.x10"
-    
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/PopulBasedHeuristic.x10"
-    ::cpls::solver::PopulBasedHeuristic* this__954 = this;
-    
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
+    this->cpls::solver::PopulBasedHeuristic::__fieldInitializers_cpls_solver_PopulBasedHeuristic();
 }
 ::cpls::solver::PopulBasedHeuristic* cpls::solver::PopulBasedHeuristic::_make(
   ) {
@@ -29,7 +25,7 @@ void cpls::solver::PopulBasedHeuristic::_constructor() {
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/PopulBasedHeuristic.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
 ::cpls::solver::PopulBasedHeuristic* cpls::solver::PopulBasedHeuristic::cpls__solver__PopulBasedHeuristic____this__cpls__solver__PopulBasedHeuristic(
   ) {
     return this;

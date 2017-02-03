@@ -5,13 +5,15 @@ import cpls.util.MovePermutation;
 import cpls.util.Utils;
 import cpls.util.Valuation;
 import cpls.util.Logger;
+import cpls.solver.entities.HeuristicParameters;
 import cpls.measurements.GlobalStats;
 import x10.util.Random;
 
 public abstract class HeuristicSolver{
 	
-	private var problemModel:ProblemGenericModel;
-	private var size:Long;
+	protected var problemModel:ProblemGenericModel;
+	protected var size:Long;
+	protected var heuristicParams:HeuristicParameters;
  	
  	// Move information
  	protected val move = new MovePermutation(-1n, -1n);
@@ -68,28 +70,44 @@ public abstract class HeuristicSolver{
  	protected var costLR:Long = Long.MAX_VALUE;
  	protected var maxUpdateI : Int = 100000n;
  	protected var changeOnDiver : Int;
+ 	protected var mySolverType:Long;
  	
  	public def this(){
  	}
- 	
+ 
+ 	public def configHeuristic(problemModel:ProblemGenericModel){
+ 		this.problemModel = problemModel;
+ 	}
+ 
  	public def setProblemModel(problemModel:ProblemGenericModel){
  		this.problemModel = problemModel;
  		this.size = problemModel.getSize();
+ 	}
+ 	
+ 	public def setHeuristicParameters(params:HeuristicParameters){
+ 		this.heuristicParams = params;
+ 	}
+ 
+ 	public def getHeuristicParams(){
+ 		return this.heuristicParams;
+ 	}
+ 
+ 	public def setMaxIters(maxIters:Long){
+ 		this.maxIters = maxIters;
  	}
  	
  	public def solve(){
  		Console.OUT.println("Heuristic solve invocado");
  	}
  	
- 	public def solve(tCost : Long, sLow: Boolean):Long {
+ 	public def solve(tCost : Long, sLow: Boolean):Long{
  		// Initialize all variables of the search process
  		initVar(tCost, sLow);
  		// Initialize Cost
  		this.currentCost = problemModel.costOfSolution(true);
- 		Console.OUT.println("Current cost: " + this.currentCost);
  		// Copy the first match to bestConf vector
- 		val size = problemModel.getSize();
- 		Rail.copy(problemModel.getVariables(), bestConf as Valuation(size));
+ 		val sz = size;
+ 		Rail.copy(problemModel.getVariables(), bestConf as Valuation(sz));
  		if (this.currentCost == 0)
  			bestCost = currentCost;
  		else
@@ -111,6 +129,7 @@ public abstract class HeuristicSolver{
  					continue;
  				}
  			}
+ 			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
  			nIter++;
  			this.currentCost = search();
  			
@@ -118,9 +137,9 @@ public abstract class HeuristicSolver{
  			updateCosts();
  			
  			//Kill solving process
- 			Runtime.probe();	// Give a chance to the other activities
- 			if (kill)
- 				break;  // kill: End solving process
+ 			//Runtime.probe();	// Give a chance to the other activities
+ 			//if (kill)
+ 			//	break;  // kill: End solving process
  			
  			//Time out
  			if(maxTime > 0){
@@ -142,8 +161,6 @@ public abstract class HeuristicSolver{
  		this.target = tCost;
  		this.strictLow = sLow;
  		this.targetSucc = false;
- 		//problemModel.initialize(); 
- 		//Main.show("initial= ",csp.variables);
  		this.nSwap = 0n;
  		this.nIter = 0n;
  		this.nRestart = 0n;
@@ -193,7 +210,11 @@ public abstract class HeuristicSolver{
  		nSwap++;
  		
  		problemModel.executedSwap(move.getFirst(), move.getSecond());
- 		return problemModel.costOfSolution(true);
+ 		val costo = problemModel.costOfSolution(true);
+ 		Console.OUT.print("Costo (RandomSearch): " + costo + ". Con variables: ");
+ 		displaySolution();
+ 		Console.OUT.print("\n");
+ 		return costo;
  	}
  	
  	protected def updateCosts(){
@@ -267,6 +288,7 @@ public abstract class HeuristicSolver{
  
  	public def setSeed(inSeed:Long){
  		this.seed = inSeed;
+ 		this.random = new Random(inSeed);
  	}
 }
 //public type HeuristicSolver = HeuristicSolver{};

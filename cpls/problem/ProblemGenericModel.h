@@ -25,9 +25,6 @@ class Random;
 namespace x10 { namespace lang { 
 class String;
 } } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 

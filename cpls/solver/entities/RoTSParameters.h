@@ -23,6 +23,8 @@ class RoTSParameters : public ::cpls::solver::entities::HeuristicParameters
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::entities::HeuristicParameters::setParameters;
+    
     x10_double FMGL(tabuDurationFactorUS);
     
     x10_double FMGL(aspirationFactorUS);
@@ -38,6 +40,7 @@ class RoTSParameters : public ::cpls::solver::entities::HeuristicParameters
     
     virtual x10_double getTabuDurationFactorUS();
     virtual x10_double getAspirationFactorUS();
+    virtual void setParameters(::cpls::solver::entities::RoTSParameters* parameters);
     virtual ::cpls::solver::entities::RoTSParameters* cpls__solver__entities__RoTSParameters____this__cpls__solver__entities__RoTSParameters(
       );
     virtual void __fieldInitializers_cpls_solver_entities_RoTSParameters(

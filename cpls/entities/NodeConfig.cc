@@ -5,89 +5,157 @@
 #include <x10/lang/Int.h>
 #include <x10/lang/Long.h>
 #include <cpls/solver/entities/HeuristicParameters.h>
+#include <cpls/CPLSOptionsEnum__HeuristicsSupported.h>
+#include <cpls/solver/entities/ASParameters.h>
+#include <cpls/solver/entities/EOParameters.h>
+#include <cpls/solver/entities/RoTSParameters.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 
-//#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 void cpls::entities::NodeConfig::_constructor(x10_int heuristic) {
     
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    ::cpls::entities::NodeConfig* this__8 = this;
-    ::x10aux::nullCheck(this__8)->FMGL(heuristic) = ((x10_int)0);
-    ::x10aux::nullCheck(this__8)->FMGL(heuristicParameters) = (::x10aux::class_cast_unchecked< ::cpls::solver::entities::HeuristicParameters*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__8)->FMGL(outTeamTime) = ((x10_long)0ll);
+    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+    this->cpls::entities::NodeConfig::__fieldInitializers_cpls_entities_NodeConfig();
     
-    //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     this->FMGL(heuristic) = heuristic;
 }
 
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 void cpls::entities::NodeConfig::_constructor() {
     
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    ::cpls::entities::NodeConfig* this__9 = this;
-    ::x10aux::nullCheck(this__9)->FMGL(heuristic) = ((x10_int)0);
-    ::x10aux::nullCheck(this__9)->FMGL(heuristicParameters) = (::x10aux::class_cast_unchecked< ::cpls::solver::entities::HeuristicParameters*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__9)->FMGL(outTeamTime) = ((x10_long)0ll);
+    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+    this->cpls::entities::NodeConfig::__fieldInitializers_cpls_entities_NodeConfig();
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     this->FMGL(heuristic) = ((x10_int)0);
 }
 
 
-//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 void cpls::entities::NodeConfig::setHeuristic(x10_int heuristic) {
     
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     this->FMGL(heuristic) = heuristic;
+    
+    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+    switch (heuristic) {
+        
+        //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 2/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)()*/: ;
+        {
+            
+            //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            this->FMGL(heuristicParameters) = ::cpls::solver::entities::ASParameters::_make();
+            
+            //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+        //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 3/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)()*/: ;
+        {
+            
+            //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            this->FMGL(heuristicParameters) = ::cpls::solver::entities::EOParameters::_make();
+            
+            //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+        //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 4/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()*/: ;
+        {
+            
+            //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            this->FMGL(heuristicParameters) = ::cpls::solver::entities::RoTSParameters::_make();
+            
+            //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+    }
 }
 
-//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 x10_int cpls::entities::NodeConfig::getHeuristic() {
     
-    //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     return this->FMGL(heuristic);
     
 }
 
-//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 void cpls::entities::NodeConfig::setOutTeamTime(x10_long outTeamTime) {
     
-    //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     this->FMGL(outTeamTime) = outTeamTime;
 }
 
-//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 x10_long cpls::entities::NodeConfig::getOutTeamTime() {
     
-    //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     return this->FMGL(outTeamTime);
     
 }
 
-//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 void cpls::entities::NodeConfig::setHeuristicParameters(::cpls::solver::entities::HeuristicParameters* heuristicParameters) {
     
-    //#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-    this->FMGL(heuristicParameters) = heuristicParameters;
+    //#line 49 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+    switch (this->FMGL(heuristic)) {
+        
+        //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 2/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)()*/: ;
+        {
+            
+            //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            ::x10aux::nullCheck(this->FMGL(heuristicParameters))->setParameters(
+              reinterpret_cast< ::cpls::solver::entities::HeuristicParameters*>(::x10aux::class_cast< ::cpls::solver::entities::ASParameters*>(heuristicParameters)));
+            
+            //#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+        //#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 3/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)()*/: ;
+        {
+            
+            //#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            ::x10aux::nullCheck(this->FMGL(heuristicParameters))->setParameters(
+              reinterpret_cast< ::cpls::solver::entities::HeuristicParameters*>(::x10aux::class_cast< ::cpls::solver::entities::EOParameters*>(heuristicParameters)));
+            
+            //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+        //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+        case 4/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()*/: ;
+        {
+            
+            //#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            ::x10aux::nullCheck(this->FMGL(heuristicParameters))->setParameters(
+              reinterpret_cast< ::cpls::solver::entities::HeuristicParameters*>(::x10aux::class_cast< ::cpls::solver::entities::RoTSParameters*>(heuristicParameters)));
+            
+            //#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
+            break;
+        }
+    }
 }
 
-//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 ::cpls::solver::entities::HeuristicParameters* cpls::entities::NodeConfig::getHeuristicParameters(
   ) {
     
-    //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+    //#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
     return this->FMGL(heuristicParameters);
     
 }
 
-//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/NodeConfig.x10"
 ::cpls::entities::NodeConfig* cpls::entities::NodeConfig::cpls__entities__NodeConfig____this__cpls__entities__NodeConfig(
   ) {
     return this;

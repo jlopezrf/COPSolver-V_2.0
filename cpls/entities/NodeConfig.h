@@ -19,6 +19,18 @@
 namespace cpls { namespace solver { namespace entities { 
 class HeuristicParameters;
 } } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
+namespace cpls { namespace solver { namespace entities { 
+class ASParameters;
+} } } 
+namespace cpls { namespace solver { namespace entities { 
+class EOParameters;
+} } } 
+namespace cpls { namespace solver { namespace entities { 
+class RoTSParameters;
+} } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

@@ -34,42 +34,57 @@ template<class TPMGL(T)> class Array_2;
 namespace cpls { namespace entities { 
 class NodeConfig;
 } } 
-namespace cpls { namespace entities { 
-class PoolConfig;
-} } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
-namespace x10 { namespace lang { 
-class Math;
-} } 
-namespace cpls { namespace solver { namespace entities { 
-class ASParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class EOParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class RoTSParameters;
-} } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Iterator;
 } } 
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace cpls { namespace solver { namespace entities { 
 class HeuristicParameters;
 } } } 
+namespace cpls { namespace solver { namespace entities { 
+class ASParameters;
+} } } 
+namespace cpls { namespace solver { namespace entities { 
+class RoTSParameters;
+} } } 
+namespace cpls { namespace solver { namespace entities { 
+class EOParameters;
+} } } 
+namespace x10 { namespace lang { 
+class Math;
+} } 
+namespace cpls { namespace entities { 
+class PoolConfig;
+} } 
+namespace x10 { namespace lang { 
+class System;
+} } 
 namespace cpls { 
 class NodeInstancer;
 } 
+namespace cpls { namespace entities { 
+class ExplorerConfig;
+} } 
+namespace cpls { namespace entities { 
+class MasterConfig;
+} } 
+namespace cpls { namespace entities { 
+class HeadConfig;
+} } 
 namespace cpls { namespace util { 
 class Logger;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -78,18 +93,6 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
-} } 
-namespace cpls { namespace entities { 
-class ExplorerConfig;
-} } 
-namespace cpls { namespace entities { 
-class MasterConfig;
-} } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace cpls { namespace entities { 
-class HeadConfig;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -101,12 +104,10 @@ class Main : public ::x10::lang::X10Class   {
     RTT_H_DECLS_CLASS
     
     static void main(::x10::lang::Rail< ::x10::lang::String* >* args);
-    static x10_int problemDetect(::x10::lang::String* problem);
     static ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* heuristicsAndRolesDefinition(
       ::x10::lang::String* solverIn, x10_int numberOfTeams, x10_int nodesPerTeam,
       x10_boolean whitMasterNode);
-    static ::cpls::solver::entities::HeuristicParameters*
-      whichHeuristicParam(::x10::lang::String* solverIn);
+    static x10_int problemDetect(::x10::lang::String* problem);
     static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(
       );

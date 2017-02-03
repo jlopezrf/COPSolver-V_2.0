@@ -62,8 +62,7 @@ class CPLSOptionsEnum   {
         
     }
     void _constructor() {
-        ::cpls::CPLSOptionsEnum this__224 = (*this);
-        
+        (*this)->cpls::CPLSOptionsEnum::__fieldInitializers_cpls_CPLSOptionsEnum();
     }
     static ::cpls::CPLSOptionsEnum _make() {
         ::cpls::CPLSOptionsEnum this_; 

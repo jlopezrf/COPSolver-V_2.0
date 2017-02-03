@@ -13,6 +13,7 @@ class HeuristicParameters : public ::x10::lang::X10Class   {
     public:
     RTT_H_DECLS_CLASS
     
+    virtual void setParameters(::cpls::solver::entities::HeuristicParameters* parameters);
     virtual ::cpls::solver::entities::HeuristicParameters* cpls__solver__entities__HeuristicParameters____this__cpls__solver__entities__HeuristicParameters(
       );
     void _constructor();

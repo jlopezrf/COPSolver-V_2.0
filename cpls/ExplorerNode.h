@@ -42,7 +42,8 @@ class ExplorerNode : public ::cpls::CPLSNode   {
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
                             ::cpls::entities::PoolConfig* configPool,
-                            x10_long problemSize);
+                            x10_long problemSize, x10_long inSeed,
+                            x10_long maxIter);
     virtual void start();
     virtual ::cpls::ExplorerNode* cpls__ExplorerNode____this__cpls__ExplorerNode(
       );

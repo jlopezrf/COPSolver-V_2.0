@@ -25,6 +25,9 @@
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
+namespace cpls { namespace solver { namespace entities { 
+class HeuristicParameters;
+} } } 
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
@@ -33,6 +36,15 @@ class Random;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
+} } 
+namespace cpls { 
+class ParamManager;
+} 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
+namespace x10 { namespace lang { 
+class Exception;
 } } 
 namespace x10 { namespace io { 
 class Printer;
@@ -47,13 +59,7 @@ namespace x10 { namespace lang {
 class String;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
-namespace x10 { namespace util { 
-class Timer;
+class System;
 } } 
 namespace cpls { namespace util { 
 class Logger;
@@ -63,6 +69,9 @@ template<class TPMGL(U)> class Fun_0_0;
 } } 
 namespace cpls { namespace util { 
 class Utils;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
 } } 
 namespace x10 { namespace lang { 
 class Place;
@@ -82,6 +91,8 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
     
     x10_long FMGL(size);
+    
+    ::cpls::solver::entities::HeuristicParameters* FMGL(heuristicParams);
     
     ::cpls::util::MovePermutation* FMGL(move);
     
@@ -149,9 +160,17 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     
     x10_int FMGL(changeOnDiver);
     
+    x10_long FMGL(mySolverType);
+    
     void _constructor();
     
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
+    virtual void setHeuristicParameters(::cpls::solver::entities::HeuristicParameters* params);
+    virtual ::cpls::solver::entities::HeuristicParameters* getHeuristicParams(
+      );
+    virtual void setMaxIters(x10_long maxIters);
     virtual void solve();
     virtual x10_long solve(x10_long tCost, x10_boolean sLow);
     virtual void initVar(x10_long tCost, x10_boolean sLow);

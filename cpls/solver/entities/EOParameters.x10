@@ -26,5 +26,11 @@ public class EOParameters extends HeuristicParameters{
 	public def getSelSecond(){
 		return this.selSecond;
 	}
+
+ 	public def setParameters(parameters:EOParameters){
+		 this.tauUserSel = parameters.tauUserSel;
+		 this.pdfUserSel = parameters.pdfUserSel;
+		 this.selSecond = parameters.selSecond;
+ 	}
 	
 }

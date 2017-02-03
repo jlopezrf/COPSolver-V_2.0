@@ -13,17 +13,16 @@
 #include <cpls/solver/HeuristicSolver.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
 void cpls::ExplorerNode::_constructor() {
     
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     (this)->::cpls::CPLSNode::_constructor();
     
-    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     
-    //#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
-    ::cpls::ExplorerNode* this__1769 = this;
-    
+    //#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
+    this->cpls::ExplorerNode::__fieldInitializers_cpls_ExplorerNode();
 }
 ::cpls::ExplorerNode* cpls::ExplorerNode::_make() {
     ::cpls::ExplorerNode* this_ = new (::x10aux::alloc_z< ::cpls::ExplorerNode>()) ::cpls::ExplorerNode();
@@ -33,27 +32,29 @@ void cpls::ExplorerNode::_constructor() {
 
 
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
 void cpls::ExplorerNode::initialize(::cpls::entities::NodeConfig* config,
                                     x10_int idPlace, ::cpls::entities::PoolConfig* configPool,
-                                    x10_long problemSize) {
+                                    x10_long problemSize, x10_long inSeed,
+                                    x10_long maxIter) {
     
-    //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
-    ::cpls::CPLSNode::initialize(config, idPlace, configPool, problemSize);
+    //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
+    ::cpls::CPLSNode::initialize(config, idPlace, configPool, problemSize,
+                                 inSeed, maxIter);
 }
 
-//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
 void cpls::ExplorerNode::start() {
     
-    //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+    //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__1770 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__1770; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26293 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__26293; }))));
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();
 }
 
-//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/ExplorerNode.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
 ::cpls::ExplorerNode* cpls::ExplorerNode::cpls__ExplorerNode____this__cpls__ExplorerNode(
   ) {
     return this;

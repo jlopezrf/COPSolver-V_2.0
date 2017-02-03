@@ -21,7 +21,6 @@ public class NodeInstancer{
  		//******************InterTeam Communication Parameters distribution to Nodes*****************//
  		for(conf in configNodes){
  			conf.setOutTeamTime(configCPLS.getOutTeamTime());
- 			//conf.
  		}
  		//******************************************************************************************//		
  
@@ -34,7 +33,12 @@ public class NodeInstancer{
  		if(configCPLS.getIsThereAMasterNode()){
  			numExplorers = numExplorers - 1;
  			masterNode = NodeFactory.make(CPLSOptionsEnum.NodeRoles.MASTER_NODE);
- 			masterNode.initialize(configNodes(0,0), Place.FIRST_PLACE.id as Int, configCPLS.getCPLSPoolConfig(), configCPLS.getProblemModel().getSize());
+ 			masterNode.initialize(configNodes(0,0),
+ 								Place.FIRST_PLACE.id as Int,
+ 								configCPLS.getCPLSPoolConfig(),
+ 								configCPLS.getProblemModel().getSize(),
+ 								configCPLS.getSeed(),
+ 								configCPLS.getMaxIters());
  			//Console.OUT.println("Heuristica del master: " + HeuristicFactory.getHeuristicName(configNodes(0,0).getHeuristic()));
  		}
  		var explorersGroup:PlaceGroup = PlaceGroup.make(numExplorers);
@@ -48,20 +52,40 @@ public class NodeInstancer{
  		finish{	
  			for (p in headersGroup) at (p) async{
  				if(configCPLS.getIsThereAMasterNode() && p.id()==0){
- 					headNodes().initialize(configNodes(p.id(), 1), p.id() as Int, configCPLS.getTeamsPoolConfig(),  configCPLS.getProblemModel().getSize());
+ 					headNodes().initialize(configNodes(p.id(), 1),
+ 											p.id() as Int,
+ 											configCPLS.getTeamsPoolConfig(),
+ 											configCPLS.getProblemModel().getSize(),
+ 											configCPLS.getSeed(),
+ 											configCPLS.getMaxIters());
  				}else{
- 					headNodes().initialize(configNodes(p.id(),0), p.id() as Int, configCPLS.getTeamsPoolConfig(),  configCPLS.getProblemModel().getSize());
+ 					headNodes().initialize(configNodes(p.id(),0),
+ 											p.id() as Int,
+ 											configCPLS.getTeamsPoolConfig(), 
+ 											configCPLS.getProblemModel().getSize(),
+ 											configCPLS.getSeed(),
+ 											configCPLS.getMaxIters());
  				}
  			}
  			for (p in explorersGroup) at (p) async{
  				if(configCPLS.getIsThereAMasterNode()){
  					val indice_i = (p.id() as Int + 1) / (configNodes.numElems_2 - 1);
  					val indice_j = ((p.id() as Int + 1) % (configNodes.numElems_2 - 1)) + 1;
- 					explorersNodes().initialize(configNodes(indice_i,indice_j), p.id() as Int, null,  configCPLS.getProblemModel().getSize());
+ 					explorersNodes().initialize(configNodes(indice_i,indice_j),
+ 												p.id() as Int,
+ 												null, 
+ 												configCPLS.getProblemModel().getSize(),
+ 												configCPLS.getSeed(),
+ 												configCPLS.getMaxIters());
  				}else{
  					val indice_i = p.id() as Int / (configNodes.numElems_2 -1);
  					val indice_j = p.id() as Int % (configNodes.numElems_2 - 1);
- 					explorersNodes().initialize(configNodes(indice_i,indice_j + 1), p.id() as Int, null,  configCPLS.getProblemModel().getSize());
+ 					explorersNodes().initialize(configNodes(indice_i,indice_j + 1),
+ 															p.id() as Int,
+ 															null, 
+ 															configCPLS.getProblemModel().getSize(),
+ 															configCPLS.getSeed(),
+ 															configCPLS.getMaxIters());
  					//Console.OUT.println("Explorer Place: " + p);
  				}
  			}

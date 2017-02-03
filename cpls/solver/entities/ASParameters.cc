@@ -8,27 +8,27 @@
 #include <x10/lang/Boolean.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 
-//#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 void cpls::solver::entities::ASParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__10 = this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->cpls::solver::entities::ASParameters::__fieldInitializers_cpls_solver_entities_ASParameters();
 }
 ::cpls::solver::entities::ASParameters* cpls::solver::entities::ASParameters::_make(
@@ -40,7 +40,7 @@ void cpls::solver::entities::ASParameters::_constructor() {
 
 
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 void cpls::solver::entities::ASParameters::_constructor(x10_long nVarToReset,
                                                         x10_int resetPercent,
                                                         x10_boolean exhaustive,
@@ -49,34 +49,33 @@ void cpls::solver::entities::ASParameters::_constructor(x10_long nVarToReset,
                                                         x10_int resetLimit,
                                                         x10_int probSelectLocMin,
                                                         x10_boolean firstBest) {
-    ::cpls::solver::entities::HeuristicParameters* this__11 =
-      this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->cpls::solver::entities::ASParameters::__fieldInitializers_cpls_solver_entities_ASParameters();
     
-    //#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(nVarToReset) = nVarToReset;
     
-    //#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(resetPercent) = resetPercent;
     
-    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(exhaustive) = exhaustive;
     
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(freezeLocMin) = freezeLocMin;
     
-    //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(freezeSwap) = freezeSwap;
     
-    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(resetLimit) = resetLimit;
     
-    //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(probSelectLocMin) = probSelectLocMin;
     
-    //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     this->FMGL(firstBest) = firstBest;
 }
 ::cpls::solver::entities::ASParameters* cpls::solver::entities::ASParameters::_make(
@@ -92,79 +91,108 @@ void cpls::solver::entities::ASParameters::_constructor(x10_long nVarToReset,
 
 
 
-//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_long cpls::solver::entities::ASParameters::getNVarToReset(
   ) {
     
-    //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(nVarToReset);
     
 }
 
-//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_int cpls::solver::entities::ASParameters::getResetPercent(
   ) {
     
-    //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(resetPercent);
     
 }
 
-//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_boolean cpls::solver::entities::ASParameters::getExhaustive(
   ) {
     
-    //#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(exhaustive);
     
 }
 
-//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_int cpls::solver::entities::ASParameters::getFreezeLocMin(
   ) {
     
-    //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(freezeLocMin);
     
 }
 
-//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_int cpls::solver::entities::ASParameters::getFreezeSwap(
   ) {
     
-    //#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(freezeSwap);
     
 }
 
-//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_int cpls::solver::entities::ASParameters::getResetLimit(
   ) {
     
-    //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(resetLimit);
     
 }
 
-//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_int cpls::solver::entities::ASParameters::getProbSelectLocMin(
   ) {
     
-    //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(probSelectLocMin);
     
 }
 
-//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 x10_boolean cpls::solver::entities::ASParameters::getFirstBest(
   ) {
     
-    //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+    //#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
     return this->FMGL(firstBest);
     
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/ASParameters.x10"
+//#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+void cpls::solver::entities::ASParameters::setParameters(
+  ::cpls::solver::entities::ASParameters* parameters) {
+    
+    //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(nVarToReset) = ::x10aux::nullCheck(parameters)->FMGL(nVarToReset);
+    
+    //#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(resetPercent) = ::x10aux::nullCheck(parameters)->FMGL(resetPercent);
+    
+    //#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(exhaustive) = ::x10aux::nullCheck(parameters)->FMGL(exhaustive);
+    
+    //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(freezeLocMin) = ::x10aux::nullCheck(parameters)->FMGL(freezeLocMin);
+    
+    //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(freezeSwap) = ::x10aux::nullCheck(parameters)->FMGL(freezeSwap);
+    
+    //#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(resetLimit) = ::x10aux::nullCheck(parameters)->FMGL(resetLimit);
+    
+    //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(probSelectLocMin) = ::x10aux::nullCheck(parameters)->FMGL(probSelectLocMin);
+    
+    //#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
+    this->FMGL(firstBest) = ::x10aux::nullCheck(parameters)->FMGL(firstBest);
+}
+
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/ASParameters.x10"
 ::cpls::solver::entities::ASParameters* cpls::solver::entities::ASParameters::cpls__solver__entities__ASParameters____this__cpls__solver__entities__ASParameters(
   ) {
     return this;

@@ -47,7 +47,8 @@ class MasterNode : public ::cpls::CPLSNode   {
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
                             ::cpls::entities::PoolConfig* cplsPoolConfig,
-                            x10_long problemSize);
+                            x10_long problemSize, x10_long inSeed,
+                            x10_long maxIters);
     virtual void start();
     virtual ::cpls::MasterNode* cpls__MasterNode____this__cpls__MasterNode(
       );

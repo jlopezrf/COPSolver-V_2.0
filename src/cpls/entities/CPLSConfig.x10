@@ -67,7 +67,7 @@ public class CPLSConfig {
  	//public def setRoTSParameters(roTSParam:RoTSParameters){this.roTSParam = roTSParam;}
  	//public def getRoTSParameters(){return this.roTSParam;}
 	public def getMaxTime(){return this.maxTime;}
-	public def getPMaxIters(){return this.pmaxIters;}
+	public def getMaxIters(){return this.pmaxIters;}
 	public def getMaxRestarts(){return this.maxRestarts;}
 	public def getReportPart(){return this.reportPart;}
 	public def getModParams(){return this.modParams;}
@@ -76,7 +76,7 @@ public class CPLSConfig {
 	public def getReport(){return this.report;}
 	public def getUpdate(){return this.update;} 
 	public def setMaxTime(maxTime:Long){this.maxTime = maxTime;}
-	public def setPMaxIters(pmaxIters:Long){this.pmaxIters = pmaxIters;}
+	public def setMaxIters(pmaxIters:Long){this.pmaxIters = pmaxIters;}
 	public def setMaxRestarts(maxRestarts:Int){this.maxRestarts = maxRestarts;}
 	public def setReportPart(reportPart:Boolean){this.reportPart = reportPart;}
 	public def setModParams(modParams:Int){this.modParams = modParams;}

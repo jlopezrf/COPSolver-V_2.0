@@ -20,4 +20,9 @@ public class RoTSParameters extends HeuristicParameters{
 	public def getAspirationFactorUS(){
 		return this.aspirationFactorUS;
 	}
+
+ 	public def setParameters(parameters:RoTSParameters){
+ 		this.tabuDurationFactorUS = parameters.tabuDurationFactorUS;
+ 		this.aspirationFactorUS = parameters.aspirationFactorUS;
+ 	}
 }

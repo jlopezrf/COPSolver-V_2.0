@@ -4,15 +4,19 @@
 
 #include <x10/compiler/Synthetic.h>
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/HeuristicParameters.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/HeuristicParameters.x10"
+void cpls::solver::entities::HeuristicParameters::setParameters(::cpls::solver::entities::HeuristicParameters* parameters) {
+ 
+}
+
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/HeuristicParameters.x10"
 ::cpls::solver::entities::HeuristicParameters* cpls::solver::entities::HeuristicParameters::cpls__solver__entities__HeuristicParameters____this__cpls__solver__entities__HeuristicParameters(
   ) {
     return this;
     
 }
 void cpls::solver::entities::HeuristicParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__3 = this;
-    
+    this->cpls::solver::entities::HeuristicParameters::__fieldInitializers_cpls_solver_entities_HeuristicParameters();
 }
 
 void cpls::solver::entities::HeuristicParameters::__fieldInitializers_cpls_solver_entities_HeuristicParameters(

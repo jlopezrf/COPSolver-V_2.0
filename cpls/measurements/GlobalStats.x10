@@ -39,19 +39,19 @@ public class GlobalStats{
 	 public def setIters(iters:Long){this.iters = iters;}
 	 public def getIters(){return this.iters;}
 	 /** Number of local minimum */
-	 private var locmin : Int = 0n;
+	 public var locmin : Int = 0n;
 	 public def setLocMin(locmin:Int){this.locmin = locmin;}
 	 public def getLocMin(){return this.locmin;}
 	 /** Number of swaps */
-	 private var swaps : Long = 0;
+	 public var swaps : Long = 0;
 	 public def setSwaps(swaps:Long){this.swaps = swaps;}
 	 public def getSwaps(){return this.swaps;}
 	 /** Number of resets */
-	 private var reset : Int = 0n;
+	 public var reset : Int = 0n;
 	 public def setReset(reset:Int){this.reset = reset;}
 	 public def getReset(){return this.reset;}
 	 /** number of same variables */
-	 private var same : Long = 0;
+	 public var same : Long = 0;
 	 public def setSame(same:Long){this.same = same;}
 	 public def getSame(){return same;}
 	 /** number of restarts */  

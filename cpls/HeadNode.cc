@@ -18,22 +18,20 @@
 #include <cpls/entities/State.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 
-//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 void cpls::HeadNode::_constructor() {
     
-    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     (this)->::cpls::CPLSNode::_constructor();
     
-    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
-    ::cpls::HeadNode* this__3943 = this;
-    ::x10aux::nullCheck(this__3943)->FMGL(teamPool) = (::x10aux::class_cast_unchecked< ::cpls::SmartPool*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__3943)->FMGL(isThereAMasterNode) = false;
+    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
+    this->cpls::HeadNode::__fieldInitializers_cpls_HeadNode();
 }
 ::cpls::HeadNode* cpls::HeadNode::_make() {
     ::cpls::HeadNode* this_ = new (::x10aux::alloc_z< ::cpls::HeadNode>()) ::cpls::HeadNode();
@@ -43,53 +41,49 @@ void cpls::HeadNode::_constructor() {
 
 
 
-//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 void cpls::HeadNode::initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
                                 ::cpls::entities::PoolConfig* teamPoolConfig,
-                                x10_long problemSize) {
+                                x10_long problemSize, x10_long inSeed,
+                                x10_long maxIter) {
     
-    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::cpls::CPLSNode::initialize(config, idPlace, teamPoolConfig,
-                                 problemSize);
+                                 problemSize, inSeed, maxIter);
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
-    this->FMGL(teamPool) = (__extension__ ({
-        ::cpls::SmartPool* alloc__172 =  (new (::x10aux::alloc_z< ::cpls::SmartPool>()) ::cpls::SmartPool());
-        (alloc__172)->::cpls::SmartPool::_constructor(::x10aux::nullCheck(teamPoolConfig)->getProblemSize(),
-                                                      ::x10aux::nullCheck(teamPoolConfig)->getPoolSize(),
-                                                      ((x10_long)(::x10aux::nullCheck(teamPoolConfig)->getPoolMode())),
-                                                      ::x10aux::nullCheck(teamPoolConfig)->getMinDist());
-        alloc__172;
-    }))
-    ;
+    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
+    this->FMGL(teamPool) = ::cpls::SmartPool::_make(::x10aux::nullCheck(teamPoolConfig)->getProblemSize(),
+                                                    ::x10aux::nullCheck(teamPoolConfig)->getPoolSize(),
+                                                    ((x10_long)(::x10aux::nullCheck(teamPoolConfig)->getPoolMode())),
+                                                    ::x10aux::nullCheck(teamPoolConfig)->getMinDist());
 }
 
-//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 void cpls::HeadNode::setMasterNodeIndicator(x10_boolean isThereAMasterNode) {
     
-    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     this->FMGL(isThereAMasterNode) = isThereAMasterNode;
 }
 
-//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 void cpls::HeadNode::start() {
     
-    //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__3944 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Head"); strLit__3944; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26294 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Head"); strLit__26294; }))));
     
-    //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();
 }
 
-//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 void cpls::HeadNode::getBestConf() {
     
-    //#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+    //#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::x10aux::nullCheck(this->FMGL(teamPool))->getBestConf();
 }
 
-//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/HeadNode.x10"
+//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
 ::cpls::HeadNode* cpls::HeadNode::cpls__HeadNode____this__cpls__HeadNode(
   ) {
     return this;

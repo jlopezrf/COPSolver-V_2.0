@@ -6,18 +6,16 @@
 #include <x10/lang/Double.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 
-//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 
-//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 void cpls::solver::entities::RoTSParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__17 = this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
-    ::cpls::solver::entities::RoTSParameters* this__16 = this;
-    ::x10aux::nullCheck(this__16)->FMGL(tabuDurationFactorUS) = 0.0;
-    ::x10aux::nullCheck(this__16)->FMGL(aspirationFactorUS) = 0.0;
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
+    this->cpls::solver::entities::RoTSParameters::__fieldInitializers_cpls_solver_entities_RoTSParameters();
 }
 ::cpls::solver::entities::RoTSParameters* cpls::solver::entities::RoTSParameters::_make(
   ) {
@@ -28,23 +26,18 @@ void cpls::solver::entities::RoTSParameters::_constructor() {
 
 
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 void cpls::solver::entities::RoTSParameters::_constructor(x10_double tabuDurationFactorUS,
                                                           x10_double aspirationFactorUS) {
-    ::cpls::solver::entities::HeuristicParameters* this__19 =
-      this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
-    ::cpls::solver::entities::RoTSParameters* this__18 = this;
-    ::x10aux::nullCheck(this__18)->FMGL(tabuDurationFactorUS) =
-      0.0;
-    ::x10aux::nullCheck(this__18)->FMGL(aspirationFactorUS) =
-      0.0;
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
+    this->cpls::solver::entities::RoTSParameters::__fieldInitializers_cpls_solver_entities_RoTSParameters();
     
-    //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+    //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
     this->FMGL(tabuDurationFactorUS) = tabuDurationFactorUS;
     
-    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
     this->FMGL(aspirationFactorUS) = aspirationFactorUS;
 }
 ::cpls::solver::entities::RoTSParameters* cpls::solver::entities::RoTSParameters::_make(
@@ -57,25 +50,36 @@ void cpls::solver::entities::RoTSParameters::_constructor(x10_double tabuDuratio
 
 
 
-//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 x10_double cpls::solver::entities::RoTSParameters::getTabuDurationFactorUS(
   ) {
     
-    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
     return this->FMGL(tabuDurationFactorUS);
     
 }
 
-//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 x10_double cpls::solver::entities::RoTSParameters::getAspirationFactorUS(
   ) {
     
-    //#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+    //#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
     return this->FMGL(aspirationFactorUS);
     
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/RoTSParameters.x10"
+//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
+void cpls::solver::entities::RoTSParameters::setParameters(
+  ::cpls::solver::entities::RoTSParameters* parameters) {
+    
+    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
+    this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(parameters)->FMGL(tabuDurationFactorUS);
+    
+    //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
+    this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(parameters)->FMGL(aspirationFactorUS);
+}
+
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/RoTSParameters.x10"
 ::cpls::solver::entities::RoTSParameters* cpls::solver::entities::RoTSParameters::cpls__solver__entities__RoTSParameters____this__cpls__solver__entities__RoTSParameters(
   ) {
     return this;

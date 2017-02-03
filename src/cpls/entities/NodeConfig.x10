@@ -1,9 +1,8 @@
 package cpls.entities;
 
 import cpls.HeuristicFactory;
-import cpls.CPLSOptionsEnum.NodeRoles;
-import cpls.CPLSOptionsEnum.HeuristicsSupported;
-import cpls.solver.entities.HeuristicParameters;
+import cpls.CPLSOptionsEnum;
+import cpls.solver.entities.*;
 
 public abstract class NodeConfig{
  	
@@ -21,6 +20,17 @@ public abstract class NodeConfig{
  	
  	public def setHeuristic(heuristic:Int){
  		this.heuristic = heuristic;
+ 		switch(heuristic){
+ 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:
+ 				this.heuristicParameters = new ASParameters();
+ 				break;
+ 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:
+ 				this.heuristicParameters = new EOParameters();
+ 				break;
+ 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL:
+ 				this.heuristicParameters = new RoTSParameters();
+ 				break;
+ 		}
  	}
  
  	public def getHeuristic(){
@@ -36,7 +46,17 @@ public abstract class NodeConfig{
  	}
  
  	public def setHeuristicParameters(heuristicParameters:HeuristicParameters){
- 		this.heuristicParameters = heuristicParameters;
+ 		switch(heuristic){
+ 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:
+ 				this.heuristicParameters.setParameters(heuristicParameters as ASParameters);
+ 				break;
+ 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:
+ 				this.heuristicParameters.setParameters(heuristicParameters as EOParameters);
+ 				break;
+ 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL:
+ 				this.heuristicParameters.setParameters(heuristicParameters as RoTSParameters);
+ 				break;
+ 		}
  	}
  
  	public def getHeuristicParameters(){

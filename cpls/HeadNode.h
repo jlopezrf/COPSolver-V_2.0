@@ -61,7 +61,8 @@ class HeadNode : public ::cpls::CPLSNode   {
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
                             ::cpls::entities::PoolConfig* teamPoolConfig,
-                            x10_long problemSize);
+                            x10_long problemSize, x10_long inSeed,
+                            x10_long maxIter);
     virtual void setMasterNodeIndicator(x10_boolean isThereAMasterNode);
     virtual void start();
     virtual void getBestConf();

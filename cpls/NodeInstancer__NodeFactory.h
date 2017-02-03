@@ -11,6 +11,9 @@ namespace cpls {
 class CPLSNode;
 } 
 namespace cpls { 
+class CPLSOptionsEnum__NodeRoles;
+} 
+namespace cpls { 
 class ExplorerNode;
 } 
 namespace cpls { 
@@ -75,8 +78,7 @@ class NodeInstancer__NodeFactory   {
         
     }
     void _constructor() {
-        ::cpls::NodeInstancer__NodeFactory this__4921 = (*this);
-        
+        (*this)->cpls::NodeInstancer__NodeFactory::__fieldInitializers_cpls_NodeInstancer_NodeFactory();
     }
     static ::cpls::NodeInstancer__NodeFactory _make() {
         ::cpls::NodeInstancer__NodeFactory this_; 

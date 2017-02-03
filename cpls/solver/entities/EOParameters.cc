@@ -7,21 +7,18 @@
 #include <x10/lang/Int.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 
-//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 
-//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 
-//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 void cpls::solver::entities::EOParameters::_constructor() {
-    ::cpls::solver::entities::HeuristicParameters* this__17 = this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
-    ::cpls::solver::entities::EOParameters* this__16 = this;
-    ::x10aux::nullCheck(this__16)->FMGL(tauUserSel) = 0.0;
-    ::x10aux::nullCheck(this__16)->FMGL(pdfUserSel) = ((x10_int)0);
-    ::x10aux::nullCheck(this__16)->FMGL(selSecond) = ((x10_int)0);
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+    this->cpls::solver::entities::EOParameters::__fieldInitializers_cpls_solver_entities_EOParameters();
 }
 ::cpls::solver::entities::EOParameters* cpls::solver::entities::EOParameters::_make(
   ) {
@@ -32,25 +29,22 @@ void cpls::solver::entities::EOParameters::_constructor() {
 
 
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 void cpls::solver::entities::EOParameters::_constructor(x10_double tauUserSel,
                                                         x10_int pdfUserSel,
                                                         x10_int selSecond) {
-    ::cpls::solver::entities::HeuristicParameters* this__19 = this;
+    (this)->::cpls::solver::entities::HeuristicParameters::_constructor();
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
-    ::cpls::solver::entities::EOParameters* this__18 = this;
-    ::x10aux::nullCheck(this__18)->FMGL(tauUserSel) = 0.0;
-    ::x10aux::nullCheck(this__18)->FMGL(pdfUserSel) = ((x10_int)0);
-    ::x10aux::nullCheck(this__18)->FMGL(selSecond) = ((x10_int)0);
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+    this->cpls::solver::entities::EOParameters::__fieldInitializers_cpls_solver_entities_EOParameters();
     
-    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     this->FMGL(tauUserSel) = tauUserSel;
     
-    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     this->FMGL(pdfUserSel) = pdfUserSel;
     
-    //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     this->FMGL(selSecond) = selSecond;
 }
 ::cpls::solver::entities::EOParameters* cpls::solver::entities::EOParameters::_make(
@@ -63,34 +57,48 @@ void cpls::solver::entities::EOParameters::_constructor(x10_double tauUserSel,
 
 
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 x10_double cpls::solver::entities::EOParameters::getTauUserSel(
   ) {
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     return this->FMGL(tauUserSel);
     
 }
 
-//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 x10_int cpls::solver::entities::EOParameters::getPdfUserSel(
   ) {
     
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     return this->FMGL(pdfUserSel);
     
 }
 
-//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 x10_int cpls::solver::entities::EOParameters::getSelSecond(
   ) {
     
-    //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+    //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
     return this->FMGL(selSecond);
     
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/entities/EOParameters.x10"
+//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+void cpls::solver::entities::EOParameters::setParameters(
+  ::cpls::solver::entities::EOParameters* parameters) {
+    
+    //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+    this->FMGL(tauUserSel) = ::x10aux::nullCheck(parameters)->FMGL(tauUserSel);
+    
+    //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+    this->FMGL(pdfUserSel) = ::x10aux::nullCheck(parameters)->FMGL(pdfUserSel);
+    
+    //#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
+    this->FMGL(selSecond) = ::x10aux::nullCheck(parameters)->FMGL(selSecond);
+}
+
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/entities/EOParameters.x10"
 ::cpls::solver::entities::EOParameters* cpls::solver::entities::EOParameters::cpls__solver__entities__EOParameters____this__cpls__solver__entities__EOParameters(
   ) {
     return this;

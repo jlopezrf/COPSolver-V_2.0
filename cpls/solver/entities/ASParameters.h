@@ -35,6 +35,8 @@ class ASParameters : public ::cpls::solver::entities::HeuristicParameters
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::entities::HeuristicParameters::setParameters;
+    
     x10_long FMGL(nVarToReset);
     
     x10_int FMGL(resetPercent);
@@ -72,6 +74,7 @@ class ASParameters : public ::cpls::solver::entities::HeuristicParameters
     virtual x10_int getResetLimit();
     virtual x10_int getProbSelectLocMin();
     virtual x10_boolean getFirstBest();
+    virtual void setParameters(::cpls::solver::entities::ASParameters* parameters);
     virtual ::cpls::solver::entities::ASParameters* cpls__solver__entities__ASParameters____this__cpls__solver__entities__ASParameters(
       );
     virtual void __fieldInitializers_cpls_solver_entities_ASParameters(

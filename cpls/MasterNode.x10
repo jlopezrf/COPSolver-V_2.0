@@ -13,9 +13,9 @@ public class MasterNode extends CPLSNode{
  		super();
  	}
 
- 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long){
+ 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long, maxIters:Long){
  		//super.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
- 		super.initialize(config, idPlace, cplsPoolConfig, problemSize);
+ 		super.initialize(config, idPlace, cplsPoolConfig, problemSize, inSeed, maxIters);
  		this.cplsPool = new SmartPool(cplsPoolConfig.getProblemSize(), cplsPoolConfig.getPoolSize(), cplsPoolConfig.getPoolMode(), cplsPoolConfig.getMinDist());
  		//Console.OUT.println("Master Inicializado en lo nodo: " + idPlace + ", con la heuristica: " +
  		//		HeuristicFactory.getHeuristicName(config.getHeuristic()));

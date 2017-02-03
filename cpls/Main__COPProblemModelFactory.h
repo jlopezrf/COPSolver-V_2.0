@@ -22,9 +22,12 @@ class OptionsParser;
 namespace cpls { 
 class Main;
 } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
 namespace cpls { namespace problem { 
 class MSPModel;
 } } 
@@ -105,8 +108,7 @@ class Main__COPProblemModelFactory   {
         
     }
     void _constructor() {
-        ::cpls::Main__COPProblemModelFactory this__21347 = (*this);
-        
+        (*this)->cpls::Main__COPProblemModelFactory::__fieldInitializers_cpls_Main_COPProblemModelFactory();
     }
     static ::cpls::Main__COPProblemModelFactory _make() {
         ::cpls::Main__COPProblemModelFactory this_; 

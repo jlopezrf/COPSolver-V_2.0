@@ -29,6 +29,8 @@ class EOParameters : public ::cpls::solver::entities::HeuristicParameters
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::entities::HeuristicParameters::setParameters;
+    
     x10_double FMGL(tauUserSel);
     
     x10_int FMGL(pdfUserSel);
@@ -48,6 +50,7 @@ class EOParameters : public ::cpls::solver::entities::HeuristicParameters
     virtual x10_double getTauUserSel();
     virtual x10_int getPdfUserSel();
     virtual x10_int getSelSecond();
+    virtual void setParameters(::cpls::solver::entities::EOParameters* parameters);
     virtual ::cpls::solver::entities::EOParameters* cpls__solver__entities__EOParameters____this__cpls__solver__entities__EOParameters(
       );
     virtual void __fieldInitializers_cpls_solver_entities_EOParameters(

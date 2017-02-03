@@ -39,9 +39,12 @@ public abstract class CPLSNode{
  		this.pointersComunication = new ArrayList[PlaceLocalHandle[CPLSNode]]();
  	}
  
- 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long){
+ 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long, maxIter:Long){
  		//Console.OUT.println("Se inicializa con la heurisica" + HeuristicFactory.getHeuristicName(config.getHeuristic()));
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
+ 		this.heuristicSolver.setMaxIters(maxIter);
+ 		this.heuristicSolver.setSeed(inSeed);
+ 		this.heuristicSolver.setHeuristicParameters(config.getHeuristicParameters());
  		this.bestSolHere = new Rail[Int](problemSize, 0n);
  		this.myPlaceId = idPlace;
  		//Console.OUT.println("Nodo inicializado en el proceso" + idPlace);
@@ -64,9 +67,9 @@ public abstract class CPLSNode{
  		this.pointersComunication.add(pointerToPlaces);
  	}
  	
- 	public def configHeuristic(problemModel:ProblemGenericModel){
+ 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		//Console.OUT.println("Se ingresa a setear el ProblemModel en " + here.id);
- 		this.heuristicSolver.setProblemModel(problemModel);
+ 		this.heuristicSolver.configHeuristic(problemModel, opts);
  	}
  	
  	public def sendkill(){
@@ -102,9 +105,7 @@ public abstract class CPLSNode{
  	 		heuristicSolver.setSeed(random.nextLong());
  	 		time = -System.nanoTime();
  	 		cost = heuristicSolver.solve(targetCost, strictLow);
- 	 		Console.OUT.println("Costo en el start() de CPLSNODE (Placeid:" + myPlaceId + "): " + cost);
  	 		time += System.nanoTime();
- 	  
  	 		interTeamKill = true;
  	 
  	 		if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){

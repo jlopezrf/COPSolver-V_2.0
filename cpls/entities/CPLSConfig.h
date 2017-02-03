@@ -113,7 +113,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual void setAffectedPer(x10_double affectedPer);
     virtual x10_double getAffectedPer();
     virtual x10_long getMaxTime();
-    virtual x10_long getPMaxIters();
+    virtual x10_long getMaxIters();
     virtual x10_int getMaxRestarts();
     virtual x10_boolean getReportPart();
     virtual x10_int getModParams();
@@ -122,7 +122,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual x10_long getReport();
     virtual x10_long getUpdate();
     virtual void setMaxTime(x10_long maxTime);
-    virtual void setPMaxIters(x10_long pmaxIters);
+    virtual void setMaxIters(x10_long pmaxIters);
     virtual void setMaxRestarts(x10_int maxRestarts);
     virtual void setReportPart(x10_boolean reportPart);
     virtual void setModParams(x10_int modParams);

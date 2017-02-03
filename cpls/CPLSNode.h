@@ -52,9 +52,15 @@ class PoolConfig;
 namespace cpls { 
 class HeuristicFactory;
 } 
+namespace cpls { namespace solver { namespace entities { 
+class HeuristicParameters;
+} } } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
+namespace cpls { 
+class ParamManager;
+} 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -67,8 +73,8 @@ class Any;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace util { 
-class Timer;
+namespace x10 { namespace lang { 
+class System;
 } } 
 namespace x10 { namespace lang { 
 class Place;
@@ -144,16 +150,18 @@ class CPLSNode : public ::x10::lang::X10Class   {
     
     virtual void initialize(::cpls::entities::NodeConfig* config, x10_int idPlace,
                             ::cpls::entities::PoolConfig* cplsPoolConfig,
-                            x10_long problemSize);
+                            x10_long problemSize, x10_long inSeed,
+                            x10_long maxIter);
     virtual void setHeuristicSolver(::cpls::solver::HeuristicSolver* hs);
     virtual void setPlaceId(x10_int placeId);
     virtual void setPointersCommunication(::x10::util::ArrayList< ::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> >* pointersComunication);
     virtual void addPointerComm(::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> pointerToPlaces);
-    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel);
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
     virtual void sendkill();
     virtual void start();
-    virtual void start(x10_long seedIn, x10_long targetCost, x10_boolean strictLow,
-                       x10_long iterations);
+    virtual void start(x10_long seedIn, x10_long targetCost,
+                       x10_boolean strictLow, x10_long iterations);
     virtual void setStats_();
     virtual void setStats(::cpls::measurements::GlobalStats* c);
     virtual void accStats(::cpls::measurements::GlobalStats* c);
