@@ -113,43 +113,43 @@ void cpls::solver::AdaptiveSearch::configHeuristic(::cpls::problem::ProblemGener
     
     //#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(nVarToReset) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                (__extension__ ({ static ::x10::lang::String* strLit__27148 = ::x10aux::makeStringLit("--AS_varToReset"); strLit__27148; })),
+                                (__extension__ ({ static ::x10::lang::String* strLit__27150 = ::x10aux::makeStringLit("--AS_varToReset"); strLit__27150; })),
                                 ((x10_long)-1ll));
     
     //#line 81 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(resetPercent) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                 (__extension__ ({ static ::x10::lang::String* strLit__27149 = ::x10aux::makeStringLit("--AS_resetPer"); strLit__27149; })),
+                                 (__extension__ ({ static ::x10::lang::String* strLit__27151 = ::x10aux::makeStringLit("--AS_resetPer"); strLit__27151; })),
                                  ((x10_int)10));
     
     //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(freezeLocMin) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                 (__extension__ ({ static ::x10::lang::String* strLit__27150 = ::x10aux::makeStringLit("--AS_freezeLocMin"); strLit__27150; })),
+                                 (__extension__ ({ static ::x10::lang::String* strLit__27152 = ::x10aux::makeStringLit("--AS_freezeLocMin"); strLit__27152; })),
                                  ((x10_int)5));
     
     //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(freezeSwap) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__27151 = ::x10aux::makeStringLit("--AS_freezeSwap"); strLit__27151; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__27153 = ::x10aux::makeStringLit("--AS_freezeSwap"); strLit__27153; })),
                                ((x10_int)5));
     
     //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(resetLimit) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__27152 = ::x10aux::makeStringLit("--AS_resetLimit"); strLit__27152; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__27154 = ::x10aux::makeStringLit("--AS_resetLimit"); strLit__27154; })),
                                ((x10_int)5));
     
     //#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(probSelectLocMin) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                     (__extension__ ({ static ::x10::lang::String* strLit__27153 = ::x10aux::makeStringLit("--AS_probSelecLocMin"); strLit__27153; })),
+                                     (__extension__ ({ static ::x10::lang::String* strLit__27155 = ::x10aux::makeStringLit("--AS_probSelecLocMin"); strLit__27155; })),
                                      ((x10_int)0));
     
     //#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(firstBest) = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                       (__extension__ ({ static ::x10::lang::String* strLit__27154 = ::x10aux::makeStringLit("--AS_firstBest"); strLit__27154; })),
+                                                       (__extension__ ({ static ::x10::lang::String* strLit__27156 = ::x10aux::makeStringLit("--AS_firstBest"); strLit__27156; })),
                                                        ((x10_int)0)),
                                                      ((x10_int)1)));
     
     //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(exhaustive) = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__27155 = ::x10aux::makeStringLit("--AS_exhaustive"); strLit__27155; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__27157 = ::x10aux::makeStringLit("--AS_exhaustive"); strLit__27157; })),
                                                         ((x10_int)0)),
                                                       ((x10_int)1)));
 }
@@ -292,14 +292,14 @@ x10_long cpls::solver::AdaptiveSearch::search() {
     x10_long sz = ::x10aux::nullCheck(this->FMGL(problemModel))->getSize();
     
     //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__27156 = ::x10aux::makeStringLit("Costo (AdaptiveSearch): "); strLit__27156; })), this->FMGL(currentCost)));
+    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__27158 = ::x10aux::makeStringLit("Costo (AdaptiveSearch): "); strLit__27158; })), this->FMGL(currentCost)));
     
     //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
-    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__27157 = ::x10aux::makeStringLit(". Con variables: "); strLit__27157; })),
+    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__27159 = ::x10aux::makeStringLit(". Con variables: "); strLit__27159; })),
                               ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables());
     
     //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__27158 = ::x10aux::makeStringLit("\n"); strLit__27158; })));
+    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__27160 = ::x10aux::makeStringLit("\n"); strLit__27160; })));
     
     //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/AdaptiveSearch.x10"
     return this->FMGL(currentCost);

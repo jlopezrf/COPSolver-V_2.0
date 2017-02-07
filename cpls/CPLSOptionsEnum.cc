@@ -38,7 +38,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26221 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__26221; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26223 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__26223; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum::equals(::x10::lang::Any* other) {
@@ -261,7 +261,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Supported
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__SupportedProblems::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26234 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__26234; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26236 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__26236; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__SupportedProblems::equals(::x10::lang::Any* other) {
@@ -443,7 +443,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Heuristic
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__HeuristicsSupported::toString(
   ) {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26247 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__26247; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26249 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__26249; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__HeuristicsSupported::equals(::x10::lang::Any* other) {
@@ -575,7 +575,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__NodeRoles::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26260 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__26260; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26262 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__26262; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__NodeRoles::equals(::x10::lang::Any* other) {
@@ -704,7 +704,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevel
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolLevels::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26273 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__26273; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26275 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__26275; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolLevels::equals(::x10::lang::Any* other) {
@@ -802,7 +802,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolModes
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolModes::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__26286 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__26286; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__26288 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__26288; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolModes::equals(::x10::lang::Any* other) {

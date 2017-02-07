@@ -58,7 +58,7 @@ void cpls::MasterNode::start() {
     
     //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/MasterNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26406 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Master"); strLit__26406; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26408 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Master"); strLit__26408; }))));
     
     //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/MasterNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();

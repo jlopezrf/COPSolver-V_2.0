@@ -113,7 +113,6 @@ public abstract class CPLSNode{
  	 			// Light the candles! Kill the blighters!
  	 			val home = here.id;
  	 			val winner = at(Place.FIRST_PLACE) announceWinner(home);
- 	 
  	 			bcost = cost;
  	 
  	 			if (winner){ 
@@ -175,6 +174,7 @@ public abstract class CPLSNode{
  	}
  	
  	public def announceWinner(p:Long):Boolean {
+ 		Console.OUT.println("Dentro de anounceWinner");
  		val result = winnerLatch.compareAndSet(false, true);
  		if (result) 
  		{

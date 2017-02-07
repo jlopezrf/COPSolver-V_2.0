@@ -15,6 +15,9 @@ public class NodeInstancer{
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
  		
  		//Important: The number of elements in configNodes must be the same that the number of places
+ 		/*if(configCPLS.getIsThereAMasterNode()){
+ 
+ 		}*/
  		var masterNode:CPLSNode = new MasterNode();
  		val configNodes:Array_2[cpls.entities.NodeConfig] = configCPLS.getConfigNodes();
  		
@@ -41,6 +44,7 @@ public class NodeInstancer{
  								configCPLS.getMaxIters());
  			//Console.OUT.println("Heuristica del master: " + HeuristicFactory.getHeuristicName(configNodes(0,0).getHeuristic()));
  		}
+ 		val masterRef = GlobalRef(masterNode);
  		var explorersGroup:PlaceGroup = PlaceGroup.make(numExplorers);
  		//Console.OUT.println("Numero de explorers: " + explorersGroup.size);
  		

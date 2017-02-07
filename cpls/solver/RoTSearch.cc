@@ -90,12 +90,12 @@ void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericMod
     
     //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__27203 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__27203; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__27205 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__27205; })),
                                          (-(1.0)));
     
     //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__27204 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__27204; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__27206 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__27206; })),
                                        (-(1.0)));
 }
 
@@ -263,7 +263,7 @@ x10_long cpls::solver::RoTSearch::search() {
         
         //#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__27217 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__27217; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__27219 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__27219; }))));
         
         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return this->FMGL(currentCost);
@@ -318,14 +318,14 @@ x10_long cpls::solver::RoTSearch::search() {
         x10_long v = ((this->FMGL(currentCost)) + (minDelta));
         
         //#line 173 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__27220 = ::x10aux::makeStringLit("Costo (RoTSearch): "); strLit__27220; })), v));
+        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__27222 = ::x10aux::makeStringLit("Costo (RoTSearch): "); strLit__27222; })), v));
         
         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__27221 = ::x10aux::makeStringLit(". Con variables: "); strLit__27221; })),
+        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__27223 = ::x10aux::makeStringLit(". Con variables: "); strLit__27223; })),
                                   ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables());
         
         //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__27222 = ::x10aux::makeStringLit("\n"); strLit__27222; })));
+        ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__27224 = ::x10aux::makeStringLit("\n"); strLit__27224; })));
         
         //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return ((this->FMGL(currentCost)) + (minDelta));
