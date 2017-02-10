@@ -46,6 +46,9 @@ template<class TPMGL(U)> class Fun_0_0;
 namespace cpls { 
 class CPLSOptionsEnum__PoolModes;
 } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
 namespace cpls { namespace util { 
 class Logger;
 } } 

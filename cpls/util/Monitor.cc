@@ -45,7 +45,7 @@ class cpls_util_Monitor__closure__1 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0<x10_boolean> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:33";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:33";
     }
 
 };
@@ -94,7 +94,7 @@ class cpls_util_Monitor__closure__2 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:34";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:34";
     }
 
 };
@@ -114,7 +114,7 @@ class cpls_util_Monitor__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply(::x10::lang::String* t) {
-        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25873 = ::x10aux::makeStringLit("Monitor: waking "); strLit__25873; })), t);
+        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__29030 = ::x10aux::makeStringLit("Monitor: waking "); strLit__29030; })), t);
         
     }
     
@@ -143,7 +143,7 @@ class cpls_util_Monitor__closure__3 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:99";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:99";
     }
 
 };
@@ -163,7 +163,7 @@ class cpls_util_Monitor__closure__4 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25874 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__25874; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29031 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__29031; }));
         
     }
     
@@ -192,7 +192,7 @@ class cpls_util_Monitor__closure__4 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:100";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:100";
     }
 
 };
@@ -212,7 +212,7 @@ class cpls_util_Monitor__closure__5 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25875 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__25875; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29032 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__29032; }));
         
     }
     
@@ -241,7 +241,7 @@ class cpls_util_Monitor__closure__5 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:101";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:101";
     }
 
 };
@@ -261,7 +261,7 @@ class cpls_util_Monitor__closure__6 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25876 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__25876; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29033 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__29033; }));
         
     }
     
@@ -290,7 +290,7 @@ class cpls_util_Monitor__closure__6 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:102";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:102";
     }
 
 };
@@ -310,7 +310,7 @@ class cpls_util_Monitor__closure__7 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25877 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__25877; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29034 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__29034; }));
         
     }
     
@@ -339,7 +339,7 @@ class cpls_util_Monitor__closure__7 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:103";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:103";
     }
 
 };
@@ -359,7 +359,7 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25878 = ::x10aux::makeStringLit("Monitor: done"); strLit__25878; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29035 = ::x10aux::makeStringLit("Monitor: done"); strLit__29035; }));
         
     }
     
@@ -388,24 +388,24 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10:104";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10:104";
     }
 
 };
 
 #endif // CPLS_UTIL_MONITOR__CLOSURE__8_CLOSURE
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 16 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::_constructor() {
-    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__25870 = ::x10aux::makeStringLit(""); strLit__25870; })));
+    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__29027 = ::x10aux::makeStringLit(""); strLit__29027; })));
     
 }
 ::cpls::util::Monitor* cpls::util::Monitor::_make() {
@@ -416,13 +416,13 @@ void cpls::util::Monitor::_constructor() {
 
 
 
-//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::_constructor(::x10::lang::String* n) {
     
-    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+    //#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
     this->cpls::util::Monitor::__fieldInitializers_cpls_util_Monitor();
     
-    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+    //#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
     this->FMGL(name) = n;
 }
 ::cpls::util::Monitor* cpls::util::Monitor::_make(::x10::lang::String* n)
@@ -434,36 +434,36 @@ void cpls::util::Monitor::_constructor(::x10::lang::String* n) {
 
 
 
-//#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::lock() {
     
-    //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+    //#line 24 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
     if (!(this->FMGL(lock)->tryLock())) {
         
-        //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+        //#line 25 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         ::x10::lang::Runtime::increaseParallelism();
         
-        //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+        //#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         this->FMGL(lock)->lock();
         
-        //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+        //#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         ::x10::lang::Runtime::decreaseParallelism(((x10_int)1));
     }
     
 }
 
-//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 30 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::unlock() {
     this->FMGL(lock)->unlock();
 }
 
-//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0<x10_boolean>* cpls::util::Monitor::FMGL(TRUE);
 void cpls::util::Monitor::FMGL(TRUE__do_init)() {
     FMGL(TRUE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.TRUE");
-    ::x10::lang::Fun_0_0<x10_boolean>* __var360__ = reinterpret_cast< ::x10::lang::Fun_0_0<x10_boolean>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0<x10_boolean> >(sizeof(cpls_util_Monitor__closure__1)))cpls_util_Monitor__closure__1()));
-    FMGL(TRUE) = __var360__;
+    ::x10::lang::Fun_0_0<x10_boolean>* __var388__ = reinterpret_cast< ::x10::lang::Fun_0_0<x10_boolean>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0<x10_boolean> >(sizeof(cpls_util_Monitor__closure__1)))cpls_util_Monitor__closure__1()));
+    FMGL(TRUE) = __var388__;
     FMGL(TRUE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(TRUE__init)() {
@@ -473,13 +473,13 @@ void cpls::util::Monitor::FMGL(TRUE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(TRUE__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(TRUE__exception);
 
-//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::cpls::util::Unit>* cpls::util::Monitor::FMGL(NOTHING);
 void cpls::util::Monitor::FMGL(NOTHING__do_init)() {
     FMGL(NOTHING__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.NOTHING");
-    ::x10::lang::Fun_0_0< ::cpls::util::Unit>* __var361__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Unit>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(sizeof(cpls_util_Monitor__closure__2)))cpls_util_Monitor__closure__2()));
-    FMGL(NOTHING) = __var361__;
+    ::x10::lang::Fun_0_0< ::cpls::util::Unit>* __var389__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Unit>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(sizeof(cpls_util_Monitor__closure__2)))cpls_util_Monitor__closure__2()));
+    FMGL(NOTHING) = __var389__;
     FMGL(NOTHING__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(NOTHING__init)() {
@@ -489,28 +489,28 @@ void cpls::util::Monitor::FMGL(NOTHING__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(NOTHING__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(NOTHING__exception);
 
-//#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 41 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::awaken() {
     this->on< ::cpls::util::Unit >(::cpls::util::Monitor::FMGL(TRUE__get)(),
                                    ::cpls::util::Monitor::FMGL(NOTHING__get)());
 }
 
-//#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 45 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::await(::x10::lang::Fun_0_0<x10_boolean>* cond) {
     this->on< ::cpls::util::Unit >(cond, ::cpls::util::Monitor::FMGL(NOTHING__get)());
 }
 
-//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 50 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 64 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 
-//#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 99 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>* cpls::util::Monitor::FMGL(waking);
 void cpls::util::Monitor::FMGL(waking__do_init)() {
     FMGL(waking__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.waking");
-    ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>* __var367__ = reinterpret_cast< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__3)))cpls_util_Monitor__closure__3()));
-    FMGL(waking) = __var367__;
+    ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>* __var395__ = reinterpret_cast< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__3)))cpls_util_Monitor__closure__3()));
+    FMGL(waking) = __var395__;
     FMGL(waking__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(waking__init)() {
@@ -520,13 +520,13 @@ void cpls::util::Monitor::FMGL(waking__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(waking__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(waking__exception);
 
-//#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 100 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::x10::lang::String*>* cpls::util::Monitor::FMGL(trying);
 void cpls::util::Monitor::FMGL(trying__do_init)() {
     FMGL(trying__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.trying");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var368__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__4)))cpls_util_Monitor__closure__4()));
-    FMGL(trying) = __var368__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var396__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__4)))cpls_util_Monitor__closure__4()));
+    FMGL(trying) = __var396__;
     FMGL(trying__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(trying__init)() {
@@ -536,13 +536,13 @@ void cpls::util::Monitor::FMGL(trying__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(trying__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(trying__exception);
 
-//#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 101 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::x10::lang::String*>* cpls::util::Monitor::FMGL(retrying);
 void cpls::util::Monitor::FMGL(retrying__do_init)() {
     FMGL(retrying__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.retrying");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var369__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__5)))cpls_util_Monitor__closure__5()));
-    FMGL(retrying) = __var369__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var397__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__5)))cpls_util_Monitor__closure__5()));
+    FMGL(retrying) = __var397__;
     FMGL(retrying__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(retrying__init)() {
@@ -552,13 +552,13 @@ void cpls::util::Monitor::FMGL(retrying__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(retrying__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(retrying__exception);
 
-//#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 102 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::x10::lang::String*>* cpls::util::Monitor::FMGL(suspending);
 void cpls::util::Monitor::FMGL(suspending__do_init)() {
     FMGL(suspending__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.suspending");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var370__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__6)))cpls_util_Monitor__closure__6()));
-    FMGL(suspending) = __var370__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var398__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__6)))cpls_util_Monitor__closure__6()));
+    FMGL(suspending) = __var398__;
     FMGL(suspending__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(suspending__init)() {
@@ -568,13 +568,13 @@ void cpls::util::Monitor::FMGL(suspending__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(suspending__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(suspending__exception);
 
-//#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 103 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::x10::lang::String*>* cpls::util::Monitor::FMGL(acting);
 void cpls::util::Monitor::FMGL(acting__do_init)() {
     FMGL(acting__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.acting");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var371__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__7)))cpls_util_Monitor__closure__7()));
-    FMGL(acting) = __var371__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var399__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__7)))cpls_util_Monitor__closure__7()));
+    FMGL(acting) = __var399__;
     FMGL(acting__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(acting__init)() {
@@ -584,13 +584,13 @@ void cpls::util::Monitor::FMGL(acting__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(acting__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(acting__exception);
 
-//#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 104 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::Fun_0_0< ::x10::lang::String*>* cpls::util::Monitor::FMGL(finished);
 void cpls::util::Monitor::FMGL(finished__do_init)() {
     FMGL(finished__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.finished");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var372__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__8)))cpls_util_Monitor__closure__8()));
-    FMGL(finished) = __var372__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var400__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__8)))cpls_util_Monitor__closure__8()));
+    FMGL(finished) = __var400__;
     FMGL(finished__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(finished__init)() {
@@ -600,13 +600,13 @@ void cpls::util::Monitor::FMGL(finished__init)() {
 volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(finished__status);
 ::x10::lang::CheckedThrowable* cpls::util::Monitor::FMGL(finished__exception);
 
-//#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 106 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::x10::lang::String* cpls::util::Monitor::toString() {
     return this->FMGL(name);
     
 }
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+//#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 ::cpls::util::Monitor* cpls::util::Monitor::cpls__util__Monitor____this__cpls__util__Monitor(
   ) {
     return this;

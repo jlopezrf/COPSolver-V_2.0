@@ -84,7 +84,7 @@ class Main : public ::x10::lang::X10Class   {
       ::x10::lang::String* solverIn, x10_int numberOfTeams, x10_int nodesPerTeam,
       x10_boolean modeIndicator, x10_int interTeamCommTime,
       x10_double affectedPer, x10_long iniDelay, x10_boolean verify,
-      x10_int changeProb);
+      x10_int changeProb, x10_int divOption);
     static x10_int problemDetect(::x10::lang::String* problem);
     static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(

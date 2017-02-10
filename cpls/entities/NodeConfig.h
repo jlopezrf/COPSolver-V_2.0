@@ -57,6 +57,8 @@ class NodeConfig : public ::x10::lang::X10Class   {
     
     x10_int FMGL(changeProb);
     
+    x10_int FMGL(diversificationOption);
+    
     void _constructor();
     
     static ::cpls::entities::NodeConfig* _make();
@@ -75,6 +77,7 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual void setIniDelay(x10_long iniDelay);
     virtual void setVerify(x10_boolean verify);
     virtual void setChangeProb(x10_int changeProb);
+    virtual void setDiversificationOption(x10_int divOption);
     virtual x10_int getHeuristic();
     virtual x10_int getNumberOfTeams();
     virtual x10_int getNodesPerTeam();
@@ -85,6 +88,7 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual x10_long getIniDelay();
     virtual x10_boolean getVerify();
     virtual x10_int getChangeProb();
+    virtual x10_int getDiversificationOption();
     virtual ::cpls::entities::NodeConfig* cpls__entities__NodeConfig____this__cpls__entities__NodeConfig(
       );
     virtual void __fieldInitializers_cpls_entities_NodeConfig();

@@ -223,17 +223,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 					 else if(pooln < 8) // probability = 3/10
 						  mem = CPLSOptionsEnum.PoolLevels.MEDIUM;
 					 else  // probability = 2/10
-						  mem = CPLSOptionsEnum.PoolLevels.LOW;
-					 
-					 //More probability to return a low quality conf
-					 // if (pooln < 2n) // probability = 2/10 
-						//   mem = HIGH;
-					 // else if(pooln < 5) // probability = 3/10
-						//   mem = MEDIUM;
-					 // else  // probability = 5/10
-						//   mem = LOW;
-					 
-					 
+						  mem = CPLSOptionsEnum.PoolLevels.LOW;		 
 					 index = random.nextInt(nbEntries(mem)) + 1n;
 				} else {	 
 					 // select a random conf from all pools
@@ -242,12 +232,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 						  index -= this.nbEntries(mem);
 					 }
 				}
-				
-				//Console.OUT.println("mem "+mem+" index "+index);
-				
-				//if (index >= nbEntries) Console.OUT.println("Golden: index is " + index + " needed to be < " + nbEntries);
-				//if (here.id==0)Console.OUT.println(here+"alli");
-				return new Maybe(pool(mem)(index-1));
+				val aux = new Maybe(pool(mem)(index-1));
+				return aux;
 		  });
 	 
 	 /**

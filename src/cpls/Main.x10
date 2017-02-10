@@ -34,6 +34,7 @@ public class Main {
  		val iniDelay = opts("-W", 0);
  		val verify  = opts("-v", 0n) == 1n;
  		val changeProb = opts("-C", 100n);
+ 		val divOption = opts("O", 0n);
  		
  		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString,
  														numberOfTeams,
@@ -43,7 +44,8 @@ public class Main {
  														affectedPer,
  														iniDelay,
  														verify,
- 														changeProb);
+ 														changeProb,
+ 														divOption);
  		configCPLS.setConfigNodes(nodeConfigs);
  		configCPLS.setVerify(verify);
  		configCPLS.setIsThereAMasterNode(modeIndicator);
@@ -123,7 +125,8 @@ public class Main {
  													affectedPer:Double,
  													iniDelay:Long,
  													verify:Boolean,
- 													changeProb:Int):Array_2[NodeConfig]{
+ 													changeProb:Int,
+ 													divOption:Int):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
  		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
  		var eachTeam:Rail[String] = solverIn.split("/");
@@ -164,6 +167,7 @@ public class Main {
  				nodeConfigs(i,j).setIniDelay(iniDelay);
  				nodeConfigs(i,j).setVerify(verify);
  				nodeConfigs(i,j).setChangeProb(changeProb);
+ 				nodeConfigs(i,j).setDiversificationOption(divOption);
  			}
  		}
  		return nodeConfigs;

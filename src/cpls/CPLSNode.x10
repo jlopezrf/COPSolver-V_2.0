@@ -46,6 +46,9 @@ public class CPLSNode{
  	var problemSize:Long;
  	private var deltaFact : Double = 1.0;
  	var changeProb:Int;
+ 	private var divOption:Int;
+ 	private var ns:Int;
+ 	private var pSendLM:Double = 0.0;
  
  	var confArray:Rail[State];
  	
@@ -54,6 +57,14 @@ public class CPLSNode{
  		val str = System.getenv("DELTA");
  		if (str != null)
  			deltaFact = StringUtil.parseInt(str)/ 100.0;
+ 		val nsStr = System.getenv("NS");
+ 		if (nsStr != null) 
+ 			ns = StringUtil.parseInt(nsStr);
+ 		else
+ 			ns = this.problemSize as Int / 4n;
+ 		val lmstr = System.getenv("LM");
+ 		if (lmstr != null)
+ 			pSendLM = StringUtil.parseInt(lmstr)/ 100.0;
  	}
  
  	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long, maxIter:Long){
@@ -296,22 +307,234 @@ public class CPLSNode{
  			at(Place(teamToRest)) pointersComunication().teamPool.clear();
  		}	
  	}
+ 	
+ 	//public def communicate(totalCost : Long, variables : Rail[Int]{self.size==sz} ) {
+ 	public def communicate( info:State) {  
+ 		Logger.debug(()=>" communicate: entering.");
+ 		
+ 		val placeid = here.id as Int;
+ 		
+ 		if ( Place(nodeConfig.getTeamId()) == here ){
+ 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 			teamPool.tryInsertConf(info);
+ 		}else{
+ 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 			at(Place(nodeConfig.getTeamId())) async pointersComunication().teamPool.tryInsertConf( info );
+ 		}
+ 		
+ 		
+ 		// Print debug information
+ 		//Jason: Comente esta parte de debug
+ 		/*if (this.debug && this.isHeadNode){
+ 			val bc = ep.getBestConf();
+ 			if (bc != null){
+ 				p.print ("\033[H\033["+ ( myTeamId + 1 ) + "B");
+ 				p.printf("\033[2K\rTeam %3d          best cost %10d    solver %1d  param1 %3d  param2 %3d",
+ 						myTeamId,bc().cost,bc().solverState(0),bc().solverState(1),bc().solverState(2));
+ 				p.flush();
+ 			}
+ 		}*/
+ 		
+ 		//Debug
+ 		// if(here.id as Int == myTeamId ){ //group head
+ 		//  Console.OUT.println("I'm "+myTeamId+" head group, here my ELITE pool Vectors");
+ 		// ep.printVectors();
+ 		// }
+ 		/*********************************************************/
+ 		
+ 		return;
+ 	}
+ 	
+ 	public def communicateLM(info:State) {
+ 		Logger.debug(()=>" communicate: entering.");
+ 		
+ 		// decrease the number of vectors send it to the pool
+ 		if (random.nextDouble() >= pSendLM) return;		
+ 		
+ 		val placeid = here.id as Int;
+ 		Logger.debug(()=>"CommManager: solver mode -> Places.");
+ 		
+ 		//val variables = csp.variables; 
+ 		
+ 		if (Place(nodeConfig.getTeamId()) == Place.FIRST_PLACE){
+ 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 			this.cplsPool.tryInsertConf( info );
+ 		}else{
+ 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 			at(Place.FIRST_PLACE) pointersComunication().tryInsertLM( info );
+ 		}
+ 		//Debug
+ 		// if(here.id == LOCAL_MIN_NODE ){ //group head
+ 		//   	Console.OUT.println("I'm "+myTeamId+" head group, here my Local MIN pool Vectors");
+ 		//   	lmp.printVectors();
+ 		// }
+ 		//TODO: Jason: Comente esta parte de debug 
+ 		/*if (this.debug && here.id == Place.FIRST_PLACE.id()){
+ 			val s = cplsPool.getCostList();
+ 			p.print("\033[H\033["+(nodeConfig.getNumberOfTeams() + 1)+"B");
+ 			p.print("\033[2K\rDiv Pool Costs: "+s);
+ 			p.flush();
+ 		}*/
+ 		
+ 		return;
+ 	}
+ 	
+ 	public def tryInsertLM(info:State) 
+ 	{
+ 		cplsPool.tryInsertConf( info ); 
+ 	}
  
  	public def getIPVector(myCost : Long):Boolean {
  		Logger.debug(()=> "CommManager: getIPVector: entering.");
  		val sz = problemSize;
- 		var a : Maybe[State(sz)];
+ 		var a : Maybe[State];
  		val place = Place(nodeConfig.getTeamId());
  		if (place == here )
- 			a = teamPool.getPConf();
+ 			a = pointersComunication().teamPool.getPConf();
  		else{
- 			a = at(place) (pointersComunication().teamPool).getPConf();
+ 			a = at(place) pointersComunication().teamPool.getPConf();
  		}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < changeProb ){
  			heuristicSolver.getProblemModel().setVariables(a().vector);
  			return true; 
  		}
  		return false;
+ 	}
+ 	
+ 	public def getPR() : Maybe[State] { 
+ 		var opt:Int = nodeConfig.getDiversificationOption();
+ 		if (nodeConfig.getDiversificationOption() == 3n)
+ 			opt = random.nextInt(3n);
+ 		if (opt == 0n) //Restart from Scratch
+ 			return getPR0();//return null;//return false;
+ 		else  if (opt == 1n)   // Restart PR-based
+ 			return getPR1();
+ 		else // opt == 2   // Restart using divTS
+ 			return getPR2();
+
+ 	}
+ 	
+ 	// only get a new pdf and tau and force random restart
+ 	public def getPR0() : Maybe[State]{ 
+ 		//return null;//false;
+ 		val geta = this.getLM();
+ 		if ( geta != null ){
+ 			val c = new Rail[Int](this.problemSize, 0n);
+ 			Rail.copy(geta().vector, c);
+ 			
+ 			
+ 			for( var i:Long = this.problemSize - 1 ; i > 0 ; i-- )
+ 			{
+ 				val j = random.nextLong( i + 1 );
+ 				val tmp = c(i);
+ 				c(i) = c(j); 
+ 				c(j) = tmp;
+ 			}
+ 			val newConf =  new State( this.problemSize, -1n, c, geta().place, geta().solverState);
+ 			return new Maybe(newConf as State);
+ 		}else
+ 			return null;
+ 	}
+ 	
+ 	public def getPR1() : Maybe[State] { 
+ 		Logger.debug(()=> "CommManager: getPR: entering.");
+ 		
+ 		// PATH RELINKING-based approach
+ 		//val a = new Rail[Int](sz, 0n);
+ 		//val b = new Rail[Int](sz, 0n);
+ 		val c = new Rail[Int](this.problemSize, 0n);
+ 		val geta = this.getLM();
+ 		val getb = this.getLM();
+
+ 		if(geta != null && getb != null) { // are they valid conf?
+ 			// Utils.show("a=",a);
+ 			// Utils.show("b=",b);
+ 			
+ 			// Copy remote conf. "a" and "b" to vectors 
+ 			//Rail.copy(geta.vector, a);
+ 			//Rail.copy(getb.vector, b);
+ 			
+ 			Rail.copy(geta().vector, c);
+ 			val nSteps = random.nextLong(ns);
+ 			for(i in 0..nSteps) {
+ 				val bi = random.nextLong(this.problemSize);
+ 				val bval = getb().vector(bi);
+ 				var ci:Long = -1;
+ 				// search bval in vector a
+ 				for (cit in c.range()){
+ 					if (c(cit) == bval){
+ 						ci = cit;
+ 						break;
+ 					}
+ 				}
+ 				// swap variables
+ 				if(bi != ci){
+ 					//steps++;
+ 					val tmp = c(bi);
+ 					c(bi) = c(ci);
+ 					c(ci) = tmp;
+ 					// Utils.show("c=", c);
+ 				}
+ 			}
+ 			
+ 			//Rail.copy(c,vector);
+ 			//return true;
+ 			
+ 			// return parameters of one of the LM pool (I selected send "a" params, todo: try "b" or random)
+ 			//Maybe[CSPSharedUnit(sz)]
+ 			val mutConf =  new State( this.problemSize, geta().cost, c, geta().place, geta().solverState);
+ 			return new Maybe(mutConf as State);//true;
+ 		}else
+ 			return null;//false;
+ 	}
+ 	
+ 	/**
+ 	 * get a diversified vector using Div technique by Glover 
+ 	 * "A template for scatter search and path relinking" 1998
+ 	 * 
+ 	 */
+ 	public def getPR2() : Maybe[State] { 
+ 		Logger.debug(()=> "CommManager: getPR2: entering.");
+ 		
+ 		//val seedConf = new Rail[Int](sz, 0n);
+ 		val finalConf = new Rail[Int](this.problemSize, 0n);
+ 		
+ 		val getSeedC = this.getLM();
+ 		var position:Long = 0;
+ 		
+ 		if(getSeedC != null){
+ 			val step = random.nextLong(this.problemSize/4) + 1;
+ 			//val step = 2;
+ 			//Utils.show("seed conf=",seedConf);
+ 			//Console.OUT.println("step = " + step);
+ 			for(var start:Long = step; start > 0; start--) {
+ 				for(var j:Long = start; j <= this.problemSize; j += step) {
+ 					//Console.OUT.println("j = " + j);		  
+ 					finalConf( position++ ) = getSeedC().vector( j - 1 );
+ 				}
+ 			}
+ 			//Rail.copy( finalConf, vector );
+ 			//Utils.show("final conf=",finalConf);
+ 			//return true;
+ 			val newConf = new State( this.problemSize, getSeedC().cost, finalConf, getSeedC().place, getSeedC().solverState);
+ 			return new Maybe(newConf as State); //true;
+ 		}else
+ 			return null; //Snew CSPSharedUnit( sz, -1n, null, -1n, -1.0, -1n); //return false;
+ 	}
+ 	
+ 	public def getLM() : Maybe[State] { 
+ 		Logger.debug(()=> "CommManager: getLM: entering.");
+ 		var a : Maybe[State];
+ 		val place = Place(nodeConfig.getTeamId());
+ 		if (place == Place.FIRST_PLACE)
+ 			a = cplsPool.getPConf();
+ 		else{
+ 			a = at(Place.FIRST_PLACE) pointersComunication().teamPool.getPConf();
+ 		}	
+ 		if (a != null){
+ 			return a;
+ 		}
+ 		return null;//false;
  	}
  	
  	public def clear(){

@@ -12,258 +12,258 @@
 #include <cpls/entities/PoolConfig.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 14 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 16 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 18 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 19 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 20 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 21 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 22 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 24 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 25 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 30 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::problem::ProblemGenericModel* cpls::entities::CPLSConfig::getProblemModel(
   ) {
     return this->FMGL(problemModel);
     
 }
 
-//#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 31 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getIsThereAMasterNode() {
     return this->FMGL(isThereAMasterNode);
     
 }
 
-//#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 32 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* cpls::entities::CPLSConfig::getConfigNodes(
   ) {
     return this->FMGL(configNodes);
     
 }
 
-//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::PoolConfig* cpls::entities::CPLSConfig::getCPLSPoolConfig(
   ) {
     return this->FMGL(cplsPoolConfig);
     
 }
 
-//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::PoolConfig* cpls::entities::CPLSConfig::getTeamsPoolConfig(
   ) {
     return this->FMGL(teamsPoolConfig);
     
 }
 
-//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 35 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_double cpls::entities::CPLSConfig::getMinDistance() {
     return this->FMGL(minDistance);
     
 }
 
-//#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 36 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getMaxTime() {
     return this->FMGL(maxTime);
     
 }
 
-//#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 37 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getMaxIters() {
     return this->FMGL(pmaxIters);
     
 }
 
-//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 38 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getMaxRestarts() {
     return this->FMGL(maxRestarts);
     
 }
 
-//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 39 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getReportPart() {
     return this->FMGL(reportPart);
     
 }
 
-//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 40 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getModParams() {
     return this->FMGL(modParams);
     
 }
 
-//#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 41 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getChangeOnDiver() {
     return this->FMGL(changeOnDiver);
     
 }
 
-//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 42 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getReport() {
     return this->FMGL(report);
     
 }
 
-//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 43 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getUpdate() {
     return this->FMGL(update);
     
 }
 
-//#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 44 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getSeed() {
     return this->FMGL(seed);
     
 }
 
-//#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 45 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getTargetCost() {
     return this->FMGL(targetCost);
     
 }
 
-//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 46 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getStrictLow() {
     return this->FMGL(strictLow);
     
 }
 
-//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 47 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getIterations() {
     return this->FMGL(iterations);
     
 }
 
-//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 48 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getVerify() {
     return this->FMGL(verify);
     
 }
 
-//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 50 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setProblemModel(::cpls::problem::ProblemGenericModel* problemModel) {
     this->FMGL(problemModel) = problemModel;
 }
 
-//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 51 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes) {
     this->FMGL(configNodes) = configNodes;
 }
 
-//#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 52 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig) {
     this->FMGL(cplsPoolConfig) = cplsPoolConfig;
 }
 
-//#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 53 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig) {
     this->FMGL(teamsPoolConfig) = teamsPoolConfig;
 }
 
-//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 54 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setIsThereAMasterNode(x10_boolean isThereAMasterNode) {
     this->FMGL(isThereAMasterNode) = isThereAMasterNode;
 }
 
-//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 55 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setMinDistance(x10_double minDistance) {
     this->FMGL(minDistance) = minDistance;
 }
 
-//#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 56 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setStrictLow(x10_boolean strictLow) {
     this->FMGL(strictLow) = strictLow;
 }
 
-//#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 57 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setTargetCost(x10_long targetCost) {
     this->FMGL(targetCost) = targetCost;
 }
 
-//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 58 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setIterations(x10_long iterations) {
     this->FMGL(iterations) = iterations;
 }
 
-//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 59 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setMaxTime(x10_long maxTime) {
     this->FMGL(maxTime) = maxTime;
 }
 
-//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 60 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setMaxIters(x10_long pmaxIters) {
     this->FMGL(pmaxIters) = pmaxIters;
 }
 
-//#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 61 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setMaxRestarts(x10_int maxRestarts) {
     this->FMGL(maxRestarts) = maxRestarts;
 }
 
-//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 62 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setReportPart(x10_boolean reportPart) {
     this->FMGL(reportPart) = reportPart;
 }
 
-//#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 63 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setModParams(x10_int modParams) {
     this->FMGL(modParams) = modParams;
 }
 
-//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 64 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setChangeOnDiver(x10_int changeOnDiver) {
     this->FMGL(changeOnDiver) = changeOnDiver;
 }
 
-//#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 65 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setReport(x10_long report) {
     this->FMGL(report) = report;
 }
 
-//#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 66 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setUpdate(x10_long update) {
     this->FMGL(update) = update;
 }
 
-//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 67 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setSeed(x10_long seed) {
     this->FMGL(seed) = seed;
 }
 
-//#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 68 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 void cpls::entities::CPLSConfig::setVerify(x10_boolean verify) {
     this->FMGL(verify) = verify;
 }
 
-//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 7 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::CPLSConfig* cpls::entities::CPLSConfig::cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
   ) {
     return this;

@@ -34,7 +34,7 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__25861 = ::x10aux::makeStringLit("solving all problems into this directory"); strLit__25861; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__29018 = ::x10aux::makeStringLit("solving all problems into this directory"); strLit__29018; }));
         
     }
     
@@ -63,176 +63,176 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10:48";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10:48";
     }
 
 };
 
 #endif // CPLS_UTIL_CPLSFILEREADER__CLOSURE__1_CLOSURE
 
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
 ::x10::lang::Rail< x10_long >* cpls::util::CPLSFileReader::tryReadParameters(
   ::x10::lang::String* filePath) {
     
-    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::Rail< x10_long >* params = ::x10::lang::Rail< x10_long >::_make(((x10_long)2ll),
                                                                                  ((x10_long)-1ll));
     
-    //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::io::File* filep = ::x10::io::File::_make(filePath);
     
-    //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::io::FileReader* fr = filep->openRead();
     
-    //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::String* fLine;
     
-    //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 14 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     do {
         
-        //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         fLine = ::x10aux::nullCheck(fr)->readLine();
     } while ((::x10aux::struct_equals((fLine)->charAt(((x10_int)0)),
                                       ((x10_char)'#'))));
     
-    //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::Rail< x10_int >* header = ::cpls::util::CPLSFileReader::readParameters(
                                              fLine);
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 19 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     {
         x10_long i;
         for (i = ((x10_long)0ll); ((i) < ((x10_long)(::x10aux::nullCheck(params)->FMGL(size))));
              i = ((i) + (((x10_long)1ll)))) {
             
-            //#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+            //#line 20 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
             ::x10aux::nullCheck(params)->x10::lang::Rail< x10_long >::__set(
               i, ((x10_long)(::x10aux::nullCheck(header)->x10::lang::Rail< x10_int >::__apply(
                                i))));
         }
     }
     
-    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 22 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10aux::nullCheck(fr)->close();
     
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     return params;
     
 }
 
-//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+//#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
 ::x10::lang::Rail< x10_int >* cpls::util::CPLSFileReader::readParameters(
   ::x10::lang::String* line) {
     
-    //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     x10_int i;
     
-    //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 28 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     x10_int j = ((x10_int)0);
     
-    //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
-    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__25859 = ::x10aux::makeStringLit(""); strLit__25859; }));
+    //#line 29 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__29016 = ::x10aux::makeStringLit(""); strLit__29016; }));
     
-    //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 30 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::Rail< x10_int >* x = ::x10::lang::Rail< x10_int >::_make(((x10_long)2ll),
                                                                           ((x10_int)-1));
     
-    //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 31 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     {
         for (i = ((x10_int)0); ((i) < (::x10aux::nullCheck(line)->x10::lang::String::length()));
              i = ((i) + (((x10_int)1)))) {
             
-            //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+            //#line 32 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
             if (((::x10aux::struct_equals((line)->charAt(i),
                                           ((x10_char)' '))) ||
                 (::x10aux::struct_equals((line)->charAt(i),
                                          ((x10_char)'\n')))))
             {
                 
-                //#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+                //#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
                 x->x10::lang::Rail< x10_int >::__set(((x10_long)((__extension__ ({
-                                                         x10_int pre__24339 =
+                                                         x10_int pre__25846 =
                                                            j;
                                                          j =
                                                            ((j) + (((x10_int)1)));
-                                                         pre__24339;
+                                                         pre__25846;
                                                      }))
                                                      )), ::x10::lang::IntNatives::parseInt(buffer));
                 
-                //#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
-                buffer = (__extension__ ({ static ::x10::lang::String* strLit__25860 = ::x10aux::makeStringLit(""); strLit__25860; }));
+                //#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+                buffer = (__extension__ ({ static ::x10::lang::String* strLit__29017 = ::x10aux::makeStringLit(""); strLit__29017; }));
             } else {
                 
-                //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+                //#line 36 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
                 buffer = ::x10::lang::String::__plus(buffer, (line)->charAt(i));
             }
             
         }
     }
     
-    //#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 39 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     x->x10::lang::Rail< x10_int >::__set(((x10_long)(j)),
                                          ::x10::lang::IntNatives::parseInt(buffer));
     
-    //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 40 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     return x;
     
 }
 
-//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+//#line 43 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
 ::x10::lang::Rail< ::x10::lang::String* >* cpls::util::CPLSFileReader::loadDir(
   ::x10::lang::String* path) {
     
-    //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 44 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::util::StringBuilder* nPath = ::x10::util::StringBuilder::_make();
     
-    //#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 45 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::io::File* fp = ::x10::io::File::_make(path);
     
-    //#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 46 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::Rail< ::x10::lang::String* >* execList;
     
-    //#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 47 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     if (fp->isDirectory()) {
         
-        //#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 48 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         ::cpls::util::Logger::debug(reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_CPLSFileReader__closure__1)))cpls_util_CPLSFileReader__closure__1())));
         
-        //#line 49 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 49 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         execList = fp->list();
         
-        //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 50 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         ::x10aux::nullCheck(nPath)->addString(path);
     } else {
         
-        //#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 53 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         execList = (__extension__ ({
-            ::x10::lang::Rail< ::x10::lang::String* >* t__25855 =
+            ::x10::lang::Rail< ::x10::lang::String* >* t__29012 =
               ::x10::lang::Rail< ::x10::lang::String* >::_makeUnsafe(((x10_long)1ll), false);
-            t__25855->x10::lang::Rail< ::x10::lang::String* >::__set(
+            t__29012->x10::lang::Rail< ::x10::lang::String* >::__set(
               ((x10_long)0ll), fp->getName());
-            t__25855;
+            t__29012;
         }))
         ;
         
-        //#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 54 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         ::x10aux::nullCheck(nPath)->addString(::x10aux::nullCheck(fp->getParentFile())->getPath());
         
-        //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+        //#line 55 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(nPath, (__extension__ ({ static ::x10::lang::String* strLit__25862 = ::x10aux::makeStringLit(" "); strLit__25862; }))), fp->getName())));
+          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(nPath, (__extension__ ({ static ::x10::lang::String* strLit__29019 = ::x10aux::makeStringLit(" "); strLit__29019; }))), fp->getName())));
     }
     
-    //#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 57 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::util::RailUtils::sort< ::x10::lang::String* >(
       execList);
     
-    //#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+    //#line 58 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     return execList;
     
 }
 
-//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
+//#line 7 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
 ::cpls::util::CPLSFileReader* cpls::util::CPLSFileReader::cpls__util__CPLSFileReader____this__cpls__util__CPLSFileReader(
   ) {
     return this;

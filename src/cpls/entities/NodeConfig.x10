@@ -15,6 +15,7 @@ public class NodeConfig{
  	private var iniDelay:Long;
  	private var verify:Boolean;
  	private var changeProb:Int;
+ 	private var diversificationOption:Int;
  
  	public def this(){}
  	public def this(heuristic:Int, rol:Int){this.heuristic = heuristic;	this.rol = rol;}
@@ -29,6 +30,7 @@ public class NodeConfig{
  	public def setIniDelay(iniDelay:Long){this.iniDelay = iniDelay;}
  	public def setVerify(verify:Boolean){this.verify = verify;}
  	public def setChangeProb(changeProb:Int){this.changeProb = changeProb;}
+ 	public def setDiversificationOption(divOption:Int){this.diversificationOption = diversificationOption;}
  
  	public def getHeuristic(){return this.heuristic;}
  	public def getNumberOfTeams(){return this.numberOfTeams;}
@@ -40,4 +42,5 @@ public class NodeConfig{
  	public def getIniDelay(){return this.iniDelay;}
  	public def getVerify(){return this.verify;}
  	public def getChangeProb(){return this.changeProb;}
+ 	public def getDiversificationOption(){return this.diversificationOption;}
 }

@@ -26,319 +26,319 @@
 #include <x10/lang/Runtime.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 11 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 12 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 
-//#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 
-//#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 void cpls::ParamManager::_constructor(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
-    //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 16 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     (this)->::x10::util::OptionsParser::_constructor(args, (__extension__ ({
                                                          
-                                                         //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-                                                         ::x10::lang::Rail< ::x10::util::Option >* t__25126 =
+                                                         //#line 17 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                                                         ::x10::lang::Rail< ::x10::util::Option >* t__28303 =
                                                            ::x10::lang::Rail< ::x10::util::Option >::_makeUnsafe(((x10_long)1ll), false);
-                                                         t__25126->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                         t__28303->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)0ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25235 = ::x10aux::makeStringLit("h"); strLit__25235; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25236 = ::x10aux::makeStringLit("help"); strLit__25236; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25237 = ::x10aux::makeStringLit("shows this help message and exit"); strLit__25237; }))));
-                                                         t__25126;
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28412 = ::x10aux::makeStringLit("h"); strLit__28412; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28413 = ::x10aux::makeStringLit("help"); strLit__28413; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28414 = ::x10aux::makeStringLit("shows this help message and exit"); strLit__28414; }))));
+                                                         t__28303;
                                                      }))
                                                      , (__extension__ ({
                                                          
-                                                         //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-                                                         ::x10::lang::Rail< ::x10::util::Option >* t__25130 =
+                                                         //#line 18 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                                                         ::x10::lang::Rail< ::x10::util::Option >* t__28307 =
                                                            ::x10::lang::Rail< ::x10::util::Option >::_makeUnsafe(((x10_long)52ll), false);
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)0ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25238 = ::x10aux::makeStringLit("p"); strLit__25238; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25239 = ::x10aux::makeStringLit("problem"); strLit__25239; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25240 = ::x10aux::makeStringLit("(p)roblem to solve"); strLit__25240; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28415 = ::x10aux::makeStringLit("p"); strLit__28415; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28416 = ::x10aux::makeStringLit("problem"); strLit__28416; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28417 = ::x10aux::makeStringLit("(p)roblem to solve"); strLit__28417; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)1ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25241 = ::x10aux::makeStringLit("f"); strLit__25241; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25242 = ::x10aux::makeStringLit("problem_file"); strLit__25242; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25243 = ::x10aux::makeStringLit("(f)ile path for SMTI or QAP"); strLit__25243; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28418 = ::x10aux::makeStringLit("f"); strLit__28418; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28419 = ::x10aux::makeStringLit("problem_file"); strLit__28419; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28420 = ::x10aux::makeStringLit("(f)ile path for SMTI or QAP"); strLit__28420; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)2ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25244 = ::x10aux::makeStringLit("s"); strLit__25244; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25245 = ::x10aux::makeStringLit("size"); strLit__25245; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25246 = ::x10aux::makeStringLit("(S)ize of the problem"); strLit__25246; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28421 = ::x10aux::makeStringLit("s"); strLit__28421; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28422 = ::x10aux::makeStringLit("size"); strLit__28422; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28423 = ::x10aux::makeStringLit("(S)ize of the problem"); strLit__28423; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)3ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25247 = ::x10aux::makeStringLit("S"); strLit__25247; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25248 = ::x10aux::makeStringLit("seed"); strLit__25248; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25249 = ::x10aux::makeStringLit("seed. Default 0"); strLit__25249; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28424 = ::x10aux::makeStringLit("S"); strLit__28424; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28425 = ::x10aux::makeStringLit("seed"); strLit__28425; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28426 = ::x10aux::makeStringLit("seed. Default 0"); strLit__28426; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)4ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25250 = ::x10aux::makeStringLit("sm"); strLit__25250; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25251 = ::x10aux::makeStringLit("solver_mode"); strLit__25251; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25252 = ::x10aux::makeStringLit("Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."); strLit__25252; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28427 = ::x10aux::makeStringLit("sm"); strLit__28427; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28428 = ::x10aux::makeStringLit("solver_mode"); strLit__28428; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28429 = ::x10aux::makeStringLit("Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."); strLit__28429; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)5ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25253 = ::x10aux::makeStringLit("ce"); strLit__25253; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25254 = ::x10aux::makeStringLit("Control Strategy"); strLit__25254; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25255 = ::x10aux::makeStringLit("In parallel mode, with master node 1, without 0. Default 1."); strLit__25255; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28430 = ::x10aux::makeStringLit("ce"); strLit__28430; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28431 = ::x10aux::makeStringLit("Control Strategy"); strLit__28431; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28432 = ::x10aux::makeStringLit("In parallel mode, with master node 1, without 0. Default 1."); strLit__28432; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)6ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25256 = ::x10aux::makeStringLit("sl"); strLit__25256; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25257 = ::x10aux::makeStringLit("solver"); strLit__25257; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25258 = ::x10aux::makeStringLit("Solver to use"); strLit__25258; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28433 = ::x10aux::makeStringLit("sl"); strLit__28433; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28434 = ::x10aux::makeStringLit("solver"); strLit__28434; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28435 = ::x10aux::makeStringLit("Solver to use"); strLit__28435; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)7ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25259 = ::x10aux::makeStringLit("of"); strLit__25259; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25260 = ::x10aux::makeStringLit("out_format"); strLit__25260; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25261 = ::x10aux::makeStringLit("output format: csv 0, info 1"); strLit__25261; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28436 = ::x10aux::makeStringLit("of"); strLit__28436; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28437 = ::x10aux::makeStringLit("out_format"); strLit__28437; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28438 = ::x10aux::makeStringLit("output format: csv 0, info 1"); strLit__28438; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)8ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25262 = ::x10aux::makeStringLit("tf"); strLit__25262; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25263 = ::x10aux::makeStringLit("target_from"); strLit__25263; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25264 = ::x10aux::makeStringLit("Flag to receive target cost form file. default 0 from command line, 1 take optimal from file, 2 take BKS from file "); strLit__25264; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28439 = ::x10aux::makeStringLit("tf"); strLit__28439; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28440 = ::x10aux::makeStringLit("target_from"); strLit__28440; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28441 = ::x10aux::makeStringLit("Flag to receive target cost form file. default 0 from command line, 1 take optimal from file, 2 take BKS from file "); strLit__28441; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)9ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25265 = ::x10aux::makeStringLit("tc"); strLit__25265; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25266 = ::x10aux::makeStringLit("target_cost"); strLit__25266; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25267 = ::x10aux::makeStringLit("target (c)ost from Command Line Parameter. default 0"); strLit__25267; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28442 = ::x10aux::makeStringLit("tc"); strLit__28442; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28443 = ::x10aux::makeStringLit("target_cost"); strLit__28443; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28444 = ::x10aux::makeStringLit("target (c)ost from Command Line Parameter. default 0"); strLit__28444; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)10ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25268 = ::x10aux::makeStringLit("b"); strLit__25268; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25269 = ::x10aux::makeStringLit("bench"); strLit__25269; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25270 = ::x10aux::makeStringLit("Number of (b)enchmark tests"); strLit__25270; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28445 = ::x10aux::makeStringLit("b"); strLit__28445; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28446 = ::x10aux::makeStringLit("bench"); strLit__28446; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28447 = ::x10aux::makeStringLit("Number of (b)enchmark tests"); strLit__28447; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)11ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25271 = ::x10aux::makeStringLit("pf"); strLit__25271; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25272 = ::x10aux::makeStringLit("param_file"); strLit__25272; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25273 = ::x10aux::makeStringLit("path of the parameters file"); strLit__25273; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28448 = ::x10aux::makeStringLit("pf"); strLit__28448; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28449 = ::x10aux::makeStringLit("param_file"); strLit__28449; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28450 = ::x10aux::makeStringLit("path of the parameters file"); strLit__28450; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)12ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25274 = ::x10aux::makeStringLit("v"); strLit__25274; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25275 = ::x10aux::makeStringLit("verify"); strLit__25275; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25276 = ::x10aux::makeStringLit("verify and print solution., 0 or 1"); strLit__25276; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28451 = ::x10aux::makeStringLit("v"); strLit__28451; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28452 = ::x10aux::makeStringLit("verify"); strLit__28452; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28453 = ::x10aux::makeStringLit("verify and print solution., 0 or 1"); strLit__28453; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)13ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25277 = ::x10aux::makeStringLit("ca"); strLit__25277; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25278 = ::x10aux::makeStringLit("comp_AVG"); strLit__25278; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25279 = ::x10aux::makeStringLit("compute AVG cost for each run at each place"); strLit__25279; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28454 = ::x10aux::makeStringLit("ca"); strLit__28454; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28455 = ::x10aux::makeStringLit("comp_AVG"); strLit__28455; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28456 = ::x10aux::makeStringLit("compute AVG cost for each run at each place"); strLit__28456; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)14ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25280 = ::x10aux::makeStringLit("N"); strLit__25280; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25281 = ::x10aux::makeStringLit("nodes_per_team"); strLit__25281; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25282 = ::x10aux::makeStringLit("nodes_per_team parameter. Default 4."); strLit__25282; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28457 = ::x10aux::makeStringLit("N"); strLit__28457; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28458 = ::x10aux::makeStringLit("nodes_per_team"); strLit__28458; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28459 = ::x10aux::makeStringLit("nodes_per_team parameter. Default 4."); strLit__28459; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)15ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25283 = ::x10aux::makeStringLit("U"); strLit__25283; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25284 = ::x10aux::makeStringLit("update"); strLit__25284; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25285 = ::x10aux::makeStringLit("Update Interval Intra-team Communication (iterations). Default 0 - no communication."); strLit__25285; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28460 = ::x10aux::makeStringLit("U"); strLit__28460; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28461 = ::x10aux::makeStringLit("update"); strLit__28461; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28462 = ::x10aux::makeStringLit("Update Interval Intra-team Communication (iterations). Default 0 - no communication."); strLit__28462; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)16ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25286 = ::x10aux::makeStringLit("R"); strLit__25286; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25287 = ::x10aux::makeStringLit("report"); strLit__25287; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25288 = ::x10aux::makeStringLit("Report Interval Intra-team Communication (iterations). Default 0 - no communication."); strLit__25288; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28463 = ::x10aux::makeStringLit("R"); strLit__28463; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28464 = ::x10aux::makeStringLit("report"); strLit__28464; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28465 = ::x10aux::makeStringLit("Report Interval Intra-team Communication (iterations). Default 0 - no communication."); strLit__28465; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)17ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25289 = ::x10aux::makeStringLit("C"); strLit__25289; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25290 = ::x10aux::makeStringLit("p_change_vector"); strLit__25290; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25291 = ::x10aux::makeStringLit("Probability to change vector in Intra-Team Communication "); strLit__25291; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28466 = ::x10aux::makeStringLit("C"); strLit__28466; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28467 = ::x10aux::makeStringLit("p_change_vector"); strLit__28467; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28468 = ::x10aux::makeStringLit("Probability to change vector in Intra-Team Communication "); strLit__28468; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)18ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25292 = ::x10aux::makeStringLit("I"); strLit__25292; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25293 = ::x10aux::makeStringLit("Inter_Team_Interval"); strLit__25293; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25294 = ::x10aux::makeStringLit("Inter-team Communication Interval (miliseconds) . Default 0 - no communication."); strLit__25294; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28469 = ::x10aux::makeStringLit("I"); strLit__28469; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28470 = ::x10aux::makeStringLit("Inter_Team_Interval"); strLit__28470; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28471 = ::x10aux::makeStringLit("Inter-team Communication Interval (miliseconds) . Default 0 - no communication."); strLit__28471; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)19ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25295 = ::x10aux::makeStringLit("D"); strLit__25295; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25296 = ::x10aux::makeStringLit("Inter_Team_Distance"); strLit__25296; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25297 = ::x10aux::makeStringLit("minimum permisible distance."); strLit__25297; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28472 = ::x10aux::makeStringLit("D"); strLit__28472; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28473 = ::x10aux::makeStringLit("Inter_Team_Distance"); strLit__28473; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28474 = ::x10aux::makeStringLit("minimum permisible distance."); strLit__28474; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)20ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25298 = ::x10aux::makeStringLit("W"); strLit__25298; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25299 = ::x10aux::makeStringLit("Inter_Team_Wait"); strLit__25299; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25300 = ::x10aux::makeStringLit("initial (W)ait  before start Inter-team Communication (miliseconds). Default 0"); strLit__25300; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28475 = ::x10aux::makeStringLit("W"); strLit__28475; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28476 = ::x10aux::makeStringLit("Inter_Team_Wait"); strLit__28476; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28477 = ::x10aux::makeStringLit("initial (W)ait  before start Inter-team Communication (miliseconds). Default 0"); strLit__28477; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)21ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25301 = ::x10aux::makeStringLit("A"); strLit__25301; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25302 = ::x10aux::makeStringLit("Inter_Team_Affected_Explorers"); strLit__25302; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25303 = ::x10aux::makeStringLit("Inter Team Communicaction Diversification - Percentage of Places (A)ffected . Default 0."); strLit__25303; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28478 = ::x10aux::makeStringLit("A"); strLit__28478; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28479 = ::x10aux::makeStringLit("Inter_Team_Affected_Explorers"); strLit__28479; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28480 = ::x10aux::makeStringLit("Inter Team Communicaction Diversification - Percentage of Places (A)ffected . Default 0."); strLit__28480; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)22ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25304 = ::x10aux::makeStringLit("O"); strLit__25304; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25305 = ::x10aux::makeStringLit("Inter_Team_Option"); strLit__25305; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25306 = ::x10aux::makeStringLit("Diversification Option. 0 from Scratch 1 Path-Relinking."); strLit__25306; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28481 = ::x10aux::makeStringLit("O"); strLit__28481; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28482 = ::x10aux::makeStringLit("Inter_Team_Option"); strLit__28482; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28483 = ::x10aux::makeStringLit("Diversification Option. 0 from Scratch 1 Path-Relinking."); strLit__28483; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)23ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25307 = ::x10aux::makeStringLit("M"); strLit__25307; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25308 = ::x10aux::makeStringLit("Inter_Team_Params"); strLit__25308; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25309 = ::x10aux::makeStringLit("Diversification. modify parameters when corrective action is taken. 0 disable 1 enable."); strLit__25309; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28484 = ::x10aux::makeStringLit("M"); strLit__28484; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28485 = ::x10aux::makeStringLit("Inter_Team_Params"); strLit__28485; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28486 = ::x10aux::makeStringLit("Diversification. modify parameters when corrective action is taken. 0 disable 1 enable."); strLit__28486; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)24ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25310 = ::x10aux::makeStringLit("CD"); strLit__25310; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25311 = ::x10aux::makeStringLit("Inter_Team_CD"); strLit__25311; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25312 = ::x10aux::makeStringLit("Change vector on Corrective Action Diversification. 0 disable 1 enable."); strLit__25312; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28487 = ::x10aux::makeStringLit("CD"); strLit__28487; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28488 = ::x10aux::makeStringLit("Inter_Team_CD"); strLit__28488; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28489 = ::x10aux::makeStringLit("Change vector on Corrective Action Diversification. 0 disable 1 enable."); strLit__28489; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)25ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25313 = ::x10aux::makeStringLit("P_e"); strLit__25313; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25314 = ::x10aux::makeStringLit("poolsize_elite"); strLit__25314; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25315 = ::x10aux::makeStringLit("Max. number of configurations for the Elite Pool"); strLit__25315; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28490 = ::x10aux::makeStringLit("P_e"); strLit__28490; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28491 = ::x10aux::makeStringLit("poolsize_elite"); strLit__28491; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28492 = ::x10aux::makeStringLit("Max. number of configurations for the Elite Pool"); strLit__28492; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)26ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25316 = ::x10aux::makeStringLit("P_lm"); strLit__25316; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25317 = ::x10aux::makeStringLit("poolsize_locmin"); strLit__25317; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25318 = ::x10aux::makeStringLit("Max. number of configuration for the local min. Pool"); strLit__25318; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28493 = ::x10aux::makeStringLit("P_lm"); strLit__28493; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28494 = ::x10aux::makeStringLit("poolsize_locmin"); strLit__28494; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28495 = ::x10aux::makeStringLit("Max. number of configuration for the local min. Pool"); strLit__28495; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)27ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25319 = ::x10aux::makeStringLit("P_eM"); strLit__25319; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25320 = ::x10aux::makeStringLit("ep_mode"); strLit__25320; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25321 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__25321; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28496 = ::x10aux::makeStringLit("P_eM"); strLit__28496; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28497 = ::x10aux::makeStringLit("ep_mode"); strLit__28497; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28498 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__28498; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)28ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25322 = ::x10aux::makeStringLit("P_lmM"); strLit__25322; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25323 = ::x10aux::makeStringLit("lmp_mode"); strLit__25323; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25324 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__25324; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28499 = ::x10aux::makeStringLit("P_lmM"); strLit__28499; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28500 = ::x10aux::makeStringLit("lmp_mode"); strLit__28500; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28501 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__28501; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)29ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25325 = ::x10aux::makeStringLit("P_eD"); strLit__25325; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25326 = ::x10aux::makeStringLit("ep_dist"); strLit__25326; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25327 = ::x10aux::makeStringLit("elite pool min. distance allowed, 0 normal, 1 smart "); strLit__25327; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28502 = ::x10aux::makeStringLit("P_eD"); strLit__28502; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28503 = ::x10aux::makeStringLit("ep_dist"); strLit__28503; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28504 = ::x10aux::makeStringLit("elite pool min. distance allowed, 0 normal, 1 smart "); strLit__28504; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)30ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25328 = ::x10aux::makeStringLit("P_lmD"); strLit__25328; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25329 = ::x10aux::makeStringLit("lmp_dist"); strLit__25329; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25330 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__25330; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28505 = ::x10aux::makeStringLit("P_lmD"); strLit__28505; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28506 = ::x10aux::makeStringLit("lmp_dist"); strLit__28506; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28507 = ::x10aux::makeStringLit("elite pool mode, 0 normal, 1 smart "); strLit__28507; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)31ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25331 = ::x10aux::makeStringLit("mt"); strLit__25331; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25332 = ::x10aux::makeStringLit("max_time"); strLit__25332; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25333 = ::x10aux::makeStringLit("Max. time  default 0"); strLit__25333; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28508 = ::x10aux::makeStringLit("mt"); strLit__28508; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28509 = ::x10aux::makeStringLit("max_time"); strLit__28509; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28510 = ::x10aux::makeStringLit("Max. time  default 0"); strLit__28510; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)32ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25334 = ::x10aux::makeStringLit("mi"); strLit__25334; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25335 = ::x10aux::makeStringLit("max_iter"); strLit__25335; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25336 = ::x10aux::makeStringLit("Max. iterations limit"); strLit__25336; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28511 = ::x10aux::makeStringLit("mi"); strLit__28511; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28512 = ::x10aux::makeStringLit("max_iter"); strLit__28512; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28513 = ::x10aux::makeStringLit("Max. iterations limit"); strLit__28513; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)33ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25337 = ::x10aux::makeStringLit("mr"); strLit__25337; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25338 = ::x10aux::makeStringLit("max_restart"); strLit__25338; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25339 = ::x10aux::makeStringLit("maximum number of restarts"); strLit__25339; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28514 = ::x10aux::makeStringLit("mr"); strLit__28514; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28515 = ::x10aux::makeStringLit("max_restart"); strLit__28515; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28516 = ::x10aux::makeStringLit("maximum number of restarts"); strLit__28516; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)34ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25340 = ::x10aux::makeStringLit("rp"); strLit__25340; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25341 = ::x10aux::makeStringLit("rep_partial"); strLit__25341; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25342 = ::x10aux::makeStringLit("report partial results"); strLit__25342; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28517 = ::x10aux::makeStringLit("rp"); strLit__28517; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28518 = ::x10aux::makeStringLit("rep_partial"); strLit__28518; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28519 = ::x10aux::makeStringLit("report partial results"); strLit__28519; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)35ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25343 = ::x10aux::makeStringLit("dbg"); strLit__25343; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25344 = ::x10aux::makeStringLit("debug_terminal"); strLit__25344; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25345 = ::x10aux::makeStringLit("report debug info on alternative terminal, default none"); strLit__25345; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28520 = ::x10aux::makeStringLit("dbg"); strLit__28520; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28521 = ::x10aux::makeStringLit("debug_terminal"); strLit__28521; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28522 = ::x10aux::makeStringLit("report debug info on alternative terminal, default none"); strLit__28522; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)36ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25346 = ::x10aux::makeStringLit("AS_vtr"); strLit__25346; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25347 = ::x10aux::makeStringLit("AS_varToReset"); strLit__25347; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25348 = ::x10aux::makeStringLit("number of variables to swap in the reset procedure."); strLit__25348; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28523 = ::x10aux::makeStringLit("AS_vtr"); strLit__28523; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28524 = ::x10aux::makeStringLit("AS_varToReset"); strLit__28524; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28525 = ::x10aux::makeStringLit("number of variables to swap in the reset procedure."); strLit__28525; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)37ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25349 = ::x10aux::makeStringLit("AS_rp"); strLit__25349; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25350 = ::x10aux::makeStringLit("AS_resetPer"); strLit__25350; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25351 = ::x10aux::makeStringLit("Percentage of variables to swap in the reset procedure. Default 10%"); strLit__25351; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28526 = ::x10aux::makeStringLit("AS_rp"); strLit__28526; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28527 = ::x10aux::makeStringLit("AS_resetPer"); strLit__28527; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28528 = ::x10aux::makeStringLit("Percentage of variables to swap in the reset procedure. Default 10%"); strLit__28528; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)38ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25352 = ::x10aux::makeStringLit("AS_flm"); strLit__25352; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25353 = ::x10aux::makeStringLit("AS_freezeLocMin"); strLit__25353; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25354 = ::x10aux::makeStringLit("number of swaps to freeze local min. variables. Default 5"); strLit__25354; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28529 = ::x10aux::makeStringLit("AS_flm"); strLit__28529; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28530 = ::x10aux::makeStringLit("AS_freezeLocMin"); strLit__28530; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28531 = ::x10aux::makeStringLit("number of swaps to freeze local min. variables. Default 5"); strLit__28531; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)39ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25355 = ::x10aux::makeStringLit("AS_fs"); strLit__25355; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25356 = ::x10aux::makeStringLit("AS_freezeSwap"); strLit__25356; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25357 = ::x10aux::makeStringLit("number of swaps to freeze swapped variables. Default 5"); strLit__25357; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28532 = ::x10aux::makeStringLit("AS_fs"); strLit__28532; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28533 = ::x10aux::makeStringLit("AS_freezeSwap"); strLit__28533; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28534 = ::x10aux::makeStringLit("number of swaps to freeze swapped variables. Default 5"); strLit__28534; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)40ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25358 = ::x10aux::makeStringLit("AS_rl"); strLit__25358; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25359 = ::x10aux::makeStringLit("AS_resetLimit"); strLit__25359; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25360 = ::x10aux::makeStringLit("number of marked variables to reset. Default 5"); strLit__25360; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28535 = ::x10aux::makeStringLit("AS_rl"); strLit__28535; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28536 = ::x10aux::makeStringLit("AS_resetLimit"); strLit__28536; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28537 = ::x10aux::makeStringLit("number of marked variables to reset. Default 5"); strLit__28537; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)41ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25361 = ::x10aux::makeStringLit("AS_plm"); strLit__25361; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25362 = ::x10aux::makeStringLit("AS_probSelecLocMin"); strLit__25362; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25363 = ::x10aux::makeStringLit("Probability to select a local min (instead of staying on a plateau). Default 0"); strLit__25363; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28538 = ::x10aux::makeStringLit("AS_plm"); strLit__28538; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28539 = ::x10aux::makeStringLit("AS_probSelecLocMin"); strLit__28539; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28540 = ::x10aux::makeStringLit("Probability to select a local min (instead of staying on a plateau). Default 0"); strLit__28540; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)42ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25364 = ::x10aux::makeStringLit("AS_e"); strLit__25364; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25365 = ::x10aux::makeStringLit("AS_exhaustive"); strLit__25365; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25366 = ::x10aux::makeStringLit("Exhaustive mode (explore all combinations), 0 or 1"); strLit__25366; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28541 = ::x10aux::makeStringLit("AS_e"); strLit__28541; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28542 = ::x10aux::makeStringLit("AS_exhaustive"); strLit__28542; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28543 = ::x10aux::makeStringLit("Exhaustive mode (explore all combinations), 0 or 1"); strLit__28543; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)43ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25367 = ::x10aux::makeStringLit("AS_fb"); strLit__25367; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25368 = ::x10aux::makeStringLit("AS_firstBest"); strLit__25368; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25369 = ::x10aux::makeStringLit("Select the first best variable in Min conflict heuristic, 0 or 1"); strLit__25369; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28544 = ::x10aux::makeStringLit("AS_fb"); strLit__28544; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28545 = ::x10aux::makeStringLit("AS_firstBest"); strLit__28545; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28546 = ::x10aux::makeStringLit("Select the first best variable in Min conflict heuristic, 0 or 1"); strLit__28546; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)44ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25370 = ::x10aux::makeStringLit("EO_t"); strLit__25370; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25371 = ::x10aux::makeStringLit("EO_tau"); strLit__25371; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25372 = ::x10aux::makeStringLit("Parameter tau in Extremal Optimization. Default 1 + 1 / log(n)"); strLit__25372; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28547 = ::x10aux::makeStringLit("EO_t"); strLit__28547; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28548 = ::x10aux::makeStringLit("EO_tau"); strLit__28548; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28549 = ::x10aux::makeStringLit("Parameter tau in Extremal Optimization. Default 1 + 1 / log(n)"); strLit__28549; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)45ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25373 = ::x10aux::makeStringLit("EO_p"); strLit__25373; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25374 = ::x10aux::makeStringLit("EO_pdf"); strLit__25374; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25375 = ::x10aux::makeStringLit("PDF used to select the variable to swap . Default 1-(Original) 2-(Exp)"); strLit__25375; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28550 = ::x10aux::makeStringLit("EO_p"); strLit__28550; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28551 = ::x10aux::makeStringLit("EO_pdf"); strLit__28551; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28552 = ::x10aux::makeStringLit("PDF used to select the variable to swap . Default 1-(Original) 2-(Exp)"); strLit__28552; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)46ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25376 = ::x10aux::makeStringLit("EO_ss"); strLit__25376; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25377 = ::x10aux::makeStringLit("EO_selSec"); strLit__25377; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25378 = ::x10aux::makeStringLit("Function used to select the second variable . Default 1-(minconflict) 0-(random)"); strLit__25378; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28553 = ::x10aux::makeStringLit("EO_ss"); strLit__28553; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28554 = ::x10aux::makeStringLit("EO_selSec"); strLit__28554; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28555 = ::x10aux::makeStringLit("Function used to select the second variable . Default 1-(minconflict) 0-(random)"); strLit__28555; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)47ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25379 = ::x10aux::makeStringLit("RoTS_t"); strLit__25379; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25380 = ::x10aux::makeStringLit("RoTS_tabu_duration"); strLit__25380; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25381 = ::x10aux::makeStringLit("Set tabu duration factor (x N). Default 8"); strLit__25381; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28556 = ::x10aux::makeStringLit("RoTS_t"); strLit__28556; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28557 = ::x10aux::makeStringLit("RoTS_tabu_duration"); strLit__28557; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28558 = ::x10aux::makeStringLit("Set tabu duration factor (x N). Default 8"); strLit__28558; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)48ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25382 = ::x10aux::makeStringLit("RoTS_a"); strLit__25382; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25383 = ::x10aux::makeStringLit("RoTS_aspiration"); strLit__25383; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25384 = ::x10aux::makeStringLit("Set aspiration factor (x NxN). Default 5"); strLit__25384; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28559 = ::x10aux::makeStringLit("RoTS_a"); strLit__28559; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28560 = ::x10aux::makeStringLit("RoTS_aspiration"); strLit__28560; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28561 = ::x10aux::makeStringLit("Set aspiration factor (x NxN). Default 5"); strLit__28561; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)49ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25385 = ::x10aux::makeStringLit("if"); strLit__25385; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25386 = ::x10aux::makeStringLit("input_vector_file"); strLit__25386; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25387 = ::x10aux::makeStringLit("file path for input vector . Default ."); strLit__25387; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28562 = ::x10aux::makeStringLit("if"); strLit__28562; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28563 = ::x10aux::makeStringLit("input_vector_file"); strLit__28563; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28564 = ::x10aux::makeStringLit("file path for input vector . Default ."); strLit__28564; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)50ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25388 = ::x10aux::makeStringLit("bv"); strLit__25388; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25389 = ::x10aux::makeStringLit("model_baseValue"); strLit__25389; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25390 = ::x10aux::makeStringLit("Domain base value for the model . 0 or 1"); strLit__25390; }))));
-                                                         t__25130->x10::lang::Rail< ::x10::util::Option >::__set(
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28565 = ::x10aux::makeStringLit("bv"); strLit__28565; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28566 = ::x10aux::makeStringLit("model_baseValue"); strLit__28566; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28567 = ::x10aux::makeStringLit("Domain base value for the model . 0 or 1"); strLit__28567; }))));
+                                                         t__28307->x10::lang::Rail< ::x10::util::Option >::__set(
                                                            ((x10_long)51ll),
-                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__25391 = ::x10aux::makeStringLit("LNP_k"); strLit__25391; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25392 = ::x10aux::makeStringLit("LNP_k"); strLit__25392; })),
-                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__25393 = ::x10aux::makeStringLit("Parameter K in Langford number problem . 2 or 3"); strLit__25393; }))));
-                                                         t__25130;
+                                                           ::x10::util::Option::_make((__extension__ ({ static ::x10::lang::String* strLit__28568 = ::x10aux::makeStringLit("LNP_k"); strLit__28568; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28569 = ::x10aux::makeStringLit("LNP_k"); strLit__28569; })),
+                                                                                      (__extension__ ({ static ::x10::lang::String* strLit__28570 = ::x10aux::makeStringLit("Parameter K in Langford number problem . 2 or 3"); strLit__28570; }))));
+                                                         t__28307;
                                                      }))
                                                      );
     
-    //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 15 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     
-    //#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     this->cpls::ParamManager::__fieldInitializers_cpls_ParamManager();
     
-    //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 82 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     this->FMGL(paramFileName) = this->cpls::ParamManager::__apply(
-                                  (__extension__ ({ static ::x10::lang::String* strLit__25394 = ::x10aux::makeStringLit("-pf"); strLit__25394; })),
-                                  (__extension__ ({ static ::x10::lang::String* strLit__25395 = ::x10aux::makeStringLit("CPLS.param"); strLit__25395; })));
+                                  (__extension__ ({ static ::x10::lang::String* strLit__28571 = ::x10aux::makeStringLit("-pf"); strLit__28571; })),
+                                  (__extension__ ({ static ::x10::lang::String* strLit__28572 = ::x10aux::makeStringLit("CPLS.param"); strLit__28572; })));
     
-    //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 83 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     try {
         
-        //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 84 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         this->FMGL(paramFile) = ::x10::io::File::_make(this->FMGL(paramFileName));
     }
-    catch (::x10::lang::CheckedThrowable* __exc118) {
-        if (::x10aux::instanceof< ::x10::io::IOException*>(__exc118)) {
-            ::x10::io::IOException* id__6 = static_cast< ::x10::io::IOException*>(__exc118);
+    catch (::x10::lang::CheckedThrowable* __exc161) {
+        if (::x10aux::instanceof< ::x10::io::IOException*>(__exc161)) {
+            ::x10::io::IOException* id__6 = static_cast< ::x10::io::IOException*>(__exc161);
             {
                 
-                //#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                //#line 88 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                 this->FMGL(paramFile) = (::x10aux::class_cast_unchecked< ::x10::io::File*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
             }
         } else
@@ -354,95 +354,95 @@ void cpls::ParamManager::_constructor(::x10::lang::Rail< ::x10::lang::String* >*
 
 
 
-//#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 92 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 void cpls::ParamManager::parseFile() {
     
-    //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 93 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     if ((::x10aux::struct_equals(this->FMGL(paramFile), reinterpret_cast< ::x10::lang::NullType*>(X10_NULL))))
     {
         
-        //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 94 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25396 = ::x10aux::makeStringLit("No parameters file supplied"); strLit__25396; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28573 = ::x10aux::makeStringLit("No parameters file supplied"); strLit__28573; }))));
         
-        //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 95 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         return;
     }
     
-    //#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 98 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     {
-        ::x10::lang::Iterator< ::x10::lang::String*>* line__20229;
-        for (line__20229 = ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(paramFile))->lines())->iterator();
-             ::x10::lang::Iterator< ::x10::lang::String*>::hasNext(::x10aux::nullCheck(line__20229));
+        ::x10::lang::Iterator< ::x10::lang::String*>* line__21336;
+        for (line__21336 = ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(paramFile))->lines())->iterator();
+             ::x10::lang::Iterator< ::x10::lang::String*>::hasNext(::x10aux::nullCheck(line__21336));
              ) {
-            ::x10::lang::String* line = ::x10::lang::Iterator< ::x10::lang::String*>::next(::x10aux::nullCheck(line__20229));
+            ::x10::lang::String* line = ::x10::lang::Iterator< ::x10::lang::String*>::next(::x10aux::nullCheck(line__21336));
             
-            //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 100 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             if ((::x10aux::struct_equals(::x10aux::nullCheck(line)->x10::lang::String::length(),
                                          ((x10_int)0)))) {
                 continue;
             }
             
-            //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 101 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             if ((::x10aux::struct_equals((line)->charAt(((x10_int)0)),
                                          ((x10_char)'#'))))
             {
                 continue;
             }
             
-            //#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 103 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             x10_int sepIndex = ::x10aux::nullCheck(line)->x10::lang::String::indexOf(
                                  this->FMGL(SEPARETOR));
             
-            //#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 104 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             ::x10::lang::String* key = ::x10aux::nullCheck(line)->x10::lang::String::substring(
                                          ((x10_int)0), sepIndex);
             
-            //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 105 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             ::x10::lang::String* value = ::x10aux::nullCheck(line)->x10::lang::String::substring(
                                            ((sepIndex) + (((x10_int)1))));
             
-            //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 106 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             ::x10::lang::Rail< ::x10::lang::String* >* res =
               this->cpls::ParamManager::myGet(key);
             
-            //#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 110 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             if ((::x10aux::struct_equals(res, reinterpret_cast< ::x10::lang::NullType*>(X10_NULL))))
             {
                 
-                //#line 112 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                //#line 112 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                 continue;
             } else {
                 
-                //#line 115 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                //#line 115 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                 ::x10::lang::Any* values = this->howManyValues(
                                              key);
                 
-                //#line 117 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                //#line 117 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                 if ((::x10aux::struct_equals((::x10aux::class_cast<x10_int>(values)),
                                              ((x10_int)0))))
                 {
                     
-                    //#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 120 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     ::x10aux::nullCheck(this->FMGL(properties))->put(
                       key, ::x10::lang::Rail< ::x10::lang::String* >::_make(((x10_long)1ll),
                                                                             value));
                     
-                    //#line 121 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 121 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     ::x10::util::Option option = ::x10aux::nullCheck(this->FMGL(keyMap))->getOrElse(
                                                    key, ::x10::util::Option::FMGL(BAD__get)());
                     
-                    //#line 122 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 122 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     if ((::x10aux::struct_equals(option, ::x10::util::Option::FMGL(BAD__get)())))
                     {
                         break;
                     }
                     
-                    //#line 123 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 123 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     ::x10::lang::String* otherForm = option->otherForm(
                                                        key);
                     
-                    //#line 124 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 124 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     if (((::x10aux::nullCheck(otherForm)->x10::lang::String::length()) > (((x10_int)0))))
                     {
                         ::x10aux::nullCheck(this->FMGL(properties))->put(
@@ -452,7 +452,7 @@ void cpls::ParamManager::parseFile() {
                     
                 } else {
                     
-                    //#line 128 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+                    //#line 128 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
                     continue;
                 }
                 
@@ -463,21 +463,21 @@ void cpls::ParamManager::parseFile() {
     
 }
 
-//#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 135 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 ::x10::lang::Rail< ::x10::lang::String* >* cpls::ParamManager::myGet(
   ::x10::lang::String* key) {
     
-    //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 136 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::lang::String* winner = key;
     
-    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 137 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_boolean isValid = true;
     
-    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 138 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     if ((::x10aux::struct_equals((key)->charAt(((x10_int)0)),
                                  ((x10_char)'-')))) {
         
-        //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 139 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         if ((::x10aux::struct_equals(::x10aux::nullCheck(this->FMGL(keyMap))->getOrElse(
                                        key, ::x10::util::Option::FMGL(BAD__get)()),
                                      ::x10::util::Option::FMGL(BAD__get)())))
@@ -487,19 +487,19 @@ void cpls::ParamManager::parseFile() {
         
     } else {
         
-        //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-        winner = ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25405 = ::x10aux::makeStringLit("-"); strLit__25405; })), key);
+        //#line 141 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        winner = ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28582 = ::x10aux::makeStringLit("-"); strLit__28582; })), key);
         
-        //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 142 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         if ((::x10aux::struct_equals(::x10aux::nullCheck(this->FMGL(keyMap))->getOrElse(
                                        winner, ::x10::util::Option::FMGL(BAD__get)()),
                                      ::x10::util::Option::FMGL(BAD__get)())))
         {
             
-            //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-            winner = ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25408 = ::x10aux::makeStringLit("--"); strLit__25408; })), key);
+            //#line 143 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            winner = ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28585 = ::x10aux::makeStringLit("--"); strLit__28585; })), key);
             
-            //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+            //#line 144 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
             if ((::x10aux::struct_equals(::x10aux::nullCheck(this->FMGL(keyMap))->getOrElse(
                                            winner, ::x10::util::Option::FMGL(BAD__get)()),
                                          ::x10::util::Option::FMGL(BAD__get)())))
@@ -511,229 +511,229 @@ void cpls::ParamManager::parseFile() {
         
     }
     
-    //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 147 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     if (isValid) {
         return ::x10aux::nullCheck(this->FMGL(properties))->getOrElse(
                  winner, ::x10::lang::Rail< ::x10::lang::String* >::_make(((x10_long)0ll)));
         
     } else {
         
-        //#line 150 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+        //#line 150 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
         return ::x10aux::class_cast_unchecked< ::x10::lang::Rail< ::x10::lang::String* >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
         
     }
     
 }
 
-//#line 154 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 154 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 void cpls::ParamManager::printParameters() {
     
-    //#line 155 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 155 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::lang::String* problem = this->cpls::ParamManager::__apply(
-                                     (__extension__ ({ static ::x10::lang::String* strLit__25413 = ::x10aux::makeStringLit("-p"); strLit__25413; })),
-                                     (__extension__ ({ static ::x10::lang::String* strLit__25414 = ::x10aux::makeStringLit("MSP"); strLit__25414; })));
+                                     (__extension__ ({ static ::x10::lang::String* strLit__28590 = ::x10aux::makeStringLit("-p"); strLit__28590; })),
+                                     (__extension__ ({ static ::x10::lang::String* strLit__28591 = ::x10aux::makeStringLit("MSP"); strLit__28591; })));
     
-    //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 156 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::lang::String* filePath = this->cpls::ParamManager::__apply(
-                                      (__extension__ ({ static ::x10::lang::String* strLit__25415 = ::x10aux::makeStringLit("-f"); strLit__25415; })),
-                                      (__extension__ ({ static ::x10::lang::String* strLit__25416 = ::x10aux::makeStringLit("."); strLit__25416; })));
+                                      (__extension__ ({ static ::x10::lang::String* strLit__28592 = ::x10aux::makeStringLit("-f"); strLit__28592; })),
+                                      (__extension__ ({ static ::x10::lang::String* strLit__28593 = ::x10aux::makeStringLit("."); strLit__28593; })));
     
-    //#line 157 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-    x10_int size = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__25417 = ::x10aux::makeStringLit("-s"); strLit__25417; })),
+    //#line 157 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    x10_int size = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__28594 = ::x10aux::makeStringLit("-s"); strLit__28594; })),
                                                      ((x10_int)10));
     
-    //#line 158 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 158 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int solverMode = this->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__25418 = ::x10aux::makeStringLit("-sm"); strLit__25418; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__28595 = ::x10aux::makeStringLit("-sm"); strLit__28595; })),
                            ((x10_int)1));
     
-    //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 159 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int restartLimit = this->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__25419 = ::x10aux::makeStringLit("-mi"); strLit__25419; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__28596 = ::x10aux::makeStringLit("-mi"); strLit__28596; })),
                              ((x10_int)1000000000));
     
-    //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 160 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_long maxTime = this->cpls::ParamManager::__apply(
-                         (__extension__ ({ static ::x10::lang::String* strLit__25420 = ::x10aux::makeStringLit("-mt"); strLit__25420; })),
+                         (__extension__ ({ static ::x10::lang::String* strLit__28597 = ::x10aux::makeStringLit("-mt"); strLit__28597; })),
                          ((x10_long)0ll));
     
-    //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 161 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int tCostFromCL = this->cpls::ParamManager::__apply(
-                            (__extension__ ({ static ::x10::lang::String* strLit__25421 = ::x10aux::makeStringLit("-tc"); strLit__25421; })),
+                            (__extension__ ({ static ::x10::lang::String* strLit__28598 = ::x10aux::makeStringLit("-tc"); strLit__28598; })),
                             ((x10_int)0));
     
-    //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 162 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_long costFromF = this->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__25422 = ::x10aux::makeStringLit("-tf"); strLit__25422; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__28599 = ::x10aux::makeStringLit("-tf"); strLit__28599; })),
                            ((x10_long)0ll));
     
-    //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-    x10_int testNb = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__25423 = ::x10aux::makeStringLit("-b"); strLit__25423; })),
+    //#line 163 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    x10_int testNb = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__28600 = ::x10aux::makeStringLit("-b"); strLit__28600; })),
                                                        ((x10_int)10));
     
-    //#line 164 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 164 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::lang::String* solverIn = this->cpls::ParamManager::__apply(
-                                      (__extension__ ({ static ::x10::lang::String* strLit__25424 = ::x10aux::makeStringLit("-sl"); strLit__25424; })),
-                                      (__extension__ ({ static ::x10::lang::String* strLit__25425 = ::x10aux::makeStringLit("AS"); strLit__25425; })));
+                                      (__extension__ ({ static ::x10::lang::String* strLit__28601 = ::x10aux::makeStringLit("-sl"); strLit__28601; })),
+                                      (__extension__ ({ static ::x10::lang::String* strLit__28602 = ::x10aux::makeStringLit("AS"); strLit__28602; })));
     
-    //#line 165 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 165 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int nodesPTeam = this->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__25426 = ::x10aux::makeStringLit("-N"); strLit__25426; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__28603 = ::x10aux::makeStringLit("-N"); strLit__28603; })),
                            ((x10_int)1));
     
-    //#line 166 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-    x10_int updateI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__25427 = ::x10aux::makeStringLit("-U"); strLit__25427; })),
+    //#line 166 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    x10_int updateI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__28604 = ::x10aux::makeStringLit("-U"); strLit__28604; })),
                                                         ((x10_int)0));
     
-    //#line 167 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-    x10_int reportI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__25428 = ::x10aux::makeStringLit("-R"); strLit__25428; })),
+    //#line 167 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    x10_int reportI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__28605 = ::x10aux::makeStringLit("-R"); strLit__28605; })),
                                                         ((x10_int)0));
     
-    //#line 168 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 168 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int changeProb = this->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__25429 = ::x10aux::makeStringLit("-C"); strLit__25429; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__28606 = ::x10aux::makeStringLit("-C"); strLit__28606; })),
                            ((x10_int)100));
     
-    //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 169 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int poolSize = this->cpls::ParamManager::__apply(
-                         (__extension__ ({ static ::x10::lang::String* strLit__25430 = ::x10aux::makeStringLit("-P_e"); strLit__25430; })),
+                         (__extension__ ({ static ::x10::lang::String* strLit__28607 = ::x10aux::makeStringLit("-P_e"); strLit__28607; })),
                          ((x10_int)4));
     
-    //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 170 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_long interTI = this->cpls::ParamManager::__apply(
-                         (__extension__ ({ static ::x10::lang::String* strLit__25431 = ::x10aux::makeStringLit("-I"); strLit__25431; })),
+                         (__extension__ ({ static ::x10::lang::String* strLit__28608 = ::x10aux::makeStringLit("-I"); strLit__28608; })),
                          ((x10_long)0ll));
     
-    //#line 171 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 171 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_double minDistance = this->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__25432 = ::x10aux::makeStringLit("-D"); strLit__25432; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__28609 = ::x10aux::makeStringLit("-D"); strLit__28609; })),
                                0.3);
     
-    //#line 172 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
-    x10_long delayI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__25433 = ::x10aux::makeStringLit("-W"); strLit__25433; })),
+    //#line 172 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    x10_long delayI = this->cpls::ParamManager::__apply((__extension__ ({ static ::x10::lang::String* strLit__28610 = ::x10aux::makeStringLit("-W"); strLit__28610; })),
                                                         ((x10_long)0ll));
     
-    //#line 173 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 173 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_double affectedP = this->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__25434 = ::x10aux::makeStringLit("-A"); strLit__25434; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__28611 = ::x10aux::makeStringLit("-A"); strLit__28611; })),
                              0.0);
     
-    //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 174 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int changeParam = this->cpls::ParamManager::__apply(
-                            (__extension__ ({ static ::x10::lang::String* strLit__25435 = ::x10aux::makeStringLit("-M"); strLit__25435; })),
+                            (__extension__ ({ static ::x10::lang::String* strLit__28612 = ::x10aux::makeStringLit("-M"); strLit__28612; })),
                             ((x10_int)1));
     
-    //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 175 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int changeVector = this->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__25436 = ::x10aux::makeStringLit("-CD"); strLit__25436; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__28613 = ::x10aux::makeStringLit("-CD"); strLit__28613; })),
                              ((x10_int)1));
     
-    //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 176 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::lang::String* inputPath = this->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__25437 = ::x10aux::makeStringLit("-if"); strLit__25437; })),
-                                       (__extension__ ({ static ::x10::lang::String* strLit__25438 = ::x10aux::makeStringLit("."); strLit__25438; })));
+                                       (__extension__ ({ static ::x10::lang::String* strLit__28614 = ::x10aux::makeStringLit("-if"); strLit__28614; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__28615 = ::x10aux::makeStringLit("."); strLit__28615; })));
     
-    //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 177 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     x10_int outFormat = this->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__25439 = ::x10aux::makeStringLit("-of"); strLit__25439; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__28616 = ::x10aux::makeStringLit("-of"); strLit__28616; })),
                           ((x10_int)1));
     
-    //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 179 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25440 = ::x10aux::makeStringLit(""); strLit__25440; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28617 = ::x10aux::makeStringLit(""); strLit__28617; }))));
     
-    //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 180 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25441 = ::x10aux::makeStringLit("Problem Parameters:"); strLit__25441; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28618 = ::x10aux::makeStringLit("Problem Parameters:"); strLit__28618; }))));
     
-    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 181 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25442 = ::x10aux::makeStringLit("Problem "); strLit__25442; })), problem), (__extension__ ({ static ::x10::lang::String* strLit__25443 = ::x10aux::makeStringLit(" size "); strLit__25443; }))), size), (__extension__ ({ static ::x10::lang::String* strLit__25444 = ::x10aux::makeStringLit(" File Path (SMTI):"); strLit__25444; }))), filePath)));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28619 = ::x10aux::makeStringLit("Problem "); strLit__28619; })), problem), (__extension__ ({ static ::x10::lang::String* strLit__28620 = ::x10aux::makeStringLit(" size "); strLit__28620; }))), size), (__extension__ ({ static ::x10::lang::String* strLit__28621 = ::x10aux::makeStringLit(" File Path (SMTI):"); strLit__28621; }))), filePath)));
     
-    //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 182 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25445 = ::x10aux::makeStringLit(""); strLit__25445; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28622 = ::x10aux::makeStringLit(""); strLit__28622; }))));
     
-    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 183 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25446 = ::x10aux::makeStringLit("Solver Parameters:"); strLit__25446; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28623 = ::x10aux::makeStringLit("Solver Parameters:"); strLit__28623; }))));
     
-    //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 184 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25447 = ::x10aux::makeStringLit("Solver: "); strLit__25447; })), solverIn), (__extension__ ({ static ::x10::lang::String* strLit__25448 = ::x10aux::makeStringLit(", Mode: "); strLit__25448; }))), (::x10aux::struct_equals(solverMode,
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28624 = ::x10aux::makeStringLit("Solver: "); strLit__28624; })), solverIn), (__extension__ ({ static ::x10::lang::String* strLit__28625 = ::x10aux::makeStringLit(", Mode: "); strLit__28625; }))), (::x10aux::struct_equals(solverMode,
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ((x10_int)0)))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25449 = ::x10aux::makeStringLit("sequential"); strLit__25449; })))
-        : ((__extension__ ({ static ::x10::lang::String* strLit__25450 = ::x10aux::makeStringLit("parallel"); strLit__25450; })))), (__extension__ ({ static ::x10::lang::String* strLit__25451 = ::x10aux::makeStringLit(", Limit: "); strLit__25451; }))), restartLimit), (__extension__ ({ static ::x10::lang::String* strLit__25452 = ::x10aux::makeStringLit(" iterations or "); strLit__25452; }))), maxTime), (__extension__ ({ static ::x10::lang::String* strLit__25453 = ::x10aux::makeStringLit(" ms."); strLit__25453; })))));
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28626 = ::x10aux::makeStringLit("sequential"); strLit__28626; })))
+        : ((__extension__ ({ static ::x10::lang::String* strLit__28627 = ::x10aux::makeStringLit("parallel"); strLit__28627; })))), (__extension__ ({ static ::x10::lang::String* strLit__28628 = ::x10aux::makeStringLit(", Limit: "); strLit__28628; }))), restartLimit), (__extension__ ({ static ::x10::lang::String* strLit__28629 = ::x10aux::makeStringLit(" iterations or "); strLit__28629; }))), maxTime), (__extension__ ({ static ::x10::lang::String* strLit__28630 = ::x10aux::makeStringLit(" ms."); strLit__28630; })))));
     
-    //#line 185 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 185 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25454 = ::x10aux::makeStringLit("Target cost from "); strLit__25454; })), (!::x10aux::struct_equals(costFromF,
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28631 = ::x10aux::makeStringLit("Target cost from "); strLit__28631; })), (!::x10aux::struct_equals(costFromF,
                                                                                                                                                                                                                                  ((x10_long)0ll)))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25455 = ::x10aux::makeStringLit("file. "); strLit__25455; })))
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28632 = ::x10aux::makeStringLit("file. "); strLit__28632; })))
         : (::x10::lang::String::__plus(((tCostFromCL) >= (((x10_int)0)))
-             ? ((__extension__ ({ static ::x10::lang::String* strLit__25456 = ::x10aux::makeStringLit("command line, lower or equal than "); strLit__25456; })))
-             : ((__extension__ ({ static ::x10::lang::String* strLit__25457 = ::x10aux::makeStringLit("command line, strictly lower than "); strLit__25457; }))), ((x10_int)::labs(tCostFromCL)))))));
+             ? ((__extension__ ({ static ::x10::lang::String* strLit__28633 = ::x10aux::makeStringLit("command line, lower or equal than "); strLit__28633; })))
+             : ((__extension__ ({ static ::x10::lang::String* strLit__28634 = ::x10aux::makeStringLit("command line, strictly lower than "); strLit__28634; }))), ((x10_int)::labs(tCostFromCL)))))));
     
-    //#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 188 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25458 = ::x10aux::makeStringLit(""); strLit__25458; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28635 = ::x10aux::makeStringLit(""); strLit__28635; }))));
     
-    //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 189 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25459 = ::x10aux::makeStringLit("Parallel framework Parameters:"); strLit__25459; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28636 = ::x10aux::makeStringLit("Parallel framework Parameters:"); strLit__28636; }))));
     
-    //#line 190 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 190 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
       reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(((nodesPTeam) > (((x10_int)1)))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25460 = ::x10aux::makeStringLit("Using "); strLit__25460; })))
-        : ((__extension__ ({ static ::x10::lang::String* strLit__25461 = ::x10aux::makeStringLit("Without "); strLit__25461; }))), (__extension__ ({ static ::x10::lang::String* strLit__25462 = ::x10aux::makeStringLit("Cooperative Search: "); strLit__25462; }))), ((x10_long)::x10aux::num_hosts)), (__extension__ ({ static ::x10::lang::String* strLit__25463 = ::x10aux::makeStringLit(" places. "); strLit__25463; }))), nodesPTeam), (__extension__ ({ static ::x10::lang::String* strLit__25464 = ::x10aux::makeStringLit(" nodes per team "); strLit__25464; }))), ((((x10_int) (((x10_long)::x10aux::num_hosts)))) / ::x10aux::zeroCheck(nodesPTeam))), (__extension__ ({ static ::x10::lang::String* strLit__25465 = ::x10aux::makeStringLit(" Teams"); strLit__25465; })))));
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28637 = ::x10aux::makeStringLit("Using "); strLit__28637; })))
+        : ((__extension__ ({ static ::x10::lang::String* strLit__28638 = ::x10aux::makeStringLit("Without "); strLit__28638; }))), (__extension__ ({ static ::x10::lang::String* strLit__28639 = ::x10aux::makeStringLit("Cooperative Search: "); strLit__28639; }))), ((x10_long)::x10aux::num_hosts)), (__extension__ ({ static ::x10::lang::String* strLit__28640 = ::x10aux::makeStringLit(" places. "); strLit__28640; }))), nodesPTeam), (__extension__ ({ static ::x10::lang::String* strLit__28641 = ::x10aux::makeStringLit(" nodes per team "); strLit__28641; }))), ((((x10_int) (((x10_long)::x10aux::num_hosts)))) / ::x10aux::zeroCheck(nodesPTeam))), (__extension__ ({ static ::x10::lang::String* strLit__28642 = ::x10aux::makeStringLit(" Teams"); strLit__28642; })))));
     
-    //#line 191 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 191 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25466 = ::x10aux::makeStringLit("Intensification Parameters: Update Interval "); strLit__25466; })), updateI), (__extension__ ({ static ::x10::lang::String* strLit__25467 = ::x10aux::makeStringLit(" iter. Report Interval "); strLit__25467; }))), reportI), (__extension__ ({ static ::x10::lang::String* strLit__25468 = ::x10aux::makeStringLit(" iter. Pool size "); strLit__25468; }))), poolSize), (__extension__ ({ static ::x10::lang::String* strLit__25469 = ::x10aux::makeStringLit(" conf. Probability to Change vector "); strLit__25469; }))), changeProb), (__extension__ ({ static ::x10::lang::String* strLit__25470 = ::x10aux::makeStringLit("%"); strLit__25470; })))));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28643 = ::x10aux::makeStringLit("Intensification Parameters: Update Interval "); strLit__28643; })), updateI), (__extension__ ({ static ::x10::lang::String* strLit__28644 = ::x10aux::makeStringLit(" iter. Report Interval "); strLit__28644; }))), reportI), (__extension__ ({ static ::x10::lang::String* strLit__28645 = ::x10aux::makeStringLit(" iter. Pool size "); strLit__28645; }))), poolSize), (__extension__ ({ static ::x10::lang::String* strLit__28646 = ::x10aux::makeStringLit(" conf. Probability to Change vector "); strLit__28646; }))), changeProb), (__extension__ ({ static ::x10::lang::String* strLit__28647 = ::x10aux::makeStringLit("%"); strLit__28647; })))));
     
-    //#line 192 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 192 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25471 = ::x10aux::makeStringLit("Diversification Parameters: Interval "); strLit__25471; })), interTI), (__extension__ ({ static ::x10::lang::String* strLit__25472 = ::x10aux::makeStringLit(" ms. Minimum distance: "); strLit__25472; }))), minDistance), (__extension__ ({ static ::x10::lang::String* strLit__25473 = ::x10aux::makeStringLit(" Initial delay "); strLit__25473; }))), delayI), (__extension__ ({ static ::x10::lang::String* strLit__25474 = ::x10aux::makeStringLit(" ms. Per. Affected Places "); strLit__25474; }))), ((affectedP) * (((x10_double) (((x10_long)100ll)))))), (__extension__ ({ static ::x10::lang::String* strLit__25475 = ::x10aux::makeStringLit("%"); strLit__25475; })))));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28648 = ::x10aux::makeStringLit("Diversification Parameters: Interval "); strLit__28648; })), interTI), (__extension__ ({ static ::x10::lang::String* strLit__28649 = ::x10aux::makeStringLit(" ms. Minimum distance: "); strLit__28649; }))), minDistance), (__extension__ ({ static ::x10::lang::String* strLit__28650 = ::x10aux::makeStringLit(" Initial delay "); strLit__28650; }))), delayI), (__extension__ ({ static ::x10::lang::String* strLit__28651 = ::x10aux::makeStringLit(" ms. Per. Affected Places "); strLit__28651; }))), ((affectedP) * (((x10_double) (((x10_long)100ll)))))), (__extension__ ({ static ::x10::lang::String* strLit__28652 = ::x10aux::makeStringLit("%"); strLit__28652; })))));
     
-    //#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 193 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25476 = ::x10aux::makeStringLit("                            Corrective Action:"); strLit__25476; })), (::x10aux::struct_equals(changeVector,
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28653 = ::x10aux::makeStringLit("                            Corrective Action:"); strLit__28653; })), (::x10aux::struct_equals(changeVector,
                                                                                                                                                                                                                                                                                          ((x10_int)1)))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25477 = ::x10aux::makeStringLit(" Change Vector "); strLit__25477; })))
-        : ((__extension__ ({ static ::x10::lang::String* strLit__25478 = ::x10aux::makeStringLit(" - "); strLit__25478; })))), (::x10aux::struct_equals(changeParam,
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28654 = ::x10aux::makeStringLit(" Change Vector "); strLit__28654; })))
+        : ((__extension__ ({ static ::x10::lang::String* strLit__28655 = ::x10aux::makeStringLit(" - "); strLit__28655; })))), (::x10aux::struct_equals(changeParam,
                                                                                                                                                         ((x10_int)1)))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25479 = ::x10aux::makeStringLit("and Adapt Solver Parameters "); strLit__25479; })))
-        : ((__extension__ ({ static ::x10::lang::String* strLit__25480 = ::x10aux::makeStringLit(" - "); strLit__25480; }))))));
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28656 = ::x10aux::makeStringLit("and Adapt Solver Parameters "); strLit__28656; })))
+        : ((__extension__ ({ static ::x10::lang::String* strLit__28657 = ::x10aux::makeStringLit(" - "); strLit__28657; }))))));
     
-    //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 194 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25481 = ::x10aux::makeStringLit(""); strLit__25481; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28658 = ::x10aux::makeStringLit(""); strLit__28658; }))));
     
-    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 195 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25482 = ::x10aux::makeStringLit("Other Parameters:"); strLit__25482; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28659 = ::x10aux::makeStringLit("Other Parameters:"); strLit__28659; }))));
     
-    //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 196 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25483 = ::x10aux::makeStringLit("Max threads "); strLit__25483; })), ::x10::lang::Runtime::FMGL(MAX_THREADS__get)()), (__extension__ ({ static ::x10::lang::String* strLit__25484 = ::x10aux::makeStringLit(" NTHREADS "); strLit__25484; }))), ::x10::lang::Runtime::FMGL(NTHREADS__get)())));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28660 = ::x10aux::makeStringLit("Max threads "); strLit__28660; })), ::x10::lang::Runtime::FMGL(MAX_THREADS__get)()), (__extension__ ({ static ::x10::lang::String* strLit__28661 = ::x10aux::makeStringLit(" NTHREADS "); strLit__28661; }))), ::x10::lang::Runtime::FMGL(NTHREADS__get)())));
     
-    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 197 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25485 = ::x10aux::makeStringLit("Solving "); strLit__25485; })), testNb), (__extension__ ({ static ::x10::lang::String* strLit__25486 = ::x10aux::makeStringLit(" times each instance"); strLit__25486; })))));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28662 = ::x10aux::makeStringLit("Solving "); strLit__28662; })), testNb), (__extension__ ({ static ::x10::lang::String* strLit__28663 = ::x10aux::makeStringLit(" times each instance"); strLit__28663; })))));
     
-    //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 198 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25487 = ::x10aux::makeStringLit(" Input vector "); strLit__25487; })), ::x10aux::equals(inputPath,(__extension__ ({ static ::x10::lang::String* strLit__25488 = ::x10aux::makeStringLit("."); strLit__25488; })))
-        ? ((__extension__ ({ static ::x10::lang::String* strLit__25489 = ::x10aux::makeStringLit("not used"); strLit__25489; })))
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__28664 = ::x10aux::makeStringLit(" Input vector "); strLit__28664; })), ::x10aux::equals(inputPath,(__extension__ ({ static ::x10::lang::String* strLit__28665 = ::x10aux::makeStringLit("."); strLit__28665; })))
+        ? ((__extension__ ({ static ::x10::lang::String* strLit__28666 = ::x10aux::makeStringLit("not used"); strLit__28666; })))
         : (inputPath))));
     
-    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+    //#line 199 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__25490 = ::x10aux::makeStringLit(""); strLit__25490; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__28667 = ::x10aux::makeStringLit(""); strLit__28667; }))));
 }
 
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ParamManager.x10"
+//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/ParamManager.x10"
 ::cpls::ParamManager* cpls::ParamManager::cpls__ParamManager____this__cpls__ParamManager(
   ) {
     return this;
