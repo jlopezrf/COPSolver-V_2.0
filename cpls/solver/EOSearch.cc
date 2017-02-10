@@ -341,17 +341,17 @@ void cpls::solver::EOSearch::configHeuristic(::cpls::problem::ProblemGenericMode
     
     //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
     this->FMGL(tauUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__25689 = ::x10aux::makeStringLit("--EO_tau"); strLit__25689; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__25794 = ::x10aux::makeStringLit("--EO_tau"); strLit__25794; })),
                                ((1.0) + (((1.0) / (::x10::lang::MathNatives::log(((x10_double) (::x10aux::nullCheck(problemModel)->getSize()))))))));
     
     //#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
     this->FMGL(pdfUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__25690 = ::x10aux::makeStringLit("--EO_pdf"); strLit__25690; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__25795 = ::x10aux::makeStringLit("--EO_pdf"); strLit__25795; })),
                                ((x10_int)-1));
     
     //#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
     this->FMGL(selSecond) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                              (__extension__ ({ static ::x10::lang::String* strLit__25691 = ::x10aux::makeStringLit("--EO_selSec"); strLit__25691; })),
+                              (__extension__ ({ static ::x10::lang::String* strLit__25796 = ::x10aux::makeStringLit("--EO_selSec"); strLit__25796; })),
                               ((x10_int)1));
 }
 
@@ -455,12 +455,12 @@ void cpls::solver::EOSearch::initPDF(::x10::lang::Fun_0_2<x10_double, x10_long, 
              x = ((x) + (((x10_int)1)))) {
             
             //#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
-            ::x10::lang::Rail< x10_double >* a__23536 = this->FMGL(pdf);
-            x10_long i__23537 = ((x10_long)(x));
-            x10_double r__23538 = ((::x10aux::nullCheck(a__23536)->x10::lang::Rail< x10_double >::__apply(
-                                      i__23537)) / (sum));
-            ::x10aux::nullCheck(a__23536)->x10::lang::Rail< x10_double >::__set(
-              i__23537, r__23538);
+            ::x10::lang::Rail< x10_double >* a__23638 = this->FMGL(pdf);
+            x10_long i__23639 = ((x10_long)(x));
+            x10_double r__23640 = ((::x10aux::nullCheck(a__23638)->x10::lang::Rail< x10_double >::__apply(
+                                      i__23639)) / (sum));
+            ::x10aux::nullCheck(a__23638)->x10::lang::Rail< x10_double >::__set(
+              i__23639, r__23640);
         }
     }
     
@@ -501,10 +501,10 @@ x10_long cpls::solver::EOSearch::search() {
     {
         
         //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25695 = ::x10aux::makeStringLit("Costo (EOSearch) in "); strLit__25695; })), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__25696 = ::x10aux::makeStringLit(". "); strLit__25696; }))), ::x10::lang::Runtime::worker()), (__extension__ ({ static ::x10::lang::String* strLit__25697 = ::x10aux::makeStringLit(": "); strLit__25697; }))), this->FMGL(currentCost)));
+        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25800 = ::x10aux::makeStringLit("Costo (EOSearch) in "); strLit__25800; })), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__25801 = ::x10aux::makeStringLit(". "); strLit__25801; }))), ::x10::lang::Runtime::worker()), (__extension__ ({ static ::x10::lang::String* strLit__25802 = ::x10aux::makeStringLit(": "); strLit__25802; }))), this->FMGL(currentCost)));
         
         //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/EOSearch.x10"
-        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__25698 = ::x10aux::makeStringLit(". Con variables: "); strLit__25698; })),
+        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__25803 = ::x10aux::makeStringLit(". Con variables: "); strLit__25803; })),
                                   ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables());
     }
     

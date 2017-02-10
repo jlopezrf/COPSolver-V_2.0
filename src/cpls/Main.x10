@@ -33,6 +33,7 @@ public class Main {
  		val affectedPer = opts("-A", 1.0);
  		val iniDelay = opts("-W", 0);
  		val verify  = opts("-v", 0n) == 1n;
+ 		val changeProb = opts("-C", 100n);
  		
  		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString,
  														numberOfTeams,
@@ -41,7 +42,8 @@ public class Main {
  														interTeamCommTime as Int,
  														affectedPer,
  														iniDelay,
- 														verify);
+ 														verify,
+ 														changeProb);
  		configCPLS.setConfigNodes(nodeConfigs);
  		configCPLS.setVerify(verify);
  		configCPLS.setIsThereAMasterNode(modeIndicator);
@@ -120,7 +122,8 @@ public class Main {
  													interTeamCommTime:Int,
  													affectedPer:Double,
  													iniDelay:Long,
- 													verify:Boolean):Array_2[NodeConfig]{
+ 													verify:Boolean,
+ 													changeProb:Int):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
  		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
  		var eachTeam:Rail[String] = solverIn.split("/");
@@ -160,6 +163,7 @@ public class Main {
  				nodeConfigs(i,j).setAffectedPer(affectedPer);
  				nodeConfigs(i,j).setIniDelay(iniDelay);
  				nodeConfigs(i,j).setVerify(verify);
+ 				nodeConfigs(i,j).setChangeProb(changeProb);
  			}
  		}
  		return nodeConfigs;

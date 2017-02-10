@@ -125,7 +125,7 @@ public class GlobalStats{
 			  vs:Long, ss:Rail[Int]{self.size==3}){
 	        this.cost = co;
 	        this.team = p;
-	        this.explorer = e;
+	        this.explorerWinner = e;
 	        this.time = t;
 	        this.iters = it;
 	        this.locmin = loc;
@@ -147,7 +147,7 @@ public class GlobalStats{
 	public def setStats( c : GlobalStats ){
 		 this.cost = c.cost;
 		 this.team = c.team;
-		 this.explorer = c.explorer;
+		 this.explorerWinner = c.getExplorerWinner();
 		 this.time = c.time;
 		 this.iters = c.iters;
 		 this.locmin = c.locmin;
@@ -217,7 +217,7 @@ public class GlobalStats{
 						+sstate(0)+","+sstate(1)+","+sstate(2));
 		}else{
 			Console.OUT.printf("|  %3d  | %8.4f | %8d | %3d-%2d | %8d |",count, this.time,
-					  this.iters, this.team, this.explorer, this.locmin);
+					  this.iters, this.team, this.explorerWinner, this.locmin);
 			Console.OUT.printf(" %8d | %8d | %5.1f | %3d |",this.swaps,this.reset,sameIter,
 					  this.restart);
 			if (problem == CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM || problem == CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM)
@@ -258,7 +258,7 @@ public class GlobalStats{
 	public def clear():void{ 
 		 this.cost = 0n;	
 		 this.team = -1n;
-		 this.explorer = -1n;
+		 this.explorerWinner = -1n;
 		 this.time = 0.0d;
 		 this.iters = 0n;
 		 this.locmin = 0n;

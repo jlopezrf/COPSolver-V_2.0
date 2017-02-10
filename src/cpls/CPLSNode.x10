@@ -9,10 +9,12 @@ import cpls.problem.ProblemGenericModel;
 import cpls.measurements.GlobalStats;
 import cpls.util.Logger;
 import cpls.util.Utils;
+import cpls.util.Maybe;
 import x10.util.Random;
 import cpls.util.Valuation;
 import x10.util.concurrent.AtomicBoolean;
 import x10.util.RailUtils;
+import x10.util.StringUtil;
 
 public class CPLSNode{
 
@@ -42,11 +44,16 @@ public class CPLSNode{
  	var cGroupReset:Int = 0n;
  	val random:Random;
  	var problemSize:Long;
+ 	private var deltaFact : Double = 1.0;
+ 	var changeProb:Int;
  
  	var confArray:Rail[State];
  	
  	public def this(){
  		random = new Random();
+ 		val str = System.getenv("DELTA");
+ 		if (str != null)
+ 			deltaFact = StringUtil.parseInt(str)/ 100.0;
  	}
  
  	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long, maxIter:Long){
@@ -57,6 +64,7 @@ public class CPLSNode{
  		this.random.setSeed(inSeed);
  		this.problemSize = problemSize;
  		this.nodeConfig = config;
+ 		this.changeProb = config.getChangeProb();
  		this.confArray = new Rail[State](config.getNumberOfTeams(), State(problemSize,-1n,null,-1n,null)); 
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.cplsPool = new SmartPool(cplsPoolConfig);
@@ -287,6 +295,23 @@ public class CPLSNode{
  			}
  			at(Place(teamToRest)) pointersComunication().teamPool.clear();
  		}	
+ 	}
+ 
+ 	public def getIPVector(myCost : Long):Boolean {
+ 		Logger.debug(()=> "CommManager: getIPVector: entering.");
+ 		val sz = problemSize;
+ 		var a : Maybe[State(sz)];
+ 		val place = Place(nodeConfig.getTeamId());
+ 		if (place == here )
+ 			a = teamPool.getPConf();
+ 		else{
+ 			a = at(place) (pointersComunication().teamPool).getPConf();
+ 		}
+ 		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < changeProb ){
+ 			heuristicSolver.getProblemModel().setVariables(a().vector);
+ 			return true; 
+ 		}
+ 		return false;
  	}
  	
  	public def clear(){
