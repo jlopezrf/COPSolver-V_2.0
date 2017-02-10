@@ -13,9 +13,6 @@ class CPLSConfig;
 namespace cpls { 
 class ParamManager;
 } 
-namespace cpls { 
-class MasterNode;
-} 
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array_2;
 } } 
@@ -23,46 +20,10 @@ namespace cpls { namespace entities {
 class NodeConfig;
 } } 
 namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Iterator;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
+template<class TPMGL(T)> class PlaceLocalHandle;
 } } 
 namespace x10 { namespace lang { 
 class PlaceGroup;
-} } 
-namespace x10 { namespace lang { 
-class PlaceGroup__SimplePlaceGroup;
-} } 
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class Any;
-} } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace cpls { 
-class NodeInstancer__NodeFactory;
-} 
-namespace cpls { 
-class CPLSOptionsEnum__NodeRoles;
-} 
-namespace x10 { namespace lang { 
-class Place;
-} } 
-namespace cpls { namespace entities { 
-class PoolConfig;
-} } 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class PlaceLocalHandle;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
@@ -77,10 +38,22 @@ namespace x10 { namespace lang {
 class CheckedThrowable;
 } } 
 namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Iterable;
+template<class TPMGL(T)> class Iterator;
+} } 
+namespace x10 { namespace lang { 
+class Place;
+} } 
+namespace x10 { namespace lang { 
+class PlaceGroup__SimplePlaceGroup;
 } } 
 namespace x10 { namespace lang { 
 class VoidFun_0_0;
+} } 
+namespace cpls { namespace entities { 
+class PoolConfig;
+} } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
 } } 
 namespace x10 { namespace lang { 
 class Error;
@@ -103,9 +76,18 @@ class Abort;
 namespace x10 { namespace compiler { 
 class CompilerFlags;
 } } 
-namespace cpls { 
-class HeadNode;
-} 
+namespace cpls { namespace measurements { 
+class GlobalStats;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Iterable;
+} } 
+namespace cpls { namespace util { 
+class Logger;
+} } 
+namespace x10 { namespace lang { 
+class String;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -118,6 +100,9 @@ class NodeInstancer : public ::x10::lang::X10Class   {
     ::cpls::CPLSNode* FMGL(masterNode);
     
     static void installSolvers(::cpls::entities::CPLSConfig* configCPLS, ::cpls::ParamManager* opts);
+    static void verifyWinner(::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> refPlaces,
+                             x10_boolean verify, x10_long targetCost,
+                             x10_int explorerWinner);
     virtual ::cpls::NodeInstancer* cpls__NodeInstancer____this__cpls__NodeInstancer(
       );
     void _constructor();

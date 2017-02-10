@@ -70,7 +70,7 @@ void cpls::HeadNode::start() {
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26296 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Head"); strLit__26296; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26143 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Head"); strLit__26143; }))));
     
     //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeadNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();

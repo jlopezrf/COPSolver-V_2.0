@@ -5,7 +5,6 @@ import cpls.util.MovePermutation;
 import cpls.util.Utils;
 import cpls.util.Valuation;
 import cpls.util.Logger;
-import cpls.solver.entities.HeuristicParameters;
 import cpls.measurements.GlobalStats;
 import x10.util.Random;
 import cpls.ParamManager;
@@ -14,7 +13,6 @@ public abstract class HeuristicSolver{
 	
 	protected var problemModel:ProblemGenericModel;
 	protected var size:Long;
-	protected var heuristicParams:HeuristicParameters;
  	
  	// Move information
  	protected val move = new MovePermutation(-1n, -1n);
@@ -85,12 +83,12 @@ public abstract class HeuristicSolver{
  		this.size = problemModel.getSize();
  	}
  	
- 	public def setHeuristicParameters(params:HeuristicParameters){
- 		this.heuristicParams = params;
+ 	public def getProblemModel(){
+ 		return this.problemModel;
  	}
- 
- 	public def getHeuristicParams(){
- 		return this.heuristicParams;
+ 	
+ 	public def getBestCost():Long{
+ 		return this.bestCost;
  	}
  
  	public def setMaxIters(maxIters:Long){
@@ -143,9 +141,9 @@ public abstract class HeuristicSolver{
  			updateCosts();
  			
  			//Kill solving process
- 			//Runtime.probe();	// Give a chance to the other activities
- 			//if (kill)
- 			//	break;  // kill: End solving process
+ 			Runtime.probe();	// Give a chance to the other activities
+ 			if (kill)
+ 				break;  // kill: End solving process
  			
  			//Time out
  			if(maxTime > 0){
@@ -186,6 +184,10 @@ public abstract class HeuristicSolver{
  		if (this.adaptiveComm)
  			this.updateI = 2n * this.reportI;
  		
+ 	}
+ 	
+ 	public def clear(){
+ 		this.kill = false;
  	}
  	
  	protected def updateTotStats(){
@@ -269,6 +271,11 @@ public abstract class HeuristicSolver{
  		c.setForceRestart(this.nForceRestart);
  		val state = createSolverState();
  		c.setSState(state);
+ 	}
+ 	
+ 	public def forceRestart(){
+ 		Logger.info(()=>"Force Restart True");
+ 		forceRestart = true;
  	}
  	
  	public def displaySolution(){

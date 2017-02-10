@@ -71,8 +71,6 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     x10_int FMGL(changeOnDiver);
     
-    x10_boolean FMGL(verify);
-    
     x10_long FMGL(report);
     
     x10_long FMGL(update);
@@ -85,59 +83,49 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     x10_long FMGL(iterations);
     
-    x10_long FMGL(outTeamTime);
-    
     x10_double FMGL(minDistance);
     
-    x10_long FMGL(iniDelay);
+    x10_boolean FMGL(verify);
     
-    x10_double FMGL(affectedPer);
-    
-    virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
     virtual ::cpls::problem::ProblemGenericModel* getProblemModel();
-    virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
-    virtual void setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig);
-    virtual void setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig);
-    virtual void setIsThereAMasterNode(x10_boolean isThereAMasterNode);
     virtual x10_boolean getIsThereAMasterNode();
     virtual ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* getConfigNodes(
       );
     virtual ::cpls::entities::PoolConfig* getCPLSPoolConfig();
     virtual ::cpls::entities::PoolConfig* getTeamsPoolConfig();
-    virtual void setOutTeamTime(x10_long outTeamTime);
-    virtual x10_long getOutTeamTime();
-    virtual void setMinDistance(x10_double minDistance);
     virtual x10_double getMinDistance();
-    virtual void setIniDelay(x10_long iniDelay);
-    virtual x10_long getIniDelay();
-    virtual void setAffectedPer(x10_double affectedPer);
-    virtual x10_double getAffectedPer();
     virtual x10_long getMaxTime();
     virtual x10_long getMaxIters();
     virtual x10_int getMaxRestarts();
     virtual x10_boolean getReportPart();
     virtual x10_int getModParams();
     virtual x10_int getChangeOnDiver();
-    virtual x10_boolean getVerify();
     virtual x10_long getReport();
     virtual x10_long getUpdate();
+    virtual x10_long getSeed();
+    virtual x10_long getTargetCost();
+    virtual x10_boolean getStrictLow();
+    virtual x10_long getIterations();
+    virtual x10_boolean getVerify();
+    virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
+    virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
+    virtual void setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig);
+    virtual void setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig);
+    virtual void setIsThereAMasterNode(x10_boolean isThereAMasterNode);
+    virtual void setMinDistance(x10_double minDistance);
+    virtual void setStrictLow(x10_boolean strictLow);
+    virtual void setTargetCost(x10_long targetCost);
+    virtual void setIterations(x10_long iterations);
     virtual void setMaxTime(x10_long maxTime);
     virtual void setMaxIters(x10_long pmaxIters);
     virtual void setMaxRestarts(x10_int maxRestarts);
     virtual void setReportPart(x10_boolean reportPart);
     virtual void setModParams(x10_int modParams);
     virtual void setChangeOnDiver(x10_int changeOnDiver);
-    virtual void setVerify(x10_boolean verify);
     virtual void setReport(x10_long report);
     virtual void setUpdate(x10_long update);
     virtual void setSeed(x10_long seed);
-    virtual x10_long getSeed();
-    virtual void setTargetCost(x10_long targetCost);
-    virtual x10_long getTargetCost();
-    virtual void setStrictLow(x10_boolean strictLow);
-    virtual x10_boolean getStrictLow();
-    virtual void setIterations(x10_long iterations);
-    virtual x10_long getIterations();
+    virtual void setVerify(x10_boolean verify);
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
       );
     void _constructor();

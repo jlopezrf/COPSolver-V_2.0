@@ -25,9 +25,6 @@
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
-namespace cpls { namespace solver { namespace entities { 
-class HeuristicParameters;
-} } } 
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
@@ -59,6 +56,9 @@ namespace x10 { namespace lang {
 class String;
 } } 
 namespace x10 { namespace lang { 
+class Runtime;
+} } 
+namespace x10 { namespace lang { 
 class System;
 } } 
 namespace cpls { namespace util { 
@@ -69,9 +69,6 @@ template<class TPMGL(U)> class Fun_0_0;
 } } 
 namespace cpls { namespace util { 
 class Utils;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
 } } 
 namespace x10 { namespace lang { 
 class Place;
@@ -91,8 +88,6 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
     
     x10_long FMGL(size);
-    
-    ::cpls::solver::entities::HeuristicParameters* FMGL(heuristicParams);
     
     ::cpls::util::MovePermutation* FMGL(move);
     
@@ -167,13 +162,14 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
-    virtual void setHeuristicParameters(::cpls::solver::entities::HeuristicParameters* params);
-    virtual ::cpls::solver::entities::HeuristicParameters* getHeuristicParams(
+    virtual ::cpls::problem::ProblemGenericModel* getProblemModel(
       );
+    virtual x10_long getBestCost();
     virtual void setMaxIters(x10_long maxIters);
     virtual void solve();
     virtual x10_long solve(x10_long tCost, x10_boolean sLow);
     virtual void initVar(x10_long tCost, x10_boolean sLow);
+    virtual void clear();
     virtual void updateTotStats();
     virtual void restartVar();
     virtual x10_long search();
@@ -181,6 +177,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual x10_boolean verify();
     virtual x10_long getSizeProblem();
     virtual void reportStats(::cpls::measurements::GlobalStats* c);
+    virtual void forceRestart();
     virtual void displaySolution();
     virtual ::x10::lang::Rail< x10_int >* getBestConfiguration();
     virtual ::x10::lang::Rail< x10_int >* createSolverState();

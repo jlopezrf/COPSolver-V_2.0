@@ -27,9 +27,9 @@ public class GlobalStats{
 	 public def setTeam(team:Int){this.team = team;}
 	 public def getTeam(){return this.team;}
 	 /** explorer id solution */
-	 private var explorer : Int = -1n;
-	 public def setExplorer(explorer:Int){this.explorer = explorer;}
-	 public def getExplorer(){return this.explorer;}
+	 private var explorerWinner : Int = -1n;
+	 public def setExplorerWinner(explorerWinner:Int){this.explorerWinner = explorerWinner;}
+	 public def getExplorerWinner(){return this.explorerWinner;}
 	 /** time to reach the solution */
 	 private var time : Double = 0.0d;
 	 public def setTime(time:Double){this.time = time;}

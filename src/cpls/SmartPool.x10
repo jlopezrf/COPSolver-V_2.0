@@ -11,6 +11,7 @@ import cpls.ParamManager;
 import x10.util.Random;
 import x10.util.StringUtil;
 import x10.util.StringBuilder;
+import cpls.entities.PoolConfig;
 
 /**
  * Class SmartPool
@@ -26,6 +27,14 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 protected var random:Random = new Random();
 	 protected val monitor = new Monitor("SmartPool");
 	 protected var distance:double; 
+	 
+	 public def this(poolConfig:PoolConfig){
+		 property(poolConfig.getProblemSize(), poolConfig.getPoolSize());
+		 poolMode = poolConfig.getPoolMode();
+		 distance = poolConfig.getMinDist();		  
+		 for (i in 0..2)
+			 pool(i) = new Rail[State(sz)](poolSize, State(sz,0n,null,0n,null));
+	 }
 	 
 	 public def this(sz:Long, pSize:Int, pMode:Long, minDist:Double){
 		  property(sz, pSize);

@@ -1,7 +1,6 @@
 package cpls.solver;
 
 import cpls.CPLSOptionsEnum;
-import cpls.solver.entities.EOParameters;
 import cpls.util.MovePermutation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
@@ -135,10 +134,12 @@ public class EOSearch extends SingleSolHeuristic{
  		problemModel.swapVariables(this.move.getFirst(), this.move.getSecond()); //adSwap(maxI, minJ,csp);
  		nSwap++;
  		problemModel.executedSwap(this.move.getFirst(), this.move.getSecond());
- 		Console.OUT.print("Costo (EOSearch): " + currentCost);
- 		Utils.show(". Con variables: " ,problemModel.getVariables());
- 		//displaySolution();
- 		Console.OUT.print("\n");
+ 		if(currentCost < super.bestCost){
+ 			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + currentCost);
+ 			Utils.show(". Con variables: " ,problemModel.getVariables());
+ 			//displaySolution();
+ 			}
+ 		
  		return currentCost;
  	}
  

@@ -8,8 +8,8 @@ x10_long cpls::util::Logger::FMGL(DEBUG);
 void cpls::util::Logger::FMGL(DEBUG__do_init)() {
     FMGL(DEBUG__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Logger.DEBUG");
-    x10_long __var455__ = ((x10_long)0ll);
-    FMGL(DEBUG) = __var455__;
+    x10_long __var337__ = ((x10_long)0ll);
+    FMGL(DEBUG) = __var337__;
     FMGL(DEBUG__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Logger::FMGL(DEBUG__init)() {
@@ -24,8 +24,8 @@ x10_long cpls::util::Logger::FMGL(LOG);
 void cpls::util::Logger::FMGL(LOG__do_init)() {
     FMGL(LOG__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Logger.LOG");
-    x10_long __var456__ = ((x10_long)1ll);
-    FMGL(LOG) = __var456__;
+    x10_long __var338__ = ((x10_long)1ll);
+    FMGL(LOG) = __var338__;
     FMGL(LOG__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Logger::FMGL(LOG__init)() {
@@ -40,8 +40,8 @@ x10_long cpls::util::Logger::FMGL(INFO);
 void cpls::util::Logger::FMGL(INFO__do_init)() {
     FMGL(INFO__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Logger.INFO");
-    x10_long __var457__ = ((x10_long)2ll);
-    FMGL(INFO) = __var457__;
+    x10_long __var339__ = ((x10_long)2ll);
+    FMGL(INFO) = __var339__;
     FMGL(INFO__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Logger::FMGL(INFO__init)() {
@@ -56,8 +56,8 @@ x10_long cpls::util::Logger::FMGL(LEVEL);
 void cpls::util::Logger::FMGL(LEVEL__do_init)() {
     FMGL(LEVEL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Logger.LEVEL");
-    x10_long __var458__ = ((x10_long)3ll);
-    FMGL(LEVEL) = __var458__;
+    x10_long __var340__ = ((x10_long)3ll);
+    FMGL(LEVEL) = __var340__;
     FMGL(LEVEL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Logger::FMGL(LEVEL__init)() {
@@ -71,7 +71,7 @@ volatile ::x10aux::StaticInitController::status cpls::util::Logger::FMGL(LEVEL__
 void cpls::util::Logger::out(::x10::lang::String* s) {
     
     //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Logger.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__27237 = ::x10aux::makeStringLit("["); strLit__27237; })), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__27238 = ::x10aux::makeStringLit(":"); strLit__27238; }))), ::x10::lang::Runtime::workerId()), (__extension__ ({ static ::x10::lang::String* strLit__27239 = ::x10aux::makeStringLit(" "); strLit__27239; }))), ::x10::lang::System::nanoTime()), (__extension__ ({ static ::x10::lang::String* strLit__27240 = ::x10aux::makeStringLit("] "); strLit__27240; }))), s)));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__25758 = ::x10aux::makeStringLit("["); strLit__25758; })), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__25759 = ::x10aux::makeStringLit(":"); strLit__25759; }))), ::x10::lang::Runtime::workerId()), (__extension__ ({ static ::x10::lang::String* strLit__25760 = ::x10aux::makeStringLit(" "); strLit__25760; }))), ::x10::lang::System::nanoTime()), (__extension__ ({ static ::x10::lang::String* strLit__25761 = ::x10aux::makeStringLit("] "); strLit__25761; }))), s)));
 }
 
 //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Logger.x10"

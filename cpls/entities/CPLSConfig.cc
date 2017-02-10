@@ -12,6 +12,12 @@
 #include <cpls/entities/PoolConfig.h>
 #include <x10/compiler/Synthetic.h>
 
+//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+
+//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+
 //#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
 //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
@@ -21,6 +27,10 @@
 //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
 //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+
+//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+
+//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
 //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
@@ -40,269 +50,220 @@
 
 //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 
-//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
 //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-
-//#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setProblemModel(::cpls::problem::ProblemGenericModel* problemModel) {
-    this->FMGL(problemModel) = problemModel;
-}
-
-//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::problem::ProblemGenericModel* cpls::entities::CPLSConfig::getProblemModel(
   ) {
     return this->FMGL(problemModel);
     
 }
 
-//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes) {
-    this->FMGL(configNodes) = configNodes;
-}
-
-//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig) {
-    this->FMGL(cplsPoolConfig) = cplsPoolConfig;
-}
-
-//#line 49 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig) {
-    this->FMGL(teamsPoolConfig) = teamsPoolConfig;
-}
-
-//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setIsThereAMasterNode(x10_boolean isThereAMasterNode) {
-    this->FMGL(isThereAMasterNode) = isThereAMasterNode;
-}
-
-//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getIsThereAMasterNode() {
     return this->FMGL(isThereAMasterNode);
     
 }
 
-//#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* cpls::entities::CPLSConfig::getConfigNodes(
   ) {
     return this->FMGL(configNodes);
     
 }
 
-//#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::PoolConfig* cpls::entities::CPLSConfig::getCPLSPoolConfig(
   ) {
     return this->FMGL(cplsPoolConfig);
     
 }
 
-//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::PoolConfig* cpls::entities::CPLSConfig::getTeamsPoolConfig(
   ) {
     return this->FMGL(teamsPoolConfig);
     
 }
 
-//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setOutTeamTime(x10_long outTeamTime) {
-    this->FMGL(outTeamTime) = outTeamTime;
-}
-
-//#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-x10_long cpls::entities::CPLSConfig::getOutTeamTime() {
-    return this->FMGL(outTeamTime);
-    
-}
-
-//#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setMinDistance(x10_double minDistance) {
-    this->FMGL(minDistance) = minDistance;
-}
-
-//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_double cpls::entities::CPLSConfig::getMinDistance() {
     return this->FMGL(minDistance);
     
 }
 
-//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setIniDelay(x10_long iniDelay) {
-    this->FMGL(iniDelay) = iniDelay;
-}
-
-//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-x10_long cpls::entities::CPLSConfig::getIniDelay() {
-    return this->FMGL(iniDelay);
-    
-}
-
-//#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setAffectedPer(x10_double affectedPer) {
-    this->FMGL(affectedPer) = affectedPer;
-}
-
-//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-x10_double cpls::entities::CPLSConfig::getAffectedPer() {
-    return this->FMGL(affectedPer);
-    
-}
-
-//#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getMaxTime() {
     return this->FMGL(maxTime);
     
 }
 
-//#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getMaxIters() {
     return this->FMGL(pmaxIters);
     
 }
 
-//#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getMaxRestarts() {
     return this->FMGL(maxRestarts);
     
 }
 
-//#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getReportPart() {
     return this->FMGL(reportPart);
     
 }
 
-//#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getModParams() {
     return this->FMGL(modParams);
     
 }
 
-//#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_int cpls::entities::CPLSConfig::getChangeOnDiver() {
     return this->FMGL(changeOnDiver);
     
 }
 
-//#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-x10_boolean cpls::entities::CPLSConfig::getVerify() {
-    return this->FMGL(verify);
-    
-}
-
-//#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getReport() {
     return this->FMGL(report);
     
 }
 
-//#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getUpdate() {
     return this->FMGL(update);
     
 }
 
-//#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setMaxTime(x10_long maxTime) {
-    this->FMGL(maxTime) = maxTime;
-}
-
-//#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setMaxIters(x10_long pmaxIters) {
-    this->FMGL(pmaxIters) = pmaxIters;
-}
-
-//#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setMaxRestarts(x10_int maxRestarts) {
-    this->FMGL(maxRestarts) = maxRestarts;
-}
-
-//#line 81 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setReportPart(x10_boolean reportPart) {
-    this->FMGL(reportPart) = reportPart;
-}
-
-//#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setModParams(x10_int modParams) {
-    this->FMGL(modParams) = modParams;
-}
-
-//#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setChangeOnDiver(x10_int changeOnDiver) {
-    this->FMGL(changeOnDiver) = changeOnDiver;
-}
-
-//#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setVerify(x10_boolean verify) {
-    this->FMGL(verify) = verify;
-}
-
-//#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setReport(x10_long report) {
-    this->FMGL(report) = report;
-}
-
-//#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setUpdate(x10_long update) {
-    this->FMGL(update) = update;
-}
-
-//#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setSeed(x10_long seed) {
-    this->FMGL(seed) = seed;
-}
-
-//#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getSeed() {
     return this->FMGL(seed);
     
 }
 
-//#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setTargetCost(x10_long targetCost) {
-    this->FMGL(targetCost) = targetCost;
-}
-
-//#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getTargetCost() {
     return this->FMGL(targetCost);
     
 }
 
-//#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setStrictLow(x10_boolean strictLow) {
-    this->FMGL(strictLow) = strictLow;
-}
-
-//#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_boolean cpls::entities::CPLSConfig::getStrictLow() {
     return this->FMGL(strictLow);
     
 }
 
-//#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
-void cpls::entities::CPLSConfig::setIterations(x10_long iterations) {
-    this->FMGL(iterations) = iterations;
-}
-
-//#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 x10_long cpls::entities::CPLSConfig::getIterations() {
     return this->FMGL(iterations);
     
 }
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+x10_boolean cpls::entities::CPLSConfig::getVerify() {
+    return this->FMGL(verify);
+    
+}
+
+//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setProblemModel(::cpls::problem::ProblemGenericModel* problemModel) {
+    this->FMGL(problemModel) = problemModel;
+}
+
+//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes) {
+    this->FMGL(configNodes) = configNodes;
+}
+
+//#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig) {
+    this->FMGL(cplsPoolConfig) = cplsPoolConfig;
+}
+
+//#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setTeamsPoolConfig(::cpls::entities::PoolConfig* teamsPoolConfig) {
+    this->FMGL(teamsPoolConfig) = teamsPoolConfig;
+}
+
+//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setIsThereAMasterNode(x10_boolean isThereAMasterNode) {
+    this->FMGL(isThereAMasterNode) = isThereAMasterNode;
+}
+
+//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setMinDistance(x10_double minDistance) {
+    this->FMGL(minDistance) = minDistance;
+}
+
+//#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setStrictLow(x10_boolean strictLow) {
+    this->FMGL(strictLow) = strictLow;
+}
+
+//#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setTargetCost(x10_long targetCost) {
+    this->FMGL(targetCost) = targetCost;
+}
+
+//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setIterations(x10_long iterations) {
+    this->FMGL(iterations) = iterations;
+}
+
+//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setMaxTime(x10_long maxTime) {
+    this->FMGL(maxTime) = maxTime;
+}
+
+//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setMaxIters(x10_long pmaxIters) {
+    this->FMGL(pmaxIters) = pmaxIters;
+}
+
+//#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setMaxRestarts(x10_int maxRestarts) {
+    this->FMGL(maxRestarts) = maxRestarts;
+}
+
+//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setReportPart(x10_boolean reportPart) {
+    this->FMGL(reportPart) = reportPart;
+}
+
+//#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setModParams(x10_int modParams) {
+    this->FMGL(modParams) = modParams;
+}
+
+//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setChangeOnDiver(x10_int changeOnDiver) {
+    this->FMGL(changeOnDiver) = changeOnDiver;
+}
+
+//#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setReport(x10_long report) {
+    this->FMGL(report) = report;
+}
+
+//#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setUpdate(x10_long update) {
+    this->FMGL(update) = update;
+}
+
+//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setSeed(x10_long seed) {
+    this->FMGL(seed) = seed;
+}
+
+//#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
+void cpls::entities::CPLSConfig::setVerify(x10_boolean verify) {
+    this->FMGL(verify) = verify;
+}
+
+//#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/entities/CPLSConfig.x10"
 ::cpls::entities::CPLSConfig* cpls::entities::CPLSConfig::cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
   ) {
     return this;
@@ -332,17 +293,14 @@ void cpls::entities::CPLSConfig::__fieldInitializers_cpls_entities_CPLSConfig(
     this->FMGL(reportPart) = false;
     this->FMGL(modParams) = ((x10_int)0);
     this->FMGL(changeOnDiver) = ((x10_int)0);
-    this->FMGL(verify) = false;
     this->FMGL(report) = ((x10_long)0ll);
     this->FMGL(update) = ((x10_long)0ll);
     this->FMGL(seed) = ((x10_long)0ll);
     this->FMGL(targetCost) = ((x10_long)0ll);
     this->FMGL(strictLow) = false;
     this->FMGL(iterations) = ((x10_long)0ll);
-    this->FMGL(outTeamTime) = ((x10_long)0ll);
     this->FMGL(minDistance) = 0.0;
-    this->FMGL(iniDelay) = ((x10_long)0ll);
-    this->FMGL(affectedPer) = 0.0;
+    this->FMGL(verify) = false;
 }
 const ::x10aux::serialization_id_t cpls::entities::CPLSConfig::_serialization_id = 
     ::x10aux::DeserializationDispatcher::addDeserializer(::cpls::entities::CPLSConfig::_deserializer, ::x10aux::CLOSURE_KIND_NOT_ASYNC);
@@ -359,17 +317,14 @@ void cpls::entities::CPLSConfig::_serialize_body(::x10aux::serialization_buffer&
     buf.write(this->FMGL(reportPart));
     buf.write(this->FMGL(modParams));
     buf.write(this->FMGL(changeOnDiver));
-    buf.write(this->FMGL(verify));
     buf.write(this->FMGL(report));
     buf.write(this->FMGL(update));
     buf.write(this->FMGL(seed));
     buf.write(this->FMGL(targetCost));
     buf.write(this->FMGL(strictLow));
     buf.write(this->FMGL(iterations));
-    buf.write(this->FMGL(outTeamTime));
     buf.write(this->FMGL(minDistance));
-    buf.write(this->FMGL(iniDelay));
-    buf.write(this->FMGL(affectedPer));
+    buf.write(this->FMGL(verify));
     
 }
 
@@ -392,17 +347,14 @@ void cpls::entities::CPLSConfig::_deserialize_body(::x10aux::deserialization_buf
     FMGL(reportPart) = buf.read<x10_boolean>();
     FMGL(modParams) = buf.read<x10_int>();
     FMGL(changeOnDiver) = buf.read<x10_int>();
-    FMGL(verify) = buf.read<x10_boolean>();
     FMGL(report) = buf.read<x10_long>();
     FMGL(update) = buf.read<x10_long>();
     FMGL(seed) = buf.read<x10_long>();
     FMGL(targetCost) = buf.read<x10_long>();
     FMGL(strictLow) = buf.read<x10_boolean>();
     FMGL(iterations) = buf.read<x10_long>();
-    FMGL(outTeamTime) = buf.read<x10_long>();
     FMGL(minDistance) = buf.read<x10_double>();
-    FMGL(iniDelay) = buf.read<x10_long>();
-    FMGL(affectedPer) = buf.read<x10_double>();
+    FMGL(verify) = buf.read<x10_boolean>();
 }
 
 ::x10aux::RuntimeType cpls::entities::CPLSConfig::rtt;

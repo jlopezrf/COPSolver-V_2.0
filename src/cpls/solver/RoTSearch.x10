@@ -3,7 +3,6 @@ package cpls.solver;
 import x10.array.Array_2;
 import cpls.problem.ProblemGenericModel;
 import cpls.util.Utils;
-import cpls.solver.entities.RoTSParameters;
 import cpls.CPLSOptionsEnum;
 import cpls.ParamManager;
 

@@ -61,6 +61,15 @@ class Console;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace x10 { namespace lang { 
+class Runtime;
+} } 
+namespace x10 { namespace lang { 
+class Place;
+} } 
+namespace x10 { namespace lang { 
+class Runtime__Worker;
+} } 
 namespace cpls { namespace util { 
 class Utils;
 } } 

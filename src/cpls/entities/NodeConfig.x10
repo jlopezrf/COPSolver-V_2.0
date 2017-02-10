@@ -2,65 +2,39 @@ package cpls.entities;
 
 import cpls.HeuristicFactory;
 import cpls.CPLSOptionsEnum;
-import cpls.solver.entities.*;
 
-public abstract class NodeConfig{
+public class NodeConfig{
  	
  	private var heuristic:Int;
- 	private var heuristicParameters:HeuristicParameters;
- 	private var outTeamTime:Long;
+ 	private var numberOfTeams:Int;
+ 	private var nodesPerTeam:Int;
+ 	private var teamId:Int;
+ 	private var rol:Int;
+ 	private var interTeamCommTime:Long;
+ 	private var affectedPer:Double;
+ 	private var iniDelay:Long;
+ 	private var verify:Boolean;
+ 
+ 	public def this(){}
+ 	public def this(heuristic:Int, rol:Int){this.heuristic = heuristic;	this.rol = rol;}
  	
- 	public def this(heuristic:Int){
- 		this.heuristic = heuristic;
- 	}
+ 	public def setHeuristic(heuristic:Int){this.heuristic = heuristic;}	
+ 	public def setNumberOfTeams(numberOfTeams:Int){this.numberOfTeams = numberOfTeams;}
+ 	public def setNodesPerTeam(nodesPerTeam:Int){this.nodesPerTeam = nodesPerTeam;}
+ 	public def setTeamId(teamId:Int){this.teamId = teamId;}
+ 	public def setRol(rol:Int){this.rol = rol;}
+ 	public def setInterTeamCommTime(interTeamCommTime:Long){this.interTeamCommTime = interTeamCommTime;}
+ 	public def setAffectedPer(affectedPer:Double){this.affectedPer = affectedPer;}
+ 	public def setIniDelay(iniDelay:Long){this.iniDelay = iniDelay;}
+ 	public def setVerify(verify:Boolean){this.verify = verify;}
  
- 	public def this(){
- 		this.heuristic = 0n;
- 	}
- 	
- 	public def setHeuristic(heuristic:Int){
- 		this.heuristic = heuristic;
- 		switch(heuristic){
- 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:
- 				this.heuristicParameters = new ASParameters();
- 				break;
- 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:
- 				this.heuristicParameters = new EOParameters();
- 				break;
- 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL:
- 				this.heuristicParameters = new RoTSParameters();
- 				break;
- 		}
- 	}
- 
- 	public def getHeuristic(){
- 		return this.heuristic;
- 	}
- 
- 	public def setOutTeamTime(outTeamTime:Long){
- 		this.outTeamTime = outTeamTime;
- 	}
- 
- 	public def getOutTeamTime(){
- 		return this.outTeamTime;
- 	}
- 
- 	public def setHeuristicParameters(heuristicParameters:HeuristicParameters){
- 		switch(heuristic){
- 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:
- 				this.heuristicParameters.setParameters(heuristicParameters as ASParameters);
- 				break;
- 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:
- 				this.heuristicParameters.setParameters(heuristicParameters as EOParameters);
- 				break;
- 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL:
- 				this.heuristicParameters.setParameters(heuristicParameters as RoTSParameters);
- 				break;
- 		}
- 	}
- 
- 	public def getHeuristicParameters(){
- 		return this.heuristicParameters;
- 	}
-
+ 	public def getHeuristic(){return this.heuristic;}
+ 	public def getNumberOfTeams(){return this.numberOfTeams;}
+ 	public def getNodesPerTeam(){return this.nodesPerTeam;}
+ 	public def getTeamId(){return this.teamId;}
+ 	public def getRol(){return this.rol as Int;}
+ 	public def getInterTeamCommTime(){return this.interTeamCommTime;}
+ 	public def getAffectedPer(){return this.affectedPer;}
+ 	public def getIniDelay(){return this.iniDelay;}
+ 	public def getVerify(){return this.verify;}
 }

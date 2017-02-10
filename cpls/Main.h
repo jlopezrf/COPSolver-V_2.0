@@ -34,48 +34,21 @@ template<class TPMGL(T)> class Array_2;
 namespace cpls { namespace entities { 
 class NodeConfig;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Iterator;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
-} } 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
-namespace cpls { namespace solver { namespace entities { 
-class HeuristicParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class ASParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class RoTSParameters;
-} } } 
-namespace cpls { namespace solver { namespace entities { 
-class EOParameters;
-} } } 
-namespace x10 { namespace lang { 
-class Math;
-} } 
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
 namespace x10 { namespace lang { 
 class System;
 } } 
+namespace x10 { namespace lang { 
+class Math;
+} } 
 namespace cpls { 
 class NodeInstancer;
 } 
-namespace cpls { namespace entities { 
-class ExplorerConfig;
-} } 
-namespace cpls { namespace entities { 
-class MasterConfig;
-} } 
-namespace cpls { namespace entities { 
-class HeadConfig;
-} } 
+namespace cpls { 
+class CPLSOptionsEnum__NodeRoles;
+} 
 namespace cpls { namespace util { 
 class Logger;
 } } 
@@ -94,6 +67,9 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -106,7 +82,8 @@ class Main : public ::x10::lang::X10Class   {
     static void main(::x10::lang::Rail< ::x10::lang::String* >* args);
     static ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* heuristicsAndRolesDefinition(
       ::x10::lang::String* solverIn, x10_int numberOfTeams, x10_int nodesPerTeam,
-      x10_boolean whitMasterNode);
+      x10_boolean modeIndicator, x10_int interTeamCommTime,
+      x10_double affectedPer, x10_long iniDelay, x10_boolean verify);
     static x10_int problemDetect(::x10::lang::String* problem);
     static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(

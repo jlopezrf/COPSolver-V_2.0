@@ -10,10 +10,6 @@ import cpls.entities.NodeConfig;
 import cpls.entities.*;
 import cpls.entities.CPLSConfig;
 import cpls.entities.PoolConfig;
-import cpls.solver.entities.*;
-import cpls.solver.entities.ASParameters;
-import cpls.solver.entities.EOParameters;
-import cpls.solver.entities.RoTSParameters;
 import x10.array.Array_2;
 import cpls.util.CPLSFileReader;
 
@@ -32,34 +28,23 @@ public class Main {
  		val nodesPerTeam = opts("-N", 1n);
  		val numberOfTeams = Place.MAX_PLACES as Int/nodesPerTeam;
  		val heuristicString = opts("-sl", "AS");
- 		var whitMasterNode:Boolean = true;
- 		if(opts("-ce", 1n)==0n){
- 			whitMasterNode = false;
- 		}
- 		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString, numberOfTeams, nodesPerTeam, whitMasterNode);
- 
- 		for(a in nodeConfigs){
- 			if(a.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.AS_SOL){
- 				a.setHeuristicParameters(new ASParameters(opts("--AS_varToReset",-1) as Long,
- 														  opts("--AS_resetPer",10n),
-														  opts("--AS_exhaustive",0n) == 1n,
-														  opts("--AS_freezeLocMin",5n),
-														  opts("--AS_freezeSwap",5n),
-														  opts("--AS_resetLimit",5n),
-														  opts("--AS_probSelecLocMin", 0n),
-														  opts("--AS_firstBest",0n) == 1n));
- 			}else if(a.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL){
- 				a.setHeuristicParameters(new RoTSParameters(opts("--RoTS_tabu_duration", -1.0),
- 															opts("--RoTS_aspiration", -1.0)));
- 			}else if(a.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.EO_SOL){
- 				a.setHeuristicParameters(new EOParameters(opts("--EO_tau", (1.0 + 1.0 / Math.log(problemModel.size))),
- 														  opts("--EO_pdf", -1n),
- 														  opts("--EO_selSec", 1n)));
- 			}
- 		}
- 
+ 		var modeIndicator:Boolean = (opts("-ce", 1n)==0n)?false:true;
+ 		val interTeamCommTime:Long = opts("-I", 0);
+ 		val affectedPer = opts("-A", 1.0);
+ 		val iniDelay = opts("-W", 0);
+ 		val verify  = opts("-v", 0n) == 1n;
+ 		
+ 		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString,
+ 														numberOfTeams,
+ 														nodesPerTeam,
+ 														modeIndicator,
+ 														interTeamCommTime as Int,
+ 														affectedPer,
+ 														iniDelay,
+ 														verify);
  		configCPLS.setConfigNodes(nodeConfigs);
- 		configCPLS.setIsThereAMasterNode(whitMasterNode);
+ 		configCPLS.setVerify(verify);
+ 		configCPLS.setIsThereAMasterNode(modeIndicator);
  		//*********************************************************************//
  		
  		//***************************Pools Options*****************************//
@@ -76,7 +61,6 @@ public class Main {
  		configCPLS.setReportPart(opts("-rp", 0n) == 1n);
  		configCPLS.setModParams(opts("-M", 1n));
  		configCPLS.setChangeOnDiver(opts("-CD", 1n));
- 		configCPLS.setVerify(opts("-v", 0n) == 1n);
  		configCPLS.setSeed(opts("-S", System.nanoTime()));
  		configCPLS.setIterations(opts("-b", 10n));
  		//*************************In/Out forms of params************************//
@@ -123,49 +107,59 @@ public class Main {
 
  		//******************InterTeam Communication Parameters*****************//
  		//Jason: Maybe this is only necessary for Master or Header Nodes, REVIEW !!
- 		configCPLS.setOutTeamTime(opts("-I", 0));
  		configCPLS.setMinDistance(opts("-D", 0.3));
- 		configCPLS.setIniDelay(opts("-W", 0));
- 		configCPLS.setAffectedPer(opts("-A", 1.0));
  		//*********************************************************************//
  		NodeInstancer.installSolvers(configCPLS, opts);
  		 
     }
  
- 	public static def heuristicsAndRolesDefinition(solverIn:String, numberOfTeams:Int, nodesPerTeam:Int, whitMasterNode:boolean):Array_2[NodeConfig]{
+ 	public static def heuristicsAndRolesDefinition(solverIn:String,
+ 													numberOfTeams:Int,
+ 													nodesPerTeam:Int,
+ 													modeIndicator:boolean,
+ 													interTeamCommTime:Int,
+ 													affectedPer:Double,
+ 													iniDelay:Long,
+ 													verify:Boolean):Array_2[NodeConfig]{
  		//TODO: Validar este parámetros
- 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new ExplorerConfig());	
+ 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
  		var eachTeam:Rail[String] = solverIn.split("/");
  		var eachNode:Rail[String];
- 		var heuristAux:Int = 0n;
  		for(var i:long=0; i<eachTeam.size; i++){
  			eachNode = eachTeam(i).split(",");
- 			for(var j:long=0; j<eachNode.size; j++){ 
- 				if(whitMasterNode){
+ 			for(var j:long=0; j<eachNode.size; j++){
+ 				if(modeIndicator){
  					if(i == 0){
  						if(j == 0){
- 							nodeConfigs(i,j) = new MasterConfig();
+ 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
  						}else if(j == 1){
- 							nodeConfigs(i,j) = new HeadConfig();
+ 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
+ 
  						}else{
- 							nodeConfigs(i,j) = new ExplorerConfig();
+ 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
  						}
  					}else{
  						if(j == 0){
- 							nodeConfigs(i,j) = new HeadConfig();
+ 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
  						}else{
- 							nodeConfigs(i,j) = new ExplorerConfig();
+ 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
  						}
  					}
  				}else{
  					if(j == 0){
- 						nodeConfigs(i,j) = new HeadConfig();
+ 						nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
  					}else{
- 						nodeConfigs(i,j) = new ExplorerConfig();
+ 						nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
  					}
  				}
- 				heuristAux = whichHeuristicInt(eachNode(j));
- 				nodeConfigs(i,j).setHeuristic(heuristAux);
+ 				nodeConfigs(i,j).setHeuristic(whichHeuristicInt(eachNode(j)));
+ 				nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
+ 				nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
+ 				nodeConfigs(i,j).setTeamId(i as Int);
+ 				nodeConfigs(i,j).setInterTeamCommTime(interTeamCommTime);
+ 				nodeConfigs(i,j).setAffectedPer(affectedPer);
+ 				nodeConfigs(i,j).setIniDelay(iniDelay);
+ 				nodeConfigs(i,j).setVerify(verify);
  			}
  		}
  		return nodeConfigs;

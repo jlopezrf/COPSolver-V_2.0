@@ -48,7 +48,7 @@ void cpls::ExplorerNode::start() {
     
     //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26295 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__26295; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__26142 = ::x10aux::makeStringLit("Se env\355a la se\361al de start en el Explorer"); strLit__26142; }))));
     
     //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/ExplorerNode.x10"
     ::x10aux::nullCheck(this->::cpls::CPLSNode::FMGL(heuristicSolver))->solve();

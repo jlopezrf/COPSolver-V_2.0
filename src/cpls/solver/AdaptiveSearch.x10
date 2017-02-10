@@ -4,7 +4,6 @@ import cpls.util.MovePermutation;
 
 import x10.util.StringUtil;
 import cpls.CPLSOptionsEnum;
-import cpls.solver.entities.ASParameters;
 import cpls.measurements.GlobalStats;
 import cpls.ParamManager;
 import cpls.problem.ProblemGenericModel;

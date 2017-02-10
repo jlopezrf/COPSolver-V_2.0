@@ -34,6 +34,9 @@ class Random;
 namespace cpls { namespace util { 
 class Monitor;
 } } 
+namespace cpls { namespace entities { 
+class PoolConfig;
+} } 
 namespace cpls { namespace util { 
 class Unit;
 } } 
@@ -91,6 +94,10 @@ class SmartPool : public ::x10::lang::X10Class   {
     ::cpls::util::Monitor* FMGL(monitor);
     
     x10_double FMGL(distance);
+    
+    void _constructor(::cpls::entities::PoolConfig* poolConfig);
+    
+    static ::cpls::SmartPool* _make(::cpls::entities::PoolConfig* poolConfig);
     
     void _constructor(x10_long sz, x10_int pSize, x10_long pMode, x10_double minDist);
     

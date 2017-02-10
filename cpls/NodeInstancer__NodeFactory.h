@@ -54,7 +54,7 @@ class NodeInstancer__NodeFactory   {
     
     static ::cpls::NodeInstancer__NodeFactory _alloc(){::cpls::NodeInstancer__NodeFactory t; return t; }
     
-    static ::cpls::CPLSNode* make(x10_int nodeRole);
+    static ::cpls::CPLSNode* make(x10_int nodeRol);
     ::x10::lang::String* typeName();
     ::x10::lang::String* toString();
     x10_int hashCode() {
