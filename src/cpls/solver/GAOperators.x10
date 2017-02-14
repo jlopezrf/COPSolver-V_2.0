@@ -95,21 +95,21 @@ public class GAOperators {
 
 	/***************Dispersion Function ************************************/
 	/****Calculate the dispersion of population according to the one method of the UBA thesis ****/
-	def dispersion(populationObject:GAPopulation):Double{
-		population:Rail[GAIndividual] = populationObject.getPopulation();
+	def dispersion(population:Rail[GAIndividual]):Double{
+		//population:Rail[GAIndividual] = populationObject.getPopulation();
 	var maskDispersion:UInt; 
 	var averages:Rail[Double] = new Rail[Double](longIndiv);
 	var dispersionValue:Double = 0;
 	
 	var it:Iterator[GAIndividual] = population.iterator();
 	var auxIndiv:GAIndividual;
-	var auxGenes:Int;
+	var auxGenes:Rail[Int];
 	while(it.hasNext()){
 		maskDispersion = 2147483648un; //Valor que pone en 1 el MSB de un Entero sin signo de 32 bits
 		auxIndiv = it.next();
-		auxGenes = auxIndiv.getGAChromosome().getGenes();
+		//auxGenes = auxIndiv.getGenes();
 		for(var i:Int = 0n; i < longIndiv; i++){
-			if((UInt.operator_as(auxGenes)&maskDispersion) > 0un) averages(i) += 1;
+			//if((UInt.operator_as(auxGenes)&maskDispersion) > 0un) averages(i) += 1;
 			maskDispersion = maskDispersion>>1;
 		}
 	}

@@ -5,13 +5,13 @@ import x10.util.Random;
 public class GAIndividual(size:Long){
 	
 	private var genes:Rail[Int];
-	private var fenotipo:Rail[Double];
+	private var cost:Long;
 	
 	var randomGenerator:Random;
 	
-	public def this(size:Long){
-		property(size);
-		this.genes = new Rail[Int](size, 0n);
+	public def this(individualSize:Long){
+		property(individualSize);
+		this.genes = new Rail[Int](individualSize, 0n);
 		this.randomGenerator = new Random();
 	}
 	
@@ -23,51 +23,73 @@ public class GAIndividual(size:Long){
 		this.genes = genes;
 	}
 	
-	public def getFenotipo():Rail[Double]{
-		return this.fenotipo;
+	public def getCost():Long{
+		return this.cost;
 	}
 	
-	public def setFenotipo(fenotipo:Rail[Double]){
-		this.fenotipo = fenotipo;
+	public def setCost(cost:Long){
+		this.cost = cost;
 	}
 	
 	//The crossing operation return a Rail with the genes for the sons
 	//This operation is include inside the Individual Class because, in the nature, this is one
 	//operation under control of the individual
-	public def crossing(individual:GAIndividual):Rail[GAIndividual]{
-		genesOther:Rail[Int] = individual.getGenes();
-		copyMyGenes:Rail[Int] = this.genes;
-		var son1Genes:Rail[Int] = new Rail[Int](size, -1n);
-		var son2Genes:Rail[Int] = new Rail[Int](size, -1n);
+	//Insert Path Crossover. Paper: A greedy genetic algorithm for the quadratic assignment problem.
+	//Autors: Ahuja, Rk - Orlin, Jb - Tiwari, A) - (Citation Key: Ahuja2000)
+	public def insertPathCrossing(individual:GAIndividual):Rail[GAIndividual]{
+		var copyMyGenes:Rail[Int] = new Rail[Int](this.genes); 
+		var genesOther:Rail[Int] = new Rail[Int](individual.getGenes());
+		val randomGenerator:Random = new Random();
+		val size = copyMyGenes.size;
+		var son1:Rail[Int] = new Rail[Int](size, -1n);
+		var son2:Rail[Int] = new Rail[Int](size, -1n);
 		var initializedPositions:Int = 0n;
 		var insertedinSon1:Int = -1n;
 		var insertedinSon2:Int = -1n;
 		var indexIni:Long = randomGenerator.nextLong(size);
 		var index:Long = 0n;
 		var indexBack:Long = 0n;
+		var insertFlag:Boolean = false;
 		while(initializedPositions < size){
-			 index = indexIni%size;
-			if(this.genes(index) == genesOther(index)){
-				son1Genes(index) = this.genes(index);
-				son2Genes(index) = genesOther(index);
+			index = indexIni%size;
+			if(copyMyGenes(index) == genesOther(index)){
+				son1(index) = copyMyGenes(index);
+				son2(index) = genesOther(index);
 				genesOther(index) = -1n;
 				copyMyGenes(index) = -1n;
 			}else{
-				if(initializedPositions == 0n){
+				if(!insertFlag){
 					insertedinSon1 = genesOther(index);
-					insertedinSon2 = this.genes(index);
-					son1Genes(index) = insertedinSon1;
-					son2Genes(index) = insertedinSon2;
+					insertedinSon2 = copyMyGenes(index);
+					son1(index) = insertedinSon1;
+					son2(index) = insertedinSon2;
+					insertFlag = true;
 				}else{
-					indexBack = index;
+					indexBack = indexIni%size;
 					do{
-						indexBack = (indexBack-1) >= 0 ? indexBack--:size-1;
-					}while(copyMyGenes(indexBack) == -1n );
+						indexBack = (indexBack-1) >= 0 ? indexBack - 1:size-1;
+					}while(copyMyGenes(indexBack) == -1n
+							|| copyMyGenes(indexBack) == genesOther(indexBack)
+							|| (insertFlag && copyMyGenes(indexBack) == insertedinSon1));
+					son1(index) = copyMyGenes(indexBack);
+					copyMyGenes(indexBack) = -1n;
+					indexBack = indexIni%size;
+					do{
+						indexBack = (indexBack-1) >= 0 ? indexBack - 1:size-1;
+					}while(genesOther(indexBack) == -1n
+							|| copyMyGenes(indexBack) == genesOther(indexBack)
+							|| (insertFlag && genesOther(indexBack) == insertedinSon2));
+					son2(index) = genesOther(indexBack);
+					genesOther(indexBack) = -1n;
 				}
 			}
+			initializedPositions++;
+			indexIni++;
 		}
-			
-		return null;
+		val sons = new Rail[GAIndividual](2, new GAIndividual(size));
+		sons(0).setGenes(son1);
+		sons(1).setGenes(son2);
+		return sons;
 	}
 	
 }

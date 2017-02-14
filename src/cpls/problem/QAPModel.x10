@@ -98,6 +98,16 @@ public class QAPModel extends ProblemGenericModel{
  							delta(i,j) = computeDelta(i, j);
  		return r;
  	}
+ 
+ 	//Jason: New method for calculate costofSolution for a in solution 
+ 	public def costOfSolution(solution:Rail[Int]):Long{
+ 		var i : Long, j : Long;
+ 		var r : Long  = 0;
+ 		for(i = 0; i < size; i++)
+ 			for(j = 0; j < size; j++)
+ 				r += this.flow(i)(j) * this.dist(solution(i))(solution(j));
+ 		return r;
+ 	}
 
  	public def costIfSwap(currentCost:Long, i1:Long, i2:Long) : Long{
  		//return currentCost + delta(i1 as Int , i2 as Int) as Int;

@@ -74,6 +74,11 @@ public class ProblemGenericModel(size:Long){
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
+  	
+  	public def costOfSolution(solution:Rail[Int]):Long {
+  		Console.OUT.println("Error costOfSolution");
+  		return 0;
+  	}
   
   	static def show(s:String, d: Rail[Int]) {
   		x10.io.Console.OUT.print(s + " = ");
