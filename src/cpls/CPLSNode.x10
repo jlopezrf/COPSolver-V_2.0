@@ -67,9 +67,9 @@ public class CPLSNode{
  			pSendLM = StringUtil.parseInt(lmstr)/ 100.0;
  	}
  
- 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long, maxIter:Long){
+ 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long){
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
- 		this.heuristicSolver.setMaxIters(maxIter);
+ 		//this.heuristicSolver.setMaxIters(maxIter);
  		this.heuristicSolver.setSeed(inSeed);
  		this.bestSolHere = new Rail[Int](problemSize, 0n);
  		this.random.setSeed(inSeed);

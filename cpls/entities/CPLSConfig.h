@@ -16,12 +16,6 @@
 #define X10_LANG_LONG_H_NODEPS
 #include <x10/lang/Long.h>
 #undef X10_LANG_LONG_H_NODEPS
-#define X10_LANG_INT_H_NODEPS
-#include <x10/lang/Int.h>
-#undef X10_LANG_INT_H_NODEPS
-#define X10_LANG_INT_H_NODEPS
-#include <x10/lang/Int.h>
-#undef X10_LANG_INT_H_NODEPS
 #define X10_LANG_DOUBLE_H_NODEPS
 #include <x10/lang/Double.h>
 #undef X10_LANG_DOUBLE_H_NODEPS
@@ -59,29 +53,13 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     ::cpls::entities::PoolConfig* FMGL(teamsPoolConfig);
     
-    x10_long FMGL(maxTime);
-    
-    x10_long FMGL(pmaxIters);
-    
-    x10_int FMGL(maxRestarts);
-    
-    x10_boolean FMGL(reportPart);
-    
-    x10_int FMGL(modParams);
-    
-    x10_int FMGL(changeOnDiver);
-    
-    x10_long FMGL(report);
-    
-    x10_long FMGL(update);
-    
     x10_long FMGL(seed);
     
     x10_long FMGL(targetCost);
     
     x10_boolean FMGL(strictLow);
     
-    x10_long FMGL(iterations);
+    x10_long FMGL(timesPerInstance);
     
     x10_double FMGL(minDistance);
     
@@ -94,18 +72,10 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual ::cpls::entities::PoolConfig* getCPLSPoolConfig();
     virtual ::cpls::entities::PoolConfig* getTeamsPoolConfig();
     virtual x10_double getMinDistance();
-    virtual x10_long getMaxTime();
-    virtual x10_long getMaxIters();
-    virtual x10_int getMaxRestarts();
-    virtual x10_boolean getReportPart();
-    virtual x10_int getModParams();
-    virtual x10_int getChangeOnDiver();
-    virtual x10_long getReport();
-    virtual x10_long getUpdate();
     virtual x10_long getSeed();
     virtual x10_long getTargetCost();
     virtual x10_boolean getStrictLow();
-    virtual x10_long getIterations();
+    virtual x10_long getTimesPerInstance();
     virtual x10_boolean getVerify();
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
     virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
@@ -115,15 +85,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual void setMinDistance(x10_double minDistance);
     virtual void setStrictLow(x10_boolean strictLow);
     virtual void setTargetCost(x10_long targetCost);
-    virtual void setIterations(x10_long iterations);
-    virtual void setMaxTime(x10_long maxTime);
-    virtual void setMaxIters(x10_long pmaxIters);
-    virtual void setMaxRestarts(x10_int maxRestarts);
-    virtual void setReportPart(x10_boolean reportPart);
-    virtual void setModParams(x10_int modParams);
-    virtual void setChangeOnDiver(x10_int changeOnDiver);
-    virtual void setReport(x10_long report);
-    virtual void setUpdate(x10_long update);
+    virtual void setTimesPerInstance(x10_long timesPerInstance);
     virtual void setSeed(x10_long seed);
     virtual void setVerify(x10_boolean verify);
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(

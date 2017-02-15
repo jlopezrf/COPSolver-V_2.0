@@ -10,18 +10,18 @@
 namespace cpls { 
 class ParamManager;
 } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
-} } 
-namespace x10 { namespace lang { 
-class String;
 } } 
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
-namespace cpls { 
-class Main;
-} 
+namespace x10 { namespace lang { 
+class String;
+} } 
 namespace x10 { namespace lang { 
 class System;
 } } 
@@ -42,9 +42,6 @@ class LNPModel;
 } } 
 namespace cpls { namespace problem { 
 class SMTIModel;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
 } } 
 namespace cpls { namespace util { 
 class CPLSFileReader;
@@ -84,7 +81,9 @@ class Main__COPProblemModelFactory   {
     
     static ::cpls::Main__COPProblemModelFactory _alloc(){::cpls::Main__COPProblemModelFactory t; return t; }
     
-    static ::cpls::problem::ProblemGenericModel* make(::cpls::ParamManager* opts);
+    static ::cpls::problem::ProblemGenericModel* make(::cpls::ParamManager* opts,
+                                                      x10_int problem,
+                                                      ::x10::lang::Rail< x10_long >* problemParams);
     ::x10::lang::String* typeName();
     ::x10::lang::String* toString();
     x10_int hashCode() {
@@ -116,7 +115,8 @@ class Main__COPProblemModelFactory   {
         return this_;
     }
     
-    void __fieldInitializers_cpls_Main_COPProblemModelFactory() {
+    void __fieldInitializers_cpls_Main_COPProblemModelFactory(
+      ) {
      
     }
     

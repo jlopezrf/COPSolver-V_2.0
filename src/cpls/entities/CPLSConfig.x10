@@ -42,4 +42,5 @@ public class CPLSConfig {
  	public def setTimesPerInstance(timesPerInstance:Long){this.timesPerInstance = timesPerInstance;}
  	public def setSeed(seed:Long){this.seed = seed;}
  	public def setVerify(verify:Boolean){this.verify = verify;}
+ 
 }

@@ -23,13 +23,13 @@ public class NodeInstancer{
  												p.id() as Int,
  												configCPLS.getTeamsPoolConfig(),
  												configCPLS.getProblemModel().getSize(),
- 												configCPLS.getSeed(),
- 												configCPLS.getMaxIters());
+ 												configCPLS.getSeed());
  				refsToPlaces().setPointersCommunication(refsToPlaces);
  				refsToPlaces().configHeuristic(configCPLS.getProblemModel(), opts);
  			}
  		}
- 		for(var i:Int = 0n; i < configCPLS.getIterations(); i++){
+ 		val timesPerInstance         = opts("-b", 10n);
+ 		for(var i:Int = 0n; i < timesPerInstance; i++){
  			finish{
  				for(p in PlaceGroup.WORLD) at (p) async{
  					refsToPlaces().start(configCPLS.getSeed(), configCPLS.getTargetCost(), configCPLS.getStrictLow());
@@ -38,7 +38,8 @@ public class NodeInstancer{
  			verifyWinner(refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			finish for (p in Place.places()) at (p) {   
  				refsToPlaces().clear();
- 			}		
+ 			}
+ 			Console.OUT.println("Vez por instancia: " + i);
  		}
  	}
  	

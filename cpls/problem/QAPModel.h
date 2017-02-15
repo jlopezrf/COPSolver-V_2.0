@@ -112,6 +112,7 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
     virtual x10_long computeDeltaPart(x10_long i, x10_long j,
                                       x10_long r, x10_long s);
     virtual x10_long costOfSolution(x10_boolean shouldBeRecorded);
+    virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
     virtual x10_long costIfSwap(x10_long currentCost, x10_long i1,
                                 x10_long i2);
     virtual void executedSwap(x10_long i1, x10_long i2);

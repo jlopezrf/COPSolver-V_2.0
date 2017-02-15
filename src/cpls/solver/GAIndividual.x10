@@ -14,6 +14,18 @@ public class GAIndividual(size:Long){
 		this.genes = new Rail[Int](individualSize, 0n);
 		this.randomGenerator = new Random();
 	}
+
+ 	public def this(indiv:GAIndividual){
+ 		property(indiv.size);
+ 		this.genes = new Rail[Int](indiv.size, 0n);
+ 		this.randomGenerator = new Random();
+ 		this.genes = indiv.getGenes();
+ 		this.cost = indiv.getCost();
+ 	}
+ 
+ 	public def getSize(){
+ 		return this.genes.size;
+ 	}
 	
 	public def getGenes():Rail[Int]{
 		return this.genes;
@@ -30,6 +42,12 @@ public class GAIndividual(size:Long){
 	public def setCost(cost:Long){
 		this.cost = cost;
 	}
+
+ 	public def swap(i:Int, j:Int){
+ 		val aux = this.genes(i);
+ 		this.genes(i) = this.genes(j);
+ 		this.genes(j) = aux;
+ 	}
 	
 	//The crossing operation return a Rail with the genes for the sons
 	//This operation is include inside the Individual Class because, in the nature, this is one

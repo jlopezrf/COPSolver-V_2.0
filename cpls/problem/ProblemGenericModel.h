@@ -86,6 +86,7 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     virtual void executedSwap(x10_long i1, x10_long i2);
     virtual void swapVariables(x10_long i, x10_long j);
     virtual x10_long costOfSolution(x10_boolean shouldBeRecorded);
+    virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
     static void show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d);
     virtual void initialize();
     virtual x10_long reset(x10_long n, x10_long totalCost);

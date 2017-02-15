@@ -37,6 +37,21 @@ template<class TPMGL(T)> class Rail;
 namespace cpls { 
 class ParamManager;
 } 
+namespace x10 { namespace util { 
+class OptionsParser;
+} } 
+namespace x10 { namespace lang { 
+class Math;
+} } 
+namespace x10 { namespace lang { 
+class String;
+} } 
+namespace x10 { namespace lang { 
+class System;
+} } 
+namespace x10 { namespace util { 
+class StringUtil;
+} } 
 namespace x10 { namespace lang { 
 class FailedDynamicCheckException;
 } } 
@@ -53,13 +68,7 @@ namespace x10 { namespace lang {
 class Any;
 } } 
 namespace x10 { namespace lang { 
-class String;
-} } 
-namespace x10 { namespace lang { 
 class Runtime;
-} } 
-namespace x10 { namespace lang { 
-class System;
 } } 
 namespace cpls { namespace util { 
 class Logger;

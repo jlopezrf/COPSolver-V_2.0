@@ -55,7 +55,8 @@ class CPLSFileReader : public ::x10::lang::X10Class   {
     public:
     RTT_H_DECLS_CLASS
     
-    static ::x10::lang::Rail< x10_long >* tryReadParameters(::x10::lang::String* filePath);
+    static ::x10::lang::Rail< x10_long >* tryReadParameters(::x10::lang::String* filePath,
+                                                            ::x10::lang::Rail< x10_long >* params);
     static ::x10::lang::Rail< x10_int >* readParameters(::x10::lang::String* line);
     static ::x10::lang::Rail< ::x10::lang::String* >* loadDir(::x10::lang::String* path);
     virtual ::cpls::util::CPLSFileReader* cpls__util__CPLSFileReader____this__cpls__util__CPLSFileReader(
@@ -64,7 +65,8 @@ class CPLSFileReader : public ::x10::lang::X10Class   {
     
     static ::cpls::util::CPLSFileReader* _make();
     
-    virtual void __fieldInitializers_cpls_util_CPLSFileReader();
+    virtual void __fieldInitializers_cpls_util_CPLSFileReader(
+      );
     
     // Serialization
     public: static const ::x10aux::serialization_id_t _serialization_id;

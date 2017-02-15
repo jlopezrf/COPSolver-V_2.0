@@ -16,15 +16,15 @@ class ParamManager;
 namespace cpls { namespace entities { 
 class CPLSConfig;
 } } 
+namespace x10 { namespace util { 
+class OptionsParser;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
 namespace cpls { 
 class Main__COPProblemModelFactory;
 } 
-namespace x10 { namespace util { 
-class OptionsParser;
-} } 
 namespace x10 { namespace lang { 
 class Place;
 } } 
@@ -40,8 +40,14 @@ class PoolConfig;
 namespace x10 { namespace lang { 
 class System;
 } } 
+namespace x10 { namespace io { 
+class Printer;
+} } 
+namespace x10 { namespace io { 
+class Console;
+} } 
 namespace x10 { namespace lang { 
-class Math;
+class Any;
 } } 
 namespace cpls { 
 class NodeInstancer;
@@ -58,15 +64,6 @@ template<class TPMGL(U)> class Fun_0_0;
 namespace cpls { 
 class CPLSOptionsEnum__SupportedProblems;
 } 
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class Any;
-} } 
 namespace cpls { 
 class CPLSOptionsEnum__HeuristicsSupported;
 } 
@@ -87,6 +84,7 @@ class Main : public ::x10::lang::X10Class   {
       x10_int changeProb, x10_int divOption);
     static x10_int problemDetect(::x10::lang::String* problem);
     static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
+    static void printHeader(x10_int outF, x10_int problem);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(
       );
     void _constructor();

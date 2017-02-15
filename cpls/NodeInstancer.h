@@ -76,17 +76,29 @@ class Abort;
 namespace x10 { namespace compiler { 
 class CompilerFlags;
 } } 
+namespace x10 { namespace util { 
+class OptionsParser;
+} } 
 namespace cpls { namespace measurements { 
 class GlobalStats;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Iterable;
 } } 
-namespace cpls { namespace util { 
-class Logger;
+namespace x10 { namespace io { 
+class Printer;
+} } 
+namespace x10 { namespace io { 
+class Console;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace lang { 
 class String;
+} } 
+namespace cpls { namespace util { 
+class Logger;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;

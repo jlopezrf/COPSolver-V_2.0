@@ -138,7 +138,7 @@ public class EOSearch extends SingleSolHeuristic{
  			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + currentCost);
  			Utils.show(". Con variables: " ,problemModel.getVariables());
  			//displaySolution();
- 			}
+ 		}
  		
  		return currentCost;
  	}

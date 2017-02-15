@@ -74,6 +74,13 @@ class CPLSOptionsEnum__HeuristicsSupported   {
     static ::x10::lang::CheckedThrowable* FMGL(RoTS_SOL__exception);
     static x10_int FMGL(RoTS_SOL__get)();
     
+    static x10_int FMGL(GA_SOL);
+    static void FMGL(GA_SOL__do_init)();
+    static void FMGL(GA_SOL__init)();
+    static volatile ::x10aux::StaticInitController::status FMGL(GA_SOL__status);
+    static ::x10::lang::CheckedThrowable* FMGL(GA_SOL__exception);
+    static x10_int FMGL(GA_SOL__get)();
+    
     static x10_int FMGL(Hybrid_SOL);
     static void FMGL(Hybrid_SOL__do_init)();
     static void FMGL(Hybrid_SOL__init)();
@@ -174,6 +181,13 @@ inline x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()
         FMGL(RoTS_SOL__init)();
     }
     return cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL);
+}
+
+inline x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__get)() {
+    if (FMGL(GA_SOL__status) != ::x10aux::StaticInitController::INITIALIZED) {
+        FMGL(GA_SOL__init)();
+    }
+    return cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL);
 }
 
 inline x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__get)() {

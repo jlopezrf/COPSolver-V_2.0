@@ -16,7 +16,7 @@ import cpls.util.CPLSFileReader;
 public class Main {
  	
  	public static def main(args: Rail[String]) {
- 		val problemParams = new Rail[Long](4, -1 );
+ 		val problemParams = new Rail[Long](2, -1 );
  		var opts:ParamManager = new ParamManager(args);
  		var configCPLS:CPLSConfig = new CPLSConfig();//val path = opts("-f","."); TODO: Jason. Esto lo hago cuando quiera resolver todas las instancias de una carpeta
  													//var listOfInstances : Rail[String] = CPLSFileReader.loadDir(path)
@@ -237,6 +237,8 @@ public class Main {
  			heuParam = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
  		else if(solverIn.equals("RoTS"))
  			heuParam = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
+ 		else if(solverIn.equals("GA"))
+ 			heuParam = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
  		else if(solverIn.equals("HY"))
  			heuParam = CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
  		else

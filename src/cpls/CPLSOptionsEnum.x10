@@ -20,7 +20,8 @@ public struct CPLSOptionsEnum {
 	 	public static val AS_SOL = 2n;
 	 	public static val EO_SOL = 3n;
 	 	public static val RoTS_SOL = 4n;
-	 	public static val Hybrid_SOL = 5n;
+	 	public static val GA_SOL = 5n;
+	 	public static val Hybrid_SOL = 6n;
 	}
 
  	public static struct NodeRoles{

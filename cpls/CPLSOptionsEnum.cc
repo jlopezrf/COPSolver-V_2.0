@@ -38,7 +38,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28091 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__28091; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31529 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__31529; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum::equals(::x10::lang::Any* other) {
@@ -261,7 +261,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Supported
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__SupportedProblems::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28104 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__28104; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31542 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__31542; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__SupportedProblems::equals(::x10::lang::Any* other) {
@@ -421,12 +421,28 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Heuristic
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__exception);
 
 //#line 23 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL);
+void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__do_init)() {
+    FMGL(GA_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
+    _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.GA_SOL");
+    x10_int __var75__ = ((x10_int)5);
+    FMGL(GA_SOL) = __var75__;
+    FMGL(GA_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
+}
+void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__init)() {
+    ::x10aux::StaticInitController::initField(&FMGL(GA_SOL__status), &FMGL(GA_SOL__do_init), &FMGL(GA_SOL__exception), "cpls::CPLSOptionsEnum__HeuristicsSupported.GA_SOL");
+    
+}
+volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__status);
+::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__exception);
+
+//#line 24 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__do_init)() {
     FMGL(Hybrid_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.Hybrid_SOL");
-    x10_int __var75__ = ((x10_int)5);
-    FMGL(Hybrid_SOL) = __var75__;
+    x10_int __var76__ = ((x10_int)6);
+    FMGL(Hybrid_SOL) = __var76__;
     FMGL(Hybrid_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__init)() {
@@ -443,7 +459,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Heuristic
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__HeuristicsSupported::toString(
   ) {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28117 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__28117; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31555 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__31555; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__HeuristicsSupported::equals(::x10::lang::Any* other) {
@@ -522,13 +538,13 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__NodeRoles::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__NodeRoles::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__NodeRoles")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__NodeRoles::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__NodeRoles_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__NodeRoles")};
 
-//#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 28 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__do_init)() {
     FMGL(EXPLORER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.EXPLORER_NODE");
-    x10_int __var85__ = ((x10_int)0);
-    FMGL(EXPLORER_NODE) = __var85__;
+    x10_int __var86__ = ((x10_int)0);
+    FMGL(EXPLORER_NODE) = __var86__;
     FMGL(EXPLORER_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__init)() {
@@ -538,13 +554,13 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__exception);
 
-//#line 28 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 29 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__do_init)() {
     FMGL(HEAD_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.HEAD_NODE");
-    x10_int __var86__ = ((x10_int)1);
-    FMGL(HEAD_NODE) = __var86__;
+    x10_int __var87__ = ((x10_int)1);
+    FMGL(HEAD_NODE) = __var87__;
     FMGL(HEAD_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__init)() {
@@ -554,13 +570,13 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__exception);
 
-//#line 29 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 30 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__do_init)() {
     FMGL(MASTER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.MASTER_NODE");
-    x10_int __var87__ = ((x10_int)2);
-    FMGL(MASTER_NODE) = __var87__;
+    x10_int __var88__ = ((x10_int)2);
+    FMGL(MASTER_NODE) = __var88__;
     FMGL(MASTER_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__init)() {
@@ -570,12 +586,12 @@ void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__exception);
 
-//#line 26 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 27 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__NodeRoles::typeName(){
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__NodeRoles::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28130 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__28130; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31568 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__31568; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__NodeRoles::equals(::x10::lang::Any* other) {
@@ -651,13 +667,13 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolLevels::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolLevels::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolLevels")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolLevels::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolLevels_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolLevels")};
 
-//#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__do_init)() {
     FMGL(HIGH__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.HIGH");
-    x10_int __var97__ = ((x10_int)0);
-    FMGL(HIGH) = __var97__;
+    x10_int __var98__ = ((x10_int)0);
+    FMGL(HIGH) = __var98__;
     FMGL(HIGH__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__init)() {
@@ -667,13 +683,13 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__exception);
 
-//#line 34 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 35 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__do_init)() {
     FMGL(MEDIUM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.MEDIUM");
-    x10_int __var98__ = ((x10_int)1);
-    FMGL(MEDIUM) = __var98__;
+    x10_int __var99__ = ((x10_int)1);
+    FMGL(MEDIUM) = __var99__;
     FMGL(MEDIUM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__init)() {
@@ -683,13 +699,13 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__exception);
 
-//#line 35 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 36 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__do_init)() {
     FMGL(LOW__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.LOW");
-    x10_int __var99__ = ((x10_int)2);
-    FMGL(LOW) = __var99__;
+    x10_int __var100__ = ((x10_int)2);
+    FMGL(LOW) = __var100__;
     FMGL(LOW__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__init)() {
@@ -699,12 +715,12 @@ void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__exception);
 
-//#line 32 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 33 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolLevels::typeName(){
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolLevels::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28143 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__28143; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31581 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__31581; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolLevels::equals(::x10::lang::Any* other) {
@@ -781,13 +797,13 @@ public:
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolModes::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolModes::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolModes")};
 ::x10aux::itable_entry cpls::CPLSOptionsEnum__PoolModes::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::CPLSOptionsEnum__PoolModes_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::CPLSOptionsEnum__PoolModes")};
 
-//#line 39 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 40 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 x10_long cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART);
 void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__do_init)() {
     FMGL(SMART__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolModes.SMART");
-    x10_long __var109__ = ((x10_long)1ll);
-    FMGL(SMART) = __var109__;
+    x10_long __var110__ = ((x10_long)1ll);
+    FMGL(SMART) = __var110__;
     FMGL(SMART__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__init)() {
@@ -797,12 +813,12 @@ void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__init)() {
 volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__status);
 ::x10::lang::CheckedThrowable* cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__exception);
 
-//#line 38 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
+//#line 39 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/CPLSOptionsEnum.x10"
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolModes::typeName(){
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolModes::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__28156 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__28156; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__31594 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__31594; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolModes::equals(::x10::lang::Any* other) {

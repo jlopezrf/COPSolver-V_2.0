@@ -172,6 +172,7 @@ public abstract class HeuristicSolver{
  			}
  			//Possible interaction with other solvers
  			//Jason: include this method for cooperative form -> interact(problemModel);
+ 			Console.OUT.println("Nueva iteracion: " + nIter);
  		}
  		updateTotStats();
  		return bestCost;

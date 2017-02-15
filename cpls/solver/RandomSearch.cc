@@ -31,7 +31,7 @@ void cpls::solver::RandomSearch::_constructor() {
 void cpls::solver::RandomSearch::solve() {
     
     //#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__29115 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RS"); strLit__29115; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__32650 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RS"); strLit__32650; }))));
 }
 
 //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
