@@ -8,6 +8,7 @@ import cpls.util.Logger;
 import cpls.measurements.GlobalStats;
 import x10.util.Random;
 import cpls.ParamManager;
+import x10.util.StringUtil;
 
 public abstract class HeuristicSolver{
 	
@@ -76,6 +77,22 @@ public abstract class HeuristicSolver{
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		this.problemModel = problemModel;
+ 		this.maxTime = opts("-mt", 0);
+ 		this.maxIters = opts("-mi", 100000000);
+ 		this.maxRestarts = opts("-mr", 0n);
+ 		this.reportPart = opts("-rp", 0n) == 1n; 
+ 		this.modParams = opts("-M", 1n);
+ 		this.changeOnDiver = opts("-CD", 1n);
+ 		val rep = opts( "-R", 0n );
+ 		val upd = opts( "-U", 0n );
+ 		this.adaptiveComm = ( rep == -1n );
+ 		val sz = problemModel.getSize();
+ 		reportI =  adaptiveComm ? ((sz* Math.log(sz)) as Int) : rep;
+ 		updateI =  adaptiveComm ? (2n * reportI) : upd;
+ 
+ 		val mustr = System.getenv("MU");
+ 		if (mustr != null)
+ 			maxUpdateI = StringUtil.parseInt(mustr);
  	}
  
  	public def setProblemModel(problemModel:ProblemGenericModel){

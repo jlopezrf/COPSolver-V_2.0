@@ -6,8 +6,7 @@ import x10.util.RailUtils;
 
 public class CPLSFileReader {
 
-	public static def tryReadParameters (filePath : String):Rail[Long]{	 
-		val params:Rail[Long] = new Rail[Long](2,-1);
+	public static def tryReadParameters (filePath : String, params:Rail[Long]):Rail[Long]{	 
 	 	val filep = new File(filePath);
 	 	val fr = filep.openRead();
 	 	var fLine : String;

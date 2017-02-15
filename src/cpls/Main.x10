@@ -16,11 +16,14 @@ import cpls.util.CPLSFileReader;
 public class Main {
  	
  	public static def main(args: Rail[String]) {
+ 		val problemParams = new Rail[Long](4, -1 );
  		var opts:ParamManager = new ParamManager(args);
  		var configCPLS:CPLSConfig = new CPLSConfig();//val path = opts("-f","."); TODO: Jason. Esto lo hago cuando quiera resolver todas las instancias de una carpeta
  													//var listOfInstances : Rail[String] = CPLSFileReader.loadDir(path)
  		//*********************Model Problem Creation**************************//
- 		val problemModel = COPProblemModelFactory.make(opts);
+ 		val problemString = opts("-p", "MSP");
+ 		val problem = problemDetect(problemString);
+ 		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams);
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
  		
@@ -58,15 +61,9 @@ public class Main {
  		configCPLS.setTeamsPoolConfig(teamsPoolConfig);
  		//*********************************************************************//
  		
- 		//*********************Generic Parameters******************************//
- 		configCPLS.setMaxTime(opts("-mt", 0));
- 		configCPLS.setMaxIters(opts("-mi", 100000000));
- 		configCPLS.setMaxRestarts(opts("-mr", 0n));
- 		configCPLS.setReportPart(opts("-rp", 0n) == 1n);
- 		configCPLS.setModParams(opts("-M", 1n));
- 		configCPLS.setChangeOnDiver(opts("-CD", 1n));
+ 		//*********************Generic Parameters******************************/
  		configCPLS.setSeed(opts("-S", System.nanoTime()));
- 		configCPLS.setIterations(opts("-b", 10n));
+ 		configCPLS.setTimesPerInstance(opts("-b", 10n));
  		//*************************In/Out forms of params************************//
  		val outFormat	   = opts("-of", 1n);
  		val costFromF      = opts("-tf", 0);
@@ -80,33 +77,32 @@ public class Main {
  			if (tCostFromCL >= 0){ // get lower or equal to target 
  				c = tCostFromCL;
  				sl = false;
+ 				Console.OUT.println("Target from CL: lower or equal than "+c);
  			} else { 
  				c = tCostFromCL * -1;
  				sl = true;
+ 				Console.OUT.println("Target from CL: strictly lower than "+c);
  			}
- 		} 	//Jason: Comento esta parte por la lectura de parametros desde archivo
- 			//else { // target cost loaded from file
- 			//sl = costFromF < 0; // strictly lower true for negative numbers
- 			//if ( costFromF == 1  || costFromF == -1  ) // try to get optimal cost
- 			//	c = opt; 
- 			//else
- 			//	c = bks;
- 			//Console.OUT.println("Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
- 			//}
+ 		} else { // target cost loaded from file
+ 			sl = costFromF < 0; // strictly lower true for negative numbers
+ 			if ( costFromF == 1  || costFromF == -1  ) // try to get optimal cost
+ 				c = problemParams(1); //opt 
+ 			else
+ 				c = problemParams(2); //bks
+ 			Console.OUT.println("Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
+ 		}
  		val tCost = c >= 0 ? c : 0; // if negative cost put default value
  		val sLow = sl;
+ 
+ 		//Jason: Ver si esto modifica algo de forma considerable, estas lineas las comenté
+ 		//insNb++;
+ 		//if ( mode == 1 && outFormat == 1n )
+ 		//	Console.OUT.println("\n"+instance);
+ 		printHeader(outFormat,problem);
+
  		/***********************************************************************/
  		configCPLS.setTargetCost(tCost);
  		configCPLS.setStrictLow(sLow);
- 		
- 		val rep = opts( "-R", 0n );
- 		val upd = opts( "-U", 0n );
- 		val adaptiveComm = ( rep == -1n );
- 		val reportI =  adaptiveComm ? ((problemModel.size* Math.log(problemModel.size)) as Int) : rep;
- 		val updateI =  adaptiveComm ? (2n * reportI) : upd;
- 
- 		configCPLS.setReport(reportI);
- 		configCPLS.setUpdate(updateI);
  		//********************************************************************//
 
  		//******************InterTeam Communication Parameters*****************//
@@ -207,23 +203,22 @@ public class Main {
  	}
  
   	public static struct COPProblemModelFactory{
- 		public static def make(opts:ParamManager){
- 			val problemString = opts("-p", "MSP");
- 			val problem = problemDetect(problemString);
+ 		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long]){
  			val size = opts("-s", 10);
  			val baseValue = opts("-bv", 0n);
  			val inPathDataProblem = opts("-f",".");
  			val inPathVectorSol =  opts("-if",".");
  			val inSeed = opts("-S", System.nanoTime());
  			switch(problem as Int){
- 				case CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM: return new MSPModel(size);
+ 				case CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM:
+ 					return new MSPModel(size);
  				case CPLSOptionsEnum.SupportedProblems.COSTAS_PROBLEM: return new CAPModel(size);
  				case CPLSOptionsEnum.SupportedProblems.ALL_INTERVAL_PROBLEM: return new AIPModel(size);
  				case CPLSOptionsEnum.SupportedProblems.LANGFORD_PROBLEM: return new LNPModel(size);
  				case CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
- 					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem);
+ 					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
  					val n1 = params(0) < 0 ? 1 : params(0);
  					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue, inSeed);
  					problemModel.initialize();
@@ -247,6 +242,20 @@ public class Main {
  		else
  			heuParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
  		return heuParam;
+ 	}
+ 
+ 	public static def printHeader(outF : Int, problem:Int){
+ 		if(outF == 1n){
+ 			if (problem == CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM || problem == CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM){	
+ 				Console.OUT.println("|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
+ 				Console.OUT.println("| Count | Time (s) |  Iters   | Place  |  LocMin  |  Swaps   |  Resets  | Sa/It |ReSta| BP  | Sng | Cng  | frP-frT |  PS | TS |final cost|  gap  |   state   |   wtime  |");
+ 				Console.OUT.println("|-------|----------|----------|--------|----------|----------|----------|-------|-----|-----|-----|------|---------|-----|----|----------|-------|-----------|----------|");
+ 			}else {
+ 				Console.OUT.println("|-----------------------------------------------------------------------------------------------------------------------------------------------------------|");
+ 				Console.OUT.println("| Count | Time (s) |  Iters   | Place  |  LocMin  |  Swaps   |  Resets  | Sa/It |ReSta| Cng  | frP-frT |  PS | TS |final cost|  gap  |   state   |   wtime  |");
+ 				Console.OUT.println("|-------|----------|----------|--------|----------|----------|----------|-------|-----|------|---------|-----|----|----------|-------|-----------|----------|");		 
+ 			}
+ 		}
  	}
 
 }
