@@ -42,7 +42,7 @@ class cpls_solver_HeuristicSolver__closure__1 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__32637 = ::x10aux::makeStringLit(" Time Out"); strLit__32637; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33314 = ::x10aux::makeStringLit(" Time Out"); strLit__33314; }));
         
     }
     
@@ -91,7 +91,7 @@ class cpls_solver_HeuristicSolver__closure__2 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__32647 = ::x10aux::makeStringLit("Force Restart True"); strLit__32647; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33323 = ::x10aux::makeStringLit("Force Restart True"); strLit__33323; }));
         
     }
     
@@ -120,7 +120,7 @@ class cpls_solver_HeuristicSolver__closure__2 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10:295";
+        return "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10:294";
     }
 
 };
@@ -218,43 +218,43 @@ void cpls::solver::HeuristicSolver::configHeuristic(::cpls::problem::ProblemGene
     
     //#line 80 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(maxTime) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                            (__extension__ ({ static ::x10::lang::String* strLit__32622 = ::x10aux::makeStringLit("-mt"); strLit__32622; })),
+                            (__extension__ ({ static ::x10::lang::String* strLit__33299 = ::x10aux::makeStringLit("-mt"); strLit__33299; })),
                             ((x10_long)0ll));
     
     //#line 81 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(maxIters) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__32623 = ::x10aux::makeStringLit("-mi"); strLit__32623; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__33300 = ::x10aux::makeStringLit("-mi"); strLit__33300; })),
                              ((x10_long)100000000ll));
     
     //#line 82 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(maxRestarts) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                (__extension__ ({ static ::x10::lang::String* strLit__32624 = ::x10aux::makeStringLit("-mr"); strLit__32624; })),
+                                (__extension__ ({ static ::x10::lang::String* strLit__33301 = ::x10aux::makeStringLit("-mr"); strLit__33301; })),
                                 ((x10_int)0));
     
     //#line 83 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(reportPart) = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__32625 = ::x10aux::makeStringLit("-rp"); strLit__32625; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__33302 = ::x10aux::makeStringLit("-rp"); strLit__33302; })),
                                                         ((x10_int)0)),
                                                       ((x10_int)1)));
     
     //#line 84 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(modParams) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                              (__extension__ ({ static ::x10::lang::String* strLit__32626 = ::x10aux::makeStringLit("-M"); strLit__32626; })),
+                              (__extension__ ({ static ::x10::lang::String* strLit__33303 = ::x10aux::makeStringLit("-M"); strLit__33303; })),
                               ((x10_int)1));
     
     //#line 85 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(changeOnDiver) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                  (__extension__ ({ static ::x10::lang::String* strLit__32627 = ::x10aux::makeStringLit("-CD"); strLit__32627; })),
+                                  (__extension__ ({ static ::x10::lang::String* strLit__33304 = ::x10aux::makeStringLit("-CD"); strLit__33304; })),
                                   ((x10_int)1));
     
     //#line 86 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_int rep = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__32628 = ::x10aux::makeStringLit("-R"); strLit__32628; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__33305 = ::x10aux::makeStringLit("-R"); strLit__33305; })),
                     ((x10_int)0));
     
     //#line 87 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_int upd = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__32629 = ::x10aux::makeStringLit("-U"); strLit__32629; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__33306 = ::x10aux::makeStringLit("-U"); strLit__33306; })),
                     ((x10_int)0));
     
     //#line 88 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
@@ -274,7 +274,7 @@ void cpls::solver::HeuristicSolver::configHeuristic(::cpls::problem::ProblemGene
     
     //#line 93 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10::lang::String* mustr = ::x10::lang::System::getenv(
-                                   (__extension__ ({ static ::x10::lang::String* strLit__32630 = ::x10aux::makeStringLit("MU"); strLit__32630; })));
+                                   (__extension__ ({ static ::x10::lang::String* strLit__33307 = ::x10aux::makeStringLit("MU"); strLit__33307; })));
     
     //#line 94 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     if ((!::x10aux::struct_equals(mustr, reinterpret_cast< ::x10::lang::NullType*>(X10_NULL))))
@@ -344,32 +344,32 @@ x10_long cpls::solver::HeuristicSolver::solve(x10_long tCost,
     try {
         
         //#line 127 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-        ::x10::lang::Rail< x10_int >* src__31080 = ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables();
-        ::x10::lang::Rail< x10_int >* dst__31081 = (__extension__ ({
-            ::x10::lang::Rail< x10_int >* t__31082 = this->FMGL(bestConf);
-            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31082)->FMGL(size)),
+        ::x10::lang::Rail< x10_int >* src__31736 = ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables();
+        ::x10::lang::Rail< x10_int >* dst__31737 = (__extension__ ({
+            ::x10::lang::Rail< x10_int >* t__31738 = this->FMGL(bestConf);
+            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31738)->FMGL(size)),
                                            sz)))) {
-                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32631 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__32631; })))));
+                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33308 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33308; })))));
             }
-            t__31082;
+            t__31738;
         }))
         ;
-        if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(src__31080)->FMGL(size)),
-                                       (x10_long)(::x10aux::nullCheck(dst__31081)->FMGL(size))))))
+        if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(src__31736)->FMGL(size)),
+                                       (x10_long)(::x10aux::nullCheck(dst__31737)->FMGL(size))))))
         {
-            ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32632 = ::x10aux::makeStringLit("!(src$30788.size == dst$30789.size)"); strLit__32632; })))));
+            ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33309 = ::x10aux::makeStringLit("!(src$31449.size == dst$31450.size)"); strLit__33309; })))));
         }
-        ::x10::lang::Rail< void >::copy< x10_int >(src__31080,
-                                                   dst__31081);
+        ::x10::lang::Rail< void >::copy< x10_int >(src__31736,
+                                                   dst__31737);
     }
-    catch (::x10::lang::CheckedThrowable* __exc489) {
-        if (::x10aux::instanceof< ::x10::lang::Exception*>(__exc489)) {
-            ::x10::lang::Exception* e = static_cast< ::x10::lang::Exception*>(__exc489);
+    catch (::x10::lang::CheckedThrowable* __exc491) {
+        if (::x10aux::instanceof< ::x10::lang::Exception*>(__exc491)) {
+            ::x10::lang::Exception* e = static_cast< ::x10::lang::Exception*>(__exc491);
             {
                 
                 //#line 129 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
                 ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__32633 = ::x10aux::makeStringLit("Ocurri\363 una excepci\363n en el Rail.Copy. "); strLit__32633; })), (__extension__ ({ static ::x10::lang::String* strLit__32634 = ::x10aux::makeStringLit("sz: "); strLit__32634; }))), sz), (__extension__ ({ static ::x10::lang::String* strLit__32635 = ::x10aux::makeStringLit("Tama\361o variables: "); strLit__32635; }))), (x10_long)(::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(problemModel))->getVariables())->FMGL(size)))));
+                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33310 = ::x10aux::makeStringLit("Ocurri\363 una excepci\363n en el Rail.Copy. "); strLit__33310; })), (__extension__ ({ static ::x10::lang::String* strLit__33311 = ::x10aux::makeStringLit("sz: "); strLit__33311; }))), sz), (__extension__ ({ static ::x10::lang::String* strLit__33312 = ::x10aux::makeStringLit("Tama\361o variables: "); strLit__33312; }))), (x10_long)(::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(problemModel))->getVariables())->FMGL(size)))));
             }
         } else
         throw;
@@ -415,7 +415,7 @@ x10_long cpls::solver::HeuristicSolver::solve(x10_long tCost,
                 
                 //#line 147 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
                 ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__32636 = ::x10aux::makeStringLit("Current cost: "); strLit__32636; })), this->FMGL(currentCost))));
+                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33313 = ::x10aux::makeStringLit("Current cost: "); strLit__33313; })), this->FMGL(currentCost))));
                 
                 //#line 148 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
                 this->updateTotStats();
@@ -467,218 +467,215 @@ x10_long cpls::solver::HeuristicSolver::solve(x10_long tCost,
             
         }
         
-        //#line 175 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__32638 = ::x10aux::makeStringLit("Nueva iteracion: "); strLit__32638; })), this->FMGL(nIter))));
     }
     
-    //#line 177 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 176 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->updateTotStats();
     
-    //#line 178 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 177 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     return this->FMGL(bestCost);
     
 }
 
-//#line 181 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 180 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::initVar(x10_long tCost,
                                             x10_boolean sLow) {
     
-    //#line 183 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 182 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(target) = tCost;
     
-    //#line 184 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 183 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(strictLow) = sLow;
     
-    //#line 185 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 184 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(targetSucc) = false;
     
-    //#line 186 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 185 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nSwap) = ((x10_int)0);
     
-    //#line 187 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 186 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nIter) = ((x10_int)0);
     
-    //#line 188 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 187 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nRestart) = ((x10_int)0);
     
-    //#line 189 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    this->FMGL(bestConf) = ::x10::lang::Rail< x10_int >::_make(::x10aux::nullCheck(this->FMGL(problemModel))->getSize(),
+    //#line 188 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    this->FMGL(bestConf) = ::x10::lang::Rail< x10_int >::_make(((x10_long)(((x10_int) (::x10aux::nullCheck(this->FMGL(problemModel))->getSize())))),
                                                                ((x10_int)0));
     
-    //#line 192 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 191 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nIterTot) = ((x10_int)0);
     
-    //#line 193 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 192 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nSwapTot) = ((x10_int)0);
     
-    //#line 194 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 193 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(initialTime) = ::x10::lang::System::nanoTime();
     
-    //#line 196 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 195 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(bestSent) = false;
     
-    //#line 197 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 196 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nForceRestart) = ((x10_int)0);
     
-    //#line 198 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 197 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nChangeV) = ((x10_int)0);
     
-    //#line 200 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 199 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(costLR) = (x10_long)0x7fffffffffffffffLL;
     
-    //#line 202 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 201 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     if (this->FMGL(adaptiveComm)) {
         
-        //#line 203 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 202 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         this->FMGL(updateI) = ((((x10_int)2)) * (this->FMGL(reportI)));
     }
     
 }
 
-//#line 207 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 206 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::clear() {
     
-    //#line 208 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 207 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(kill) = false;
 }
 
-//#line 211 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 210 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::updateTotStats() {
     
-    //#line 212 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 211 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nIterTot) = ((this->FMGL(nIterTot)) + (this->FMGL(nIter)));
     
-    //#line 213 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 212 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nSwapTot) = ((this->FMGL(nSwapTot)) + (this->FMGL(nSwap)));
     
-    //#line 214 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 213 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nSwap) = ((x10_int)0);
     
-    //#line 215 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 214 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nIter) = ((x10_int)0);
 }
 
-//#line 221 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 220 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::restartVar() {
     
-    //#line 222 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 221 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(bestSent) = false;
 }
 
-//#line 229 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 228 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 x10_long cpls::solver::HeuristicSolver::search() {
     
-    //#line 231 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 230 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_long sz = ::x10aux::nullCheck(this->FMGL(problemModel))->getSize();
     
-    //#line 232 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 231 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(move)->setFirst(::x10aux::nullCheck(this->FMGL(random))->nextLong(
                                  sz));
     
-    //#line 233 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 232 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(move)->setSecond(::x10aux::nullCheck(this->FMGL(random))->nextLong(
                                   sz));
     
-    //#line 235 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 234 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(this->FMGL(problemModel))->swapVariables(
       this->FMGL(move)->getFirst(), this->FMGL(move)->getSecond());
     
-    //#line 236 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 235 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(nSwap) = ((this->FMGL(nSwap)) + (((x10_int)1)));
     
-    //#line 238 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 237 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(this->FMGL(problemModel))->executedSwap(
       this->FMGL(move)->getFirst(), this->FMGL(move)->getSecond());
     
-    //#line 239 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 238 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_long costo = ::x10aux::nullCheck(this->FMGL(problemModel))->costOfSolution(
                        true);
     
-    //#line 240 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__32639 = ::x10aux::makeStringLit("Costo (RandomSearch): "); strLit__32639; })), costo), (__extension__ ({ static ::x10::lang::String* strLit__32640 = ::x10aux::makeStringLit(". Con variables: "); strLit__32640; }))));
+    //#line 239 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33315 = ::x10aux::makeStringLit("Costo (RandomSearch): "); strLit__33315; })), costo), (__extension__ ({ static ::x10::lang::String* strLit__33316 = ::x10aux::makeStringLit(". Con variables: "); strLit__33316; }))));
     
-    //#line 241 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 240 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->displaySolution();
     
-    //#line 242 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__32641 = ::x10aux::makeStringLit("\n"); strLit__32641; })));
+    //#line 241 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__33317 = ::x10aux::makeStringLit("\n"); strLit__33317; })));
     
-    //#line 243 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 242 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     return costo;
     
 }
 
-//#line 246 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 245 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::updateCosts() {
     
-    //#line 247 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 246 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_long sz = ::x10aux::nullCheck(this->FMGL(problemModel))->getSize();
     
-    //#line 248 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 247 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     if (((this->FMGL(currentCost)) < (this->FMGL(bestCost))))
     {
         
-        //#line 249 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 248 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         ::x10::lang::Rail< void >::copy< x10_int >((__extension__ ({
-                                                       ::x10::lang::Rail< x10_int >* t__31024 =
+                                                       ::x10::lang::Rail< x10_int >* t__31680 =
                                                          ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables();
-                                                       if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31024)->FMGL(size)),
+                                                       if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31680)->FMGL(size)),
                                                                                       sz))))
                                                        {
-                                                           ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32642 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__32642; })))));
+                                                           ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33318 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33318; })))));
                                                        }
-                                                       t__31024;
+                                                       t__31680;
                                                    }))
                                                    , (__extension__ ({
-                                                       ::x10::lang::Rail< x10_int >* t__31026 =
+                                                       ::x10::lang::Rail< x10_int >* t__31682 =
                                                          this->FMGL(bestConf);
-                                                       if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31026)->FMGL(size)),
+                                                       if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31682)->FMGL(size)),
                                                                                       sz))))
                                                        {
-                                                           ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32643 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__32643; })))));
+                                                           ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33319 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33319; })))));
                                                        }
-                                                       t__31026;
+                                                       t__31682;
                                                    }))
                                                    );
         
-        //#line 250 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 249 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         this->FMGL(bestCost) = this->FMGL(currentCost);
         
-        //#line 252 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 251 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         this->FMGL(bestSent) = false;
         
-        //#line 254 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 253 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         if (this->FMGL(reportPart)) {
             
-            //#line 255 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            //#line 254 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
             x10_double eT = ((((x10_double) (((::x10::lang::System::nanoTime()) - (this->FMGL(initialTime)))))) / (1.0E9));
             
-            //#line 256 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            //#line 255 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
             x10_double gap = ((((((x10_double) (((this->FMGL(bestCost)) - (this->FMGL(target)))))) / (((x10_double) (this->FMGL(bestCost)))))) * (100.0));
             
-            //#line 258 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-            ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__32644 = ::x10aux::makeStringLit("Solution"); strLit__32644; })),
+            //#line 257 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__33320 = ::x10aux::makeStringLit("Solution"); strLit__33320; })),
                                       this->FMGL(bestConf));
             
-            //#line 259 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            //#line 258 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
             ::x10::io::Console::FMGL(OUT__get)()->printf(
-              (__extension__ ({ static ::x10::lang::String* strLit__32645 = ::x10aux::makeStringLit("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n"); strLit__32645; })),
+              (__extension__ ({ static ::x10::lang::String* strLit__33321 = ::x10aux::makeStringLit("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n"); strLit__33321; })),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(::x10::lang::Place::_make(::x10aux::here)),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(eT),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(bestCost)),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(gap));
         }
         
-        //#line 264 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+        //#line 263 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
         if (((this->FMGL(strictLow) && ((this->FMGL(bestCost)) < (this->FMGL(target)))) ||
             (!(this->FMGL(strictLow)) && ((this->FMGL(bestCost)) <= (this->FMGL(target))))))
         {
             
-            //#line 266 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            //#line 265 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
             this->FMGL(targetSucc) = true;
             
-            //#line 267 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+            //#line 266 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
             this->FMGL(kill) = true;
         }
         
@@ -686,131 +683,135 @@ void cpls::solver::HeuristicSolver::updateCosts() {
     
 }
 
-//#line 272 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 271 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 x10_boolean cpls::solver::HeuristicSolver::verify() {
     
-    //#line 274 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    ::cpls::problem::ProblemGenericModel* t__31083 = this->FMGL(problemModel);
-    ::x10::lang::Rail< x10_int >* conf__31084 = this->getBestConfiguration();
-    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(conf__31084)->FMGL(size)),
-                                   ::x10aux::nullCheck(t__31083)->FMGL(size)))))
+    //#line 273 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    ::cpls::problem::ProblemGenericModel* t__31739 = this->FMGL(problemModel);
+    ::x10::lang::Rail< x10_int >* conf__31740 = this->getBestConfiguration();
+    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(conf__31740)->FMGL(size)),
+                                   ::x10aux::nullCheck(t__31739)->FMGL(size)))))
     {
-        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32646 = ::x10aux::makeStringLit("!(conf$31071.size == t$31070.size)"); strLit__32646; })))));
+        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33322 = ::x10aux::makeStringLit("!(conf$31727.size == t$31726.size)"); strLit__33322; })))));
     }
-    return ::x10aux::nullCheck(t__31083)->verify(conf__31084);
+    return ::x10aux::nullCheck(t__31739)->verify(conf__31740);
     
 }
 
-//#line 277 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 276 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 x10_long cpls::solver::HeuristicSolver::getSizeProblem() {
     
-    //#line 278 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 277 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     return ::x10aux::nullCheck(this->FMGL(problemModel))->getSize();
     
 }
 
-//#line 281 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 280 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::reportStats(::cpls::measurements::GlobalStats* c) {
     
-    //#line 282 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 281 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setIters(((x10_long)(this->FMGL(nIterTot))));
     
-    //#line 283 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 282 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setSwaps(((x10_long)(this->FMGL(nSwapTot))));
     
-    //#line 284 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 283 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setVectorSize(::x10aux::nullCheck(this->FMGL(problemModel))->getSize());
     
-    //#line 285 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 284 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setTarget(this->FMGL(targetSucc));
     
-    //#line 286 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 285 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setCost(this->FMGL(bestCost));
     
-    //#line 287 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 286 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setRestart(this->FMGL(nRestart));
     
-    //#line 288 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 287 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setChange(this->FMGL(nChangeV));
     
-    //#line 289 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 288 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setForceRestart(this->FMGL(nForceRestart));
     
-    //#line 290 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 289 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10::lang::Rail< x10_int >* state = this->createSolverState();
     
-    //#line 291 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 290 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10aux::nullCheck(c)->setSState(state);
 }
 
-//#line 294 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 293 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::forceRestart() {
     
-    //#line 295 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 294 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::cpls::util::Logger::info(reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_solver_HeuristicSolver__closure__2)))cpls_solver_HeuristicSolver__closure__2())));
     
-    //#line 296 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 295 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(forceRestart) = true;
 }
 
-//#line 299 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 298 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::displaySolution() {
     
-    //#line 300 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    ::cpls::problem::ProblemGenericModel* t__31085 = this->FMGL(problemModel);
-    ::x10::lang::Rail< x10_int >* conf__31086 = this->getBestConfiguration();
-    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(conf__31086)->FMGL(size)),
-                                   ::x10aux::nullCheck(t__31085)->FMGL(size)))))
+    //#line 299 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    ::cpls::problem::ProblemGenericModel* t__31741 = this->FMGL(problemModel);
+    ::x10::lang::Rail< x10_int >* conf__31742 = this->getBestConfiguration();
+    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(conf__31742)->FMGL(size)),
+                                   ::x10aux::nullCheck(t__31741)->FMGL(size)))))
     {
-        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32648 = ::x10aux::makeStringLit("!(conf$31075.size == t$31074.size)"); strLit__32648; })))));
+        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33324 = ::x10aux::makeStringLit("!(conf$31731.size == t$31730.size)"); strLit__33324; })))));
     }
-    ::x10aux::nullCheck(t__31085)->displaySolution(conf__31086);
+    ::x10aux::nullCheck(t__31741)->displaySolution(conf__31742);
 }
 
-//#line 303 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 302 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 ::x10::lang::Rail< x10_int >* cpls::solver::HeuristicSolver::getBestConfiguration(
   ) {
     
-    //#line 304 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 303 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     x10_long sz = ::x10aux::nullCheck(this->FMGL(problemModel))->getSize();
     
-    //#line 305 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
-    ::x10::lang::Rail< x10_int >* t__31087 = this->FMGL(bestConf);
-    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31087)->FMGL(size)),
+    //#line 304 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    ::x10::lang::Rail< x10_int >* t__31743 = this->FMGL(bestConf);
+    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31743)->FMGL(size)),
                                    sz)))) {
-        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__32649 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__32649; })))));
+        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33325 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33325; })))));
     }
-    return t__31087;
+    return t__31743;
     
 }
 
-//#line 310 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 309 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 ::x10::lang::Rail< x10_int >* cpls::solver::HeuristicSolver::createSolverState(
   ) {
     
-    //#line 311 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 310 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     ::x10::lang::Rail< x10_int >* rsState = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
                                                                                 ((x10_int)-1));
     
-    //#line 313 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 311 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    rsState->x10::lang::Rail< x10_int >::__set(((x10_long)0ll),
+                                               ((x10_int)1));
+    
+    //#line 312 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     return rsState;
     
 }
 
-//#line 316 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 315 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::kill() {
     
-    //#line 317 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 316 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(kill) = true;
 }
 
-//#line 320 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+//#line 319 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::setSeed(x10_long inSeed) {
     
-    //#line 321 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 320 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(seed) = inSeed;
     
-    //#line 322 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
+    //#line 321 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/HeuristicSolver.x10"
     this->FMGL(random) = ::x10::util::Random::_make(inSeed);
 }
 

@@ -21,7 +21,7 @@ public class Main {
  		var configCPLS:CPLSConfig = new CPLSConfig();//val path = opts("-f","."); TODO: Jason. Esto lo hago cuando quiera resolver todas las instancias de una carpeta
  													//var listOfInstances : Rail[String] = CPLSFileReader.loadDir(path)
  		//*********************Model Problem Creation**************************//
- 		val problemString = opts("-p", "MSP");
+ 		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
  		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams);
  		configCPLS.setProblemModel(problemModel);
@@ -30,7 +30,7 @@ public class Main {
  		//**********************Structure Definition***************************//
  		val nodesPerTeam = opts("-N", 1n);
  		val numberOfTeams = Place.MAX_PLACES as Int/nodesPerTeam;
- 		val heuristicString = opts("-sl", "AS");
+ 		var heuristicString:String = opts("-sl", "AS");
  		var modeIndicator:Boolean = (opts("-ce", 1n)==0n)?false:true;
  		val interTeamCommTime:Long = opts("-I", 0);
  		val affectedPer = opts("-A", 1.0);
@@ -38,6 +38,28 @@ public class Main {
  		val verify  = opts("-v", 0n) == 1n;
  		val changeProb = opts("-C", 100n);
  		val divOption = opts("O", 0n);
+ 		configCPLS.setVerify(verify);
+ 		configCPLS.setIsThereAMasterNode(modeIndicator);
+ 
+ 		var masterHeuristicAndOthers:Rail[String];
+ 		if(heuristicString.indexOf('*') != -1n){
+ 			 masterHeuristicAndOthers = heuristicString.split("*");
+			 heuristicString = masterHeuristicAndOthers(1);
+			 masterConfig:NodeConfig = new NodeConfig(whichHeuristicInt(masterHeuristicAndOthers(0)), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
+			 masterConfig.setHeuristic(whichHeuristicInt(masterHeuristicAndOthers(0)));
+			 masterConfig.setNumberOfTeams(numberOfTeams);
+			 masterConfig.setNodesPerTeam(nodesPerTeam);
+			 masterConfig.setTeamId(-1n);//This is an indicator for the masterNodeTeam
+			 masterConfig.setInterTeamCommTime(interTeamCommTime);
+			 masterConfig.setAffectedPer(affectedPer);
+			 masterConfig.setIniDelay(iniDelay);
+			 masterConfig.setVerify(verify);
+			 masterConfig.setChangeProb(changeProb);
+			 masterConfig.setDiversificationOption(divOption);
+			 configCPLS.setMasterConfig(masterConfig);
+ 		}else if(modeIndicator){
+ 			Console.OUT.println("Debe indicar una heurística para el nodo master");
+ 		}
  		
  		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString,
  														numberOfTeams,
@@ -49,9 +71,15 @@ public class Main {
  														verify,
  														changeProb,
  														divOption);
+ 		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
+ 			Console.OUT.println("Inconsistencia en el numero total de nodos");
+ 				return;
+ 		}else if(!modeIndicator && (Place.MAX_PLACES != nodeConfigs.numElems_2*nodeConfigs.numElems_1)){
+ 			Console.OUT.println("Inconsistencia en el numero total de nodos");
+ 				return;
+ 		}
  		configCPLS.setConfigNodes(nodeConfigs);
- 		configCPLS.setVerify(verify);
- 		configCPLS.setIsThereAMasterNode(modeIndicator);
+ 
  		//*********************************************************************//
  		
  		//***************************Pools Options*****************************//
@@ -113,6 +141,7 @@ public class Main {
  		 
     }
  
+ 
  	public static def heuristicsAndRolesDefinition(solverIn:String,
  													numberOfTeams:Int,
  													nodesPerTeam:Int,
@@ -123,36 +152,79 @@ public class Main {
  													verify:Boolean,
  													changeProb:Int,
  													divOption:Int):Array_2[NodeConfig]{
- 		//TODO: Validar este parámetros
- 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());	
- 		var eachTeam:Rail[String] = solverIn.split("/");
- 		var eachNode:Rail[String];
- 		for(var i:long=0; i<eachTeam.size; i++){
- 			eachNode = eachTeam(i).split(",");
- 			for(var j:long=0; j<eachNode.size; j++){
- 				if(modeIndicator){
- 					if(i == 0){
- 						if(j == 0){
- 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
- 						}else if(j == 1){
- 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
- 
- 						}else{
- 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
- 						}
- 					}else{
- 						if(j == 0){
- 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
- 						}else{
- 							nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
- 						}
- 					}
+ 		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());
+ 		var teamsWithMultiplicity:Rail[String];
+ 		if(solverIn.indexOf('-') != -1n)
+ 			teamsWithMultiplicity = solverIn.split("-");
+ 		else
+ 			teamsWithMultiplicity = new Rail[String](1, solverIn);
+ 		var teams:Rail[String];
+ 		var nodesWithMultiplicity:Rail[String];
+ 		var nodes:Rail[String];
+ 		var heuristic:String;
+ 		var multiplicityOfTeam:Int;
+ 		var multiplicityOfNode:Int;
+ 		var counter:Int = 0n;
+ 		var k:Int = 0n,l:Int = 0n,m:Int = 0n,n:Int = 0n, i:Int= 0n, j:Int = 0n;
+ 		if(teamsWithMultiplicity != null && teamsWithMultiplicity.size > 0){
+ 			for(k = 0n; k < teamsWithMultiplicity.size; k++){
+ 				if(teamsWithMultiplicity(k).indexOf('/') != -1n){
+ 					teams = teamsWithMultiplicity(k).split("/");
  				}else{
- 					if(j == 0){
- 						nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
- 					}else{
- 						nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
+ 					teamsWithMultiplicity(k) = teamsWithMultiplicity(k) + "/1";
+ 					teams = teamsWithMultiplicity(k).split("/");
+ 				}
+ 				if(teams != null && teams.size > 0){
+ 					nodesWithMultiplicity = teams(0).split(",");
+ 					multiplicityOfTeam = Int.parseInt(teams(1));
+ 					for(l = 0n; l < multiplicityOfTeam; l++){
+ 						for(m = 0n; m < nodesWithMultiplicity.size; m++){
+ 							if(nodesWithMultiplicity(m).indexOf("x") != -1n){
+ 								nodes = nodesWithMultiplicity(m).split("x");
+ 							}else{
+ 								nodesWithMultiplicity(m) = nodesWithMultiplicity(m) + "x1";
+ 								nodes = nodesWithMultiplicity(m).split("x");
+ 							}
+ 							multiplicityOfNode = Int.parseInt(nodes(1));	
+ 							heuristic = nodes(0);
+ 							for(n = 0n; n < multiplicityOfNode; n++){
+ 								i = counter/nodesPerTeam;
+ 								j = counter%nodesPerTeam;
+ 								if(counter%nodesPerTeam == 0n)
+									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
+									 						CPLSOptionsEnum.NodeRoles.HEAD_NODE);
+ 								else
+ 									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
+ 															CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
+								nodeConfigs(i,j).setHeuristic(whichHeuristicInt(heuristic));
+								nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
+								nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
+								nodeConfigs(i,j).setTeamId(i as Int);
+								nodeConfigs(i,j).setInterTeamCommTime(interTeamCommTime);
+								nodeConfigs(i,j).setAffectedPer(affectedPer);
+								nodeConfigs(i,j).setIniDelay(iniDelay);
+								nodeConfigs(i,j).setVerify(verify);
+								nodeConfigs(i,j).setChangeProb(changeProb);
+								nodeConfigs(i,j).setDiversificationOption(divOption);
+ 								counter++;
+ 							}
+ 						}
  					}
+ 				}
+ 			}
+ 		}
+ 		
+ 		/*var eachNodeWithoutMulti:Rail[String];
+ 		for(var i:long=0; i<eachTeam.size; i++){
+ 			
+ 			eachNodeWithMulti = multiplicityOfTeams(0).split(",");
+ 			eachNodeWithoutMulti = eachNodeWithMulti(0).split("x");
+ 
+ 			for(var j:long=0; j< eachNodeWithoutMulti.size; j++){
+ 				if(j == 0){
+ 					nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
+ 				}else{
+ 					nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
  				}
  				nodeConfigs(i,j).setHeuristic(whichHeuristicInt(eachNode(j)));
  				nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
@@ -165,7 +237,7 @@ public class Main {
  				nodeConfigs(i,j).setChangeProb(changeProb);
  				nodeConfigs(i,j).setDiversificationOption(divOption);
  			}
- 		}
+ 		}*/
  		return nodeConfigs;
  	}
  

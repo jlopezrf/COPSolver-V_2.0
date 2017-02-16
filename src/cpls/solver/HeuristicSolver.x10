@@ -172,7 +172,6 @@ public abstract class HeuristicSolver{
  			}
  			//Possible interaction with other solvers
  			//Jason: include this method for cooperative form -> interact(problemModel);
- 			Console.OUT.println("Nueva iteracion: " + nIter);
  		}
  		updateTotStats();
  		return bestCost;
@@ -186,7 +185,7 @@ public abstract class HeuristicSolver{
  		this.nSwap = 0n;
  		this.nIter = 0n;
  		this.nRestart = 0n;
- 		this.bestConf = new Rail[Int](problemModel.getSize(), 0n);
+ 		this.bestConf = new Rail[Int](problemModel.getSize() as Int, 0n);
  		
  		// clear Tot stats
  		this.nIterTot = 0n;
@@ -309,7 +308,7 @@ public abstract class HeuristicSolver{
  	 */
  	protected def createSolverState():Rail[Int]{self.size==3}{
  		val rsState = new Rail[Int](3,-1n);
- 		//Jason: Verificar para que es necesario esto: rsState(0) = this.mySolverType;
+ 		rsState(0) = 1n;
  		return rsState;  
  	}
  	

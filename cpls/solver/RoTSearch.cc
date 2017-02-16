@@ -90,12 +90,12 @@ void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericMod
     
     //#line 49 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__32651 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__32651; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__33327 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__33327; })),
                                          (-(1.0)));
     
     //#line 50 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__32652 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__32652; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__33328 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__33328; })),
                                        (-(1.0)));
 }
 
@@ -263,7 +263,7 @@ x10_long cpls::solver::RoTSearch::search() {
         
         //#line 145 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__32665 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__32665; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33341 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__33341; }))));
         
         //#line 146 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return this->FMGL(currentCost);
@@ -318,14 +318,14 @@ x10_long cpls::solver::RoTSearch::search() {
         x10_long v = ((this->FMGL(currentCost)) + (minDelta));
         
         //#line 172 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__32668 = ::x10aux::makeStringLit("Costo (RoTSearch): "); strLit__32668; })), v));
+        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33344 = ::x10aux::makeStringLit("Costo (RoTSearch): "); strLit__33344; })), v));
         
         //#line 173 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__32669 = ::x10aux::makeStringLit(". Con variables: "); strLit__32669; })),
+        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__33345 = ::x10aux::makeStringLit(". Con variables: "); strLit__33345; })),
                                   ::x10aux::nullCheck(this->FMGL(problemModel))->getVariables());
         
         //#line 175 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__32670 = ::x10aux::makeStringLit("\n"); strLit__32670; })));
+        ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__33346 = ::x10aux::makeStringLit("\n"); strLit__33346; })));
         
         //#line 176 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return ((this->FMGL(currentCost)) + (minDelta));

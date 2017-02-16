@@ -48,27 +48,6 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	public def this(){
  		super();
  		this.mySolverType = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
- 		/*if(super.heuristicParams instanceof ASParameters){
- 			var params:ASParameters = super.heuristicParams as ASParameters;
- 			this.nVarToReset = params.getNVarToReset();
- 			this.resetPercent = params.getResetPercent();
- 			this.freezeLocMin = params.getFreezeLocMin();
- 			this.freezeSwap = params.getFreezeSwap();
- 			this.resetLimit = params.getResetLimit();
- 			this.probSelectLocMin = params.getProbSelectLocMin();
- 			this.firstBest = params.getFirstBest();
- 			this.exhaustive = params.getExhaustive();
- 			Console.OUT.println("AdaptiveSearch. Parametros inicializados");
- 		}else{
- 			this.nVarToReset = -1;
- 			this.resetPercent = 10n;
- 			this.freezeLocMin = 5n;
- 			this.freezeSwap = 5n;
- 			this.resetLimit = 5n;
- 			this.probSelectLocMin = 0n;
- 			this.firstBest = true; //Jason: Estos los asigne true por defecto, puede afectar.
- 			this.exhaustive = true;
- 		}*/
  	}
  
   	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){

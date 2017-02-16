@@ -65,6 +65,8 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     x10_boolean FMGL(verify);
     
+    ::cpls::entities::NodeConfig* FMGL(masterConfig);
+    
     virtual ::cpls::problem::ProblemGenericModel* getProblemModel();
     virtual x10_boolean getIsThereAMasterNode();
     virtual ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* getConfigNodes(
@@ -77,6 +79,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual x10_boolean getStrictLow();
     virtual x10_long getTimesPerInstance();
     virtual x10_boolean getVerify();
+    virtual ::cpls::entities::NodeConfig* getMasterConfig();
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
     virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
     virtual void setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig);
@@ -88,6 +91,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual void setTimesPerInstance(x10_long timesPerInstance);
     virtual void setSeed(x10_long seed);
     virtual void setVerify(x10_boolean verify);
+    virtual void setMasterConfig(::cpls::entities::NodeConfig* masterConfig);
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
       );
     void _constructor();

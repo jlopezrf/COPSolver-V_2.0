@@ -139,7 +139,6 @@ public class EOSearch extends SingleSolHeuristic{
  			Utils.show(". Con variables: " ,problemModel.getVariables());
  			//displaySolution();
  		}
- 		
  		return currentCost;
  	}
  

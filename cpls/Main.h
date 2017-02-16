@@ -28,18 +28,12 @@ class Main__COPProblemModelFactory;
 namespace x10 { namespace lang { 
 class Place;
 } } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array_2;
-} } 
 namespace cpls { namespace entities { 
 class NodeConfig;
 } } 
-namespace cpls { namespace entities { 
-class PoolConfig;
-} } 
-namespace x10 { namespace lang { 
-class System;
-} } 
+namespace cpls { 
+class CPLSOptionsEnum__NodeRoles;
+} 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -49,11 +43,17 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array_2;
+} } 
+namespace cpls { namespace entities { 
+class PoolConfig;
+} } 
+namespace x10 { namespace lang { 
+class System;
+} } 
 namespace cpls { 
 class NodeInstancer;
-} 
-namespace cpls { 
-class CPLSOptionsEnum__NodeRoles;
 } 
 namespace cpls { namespace util { 
 class Logger;

@@ -4,6 +4,7 @@ import x10.util.Random;
 import cpls.problem.ProblemGenericModel;
 import cpls.ParamManager;
 import cpls.util.Utils;
+import x10.util.RailUtils;
 
 
 public class GeneticAlgorithm extends PopulBasedHeuristic{
@@ -36,8 +37,11 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		return currentCostGA;
  	}
  
+ 	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};
+ 
  	protected def sortPopulation(){
- 		var aux:GAIndividual;
+ 		RailUtils.sort(this.population, cmp);
+ 		/*var aux:GAIndividual;
  		for(var i:Long = 1n; i < population.size + 1 as Int; i++){
  			for(var j:Int = 0n; j < population.size - i; j++){
  				if(population(j).getCost() > population(j+1).getCost()){
@@ -46,7 +50,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  					population(j+1) = aux;
  				}
  			}
- 		}
+ 		}*/
  	}
  
  	protected def refreshPopulation(mutatedSons:Rail[GAIndividual], parentIndex1:Long, parentIndex2:Long){

@@ -17,6 +17,7 @@ public class CPLSConfig {
  	private var timesPerInstance:Long;
  	private var minDistance:Double;
  	private var verify:Boolean;
+ 	private var masterConfig:NodeConfig;
  
  	
  	public def getProblemModel(){return this.problemModel;}
@@ -30,6 +31,7 @@ public class CPLSConfig {
 	public def getStrictLow(){return this.strictLow;}
  	public def getTimesPerInstance(){return this.timesPerInstance;}
  	public def getVerify(){return this.verify;}
+ 	public def getMasterConfig(){return this.masterConfig;}
  	
  	public def setProblemModel(problemModel:ProblemGenericModel){this.problemModel = problemModel;}
  	public def setConfigNodes(configNodes:Array_2[NodeConfig]){this.configNodes = configNodes;}
@@ -42,5 +44,6 @@ public class CPLSConfig {
  	public def setTimesPerInstance(timesPerInstance:Long){this.timesPerInstance = timesPerInstance;}
  	public def setSeed(seed:Long){this.seed = seed;}
  	public def setVerify(verify:Boolean){this.verify = verify;}
+ 	public def setMasterConfig(masterConfig:NodeConfig){this.masterConfig = masterConfig;}
  
 }

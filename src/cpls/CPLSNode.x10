@@ -141,6 +141,7 @@ public class CPLSNode{
  	 			bcost = cost;
  	 
  	 			if (winner){ 
+ 	 				Console.OUT.println("Encontro un ganador");
  	 				setStats_(targetCost);
  	 				if (nodeConfig.getVerify()){
  	 					heuristicSolver.displaySolution();
@@ -182,10 +183,15 @@ public class CPLSNode{
  		val time = time/1e9;
  		val c = new GlobalStats();
  		heuristicSolver.reportStats(c);
- 		
- 		val head = here.id % nodeConfig.getNumberOfTeams();
- 		val gR = at(Place(head)) pointersComunication().getGroupReset();
- 		
+ 		var head:Long;
+ 		if(here == Place.FIRST_PLACE){
+ 			head =  here.id;
+ 		}else{
+ 			head = nodeConfig.getTeamId();
+ 		}
+ 		//val head2 = nodeConfig.getTeamId();//here.id % nodeConfig.getNumberOfTeams();
+ 		val gR = at(Place.place(head)) pointersComunication().getGroupReset();
+ 		Console.OUT.println("Despues de at(Place(head)) pointersComunication().getGroupReset()");
  		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
  		
  		val fft = c.getCost() - targetCost;
@@ -194,9 +200,9 @@ public class CPLSNode{
  		c.setGroupR(gReset);
  		c.setFFTarget(fft as Int);
  		c.setExplorerWinner(0n); //To notify that there was a solution
- 		
+ 		Console.OUT.println("Sospecho que hasta aca puedo llegar");
  		at (Place.FIRST_PLACE) /*async*/ 
- 		pointersComunication().setStats(c);
+ 			pointersComunication().setStats(c);
  	}
  	
  	public def announceWinner(p:Long):Boolean {
@@ -539,8 +545,10 @@ public class CPLSNode{
  	
  	public def clear(){
  		winnerLatch.set(false);
- 		teamPool.clear();
- 		cplsPool.clear();
+ 		if(teamPool != null)
+ 			teamPool.clear();
+ 		if(cplsPool != null)
+ 			cplsPool.clear();
  		stats.clear();
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		heuristicSolver.clear();
