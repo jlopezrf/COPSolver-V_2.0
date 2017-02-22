@@ -59,6 +59,26 @@ class NodeConfig : public ::x10::lang::X10Class   {
     
     x10_int FMGL(diversificationOption);
     
+    x10_long FMGL(maxTime);
+    
+    x10_long FMGL(maxIters);
+    
+    x10_int FMGL(maxRestarts);
+    
+    x10_boolean FMGL(reportPart);
+    
+    x10_int FMGL(modParams);
+    
+    x10_int FMGL(changeOnDiver);
+    
+    x10_int FMGL(reportI);
+    
+    x10_int FMGL(updateI);
+    
+    x10_int FMGL(maxUpdateI);
+    
+    x10_boolean FMGL(adaptiveComm);
+    
     void _constructor();
     
     static ::cpls::entities::NodeConfig* _make();
@@ -78,6 +98,16 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual void setVerify(x10_boolean verify);
     virtual void setChangeProb(x10_int changeProb);
     virtual void setDiversificationOption(x10_int divOption);
+    virtual void setMaxTime(x10_long maxTime);
+    virtual void setMaxIters(x10_long maxIters);
+    virtual void setMaxRestarts(x10_int maxRestarts);
+    virtual void setReportPart(x10_boolean reportPart);
+    virtual void setModParams(x10_int modParams);
+    virtual void setChangeOnDiver(x10_int changeOnDiver);
+    virtual void setReportI(x10_int reportI);
+    virtual void setUpdateI(x10_int updateI);
+    virtual void setMaxUpdateI(x10_int maxUpdateI);
+    virtual void setAdaptiveComm(x10_boolean adaptiveComm);
     virtual x10_int getHeuristic();
     virtual x10_int getNumberOfTeams();
     virtual x10_int getNodesPerTeam();
@@ -89,6 +119,16 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual x10_boolean getVerify();
     virtual x10_int getChangeProb();
     virtual x10_int getDiversificationOption();
+    virtual x10_long getMaxTime();
+    virtual x10_long getMaxIters();
+    virtual x10_int getMaxRestarts();
+    virtual x10_boolean getReportPart();
+    virtual x10_int getModParams();
+    virtual x10_int getChangeOnDiver();
+    virtual x10_int getReportI();
+    virtual x10_int getUpdateI();
+    virtual x10_int getMaxUpdateI();
+    virtual x10_boolean getAdaptiveComm();
     virtual ::cpls::entities::NodeConfig* cpls__entities__NodeConfig____this__cpls__entities__NodeConfig(
       );
     virtual void __fieldInitializers_cpls_entities_NodeConfig();

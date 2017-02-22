@@ -16,6 +16,16 @@ public class NodeConfig{
  	private var verify:Boolean;
  	private var changeProb:Int;
  	private var diversificationOption:Int;
+ 	private var maxTime:Long;
+ 	private var maxIters:Long;
+ 	private var maxRestarts:Int;
+ 	private var reportPart:Boolean;
+ 	private var modParams:Int;
+ 	private var changeOnDiver:Int;
+ 	private var reportI:Int;
+ 	private var updateI:Int;
+ 	private var maxUpdateI:Int;
+ 	private var adaptiveComm:Boolean;
  
  	public def this(){}
  	public def this(heuristic:Int, rol:Int){this.heuristic = heuristic;	this.rol = rol;}
@@ -31,6 +41,16 @@ public class NodeConfig{
  	public def setVerify(verify:Boolean){this.verify = verify;}
  	public def setChangeProb(changeProb:Int){this.changeProb = changeProb;}
  	public def setDiversificationOption(divOption:Int){this.diversificationOption = diversificationOption;}
+ 	public def setMaxTime(maxTime:Long){this.maxTime = maxTime;}
+ 	public def setMaxIters(maxIters:Long){this.maxIters = maxIters;}
+ 	public def setMaxRestarts(maxRestarts:Int){this.maxRestarts = maxRestarts;}
+ 	public def setReportPart(reportPart:Boolean){this.reportPart = reportPart;}
+ 	public def setModParams(modParams:Int){this.modParams = modParams;}
+ 	public def setChangeOnDiver(changeOnDiver:Int){this.changeOnDiver = changeOnDiver;}
+ 	public def setReportI(reportI:Int){this.reportI = reportI;}
+ 	public def setUpdateI(updateI:Int){this.updateI = updateI;}
+ 	public def setMaxUpdateI(maxUpdateI:Int){this.maxUpdateI = maxUpdateI;}
+ 	public def setAdaptiveComm(adaptiveComm:Boolean){this.adaptiveComm = adaptiveComm;}
  
  	public def getHeuristic(){return this.heuristic;}
  	public def getNumberOfTeams(){return this.numberOfTeams;}
@@ -43,4 +63,14 @@ public class NodeConfig{
  	public def getVerify(){return this.verify;}
  	public def getChangeProb(){return this.changeProb;}
  	public def getDiversificationOption(){return this.diversificationOption;}
+ 	public def getMaxTime(){return this.maxTime;}
+ 	public def getMaxIters(){return this.maxIters;}
+ 	public def getMaxRestarts(){return this.maxRestarts;}
+ 	public def getReportPart(){return this.reportPart;}
+ 	public def getModParams(){return this.modParams;}
+ 	public def getChangeOnDiver(){return this.changeOnDiver;}
+ 	public def getReportI(){return this.reportI;}
+ 	public def getUpdateI(){return this.updateI;}
+ 	public def getMaxUpdateI(){return this.maxUpdateI;}
+ 	public def getAdaptiveComm(){return this.adaptiveComm;}
 }

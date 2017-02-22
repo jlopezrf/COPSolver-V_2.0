@@ -48,7 +48,7 @@ public class EOSearch extends SingleSolHeuristic{
 
  	public def this(){
  		super();
- 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
+ 		//super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
 
  		// Parameters (Random by default)
  		//this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemModel.getSize())));
@@ -67,15 +67,15 @@ public class EOSearch extends SingleSolHeuristic{
  		// Compute interval limit for random tau (based on "force" concept eo-qap implementation Daniel Diaz)
  	}
  
- 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		super.configHeuristic(problemModel, opts);
- 		this.pdf = new Rail[Double] (problemModel.getSize() +1, 0.0);// +1 since x in 1..size
- 		this.fit = new Rail[Long](problemModel.getSize(), 0);
- 		this.expDown = 6.385378048 * Math.pow(problemModel.getSize(),-1.033400799);
- 		this.expUp = 8.867754442 * Math.pow(problemModel.getSize(),-0.895936426);
- 		this.powDown = 1.575467001 * Math.pow(problemModel.getSize(),-0.1448643794);
- 		this.powUp = 2.426369897 * Math.pow(problemModel.getSize(),-0.1435045369);
- 		this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemModel.getSize())));
+ 	public def configHeuristic(problemSize:Long, opts:ParamManager){
+ 		super.configHeuristic(problemSize, opts);
+ 		this.pdf = new Rail[Double] (problemSize +1, 0.0);// +1 since x in 1..size
+ 		this.fit = new Rail[Long](problemSize, 0);
+ 		this.expDown = 6.385378048 * Math.pow(problemSize,-1.033400799);
+ 		this.expUp = 8.867754442 * Math.pow(problemSize,-0.895936426);
+ 		this.powDown = 1.575467001 * Math.pow(problemSize,-0.1448643794);
+ 		this.powUp = 2.426369897 * Math.pow(problemSize,-0.1435045369);
+ 		this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemSize)));
  		this.pdfUserSel = opts("--EO_pdf", -1n);
  		this.selSecond = opts("--EO_selSec", 1n);
  	}
@@ -85,7 +85,7 @@ public class EOSearch extends SingleSolHeuristic{
   	*  Executed once before the main solving loop
   	*/
  	protected def initVar( tCost : Long, sLow: Boolean){
- 		super.initVar(tCost, sLow);
+ 		super.initVar();
  		if ( this.pdfUserSel == -1n ) { // Select a random PDF
  			this.pdfS = random.nextInt(2n)+1n; // from 1 to 3
  		}else
@@ -111,12 +111,12 @@ public class EOSearch extends SingleSolHeuristic{
  	private def initPDF( fnc:(tau : Double, x : Long)=>Double ){
  		var sum:Double = 0.0;
  		var y:Double = 0.0;
- 		for (var x:Int = 1n; x <= problemModel.getSize(); x++){
+ 		for (var x:Int = 1n; x <= super.problemSize; x++){
  			y = fnc(this.tau, x);
  			pdf(x) = y;
  			sum += y; 
  		}
- 		for (var x:Int = 1n; x <= problemModel.getSize(); x++){
+ 		for (var x:Int = 1n; x <= super.problemSize; x++){
  			pdf(x) /= sum;
  		}
  		// for (x in pdf.range())
@@ -125,21 +125,22 @@ public class EOSearch extends SingleSolHeuristic{
  	/**
   	*  Extremal Search process (in loop functionality)
   	*/
- 	protected def search() : Long{
- 		this.selFirstVar(this.move );
+ 	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
+ 		this.selFirstVar(this.move, problemModel);
+ 		var newCost:Long = currentCost;
  		if (this.selSecond == 0n)
- 			currentCost = this.selSecondRandom(this.move);
+ 			newCost = this.selSecondRandom(super.move, problemModel, currentCost);
  		else 
- 			currentCost = this.selSecondMinConf(this.move);
- 		problemModel.swapVariables(this.move.getFirst(), this.move.getSecond()); //adSwap(maxI, minJ,csp);
+ 			newCost = this.selSecondMinConf(super.move, problemModel, currentCost);
+ 		problemModel.swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
  		nSwap++;
- 		problemModel.executedSwap(this.move.getFirst(), this.move.getSecond());
- 		if(currentCost < super.bestCost){
- 			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + currentCost);
+ 		problemModel.executedSwap(super.move.getFirst(), super.move.getSecond());
+ 		if(newCost < bestCost){
+ 			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + newCost);
  			Utils.show(". Con variables: " ,problemModel.getVariables());
  			//displaySolution();
  		}
- 		return currentCost;
+ 		return newCost;
  	}
  
  
@@ -153,7 +154,7 @@ public class EOSearch extends SingleSolHeuristic{
  		return x - 1n ;
  	}
  
- 	private def selFirstVar(move:MovePermutation){
+ 	private def selFirstVar(move:MovePermutation, problemModel:ProblemGenericModel){
  		var i: Long =-1n;
  		var cost: Long;
  		var selIndex:Long = 0; 
@@ -200,7 +201,7 @@ public class EOSearch extends SingleSolHeuristic{
   	*   @param move object
   	* 	@return the cost of the best move
   	*/
- 	private def selSecondMinConf(move:MovePermutation) : Long {
+ 	private def selSecondMinConf(move:MovePermutation, problemModel:ProblemGenericModel, currentCost:Long) : Long {
  		var j: Long;
  		var cost: Long;
  		var second : Long = 0;
@@ -209,7 +210,7 @@ public class EOSearch extends SingleSolHeuristic{
  		val first = this.move.getFirst(); 
  		for (j = 0; j < problemModel.getSize(); j++){	
  			if (first == j) continue;
- 			cost = problemModel.costIfSwap(this.currentCost, j, first);
+ 			cost = problemModel.costIfSwap(currentCost, j, first);
  			if (cost < minCost){
  				minCost = cost;
  				second = j;
@@ -224,9 +225,9 @@ public class EOSearch extends SingleSolHeuristic{
  
  
  
- 	private def selSecondRandom(move:MovePermutation) : Long {
+ 	private def selSecondRandom(move:MovePermutation, problemModel:ProblemGenericModel, currentCost:Long) : Long {
  		val randomJ = random.nextLong(problemModel.getSize());
- 		val newCost = problemModel.costIfSwap(this.currentCost, randomJ, this.move.getFirst());	 
+ 		val newCost = problemModel.costIfSwap(currentCost, randomJ, this.move.getFirst());	 
  		this.move.setSecond(randomJ);
  		return newCost; 
  	}

@@ -11,221 +11,24 @@ import cpls.ParamManager;
 import x10.util.StringUtil;
 
 public abstract class HeuristicSolver{
-	
-	protected var problemModel:ProblemGenericModel;
-	protected var size:Long;
- 	
- 	// Move information
  	protected val move = new MovePermutation(-1n, -1n);
- 	
- 	// Random Number Generator
  	protected var random : Random;
- 	protected var seed:Long;	
- 	
- 	// Variables
- 	// -> Target
- 	protected var target : Long = 0;
- 	protected var strictLow : Boolean = false;
- 	protected var targetSucc : Boolean = false;
- 	
- 	// -> Statistics
- 	protected var nRestart : Int = 0n;
- 	protected var nIter : Int;
  	protected var nSwap : Int;
- 	protected var nForceRestart : Int = 0n;
- 	
- 	/** Total Statistics */
- 	protected var nIterTot : Int;
- 	protected var nSwapTot : Int;
- 	// -> Result
- 	protected var bestConf:Rail[Int];
- 	protected var bestCost:Long = Long.MAX_VALUE;
- 	protected var currentCost:Long;
- 	// -> Stop search process 
- 	protected var kill:Boolean = false;
- 	// -> Max time
- 	protected var maxTime:Long;
- 	protected var initialTime:Long;
- 	// RESTART
- 	protected var restart:Boolean = false;
- 	protected var maxIters:Long;
- 	protected var maxRestarts:Int;
- 	
- 	// not sure
- 	protected var forceRestart : Boolean = false;
- 	protected var forceReset : Boolean = false;
- 	
- 	// Report results
- 	protected var reportPart:Boolean;
- 	
- 	/** Number time to change vector due to communication */ 
- 	protected var nChangeV : Int = 0n;
- 	protected var bestSent:Boolean=false;
- 	
- 	protected var updateI:Int;
- 	protected var reportI:Int;// = (sz* Math.log(sz)) as Int ;//10n; 
- 	protected var adaptiveComm:Boolean = false;
- 	protected var modParams:Int;
- 	
- 	protected var costLR:Long = Long.MAX_VALUE;
- 	protected var maxUpdateI : Int = 100000n;
- 	protected var changeOnDiver : Int;
- 	protected var mySolverType:Long;
- 	
+ 	protected var problemSize:Long;
+ 	protected var mySolverType:Int;
+
  	public def this(){
- 	}
- 
- 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		this.problemModel = problemModel;
- 		this.maxTime = opts("-mt", 0);
- 		this.maxIters = opts("-mi", 100000000);
- 		this.maxRestarts = opts("-mr", 0n);
- 		this.reportPart = opts("-rp", 0n) == 1n; 
- 		this.modParams = opts("-M", 1n);
- 		this.changeOnDiver = opts("-CD", 1n);
- 		val rep = opts( "-R", 0n );
- 		val upd = opts( "-U", 0n );
- 		this.adaptiveComm = ( rep == -1n );
- 		val sz = problemModel.getSize();
- 		reportI =  adaptiveComm ? ((sz* Math.log(sz)) as Int) : rep;
- 		updateI =  adaptiveComm ? (2n * reportI) : upd;
- 
- 		val mustr = System.getenv("MU");
- 		if (mustr != null)
- 			maxUpdateI = StringUtil.parseInt(mustr);
- 	}
- 
- 	public def setProblemModel(problemModel:ProblemGenericModel){
- 		this.problemModel = problemModel;
- 		this.size = problemModel.getSize();
- 	}
- 	
- 	public def getProblemModel(){
- 		return this.problemModel;
- 	}
- 	
- 	public def getBestCost():Long{
- 		return this.bestCost;
- 	}
- 
- 	public def setMaxIters(maxIters:Long){
- 		this.maxIters = maxIters;
- 	}
- 
- 	public def solve(){
  
  	}
- 	
- 	public def solve(tCost : Long, sLow: Boolean):Long{
- 		// Initialize all variables of the search process
- 		initVar(tCost, sLow);
- 		// Initialize Cost
- 		this.currentCost = problemModel.costOfSolution(true);
- 		// Copy the first match to bestConf vector
- 		val sz = problemModel.getSize();
- 		try{
- 			Rail.copy(problemModel.getVariables(), bestConf as Valuation(sz));
- 		}catch(e:Exception){
- 			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + "Tamaño variables: " + problemModel.getVariables().size);
- 		}
- 		
- 		if (this.currentCost == 0)
- 			bestCost = currentCost;
- 		else
- 			bestCost = x10.lang.Int.MAX_VALUE;
- 		
- 		// Main Loop 
- 		while( this.currentCost != 0 ){
- 			if (this.nIter >= this.maxIters){
- 				//restart or finish
- 				if(nRestart >= maxRestarts){
- 					break;
- 				}else{
- 					nRestart++;
- 					problemModel.initialize(); 
- 					currentCost = problemModel.costOfSolution(true);
- 					Console.OUT.println("Current cost: " + currentCost);
- 					updateTotStats();
- 					restartVar();
- 					continue;
- 				}
- 			}
- 			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
- 			nIter++;
- 			this.currentCost = search();
- 			
- 			//Update the best configuration found so far
- 			updateCosts();
- 			
- 			//Kill solving process
- 			Runtime.probe();	// Give a chance to the other activities
- 			if (kill)
- 				break;  // kill: End solving process
- 			
- 			//Time out
- 			if(maxTime > 0){
- 				val eTime = System.nanoTime() - initialTime; 
- 				if(eTime/1e6 >= maxTime){ //comparison in miliseconds
- 					Logger.debug(()=>{" Time Out"});
- 					break;
- 				}
- 			}
- 			//Possible interaction with other solvers
- 			//Jason: include this method for cooperative form -> interact(problemModel);
- 		}
- 		updateTotStats();
- 		return bestCost;
+ 
+ 	public def configHeuristic(sizeProblem:Long, opts:ParamManager){
+ 		this.problemSize = sizeProblem;
  	}
- 	
- 	protected def initVar(tCost : Long, sLow: Boolean){
- 		// Set Target
- 		this.target = tCost;
- 		this.strictLow = sLow;
- 		this.targetSucc = false;
- 		this.nSwap = 0n;
- 		this.nIter = 0n;
- 		this.nRestart = 0n;
- 		this.bestConf = new Rail[Int](problemModel.getSize() as Int, 0n);
- 		
- 		// clear Tot stats
- 		this.nIterTot = 0n;
- 		this.nSwapTot = 0n;
- 		this.initialTime = System.nanoTime();
- 		// Comm
- 		this.bestSent = false;
- 		this.nForceRestart = 0n;
- 		this.nChangeV = 0n;
- 		
- 		this.costLR = Long.MAX_VALUE;;
- 		
- 		if (this.adaptiveComm)
- 			this.updateI = 2n * this.reportI;
- 		
- 	}
- 	
- 	public def clear(){
- 		this.kill = false;
- 	}
- 	
- 	protected def updateTotStats(){
- 		this.nIterTot += this.nIter;
- 		this.nSwapTot += this.nSwap; 
- 		nSwap = 0n;
- 		nIter = 0n;
- 	}
- 	
- 	/**
- 	 *  Restart solver state variables
- 	 */
- 	protected def restartVar(){
- 		bestSent = false;
- 	}
- 	
  	/**
  	 *  Search process (in loop functionality)
  	 *  To be overwrited for each child class (solver) 
  	 */
- 	protected def search():Long{
+ 	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int):Long{
  		// Swap two random variables
  		val sz = problemModel.getSize();
  		move.setFirst(random.nextLong(sz));
@@ -236,89 +39,30 @@ public abstract class HeuristicSolver{
  		
  		problemModel.executedSwap(move.getFirst(), move.getSecond());
  		val costo = problemModel.costOfSolution(true);
- 		Console.OUT.print("Costo (RandomSearch): " + costo + ". Con variables: ");
- 		displaySolution();
- 		Console.OUT.print("\n");
+ 		if(costo < currentCost){
+ 			Console.OUT.print("Costo (RandomSearch): " + costo + ". Con variables: ");
+ 			Console.OUT.print("\n");
+ 		}
  		return costo;
  	}
  	
- 	protected def updateCosts(){
- 		val sz = problemModel.getSize();
- 		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
- 			Rail.copy(problemModel.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
- 			this.bestCost = this.currentCost;
- 			
- 			bestSent = false; // new best found, I must send it!
- 			
- 			if (this.reportPart){
- 				val eT = (System.nanoTime() - initialTime)/1e9;
- 				val gap = (this.bestCost-this.target)/(this.bestCost as Double)*100.0;
+ 	public def initVar(){
+ 		this.nSwap = 0n;
+ 	}
+ 	
+ 	public def clearNSwap(){
+ 		this.nSwap = 0n;
+ 	}
+ 	
+ 	public def getNSwap(){
+ 		return nSwap;
+ 	}
 
- 				Utils.show("Solution",this.bestConf);
- 				Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,this.bestCost,gap);
- 			}
- 			
- 			// Console.OUT.println(here+" best cost= "+bestCost);
- 			// Compare cost and break if target is accomplished
- 			if ((this.strictLow && this.bestCost < this.target)
- 					||(!this.strictLow && this.bestCost <= this.target)){
- 				this.targetSucc = true;
- 				this.kill = true;
- 			}
- 		}
- 	}
- 	
- 	public def verify(){
- 		//Console.OUT.println("Se ingresa al Verify del HeuristicSolver");
- 		return problemModel.verify(getBestConfiguration());
- 	}
- 	
- 	public def getSizeProblem(){
- 		return problemModel.getSize();
- 	}
- 	
- 	public def reportStats( c : GlobalStats){
- 		c.setIters(this.nIterTot);
- 		c.setSwaps(this.nSwapTot);
- 		c.setVectorSize(problemModel.getSize());
- 		c.setTarget(this.targetSucc);
- 		c.setCost(this.bestCost);
- 		c.setRestart(this.nRestart);
- 		c.setChange(this.nChangeV);
- 		c.setForceRestart(this.nForceRestart);
- 		val state = createSolverState();
- 		c.setSState(state);
- 	}
- 	
- 	public def forceRestart(){
- 		Logger.info(()=>"Force Restart True");
- 		forceRestart = true;
- 	}
- 	
- 	public def displaySolution(){
- 		problemModel.displaySolution(getBestConfiguration());
- 	}
- 	
- 	public def getBestConfiguration(){
- 		val sz = problemModel.getSize();
- 		return this.bestConf as Valuation(sz);
- 	}
- 	/**
- 	 *  Create Solver State array to be send to Pool
- 	 */
- 	protected def createSolverState():Rail[Int]{self.size==3}{
- 		val rsState = new Rail[Int](3,-1n);
- 		rsState(0) = 1n;
- 		return rsState;  
- 	}
- 	
- 	public def kill(){
- 		this.kill = true;
- 	}
- 
  	public def setSeed(inSeed:Long){
- 		this.seed = inSeed;
  		this.random = new Random(inSeed);
  	}
+ 	
+ 	public def setSolverType(mySolverType:Int){
+ 		this.mySolverType = mySolverType;
+ 	}
 }
-//public type HeuristicSolver = HeuristicSolver{};

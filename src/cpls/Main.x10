@@ -12,14 +12,14 @@ import cpls.entities.CPLSConfig;
 import cpls.entities.PoolConfig;
 import x10.array.Array_2;
 import cpls.util.CPLSFileReader;
+import x10.util.StringUtil;
 
 public class Main {
  	
  	public static def main(args: Rail[String]) {
  		val problemParams = new Rail[Long](2, -1 );
  		var opts:ParamManager = new ParamManager(args);
- 		var configCPLS:CPLSConfig = new CPLSConfig();//val path = opts("-f","."); TODO: Jason. Esto lo hago cuando quiera resolver todas las instancias de una carpeta
- 													//var listOfInstances : Rail[String] = CPLSFileReader.loadDir(path)
+ 		var configCPLS:CPLSConfig = new CPLSConfig();
  		//*********************Model Problem Creation**************************//
  		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
@@ -27,50 +27,27 @@ public class Main {
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
  		
- 		//**********************Structure Definition***************************//
- 		val nodesPerTeam = opts("-N", 1n);
- 		val numberOfTeams = Place.MAX_PLACES as Int/nodesPerTeam;
- 		var heuristicString:String = opts("-sl", "AS");
+ 		//***************************Mode Definition***************************//
  		var modeIndicator:Boolean = (opts("-ce", 1n)==0n)?false:true;
- 		val interTeamCommTime:Long = opts("-I", 0);
- 		val affectedPer = opts("-A", 1.0);
- 		val iniDelay = opts("-W", 0);
  		val verify  = opts("-v", 0n) == 1n;
- 		val changeProb = opts("-C", 100n);
- 		val divOption = opts("O", 0n);
  		configCPLS.setVerify(verify);
  		configCPLS.setIsThereAMasterNode(modeIndicator);
- 
+ 		//*********************************************************************//
+ 		
+ 		//***********************Structure Definition*************************//
  		var masterHeuristicAndOthers:Rail[String];
+ 		var heuristicString:String = opts("-sl", "AS");
  		if(heuristicString.indexOf('*') != -1n){
  			 masterHeuristicAndOthers = heuristicString.split("*");
 			 heuristicString = masterHeuristicAndOthers(1);
-			 masterConfig:NodeConfig = new NodeConfig(whichHeuristicInt(masterHeuristicAndOthers(0)), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
-			 masterConfig.setHeuristic(whichHeuristicInt(masterHeuristicAndOthers(0)));
-			 masterConfig.setNumberOfTeams(numberOfTeams);
-			 masterConfig.setNodesPerTeam(nodesPerTeam);
-			 masterConfig.setTeamId(-1n);//This is an indicator for the masterNodeTeam
-			 masterConfig.setInterTeamCommTime(interTeamCommTime);
-			 masterConfig.setAffectedPer(affectedPer);
-			 masterConfig.setIniDelay(iniDelay);
-			 masterConfig.setVerify(verify);
-			 masterConfig.setChangeProb(changeProb);
-			 masterConfig.setDiversificationOption(divOption);
+			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.getSize(), masterHeuristicAndOthers(0));
 			 configCPLS.setMasterConfig(masterConfig);
  		}else if(modeIndicator){
  			Console.OUT.println("Debe indicar una heurística para el nodo master");
  		}
  		
- 		val nodeConfigs = heuristicsAndRolesDefinition(heuristicString,
- 														numberOfTeams,
- 														nodesPerTeam,
- 														modeIndicator,
- 														interTeamCommTime as Int,
- 														affectedPer,
- 														iniDelay,
- 														verify,
- 														changeProb,
- 														divOption);
+ 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.getSize(), heuristicString);
+ 		
  		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
  			Console.OUT.println("Inconsistencia en el numero total de nodos");
  				return;
@@ -79,7 +56,6 @@ public class Main {
  				return;
  		}
  		configCPLS.setConfigNodes(nodeConfigs);
- 
  		//*********************************************************************//
  		
  		//***************************Pools Options*****************************//
@@ -141,17 +117,72 @@ public class Main {
  		 
     }
  
+ 	public static def makeMasterConfig(opts:ParamManager, problemSize:Long, solverIn:String):NodeConfig{
+ 		val nodesPerTeam:Int = opts("-N", 1n);
+ 		masterConfig:NodeConfig = new NodeConfig(whichHeuristicInt(solverIn), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
+ 		masterConfig.setHeuristic(whichHeuristicInt(solverIn));
+ 		masterConfig.setNumberOfTeams(Place.MAX_PLACES as Int/nodesPerTeam);
+ 		masterConfig.setNodesPerTeam(nodesPerTeam);
+ 		masterConfig.setTeamId(-1n);//This is an indicator for the masterNodeTeam
+ 		masterConfig.setInterTeamCommTime(opts("-I", 0));
+ 		masterConfig.setAffectedPer(opts("-A", 1.0));
+ 		masterConfig.setIniDelay(opts("-W", 0));
+ 		masterConfig.setVerify(opts("-v", 0n) == 1n);
+ 		masterConfig.setChangeProb(opts("-C", 100n));
+ 		masterConfig.setDiversificationOption(opts("O", 0n));
+ 		masterConfig.setMaxTime(opts("-mt", 0));
+ 		masterConfig.setMaxIters(opts("-mi", 100000000));
+ 		masterConfig.setMaxRestarts(opts("-mr", 0n));
+ 		masterConfig.setReportPart(opts("-rp", 0n) == 1n);
+ 		masterConfig.setModParams(opts("-M", 1n));
+ 		masterConfig.setChangeOnDiver(opts("-CD", 1n));
+ 		val rep = opts( "-R", 0n );
+ 		val upd = opts( "-U", 0n );
+ 		val adaptiveComm = ( rep == -1n );
+ 		val reportI =  adaptiveComm ? ((problemSize* Math.log(problemSize)) as Int) : rep;
+ 		val updateI =  adaptiveComm ? (2n * reportI) : upd;
+ 		var maxUpdateI:Int;
+ 		val mustr = System.getenv("MU");
+ 		if (mustr != null)
+ 			maxUpdateI = StringUtil.parseInt(mustr);
+ 		else
+ 			maxUpdateI = 100000n;
+ 		masterConfig.setReportI(reportI);
+ 		masterConfig.setUpdateI(updateI);
+ 		masterConfig.setMaxUpdateI(maxUpdateI);
+ 		return masterConfig;
+ 	}
  
- 	public static def heuristicsAndRolesDefinition(solverIn:String,
- 													numberOfTeams:Int,
- 													nodesPerTeam:Int,
- 													modeIndicator:boolean,
- 													interTeamCommTime:Int,
- 													affectedPer:Double,
- 													iniDelay:Long,
- 													verify:Boolean,
- 													changeProb:Int,
- 													divOption:Int):Array_2[NodeConfig]{
+ 	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
+ 
+ 		val nodesPerTeam:Int = opts("-N", 1n);
+ 		val numberOfTeams:Int = Place.MAX_PLACES as Int/nodesPerTeam;
+ 		val modeIndicator:boolean = (opts("-ce", 1n)==0n)?false:true;
+ 		val interTeamCommTime = opts("-I", 0);
+ 		val affectedPer:Double = opts("-A", 1.0);
+ 		val iniDelay:Long = opts("-W", 0);
+ 		val verify:Boolean = opts("-v", 0n) == 1n;
+ 		val changeProb:Int = opts("-C", 100n);
+ 		val divOption:Int = opts("O", 0n);
+ 		
+ 		val maxTime = opts("-mt", 0);
+ 		val maxIters = opts("-mi", 100000000);
+ 		val maxRestarts = opts("-mr", 0n);
+ 		val reportPart = opts("-rp", 0n) == 1n; 
+ 		val modParams = opts("-M", 1n);
+ 		val changeOnDiver = opts("-CD", 1n);
+ 		val rep = opts( "-R", 0n );
+ 		val upd = opts( "-U", 0n );
+ 		val adaptiveComm = ( rep == -1n );
+ 		val reportI =  adaptiveComm ? ((problemSize* Math.log(problemSize)) as Int) : rep;
+ 		val updateI =  adaptiveComm ? (2n * reportI) : upd;
+ 		var maxUpdateI:Int;
+ 		val mustr = System.getenv("MU");
+ 		if (mustr != null)
+ 			maxUpdateI = StringUtil.parseInt(mustr);
+ 		else
+ 			maxUpdateI = 100000n;
+ 		
  		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());
  		var teamsWithMultiplicity:Rail[String];
  		if(solverIn.indexOf('-') != -1n)
@@ -199,13 +230,26 @@ public class Main {
 								nodeConfigs(i,j).setHeuristic(whichHeuristicInt(heuristic));
 								nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
 								nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
-								nodeConfigs(i,j).setTeamId(i as Int);
+								if(modeIndicator){
+ 									nodeConfigs(i,j).setTeamId(i + 1n);
+								}else{
+ 									nodeConfigs(i,j).setTeamId(i as Int);
+								}
 								nodeConfigs(i,j).setInterTeamCommTime(interTeamCommTime);
 								nodeConfigs(i,j).setAffectedPer(affectedPer);
 								nodeConfigs(i,j).setIniDelay(iniDelay);
 								nodeConfigs(i,j).setVerify(verify);
 								nodeConfigs(i,j).setChangeProb(changeProb);
 								nodeConfigs(i,j).setDiversificationOption(divOption);
+								nodeConfigs(i,j).setMaxTime(maxTime);
+								nodeConfigs(i,j).setMaxIters(maxIters);
+								nodeConfigs(i,j).setMaxRestarts(maxRestarts);
+								nodeConfigs(i,j).setReportPart(reportPart);
+								nodeConfigs(i,j).setModParams(modParams);
+								nodeConfigs(i,j).setChangeOnDiver(changeOnDiver);
+								nodeConfigs(i,j).setReportI(reportI);
+								nodeConfigs(i,j).setUpdateI(updateI);
+								nodeConfigs(i,j).setMaxUpdateI(maxUpdateI);
  								counter++;
  							}
  						}
@@ -213,31 +257,6 @@ public class Main {
  				}
  			}
  		}
- 		
- 		/*var eachNodeWithoutMulti:Rail[String];
- 		for(var i:long=0; i<eachTeam.size; i++){
- 			
- 			eachNodeWithMulti = multiplicityOfTeams(0).split(",");
- 			eachNodeWithoutMulti = eachNodeWithMulti(0).split("x");
- 
- 			for(var j:long=0; j< eachNodeWithoutMulti.size; j++){
- 				if(j == 0){
- 					nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.HEAD_NODE);
- 				}else{
- 					nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(eachNode(j)), CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
- 				}
- 				nodeConfigs(i,j).setHeuristic(whichHeuristicInt(eachNode(j)));
- 				nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
- 				nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
- 				nodeConfigs(i,j).setTeamId(i as Int);
- 				nodeConfigs(i,j).setInterTeamCommTime(interTeamCommTime);
- 				nodeConfigs(i,j).setAffectedPer(affectedPer);
- 				nodeConfigs(i,j).setIniDelay(iniDelay);
- 				nodeConfigs(i,j).setVerify(verify);
- 				nodeConfigs(i,j).setChangeProb(changeProb);
- 				nodeConfigs(i,j).setDiversificationOption(divOption);
- 			}
- 		}*/
  		return nodeConfigs;
  	}
  

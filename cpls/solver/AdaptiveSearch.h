@@ -31,20 +31,17 @@ template<class TPMGL(T)> class Rail;
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
-} } 
 namespace cpls { 
 class ParamManager;
 } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
 namespace x10 { namespace util { 
 class OptionsParser;
+} } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
 } } 
 namespace x10 { namespace io { 
 class Printer;
@@ -72,6 +69,8 @@ namespace cpls { namespace solver {
 class AdaptiveSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
+    
+    using ::cpls::solver::HeuristicSolver::initVar;
     
     ::x10::lang::Rail< x10_int >* FMGL(mark);
     
@@ -117,19 +116,27 @@ class AdaptiveSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     x10_boolean FMGL(firstBest);
     
+    x10_long FMGL(problemSize);
+    
     void _constructor();
     
     static ::cpls::solver::AdaptiveSearch* _make();
     
-    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
-                                 ::cpls::ParamManager* opts);
+    virtual void configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts);
     virtual void initVar(x10_long tCost, x10_boolean sLow);
-    virtual x10_long search();
+    virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
+                            x10_long currentCost, x10_long bestCost, x10_int nIter);
     virtual void restartVar();
-    void doReset(x10_long n);
-    void selectVarHighCost(::cpls::util::MovePermutation* move);
-    x10_long selectVarMinConflict(::cpls::util::MovePermutation* move);
-    x10_long selectVarsToSwap(::cpls::util::MovePermutation* move);
+    x10_long doReset(::cpls::problem::ProblemGenericModel* problemModel, x10_long n,
+                     x10_long currentCost);
+    void selectVarHighCost(::cpls::problem::ProblemGenericModel* problemModel,
+                           ::cpls::util::MovePermutation* move);
+    x10_long selectVarMinConflict(::cpls::problem::ProblemGenericModel* problemModel,
+                                  ::cpls::util::MovePermutation* move,
+                                  x10_long currentCost);
+    x10_long selectVarsToSwap(::cpls::problem::ProblemGenericModel* problemModel,
+                              ::cpls::util::MovePermutation* move,
+                              x10_long currentCost);
     virtual void reportStats(::cpls::measurements::GlobalStats* c);
     virtual void updateTotStats();
     void onLocMin();

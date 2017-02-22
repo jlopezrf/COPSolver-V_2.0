@@ -20,63 +20,83 @@ public class CPLSNode{
 
  	/*********Variables para la configuración del nodo**********/
  	private var nodeConfig:NodeConfig;
+ 	protected var problemModel:ProblemGenericModel;
  	protected var heuristicSolver:HeuristicSolver;
+ 	private var pointersComunication:PlaceLocalHandle[CPLSNode];
+ 	var teamPool:SmartPool;
+ 	var cplsPool:SmartPool;
  	/***********************************************************/
-
- 	/*********Variables para el reporte de estadísticas*********/
+ 	/*********Variables para el manejo de estadísticas**********/
  	val stats = new GlobalStats();
  	val sampleAccStats = new GlobalStats();
  	val genAccStats = new GlobalStats();
  	var time:Long;
  	/***********************************************************/
- 
- 	/***Variables útiles para la comunicación entre los nodos***/
- 	private var pointersComunication:PlaceLocalHandle[CPLSNode];
- 	var interTeamKill:Boolean = false;
- 	var teamPool:SmartPool;
- 	var cplsPool:SmartPool;
  	/***********************************************************/
- 
  	val winnerLatch = new AtomicBoolean(false);
  	var bcost:Long;
- 	var bestSolHere : Rail[Int];
  	var solString : String =  new String();
  	var cGroupReset:Int = 0n;
  	val random:Random;
- 	var problemSize:Long;
  	private var deltaFact : Double = 1.0;
- 	var changeProb:Int;
  	private var divOption:Int;
  	private var ns:Int;
  	private var pSendLM:Double = 0.0;
+ 	var interTeamKill:Boolean = false;
+ 	var confArray:Rail[State];/*******Para diversificar Teams en caso que converjan*******/
+ 	/*************************************************************************************/
+ 	/***Variable copiadas desde la heuristica***/
+ 	protected var target : Long = 0;
+ 	protected var strictLow : Boolean = false;
+ 	protected var targetSucc : Boolean = false;
+ 	// -> Statistics
+ 	protected var nRestart : Int = 0n;
+ 	protected var nIter : Int;
+ 	protected var nForceRestart : Int = 0n;
+ 	/** Total Statistics */
+ 	protected var nIterTot : Int;
+ 	protected var nSwapTot : Int;
+ 	// -> Result
+ 	protected var bestConf:Rail[Int];
+ 	protected var bestCost:Long = Long.MAX_VALUE;
+ 	protected var currentCost:Long;
+ 	// -> Stop search process 
+ 	protected var kill:Boolean = false;
+ 	// -> Max time
+ 	protected var initialTime:Long;
+ 	// RESTART
+ 	protected var restart:Boolean = false;
+ 	// not sure
+ 	protected var forceRestart : Boolean = false;
+ 	/** Number time to change vector due to communication */ 
+ 	protected var nChangeV : Int = 0n;
+ 	protected var bestSent:Boolean=false;
+ 	/*************************************************************************************/
  
- 	var confArray:Rail[State];
- 	
  	public def this(){
- 		random = new Random();
+ 		this.random = new Random();
  		val str = System.getenv("DELTA");
  		if (str != null)
- 			deltaFact = StringUtil.parseInt(str)/ 100.0;
- 		val nsStr = System.getenv("NS");
- 		if (nsStr != null) 
- 			ns = StringUtil.parseInt(nsStr);
- 		else
- 			ns = this.problemSize as Int / 4n;
+ 			this.deltaFact = StringUtil.parseInt(str)/ 100.0;
  		val lmstr = System.getenv("LM");
  		if (lmstr != null)
  			pSendLM = StringUtil.parseInt(lmstr)/ 100.0;
  	}
  
- 	public def initialize(config:NodeConfig, idPlace:Int, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long){
+ 	public def initialize(config:NodeConfig, cplsPoolConfig:PoolConfig, problemModel:ProblemGenericModel, inSeed:Long){
+ 		val nsStr = System.getenv("NS");
+ 		if (nsStr != null) 
+ 			this.ns = StringUtil.parseInt(nsStr);
+ 		else
+ 			this.ns = problemModel.getSize() as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
- 		//this.heuristicSolver.setMaxIters(maxIter);
  		this.heuristicSolver.setSeed(inSeed);
- 		this.bestSolHere = new Rail[Int](problemSize, 0n);
+ 		this.heuristicSolver.setSolverType(config.getHeuristic());
+ 		this.problemModel = problemModel;
+ 		this.problemModel.initialize();
  		this.random.setSeed(inSeed);
- 		this.problemSize = problemSize;
  		this.nodeConfig = config;
- 		this.changeProb = config.getChangeProb();
- 		this.confArray = new Rail[State](config.getNumberOfTeams(), State(problemSize,-1n,null,-1n,null)); 
+ 		this.confArray = new Rail[State](config.getNumberOfTeams(), State(problemModel.getSize(),-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.cplsPool = new SmartPool(cplsPoolConfig);
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
@@ -84,40 +104,21 @@ public class CPLSNode{
  		}
  	}
  
- 	public def getStatsObject(){
- 		return this.stats;
- 	}
- 
- 	public def setHeuristicSolver(hs:HeuristicSolver){
- 		this.heuristicSolver = hs;
- 	}
- 
  	public def setPointersCommunication(pointersComunication:PlaceLocalHandle[CPLSNode]){
  		this.pointersComunication = pointersComunication;
  	}
- 	
- 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		this.heuristicSolver.configHeuristic(problemModel, opts);
+ 
+ 	public def configHeuristic(opts:ParamManager){
+ 		this.heuristicSolver.configHeuristic(this.problemModel.getSize(), opts);
  	}
- 	
- 	public def kill(){
- 		if (heuristicSolver != null){
- 			heuristicSolver.kill(); 
- 			interTeamKill = true;
- 		}else{
- 			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
- 		}
- 	}
- 	
+ 
  	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean):void{
- 		//Console.OUT.println("Se ingresa al start en " + here.id);
  	 	stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
- 	 
  	 	this.random.setSeed(seedIn);
- 	 
  	 	var cost:Long = Long.MAX_VALUE;
+ 	 	interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
  	 			nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  	 		async{
@@ -125,123 +126,286 @@ public class CPLSNode{
  	 			interTeamActivity();
  	 		} 
  	 	}
-
- 	 	//for(var i:Long = 0; i < iterations; i++){
- 	 		heuristicSolver.setSeed(random.nextLong());
- 	 		time = -System.nanoTime();
- 	 		cost = heuristicSolver.solve(targetCost, strictLow);
- 	 		time += System.nanoTime();
- 	 		interTeamKill = true;
- 	 
- 	 		if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
- 	 			// A solution has been found! Huzzah! 
- 	 			// Light the candles! Kill the blighters!
- 	 			val home = here.id;
- 	 			val winner = at(Place.FIRST_PLACE) announceWinner(home);
- 	 			bcost = cost;
- 	 
- 	 			if (winner){ 
- 	 				Console.OUT.println("Encontro un ganador");
- 	 				setStats_(targetCost);
- 	 				if (nodeConfig.getVerify()){
- 	 					heuristicSolver.displaySolution();
- 	 					Console.OUT.println(", Solution is " + 
- 	 					(heuristicSolver.verify() ? "perfect !!!" : "not perfect "));
- 	 				} 
- 	 			}
- 	 		}else{
- 	 			solString = "Solution "+here+ " is "+(heuristicSolver.verify()? "perfect !!!" : "not perfect, maybe wrong ...");
- 	 			val sz = heuristicSolver.getSizeProblem();
- 	 			Rail.copy(heuristicSolver.getBestConfiguration(),bestSolHere as Valuation(sz));
- 	 		}			
- 		//}
+ 	 	heuristicSolver.setSeed(random.nextLong());
+ 	 	time = -System.nanoTime();
+ 	 	cost = solve(targetCost, strictLow);
+ 	 	time += System.nanoTime();
+ 	 	interTeamKill = true;
+ 	 	if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
+ 	 		val home = here.id;
+ 	 		val winner = at(Place.FIRST_PLACE) announceWinner(home); //Comunicate operation
+ 	 		bcost = cost;
+ 	 		if (winner){ 
+ 	 			Console.OUT.println("Encontro un ganador");
+ 	 			setStats_(targetCost);
+ 	 			if (nodeConfig.getVerify()){
+ 	 				displaySolution();
+ 	 				Console.OUT.println(", Solution is " + 
+ 	 				(verify() ? "perfect !!!" : "not perfect "));
+ 	 			} 
+ 	 		}
+ 	 	}else{
+ 	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
+ 	 	}			
  	}
  
- 	private val cmp : (State,State) => Int = (a:State, b:State) => {return(a.cost - b.cost) as Int;};
- 	
- 	public def setStats(c : GlobalStats){
- 		stats.setStats(c);
- 		accStats(stats);
- 	}
- 	
- 	public def accStats( c : GlobalStats ):void 
- 	{
- 		genAccStats.accStats(c);
- 		sampleAccStats.accStats(c);
- 	}
- 	
- 	public def getGroupReset():Int{
- 		return this.cGroupReset;
- 	}
- 	
- 	public def getCost():Long {
- 		return heuristicSolver.getBestCost();
- 	}
- 	
- 	public def setStats_(targetCost:Long){
- 		val winPlace = here.id;
- 		val time = time/1e9;
- 		val c = new GlobalStats();
- 		heuristicSolver.reportStats(c);
- 		var head:Long;
- 		if(here == Place.FIRST_PLACE){
- 			head =  here.id;
- 		}else{
- 			head = nodeConfig.getTeamId();
+ 	public def solve(tCost : Long, sLow: Boolean):Long{
+ 		// Initialize all variables of the search process
+ 		initVar(tCost, sLow);
+ 		this.currentCost = problemModel.costOfSolution(true);
+ 		// Copy the first match to bestConf vector
+ 		val sz = problemModel.getSize();
+ 		try{
+ 			Rail.copy(problemModel.getVariables(), this.bestConf as Valuation(sz));
+ 		}catch(e:Exception){
+ 			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + "Tamaño variables: " + problemModel.getVariables().size);
  		}
- 		//val head2 = nodeConfig.getTeamId();//here.id % nodeConfig.getNumberOfTeams();
- 		val gR = at(Place.place(head)) pointersComunication().getGroupReset();
- 		Console.OUT.println("Despues de at(Place(head)) pointersComunication().getGroupReset()");
- 		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
- 		
- 		val fft = c.getCost() - targetCost;
- 		c.setTime(time);
- 		c.setTeam(winPlace as Int);
- 		c.setGroupR(gReset);
- 		c.setFFTarget(fft as Int);
- 		c.setExplorerWinner(0n); //To notify that there was a solution
- 		Console.OUT.println("Sospecho que hasta aca puedo llegar");
- 		at (Place.FIRST_PLACE) /*async*/ 
- 			pointersComunication().setStats(c);
+ 
+ 		if (this.currentCost == 0)
+ 			this.bestCost = currentCost;
+ 		else
+ 			this.bestCost = x10.lang.Int.MAX_VALUE;
+ 
+ 		// Main Loop 
+ 		while( this.currentCost != 0 ){
+ 			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
+ 				//restart or finish
+ 				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
+ 					break;
+ 				}else{
+ 					nRestart++;
+ 					problemModel.initialize(); 
+ 					currentCost = problemModel.costOfSolution(true);
+ 					Console.OUT.println("Current cost: " + currentCost);
+ 					updateTotStats();
+ 					bestSent = false;
+ 					continue;
+ 				}
+ 			}
+ 			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
+ 			nIter++;
+ 			this.currentCost = this.heuristicSolver.search(this.problemModel, currentCost, this.bestCost, this.nIter);
+ 
+ 			//Update the best configuration found so far
+ 			updateCosts();
+
+ 			//Kill solving process
+ 			Runtime.probe();	// Give a chance to the other activities
+ 			if (kill)
+ 				break;  // kill: End solving process
+ 
+ 			//Time out
+ 			if(this.nodeConfig.getMaxTime() > 0n){
+ 				val eTime = System.nanoTime() - initialTime; 
+ 				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
+ 					Logger.debug(()=>{" Time Out"});
+ 					break;
+ 				}
+ 			}
+ 			interact();
+ 		}
+ 		updateTotStats();
+ 		return this.currentCost;
  	}
- 	
+ 
+ 	protected def initVar(tCost : Long, sLow: Boolean){
+ 		// Set Target
+ 		this.heuristicSolver.initVar();
+ 		this.target = tCost;
+ 		this.strictLow = sLow;
+ 		this.targetSucc = false;
+ 		this.nIter = 0n;
+ 		this.nRestart = 0n;
+ 		this.bestConf = new Rail[Int](this.problemModel.getSize() as Int, 0n);
+ 		// clear Tot stats
+ 		this.nIterTot = 0n;
+ 		this.nSwapTot = 0n;
+ 		this.initialTime = System.nanoTime();
+ 		// Comm
+ 		this.bestSent = false;
+ 		this.nForceRestart = 0n;
+ 		this.nChangeV = 0n;
+ 
+ 		if (this.nodeConfig.getAdaptiveComm())
+ 			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());		
+ 	}
+ 
+ 	protected def updateCosts(){
+ 		val sz = problemModel.getSize();
+ 		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
+ 			Rail.copy(problemModel.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+ 			this.bestCost = this.currentCost;
+ 
+ 			bestSent = false; // new best found, I must send it!
+ 
+ 			if (this.nodeConfig.getReportPart()){
+ 				val eT = (System.nanoTime() - initialTime)/1e9;
+ 				val gap = (this.bestCost-this.target)/(this.bestCost as Double)*100.0;
+
+ 				Utils.show("Solution",this.bestConf);
+ 				Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,this.bestCost,gap);
+ 			}
+ 			if ((this.strictLow && this.bestCost < this.target)
+ 					||(!this.strictLow && this.bestCost <= this.target)){
+ 				this.targetSucc = true;
+ 				this.kill = true;
+ 			}
+ 		}
+ 	}
+ 
+ 	/*********************************************This is the comunication section****************************************/
+ 	/*********************************************************************************************************************/
+ 
+ 	/*******This methods are used when a node found a solution and then may send a kill message at the others nodes*******/
  	public def announceWinner(p:Long):Boolean {
- 		//Console.OUT.println("Dentro de anounceWinner");
  		val result = winnerLatch.compareAndSet(false, true);
- 		if (result) 
- 		{
+ 		if (result)	{
  			for (k in Place.places()) 
  				if (p != k.id){
- 					at(k) kill(); // at(k) async ss().kill();  // Testing the use of this async v1
- 				}
+ 					at(k) pointersComunication().kill(); // at(k) async ss().kill();  // Testing the use of this async v1
+ 			}
  		}
  		return result;
  	}
+
+ 	public def kill(){
+ 		if (heuristicSolver != null){
+ 			this.kill = false; 
+ 			interTeamKill = true;
+ 		}else{
+ 			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
+ 		}
+ 	}
+ 
+ 	protected def interact(){ 
+ 		// Interaction with other places
+ 		val size = this.problemModel.getSize();
+ 		if( this.nodeConfig.getReportI() != 0n && this.nIter % this.nodeConfig.getReportI() == 0n){
+ 			if(!bestSent){ 
+ 				val solverState = createSolverState();
+ 				communicate(new State(size,this.bestCost, this.bestConf as Valuation(size), here.id as Int, solverState ));
+ 				bestSent = true;
+ 			}else{
+ 				if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
+ 					val solverState = createSolverState();
+ 					communicate(new State(size, this.currentCost, this.problemModel.getVariables() as Valuation(size), here.id as Int, solverState));
+ 				}		  
+ 			}
+ 		}
+ 
+ 		if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n ){
+ 			if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
+ 				this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
+ 			}
+ 			val result = getIPVector(this.currentCost);
+ 			if (result) {
+ 				this.nChangeV++;
+ 				this.currentCost = this.problemModel.costOfSolution(true);
+ 				bestSent = false;
+ 			} 
+ 		}
+ 		// Force Restart: Inter Team Communication
+ 		if (this.forceRestart){
+ 			//restart
+ 			Logger.info(()=>{"   AdaptiveSearch : force Restart"});
+ 			this.forceRestart = false;
+ 			this.nForceRestart++;
+ 			// get a new conf according the diversification approach
+ 			val result = getPR();
+ 			if (result != null){	
+ 				if(this.nodeConfig.getChangeOnDiver() == 1n) {
+ 					this.problemModel.setVariables(result().vector);
+ 					this.currentCost = this.problemModel.costOfSolution(true);
+ 					bestSent = false;
+ 				}
+ 				//if(this.modParams == 1n) //Solo para RoTS y para EOSearch
+ 					//processSolverState(result().solverState);
+ 			} else {
+ 				if(this.nodeConfig.getChangeOnDiver() == 1n) {
+ 					this.problemModel.initialize();
+ 					this.currentCost = this.problemModel.costOfSolution(true);
+ 					bestSent = false;
+ 				}
+ 			}
+ 		}
+ 	}
+ 
+ 	public def communicate( info:State) {  
+ 		Logger.debug(()=>" communicate: entering.");
+ 		val placeid = here.id as Int;
+ 		if ( Place(nodeConfig.getTeamId()) == here ){
+ 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 			tryInsertConf(info);
+ 		}else{
+ 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 			at(Place(nodeConfig.getTeamId())) async pointersComunication().tryInsertConf( info );
+ 		}
+ 		// Print debug information
+ 		//Jason: Comente esta parte de debug
+ 		/*if (this.debug && this.isHeadNode){
+  		* val bc = ep.getBestConf();
+  		* if (bc != null){
+  		* p.print ("\033[H\033["+ ( myTeamId + 1 ) + "B");
+  		* p.printf("\033[2K\rTeam %3d          best cost %10d    solver %1d  param1 %3d  param2 %3d",
+  		* myTeamId,bc().cost,bc().solverState(0),bc().solverState(1),bc().solverState(2));
+  		* p.flush();
+  		* }
+  		* }*/
+ 		//Debug
+ 		// if(here.id as Int == myTeamId ){ //group head
+ 		//  Console.OUT.println("I'm "+myTeamId+" head group, here my ELITE pool Vectors");
+ 		// ep.printVectors();
+ 		// }
+ 		return;
+ 	}
+ 
+ 	public def tryInsertConf(inInfo:State){
+ 		if(teamPool != null){
+ 			teamPool.tryInsertConf(inInfo);
+ 		}
+ 	}
+ 
+ 	public def getIPVector(myCost:Long):Boolean {
+ 		Logger.debug(()=> "CommManager: getIPVector: entering.");
+ 		val sz = this.problemModel.getSize();
+ 		var a : Maybe[State];
+ 		val place = Place(nodeConfig.getTeamId());
+ 		if (place == here )
+ 			a = getPConf();
+ 		else{
+ 			a = at(place) pointersComunication().getPConf();
+ 		}
+ 		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
+ 			this.problemModel.setVariables(a().vector);
+ 			return true; 
+ 		}
+ 		return false;
+ 	}
+ 
+ 	public def getPConf(): Maybe[State]{
+ 		if(teamPool != null){
+ 			return teamPool.getPConf();
+ 		}
+ 		return null;
+ 	}
  	
+ 	/*************************** For diversify when the nodes are close to each other *****************************/
  	public def interTeamActivity(){
 	 	while (!interTeamKill) {
 	 		Logger.debug(()=>{" kill " + interTeamKill});
-	 		
 	 		if (!System.sleep(nodeConfig.getInterTeamCommTime())){ 
-	 			//Logger.info(()=>"interTeamActivity error: cannot execute sleep");
 	 			Console.OUT.println(here+" interTeamActivity error: cannot execute sleep");
-	 			//err++;
 	 			continue;
 	 		}
-	 		//while(commM.ep.countInsert % 10n != 0n);
-	 		
-	 		// woken up
 	 		Logger.info(()=>{" interTeamActivity - run : woken up (every "+ nodeConfig.getInterTeamCommTime() +" ms)"});
-	 		//val random = new Random(seed);
-	 		//if (random.nextInt(100n) < 16) 
 	 		interTeamComm();
 	 		Runtime.probe();		// Give a chance to the other activities
 	 	}
  	}
  	 
  	public def interTeamComm(){
- 		var teamToRest:Long = -1;	
- 		//TODO:Jason. Verificar esta parte de la comunicación //for ( head in 0..(nTeams-1) ) 
+ 		val problemSize = this.problemModel.getSize();
+ 		var teamToRest:Long = -1;
  		for ( var head:Int = 0n; head < nodeConfig.getNumberOfTeams(); head++){
  			val h = head;
  			val conf = at( Place(h) ) pointersComunication().teamPool.getBestConf();
@@ -251,26 +415,20 @@ public class CPLSNode{
  				confArray(h) = State(problemSize, conf().cost, conf().vector, h as Int, conf().solverState);
  			}
  		}
- 		
  		var nEqTeams:Int = 0n;
-
  		val eqTeams : Rail[Long] =  new Rail[Long](nodeConfig.getNumberOfTeams(), -1);
- 		
  		RailUtils.sort(confArray, cmp);
  		var c:Int; 
  		for (c = 0n; c < nodeConfig.getNumberOfTeams() - 1 ; c++) {
  			val sz = problemSize;
  			if (confArray(c).cost != -1 && confArray(c).cost == confArray(c + 1).cost 
- 					&& heuristicSolver.getProblemModel().distance( confArray(c).vector as Valuation(sz),	confArray(c+1).vector as Valuation(sz)) == 0.0){
+ 					&& this.problemModel.distance( confArray(c).vector as Valuation(sz),	confArray(c+1).vector as Valuation(sz)) == 0.0){
  				// Team c is equal to c+1
  				eqTeams( nEqTeams++ ) = confArray(c+1).place;
  			} else if ( nEqTeams > 0n && confArray(c).cost != confArray(c + 1).cost )
- 				break;
+ 				continue;//break;
  		}
- 		
  		var worstTeam:Long = confArray(nodeConfig.getNumberOfTeams() - 1).place; 
- 		
- 		
  		/*if (nEqTeams == 0n && worstTeam == -1){
  			if (debug) {
  				p.print("\033[H\033["+(nodeConfig.getNumberOfTeams()+2)+"B");
@@ -279,7 +437,6 @@ public class CPLSNode{
  			}
  			return;	
  		}*/
- 		
  		if (nEqTeams == 0n && worstTeam != -1)
  			eqTeams( nEqTeams++ ) = worstTeam;
  		
@@ -291,16 +448,9 @@ public class CPLSNode{
  			}
  			p.flush();
  		}*/
- 		
- 		// Console.OUT.print("Restart Teams:");
  		for (var rp:Long = 0; rp < nEqTeams; rp++) {
  			teamToRest = eqTeams(rp);
  			val ttr = teamToRest; 
- 			
- 			//Console.OUT.print(" "+teamToRest);
- 			
-
- 			// Count total group partial restart
  			at( Place(teamToRest) ) pointersComunication().incGroupReset(); 
  			Logger.info(()=>{"reset team "+ttr});
  			
@@ -314,57 +464,14 @@ public class CPLSNode{
  		}	
  	}
  	
- 	//public def communicate(totalCost : Long, variables : Rail[Int]{self.size==sz} ) {
- 	public def communicate( info:State) {  
- 		Logger.debug(()=>" communicate: entering.");
- 		
- 		val placeid = here.id as Int;
- 		
- 		if ( Place(nodeConfig.getTeamId()) == here ){
- 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
- 			teamPool.tryInsertConf(info);
- 		}else{
- 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
- 			at(Place(nodeConfig.getTeamId())) async pointersComunication().teamPool.tryInsertConf( info );
- 		}
- 		
- 		
- 		// Print debug information
- 		//Jason: Comente esta parte de debug
- 		/*if (this.debug && this.isHeadNode){
- 			val bc = ep.getBestConf();
- 			if (bc != null){
- 				p.print ("\033[H\033["+ ( myTeamId + 1 ) + "B");
- 				p.printf("\033[2K\rTeam %3d          best cost %10d    solver %1d  param1 %3d  param2 %3d",
- 						myTeamId,bc().cost,bc().solverState(0),bc().solverState(1),bc().solverState(2));
- 				p.flush();
- 			}
- 		}*/
- 		
- 		//Debug
- 		// if(here.id as Int == myTeamId ){ //group head
- 		//  Console.OUT.println("I'm "+myTeamId+" head group, here my ELITE pool Vectors");
- 		// ep.printVectors();
- 		// }
- 		/*********************************************************/
- 		
- 		return;
- 	}
- 	
  	public def communicateLM(info:State) {
  		Logger.debug(()=>" communicate: entering.");
  		
  		// decrease the number of vectors send it to the pool
  		if (random.nextDouble() >= pSendLM) return;		
- 		
- 		val placeid = here.id as Int;
- 		Logger.debug(()=>"CommManager: solver mode -> Places.");
- 		
- 		//val variables = csp.variables; 
- 		
- 		if (Place(nodeConfig.getTeamId()) == Place.FIRST_PLACE){
- 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
- 			this.cplsPool.tryInsertConf( info );
+ 		if (here == Place.FIRST_PLACE){
+ 			Logger.debug(()=>"try to insert in local place: " + here);
+ 			tryInsertLM(info);
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
  			at(Place.FIRST_PLACE) pointersComunication().tryInsertLM( info );
@@ -381,30 +488,13 @@ public class CPLSNode{
  			p.print("\033[2K\rDiv Pool Costs: "+s);
  			p.flush();
  		}*/
- 		
  		return;
  	}
  	
- 	public def tryInsertLM(info:State) 
- 	{
- 		cplsPool.tryInsertConf( info ); 
- 	}
- 
- 	public def getIPVector(myCost : Long):Boolean {
- 		Logger.debug(()=> "CommManager: getIPVector: entering.");
- 		val sz = problemSize;
- 		var a : Maybe[State];
- 		val place = Place(nodeConfig.getTeamId());
- 		if (place == here )
- 			a = pointersComunication().teamPool.getPConf();
- 		else{
- 			a = at(place) pointersComunication().teamPool.getPConf();
- 		}
- 		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < changeProb ){
- 			heuristicSolver.getProblemModel().setVariables(a().vector);
- 			return true; 
- 		}
- 		return false;
+ 	public def tryInsertLM(info:State){
+ 		if(cplsPool != null){
+ 			cplsPool.tryInsertConf( info );
+ 		} 
  	}
  	
  	public def getPR() : Maybe[State] { 
@@ -417,78 +507,54 @@ public class CPLSNode{
  			return getPR1();
  		else // opt == 2   // Restart using divTS
  			return getPR2();
-
  	}
  	
- 	// only get a new pdf and tau and force random restart
  	public def getPR0() : Maybe[State]{ 
- 		//return null;//false;
- 		val geta = this.getLM();
+ 		val problemSize = this.problemModel.getSize();
+ 		val geta = this.getLMVector();
  		if ( geta != null ){
- 			val c = new Rail[Int](this.problemSize, 0n);
+ 			val c = new Rail[Int](problemSize, 0n);
  			Rail.copy(geta().vector, c);
- 			
- 			
- 			for( var i:Long = this.problemSize - 1 ; i > 0 ; i-- )
+ 			for( var i:Long = problemSize - 1 ; i > 0 ; i-- )
  			{
  				val j = random.nextLong( i + 1 );
  				val tmp = c(i);
  				c(i) = c(j); 
  				c(j) = tmp;
  			}
- 			val newConf =  new State( this.problemSize, -1n, c, geta().place, geta().solverState);
+ 			val newConf =  new State(problemSize, -1n, c, geta().place, geta().solverState);
  			return new Maybe(newConf as State);
  		}else
  			return null;
  	}
  	
- 	public def getPR1() : Maybe[State] { 
+ 	public def getPR1() : Maybe[State] {
+ 		val problemSize = this.problemModel.getSize();
  		Logger.debug(()=> "CommManager: getPR: entering.");
- 		
- 		// PATH RELINKING-based approach
- 		//val a = new Rail[Int](sz, 0n);
- 		//val b = new Rail[Int](sz, 0n);
- 		val c = new Rail[Int](this.problemSize, 0n);
- 		val geta = this.getLM();
- 		val getb = this.getLM();
-
- 		if(geta != null && getb != null) { // are they valid conf?
- 			// Utils.show("a=",a);
- 			// Utils.show("b=",b);
- 			
- 			// Copy remote conf. "a" and "b" to vectors 
- 			//Rail.copy(geta.vector, a);
- 			//Rail.copy(getb.vector, b);
- 			
+ 		val c = new Rail[Int](problemSize, 0n);
+ 		val geta = this.getLMVector();
+ 		val getb = this.getLMVector();
+ 		if(geta != null && getb != null) {
  			Rail.copy(geta().vector, c);
  			val nSteps = random.nextLong(ns);
  			for(i in 0..nSteps) {
- 				val bi = random.nextLong(this.problemSize);
+ 				val bi = random.nextLong(problemSize);
  				val bval = getb().vector(bi);
  				var ci:Long = -1;
- 				// search bval in vector a
  				for (cit in c.range()){
  					if (c(cit) == bval){
  						ci = cit;
  						break;
  					}
  				}
- 				// swap variables
  				if(bi != ci){
  					//steps++;
  					val tmp = c(bi);
  					c(bi) = c(ci);
  					c(ci) = tmp;
- 					// Utils.show("c=", c);
  				}
  			}
- 			
- 			//Rail.copy(c,vector);
- 			//return true;
- 			
- 			// return parameters of one of the LM pool (I selected send "a" params, todo: try "b" or random)
- 			//Maybe[CSPSharedUnit(sz)]
- 			val mutConf =  new State( this.problemSize, geta().cost, c, geta().place, geta().solverState);
+ 			val mutConf =  new State(problemSize, geta().cost, c, geta().place, geta().solverState);
  			return new Maybe(mutConf as State);//true;
  		}else
  			return null;//false;
@@ -499,48 +565,43 @@ public class CPLSNode{
  	 * "A template for scatter search and path relinking" 1998
  	 * 
  	 */
- 	public def getPR2() : Maybe[State] { 
+ 	public def getPR2() : Maybe[State] {
+ 		val problemSize = this.problemModel.getSize();
  		Logger.debug(()=> "CommManager: getPR2: entering.");
- 		
- 		//val seedConf = new Rail[Int](sz, 0n);
- 		val finalConf = new Rail[Int](this.problemSize, 0n);
- 		
- 		val getSeedC = this.getLM();
+ 		val finalConf = new Rail[Int](problemSize, 0n);
+ 		val getSeedC = this.getLMVector();
  		var position:Long = 0;
- 		
  		if(getSeedC != null){
- 			val step = random.nextLong(this.problemSize/4) + 1;
- 			//val step = 2;
- 			//Utils.show("seed conf=",seedConf);
- 			//Console.OUT.println("step = " + step);
+ 			val step = random.nextLong(problemSize/4) + 1;
  			for(var start:Long = step; start > 0; start--) {
- 				for(var j:Long = start; j <= this.problemSize; j += step) {
- 					//Console.OUT.println("j = " + j);		  
+ 				for(var j:Long = start; j <= problemSize; j += step) { 
  					finalConf( position++ ) = getSeedC().vector( j - 1 );
  				}
  			}
- 			//Rail.copy( finalConf, vector );
- 			//Utils.show("final conf=",finalConf);
- 			//return true;
- 			val newConf = new State( this.problemSize, getSeedC().cost, finalConf, getSeedC().place, getSeedC().solverState);
+ 			val newConf = new State(problemSize, getSeedC().cost, finalConf, getSeedC().place, getSeedC().solverState);
  			return new Maybe(newConf as State); //true;
  		}else
  			return null; //Snew CSPSharedUnit( sz, -1n, null, -1n, -1.0, -1n); //return false;
  	}
  	
- 	public def getLM() : Maybe[State] { 
- 		Logger.debug(()=> "CommManager: getLM: entering.");
+ 	public def getLMVector() : Maybe[State] { 
+ 		Logger.debug(()=> "getLM: entering.");
  		var a : Maybe[State];
- 		val place = Place(nodeConfig.getTeamId());
- 		if (place == Place.FIRST_PLACE)
- 			a = cplsPool.getPConf();
+ 		if (here == Place.FIRST_PLACE)
+ 			a = getPConfFromLM();
  		else{
- 			a = at(Place.FIRST_PLACE) pointersComunication().teamPool.getPConf();
+ 			a = at(Place.FIRST_PLACE) pointersComunication().getPConfFromLM();
  		}	
  		if (a != null){
  			return a;
  		}
  		return null;//false;
+ 	}
+ 
+ 	public def getPConfFromLM(){
+ 		if(teamPool != null)
+ 			return teamPool.getPConf();
+ 		return null;
  	}
  	
  	public def clear(){
@@ -551,21 +612,113 @@ public class CPLSNode{
  			cplsPool.clear();
  		stats.clear();
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
- 		heuristicSolver.clear();
+ 		this.kill = false;
  		cGroupReset = 0n;
  	}
  	
  	public def verify_(){
- 		Utils.show("Solution",bestSolHere);
+ 		Utils.show("Solution", this.bestConf);
  		Console.OUT.println(solString);
+ 	}
+ 
+ 	public def verify(){
+ 		val sz = problemModel.getSize();
+ 		return problemModel.verify(this.bestConf as Valuation(sz));
+ 	}
+ 
+ 	public def displaySolution(){
+ 	val sz = problemModel.getSize();
+ 		problemModel.displaySolution(this.bestConf as Valuation(sz));
  	}
  	
  	public def diversify():void{
- 		heuristicSolver.forceRestart();
+ 		forceRestart();
+ 	}
+ 
+ 	public def forceRestart(){
+ 		Logger.info(()=>"Force Restart True");
+ 		forceRestart = true;
  	}
  	
  	public def incGroupReset():void{
  		this.cGroupReset++;
+ 	}
+ 
+ 	public def reportStats( c : GlobalStats){
+ 		c.setIters(this.nIterTot);
+ 		c.setSwaps(this.nSwapTot);
+ 		c.setVectorSize(problemModel.getSize());
+ 		c.setTarget(this.targetSucc);
+ 		c.setCost(this.bestCost);
+ 		c.setRestart(this.nRestart);
+ 		c.setChange(this.nChangeV);
+ 		c.setForceRestart(this.nForceRestart);
+ 		val state = createSolverState();
+ 		c.setSState(state);
+ 	}
+ 
+ 	/**
+  	*  Create Solver State array to be send to Pool
+  	*/
+ 	protected def createSolverState():Rail[Int]{self.size==3}{
+ 		val rsState = new Rail[Int](3,-1n);
+ 		rsState(0) = 1n;
+ 		return rsState;  
+ 	}
+ 
+ 	private val cmp : (State,State) => Int = (a:State, b:State) => {return(a.cost - b.cost) as Int;};
+ 
+ 	public def setStats(c : GlobalStats){
+ 		stats.setStats(c);
+ 		accStats(stats);
+ 	}
+ 
+ 	public def accStats( c : GlobalStats ):void {
+ 		genAccStats.accStats(c);
+ 		sampleAccStats.accStats(c);
+ 	}
+ 
+ 	public def getGroupReset():Int{
+ 		return this.cGroupReset;
+ 	}
+ 
+ 	public def setStats_(targetCost:Long){
+ 		val winPlace = here.id;
+ 		val time = time/1e9;
+ 		val c = new GlobalStats();
+ 		reportStats(c);
+ 		var head:Long;
+ 		if(here == Place.FIRST_PLACE){
+ 			head =  here.id;
+ 		}else{
+ 			head = nodeConfig.getTeamId();
+ 		}
+  		//val head2 = nodeConfig.getTeamId();//here.id % nodeConfig.getNumberOfTeams();
+ 		val gR = at(Place.place(head)) pointersComunication().getGroupReset();
+ 		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
+ 		val fft = c.getCost() - targetCost;
+ 		c.setTime(time);
+ 		c.setTeam(winPlace as Int);
+ 		c.setGroupR(gReset);
+ 		c.setFFTarget(fft as Int);
+ 		c.setExplorerWinner(0n); //To notify that there was a solution
+ 		at (Place.FIRST_PLACE) /*async*/ 
+ 		pointersComunication().setStats(c);
+ 	}
+ 
+ 	public def getCost(){
+ 		return this.bestCost;
+ 	}
+ 
+ 	protected def updateTotStats(){
+ 		this.nIterTot += this.nIter;
+ 		this.nSwapTot += this.heuristicSolver.getNSwap(); 
+ 		this.heuristicSolver.clearNSwap();
+ 		nIter = 0n;
+ 	}
+
+ 	public def getStatsObject(){
+ 		return this.stats;
  	}
  	
 }

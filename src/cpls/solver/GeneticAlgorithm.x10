@@ -19,12 +19,12 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.random = new Random();
 	}
 
- 	protected def search() : Long{
+ 	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		val index1 = random.nextLong(populationSize);
  		val index2 = random.nextLong(populationSize);
  		val indiv1 = population(index1);
  		val indiv2 = population(index2);
- 		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
+ 		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2, problemModel);
  		var mutatedSons:Rail[GAIndividual] = mutate(sons);
  		refreshPopulation(mutatedSons, index1, index2);
  		sortPopulation();
@@ -58,10 +58,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		if(mutatedSons(1).getCost() < population(parentIndex2).getCost()) population(parentIndex1) = mutatedSons(1);
  	}
 	
-	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		super.configHeuristic(problemModel, opts);
- 		this.populationSize = opts("-GA_pz", 2n*problemModel.getSize() as Int);
- 		initialize(populationSize, problemModel.getSize());
+	public def configHeuristic(problemSize:Long, opts:ParamManager){
+ 		super.configHeuristic(problemSize, opts);
+ 		this.populationSize = opts("-GA_pz", 2n*problemSize as Int);
+ 		initialize(populationSize, problemSize);
 	}
 	
  	//Population ramdomly initialized without verification
@@ -83,16 +83,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  				copyInitialValues(j) = x;
  			}
  			population(k).setGenes(copyInitialValues);
- 			population(k).setCost(super.problemModel.costOfSolution(copyInitialValues));
+ 			//population(k).setCost(problemModel.costOfSolution(copyInitialValues));
  		}
 	}
  
- 	public def crossing(i1:GAIndividual, i2:GAIndividual):Rail[GAIndividual]{
+ 	public def crossing(i1:GAIndividual, i2:GAIndividual, problemModel:ProblemGenericModel):Rail[GAIndividual]{
  		val indiv1 = new GAIndividual(i1);
  		val indiv2 = new GAIndividual(i2);
   		val sons = indiv1.insertPathCrossing(indiv2);
-  		sons(0).setCost(super.problemModel.costOfSolution(sons(0).getGenes()));
-  		sons(1).setCost(super.problemModel.costOfSolution(sons(1).getGenes()));
+  		sons(0).setCost(problemModel.costOfSolution(sons(0).getGenes()));
+  		sons(1).setCost(problemModel.costOfSolution(sons(1).getGenes()));
  		return sons;
  	}
  

@@ -31,23 +31,20 @@ template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 namespace x10 { namespace lang { 
 class Math;
 } } 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
-} } 
 namespace cpls { 
 class ParamManager;
 } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
 namespace x10 { namespace util { 
 class Random;
+} } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
 } } 
 namespace cpls { namespace util { 
 class MovePermutation;
@@ -85,6 +82,8 @@ class EOSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::HeuristicSolver::initVar;
+    
     ::x10::lang::Rail< x10_double >* FMGL(pdf);
     
     ::x10::lang::Rail< x10_long >* FMGL(fit);
@@ -120,15 +119,18 @@ class EOSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     static ::cpls::solver::EOSearch* _make();
     
-    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
-                                 ::cpls::ParamManager* opts);
+    virtual void configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts);
     virtual void initVar(x10_long tCost, x10_boolean sLow);
     void initPDF(::x10::lang::Fun_0_2<x10_double, x10_long, x10_double>* fnc);
-    virtual x10_long search();
+    virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
+                            x10_long currentCost, x10_long bestCost, x10_int nIter);
     x10_int pdfPick();
-    void selFirstVar(::cpls::util::MovePermutation* move);
-    x10_long selSecondMinConf(::cpls::util::MovePermutation* move);
-    x10_long selSecondRandom(::cpls::util::MovePermutation* move);
+    void selFirstVar(::cpls::util::MovePermutation* move, ::cpls::problem::ProblemGenericModel* problemModel);
+    x10_long selSecondMinConf(::cpls::util::MovePermutation* move, ::cpls::problem::ProblemGenericModel* problemModel,
+                              x10_long currentCost);
+    x10_long selSecondRandom(::cpls::util::MovePermutation* move,
+                             ::cpls::problem::ProblemGenericModel* problemModel,
+                             x10_long currentCost);
     void onLocMin();
     virtual ::x10::lang::Rail< x10_int >* createSolverState();
     virtual void processSolverState(::x10::lang::Rail< x10_int >* state);

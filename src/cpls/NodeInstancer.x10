@@ -22,26 +22,23 @@ public class NodeInstancer{
  				if(configCPLS.getIsThereAMasterNode()){
 					 if(p == Place.FIRST_PLACE){
  						refsToPlaces().initialize(configCPLS.getMasterConfig(),
-					 							p.id() as Int,
 					 							configCPLS.getTeamsPoolConfig(),
-					 							configCPLS.getProblemModel().getSize(),
+					 							configCPLS.getProblemModel(),
 					 							configCPLS.getSeed());
 					 }else{
 					 	refsToPlaces().initialize(configNodes((p.id() -1)/nodesPerTeam, (p.id() -1)%nodesPerTeam),
-					 							p.id() as Int,
 					 							configCPLS.getTeamsPoolConfig(),
-					 							configCPLS.getProblemModel().getSize(),
+					 							configCPLS.getProblemModel(),
 					 							configCPLS.getSeed());
 					 }
  				}else{
  					refsToPlaces().initialize(configNodes(p.id()/nodesPerTeam, p.id()%nodesPerTeam),
- 												p.id() as Int,
  												configCPLS.getTeamsPoolConfig(),
- 												configCPLS.getProblemModel().getSize(),
+ 												configCPLS.getProblemModel(),
  												configCPLS.getSeed());
  				}
  				refsToPlaces().setPointersCommunication(refsToPlaces);
- 				refsToPlaces().configHeuristic(configCPLS.getProblemModel(), opts);
+ 				refsToPlaces().configHeuristic(opts);
  			}
  		}
  		val timesPerInstance = opts("-b", 10n);
@@ -55,7 +52,7 @@ public class NodeInstancer{
  			finish for (p in Place.places()) at (p) {   
  				refsToPlaces().clear();
  			}
- 			Console.OUT.println("Veces por instancia: " + i);
+ 			//Console.OUT.println("Veces por instancia: " + i);
  		}
  	}
  	
