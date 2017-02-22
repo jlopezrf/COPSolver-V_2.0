@@ -67,8 +67,14 @@ class Place;
 namespace x10 { namespace lang { 
 class Runtime__Worker;
 } } 
+namespace x10 { namespace lang { 
+class Thread;
+} } 
 namespace cpls { namespace util { 
 class Utils;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace util { 
 class RailUtils;

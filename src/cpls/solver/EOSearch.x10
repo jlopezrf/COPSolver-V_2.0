@@ -76,7 +76,7 @@ public class EOSearch extends SingleSolHeuristic{
  		this.powDown = 1.575467001 * Math.pow(problemSize,-0.1448643794);
  		this.powUp = 2.426369897 * Math.pow(problemSize,-0.1435045369);
  		this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemSize)));
- 		this.pdfUserSel = opts("--EO_pdf", -1n);
+ 		this.pdfUserSel = opts("--EO_pdf", 1n);
  		this.selSecond = opts("--EO_selSec", 1n);
  	}
  
@@ -149,6 +149,7 @@ public class EOSearch extends SingleSolHeuristic{
  		var fx:Double;
  		var x:Int = 0n;
  		while( (fx = pdf(++x)) < p ){
+ 			Console.OUT.println("Valor fx: " + fx + ". Valor p: " + p);
  			p -= fx;
  		}
  		return x - 1n ;

@@ -6,16 +6,17 @@
 #include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/AIPModel.x10"
+//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
 void cpls::problem::AIPModel::_constructor(x10_long sz) {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/AIPModel.x10"
+    //#line 5 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
     (this)->::cpls::problem::ProblemGenericModel::_constructor(sz);
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/AIPModel.x10"
+    //#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/AIPModel.x10"
-    this->cpls::problem::AIPModel::__fieldInitializers_cpls_problem_AIPModel();
+    //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
+    ::cpls::problem::AIPModel* this__1003 = this;
+    
 }
 ::cpls::problem::AIPModel* cpls::problem::AIPModel::_make(x10_long sz) {
     ::cpls::problem::AIPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::AIPModel>()) ::cpls::problem::AIPModel();
@@ -25,7 +26,7 @@ void cpls::problem::AIPModel::_constructor(x10_long sz) {
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/AIPModel.x10"
+//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/problem/AIPModel.x10"
 ::cpls::problem::AIPModel* cpls::problem::AIPModel::cpls__problem__AIPModel____this__cpls__problem__AIPModel(
   ) {
     return this;

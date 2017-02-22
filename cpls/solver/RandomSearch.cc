@@ -8,16 +8,17 @@
 #include <x10/lang/Any.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
+//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
 void cpls::solver::RandomSearch::_constructor() {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
+    //#line 5 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
     (this)->::cpls::solver::SingleSolHeuristic::_constructor();
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
+    //#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
-    this->cpls::solver::RandomSearch::__fieldInitializers_cpls_solver_RandomSearch();
+    //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
+    ::cpls::solver::RandomSearch* this__260 = this;
+    
 }
 ::cpls::solver::RandomSearch* cpls::solver::RandomSearch::_make() {
     ::cpls::solver::RandomSearch* this_ = new (::x10aux::alloc_z< ::cpls::solver::RandomSearch>()) ::cpls::solver::RandomSearch();
@@ -27,14 +28,14 @@ void cpls::solver::RandomSearch::_constructor() {
 
 
 
-//#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
+//#line 9 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
 void cpls::solver::RandomSearch::solve() {
     
-    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33953 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RS"); strLit__33953; }))));
+    //#line 10 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__261 = ::x10aux::makeStringLit("Heuristic Solve invocado desde RS"); strLit__261; }))));
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RandomSearch.x10"
+//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/RandomSearch.x10"
 ::cpls::solver::RandomSearch* cpls::solver::RandomSearch::cpls__solver__RandomSearch____this__cpls__solver__RandomSearch(
   ) {
     return this;

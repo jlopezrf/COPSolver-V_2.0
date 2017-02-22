@@ -113,7 +113,8 @@ public class CPLSNode{
  	}
  
  	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean):void{
- 	 	stats.setTarget(targetCost);
+ 	 	val refs = pointersComunication;
+ 		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
  	 	this.random.setSeed(seedIn);
@@ -133,7 +134,7 @@ public class CPLSNode{
  	 	interTeamKill = true;
  	 	if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
  	 		val home = here.id;
- 	 		val winner = at(Place.FIRST_PLACE) announceWinner(home); //Comunicate operation
+ 	 		val winner = at(Place.FIRST_PLACE) refs().announceWinner(home); //Comunicate operation
  	 		bcost = cost;
  	 		if (winner){ 
  	 			Console.OUT.println("Encontro un ganador");
@@ -166,7 +167,7 @@ public class CPLSNode{
  		else
  			this.bestCost = x10.lang.Int.MAX_VALUE;
  
- 		// Main Loop 
+ 		// Main Loop
  		while( this.currentCost != 0 ){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
@@ -183,7 +184,7 @@ public class CPLSNode{
  				}
  			}
  			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
- 			nIter++;
+ 			this.nIter++;
  			this.currentCost = this.heuristicSolver.search(this.problemModel, currentCost, this.bestCost, this.nIter);
  
  			//Update the best configuration found so far
@@ -196,7 +197,7 @@ public class CPLSNode{
  
  			//Time out
  			if(this.nodeConfig.getMaxTime() > 0n){
- 				val eTime = System.nanoTime() - initialTime; 
+ 				val eTime = System.nanoTime() - this.initialTime; 
  				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
  					Logger.debug(()=>{" Time Out"});
  					break;
@@ -204,6 +205,7 @@ public class CPLSNode{
  			}
  			interact();
  		}
+ 		//Console.OUT.println("Termina una iteracion");
  		updateTotStats();
  		return this.currentCost;
  	}
@@ -258,11 +260,12 @@ public class CPLSNode{
  
  	/*******This methods are used when a node found a solution and then may send a kill message at the others nodes*******/
  	public def announceWinner(p:Long):Boolean {
+ 		val refs = pointersComunication;
  		val result = winnerLatch.compareAndSet(false, true);
  		if (result)	{
  			for (k in Place.places()) 
  				if (p != k.id){
- 					at(k) pointersComunication().kill(); // at(k) async ss().kill();  // Testing the use of this async v1
+ 					at(k) refs().kill(); // at(k) async ss().kill();  // Testing the use of this async v1
  			}
  		}
  		return result;
@@ -271,7 +274,7 @@ public class CPLSNode{
  	public def kill(){
  		if (heuristicSolver != null){
  			this.kill = false; 
- 			interTeamKill = true;
+ 			this.interTeamKill = true;
  		}else{
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
  		}
@@ -683,6 +686,7 @@ public class CPLSNode{
  	}
  
  	public def setStats_(targetCost:Long){
+ 		val refs = pointersComunication;
  		val winPlace = here.id;
  		val time = time/1e9;
  		val c = new GlobalStats();
@@ -694,7 +698,7 @@ public class CPLSNode{
  			head = nodeConfig.getTeamId();
  		}
   		//val head2 = nodeConfig.getTeamId();//here.id % nodeConfig.getNumberOfTeams();
- 		val gR = at(Place.place(head)) pointersComunication().getGroupReset();
+ 		val gR = at(Place.place(head)) refs().getGroupReset();
  		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
  		val fft = c.getCost() - targetCost;
  		c.setTime(time);
@@ -703,7 +707,7 @@ public class CPLSNode{
  		c.setFFTarget(fft as Int);
  		c.setExplorerWinner(0n); //To notify that there was a solution
  		at (Place.FIRST_PLACE) /*async*/ 
- 		pointersComunication().setStats(c);
+ 			refs().setStats(c);
  	}
  
  	public def getCost(){

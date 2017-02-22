@@ -52,11 +52,11 @@ public class NodeInstancer{
  			finish for (p in Place.places()) at (p) {   
  				refsToPlaces().clear();
  			}
- 			//Console.OUT.println("Veces por instancia: " + i);
+ 		//Console.OUT.println("Termina otra vez por instancia");
  		}
  	}
  	
- 	public static def verifyWinner(refPlaces:PlaceLocalHandle[CPLSNode], verify:Boolean, targetCost:Long, explorerWinner:Int):void{
+ 	public static def verifyWinner(val refPlaces:PlaceLocalHandle[CPLSNode], verify:Boolean, val targetCost:Long, explorerWinner:Int):void{
  		var minCost:Long = Long.MAX_VALUE;
  		var bestPlace:Place = here; 
  		if(explorerWinner == -1n){
@@ -70,13 +70,13 @@ public class NodeInstancer{
  			}
  			val place = bestPlace; val mC = minCost;
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
+ 			Console.OUT.println("Termina la ejecucion e ingresa a reportar las estadisticas");
+ 			Console.OUT.println("winner "+ place + " final cost "+ mC);
  			at (bestPlace){
- 				Console.OUT.println("Termina la ejecucion e ingresa a reportar las estadisticas");
- 				Console.OUT.println("winner "+ place + " final cost "+ mC);
  				refPlaces().setStats_(targetCost);
- 				if (verify){
+ 				/*if (verify){
  					refPlaces().verify_();
- 				}
+ 				}*/
  			}
  		}
  	}

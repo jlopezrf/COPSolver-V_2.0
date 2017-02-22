@@ -46,20 +46,29 @@ class Place;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace x10 { namespace lang { 
-class System;
+namespace x10 { namespace util { 
+class Timer;
 } } 
 namespace cpls { 
 class NodeInstancer;
-} 
-namespace cpls { 
-class CPLSOptionsEnum__NodeRoles;
 } 
 namespace x10 { namespace lang { 
 class Math;
 } } 
 namespace x10 { namespace util { 
+template<class TPMGL(K), class TPMGL(V)> class HashMap;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
+} } 
+namespace x10 { namespace util { 
 class StringUtil;
+} } 
+namespace x10 { namespace lang { 
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
 } } 
 namespace cpls { namespace util { 
 class Logger;
@@ -67,12 +76,6 @@ class Logger;
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__SupportedProblems;
-} 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

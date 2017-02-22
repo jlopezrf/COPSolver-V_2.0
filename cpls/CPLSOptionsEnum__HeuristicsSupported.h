@@ -111,7 +111,8 @@ class CPLSOptionsEnum__HeuristicsSupported   {
         
     }
     void _constructor() {
-        (*this)->cpls::CPLSOptionsEnum__HeuristicsSupported::__fieldInitializers_cpls_CPLSOptionsEnum_HeuristicsSupported();
+        ::cpls::CPLSOptionsEnum__HeuristicsSupported this__204 = (*this);
+        
     }
     static ::cpls::CPLSOptionsEnum__HeuristicsSupported _make() {
         ::cpls::CPLSOptionsEnum__HeuristicsSupported this_; 

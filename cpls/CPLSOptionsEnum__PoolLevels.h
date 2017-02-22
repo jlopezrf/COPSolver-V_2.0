@@ -83,7 +83,8 @@ class CPLSOptionsEnum__PoolLevels   {
         
     }
     void _constructor() {
-        (*this)->cpls::CPLSOptionsEnum__PoolLevels::__fieldInitializers_cpls_CPLSOptionsEnum_PoolLevels();
+        ::cpls::CPLSOptionsEnum__PoolLevels this__214 = (*this);
+        
     }
     static ::cpls::CPLSOptionsEnum__PoolLevels _make() {
         ::cpls::CPLSOptionsEnum__PoolLevels this_; 

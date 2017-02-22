@@ -56,6 +56,12 @@ namespace cpls { namespace problem {
 class ProblemGenericModel;
 } } 
 namespace x10 { namespace lang { 
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace x10 { namespace lang { 
 class Error;
 } } 
 namespace x10 { namespace lang { 
