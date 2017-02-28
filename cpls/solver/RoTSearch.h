@@ -47,6 +47,9 @@ namespace cpls { namespace solver {
 class HeuristicSolver;
 } } 
 namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
+namespace cpls { 
 class ParamManager;
 } 
 namespace x10 { namespace util { 
@@ -54,12 +57,6 @@ class OptionsParser;
 } } 
 namespace x10 { namespace util { 
 class Random;
-} } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
 } } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
@@ -79,12 +76,6 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace cpls { namespace util { 
-class Utils;
-} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -93,8 +84,6 @@ namespace cpls { namespace solver {
 class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
-    
-    using ::cpls::solver::HeuristicSolver::initVar;
     
     x10_double FMGL(tabuDurationFactorUS);
     
@@ -133,7 +122,7 @@ class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     x10_int FMGL(tabuDurationUpper);
     
-    virtual void initVar(x10_long tCost, x10_boolean sLow);
+    virtual void initVar();
     virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long currentCost, x10_long bestCost, x10_int nIter);
     virtual x10_int randomInterval(x10_int low, x10_int up);

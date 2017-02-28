@@ -13,17 +13,19 @@ import cpls.entities.PoolConfig;
 import x10.array.Array_2;
 import cpls.util.CPLSFileReader;
 import x10.util.StringUtil;
+import x10.util.Random;
 
 public class Main {
  	
  	public static def main(args: Rail[String]) {
- 		val problemParams = new Rail[Long](2, -1 );
+ 		val problemParams = new Rail[Long](3, -1 );
  		var opts:ParamManager = new ParamManager(args);
  		var configCPLS:CPLSConfig = new CPLSConfig();
  		//*********************Model Problem Creation**************************//
  		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
- 		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams);
+ 		val inSeed = opts("-S", System.nanoTime());
+ 		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams, inSeed);
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
  		
@@ -66,13 +68,14 @@ public class Main {
  		//*********************************************************************//
  		
  		//*********************Generic Parameters******************************/
- 		configCPLS.setSeed(opts("-S", System.nanoTime()));
+ 		configCPLS.setSeed(inSeed);
  		configCPLS.setTimesPerInstance(opts("-b", 10n));
  		//*************************In/Out forms of params************************//
  		val outFormat	   = opts("-of", 1n);
  		val costFromF      = opts("-tf", 0);
  		val tCostFromCL    = opts("-tc", 0n);
  		val testNb         = opts("-b", 10n);
+ 		configCPLS.setOutFormat(outFormat);
  		//**********************************************************************//
 
  		var c : Long = 0;
@@ -102,7 +105,7 @@ public class Main {
  		//insNb++;
  		//if ( mode == 1 && outFormat == 1n )
  		//	Console.OUT.println("\n"+instance);
- 		printHeader(outFormat,problem);
+ 		//printHeader(outFormat,problem);
 
  		/***********************************************************************/
  		configCPLS.setTargetCost(tCost);
@@ -294,12 +297,14 @@ public class Main {
  	}
  
   	public static struct COPProblemModelFactory{
- 		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long]){
- 			val size = opts("-s", 10);
+ 		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long], inSeed:Long){
+ 			val size = opts("-s", 10); //Jason: Pilas con esto !!
  			val baseValue = opts("-bv", 0n);
  			val inPathDataProblem = opts("-f",".");
  			val inPathVectorSol =  opts("-if",".");
- 			val inSeed = opts("-S", System.nanoTime());
+ 			//val inSeed = opts("-S", System.nanoTime()); 
+ 			val random = new Random();
+ 			random.setSeed(inSeed);
  			switch(problem as Int){
  				case CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM:
  					return new MSPModel(size);
@@ -311,8 +316,8 @@ public class Main {
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
  					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
  					val n1 = params(0) < 0 ? 1 : params(0);
- 					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue, inSeed);
- 					problemModel.initialize();
+ 					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue);
+ 					//problemModel.initialize(random.nextLong());
  					problemModel.loadData(inPathDataProblem);
  					return problemModel;
  				default: return new PNPModel(size);
@@ -336,19 +341,4 @@ public class Main {
  			heuParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
  		return heuParam;
  	}
- 
- 	public static def printHeader(outF : Int, problem:Int){
- 		if(outF == 1n){
- 			if (problem == CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM || problem == CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM){	
- 				Console.OUT.println("|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|");
- 				Console.OUT.println("| Count | Time (s) |  Iters   | Place  |  LocMin  |  Swaps   |  Resets  | Sa/It |ReSta| BP  | Sng | Cng  | frP-frT |  PS | TS |final cost|  gap  |   state   |   wtime  |");
- 				Console.OUT.println("|-------|----------|----------|--------|----------|----------|----------|-------|-----|-----|-----|------|---------|-----|----|----------|-------|-----------|----------|");
- 			}else {
- 				Console.OUT.println("|-----------------------------------------------------------------------------------------------------------------------------------------------------------|");
- 				Console.OUT.println("| Count | Time (s) |  Iters   | Place  |  LocMin  |  Swaps   |  Resets  | Sa/It |ReSta| Cng  | frP-frT |  PS | TS |final cost|  gap  |   state   |   wtime  |");
- 				Console.OUT.println("|-------|----------|----------|--------|----------|----------|----------|-------|-----|------|---------|-----|----|----------|-------|-----------|----------|");		 
- 			}
- 		}
- 	}
-
 }

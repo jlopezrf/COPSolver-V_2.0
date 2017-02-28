@@ -68,7 +68,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	}
 
 
- 	protected def initVar(tCost : Long, sLow: Boolean){
+ 	public def initVar(){
  		super.initVar();
  		if (this.nVarToReset == -1){
  			this.nVarToReset = (((this.problemSize * resetPercent as Long) + 99) / 100);
@@ -95,10 +95,10 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		var newCost:Long = -1;
  		if( !this.exhaustive ){
- 			selectVarHighCost(problemModel, move);
- 			newCost = selectVarMinConflict(problemModel, move, currentCost);
+ 			selectVarHighCost(problemModel);
+ 			newCost = selectVarMinConflict(problemModel, currentCost);
  		} else {
- 			newCost = selectVarsToSwap(problemModel, move, currentCost);
+ 			newCost = selectVarsToSwap(problemModel, currentCost);
  		}
  		if (currentCost != newCost) {
  			nInPlateau = 0n;
@@ -112,25 +112,25 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			if (this.nVarMarked + 1 >= this.resetLimit){	
  				onLocMin();
  				val cost:Long = doReset(problemModel, this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
- 				returnCost = (cost < 0) ? problemModel.costOfSolution(true) : cost;
+ 				returnCost = (cost < 0) ? problemModel.costOfSolution(true, super.variables) : cost;
  			}
  			//return otherCost;
  		}else{
  			mark(move.getFirst()) = super.nSwap + this.freezeSwap; //Mark(maxI, ad.freeze_swap);
  			mark(move.getSecond()) = super.nSwap + this.freezeSwap; //Mark(minJ, ad.freeze_swap);
- 			problemModel.swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);
+ 			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);
  			super.nSwap++;
- 			problemModel.executedSwap(move.getFirst(), move.getSecond());
+ 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables);
  			//currentCost = newCost;
  			returnCost = newCost ;
  		}
  		//val sz = problemModel.getSize();
  		//var variables:Rail[Int] = new Rail[Int](sz as Int, 0n);
  		//Rail.copy(problemModel.getVariables(), variables as Valuation(sz));
- 		if(returnCost < currentCost){
+ 		/*if(returnCost < currentCost){
  			Console.OUT.print("Costo (AdaptiveSearch): " + returnCost);
- 			Utils.show(". Con variables: " ,problemModel.getVariables());
- 		}
+ 			Utils.show(". Con variables: " , super.variables);
+ 		}*/
  		//displaySolution();
  		//Console.OUT.print("\n");
  		return returnCost;
@@ -143,7 +143,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
 
  	private def doReset(problemModel:ProblemGenericModel, n:Long, currentCost:Long) {
  		var cost : Long = -1;		//reset(n, csp);
- 		cost = problemModel.reset( n, currentCost );
+ 		cost = reset( n, currentCost );
  		mark.clear();
  		nReset++;
  		return cost;
@@ -159,7 +159,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	*   @param csp problem model
  	* 	@param move object (permutation)
  	*/
- 	private def selectVarHighCost(problemModel:ProblemGenericModel, move:MovePermutation){
+ 	private def selectVarHighCost(problemModel:ProblemGenericModel){
  		var i: Long =-1;
  		var maxCost: Long = 0;
  		var maxVar:Long = -1;
@@ -188,7 +188,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			maxVar = this.listI(sel); //This maxI must be local or only returns the value
  		}
  		this.nSameVar += this.listInb;
- 		move.setFirst(maxVar);
+ 		super.move.setFirst(maxVar);
  	}
 
  	/**
@@ -198,7 +198,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	* 	@param move object (permutation)
  	* 	@return new cost of the possible move
  	*/
- 	private def selectVarMinConflict(problemModel:ProblemGenericModel, move:MovePermutation, currentCost:Long ) : Long {
+ 	private def selectVarMinConflict(problemModel:ProblemGenericModel, currentCost:Long ) : Long {
  		var j: Long;
  		var cost: Long;
  		var flagOut:Boolean = false; 
@@ -223,7 +223,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  					nCost = cost;
  					second = j;
  					if (this.firstBest){
- 						move.setSecond(second);
+ 						super.move.setSecond(second);
  						return nCost;
  					}
  				} else if (cost == nCost){
@@ -235,19 +235,19 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			if (this.probSelectLocMin <= 100n) {
  				if (nCost >= currentCost && (random.nextInt(100n) < this.probSelectLocMin ||(this.listInb <= 1n && this.listJnb <= 1n))) {
  					second = first;
- 					move.setSecond(second);
+ 					super.move.setSecond(second);
  					return nCost;
  				}
  				if (this.listJnb == 0n) {
  					//this.nIter++;
  					val sel = random.nextInt(this.listInb);
  					first = listI(sel);
- 					move.setFirst(first);
+ 					super.move.setFirst(first);
  					flagOut = true;
  				}
  			}
  		} while(flagOut);
- 		move.setSecond(second);
+ 		super.move.setSecond(second);
  		return nCost;
  	}
 
@@ -258,7 +258,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  *  @param move object (permutation)
  *  @return new cost of the possible move
  */
- 	private def selectVarsToSwap(problemModel:ProblemGenericModel, move:MovePermutation, currentCost:Long):Long {
+ 	private def selectVarsToSwap(problemModel:ProblemGenericModel, currentCost:Long):Long {
  		var first : Long;
  		var second : Long;
  		//var x : Int;
@@ -283,8 +283,8 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  						nCost = x;
  						this.nListIJ = 0n;
  						if (this.firstBest == true && x < currentCost) {
- 							move.setFirst(first);
- 							move.setSecond(second);
+ 							super.move.setFirst(first);
+ 							super.move.setSecond(second);
  							return nCost; 
  						}
  					}
@@ -299,22 +299,22 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			if (this.nListIJ == 0n || (( this.probSelectLocMin <= 100n) && random.nextInt(100n) < this.probSelectLocMin)) {
  				var i:Int;
  				for(i = 0n; super.nSwap < mark(i); i++){}
- 				move.setFirst(i);
- 				move.setSecond(i);
+ 				super.move.setFirst(i);
+ 				super.move.setSecond(i);
  				return nCost;//goto end;
  			}
 
  			var lm:Long;
  			if (!(this.probSelectLocMin <= 100n) && (lm = random.nextLong(this.nListIJ + problemModel.getSize())) < problemModel.getSize()) {
- 				move.setFirst(lm);
- 				move.setSecond(lm);
+ 				super.move.setFirst(lm);
+ 				super.move.setSecond(lm);
  				return nCost;//goto end;
  			}
  		}
 
  		val sel = random.nextInt(this.nListIJ);
- 		move.setFirst(listIJ(sel).getFirst());
- 		move.setSecond(listIJ(sel).getSecond());
+ 		super.move.setFirst(listIJ(sel).getFirst());
+ 		super.move.setSecond(listIJ(sel).getSecond());
  		return nCost;
  	}
 

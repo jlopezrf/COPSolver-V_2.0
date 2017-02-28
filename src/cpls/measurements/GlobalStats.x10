@@ -235,6 +235,7 @@ public class GlobalStats{
 	 */
 	public def printAVG(no:Int, oF:Int, problem:Int){ 
 	   // val no = no1 as Double;
+		//Console.OUT.println("Parametros de entrada printAVG: " + no + " " + oF);
 		val sameIter : Double = this.same/(this.iters as Double);
 		val changeF : Double = (this.change as Double)/no;
 		val avgCost:Double = this.cost/(no as Double);

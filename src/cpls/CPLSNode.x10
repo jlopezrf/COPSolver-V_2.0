@@ -16,7 +16,7 @@ import x10.util.concurrent.AtomicBoolean;
 import x10.util.RailUtils;
 import x10.util.StringUtil;
 
-public class CPLSNode{
+public class CPLSNode(sz:Long){
 
  	/*********Variables para la configuración del nodo**********/
  	private var nodeConfig:NodeConfig;
@@ -73,7 +73,8 @@ public class CPLSNode{
  	protected var bestSent:Boolean=false;
  	/*************************************************************************************/
  
- 	public def this(){
+ 	public def this(sz:Long){
+ 		property(sz);
  		this.random = new Random();
  		val str = System.getenv("DELTA");
  		if (str != null)
@@ -84,17 +85,18 @@ public class CPLSNode{
  	}
  
  	public def initialize(config:NodeConfig, cplsPoolConfig:PoolConfig, problemModel:ProblemGenericModel, inSeed:Long){
+ 		Console.OUT.println("Nodo " + here.id + "inicializado con semilla: " + inSeed);
  		val nsStr = System.getenv("NS");
  		if (nsStr != null) 
  			this.ns = StringUtil.parseInt(nsStr);
  		else
  			this.ns = problemModel.getSize() as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
- 		this.heuristicSolver.setSeed(inSeed);
+ 		this.random.setSeed(inSeed);
+ 		this.heuristicSolver.setSeed(random.nextLong());
  		this.heuristicSolver.setSolverType(config.getHeuristic());
  		this.problemModel = problemModel;
- 		this.problemModel.initialize();
- 		this.random.setSeed(inSeed);
+ 		this.heuristicSolver.setVariables(this.problemModel.initialize(this.random.nextLong()));
  		this.nodeConfig = config;
  		this.confArray = new Rail[State](config.getNumberOfTeams(), State(problemModel.getSize(),-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
@@ -112,12 +114,12 @@ public class CPLSNode{
  		this.heuristicSolver.configHeuristic(this.problemModel.getSize(), opts);
  	}
  
- 	public def start(seedIn :Long, targetCost : Long, strictLow: Boolean):void{
+ 	public def start(targetCost : Long, strictLow: Boolean):void{
  	 	val refs = pointersComunication;
  		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
- 	 	this.random.setSeed(seedIn);
+ 	 	//this.random.setSeed(seedIn);
  	 	var cost:Long = Long.MAX_VALUE;
  	 	interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
@@ -127,7 +129,7 @@ public class CPLSNode{
  	 			interTeamActivity();
  	 		} 
  	 	}
- 	 	heuristicSolver.setSeed(random.nextLong());
+ 	 	//heuristicSolver.setSeed(random.nextLong());
  	 	time = -System.nanoTime();
  	 	cost = solve(targetCost, strictLow);
  	 	time += System.nanoTime();
@@ -137,7 +139,7 @@ public class CPLSNode{
  	 		val winner = at(Place.FIRST_PLACE) refs().announceWinner(home); //Comunicate operation
  	 		bcost = cost;
  	 		if (winner){ 
- 	 			Console.OUT.println("Encontro un ganador");
+ 	 			//Console.OUT.println("Encontro un ganador");
  	 			setStats_(targetCost);
  	 			if (nodeConfig.getVerify()){
  	 				displaySolution();
@@ -147,19 +149,19 @@ public class CPLSNode{
  	 		}
  	 	}else{
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
- 	 	}			
+ 	 	}
  	}
  
  	public def solve(tCost : Long, sLow: Boolean):Long{
  		// Initialize all variables of the search process
  		initVar(tCost, sLow);
- 		this.currentCost = problemModel.costOfSolution(true);
+ 		this.currentCost = problemModel.costOfSolution(true, this.heuristicSolver.getVariables());
  		// Copy the first match to bestConf vector
  		val sz = problemModel.getSize();
  		try{
- 			Rail.copy(problemModel.getVariables(), this.bestConf as Valuation(sz));
+ 			Rail.copy(this.heuristicSolver.getVariables(), this.bestConf as Valuation(sz));
  		}catch(e:Exception){
- 			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + "Tamaño variables: " + problemModel.getVariables().size);
+ 			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + "Tamaño variables: " + this.heuristicSolver.getVariables().size);
  		}
  
  		if (this.currentCost == 0)
@@ -175,8 +177,8 @@ public class CPLSNode{
  					break;
  				}else{
  					nRestart++;
- 					problemModel.initialize(); 
- 					currentCost = problemModel.costOfSolution(true);
+ 					problemModel.initialize(this.random.nextLong()); 
+ 					currentCost = problemModel.costOfSolution(true, this.heuristicSolver.getVariables());
  					Console.OUT.println("Current cost: " + currentCost);
  					updateTotStats();
  					bestSent = false;
@@ -205,13 +207,13 @@ public class CPLSNode{
  			}
  			interact();
  		}
- 		//Console.OUT.println("Termina una iteracion");
+ 		//Console.OUT.println("Valores estadisticos: " + this.time + ", " + this.nRestart + ", " + this.nIter + ", " + this.nForceRestart);
  		updateTotStats();
  		return this.currentCost;
+
  	}
  
  	protected def initVar(tCost : Long, sLow: Boolean){
- 		// Set Target
  		this.heuristicSolver.initVar();
  		this.target = tCost;
  		this.strictLow = sLow;
@@ -235,7 +237,7 @@ public class CPLSNode{
  	protected def updateCosts(){
  		val sz = problemModel.getSize();
  		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
- 			Rail.copy(problemModel.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+ 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
  			this.bestCost = this.currentCost;
  
  			bestSent = false; // new best found, I must send it!
@@ -273,7 +275,7 @@ public class CPLSNode{
 
  	public def kill(){
  		if (heuristicSolver != null){
- 			this.kill = false; 
+ 			this.kill = true; 
  			this.interTeamKill = true;
  		}else{
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
@@ -291,7 +293,7 @@ public class CPLSNode{
  			}else{
  				if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
  					val solverState = createSolverState();
- 					communicate(new State(size, this.currentCost, this.problemModel.getVariables() as Valuation(size), here.id as Int, solverState));
+ 					communicate(new State(size, this.currentCost, this.heuristicSolver.getVariables() as Valuation(size), here.id as Int, solverState));
  				}		  
  			}
  		}
@@ -303,7 +305,7 @@ public class CPLSNode{
  			val result = getIPVector(this.currentCost);
  			if (result) {
  				this.nChangeV++;
- 				this.currentCost = this.problemModel.costOfSolution(true);
+ 				this.currentCost = this.problemModel.costOfSolution(true, this.heuristicSolver.getVariables());
  				bestSent = false;
  			} 
  		}
@@ -317,16 +319,16 @@ public class CPLSNode{
  			val result = getPR();
  			if (result != null){	
  				if(this.nodeConfig.getChangeOnDiver() == 1n) {
- 					this.problemModel.setVariables(result().vector);
- 					this.currentCost = this.problemModel.costOfSolution(true);
+ 					this.heuristicSolver.setVariables(result().vector);
+ 					this.currentCost = this.problemModel.costOfSolution(true, this.heuristicSolver.getVariables());
  					bestSent = false;
  				}
  				//if(this.modParams == 1n) //Solo para RoTS y para EOSearch
  					//processSolverState(result().solverState);
  			} else {
  				if(this.nodeConfig.getChangeOnDiver() == 1n) {
- 					this.problemModel.initialize();
- 					this.currentCost = this.problemModel.costOfSolution(true);
+ 					this.problemModel.initialize(this.random.nextLong());
+ 					this.currentCost = this.problemModel.costOfSolution(true, this.heuristicSolver.getVariables());
  					bestSent = false;
  				}
  			}
@@ -379,7 +381,7 @@ public class CPLSNode{
  			a = at(place) pointersComunication().getPConf();
  		}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
- 			this.problemModel.setVariables(a().vector);
+ 			this.heuristicSolver.setVariables(a().vector);
  			return true; 
  		}
  		return false;
@@ -617,6 +619,7 @@ public class CPLSNode{
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
  		cGroupReset = 0n;
+ 		this.heuristicSolver.setVariables(problemModel.initialize(this.random.nextLong()));
  	}
  	
  	public def verify_(){
@@ -648,6 +651,7 @@ public class CPLSNode{
  	}
  
  	public def reportStats( c : GlobalStats){
+ 		//Console.OUT.println("Se setean los valores en el objeto GlobalStats");
  		c.setIters(this.nIterTot);
  		c.setSwaps(this.nSwapTot);
  		c.setVectorSize(problemModel.getSize());
@@ -682,23 +686,24 @@ public class CPLSNode{
  	}
  
  	public def getGroupReset():Int{
+ 		//Console.OUT.println("Se solicita group reset en " + here.id);
  		return this.cGroupReset;
  	}
  
  	public def setStats_(targetCost:Long){
- 		val refs = pointersComunication;
+ 		val refsToPlaces = pointersComunication;
  		val winPlace = here.id;
  		val time = time/1e9;
  		val c = new GlobalStats();
  		reportStats(c);
- 		var head:Long;
+ 		var placeHead:Place;
  		if(here == Place.FIRST_PLACE){
- 			head =  here.id;
+ 			placeHead =  here;
  		}else{
- 			head = nodeConfig.getTeamId();
+ 			placeHead = Place.place(nodeConfig.getTeamId());
  		}
   		//val head2 = nodeConfig.getTeamId();//here.id % nodeConfig.getNumberOfTeams();
- 		val gR = at(Place.place(head)) refs().getGroupReset();
+ 		val gR = at(placeHead) refsToPlaces().getGroupReset();
  		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
  		val fft = c.getCost() - targetCost;
  		c.setTime(time);
@@ -707,7 +712,7 @@ public class CPLSNode{
  		c.setFFTarget(fft as Int);
  		c.setExplorerWinner(0n); //To notify that there was a solution
  		at (Place.FIRST_PLACE) /*async*/ 
- 			refs().setStats(c);
+ 			refsToPlaces().setStats(c);
  	}
  
  	public def getCost(){
@@ -718,12 +723,23 @@ public class CPLSNode{
  		this.nIterTot += this.nIter;
  		this.nSwapTot += this.heuristicSolver.getNSwap(); 
  		this.heuristicSolver.clearNSwap();
- 		nIter = 0n;
+ 		this.nIter = 0n;
  	}
 
  	public def getStatsObject(){
  		return this.stats;
  	}
  	
+ 	public def clearSample(){
+ 		sampleAccStats.clear();
+ 	}
+ 	
+ 	public def printStats(count:Int, oF:Int, problem:Int):void{
+ 		stats.print(count,oF,problem);
+ 	}
+ 	
+ 	public def printAVG(count:Int, oF:Int, problem:Int):void{
+ 		sampleAccStats.printAVG(count,oF,problem);
+ 	}
 }
 public type CPLSNode(nodeRole:Int) = CPLSNode{};

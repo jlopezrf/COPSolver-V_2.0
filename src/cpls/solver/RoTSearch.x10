@@ -32,15 +32,6 @@ public class RoTSearch extends SingleSolHeuristic{
 	public def this(){
 		super();
 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
- 		/*if(super.heuristicParams instanceof RoTSParameters){
- 			var params:RoTSParameters = super.heuristicParams as RoTSParameters;
-			this.tabuDurationFactorUS = params.getTabuDurationFactorUS();//opts("--RoTS_tabu_duration", -1.0);
-			this.aspirationFactorUS = params.getAspirationFactorUS();//opts("--RoTS_aspiration", -1.0);
- 			Console.OUT.println("RoTSearch. Parametros inicializados");
- 		}else{
- 			this.tabuDurationFactorUS = -1n;
- 			this.aspirationFactorUS = -1n;
- 		}*/
 	}
 
  	public def configHeuristic(problemSize:Long, opts:ParamManager){
@@ -57,7 +48,7 @@ public class RoTSearch extends SingleSolHeuristic{
 	 *  Initialize variables of the solver
 	 *  Executed once before the main solving loop
 	 */
-	protected def initVar(tCost : Long, sLow: Boolean){
+	public def initVar(){
 		super.initVar();
 		
 		if (this.tabuDurationFactorUS < 0){
@@ -103,12 +94,12 @@ public class RoTSearch extends SingleSolHeuristic{
 				delta = newCost - currentCost;
 				
 				this.autorized =
-					( tabuList (i, problemModel.variables(j)) < nIter) ||
-					( tabuList (j, problemModel.variables(i)) < nIter);
+					( tabuList (i, super.variables(j)) < nIter) ||
+					( tabuList (j, super.variables(i)) < nIter);
 				
 				this.aspired =
-					( tabuList(i,problemModel.variables(j)) < nIter - this.aspiration) ||
-					( tabuList(j,problemModel.variables(i)) < nIter - this.aspiration) ||
+					( tabuList(i,super.variables(j)) < nIter - this.aspiration) ||
+					( tabuList(j,super.variables(i)) < nIter - this.aspiration) ||
 					( newCost < bestCost);
 				
 				if ((aspired && !alreadyAspired) ||	/* first move aspired */
@@ -147,9 +138,9 @@ public class RoTSearch extends SingleSolHeuristic{
 		}else{
 			//Console.OUT.println("swap pos "+move.getFirst()+" "+move.getSecond());
 			
-			problemModel.swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
+			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
 			nSwap++;
-			problemModel.executedSwap(move.getFirst(), move.getSecond());
+			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables);
 			
 			/* forbid reverse move for a random number of iterations */
 			
@@ -161,19 +152,19 @@ public class RoTSearch extends SingleSolHeuristic{
 			do t2 = (cube() * this.tabuDuration) as Int; while(t2 <= 2);
 			
 			
-			tabuList( move.getFirst(), problemModel.variables(move.getSecond())) = nIter + t1;
-			tabuList( move.getSecond(), problemModel.variables(move.getFirst())) = nIter + t2;
+			tabuList( move.getFirst(), super.variables(move.getSecond())) = nIter + t1;
+			tabuList( move.getSecond(), super.variables(move.getFirst())) = nIter + t2;
 			
 			//Utils.show("after swap",cop_.getVariables());
 			// detect loc min
 			if (minDelta >= 0)
 				onLocMin();
  			val v = currentCost + minDelta;
- 			if(v < currentCost){
+ 			/*if(v < currentCost){
  				Console.OUT.print("Costo (RoTSearch): " + v);
- 				Utils.show(". Con variables: " ,problemModel.getVariables());
+ 				Utils.show(". Con variables: " ,super.variables);
  				//Console.OUT.print("\n");
- 			}
+ 			}*/
  			
 			return currentCost + minDelta;
 		}

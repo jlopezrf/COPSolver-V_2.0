@@ -22,6 +22,12 @@
 #define X10_LANG_DOUBLE_H_NODEPS
 #include <x10/lang/Double.h>
 #undef X10_LANG_DOUBLE_H_NODEPS
+#define X10_LANG_INT_H_NODEPS
+#include <x10/lang/Int.h>
+#undef X10_LANG_INT_H_NODEPS
+#define X10_LANG_INT_H_NODEPS
+#include <x10/lang/Int.h>
+#undef X10_LANG_INT_H_NODEPS
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array_2;
 } } 
@@ -67,6 +73,8 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     
     ::cpls::entities::NodeConfig* FMGL(masterConfig);
     
+    x10_int FMGL(outFormat);
+    
     virtual ::cpls::problem::ProblemGenericModel* getProblemModel();
     virtual x10_boolean getIsThereAMasterNode();
     virtual ::x10::array::Array_2< ::cpls::entities::NodeConfig*>* getConfigNodes(
@@ -80,6 +88,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual x10_long getTimesPerInstance();
     virtual x10_boolean getVerify();
     virtual ::cpls::entities::NodeConfig* getMasterConfig();
+    virtual x10_int getOutFormat();
     virtual void setProblemModel(::cpls::problem::ProblemGenericModel* problemModel);
     virtual void setConfigNodes(::x10::array::Array_2< ::cpls::entities::NodeConfig*>* configNodes);
     virtual void setCPLSPoolConfig(::cpls::entities::PoolConfig* cplsPoolConfig);
@@ -92,6 +101,7 @@ class CPLSConfig : public ::x10::lang::X10Class   {
     virtual void setSeed(x10_long seed);
     virtual void setVerify(x10_boolean verify);
     virtual void setMasterConfig(::cpls::entities::NodeConfig* masterConfig);
+    virtual void setOutFormat(x10_int outFormat);
     virtual ::cpls::entities::CPLSConfig* cpls__entities__CPLSConfig____this__cpls__entities__CPLSConfig(
       );
     void _constructor();

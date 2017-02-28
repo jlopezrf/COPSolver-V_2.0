@@ -20,9 +20,8 @@ public class QAPModel extends ProblemGenericModel{
  		//Console.OUT.println("Constructor de QAPModel invocado");
  	}
  
- 	public def this(size:Long, inPathDataProblem:String, inPathVectorSol:String, baseValue:Int, inSeed:Long){
+ 	public def this(size:Long, inPathDataProblem:String, inPathVectorSol:String, baseValue:Int){
  		super(size);
- 		super.inSeed = inSeed;
  		super.inPathDataProblem = inPathDataProblem;
  		super.inPathVectorSol = inPathVectorSol;
  		super.baseValue = baseValue;
@@ -41,7 +40,7 @@ public class QAPModel extends ProblemGenericModel{
  	/**
  	*  Compute the cost difference if elements i and j are permuted
  	*/
- 	public def computeDelta(i:Long, j:Long): Long{
+ 	public def computeDelta(i:Long, j:Long, variables:Rail[Int]): Long{
  		var pi : Long = variables(i) as Long;
  		var pj : Long = variables(j) as Long;
  		var k : Long, pk :Long;
@@ -73,7 +72,7 @@ public class QAPModel extends ProblemGenericModel{
  		*  but the value of delta[i][j] is supposed to be known before
  		*  the transposition of elements r and s.
  	*/
- 	public def computeDeltaPart(i : Long, j : Long, r : Long, s : Long) : Long{
+ 	public def computeDeltaPart(i : Long, j : Long, r : Long, s : Long, variables:Rail[Int]) : Long{
  		var pi : Long = variables(i) as Long;
  		var pj : Long = variables(j) as Long;
  		var pr : Long = variables(r) as Long;
@@ -86,7 +85,7 @@ public class QAPModel extends ProblemGenericModel{
  			(this.dist(pi)(ps) - this.dist(pj)(ps) + this.dist(pj)(pr) - this.dist(pi)(pr)));
  	}
 
- 	public def costOfSolution(shouldBeRecorded : Boolean) : Long{
+ 	public def costOfSolution(shouldBeRecorded : Boolean, variables:Rail[Int]) : Long{
  		var i : Long, j : Long;
  		var r : Long  = 0;
  		for(i = 0; i < size; i++)
@@ -95,7 +94,7 @@ public class QAPModel extends ProblemGenericModel{
  				if (shouldBeRecorded)
  					for(i = 0; i < size; i++)
  						for(j = i + 1; j < size; j++)
- 							delta(i,j) = computeDelta(i, j);
+ 							delta(i,j) = computeDelta(i, j, variables);
  		return r;
  	}
  
@@ -121,7 +120,7 @@ public class QAPModel extends ProblemGenericModel{
  	}
 
 
- 	public def executedSwap(var i1:Long, var i2:Long):void{
+ 	public def executedSwap(var i1:Long, var i2:Long, variables:Rail[Int]):void{
  		var temp : Long = variables(i1);
  		if (i1 >= i2){
  			var tmp : Long = i1;
@@ -132,9 +131,9 @@ public class QAPModel extends ProblemGenericModel{
  		for (i = 0; i < size; i++)
  			for (j = i + 1; j < size; j++)
  				if (i != (i1 as Long) && i != (i2 as Long) && j != (i1 as Long) && j != (i2 as Long))
- 					delta(i,j) = computeDeltaPart(i, j, i1, i2);
+ 					delta(i,j) = computeDeltaPart(i, j, i1, i2, variables);
  				else
- 					delta(i,j) = computeDelta(i, j);
+ 					delta(i,j) = computeDelta(i, j, variables);
  	}
 
  	/** 

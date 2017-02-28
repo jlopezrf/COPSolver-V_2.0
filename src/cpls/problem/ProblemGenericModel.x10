@@ -8,7 +8,7 @@ import cpls.util.Valuation;
 
 public class ProblemGenericModel(size:Long){
  
- 	public val variables = new Rail[Int](size, (i:Long) => i as Int);
+ 	//public val variables = new Rail[Int](size, (i:Long) => i as Int);
  	protected var baseValue:Int;
  	protected var inSeed:Long;
  	protected var r:Random;
@@ -60,17 +60,17 @@ public class ProblemGenericModel(size:Long){
   /**
    * 	executed swap
    */
-  	public def executedSwap(i1:Long, i2:Long):void{
+  	public def executedSwap(i1:Long, i2:Long, variables:Rail[Int]):void{
   		Console.OUT.println("Error no executedSwap implementation");
   	}
 
-  	public def swapVariables( i:Long, j:Long):void{
+  	/*public def swapVariables( i:Long, j:Long, variables):void{
   		val x = variables(i);
   		variables(i) = variables(j); 
   		variables(j) = x;
-  	}
+  	}*/
   
-  	public def costOfSolution(shouldBeRecorded : Boolean):Long {
+  	public def costOfSolution(shouldBeRecorded : Boolean, solution:Rail[Int]):Long {
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
@@ -87,7 +87,9 @@ public class ProblemGenericModel(size:Long){
   			x10.io.Console.OUT.println("");
   	}
   
-  	public def initialize(){
+  	public def initialize(inSeed:Long):Rail[Int]{
+  		var variables:Rail[Int] = new Rail[Int](size, (i:Long) => i as Int);
+  		this.r.setSeed(inSeed);
   		if (!inPathVectorSol.equalsIgnoreCase(".")){
   			//initialize from inVector
   			val fileIn = new FileReader(new File(inPathVectorSol));
@@ -126,10 +128,21 @@ public class ProblemGenericModel(size:Long){
   				//Console.OUT.println("Variables position " + k + ": " + variables(k));
   			}
   			for( var i:Long = this.size - 1 ; i > 0 ; i-- ){
+  				//val j = r.nextLong( i + 1 );
+  				val sz = size;
   				val j = r.nextLong( i + 1 );
-  				swapVariables(i,j);
+  				//swapVariables(i,j);
+  				val x = variables(i);
+  				variables(i) = variables(j); 
+  				variables(j) = x;
   			}
   		}
+  		/*Console.OUT.println("Nodo " + here.id + "arranca con variables: ");
+  		for(k in variables){
+  			Console.OUT.print(k + " ");
+  		}
+  		Console.OUT.print("\n");*/
+  		return variables;
  	}
   
   /**
@@ -138,18 +151,18 @@ public class ProblemGenericModel(size:Long){
    * 	@param totalcost not used (for support more complex implementations)
    * 	@return -1 for recompute cost
    */
-  	public def reset ( var n : Long, totalCost : Long ) : Long {
+  	/*public def reset ( var n : Long, totalCost : Long ) : Long {
   		while( n-- != 0 ){
   			val i = r.nextLong(this.size);
   			val j = r.nextLong(this.size);
   			swapVariables(i,j);
   		}
   		return -1n;
-  	}
+  	}*/
   
-  	public def setVariables(array : Rail[Int]{self.size==variables.size}){
+  	/*public def setVariables(array : Rail[Int]{self.size==variables.size}){
   		Rail.copy(array,this.variables);
-  	}
+  	}*/
   
   	public def displaySolution(conf:Valuation(size)){
   		Utils.show("Solution",conf);
@@ -161,9 +174,9 @@ public class ProblemGenericModel(size:Long){
   		return true;
   	}
   
-  	public def getVariables():Valuation(size){
+  	/*public def getVariables():Valuation(size){
   		return variables;
-  	}
+  	}*/
   
   	public def nextJ(i:Long, j:Long, exhaustive:Boolean) : Long {
   		///Console.OUT.println("i= "+i+"  j= "+j+"  bp-i= "+bpi(i));

@@ -16,17 +16,11 @@
 #define X10_LANG_LONG_H_NODEPS
 #include <x10/lang/Long.h>
 #undef X10_LANG_LONG_H_NODEPS
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
-} } 
 namespace x10 { namespace util { 
 class Random;
 } } 
 namespace x10 { namespace lang { 
 class String;
-} } 
-namespace x10 { namespace util { 
-class Timer;
 } } 
 namespace x10 { namespace io { 
 class Printer;
@@ -36,6 +30,12 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace io { 
 class FileReader;
@@ -52,9 +52,6 @@ class Utils;
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
-} } 
 namespace cpls { namespace problem { 
 
 class ProblemGenericModel : public ::x10::lang::X10Class   {
@@ -62,8 +59,6 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     RTT_H_DECLS_CLASS
     
     x10_long FMGL(size);
-    
-    ::x10::lang::Rail< x10_int >* FMGL(variables);
     
     x10_int FMGL(baseValue);
     
@@ -86,17 +81,13 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     virtual x10_long getSize();
     virtual x10_long costOnVariable(x10_long i);
     virtual x10_long costIfSwap(x10_long current_cost, x10_long i1, x10_long i2);
-    virtual void executedSwap(x10_long i1, x10_long i2);
-    virtual void swapVariables(x10_long i, x10_long j);
-    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded);
+    virtual void executedSwap(x10_long i1, x10_long i2, ::x10::lang::Rail< x10_int >* variables);
+    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded, ::x10::lang::Rail< x10_int >* solution);
     virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
     static void show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d);
-    virtual void initialize();
-    virtual x10_long reset(x10_long n, x10_long totalCost);
-    virtual void setVariables(::x10::lang::Rail< x10_int >* array);
+    virtual ::x10::lang::Rail< x10_int >* initialize(x10_long inSeed);
     virtual void displaySolution(::x10::lang::Rail< x10_int >* conf);
     virtual x10_boolean verify(::x10::lang::Rail< x10_int >* conf);
-    virtual ::x10::lang::Rail< x10_int >* getVariables();
     virtual x10_long nextJ(x10_long i, x10_long j, x10_boolean exhaustive);
     virtual x10_long nextI(x10_long i);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* conf1, ::x10::lang::Rail< x10_int >* conf2);

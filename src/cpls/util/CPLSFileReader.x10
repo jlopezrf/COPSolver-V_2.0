@@ -26,7 +26,7 @@ public class CPLSFileReader {
 	 	var i : Int;
 	 	var j : Int = 0n;
 	 	var buffer : String = "";
-	 	val x = new Rail[Int]( 2, -1n );
+	 	val x = new Rail[Int]( 3, -1n );
 	 	for(i = 0n ; i < line.length() ; i++){
 	 		if( line(i) == ' ' || line(i) == '\n' ){
 	 			x(j++) = Int.parse(buffer);

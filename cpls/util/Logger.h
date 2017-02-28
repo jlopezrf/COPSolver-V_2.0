@@ -23,13 +23,7 @@ namespace x10 { namespace lang {
 class Place;
 } } 
 namespace x10 { namespace lang { 
-class Runtime__Worker;
-} } 
-namespace x10 { namespace lang { 
-class Thread;
-} } 
-namespace x10 { namespace util { 
-class Timer;
+class System;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
@@ -127,10 +121,10 @@ class Logger;
 #include <x10/lang/Any.h>
 #include <x10/lang/Runtime.h>
 #include <x10/lang/Place.h>
-#include <x10/lang/Runtime__Worker.h>
-#include <x10/lang/Thread.h>
-#include <x10/util/Timer.h>
+#include <x10/lang/Int.h>
+#include <x10/lang/System.h>
 #include <x10/lang/Fun_0_0.h>
+#include <x10/lang/Boolean.h>
 #include <x10/lang/Fun_0_1.h>
 #include <x10/compiler/Synthetic.h>
 #ifndef CPLS_UTIL_LOGGER_H_GENERICS
@@ -163,26 +157,41 @@ inline x10_long cpls::util::Logger::FMGL(LEVEL__get)() {
     return cpls::util::Logger::FMGL(LEVEL);
 }
 
-#ifndef CPLS_UTIL_LOGGER_H_info_7
-#define CPLS_UTIL_LOGGER_H_info_7
+#ifndef CPLS_UTIL_LOGGER_H_info_490
+#define CPLS_UTIL_LOGGER_H_info_490
 template<class TPMGL(T)> void cpls::util::Logger::info(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                        TPMGL(T) t) {
- 
+    if (((::cpls::util::Logger::FMGL(INFO__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
+    {
+        ::cpls::util::Logger::out(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>::__apply(::x10aux::nullCheck(s), 
+                                    t));
+    }
+    
 }
-#endif // CPLS_UTIL_LOGGER_H_info_7
-#ifndef CPLS_UTIL_LOGGER_H_log_10
-#define CPLS_UTIL_LOGGER_H_log_10
+#endif // CPLS_UTIL_LOGGER_H_info_490
+#ifndef CPLS_UTIL_LOGGER_H_log_493
+#define CPLS_UTIL_LOGGER_H_log_493
 template<class TPMGL(T)> void cpls::util::Logger::log(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                       TPMGL(T) t) {
- 
+    if (((::cpls::util::Logger::FMGL(LOG__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
+    {
+        ::cpls::util::Logger::out(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>::__apply(::x10aux::nullCheck(s), 
+                                    t));
+    }
+    
 }
-#endif // CPLS_UTIL_LOGGER_H_log_10
-#ifndef CPLS_UTIL_LOGGER_H_debug_12
-#define CPLS_UTIL_LOGGER_H_debug_12
+#endif // CPLS_UTIL_LOGGER_H_log_493
+#ifndef CPLS_UTIL_LOGGER_H_debug_495
+#define CPLS_UTIL_LOGGER_H_debug_495
 template<class TPMGL(T)> void cpls::util::Logger::debug(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                         TPMGL(T) t) {
- 
+    if (((::cpls::util::Logger::FMGL(DEBUG__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
+    {
+        ::cpls::util::Logger::out(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>::__apply(::x10aux::nullCheck(s), 
+                                    t));
+    }
+    
 }
-#endif // CPLS_UTIL_LOGGER_H_debug_12
+#endif // CPLS_UTIL_LOGGER_H_debug_495
 #endif // CPLS_UTIL_LOGGER_H_GENERICS
 #endif // __CPLS_UTIL_LOGGER_H_NODEPS

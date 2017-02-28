@@ -22,20 +22,17 @@ class MovePermutation;
 namespace x10 { namespace util { 
 class Random;
 } } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
 namespace cpls { 
 class ParamManager;
 } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
-} } 
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class String;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -56,6 +53,8 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     
     x10_int FMGL(mySolverType);
     
+    ::x10::lang::Rail< x10_int >* FMGL(variables);
+    
     void _constructor();
     
     virtual void configHeuristic(x10_long sizeProblem, ::cpls::ParamManager* opts);
@@ -66,6 +65,10 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual x10_int getNSwap();
     virtual void setSeed(x10_long inSeed);
     virtual void setSolverType(x10_int mySolverType);
+    virtual ::x10::lang::Rail< x10_int >* getVariables();
+    virtual void setVariables(::x10::lang::Rail< x10_int >* variables);
+    virtual void swapVariables(x10_long i, x10_long j);
+    virtual x10_long reset(x10_long n, x10_long totalCost);
     virtual ::cpls::solver::HeuristicSolver* cpls__solver__HeuristicSolver____this__cpls__solver__HeuristicSolver(
       );
     virtual void __fieldInitializers_cpls_solver_HeuristicSolver(

@@ -5,20 +5,16 @@
 #include <cpls/solver/HeuristicSolver.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
 void cpls::solver::SingleSolHeuristic::_constructor() {
     
-    //#line 5 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::HeuristicSolver* this__190 = this;
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
+    (this)->::cpls::solver::HeuristicSolver::_constructor();
     
-    //#line 13 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10aux::nullCheck(this__190)->cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSolver();
+    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
     
-    //#line 4 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    
-    //#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::SingleSolHeuristic* this__189 = this;
-    
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
+    this->cpls::solver::SingleSolHeuristic::__fieldInitializers_cpls_solver_SingleSolHeuristic();
 }
 ::cpls::solver::SingleSolHeuristic* cpls::solver::SingleSolHeuristic::_make(
   ) {
@@ -29,7 +25,7 @@ void cpls::solver::SingleSolHeuristic::_constructor() {
 
 
 
-//#line 3 "/home/artica/Documents/Maestria/Implementacion/codigo/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
 ::cpls::solver::SingleSolHeuristic* cpls::solver::SingleSolHeuristic::cpls__solver__SingleSolHeuristic____this__cpls__solver__SingleSolHeuristic(
   ) {
     return this;

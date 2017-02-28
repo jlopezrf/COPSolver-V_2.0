@@ -49,33 +49,6 @@ class ProblemGenericModel;
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
-namespace x10 { namespace lang { 
-class Place;
-} } 
-namespace x10 { namespace lang { 
-class Runtime__Worker;
-} } 
-namespace x10 { namespace lang { 
-class Thread;
-} } 
-namespace cpls { namespace util { 
-class Utils;
-} } 
-namespace x10 { namespace lang { 
-class Any;
-} } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
@@ -87,8 +60,6 @@ namespace cpls { namespace solver {
 class EOSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
-    
-    using ::cpls::solver::HeuristicSolver::initVar;
     
     ::x10::lang::Rail< x10_double >* FMGL(pdf);
     
@@ -126,7 +97,7 @@ class EOSearch : public ::cpls::solver::SingleSolHeuristic   {
     static ::cpls::solver::EOSearch* _make();
     
     virtual void configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts);
-    virtual void initVar(x10_long tCost, x10_boolean sLow);
+    virtual void initVar();
     void initPDF(::x10::lang::Fun_0_2<x10_double, x10_long, x10_double>* fnc);
     virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long currentCost, x10_long bestCost, x10_int nIter);

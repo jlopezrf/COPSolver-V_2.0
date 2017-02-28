@@ -29,13 +29,7 @@ namespace x10 { namespace lang {
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
-} } 
-namespace x10 { namespace util { 
-class Timer;
+class System;
 } } 
 namespace x10 { namespace io { 
 class File;
@@ -99,13 +93,11 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
     static ::cpls::problem::QAPModel* _make(x10_long size);
     
     void _constructor(x10_long size, ::x10::lang::String* inPathDataProblem,
-                      ::x10::lang::String* inPathVectorSol, x10_int baseValue,
-                      x10_long inSeed);
+                      ::x10::lang::String* inPathVectorSol, x10_int baseValue);
     
     static ::cpls::problem::QAPModel* _make(x10_long size, ::x10::lang::String* inPathDataProblem,
                                             ::x10::lang::String* inPathVectorSol,
-                                            x10_int baseValue,
-                                            x10_long inSeed);
+                                            x10_int baseValue);
     
     void _constructor(x10_long size, ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
                       ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* md);
@@ -114,14 +106,17 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
                                             ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
                                             ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* md);
     
-    virtual x10_long computeDelta(x10_long i, x10_long j);
+    virtual x10_long computeDelta(x10_long i, x10_long j,
+                                  ::x10::lang::Rail< x10_int >* variables);
     virtual x10_long computeDeltaPart(x10_long i, x10_long j,
-                                      x10_long r, x10_long s);
-    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded);
+                                      x10_long r, x10_long s,
+                                      ::x10::lang::Rail< x10_int >* variables);
+    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded,
+                                    ::x10::lang::Rail< x10_int >* variables);
     virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
     virtual x10_long costIfSwap(x10_long currentCost, x10_long i1,
                                 x10_long i2);
-    virtual void executedSwap(x10_long i1, x10_long i2);
+    virtual void executedSwap(x10_long i1, x10_long i2, ::x10::lang::Rail< x10_int >* variables);
     virtual x10_long costOnVariable(x10_long i);
     virtual x10_boolean loadData(::x10::lang::String* filePath);
     static ::x10::lang::Rail< x10_int >* readParameters(::x10::lang::String* line);

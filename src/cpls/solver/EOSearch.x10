@@ -48,23 +48,6 @@ public class EOSearch extends SingleSolHeuristic{
 
  	public def this(){
  		super();
- 		//super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
-
- 		// Parameters (Random by default)
- 		//this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemModel.getSize())));
- 		//this.tauUserSel = opts("--EO_tau", -1.0);
- 		/*if(super.heuristicParams instanceof EOParameters){
- 			var params:EOParameters = super.heuristicParams as EOParameters;
- 			this.pdfUserSel = params.getPdfUserSel();
- 			this.selSecond = params.getSelSecond();
- 			this.tauUserSel = params.getTauUserSel();
- 			Console.OUT.println("EOSearch. Parametros inicializados");
- 		}else{
- 			this.pdfUserSel = -1n;
- 			this.selSecond = 1n;
- 			this.tauUserSel = 1.0 + 1.0 / Math.log(problemModel.getSize());
- 		}*/
- 		// Compute interval limit for random tau (based on "force" concept eo-qap implementation Daniel Diaz)
  	}
  
  	public def configHeuristic(problemSize:Long, opts:ParamManager){
@@ -75,26 +58,27 @@ public class EOSearch extends SingleSolHeuristic{
  		this.expUp = 8.867754442 * Math.pow(problemSize,-0.895936426);
  		this.powDown = 1.575467001 * Math.pow(problemSize,-0.1448643794);
  		this.powUp = 2.426369897 * Math.pow(problemSize,-0.1435045369);
- 		this.tauUserSel = opts("--EO_tau", (1.0 + 1.0 / Math.log(problemSize)));
- 		this.pdfUserSel = opts("--EO_pdf", 1n);
- 		this.selSecond = opts("--EO_selSec", 1n);
+ 		//Jason: Se cambia la forma como estan siendo leidos los parametros.
+ 		this.tauUserSel = opts("-EO_t", (1.0 + 1.0 / Math.log(problemSize)));
+ 		this.pdfUserSel = opts("-EO_p", -1n); 
+ 		this.selSecond = opts("-EO_ss", 1n);
  	}
  
  	/**
   	*  Initialize variables of the solver
   	*  Executed once before the main solving loop
   	*/
- 	protected def initVar( tCost : Long, sLow: Boolean){
+ 	public def initVar(){
  		super.initVar();
  		if ( this.pdfUserSel == -1n ) { // Select a random PDF
- 			this.pdfS = random.nextInt(2n)+1n; // from 1 to 3
+ 			this.pdfS = random.nextInt(4n);//+1n; // from 1 to 3 Jason: Se pone el random hasta tres para cubrir todo el rango
  		}else
  			this.pdfS = pdfUserSel;
  
  		if ( this.tauUserSel == -1.0 ) { // Select a random tau from 0 to tau 
  			if ( this.pdfS == 1n) {
  				this.tau = this.powDown + (powUp - powDown) * random.nextDouble();
- 			}else if ( this.pdfS == 2n) {
+ 			}else{//}else if ( this.pdfS == 2n) { //Jason: Se pone también la inicialización para el tercer caso
  				this.tau = this.expDown + (expUp - expDown) * random.nextDouble();
  			}
  		}else
@@ -113,11 +97,12 @@ public class EOSearch extends SingleSolHeuristic{
  		var y:Double = 0.0;
  		for (var x:Int = 1n; x <= super.problemSize; x++){
  			y = fnc(this.tau, x);
- 			pdf(x) = y;
+ 			this.pdf(x) = y;
  			sum += y; 
  		}
  		for (var x:Int = 1n; x <= super.problemSize; x++){
- 			pdf(x) /= sum;
+ 			this.pdf(x) /= sum;
+ 			//Console.OUT.println("Se inicializa pdf, posiciion: " + x + ". Valor: " + this.pdf(x));
  		}
  		// for (x in pdf.range())
  	}
@@ -132,14 +117,14 @@ public class EOSearch extends SingleSolHeuristic{
  			newCost = this.selSecondRandom(super.move, problemModel, currentCost);
  		else 
  			newCost = this.selSecondMinConf(super.move, problemModel, currentCost);
- 		problemModel.swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
+ 		swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
  		nSwap++;
- 		problemModel.executedSwap(super.move.getFirst(), super.move.getSecond());
- 		if(newCost < bestCost){
+ 		problemModel.executedSwap(super.move.getFirst(), super.move.getSecond(), super.variables);
+ 		/*if(newCost < bestCost){
  			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + newCost);
- 			Utils.show(". Con variables: " ,problemModel.getVariables());
+ 			Utils.show(". Con variables: " , super.variables);
  			//displaySolution();
- 		}
+ 		}*/
  		return newCost;
  	}
  
@@ -149,7 +134,7 @@ public class EOSearch extends SingleSolHeuristic{
  		var fx:Double;
  		var x:Int = 0n;
  		while( (fx = pdf(++x)) < p ){
- 			Console.OUT.println("Valor fx: " + fx + ". Valor p: " + p);
+ 			//Console.OUT.println("Valor fx: " + fx + ". Valor p: " + p);
  			p -= fx;
  		}
  		return x - 1n ;

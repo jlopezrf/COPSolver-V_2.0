@@ -43,6 +43,9 @@ class Unit;
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__PoolModes;
+} 
 namespace x10 { namespace lang { 
 class FailedDynamicCheckException;
 } } 
@@ -52,6 +55,9 @@ class Logger;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__PoolLevels;
+} 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -69,9 +75,6 @@ class StringBuilder;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
-} } 
-namespace x10 { namespace util { 
-class Timer;
 } } 
 namespace cpls { 
 

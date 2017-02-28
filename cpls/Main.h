@@ -19,6 +19,9 @@ class CPLSConfig;
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
+namespace x10 { namespace lang { 
+class System;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -46,29 +49,17 @@ class Place;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
 namespace cpls { 
 class NodeInstancer;
+} 
+namespace cpls { 
+class CPLSOptionsEnum__NodeRoles;
 } 
 namespace x10 { namespace lang { 
 class Math;
 } } 
 namespace x10 { namespace util { 
-template<class TPMGL(K), class TPMGL(V)> class HashMap;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
-namespace x10 { namespace util { 
 class StringUtil;
-} } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
 } } 
 namespace cpls { namespace util { 
 class Logger;
@@ -76,6 +67,12 @@ class Logger;
 namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -94,7 +91,6 @@ class Main : public ::x10::lang::X10Class   {
                                    ::x10::lang::String* solverIn);
     static x10_int problemDetect(::x10::lang::String* problem);
     static x10_int whichHeuristicInt(::x10::lang::String* solverIn);
-    static void printHeader(x10_int outF, x10_int problem);
     virtual ::cpls::Main* cpls__Main____this__cpls__Main(
       );
     void _constructor();
