@@ -42,13 +42,13 @@ public class Main {
  		if(heuristicString.indexOf('*') != -1n){
  			 masterHeuristicAndOthers = heuristicString.split("*");
 			 heuristicString = masterHeuristicAndOthers(1);
-			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.getSize(), masterHeuristicAndOthers(0));
+			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristicAndOthers(0));
 			 configCPLS.setMasterConfig(masterConfig);
  		}else if(modeIndicator){
  			Console.OUT.println("Debe indicar una heurística para el nodo master");
  		}
  		
- 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.getSize(), heuristicString);
+ 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
  		
  		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
  			Console.OUT.println("Inconsistencia en el numero total de nodos");
@@ -61,8 +61,8 @@ public class Main {
  		//*********************************************************************//
  		
  		//***************************Pools Options*****************************//
- 		val cplsPoolConfig = new PoolConfig(problemModel.getSize() as Long, opts("P_lm", 4n), opts("P_lmM", 0n), opts("P_lmD", 0.5));
- 		val teamsPoolConfig = new PoolConfig(problemModel.getSize() as Long, opts("P_e", 4n), opts("P_eM", 0n), opts("P_eD", 0.5));
+ 		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("P_lm", 4n), opts("P_lmM", 0n), opts("P_lmD", 0.5));
+ 		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("P_e", 4n), opts("P_eM", 0n), opts("P_eD", 0.5));
  		configCPLS.setCPLSPoolConfig(cplsPoolConfig);
  		configCPLS.setTeamsPoolConfig(teamsPoolConfig);
  		//*********************************************************************//
@@ -298,7 +298,7 @@ public class Main {
  
   	public static struct COPProblemModelFactory{
  		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long], inSeed:Long){
- 			val size = opts("-s", 10); //Jason: Pilas con esto !!
+ 			val size = opts("-s", 10); //Jason: Pilas con esto tamaño por defecto !!
  			val baseValue = opts("-bv", 0n);
  			val inPathDataProblem = opts("-f",".");
  			val inPathVectorSol =  opts("-if",".");
@@ -315,7 +315,7 @@ public class Main {
  				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
  					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
- 					val n1 = params(0) < 0 ? 1 : params(0);
+ 					val n1 = params(0) < 0 ? 1 : params(0); //Importante para esto que el tamaño del problema esté en el archivo 
  					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue);
  					//problemModel.initialize(random.nextLong());
  					problemModel.loadData(inPathDataProblem);

@@ -34,9 +34,9 @@ public class RoTSearch extends SingleSolHeuristic{
 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
 	}
 
- 	public def configHeuristic(problemSize:Long, opts:ParamManager){
- 		super.configHeuristic(problemSize, opts);
- 		this.tabuList = new Array_2 [Long](problemSize, problemSize, 0);
+ 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		super.configHeuristic(problemModel, opts);
+ 		this.tabuList = new Array_2 [Long](problemModel.size, problemModel.size, 0);
  		this.tabuDurationFactorUS = opts("--RoTS_tabu_duration", -1.0);
  		this.aspirationFactorUS = opts("--RoTS_aspiration", -1.0);
  	}
@@ -56,7 +56,7 @@ public class RoTSearch extends SingleSolHeuristic{
 		} else {
 			this.tabuDurationFactor = this.tabuDurationFactorUS;
 		}
-		this.tabuDuration = (this.tabuDurationFactor * super.problemSize) as Int;
+		this.tabuDuration = (this.tabuDurationFactor * super.problemModel.size) as Int;
 		
 		if (this.aspirationFactorUS == -1.0) // Random initialitation of Tabu duration Factor 
 			this.aspirationFactor = al + (au-al) * random.nextDouble();
@@ -64,12 +64,12 @@ public class RoTSearch extends SingleSolHeuristic{
 			this.aspirationFactor = this.aspirationFactorUS;
 		
 		
-		this.aspiration = (this.aspirationFactor * super.problemSize * super.problemSize) as Int;
+		this.aspiration = (this.aspirationFactor * super.problemModel.size * super.problemModel.size) as Int;
 		
-		for (var i:Long = 0 ; i < super.problemSize; i++)
-			for (var j:Long = 0 ; j < super.problemSize; j++){
+		for (var i:Long = 0 ; i < super.problemModel.size; i++)
+			for (var j:Long = 0 ; j < super.problemModel.size; j++){
  				//Console.OUT.println("Este es el punto del error antes");
-				this.tabuList(i,j) = -(super.problemSize * i + j);
+				this.tabuList(i,j) = -(super.problemModel.size * i + j);
  				//Console.OUT.println("Este es el punto del error antes");
 			}
 	}
@@ -87,8 +87,8 @@ public class RoTSearch extends SingleSolHeuristic{
 		
 		//Utils.show("Solution",cop_.getVariables());
 		
-		for (i = 0; i < super.problemSize - 1; i++)
-			for (j = i + 1; j < super.problemSize; j++) {
+		for (i = 0; i < super.problemModel.size - 1; i++)
+			for (j = i + 1; j < super.problemModel.size; j++) {
 				
 				newCost = problemModel.costIfSwap(currentCost,i,j);
 				delta = newCost - currentCost;
@@ -140,7 +140,8 @@ public class RoTSearch extends SingleSolHeuristic{
 			
 			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
 			nSwap++;
-			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables);
+			val sz =  super.problemModel.size;
+			super.problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables  as Rail[Int]{self.size == sz});
 			
 			/* forbid reverse move for a random number of iterations */
 			
@@ -218,9 +219,9 @@ public class RoTSearch extends SingleSolHeuristic{
 			this.aspirationFactor = (this.aspirationFactor + inaf) / 2.0;
 			
 			if (this.tabuDuration != -1n)
-				this.tabuDuration = (this.tabuDurationFactor * super.problemSize) as Int;
+				this.tabuDuration = (this.tabuDurationFactor * super.problemModel.size) as Int;
 			
-			this.aspiration = (this.aspirationFactor * super.problemSize * super.problemSize) as Int;
+			this.aspiration = (this.aspirationFactor * super.problemModel.size * super.problemModel.size) as Int;
 		}
 	} 	 
 	

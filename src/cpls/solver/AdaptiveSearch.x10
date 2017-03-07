@@ -44,18 +44,16 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		private var resetLimit:Int;
  		private var probSelectLocMin:Int;
  		private var firstBest:Boolean;
- 		
- 		private var problemSize:Long;
 
  	public def this(){
  		super();
  	}
  
-  	public def configHeuristic(problemSize:Long, opts:ParamManager){
- 		super.configHeuristic(problemSize, opts);
- 		this.mark = new Rail[Int] (problemSize, 0n);
- 		this.listIJ = new Rail[MovePermutation](problemSize);
- 		this.listI = new Rail[Long](problemSize, 0);
+  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		super.configHeuristic(problemModel, opts);
+ 		this.mark = new Rail[Int] (problemModel.size, 0n);
+ 		this.listIJ = new Rail[MovePermutation](problemModel.size);
+ 		this.listI = new Rail[Long](problemModel.size, 0);
  		this.nVarToReset = opts("--AS_varToReset",-1);
  		this.resetPercent = opts("--AS_resetPer",10n);
  		this.freezeLocMin = opts("--AS_freezeLocMin",5n);
@@ -64,14 +62,13 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		this.probSelectLocMin = opts("--AS_probSelecLocMin", 0n);
  		this.firstBest = opts("--AS_firstBest",0n) == 1n;
  		this.exhaustive = opts("--AS_exhaustive",0n) == 1n;
- 		this.problemSize = problemSize;
  	}
 
 
  	public def initVar(){
  		super.initVar();
  		if (this.nVarToReset == -1){
- 			this.nVarToReset = (((this.problemSize * resetPercent as Long) + 99) / 100);
+ 			this.nVarToReset = (((super.problemModel.size * resetPercent as Long) + 99) / 100);
  			if (this.nVarToReset < 2){
  				this.nVarToReset = 2;
  			}
@@ -92,13 +89,14 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	*  Search process (in loop functionality)
  	*  To be overwrited for each child class (solver) 
  	*/
- 	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
+ 	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		var newCost:Long = -1;
+ 		val sz = this.problemModel.size;
  		if( !this.exhaustive ){
  			selectVarHighCost(problemModel);
- 			newCost = selectVarMinConflict(problemModel, currentCost);
+ 			newCost = selectVarMinConflict( currentCost);
  		} else {
- 			newCost = selectVarsToSwap(problemModel, currentCost);
+ 			newCost = selectVarsToSwap(currentCost);
  		}
  		if (currentCost != newCost) {
  			nInPlateau = 0n;
@@ -111,8 +109,8 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			
  			if (this.nVarMarked + 1 >= this.resetLimit){	
  				onLocMin();
- 				val cost:Long = doReset(problemModel, this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
- 				returnCost = (cost < 0) ? problemModel.costOfSolution(true, super.variables) : cost;
+ 				val cost:Long = doReset(this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
+ 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(true, super.variables as Rail[Int]{self.size == sz}) : cost;
  			}
  			//return otherCost;
  		}else{
@@ -120,7 +118,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			mark(move.getSecond()) = super.nSwap + this.freezeSwap; //Mark(minJ, ad.freeze_swap);
  			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);
  			super.nSwap++;
- 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables);
+ 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables as Rail[Int]{self.size == sz});
  			//currentCost = newCost;
  			returnCost = newCost ;
  		}
@@ -141,7 +139,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		mark.clear();
  	}
 
- 	private def doReset(problemModel:ProblemGenericModel, n:Long, currentCost:Long) {
+ 	private def doReset(n:Long, currentCost:Long) {
  		var cost : Long = -1;		//reset(n, csp);
  		cost = reset( n, currentCost );
  		mark.clear();
@@ -166,7 +164,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		this.listInb = 0n; //Number of elements
  		this.nVarMarked = 0n; 
 
- 		while((i = problemModel.nextI(i))as ULong < this.problemSize as ULong) { //False if i < 0
+ 		while((i = problemModel.nextI(i))as ULong < super.problemModel.size as ULong) { //False if i < 0
  			if (super.nSwap < this.mark(i)) {
  				this.nVarMarked++;
  				continue;
@@ -181,7 +179,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			}
  		}
  		if (this.listInb == 0n) // all variables are OK but the global cost is > 0 (can occur in SMTI with no BP but singles)
- 			maxVar = random.nextLong(this.problemSize);
+ 			maxVar = random.nextLong(super.problemModel.size);
  		else {
  			// select a maxCost variable from array
  			val sel = random.nextInt(this.listInb);
@@ -198,7 +196,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	* 	@param move object (permutation)
  	* 	@return new cost of the possible move
  	*/
- 	private def selectVarMinConflict(problemModel:ProblemGenericModel, currentCost:Long ) : Long {
+ 	private def selectVarMinConflict(currentCost:Long ) : Long {
  		var j: Long;
  		var cost: Long;
  		var flagOut:Boolean = false; 
@@ -211,7 +209,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			this.listJnb = 0n;
  			nCost = currentCost;
  			j = -1n;
- 			while((j = problemModel.nextJ(first, j, false)) as ULong < this.problemSize as ULong){// false if j < 0 //solverP.exhaustive???	
+ 			while((j = problemModel.nextJ(first, j, false)) as ULong < super.problemModel.size as ULong){// false if j < 0 //solverP.exhaustive???	
  				if (super.nSwap < this.mark(j)) {
  					continue;
  				}
@@ -258,7 +256,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  *  @param move object (permutation)
  *  @return new cost of the possible move
  */
- 	private def selectVarsToSwap(problemModel:ProblemGenericModel, currentCost:Long):Long {
+ 	private def selectVarsToSwap(currentCost:Long):Long {
  		var first : Long;
  		var second : Long;
  		//var x : Int;
@@ -267,13 +265,13 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		this.nVarMarked = 0n;
  		first = -1n;
  		
- 		while((first = problemModel.nextI(first))as ULong < this.problemSize as ULong) {
+ 		while((first = problemModel.nextI(first))as ULong < super.problemModel.size as ULong) {
  			if ( super.nSwap < this.mark(first) ) {
  				this.nVarMarked++;
  				continue;
  			} 
  			second = -1n;
- 			while((second = problemModel.nextJ(first, second, true))as ULong < problemModel.getSize() as ULong ){
+ 			while((second = problemModel.nextJ(first, second, true))as ULong < super.problemModel.size as ULong ){
  				if ( super.nSwap < this.mark(second) ) {
  					continue;
  				}
@@ -289,7 +287,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  						}
  					}
  					this.listIJ(this.nListIJ) = new MovePermutation(first,second);
- 					this.nListIJ = ((this.nListIJ + 1) % problemModel.getSize()) as Int;
+ 					this.nListIJ = ((this.nListIJ + 1) % super.problemModel.size) as Int;
  				}
  			}
  		}
@@ -305,7 +303,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			}
 
  			var lm:Long;
- 			if (!(this.probSelectLocMin <= 100n) && (lm = random.nextLong(this.nListIJ + problemModel.getSize())) < problemModel.getSize()) {
+ 			if (!(this.probSelectLocMin <= 100n) && (lm = random.nextLong(this.nListIJ + super.problemModel.size)) < super.problemModel.size) {
  				super.move.setFirst(lm);
  				super.move.setSecond(lm);
  				return nCost;//goto end;

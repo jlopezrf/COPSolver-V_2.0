@@ -10,17 +10,14 @@
 #define X10_LANG_INT_H_NODEPS
 #include <x10/lang/Int.h>
 #undef X10_LANG_INT_H_NODEPS
-#define X10_LANG_LONG_H_NODEPS
-#include <x10/lang/Long.h>
-#undef X10_LANG_LONG_H_NODEPS
-#define X10_LANG_LONG_H_NODEPS
-#include <x10/lang/Long.h>
-#undef X10_LANG_LONG_H_NODEPS
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
 namespace x10 { namespace util { 
 class Random;
+} } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
@@ -31,8 +28,8 @@ class ParamManager;
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -49,7 +46,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     
     x10_int FMGL(nSwap);
     
-    x10_long FMGL(problemSize);
+    ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
     
     x10_int FMGL(mySolverType);
     
@@ -57,9 +54,12 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     
     void _constructor();
     
-    virtual void configHeuristic(x10_long sizeProblem, ::cpls::ParamManager* opts);
-    virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
-                            x10_long currentCost, x10_long bestCost, x10_int nIter);
+    static ::cpls::solver::HeuristicSolver* _make();
+    
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
+    virtual x10_long search(x10_long currentCost, x10_long bestCost,
+                            x10_int nIter);
     virtual void initVar();
     virtual void clearNSwap();
     virtual x10_int getNSwap();
@@ -69,13 +69,28 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual void setVariables(::x10::lang::Rail< x10_int >* variables);
     virtual void swapVariables(x10_long i, x10_long j);
     virtual x10_long reset(x10_long n, x10_long totalCost);
+    virtual void initVariables();
+    virtual x10_long costOfSolution();
+    virtual x10_long getSizeProblem();
+    virtual x10_double getDistance(::x10::lang::Rail< x10_int >* a,
+                                   ::x10::lang::Rail< x10_int >* b);
+    virtual x10_boolean verify(::x10::lang::Rail< x10_int >* conf);
+    virtual void displaySolution(::x10::lang::Rail< x10_int >* conf);
     virtual ::cpls::solver::HeuristicSolver* cpls__solver__HeuristicSolver____this__cpls__solver__HeuristicSolver(
       );
     virtual void __fieldInitializers_cpls_solver_HeuristicSolver(
       );
     
     // Serialization
+    public: static const ::x10aux::serialization_id_t _serialization_id;
+    
+    public: virtual ::x10aux::serialization_id_t _get_serialization_id() {
+         return _serialization_id;
+    }
+    
     public: virtual void _serialize_body(::x10aux::serialization_buffer& buf);
+    
+    public: static ::x10::lang::Reference* _deserializer(::x10aux::deserialization_buffer& buf);
     
     public: void _deserialize_body(::x10aux::deserialization_buffer& buf);
     

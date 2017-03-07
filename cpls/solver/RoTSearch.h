@@ -49,6 +49,9 @@ class HeuristicSolver;
 namespace cpls { 
 class CPLSOptionsEnum__HeuristicsSupported;
 } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
+} } 
 namespace cpls { 
 class ParamManager;
 } 
@@ -57,9 +60,6 @@ class OptionsParser;
 } } 
 namespace x10 { namespace util { 
 class Random;
-} } 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
 } } 
 namespace cpls { namespace util { 
 class MovePermutation;
@@ -76,6 +76,9 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -84,6 +87,8 @@ namespace cpls { namespace solver {
 class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
+    
+    using ::cpls::solver::HeuristicSolver::search;
     
     x10_double FMGL(tabuDurationFactorUS);
     
@@ -117,14 +122,16 @@ class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     static ::cpls::solver::RoTSearch* _make();
     
-    virtual void configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts);
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
     x10_int FMGL(tabuDurationLower);
     
     x10_int FMGL(tabuDurationUpper);
     
     virtual void initVar();
     virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
-                            x10_long currentCost, x10_long bestCost, x10_int nIter);
+                            x10_long currentCost, x10_long bestCost,
+                            x10_int nIter);
     virtual x10_int randomInterval(x10_int low, x10_int up);
     x10_double cube();
     virtual ::x10::lang::Rail< x10_int >* createSolverState();
@@ -132,7 +139,8 @@ class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     void onLocMin();
     virtual ::cpls::solver::RoTSearch* cpls__solver__RoTSearch____this__cpls__solver__RoTSearch(
       );
-    virtual void __fieldInitializers_cpls_solver_RoTSearch();
+    virtual void __fieldInitializers_cpls_solver_RoTSearch(
+      );
     
     // Serialization
     public: static const ::x10aux::serialization_id_t _serialization_id;

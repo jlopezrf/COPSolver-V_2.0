@@ -55,17 +55,17 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * variables will already have happened.
 	  */
 	 //public def tryInsertConf(cost:Long, variables:Rail[Int]{self.size==sz}, place:Int) {
-	 public def tryInsertConf( inInfo : State(sz) ) {
-		  monitor.atomicBlock(()=>tryInsertConf0(inInfo));
+	 public def tryInsertConf( info : State(sz){info.solverState.size ==3, info.vector.size == info.sz} ) {
+		  monitor.atomicBlock(()=>tryInsertConf0(info));
 	 }
 	 
 	 //protected def tryInsertConf0( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def tryInsertConf0( inInfo : State(sz) ):Unit {
+	 protected def tryInsertConf0( info : State(sz){info.solverState.size ==3, info.vector.size == info.sz} ):Unit {
 		  // TODO Closure	  
 		  if (poolMode == CPLSOptionsEnum.PoolModes.SMART)
-				return smartInsert( inInfo );
+				return smartInsert( info );
 		  else
-				return normalInsert( inInfo );
+				return normalInsert( info );
 	 }
 	 
 	 /**
@@ -132,7 +132,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * @return Unit structure (necessary to the proper operation of the monitor)
 	  */
 	 //protected def smartInsert( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def smartInsert( inInfo : State(sz) ):Unit {
+	 protected def smartInsert( inInfo : State(sz){inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz} ):Unit {
 		    Logger.debug(()=>{"Smart Pool: Smart Insert"});
 		  // try to insert conf in high quality pool - min distance allowed 0.3
 		  val victimShort = insert(CPLSOptionsEnum.PoolLevels.HIGH, 0.3, inInfo);
@@ -157,7 +157,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * @return Unit structure (necessary to the proper operation of the monitor)
 	  */
 	 //protected def normalInsert( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def normalInsert( inInfo : State(sz) ) : Unit {
+	 protected def normalInsert( inInfo : State(sz){inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz} ) : Unit {
 		  Logger.debug(()=>{"Smart Pool: normal Insert"});
 		  insert(CPLSOptionsEnum.PoolLevels.HIGH, distance, inInfo );
 		  return Unit();

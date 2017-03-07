@@ -15,7 +15,7 @@ public class QAPModel extends ProblemGenericModel{
  	var bound : Int = 0n;/** best bound (0 if unknown) */
  	var bks : Int = 0n;/** best known solution cost (0 if unknown) */
  	
- 	public def this(size:Long):QAPModel(size){
+ 	public def this(size:Long){
  		super(size);
  		//Console.OUT.println("Constructor de QAPModel invocado");
  	}
@@ -40,7 +40,7 @@ public class QAPModel extends ProblemGenericModel{
  	/**
  	*  Compute the cost difference if elements i and j are permuted
  	*/
- 	public def computeDelta(i:Long, j:Long, variables:Rail[Int]): Long{
+ 	public def computeDelta(i:Long, j:Long, variables:Rail[Int]{self.size == super.size}): Long{
  		var pi : Long = variables(i) as Long;
  		var pj : Long = variables(j) as Long;
  		var k : Long, pk :Long;
@@ -72,7 +72,7 @@ public class QAPModel extends ProblemGenericModel{
  		*  but the value of delta[i][j] is supposed to be known before
  		*  the transposition of elements r and s.
  	*/
- 	public def computeDeltaPart(i : Long, j : Long, r : Long, s : Long, variables:Rail[Int]) : Long{
+ 	public def computeDeltaPart(i : Long, j : Long, r : Long, s : Long, variables:Rail[Int]{self.size == super.size}) : Long{
  		var pi : Long = variables(i) as Long;
  		var pj : Long = variables(j) as Long;
  		var pr : Long = variables(r) as Long;
@@ -85,7 +85,7 @@ public class QAPModel extends ProblemGenericModel{
  			(this.dist(pi)(ps) - this.dist(pj)(ps) + this.dist(pj)(pr) - this.dist(pi)(pr)));
  	}
 
- 	public def costOfSolution(shouldBeRecorded : Boolean, variables:Rail[Int]) : Long{
+ 	public def costOfSolution(shouldBeRecorded : Boolean, variables:Rail[Int]){variables.size == super.size}: Long{
  		var i : Long, j : Long;
  		var r : Long  = 0;
  		for(i = 0; i < size; i++)
@@ -99,7 +99,7 @@ public class QAPModel extends ProblemGenericModel{
  	}
  
  	//Jason: New method for calculate costofSolution for a in solution 
- 	public def costOfSolution(solution:Rail[Int]):Long{
+ 	public def costOfSolution(solution:Rail[Int]){solution.size == super.size}:Long{
  		var i : Long, j : Long;
  		var r : Long  = 0;
  		for(i = 0; i < size; i++)
@@ -120,7 +120,7 @@ public class QAPModel extends ProblemGenericModel{
  	}
 
 
- 	public def executedSwap(var i1:Long, var i2:Long, variables:Rail[Int]):void{
+ 	public def executedSwap(var i1:Long, var i2:Long, variables:Rail[Int]{self.size == super.size}):void{
  		var temp : Long = variables(i1);
  		if (i1 >= i2){
  			var tmp : Long = i1;
@@ -269,7 +269,7 @@ public class QAPModel extends ProblemGenericModel{
  *  Checks if the solution is valid.
  */
 
- 	public def verify(match:Valuation(size)) : Boolean{
+ 	public def verify(match:Valuation(super.size)) : Boolean{
  		//Check Permutation
  		val permutV = new Rail[Int](size, 0n);
  		val baseV = this.baseValue;

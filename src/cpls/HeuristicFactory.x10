@@ -4,8 +4,8 @@ import cpls.solver.HeuristicSolver;
 import cpls.solver.AdaptiveSearch;
 import cpls.solver.EOSearch;
 import cpls.solver.RoTSearch;
-import cpls.solver.RandomSearch;
 import cpls.solver.GeneticAlgorithm;
+import cpls.solver.HeuristicSolver;
 import cpls.CPLSOptionsEnum;
 
 public struct HeuristicFactory{
@@ -14,9 +14,9 @@ public struct HeuristicFactory{
  			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:   return new AdaptiveSearch();
  			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:   return new EOSearch();
  			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL: return new RoTSearch();
- 			case CPLSOptionsEnum.HeuristicsSupported.RS_SOL: return new RandomSearch();
+ 			case CPLSOptionsEnum.HeuristicsSupported.RS_SOL: return new HeuristicSolver();
  			case CPLSOptionsEnum.HeuristicsSupported.GA_SOL: return new GeneticAlgorithm();
- 			default: return new RandomSearch();
+ 			default: return new HeuristicSolver();
  		}
  	}
  	

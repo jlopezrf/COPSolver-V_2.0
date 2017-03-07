@@ -10,15 +10,16 @@
 #include <x10/array/Array_2.h>
 #include <cpls/solver/HeuristicSolver.h>
 #include <cpls/CPLSOptionsEnum__HeuristicsSupported.h>
+#include <cpls/problem/ProblemGenericModel.h>
 #include <cpls/ParamManager.h>
 #include <x10/util/OptionsParser.h>
 #include <x10/util/Random.h>
-#include <cpls/problem/ProblemGenericModel.h>
 #include <cpls/util/MovePermutation.h>
 #include <x10/lang/Rail.h>
 #include <x10/io/Printer.h>
 #include <x10/io/Console.h>
 #include <x10/lang/Any.h>
+#include <x10/lang/FailedDynamicCheckException.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
@@ -73,24 +74,26 @@ void cpls::solver::RoTSearch::_constructor() {
 
 
 //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-void cpls::solver::RoTSearch::configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts) {
+void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                              ::cpls::ParamManager* opts) {
     
     //#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-    ::cpls::solver::SingleSolHeuristic::configHeuristic(problemSize, opts);
+    ::cpls::solver::SingleSolHeuristic::configHeuristic(problemModel,
+                                                        opts);
     
     //#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-    this->FMGL(tabuList) = ::x10::array::Array_2<x10_long>::_make(problemSize,
-                                                                  problemSize,
+    this->FMGL(tabuList) = ::x10::array::Array_2<x10_long>::_make(::x10aux::nullCheck(problemModel)->FMGL(size),
+                                                                  ::x10aux::nullCheck(problemModel)->FMGL(size),
                                                                   ((x10_long)0ll));
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__33760 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__33760; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__33859 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__33859; })),
                                          (-(1.0)));
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__33761 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__33761; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__33860 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__33860; })),
                                        (-(1.0)));
 }
 
@@ -117,7 +120,7 @@ void cpls::solver::RoTSearch::initVar() {
     }
     
     //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-    this->FMGL(tabuDuration) = ::x10::lang::DoubleNatives::toInt(((this->FMGL(tabuDurationFactor)) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize))))));
+    this->FMGL(tabuDuration) = ::x10::lang::DoubleNatives::toInt(((this->FMGL(tabuDurationFactor)) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size))))));
     
     //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(aspirationFactorUS),
@@ -132,23 +135,23 @@ void cpls::solver::RoTSearch::initVar() {
     }
     
     //#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-    this->FMGL(aspiration) = ::x10::lang::DoubleNatives::toInt(((((this->FMGL(aspirationFactor)) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)))))) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize))))));
+    this->FMGL(aspiration) = ::x10::lang::DoubleNatives::toInt(((((this->FMGL(aspirationFactor)) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)))))) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size))))));
     
     //#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     {
         x10_long i;
-        for (i = ((x10_long)0ll); ((i) < (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)));
+        for (i = ((x10_long)0ll); ((i) < (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
              i = ((i) + (((x10_long)1ll)))) {
             
             //#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
             {
                 x10_long j;
-                for (j = ((x10_long)0ll); ((j) < (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)));
+                for (j = ((x10_long)0ll); ((j) < (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
                      j = ((j) + (((x10_long)1ll)))) {
                     
                     //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
                     ::x10aux::nullCheck(this->FMGL(tabuList))->x10::array::Array_2<x10_long>::__set(
-                      i, j, (-(((((this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)) * (i))) + (j)))));
+                      i, j, (-(((((::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)) * (i))) + (j)))));
                 }
             }
             
@@ -189,12 +192,12 @@ x10_long cpls::solver::RoTSearch::search(::cpls::problem::ProblemGenericModel* p
     
     //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     {
-        for (i = ((x10_long)0ll); ((i) < (((this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)) - (((x10_long)1ll)))));
+        for (i = ((x10_long)0ll); ((i) < (((::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)) - (((x10_long)1ll)))));
              i = ((i) + (((x10_long)1ll)))) {
             
             //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
             {
-                for (j = ((i) + (((x10_long)1ll))); ((j) < (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)));
+                for (j = ((i) + (((x10_long)1ll))); ((j) < (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
                      j = ((j) + (((x10_long)1ll)))) {
                     
                     //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
@@ -260,7 +263,7 @@ x10_long cpls::solver::RoTSearch::search(::cpls::problem::ProblemGenericModel* p
         
         //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33778 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__33778; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33873 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__33873; }))));
         
         //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return currentCost;
@@ -275,150 +278,170 @@ x10_long cpls::solver::RoTSearch::search(::cpls::problem::ProblemGenericModel* p
         this->FMGL(nSwap) = ((this->FMGL(nSwap)) + (((x10_int)1)));
         
         //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::x10aux::nullCheck(problemModel)->executedSwap(this->FMGL(move)->getFirst(),
-                                                        this->FMGL(move)->getSecond(),
-                                                        this->::cpls::solver::SingleSolHeuristic::FMGL(variables));
+        x10_long sz = ::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size);
         
-        //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        ::cpls::problem::ProblemGenericModel* t__32028 = this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel);
+        x10_long i__32029 = this->FMGL(move)->getFirst();
+        x10_long i__32030 = this->FMGL(move)->getSecond();
+        ::x10::lang::Rail< x10_int >* variables__32031 = (__extension__ ({
+            ::x10::lang::Rail< x10_int >* t__32032 = this->::cpls::solver::SingleSolHeuristic::FMGL(variables);
+            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__32032)->FMGL(size)),
+                                           sz)))) {
+                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33874 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33874; })))));
+            }
+            t__32032;
+        }))
+        ;
+        if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(variables__32031)->FMGL(size)),
+                                       ::x10aux::nullCheck(t__32028)->FMGL(size)))))
+        {
+            ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33875 = ::x10aux::makeStringLit("!(variables$31861.size == t$31858.size)"); strLit__33875; })))));
+        }
+        ::x10aux::nullCheck(t__32028)->executedSwap(i__32029,
+                                                    i__32030,
+                                                    variables__32031);
+        
+        //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         x10_int t1;
         x10_int t2;
         
-        //#line 151 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         do {
             t1 = ::x10::lang::DoubleNatives::toInt(((this->cube()) * (((x10_double) (this->FMGL(tabuDuration))))));
         } while (((((x10_long)(t1))) <= (((x10_long)2ll))));
         
-        //#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 153 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         do {
             t2 = ::x10::lang::DoubleNatives::toInt(((this->cube()) * (((x10_double) (this->FMGL(tabuDuration))))));
         } while (((((x10_long)(t2))) <= (((x10_long)2ll))));
         
-        //#line 155 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10aux::nullCheck(this->FMGL(tabuList))->x10::array::Array_2<x10_long>::__set(
           this->FMGL(move)->getFirst(), ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                       this->FMGL(move)->getSecond()))),
           ((x10_long)(((nIter) + (t1)))));
         
-        //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 157 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10aux::nullCheck(this->FMGL(tabuList))->x10::array::Array_2<x10_long>::__set(
           this->FMGL(move)->getSecond(), ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                        this->FMGL(move)->getFirst()))),
           ((x10_long)(((nIter) + (t2)))));
         
-        //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         if (((minDelta) >= (((x10_long)0ll)))) {
             
-            //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+            //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
             this->onLocMin();
         }
         
-        //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         x10_long v = ((currentCost) + (minDelta));
         
-        //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return ((currentCost) + (minDelta));
         
     }
     
 }
 
-//#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+//#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
 x10_int cpls::solver::RoTSearch::randomInterval(x10_int low,
                                                 x10_int up) {
     
-    //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     return ((::x10::lang::DoubleNatives::toInt(((::x10aux::nullCheck(this->FMGL(random))->nextDouble()) * (((x10_double) (((((up) - (low))) + (((x10_int)1))))))))) + (low));
     
 }
 
-//#line 178 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+//#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
 x10_double cpls::solver::RoTSearch::cube() {
     
-    //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     x10_double ran1 = ::x10aux::nullCheck(this->FMGL(random))->nextDouble();
     
-    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     if (((this->FMGL(tabuDurationFactorUS)) < (((x10_double) (((x10_long)0ll))))))
     {
         
-        //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return ran1;
         
     }
     
-    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     return ((((ran1) * (ran1))) * (ran1));
     
 }
 
-//#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+//#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
 ::x10::lang::Rail< x10_int >* cpls::solver::RoTSearch::createSolverState(
   ) {
     
-    //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     ::x10::lang::Rail< x10_int >* rotsState = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
                                                                                   ((x10_int)-1));
     
-    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     rotsState->x10::lang::Rail< x10_int >::__set(((x10_long)0ll),
                                                  this->::cpls::solver::SingleSolHeuristic::FMGL(mySolverType));
     
-    //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     rotsState->x10::lang::Rail< x10_int >::__set(((x10_long)1ll),
                                                  ::x10::lang::DoubleNatives::toInt(((this->FMGL(tabuDurationFactor)) * (10.0))));
     
-    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     rotsState->x10::lang::Rail< x10_int >::__set(((x10_long)2ll),
                                                  ::x10::lang::DoubleNatives::toInt(((this->FMGL(aspirationFactor)) * (10.0))));
     
-    //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     return rotsState;
     
 }
 
-//#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+//#line 206 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
 void cpls::solver::RoTSearch::processSolverState(::x10::lang::Rail< x10_int >* state) {
     
-    //#line 208 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 209 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     x10_int inSolverType = ::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                              ((x10_long)0ll));
     
-    //#line 210 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     if ((::x10aux::struct_equals(inSolverType, this->::cpls::solver::SingleSolHeuristic::FMGL(mySolverType))))
     {
         
-        //#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         x10_double intdf = ((((x10_double) (::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                                               ((x10_long)1ll))))) / (10.0));
         
-        //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         x10_double inaf = ((((x10_double) (::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                                              ((x10_long)2ll))))) / (10.0));
         
-        //#line 217 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         this->FMGL(tabuDurationFactor) = ((((this->FMGL(tabuDurationFactor)) + (intdf))) / (2.0));
         
-        //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         this->FMGL(aspirationFactor) = ((((this->FMGL(aspirationFactor)) + (inaf))) / (2.0));
         
-        //#line 220 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         if ((!::x10aux::struct_equals(this->FMGL(tabuDuration),
                                       ((x10_int)-1)))) {
             
-            //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-            this->FMGL(tabuDuration) = ::x10::lang::DoubleNatives::toInt(((this->FMGL(tabuDurationFactor)) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize))))));
+            //#line 222 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+            this->FMGL(tabuDuration) = ::x10::lang::DoubleNatives::toInt(((this->FMGL(tabuDurationFactor)) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size))))));
         }
         
-        //#line 223 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        this->FMGL(aspiration) = ::x10::lang::DoubleNatives::toInt(((((this->FMGL(aspirationFactor)) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize)))))) * (((x10_double) (this->::cpls::solver::SingleSolHeuristic::FMGL(problemSize))))));
+        //#line 224 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+        this->FMGL(aspiration) = ::x10::lang::DoubleNatives::toInt(((((this->FMGL(aspirationFactor)) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)))))) * (((x10_double) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size))))));
     }
     
 }
 
-//#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+//#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
 void cpls::solver::RoTSearch::onLocMin() {
     
-    //#line 233 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
+    //#line 234 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     ::x10::lang::Rail< x10_int >* solverState = this->createSolverState();
     
 }

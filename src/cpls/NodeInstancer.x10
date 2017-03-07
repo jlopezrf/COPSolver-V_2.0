@@ -16,7 +16,7 @@ public class NodeInstancer{
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
- 		val refsToPlaces = PlaceLocalHandle.make[CPLSNode](PlaceGroup.WORLD, () => new CPLSNode(configCPLS.getProblemModel().size));
+ 		val refsToPlaces = PlaceLocalHandle.make[CPLSNode](PlaceGroup.WORLD, () => new CPLSNode());
  		val nodesPerTeam = configNodes.numElems_2;
  		val random:Random = new Random();
  		random.setSeed(configCPLS.getSeed());
@@ -30,23 +30,23 @@ public class NodeInstancer{
  				if(configCPLS.getIsThereAMasterNode()){
 					 if(p == Place.FIRST_PLACE){
  						refsToPlaces().initialize(configCPLS.getMasterConfig(),
-					 							configCPLS.getTeamsPoolConfig(),
-					 							configCPLS.getProblemModel(),
+					 							configCPLS.getTeamsPoolConfig(), //Jason: Revisar esta parte, no será getCPLSPoolConfig()?
+					 							configCPLS.getProblemModel().size,
 					 							seed);
 					 }else{
 					 	refsToPlaces().initialize(configNodes((p.id() -1)/nodesPerTeam, (p.id() -1)%nodesPerTeam),
 					 							configCPLS.getTeamsPoolConfig(),
-					 							configCPLS.getProblemModel(),
+					 							configCPLS.getProblemModel().size,
 					 							seed);
 					 }
  				}else{
  					refsToPlaces().initialize(configNodes(p.id()/nodesPerTeam, p.id()%nodesPerTeam),
  												configCPLS.getTeamsPoolConfig(),
- 												configCPLS.getProblemModel(),
+ 												configCPLS.getProblemModel().size,
  												seed);
  				}
  				refsToPlaces().setPointersCommunication(refsToPlaces);
- 				refsToPlaces().configHeuristic(opts);
+ 				refsToPlaces().configHeuristic(configCPLS.getProblemModel(), opts);
  				random.setSeed(seed);
  			}
  		}

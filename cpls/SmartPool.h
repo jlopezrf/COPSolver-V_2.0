@@ -46,9 +46,6 @@ template<class TPMGL(U)> class Fun_0_0;
 namespace cpls { 
 class CPLSOptionsEnum__PoolModes;
 } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
 namespace cpls { namespace util { 
 class Logger;
 } } 
@@ -108,8 +105,8 @@ class SmartPool : public ::x10::lang::X10Class   {
                                     x10_double minDist);
     
     virtual void setSeed(x10_long seed);
-    virtual void tryInsertConf(::cpls::entities::State inInfo);
-    virtual ::cpls::util::Unit tryInsertConf0(::cpls::entities::State inInfo);
+    virtual void tryInsertConf(::cpls::entities::State info);
+    virtual ::cpls::util::Unit tryInsertConf0(::cpls::entities::State info);
     virtual ::cpls::entities::State insert(x10_int poolType, x10_double dist,
                                            ::cpls::entities::State inInfo);
     virtual ::cpls::util::Unit smartInsert(::cpls::entities::State inInfo);

@@ -60,7 +60,7 @@ public class ProblemGenericModel(size:Long){
   /**
    * 	executed swap
    */
-  	public def executedSwap(i1:Long, i2:Long, variables:Rail[Int]):void{
+  	public def executedSwap(i1:Long, i2:Long, variables:Rail[Int]{self.size == this.size}):void{
   		Console.OUT.println("Error no executedSwap implementation");
   	}
 
@@ -70,12 +70,12 @@ public class ProblemGenericModel(size:Long){
   		variables(j) = x;
   	}*/
   
-  	public def costOfSolution(shouldBeRecorded : Boolean, solution:Rail[Int]):Long {
+  	public def costOfSolution(shouldBeRecorded:Boolean, solution:Rail[Int]){solution.size == this.size}:Long{
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
   	
-  	public def costOfSolution(solution:Rail[Int]):Long {
+  	public def costOfSolution(solution:Rail[Int]){solution.size == this.size}:Long {
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
@@ -87,8 +87,8 @@ public class ProblemGenericModel(size:Long){
   			x10.io.Console.OUT.println("");
   	}
   
-  	public def initialize(inSeed:Long):Rail[Int]{
-  		var variables:Rail[Int] = new Rail[Int](size, (i:Long) => i as Int);
+  	public def initialize(inSeed:Long):Rail[Int]{self.size == this.size}{
+  		var variables:Rail[Int] = new Rail[Int](this.size, (i:Long) => i as Int);
   		this.r.setSeed(inSeed);
   		if (!inPathVectorSol.equalsIgnoreCase(".")){
   			//initialize from inVector
@@ -128,21 +128,13 @@ public class ProblemGenericModel(size:Long){
   				//Console.OUT.println("Variables position " + k + ": " + variables(k));
   			}
   			for( var i:Long = this.size - 1 ; i > 0 ; i-- ){
-  				//val j = r.nextLong( i + 1 );
-  				val sz = size;
   				val j = r.nextLong( i + 1 );
-  				//swapVariables(i,j);
   				val x = variables(i);
   				variables(i) = variables(j); 
   				variables(j) = x;
   			}
   		}
-  		/*Console.OUT.println("Nodo " + here.id + "arranca con variables: ");
-  		for(k in variables){
-  			Console.OUT.print(k + " ");
-  		}
-  		Console.OUT.print("\n");*/
-  		return variables;
+  		return variables as Rail[Int]{self.size == this.size};
  	}
   
   /**

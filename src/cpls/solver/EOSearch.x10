@@ -50,16 +50,16 @@ public class EOSearch extends SingleSolHeuristic{
  		super();
  	}
  
- 	public def configHeuristic(problemSize:Long, opts:ParamManager){
- 		super.configHeuristic(problemSize, opts);
- 		this.pdf = new Rail[Double] (problemSize +1, 0.0);// +1 since x in 1..size
- 		this.fit = new Rail[Long](problemSize, 0);
- 		this.expDown = 6.385378048 * Math.pow(problemSize,-1.033400799);
- 		this.expUp = 8.867754442 * Math.pow(problemSize,-0.895936426);
- 		this.powDown = 1.575467001 * Math.pow(problemSize,-0.1448643794);
- 		this.powUp = 2.426369897 * Math.pow(problemSize,-0.1435045369);
+ 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		super.configHeuristic(problemModel, opts);
+ 		this.pdf = new Rail[Double] (problemModel.size +1, 0.0);// +1 since x in 1..size
+ 		this.fit = new Rail[Long](problemModel.size, 0);
+ 		this.expDown = 6.385378048 * Math.pow(problemModel.size,-1.033400799);
+ 		this.expUp = 8.867754442 * Math.pow(problemModel.size,-0.895936426);
+ 		this.powDown = 1.575467001 * Math.pow(problemModel.size,-0.1448643794);
+ 		this.powUp = 2.426369897 * Math.pow(problemModel.size,-0.1435045369);
  		//Jason: Se cambia la forma como estan siendo leidos los parametros.
- 		this.tauUserSel = opts("-EO_t", (1.0 + 1.0 / Math.log(problemSize)));
+ 		this.tauUserSel = opts("-EO_t", (1.0 + 1.0 / Math.log(problemModel.size)));
  		this.pdfUserSel = opts("-EO_p", -1n); 
  		this.selSecond = opts("-EO_ss", 1n);
  	}
@@ -95,12 +95,12 @@ public class EOSearch extends SingleSolHeuristic{
  	private def initPDF( fnc:(tau : Double, x : Long)=>Double ){
  		var sum:Double = 0.0;
  		var y:Double = 0.0;
- 		for (var x:Int = 1n; x <= super.problemSize; x++){
+ 		for (var x:Int = 1n; x <= super.problemModel.size; x++){
  			y = fnc(this.tau, x);
  			this.pdf(x) = y;
  			sum += y; 
  		}
- 		for (var x:Int = 1n; x <= super.problemSize; x++){
+ 		for (var x:Int = 1n; x <= super.problemModel.size; x++){
  			this.pdf(x) /= sum;
  			//Console.OUT.println("Se inicializa pdf, posiciion: " + x + ". Valor: " + this.pdf(x));
  		}
@@ -110,8 +110,9 @@ public class EOSearch extends SingleSolHeuristic{
  	/**
   	*  Extremal Search process (in loop functionality)
   	*/
- 	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
+ 	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		this.selFirstVar(this.move, problemModel);
+ 		val sz = this.problemModel.size;
  		var newCost:Long = currentCost;
  		if (this.selSecond == 0n)
  			newCost = this.selSecondRandom(super.move, problemModel, currentCost);
@@ -119,7 +120,7 @@ public class EOSearch extends SingleSolHeuristic{
  			newCost = this.selSecondMinConf(super.move, problemModel, currentCost);
  		swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
  		nSwap++;
- 		problemModel.executedSwap(super.move.getFirst(), super.move.getSecond(), super.variables);
+ 		this.problemModel.executedSwap(super.move.getFirst(), super.move.getSecond(), super.variables as Rail[Int]{self.size == sz});
  		/*if(newCost < bestCost){
  			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + newCost);
  			Utils.show(". Con variables: " , super.variables);
@@ -145,7 +146,7 @@ public class EOSearch extends SingleSolHeuristic{
  		var cost: Long;
  		var selIndex:Long = 0; 
  		var locMin:Boolean = true;
- 		while((i = problemModel.nextI(i)) as ULong < problemModel.getSize() as ULong) { //False if i < 0
+ 		while((i = problemModel.nextI(i)) as ULong < super.problemModel.size as ULong) { //False if i < 0
  			cost = problemModel.costOnVariable(i);
  			// each position on the fit array is divided to contain both i and cost
  			// variable index "i" is stored in the 10 LSB 
@@ -167,7 +168,7 @@ public class EOSearch extends SingleSolHeuristic{
  			val sCost = this.fit(index) >> 10;
  			//Console.OUT.printf("svar %d scost %d \n",sVar,sCost);
  			var nSameFit:Int = 0n; 
- 			for(var k:Int=0n; k < problemModel.getSize(); k++){
+ 			for(var k:Int=0n; k < super.problemModel.size; k++){
  				val cCost = this.fit(k) >> 10; 
  				//Console.OUT.printf("cCost %d scost %d \n",cCost,sCost);
  				if ( cCost < sCost)   // descending order
@@ -194,7 +195,7 @@ public class EOSearch extends SingleSolHeuristic{
  		var nSameMin:Int = 0n;
  		var minCost:Long = Long.MAX_VALUE;
  		val first = this.move.getFirst(); 
- 		for (j = 0; j < problemModel.getSize(); j++){	
+ 		for (j = 0; j < super.problemModel.size; j++){	
  			if (first == j) continue;
  			cost = problemModel.costIfSwap(currentCost, j, first);
  			if (cost < minCost){
@@ -212,7 +213,7 @@ public class EOSearch extends SingleSolHeuristic{
  
  
  	private def selSecondRandom(move:MovePermutation, problemModel:ProblemGenericModel, currentCost:Long) : Long {
- 		val randomJ = random.nextLong(problemModel.getSize());
+ 		val randomJ = random.nextLong(super.problemModel.size);
  		val newCost = problemModel.costIfSwap(currentCost, randomJ, this.move.getFirst());	 
  		this.move.setSecond(randomJ);
  		return newCost; 

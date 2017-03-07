@@ -23,9 +23,6 @@ namespace cpls { namespace solver {
 class RoTSearch;
 } } 
 namespace cpls { namespace solver { 
-class RandomSearch;
-} } 
-namespace cpls { namespace solver { 
 class GeneticAlgorithm;
 } } 
 namespace x10 { namespace lang { 

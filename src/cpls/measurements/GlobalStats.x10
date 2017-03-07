@@ -103,7 +103,7 @@ public class GlobalStats{
 	 
 	 /** Solver State **/
 	 private var sstate:Rail[Int]{self.size==3} = new Rail[Int](3, -1n);
-	 public def setSState(sstate:Rail[Int]){this.sstate = sstate;}
+	 public def setSState(sstate:Rail[Int]){sstate.size == 3}{this.sstate = sstate;}
 	 public def getSState(){return this.sstate;}
 	 
 	 

@@ -31,6 +31,9 @@ template<class TPMGL(T)> class Rail;
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
+} } 
 namespace cpls { 
 class ParamManager;
 } 
@@ -40,8 +43,8 @@ class HeuristicSolver;
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace util { 
 class Random;
@@ -102,24 +105,20 @@ class AdaptiveSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     x10_boolean FMGL(firstBest);
     
-    x10_long FMGL(problemSize);
-    
     void _constructor();
     
     static ::cpls::solver::AdaptiveSearch* _make();
     
-    virtual void configHeuristic(x10_long problemSize, ::cpls::ParamManager* opts);
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
     virtual void initVar();
-    virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
-                            x10_long currentCost, x10_long bestCost, x10_int nIter);
+    virtual x10_long search(x10_long currentCost, x10_long bestCost,
+                            x10_int nIter);
     virtual void restartVar();
-    x10_long doReset(::cpls::problem::ProblemGenericModel* problemModel, x10_long n,
-                     x10_long currentCost);
+    x10_long doReset(x10_long n, x10_long currentCost);
     void selectVarHighCost(::cpls::problem::ProblemGenericModel* problemModel);
-    x10_long selectVarMinConflict(::cpls::problem::ProblemGenericModel* problemModel,
-                                  x10_long currentCost);
-    x10_long selectVarsToSwap(::cpls::problem::ProblemGenericModel* problemModel,
-                              x10_long currentCost);
+    x10_long selectVarMinConflict(x10_long currentCost);
+    x10_long selectVarsToSwap(x10_long currentCost);
     virtual void reportStats(::cpls::measurements::GlobalStats* c);
     virtual void updateTotStats();
     void onLocMin();

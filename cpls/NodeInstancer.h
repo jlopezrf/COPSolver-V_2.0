@@ -52,26 +52,11 @@ class PlaceGroup__SimplePlaceGroup;
 namespace x10 { namespace lang { 
 class VoidFun_0_0;
 } } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace x10 { namespace util { 
-class OptionsParser;
-} } 
-namespace cpls { 
-class Main;
-} 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
+namespace cpls { namespace entities { 
+class PoolConfig;
 } } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
-} } 
-namespace cpls { 
-class Main__COPProblemModelFactory;
-} 
-namespace cpls { namespace entities { 
-class PoolConfig;
 } } 
 namespace x10 { namespace lang { 
 class Error;
@@ -94,6 +79,9 @@ class Abort;
 namespace x10 { namespace compiler { 
 class CompilerFlags;
 } } 
+namespace x10 { namespace util { 
+class OptionsParser;
+} } 
 namespace x10 { namespace lang { 
 class System;
 } } 
@@ -108,6 +96,9 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+class String;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Iterable;
