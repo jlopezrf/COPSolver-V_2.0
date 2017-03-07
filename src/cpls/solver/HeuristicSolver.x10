@@ -103,18 +103,18 @@ public class HeuristicSolver{
  
  	public def getDistance(a:Rail[Int], b:Rail[Int]){
  		val sz = this.problemModel.size;
- 		return this.problemModel.distance(a as Valuation(sz), b as Valuation(sz));
+ 		return this.problemModel.distance(a as Rail[Int]{a.size == sz}, b as Rail[Int]{b.size == sz});
 
  	}
  
  	public def verify(conf:Rail[Int]){
  		val sz = this.problemModel.size;
- 		return this.problemModel.verify(conf as Valuation(sz){conf.size == sz});
+ 		return this.problemModel.verify(conf);
 
  	}
  
  	public def displaySolution(conf:Rail[Int]){
  		val sz = this.problemModel.size;
- 		this.problemModel.displaySolution(conf as Valuation(sz){conf.size == sz});
+ 		this.problemModel.displaySolution(conf);
  	}
 }

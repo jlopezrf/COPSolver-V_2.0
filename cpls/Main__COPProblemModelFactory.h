@@ -25,9 +25,9 @@ class String;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__SupportedProblems;
-} 
+namespace x10 { namespace util { 
+class Timer;
+} } 
 namespace cpls { namespace problem { 
 class MSPModel;
 } } 
@@ -108,7 +108,9 @@ class Main__COPProblemModelFactory   {
         
     }
     void _constructor() {
-        (*this)->cpls::Main__COPProblemModelFactory::__fieldInitializers_cpls_Main_COPProblemModelFactory();
+        ::cpls::Main__COPProblemModelFactory this__24864 =
+          (*this);
+        
     }
     static ::cpls::Main__COPProblemModelFactory _make() {
         ::cpls::Main__COPProblemModelFactory this_; 

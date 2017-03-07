@@ -190,22 +190,23 @@ public class CPLSNode{
  			//Update the best configuration found so far
  			updateCosts();
 
- 			//Kill solving process
+ 			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
- 			if (kill)
+ 			if (kill){
  				break;  // kill: End solving process
+ 			}
  
  			//Time out
  			if(this.nodeConfig.getMaxTime() > 0n){
  				val eTime = System.nanoTime() - this.initialTime; 
  				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
+ 					Console.OUT.println("Ingreso por Time Out" + here.id);
  					Logger.debug(()=>{" Time Out"});
  					break;
  				}
  			}
  			interact();
  		}
- 		//Console.OUT.println("Valores estadisticos: " + this.time + ", " + this.nRestart + ", " + this.nIter + ", " + this.nForceRestart);
  		updateTotStats();
  		return this.currentCost;
 
@@ -294,6 +295,7 @@ public class CPLSNode{
  					communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState as Rail[Int]{self.size == 3}));
  				}		  
  			}
+ 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en primer if de interact");
  		}
  
  		if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n ){
@@ -305,7 +307,8 @@ public class CPLSNode{
  				this.nChangeV++;
  				this.currentCost = this.heuristicSolver.costOfSolution();
  				bestSent = false;
- 			} 
+ 			}
+ 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en segundo if de interact");
  		}
  		// Force Restart: Inter Team Communication
  		if (this.forceRestart){
@@ -330,6 +333,7 @@ public class CPLSNode{
  					bestSent = false;
  				}
  			}
+ 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en tercer if de interact");
  		}
  	}
  
@@ -362,9 +366,10 @@ public class CPLSNode{
  		return;
  	}
  
- 	public def tryInsertConf(info:State{info.solverState.size ==3, info.vector.size == info.sz}){
+ 	public def tryInsertConf(info:State){info.solverState.size ==3, info.vector.size == info.sz}{
+ 		val sz = this.heuristicSolver.getSizeProblem();
  		if(teamPool != null){
- 			teamPool.tryInsertConf(info as State(info.sz){info.vector.size == info.sz});
+ 			teamPool.tryInsertConf(info as State(sz){info.vector.size == info.sz});
  		}
  	}
  
@@ -631,7 +636,7 @@ public class CPLSNode{
  
  	public def displaySolution(){
  		val sz = this.heuristicSolver.getSizeProblem();
- 		this.heuristicSolver.displaySolution(this.bestConf as Valuation(sz));
+ 		this.heuristicSolver.displaySolution(this.bestConf);
  	}
  	
  	public def diversify():void{
@@ -717,6 +722,7 @@ public class CPLSNode{
  	}
  
  	protected def updateTotStats(){
+ 		//Console.OUT.println("Ingresa a reportar las estadisticas totales");
  		this.nIterTot += this.nIter;
  		this.nSwapTot += this.heuristicSolver.getNSwap(); 
  		this.heuristicSolver.clearNSwap();

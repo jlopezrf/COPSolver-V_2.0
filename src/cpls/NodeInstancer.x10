@@ -62,6 +62,7 @@ public class NodeInstancer{
  					refsToPlaces().start(configCPLS.getTargetCost(), configCPLS.getStrictLow());
  				}
  		 	}
+ 			Console.OUT.println("Se cumple el finish");
  			verifyWinner(refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			wallTime += System.nanoTime();
  			val wtime = wallTime;
@@ -71,14 +72,14 @@ public class NodeInstancer{
  				//if (fileMode) Console.OUT.print(instance+",");
  				refsToPlaces().printStats(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.println(","+wallTime/1e9);
- 			}
- 			else if (configCPLS.getOutFormat() == 1n){
+ 			}else if (configCPLS.getOutFormat() == 1n){
  				Console.OUT.printf("\r");
  				refsToPlaces().printStats(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.printf(" %8.4f |\n",wallTime/1e9);
  				refsToPlaces().printAVG(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.flush();
  			}
+ 			Console.OUT.println("\n ");
  			finish for (p in Place.places()) at (p) {   
  				refsToPlaces().clear();
  			}
@@ -87,10 +88,8 @@ public class NodeInstancer{
  			//Console.OUT.print(cFile+",");
  			refsToPlaces().printAVG(timesPerInstance,configCPLS.getOutFormat(), 8n);
  			Console.OUT.println(","+(fWall/(timesPerInstance*1e9)));
- 		}
- 		else if (configCPLS.getOutFormat() == 1n){
+ 		}else if (configCPLS.getOutFormat() == 1n){
  			Console.OUT.printf("\r");
- 			
  			refsToPlaces().printAVG(timesPerInstance,configCPLS.getOutFormat(), 8n);
  			Console.OUT.printf(" %8.4f |\n",(fWall/(timesPerInstance*1e9)));
  			//accStats.printAVG(testNo);
@@ -102,8 +101,9 @@ public class NodeInstancer{
  	}
  	
  	public static def verifyWinner(val refPlaces:PlaceLocalHandle[CPLSNode], verify:Boolean, val targetCost:Long, explorerWinner:Int):void{
+ 		Console.OUT.println("Y realiza el verifyWinner");
  		var minCost:Long = Long.MAX_VALUE;
- 		var bestPlace:Place = here; 
+ 		var bestPlace:Place = here;
  		if(explorerWinner == -1n){
  			Logger.debug(()=>"No winner found");
  			for (k in Place.places()){

@@ -114,7 +114,7 @@ class cpls_util_Monitor__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply(::x10::lang::String* t) {
-        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33900 = ::x10aux::makeStringLit("Monitor: waking "); strLit__33900; })), t);
+        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__33882 = ::x10aux::makeStringLit("Monitor: waking "); strLit__33882; })), t);
         
     }
     
@@ -163,7 +163,7 @@ class cpls_util_Monitor__closure__4 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33901 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__33901; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33883 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__33883; }));
         
     }
     
@@ -212,7 +212,7 @@ class cpls_util_Monitor__closure__5 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33902 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__33902; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33884 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__33884; }));
         
     }
     
@@ -261,7 +261,7 @@ class cpls_util_Monitor__closure__6 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33903 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__33903; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33885 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__33885; }));
         
     }
     
@@ -310,7 +310,7 @@ class cpls_util_Monitor__closure__7 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33904 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__33904; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33886 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__33886; }));
         
     }
     
@@ -359,7 +359,7 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33905 = ::x10aux::makeStringLit("Monitor: done"); strLit__33905; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33887 = ::x10aux::makeStringLit("Monitor: done"); strLit__33887; }));
         
     }
     
@@ -405,7 +405,7 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
 
 //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::_constructor() {
-    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__33897 = ::x10aux::makeStringLit(""); strLit__33897; })));
+    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__33879 = ::x10aux::makeStringLit(""); strLit__33879; })));
     
 }
 ::cpls::util::Monitor* cpls::util::Monitor::_make() {

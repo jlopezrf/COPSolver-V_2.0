@@ -184,7 +184,7 @@ public class ProblemGenericModel(size:Long){
   
   //Jason: Esta es como una especie de distancia de Hamming normalizada
   //Devuelve una medida entre 0 y 1 de cuantas componenes tienen iguales
-  	public def distance(conf1 : Valuation(size), conf2 : Valuation(size)) : Double {
+  	public def distance(conf1 : Rail[Int], conf2 : Rail[Int]){conf1.size == this.size as long, conf2.size == this.size as long}: Double {
   		var count : Int = 0n;
   		for (i in 0n..(size as Int - 1n)){
   			//Logger.debug("comparing: "+conf1(i)+" - "+conf2(i));

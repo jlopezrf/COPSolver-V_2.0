@@ -93,37 +93,37 @@ public:
         //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         case 2/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)()*/: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32791 = ::x10aux::makeStringLit("AS_SOL"); strLit__32791; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32775 = ::x10aux::makeStringLit("AS_SOL"); strLit__32775; }));
             
         }
         //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         case 3/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)()*/: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32792 = ::x10aux::makeStringLit("EO_SOL"); strLit__32792; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32776 = ::x10aux::makeStringLit("EO_SOL"); strLit__32776; }));
             
         }
         //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         case 4/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)()*/: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32793 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__32793; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32777 = ::x10aux::makeStringLit("RoTS_SOL"); strLit__32777; }));
             
         }
         //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         case 1/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__get)()*/: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32794 = ::x10aux::makeStringLit("RS_SOL"); strLit__32794; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32778 = ::x10aux::makeStringLit("RS_SOL"); strLit__32778; }));
             
         }
         //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         case 5/*::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__get)()*/: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32795 = ::x10aux::makeStringLit("GA_SOL"); strLit__32795; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32779 = ::x10aux::makeStringLit("GA_SOL"); strLit__32779; }));
             
         }
         //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/HeuristicFactory.x10"
         default: ;
         {
-            return (__extension__ ({ static ::x10::lang::String* strLit__32796 = ::x10aux::makeStringLit("Default"); strLit__32796; }));
+            return (__extension__ ({ static ::x10::lang::String* strLit__32780 = ::x10aux::makeStringLit("Default"); strLit__32780; }));
             
         }
     }
@@ -134,7 +134,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::HeuristicFactory::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__32797 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__32797; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__32781 = ::x10aux::makeStringLit("struct cpls.HeuristicFactory"); strLit__32781; }));
     
 }
 x10_boolean cpls::HeuristicFactory::equals(::x10::lang::Any* other) {

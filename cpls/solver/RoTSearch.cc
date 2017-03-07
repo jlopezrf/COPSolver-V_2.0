@@ -88,12 +88,12 @@ void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericMod
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__33859 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__33859; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__33841 = ::x10aux::makeStringLit("--RoTS_tabu_duration"); strLit__33841; })),
                                          (-(1.0)));
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__33860 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__33860; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__33842 = ::x10aux::makeStringLit("--RoTS_aspiration"); strLit__33842; })),
                                        (-(1.0)));
 }
 
@@ -263,7 +263,7 @@ x10_long cpls::solver::RoTSearch::search(::cpls::problem::ProblemGenericModel* p
         
         //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33873 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__33873; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__33855 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__33855; }))));
         
         //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return currentCost;
@@ -281,26 +281,26 @@ x10_long cpls::solver::RoTSearch::search(::cpls::problem::ProblemGenericModel* p
         x10_long sz = ::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size);
         
         //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
-        ::cpls::problem::ProblemGenericModel* t__32028 = this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel);
-        x10_long i__32029 = this->FMGL(move)->getFirst();
-        x10_long i__32030 = this->FMGL(move)->getSecond();
-        ::x10::lang::Rail< x10_int >* variables__32031 = (__extension__ ({
-            ::x10::lang::Rail< x10_int >* t__32032 = this->::cpls::solver::SingleSolHeuristic::FMGL(variables);
-            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__32032)->FMGL(size)),
+        ::cpls::problem::ProblemGenericModel* t__32013 = this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel);
+        x10_long i__32014 = this->FMGL(move)->getFirst();
+        x10_long i__32015 = this->FMGL(move)->getSecond();
+        ::x10::lang::Rail< x10_int >* variables__32016 = (__extension__ ({
+            ::x10::lang::Rail< x10_int >* t__32017 = this->::cpls::solver::SingleSolHeuristic::FMGL(variables);
+            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__32017)->FMGL(size)),
                                            sz)))) {
-                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33874 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33874; })))));
+                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33856 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==sz}"); strLit__33856; })))));
             }
-            t__32032;
+            t__32017;
         }))
         ;
-        if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(variables__32031)->FMGL(size)),
-                                       ::x10aux::nullCheck(t__32028)->FMGL(size)))))
+        if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(variables__32016)->FMGL(size)),
+                                       ::x10aux::nullCheck(t__32013)->FMGL(size)))))
         {
-            ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33875 = ::x10aux::makeStringLit("!(variables$31861.size == t$31858.size)"); strLit__33875; })))));
+            ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__33857 = ::x10aux::makeStringLit("!(variables$31846.size == t$31843.size)"); strLit__33857; })))));
         }
-        ::x10aux::nullCheck(t__32028)->executedSwap(i__32029,
-                                                    i__32030,
-                                                    variables__32031);
+        ::x10aux::nullCheck(t__32013)->executedSwap(i__32014,
+                                                    i__32015,
+                                                    variables__32016);
         
         //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         x10_int t1;

@@ -31,6 +31,9 @@ template<class TPMGL(U)> class Fun_0_0;
 namespace x10 { namespace util { 
 class Random;
 } } 
+namespace x10 { namespace util { 
+class Timer;
+} } 
 namespace x10 { namespace lang { 
 class Runtime;
 } } 
@@ -59,6 +62,12 @@ namespace cpls { namespace problem {
 class ProblemGenericModel;
 } } 
 namespace x10 { namespace lang { 
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace x10 { namespace lang { 
 class Error;
 } } 
 namespace x10 { namespace lang { 
@@ -82,12 +91,6 @@ class CompilerFlags;
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
-namespace x10 { namespace lang { 
-class System;
-} } 
-namespace cpls { namespace measurements { 
-class GlobalStats;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -96,6 +99,9 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace cpls { namespace measurements { 
+class GlobalStats;
 } } 
 namespace x10 { namespace lang { 
 class String;
@@ -106,9 +112,6 @@ template<class TPMGL(T)> class Iterable;
 namespace cpls { namespace util { 
 class Logger;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__SupportedProblems;
-} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

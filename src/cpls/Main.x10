@@ -169,7 +169,7 @@ public class Main {
  		val divOption:Int = opts("O", 0n);
  		
  		val maxTime = opts("-mt", 0);
- 		val maxIters = opts("-mi", 100000000);
+ 		val maxIters = opts("-mi", 100000000); 
  		val maxRestarts = opts("-mr", 0n);
  		val reportPart = opts("-rp", 0n) == 1n; 
  		val modParams = opts("-M", 1n);
