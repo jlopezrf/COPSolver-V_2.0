@@ -202,22 +202,22 @@ inline ::x10::lang::Fun_0_0< ::cpls::util::Unit>* cpls::util::Monitor::FMGL(NOTH
     return cpls::util::Monitor::FMGL(NOTHING);
 }
 
-#ifndef CPLS_UTIL_MONITOR_H_atomicBlock_511
-#define CPLS_UTIL_MONITOR_H_atomicBlock_511
+#ifndef CPLS_UTIL_MONITOR_H_atomicBlock_512
+#define CPLS_UTIL_MONITOR_H_atomicBlock_512
 template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::atomicBlock(::x10::lang::Fun_0_0<TPMGL(T)>* action) {
     return this->template on< TPMGL(T) >(::cpls::util::Monitor::FMGL(TRUE__get)(),
                                          action);
     
 }
-#endif // CPLS_UTIL_MONITOR_H_atomicBlock_511
-#ifndef CPLS_UTIL_MONITOR_H_on_512
-#define CPLS_UTIL_MONITOR_H_on_512
+#endif // CPLS_UTIL_MONITOR_H_atomicBlock_512
+#ifndef CPLS_UTIL_MONITOR_H_on_513
+#define CPLS_UTIL_MONITOR_H_on_513
 template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::on(::x10::lang::Fun_0_0<x10_boolean>* cond,
                                                           ::x10::lang::Fun_0_0<TPMGL(T)>* action) {
     {
         
         //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
-        ::x10::lang::CheckedThrowable* throwable__32417 =
+        ::x10::lang::CheckedThrowable* throwable__32921 =
           ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
         try {
             {
@@ -291,34 +291,34 @@ template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::on(::x10::lang::Fun_0_0<x
                 {
                     
                     //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
-                    TPMGL(T) t__32416 = result;
+                    TPMGL(T) t__32920 = result;
                     {
                         
                         //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->unlock();
                     }
-                    return t__32416;
+                    return t__32920;
                     
                 }
             }
             ::x10::compiler::Finalization::plausibleThrow();
         }
-        catch (::x10::lang::CheckedThrowable* __exc513) {
+        catch (::x10::lang::CheckedThrowable* __exc514) {
             if (true) {
-                ::x10::lang::CheckedThrowable* formal__32418 =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc513);
+                ::x10::lang::CheckedThrowable* formal__32922 =
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc514);
                 {
-                    throwable__32417 = formal__32418;
+                    throwable__32921 = formal__32922;
                 }
             } else
             throw;
         }
         if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                      throwable__32417)))
+                                      throwable__32921)))
         {
-            if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__32417))
+            if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__32921))
             {
-                ::x10aux::throwException(::x10aux::nullCheck(throwable__32417));
+                ::x10aux::throwException(::x10aux::nullCheck(throwable__32921));
             }
             
         }
@@ -332,18 +332,18 @@ template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::on(::x10::lang::Fun_0_0<x
         
         //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                      throwable__32417)))
+                                      throwable__32921)))
         {
-            if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__32417)))
+            if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__32921)))
             {
-                ::x10aux::throwException(::x10aux::nullCheck(throwable__32417));
+                ::x10aux::throwException(::x10aux::nullCheck(throwable__32921));
             }
             
         }
         
     }
 }
-#endif // CPLS_UTIL_MONITOR_H_on_512
+#endif // CPLS_UTIL_MONITOR_H_on_513
 inline ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*
   cpls::util::Monitor::FMGL(waking__get)() {
     if (FMGL(waking__status) != ::x10aux::StaticInitController::INITIALIZED) {

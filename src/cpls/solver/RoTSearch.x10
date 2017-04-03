@@ -5,6 +5,7 @@ import cpls.problem.ProblemGenericModel;
 import cpls.util.Utils;
 import cpls.CPLSOptionsEnum;
 import cpls.ParamManager;
+import cpls.util.Valuation;
 
 public class RoTSearch extends SingleSolHeuristic{
  	
@@ -29,8 +30,8 @@ public class RoTSearch extends SingleSolHeuristic{
 	val al = 2.0;
 	val au = 5.0;
 	
-	public def this(){
-		super();
+	public def this(sz:Long){
+		super(sz);
 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
 	}
 
@@ -140,8 +141,8 @@ public class RoTSearch extends SingleSolHeuristic{
 			
 			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
 			nSwap++;
-			val sz =  super.problemModel.size;
-			super.problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables  as Rail[Int]{self.size == sz});
+			//val sz =  super.problemModel.size;
+			super.problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables  as Valuation(sz));
 			
 			/* forbid reverse move for a random number of iterations */
 			

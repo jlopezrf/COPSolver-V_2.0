@@ -120,7 +120,8 @@ public class QAPModel extends ProblemGenericModel{
  	}
 
 
- 	public def executedSwap(var i1:Long, var i2:Long, variables:Rail[Int]{self.size == super.size}):void{
+ 	//variables:Rail[Int]{self.size == this.size}
+ 	public def executedSwap(var i1:Long, var i2:Long, variables:Valuation(size)):void{
  		var temp : Long = variables(i1);
  		if (i1 >= i2){
  			var tmp : Long = i1;

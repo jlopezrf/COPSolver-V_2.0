@@ -57,7 +57,7 @@ class HeuristicFactory   {
     
     static ::cpls::HeuristicFactory _alloc(){::cpls::HeuristicFactory t; return t; }
     
-    static ::cpls::solver::HeuristicSolver* make(x10_int kind);
+    static ::cpls::solver::HeuristicSolver* make(x10_int kind, x10_long sz);
     static ::x10::lang::String* getHeuristicName(x10_int kind);
     ::x10::lang::String* typeName();
     ::x10::lang::String* toString();

@@ -3,13 +3,14 @@
 #include <cpls/solver/PopulBasedHeuristic.h>
 
 #include <cpls/solver/HeuristicSolver.h>
+#include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
-void cpls::solver::PopulBasedHeuristic::_constructor() {
+void cpls::solver::PopulBasedHeuristic::_constructor(x10_long sz) {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
-    (this)->::cpls::solver::HeuristicSolver::_constructor();
+    (this)->::cpls::solver::HeuristicSolver::_constructor(sz);
     
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/PopulBasedHeuristic.x10"
     
@@ -17,9 +18,9 @@ void cpls::solver::PopulBasedHeuristic::_constructor() {
     this->cpls::solver::PopulBasedHeuristic::__fieldInitializers_cpls_solver_PopulBasedHeuristic();
 }
 ::cpls::solver::PopulBasedHeuristic* cpls::solver::PopulBasedHeuristic::_make(
-  ) {
+  x10_long sz) {
     ::cpls::solver::PopulBasedHeuristic* this_ = new (::x10aux::alloc_z< ::cpls::solver::PopulBasedHeuristic>()) ::cpls::solver::PopulBasedHeuristic();
-    this_->_constructor();
+    this_->_constructor(sz);
     return this_;
 }
 

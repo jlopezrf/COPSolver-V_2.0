@@ -10,19 +10,20 @@ import x10.util.Random;
 import cpls.ParamManager;
 import x10.util.StringUtil;
 
-public class HeuristicSolver{
+public class HeuristicSolver(sz:Long){
  	protected val move = new MovePermutation(-1n, -1n);
  	protected var random : Random;
  	protected var nSwap : Int;
  	protected var problemModel:ProblemGenericModel;
  	protected var mySolverType:Int;
- 	protected var variables:Rail[Int]{};
+ 	protected var variables:Rail[Int]{size == sz};
 
- 	public def this(){
+ 	public def this(sz:Long){
+ 		property(sz);
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		this.variables = new Rail[Int](problemModel.size, (i:Long) => i as Int);
+ 		this.variables = new Rail[Int](sz, (i:Long) => i as Int);
  		this.problemModel = problemModel;
  	}
  	/**
@@ -70,7 +71,7 @@ public class HeuristicSolver{
  		return this.variables;
  	}
  
- 	public def setVariables(variables:Rail[Int]){
+ 	public def setVariables(variables:Rail[Int]{size == sz}){
  		this.variables = variables;
  	}
  

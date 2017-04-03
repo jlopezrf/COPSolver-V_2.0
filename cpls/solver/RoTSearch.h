@@ -118,9 +118,9 @@ class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     x10_double FMGL(au);
     
-    void _constructor();
+    void _constructor(x10_long sz);
     
-    static ::cpls::solver::RoTSearch* _make();
+    static ::cpls::solver::RoTSearch* _make(x10_long sz);
     
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);

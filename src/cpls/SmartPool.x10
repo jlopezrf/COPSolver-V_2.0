@@ -28,12 +28,12 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 protected val monitor = new Monitor("SmartPool");
 	 protected var distance:double; 
 	 
-	 public def this(poolConfig:PoolConfig){
-		 property(poolConfig.getProblemSize(), poolConfig.getPoolSize());
+	 public def this(size:Long, poolConfig:PoolConfig){
+		 property(size, poolConfig.getPoolSize());
 		 poolMode = poolConfig.getPoolMode();
 		 distance = poolConfig.getMinDist();		  
 		 for (i in 0..2)
-			 pool(i) = new Rail[State(sz)](poolSize, State(sz,0n,null,0n,null));
+			 pool(i) = new Rail[State(sz)](poolSize, new State(sz,0n,null,0n,null));
 	 }
 	 
 	 public def this(sz:Long, pSize:Int, pMode:Long, minDist:Double){
@@ -41,7 +41,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 		  poolMode = pMode;
 		  distance = minDist;		  
 		  for (i in 0..2)
-				pool(i) = new Rail[State(sz)](poolSize, State(sz,0n,null,0n,null));
+				pool(i) = new Rail[State(sz)](poolSize, new State(sz,0n,null,0n,null));
 	 }
 	 
 	 public def setSeed(seed:Long){
@@ -55,12 +55,12 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * variables will already have happened.
 	  */
 	 //public def tryInsertConf(cost:Long, variables:Rail[Int]{self.size==sz}, place:Int) {
-	 public def tryInsertConf( info : State(sz){info.solverState.size ==3, info.vector.size == info.sz} ) {
+	 public def tryInsertConf( info : State(sz)) {
 		  monitor.atomicBlock(()=>tryInsertConf0(info));
 	 }
 	 
 	 //protected def tryInsertConf0( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def tryInsertConf0( info : State(sz){info.solverState.size ==3, info.vector.size == info.sz} ):Unit {
+	 protected def tryInsertConf0( info : State(sz) ):Unit {
 		  // TODO Closure	  
 		  if (poolMode == CPLSOptionsEnum.PoolModes.SMART)
 				return smartInsert( info );
@@ -132,7 +132,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * @return Unit structure (necessary to the proper operation of the monitor)
 	  */
 	 //protected def smartInsert( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def smartInsert( inInfo : State(sz){inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz} ):Unit {
+	 //{inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz}
+	 protected def smartInsert( inInfo : State(sz)):Unit {
 		    Logger.debug(()=>{"Smart Pool: Smart Insert"});
 		  // try to insert conf in high quality pool - min distance allowed 0.3
 		  val victimShort = insert(CPLSOptionsEnum.PoolLevels.HIGH, 0.3, inInfo);
@@ -157,7 +158,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * @return Unit structure (necessary to the proper operation of the monitor)
 	  */
 	 //protected def normalInsert( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
-	 protected def normalInsert( inInfo : State(sz){inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz} ) : Unit {
+	 //{inInfo.solverState.size ==3, inInfo.vector.size == inInfo.sz}
+	 protected def normalInsert( inInfo : State(sz)) : Unit {
 		  Logger.debug(()=>{"Smart Pool: normal Insert"});
 		  insert(CPLSOptionsEnum.PoolLevels.HIGH, distance, inInfo );
 		  return Unit();
@@ -232,7 +234,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 						  index -= this.nbEntries(mem);
 					 }
 				}
-				val aux = new Maybe(pool(mem)(index-1));
+				val aux:Maybe[State(sz)] = new Maybe[State(sz)](pool(mem)(index-1));
 				return aux;
 		  });
 	 
@@ -251,7 +253,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 						  best = i;
 					 }
 				}
-				return new Maybe(pool(CPLSOptionsEnum.PoolLevels.HIGH)(best));
+				return new Maybe[State(sz)](pool(CPLSOptionsEnum.PoolLevels.HIGH)(best));
 		  });
 	 
 	 public def getCostList():String{

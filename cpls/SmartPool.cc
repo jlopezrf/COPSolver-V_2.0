@@ -91,7 +91,7 @@ class cpls_SmartPool__closure__2 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33372 = ::x10aux::makeStringLit("Smart Pool: Smart Insert"); strLit__33372; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33885 = ::x10aux::makeStringLit("Smart Pool: Smart Insert"); strLit__33885; }));
         
     }
     
@@ -120,7 +120,7 @@ class cpls_SmartPool__closure__2 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:136";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:137";
     }
 
 };
@@ -140,7 +140,7 @@ class cpls_SmartPool__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__33373 = ::x10aux::makeStringLit("Smart Pool: normal Insert"); strLit__33373; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__33886 = ::x10aux::makeStringLit("Smart Pool: normal Insert"); strLit__33886; }));
         
     }
     
@@ -169,7 +169,7 @@ class cpls_SmartPool__closure__3 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:161";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:163";
     }
 
 };
@@ -190,25 +190,25 @@ class cpls_SmartPool__closure__4 : public ::x10::lang::Closure {
     // closure body
     ::cpls::util::Maybe< ::cpls::entities::State>* __apply() {
         
-        //#line 207 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 209 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         x10_int totalEn = ((((saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                 ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)())))) + (saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                                                                                             ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__get)())))))) + (saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                                                                                                                                                                             ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__get)())))));
         
-        //#line 209 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         if (((totalEn) < (((x10_int)1)))) {
             return ::x10aux::class_cast_unchecked< ::cpls::util::Maybe< ::cpls::entities::State>*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
             
         }
         
-        //#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         x10_int index;
         
-        //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 215 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         x10_int mem = ::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)();
         
-        //#line 215 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 217 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         if (((((((x10_long)(saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                               ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)())))))) > (((x10_long)0ll))) &&
             ((((x10_long)(saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
@@ -217,45 +217,45 @@ class cpls_SmartPool__closure__4 : public ::x10::lang::Closure {
                             ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__get)())))))) > (((x10_long)0ll)))))
         {
             
-            //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 220 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             x10_int pooln = ::x10aux::nullCheck(saved_this->FMGL(random))->nextInt(
                               ((x10_int)10));
             
-            //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 223 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             if (((pooln) < (((x10_int)5)))) {
                 
-                //#line 222 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                //#line 224 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                 mem = ::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)();
             } else 
-            //#line 223 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 225 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             if (((((x10_long)(pooln))) < (((x10_long)8ll))))
             {
                 
-                //#line 224 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                //#line 226 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                 mem = ::cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__get)();
             } else {
                 
-                //#line 226 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                //#line 228 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                 mem = ::cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__get)();
             }
             
-            //#line 227 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 229 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             index = ((::x10aux::nullCheck(saved_this->FMGL(random))->nextInt(
                         saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                           ((x10_long)(mem))))) + (((x10_int)1)));
         } else {
             
-            //#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 232 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             index = ((::x10aux::nullCheck(saved_this->FMGL(random))->nextInt(
                         totalEn)) + (((x10_int)1)));
             
-            //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 233 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             {
                 for (mem = ((x10_int)0); ((index) > (saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                                        ((x10_long)(mem)))));
                      mem = ((mem) + (((x10_int)1)))) {
                     
-                    //#line 232 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    //#line 234 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                     index = ((index) - (saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                           ((x10_long)(mem)))));
                 }
@@ -263,13 +263,13 @@ class cpls_SmartPool__closure__4 : public ::x10::lang::Closure {
             
         }
         
-        //#line 235 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 237 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         ::cpls::util::Maybe< ::cpls::entities::State>* aux =
           ::cpls::util::Maybe< ::cpls::entities::State>::_make(::x10aux::nullCheck(saved_this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                                                                                      ((x10_long)(mem))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
                                                                  ((((x10_long)(index))) - (((x10_long)1ll)))));
         
-        //#line 236 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 238 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         return aux;
         
     }
@@ -301,7 +301,7 @@ class cpls_SmartPool__closure__4 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:205-237";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:207-239";
     }
 
 };
@@ -322,7 +322,7 @@ class cpls_SmartPool__closure__5 : public ::x10::lang::Closure {
     // closure body
     ::cpls::util::Maybe< ::cpls::entities::State>* __apply() {
         
-        //#line 245 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         if (((saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                 ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)())))) < (((x10_int)1))))
         {
@@ -330,42 +330,42 @@ class cpls_SmartPool__closure__5 : public ::x10::lang::Closure {
             
         }
         
-        //#line 246 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 248 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         x10_long bcost = (x10_long)0x7fffffffffffffffLL;
         
-        //#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 249 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         x10_long best = ((x10_long)-1ll);
         
-        //#line 248 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-        x10_int i__25698min__25786 = ((x10_int)0);
-        x10_int i__25698max__25787 = ((saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
+        //#line 250 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        x10_int i__26203min__26291 = ((x10_int)0);
+        x10_int i__26203max__26292 = ((saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
                                          ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)())))) - (((x10_int)1)));
         {
-            x10_int i__25788;
-            for (i__25788 = i__25698min__25786; ((i__25788) <= (i__25698max__25787));
-                 i__25788 = ((i__25788) + (((x10_int)1))))
+            x10_int i__26293;
+            for (i__26293 = i__26203min__26291; ((i__26293) <= (i__26203max__26292));
+                 i__26293 = ((i__26293) + (((x10_int)1))))
             {
-                x10_int i__25789 = i__25788;
+                x10_int i__26294 = i__26293;
                 
-                //#line 249 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                //#line 251 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                 if (((::x10aux::nullCheck(saved_this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                                             ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)()))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                        ((x10_long)(i__25789)))->FMGL(cost)) < (bcost)))
+                        ((x10_long)(i__26294)))->FMGL(cost)) < (bcost)))
                 {
                     
-                    //#line 250 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    //#line 252 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                     bcost = ::x10aux::nullCheck(saved_this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                                                   ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)()))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                              ((x10_long)(i__25789)))->FMGL(cost);
+                              ((x10_long)(i__26294)))->FMGL(cost);
                     
-                    //#line 251 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-                    best = ((x10_long)(i__25789));
+                    //#line 253 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    best = ((x10_long)(i__26294));
                 }
                 
             }
         }
         
-        //#line 254 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 256 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         return ::cpls::util::Maybe< ::cpls::entities::State>::_make(::x10aux::nullCheck(saved_this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                                                                                           ((x10_long)(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)()))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
                                                                       best));
@@ -399,7 +399,7 @@ class cpls_SmartPool__closure__5 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:244-255";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:246-257";
     }
 
 };
@@ -420,23 +420,23 @@ class cpls_SmartPool__closure__6 : public ::x10::lang::Closure {
     // closure body
     ::cpls::util::Unit __apply() {
         
-        //#line 274 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-        ::x10::lang::Rail< x10_int >* rail__25798 = saved_this->FMGL(nbEntries);
-        x10_long i__25746min__25799 = ((x10_long)0ll);
-        x10_long i__25746max__25800 = (x10_long)(::x10aux::nullCheck(rail__25798)->FMGL(size));
+        //#line 276 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        ::x10::lang::Rail< x10_int >* rail__26303 = saved_this->FMGL(nbEntries);
+        x10_long i__26251min__26304 = ((x10_long)0ll);
+        x10_long i__26251max__26305 = (x10_long)(::x10aux::nullCheck(rail__26303)->FMGL(size));
         {
-            x10_long i__25801;
-            for (i__25801 = i__25746min__25799; ((i__25801) < (i__25746max__25800));
-                 i__25801 = ((i__25801) + (((x10_long)1ll)))) {
-                x10_long i__25802 = i__25801;
+            x10_long i__26306;
+            for (i__26306 = i__26251min__26304; ((i__26306) < (i__26251max__26305));
+                 i__26306 = ((i__26306) + (((x10_long)1ll)))) {
+                x10_long i__26307 = i__26306;
                 
-                //#line 275 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                //#line 277 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                 saved_this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__set(
-                  i__25802, ((x10_int)0));
+                  i__26307, ((x10_int)0));
             }
         }
         
-        //#line 276 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 278 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         return ::cpls::util::Unit::_make();
         
     }
@@ -468,7 +468,7 @@ class cpls_SmartPool__closure__6 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:273-277";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10:275-279";
     }
 
 };
@@ -490,10 +490,10 @@ class cpls_SmartPool__closure__6 : public ::x10::lang::Closure {
 //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 
 //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-void cpls::SmartPool::_constructor(::cpls::entities::PoolConfig* poolConfig) {
+void cpls::SmartPool::_constructor(x10_long size, ::cpls::entities::PoolConfig* poolConfig) {
     
     //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    FMGL(sz) = ::x10aux::nullCheck(poolConfig)->getProblemSize();
+    FMGL(sz) = size;
     FMGL(poolSize) = ::x10aux::nullCheck(poolConfig)->getPoolSize();
     
     //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
@@ -506,17 +506,17 @@ void cpls::SmartPool::_constructor(::cpls::entities::PoolConfig* poolConfig) {
     this->FMGL(distance) = ::x10aux::nullCheck(poolConfig)->getMinDist();
     
     //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_long i__25602min__25762 = ((x10_long)0ll);
-    x10_long i__25602max__25763 = ((x10_long)2ll);
+    x10_long i__26107min__26267 = ((x10_long)0ll);
+    x10_long i__26107max__26268 = ((x10_long)2ll);
     {
-        x10_long i__25764;
-        for (i__25764 = i__25602min__25762; ((i__25764) <= (i__25602max__25763));
-             i__25764 = ((i__25764) + (((x10_long)1ll)))) {
-            x10_long i__25765 = i__25764;
+        x10_long i__26269;
+        for (i__26269 = i__26107min__26267; ((i__26269) <= (i__26107max__26268));
+             i__26269 = ((i__26269) + (((x10_long)1ll)))) {
+            x10_long i__26270 = i__26269;
             
             //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__set(
-              i__25765, ::x10::lang::Rail< ::cpls::entities::State >::_make(((x10_long)(this->FMGL(poolSize))),
+              i__26270, ::x10::lang::Rail< ::cpls::entities::State >::_make(((x10_long)(this->FMGL(poolSize))),
                                                                             ::cpls::entities::State::_make(this->FMGL(sz),
                                                                                                            ((x10_long)(((x10_int)0))),
                                                                                                            ::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)),
@@ -526,10 +526,10 @@ void cpls::SmartPool::_constructor(::cpls::entities::PoolConfig* poolConfig) {
     }
     
 }
-::cpls::SmartPool* cpls::SmartPool::_make(::cpls::entities::PoolConfig* poolConfig)
+::cpls::SmartPool* cpls::SmartPool::_make(x10_long size, ::cpls::entities::PoolConfig* poolConfig)
 {
     ::cpls::SmartPool* this_ = new (::x10aux::alloc_z< ::cpls::SmartPool>()) ::cpls::SmartPool();
-    this_->_constructor(poolConfig);
+    this_->_constructor(size, poolConfig);
     return this_;
 }
 
@@ -553,18 +553,18 @@ void cpls::SmartPool::_constructor(x10_long sz, x10_int pSize,
     this->FMGL(distance) = minDist;
     
     //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_long i__25618min__25766 = ((x10_long)0ll);
-    x10_long i__25618max__25767 = ((x10_long)2ll);
+    x10_long i__26123min__26271 = ((x10_long)0ll);
+    x10_long i__26123max__26272 = ((x10_long)2ll);
     {
-        x10_long i__25768;
-        for (i__25768 = i__25618min__25766; ((i__25768) <= (i__25618max__25767));
-             i__25768 = ((i__25768) + (((x10_long)1ll))))
+        x10_long i__26273;
+        for (i__26273 = i__26123min__26271; ((i__26273) <= (i__26123max__26272));
+             i__26273 = ((i__26273) + (((x10_long)1ll))))
         {
-            x10_long i__25769 = i__25768;
+            x10_long i__26274 = i__26273;
             
             //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__set(
-              i__25769, ::x10::lang::Rail< ::cpls::entities::State >::_make(((x10_long)(this->FMGL(poolSize))),
+              i__26274, ::x10::lang::Rail< ::cpls::entities::State >::_make(((x10_long)(this->FMGL(poolSize))),
                                                                             ::cpls::entities::State::_make(sz,
                                                                                                            ((x10_long)(((x10_int)0))),
                                                                                                            ::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)),
@@ -639,12 +639,12 @@ void cpls::SmartPool::tryInsertConf(::cpls::entities::State info) {
         ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                               ((x10_long)(poolType))))->x10::lang::Rail< ::cpls::entities::State >::__set(
           ((x10_long)((((__extension__ ({
-              ::x10::lang::Rail< x10_int >* a__25258 = this->FMGL(nbEntries);
-              x10_long i0__25259 = ((x10_long)(poolType));
-              x10_int r__25266 = ((a__25258->x10::lang::Rail< x10_int >::__apply(
-                                     i0__25259)) + (((x10_int)1)));
-              a__25258->x10::lang::Rail< x10_int >::__set(
-                i0__25259, r__25266);
+              ::x10::lang::Rail< x10_int >* a__25763 = this->FMGL(nbEntries);
+              x10_long i0__25764 = ((x10_long)(poolType));
+              x10_int r__25771 = ((a__25763->x10::lang::Rail< x10_int >::__apply(
+                                     i0__25764)) + (((x10_int)1)));
+              a__25763->x10::lang::Rail< x10_int >::__set(
+                i0__25764, r__25771);
           }))
           ) - (((x10_int)1))))), inInfo);
         
@@ -708,13 +708,13 @@ void cpls::SmartPool::tryInsertConf(::cpls::entities::State info) {
             ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
                                   ((x10_long)(poolType))))->x10::lang::Rail< ::cpls::entities::State >::__set(
               ((x10_long)((((__extension__ ({
-                  ::x10::lang::Rail< x10_int >* a__25311 =
+                  ::x10::lang::Rail< x10_int >* a__25816 =
                     this->FMGL(nbEntries);
-                  x10_long i0__25312 = ((x10_long)(poolType));
-                  x10_int r__25319 = ((a__25311->x10::lang::Rail< x10_int >::__apply(
-                                         i0__25312)) + (((x10_int)1)));
-                  a__25311->x10::lang::Rail< x10_int >::__set(
-                    i0__25312, r__25319);
+                  x10_long i0__25817 = ((x10_long)(poolType));
+                  x10_int r__25824 = ((a__25816->x10::lang::Rail< x10_int >::__apply(
+                                         i0__25817)) + (((x10_int)1)));
+                  a__25816->x10::lang::Rail< x10_int >::__set(
+                    i0__25817, r__25824);
               }))
               ) - (((x10_int)1))))), inInfo);
             
@@ -755,78 +755,78 @@ void cpls::SmartPool::tryInsertConf(::cpls::entities::State info) {
     
 }
 
-//#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 ::cpls::util::Unit cpls::SmartPool::smartInsert(::cpls::entities::State inInfo) {
     
-    //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     ::cpls::util::Logger::debug(reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_SmartPool__closure__2)))cpls_SmartPool__closure__2())));
     
-    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     ::cpls::entities::State victimShort = this->insert(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)(),
                                                        0.3,
                                                        inInfo);
     
-    //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     if (((((x10_long)(victimShort->FMGL(place)))) >= (((x10_long)0ll))))
     {
         
-        //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         ::cpls::entities::State victimMedium = this->insert(
                                                  ::cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__get)(),
                                                  0.6, victimShort);
         
-        //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+        //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
         if (((((x10_long)(victimMedium->FMGL(place)))) >= (((x10_long)0ll))))
         {
             
-            //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             this->insert(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__get)(),
                          0.9, victimMedium);
         }
         
     }
     
-    //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return ::cpls::util::Unit::_make();
     
 }
 
-//#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 ::cpls::util::Unit cpls::SmartPool::normalInsert(::cpls::entities::State inInfo) {
     
-    //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     ::cpls::util::Logger::debug(reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_SmartPool__closure__3)))cpls_SmartPool__closure__3())));
     
-    //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 164 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     this->insert(::cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__get)(),
                  this->FMGL(distance), inInfo);
     
-    //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 165 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return ::cpls::util::Unit::_make();
     
 }
 
-//#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 x10_double cpls::SmartPool::distance(::x10::lang::Rail< x10_int >* conf1,
                                      ::x10::lang::Rail< x10_int >* conf2) {
     
-    //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 178 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     x10_int count = ((x10_int)0);
     
-    //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_int i__25634min__25770 = ((x10_int)0);
-    x10_int i__25634max__25771 = ((((x10_int) (this->FMGL(sz)))) - (((x10_int)1)));
+    //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    x10_int i__26139min__26275 = ((x10_int)0);
+    x10_int i__26139max__26276 = ((((x10_int) (this->FMGL(sz)))) - (((x10_int)1)));
     {
-        x10_int i__25772;
-        for (i__25772 = i__25634min__25770; ((i__25772) <= (i__25634max__25771));
-             i__25772 = ((i__25772) + (((x10_int)1)))) {
-            x10_int i__25773 = i__25772;
+        x10_int i__26277;
+        for (i__26277 = i__26139min__26275; ((i__26277) <= (i__26139max__26276));
+             i__26277 = ((i__26277) + (((x10_int)1)))) {
+            x10_int i__26278 = i__26277;
             
-            //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             if ((!::x10aux::struct_equals(::x10aux::nullCheck(conf1)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__25773))),
+                                            ((x10_long)(i__26278))),
                                           ::x10aux::nullCheck(conf2)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__25773))))))
+                                            ((x10_long)(i__26278))))))
             {
                 count = ((count) + (((x10_int)1)));
             }
@@ -834,32 +834,32 @@ x10_double cpls::SmartPool::distance(::x10::lang::Rail< x10_int >* conf1,
         }
     }
     
-    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     x10_double dist = ((((x10_double) (count))) / (((x10_double) (this->FMGL(sz)))));
     
-    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 185 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return dist;
     
 }
 
-//#line 186 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 x10_boolean cpls::SmartPool::compareVectors(::x10::lang::Rail< x10_int >* vec1,
                                             ::x10::lang::Rail< x10_int >* vec2) {
     
-    //#line 187 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_long i__25650min__25774 = ((x10_long)0ll);
-    x10_long i__25650max__25775 = (((x10_long)(::x10aux::nullCheck(vec1)->FMGL(size))) - (((x10_long)1ll)));
+    //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    x10_long i__26155min__26279 = ((x10_long)0ll);
+    x10_long i__26155max__26280 = (((x10_long)(::x10aux::nullCheck(vec1)->FMGL(size))) - (((x10_long)1ll)));
     {
-        x10_long i__25776;
-        for (i__25776 = i__25650min__25774; ((i__25776) <= (i__25650max__25775));
-             i__25776 = ((i__25776) + (((x10_long)1ll))))
+        x10_long i__26281;
+        for (i__26281 = i__26155min__26279; ((i__26281) <= (i__26155max__26280));
+             i__26281 = ((i__26281) + (((x10_long)1ll))))
         {
-            x10_long i__25777 = i__25776;
+            x10_long i__26282 = i__26281;
             
-            //#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            //#line 190 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
             if ((!::x10aux::struct_equals(::x10aux::nullCheck(vec1)->x10::lang::Rail< x10_int >::__apply(
-                                            i__25777), ::x10aux::nullCheck(vec2)->x10::lang::Rail< x10_int >::__apply(
-                                                         i__25777))))
+                                            i__26282), ::x10aux::nullCheck(vec2)->x10::lang::Rail< x10_int >::__apply(
+                                                         i__26282))))
             {
                 return false;
                 
@@ -868,53 +868,53 @@ x10_boolean cpls::SmartPool::compareVectors(::x10::lang::Rail< x10_int >* vec1,
         }
     }
     
-    //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 191 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return true;
     
 }
 
-//#line 192 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 void cpls::SmartPool::printVectors() {
     
-    //#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_int i__25682min__25782 = ((x10_int)0);
-    x10_int i__25682max__25783 = ((x10_int)2);
+    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    x10_int i__26187min__26287 = ((x10_int)0);
+    x10_int i__26187max__26288 = ((x10_int)2);
     {
-        x10_int i__25784;
-        for (i__25784 = i__25682min__25782; ((i__25784) <= (i__25682max__25783));
-             i__25784 = ((i__25784) + (((x10_int)1)))) {
-            x10_int i__25785 = i__25784;
+        x10_int i__26289;
+        for (i__26289 = i__26187min__26287; ((i__26289) <= (i__26187max__26288));
+             i__26289 = ((i__26289) + (((x10_int)1)))) {
+            x10_int i__26290 = i__26289;
             
-            //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-            x10_long i__25666min__25778 = ((x10_long)0ll);
-            x10_long i__25666max__25779 = ((((x10_long)(this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
-                                                          ((x10_long)(i__25785)))))) - (((x10_long)1ll)));
+            //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            x10_long i__26171min__26283 = ((x10_long)0ll);
+            x10_long i__26171max__26284 = ((((x10_long)(this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
+                                                          ((x10_long)(i__26290)))))) - (((x10_long)1ll)));
             {
-                x10_long i__25780;
-                for (i__25780 = i__25666min__25778; ((i__25780) <= (i__25666max__25779));
-                     i__25780 = ((i__25780) + (((x10_long)1ll))))
+                x10_long i__26285;
+                for (i__26285 = i__26171min__26283; ((i__26285) <= (i__26171max__26284));
+                     i__26285 = ((i__26285) + (((x10_long)1ll))))
                 {
-                    x10_long j__25781 = i__25780;
-                    
-                    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-                    ::x10::io::Console::FMGL(OUT__get)()->print(
-                      ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((::x10aux::struct_equals(i__25785,
-                                                                                                                                                                                           ((x10_int)2)))
-                        ? ((__extension__ ({ static ::x10::lang::String* strLit__33379 = ::x10aux::makeStringLit("long "); strLit__33379; })))
-                        : ((::x10aux::struct_equals(i__25785,
-                                                    ((x10_int)1)))
-                             ? ((__extension__ ({ static ::x10::lang::String* strLit__33380 = ::x10aux::makeStringLit("med "); strLit__33380; })))
-                             : ((__extension__ ({ static ::x10::lang::String* strLit__33381 = ::x10aux::makeStringLit("short "); strLit__33381; })))), j__25781), (__extension__ ({ static ::x10::lang::String* strLit__33382 = ::x10aux::makeStringLit(". Cost = "); strLit__33382; }))), ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
-                                                                                                                                                                                                                                                                                                                 ((x10_long)(i__25785))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                                                                                                                                                                                                                                                                                             j__25781)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__33385 = ::x10aux::makeStringLit(" place "); strLit__33385; }))), ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ((x10_long)(i__25785))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                                                                                                                                                                                                                                                                                                                                                                                                                                              j__25781)->FMGL(place)));
+                    x10_long j__26286 = i__26285;
                     
                     //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-                    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__33388 = ::x10aux::makeStringLit(" Vector"); strLit__33388; })),
+                    ::x10::io::Console::FMGL(OUT__get)()->print(
+                      ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((::x10aux::struct_equals(i__26290,
+                                                                                                                                                                                           ((x10_int)2)))
+                        ? ((__extension__ ({ static ::x10::lang::String* strLit__33892 = ::x10aux::makeStringLit("long "); strLit__33892; })))
+                        : ((::x10aux::struct_equals(i__26290,
+                                                    ((x10_int)1)))
+                             ? ((__extension__ ({ static ::x10::lang::String* strLit__33893 = ::x10aux::makeStringLit("med "); strLit__33893; })))
+                             : ((__extension__ ({ static ::x10::lang::String* strLit__33894 = ::x10aux::makeStringLit("short "); strLit__33894; })))), j__26286), (__extension__ ({ static ::x10::lang::String* strLit__33895 = ::x10aux::makeStringLit(". Cost = "); strLit__33895; }))), ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
+                                                                                                                                                                                                                                                                                                                 ((x10_long)(i__26290))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
+                                                                                                                                                                                                                                                                                             j__26286)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__33898 = ::x10aux::makeStringLit(" place "); strLit__33898; }))), ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ((x10_long)(i__26290))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
+                                                                                                                                                                                                                                                                                                                                                                                                                                              j__26286)->FMGL(place)));
+                    
+                    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__33901 = ::x10aux::makeStringLit(" Vector"); strLit__33901; })),
                                               ::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
-                                                                    ((x10_long)(i__25785))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                                                j__25781)->FMGL(vector));
+                                                                    ((x10_long)(i__26290))))->x10::lang::Rail< ::cpls::entities::State >::__apply(
+                                                j__26286)->FMGL(vector));
                 }
             }
             
@@ -923,75 +923,75 @@ void cpls::SmartPool::printVectors() {
     
 }
 
-//#line 204 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 206 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 ::cpls::util::Maybe< ::cpls::entities::State>* cpls::SmartPool::getPConf(
   ) {
     
-    //#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 207 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return this->FMGL(monitor)->atomicBlock< ::cpls::util::Maybe< ::cpls::entities::State>* >(
              reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*> >(sizeof(cpls_SmartPool__closure__4)))cpls_SmartPool__closure__4(this))));
     
 }
 
-//#line 243 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 245 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 ::cpls::util::Maybe< ::cpls::entities::State>* cpls::SmartPool::getBestConf(
   ) {
     
-    //#line 244 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 246 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return this->FMGL(monitor)->atomicBlock< ::cpls::util::Maybe< ::cpls::entities::State>* >(
              reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Maybe< ::cpls::entities::State>*> >(sizeof(cpls_SmartPool__closure__5)))cpls_SmartPool__closure__5(this))));
     
 }
 
-//#line 257 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 259 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 ::x10::lang::String* cpls::SmartPool::getCostList() {
     
-    //#line 258 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 260 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     ::x10::util::StringBuilder* str = ::x10::util::StringBuilder::_make();
     
-    //#line 260 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-    x10_long i__25730min__25794 = ((x10_long)0ll);
-    x10_long i__25730max__25795 = ((x10_long)2ll);
+    //#line 262 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    x10_long i__26235min__26299 = ((x10_long)0ll);
+    x10_long i__26235max__26300 = ((x10_long)2ll);
     {
-        x10_long i__25796;
-        for (i__25796 = i__25730min__25794; ((i__25796) <= (i__25730max__25795));
-             i__25796 = ((i__25796) + (((x10_long)1ll))))
+        x10_long i__26301;
+        for (i__26301 = i__26235min__26299; ((i__26301) <= (i__26235max__26300));
+             i__26301 = ((i__26301) + (((x10_long)1ll))))
         {
-            x10_long j__25797 = i__25796;
+            x10_long j__26302 = i__26301;
             
-            //#line 261 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-            x10_int i__25714min__25790 = ((x10_int)0);
-            x10_int i__25714max__25791 = ((this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
-                                             j__25797)) - (((x10_int)1)));
+            //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+            x10_int i__26219min__26295 = ((x10_int)0);
+            x10_int i__26219max__26296 = ((this->FMGL(nbEntries)->x10::lang::Rail< x10_int >::__apply(
+                                             j__26302)) - (((x10_int)1)));
             {
-                x10_int i__25792;
-                for (i__25792 = i__25714min__25790; ((i__25792) <= (i__25714max__25791));
-                     i__25792 = ((i__25792) + (((x10_int)1))))
+                x10_int i__26297;
+                for (i__26297 = i__26219min__26295; ((i__26297) <= (i__26219max__26296));
+                     i__26297 = ((i__26297) + (((x10_int)1))))
                 {
-                    x10_int i__25793 = i__25792;
+                    x10_int i__26298 = i__26297;
                     
-                    //#line 262 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    //#line 264 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
                     str->add(::x10aux::nullCheck(this->FMGL(pool)->x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::__apply(
-                                                   j__25797))->x10::lang::Rail< ::cpls::entities::State >::__apply(
-                               ((x10_long)(i__25793)))->FMGL(cost));
+                                                   j__26302))->x10::lang::Rail< ::cpls::entities::State >::__apply(
+                               ((x10_long)(i__26298)))->FMGL(cost));
                     
-                    //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
-                    str->add((__extension__ ({ static ::x10::lang::String* strLit__33415 = ::x10aux::makeStringLit(" "); strLit__33415; })));
+                    //#line 265 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+                    str->add((__extension__ ({ static ::x10::lang::String* strLit__33928 = ::x10aux::makeStringLit(" "); strLit__33928; })));
                 }
             }
             
         }
     }
     
-    //#line 266 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 268 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     return str->toString();
     
 }
 
-//#line 272 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+//#line 274 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
 void cpls::SmartPool::clear() {
     
-    //#line 273 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
+    //#line 275 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/SmartPool.x10"
     this->FMGL(monitor)->atomicBlock< ::cpls::util::Unit >(
       reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Unit>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(sizeof(cpls_SmartPool__closure__6)))cpls_SmartPool__closure__6(this))));
 }
@@ -1008,7 +1008,7 @@ void cpls::SmartPool::__fieldInitializers_cpls_SmartPool(
                                                                 ((x10_int)0));
     this->FMGL(pool) = ::x10::lang::Rail< ::x10::lang::Rail< ::cpls::entities::State >* >::_make(((x10_long)3ll));
     this->FMGL(random) = ::x10::util::Random::_make();
-    this->FMGL(monitor) = ::cpls::util::Monitor::_make((__extension__ ({ static ::x10::lang::String* strLit__33416 = ::x10aux::makeStringLit("SmartPool"); strLit__33416; })));
+    this->FMGL(monitor) = ::cpls::util::Monitor::_make((__extension__ ({ static ::x10::lang::String* strLit__33929 = ::x10aux::makeStringLit("SmartPool"); strLit__33929; })));
     this->FMGL(distance) = 0.0;
 }
 const ::x10aux::serialization_id_t cpls::SmartPool::_serialization_id = 

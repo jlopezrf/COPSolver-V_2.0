@@ -46,8 +46,8 @@ public class EOSearch extends SingleSolHeuristic{
  	private var powDown : Double;
  	private var powUp : Double;
 
- 	public def this(){
- 		super();
+ 	public def this(sz:Long){
+ 		super(sz);
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){

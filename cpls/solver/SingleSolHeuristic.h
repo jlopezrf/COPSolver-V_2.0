@@ -16,9 +16,9 @@ class SingleSolHeuristic : public ::cpls::solver::HeuristicSolver   {
     public:
     RTT_H_DECLS_CLASS
     
-    void _constructor();
+    void _constructor(x10_long sz);
     
-    static ::cpls::solver::SingleSolHeuristic* _make();
+    static ::cpls::solver::SingleSolHeuristic* _make(x10_long sz);
     
     virtual ::cpls::solver::SingleSolHeuristic* cpls__solver__SingleSolHeuristic____this__cpls__solver__SingleSolHeuristic(
       );

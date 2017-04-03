@@ -105,9 +105,9 @@ class AdaptiveSearch : public ::cpls::solver::SingleSolHeuristic   {
     
     x10_boolean FMGL(firstBest);
     
-    void _constructor();
+    void _constructor(x10_long sz);
     
-    static ::cpls::solver::AdaptiveSearch* _make();
+    static ::cpls::solver::AdaptiveSearch* _make(x10_long sz);
     
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);

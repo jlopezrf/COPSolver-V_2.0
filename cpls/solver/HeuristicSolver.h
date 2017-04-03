@@ -10,6 +10,12 @@
 #define X10_LANG_INT_H_NODEPS
 #include <x10/lang/Int.h>
 #undef X10_LANG_INT_H_NODEPS
+#define X10_LANG_LONG_H_NODEPS
+#include <x10/lang/Long.h>
+#undef X10_LANG_LONG_H_NODEPS
+#define X10_LANG_LONG_H_NODEPS
+#include <x10/lang/Long.h>
+#undef X10_LANG_LONG_H_NODEPS
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
@@ -40,6 +46,8 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     public:
     RTT_H_DECLS_CLASS
     
+    x10_long FMGL(sz);
+    
     ::cpls::util::MovePermutation* FMGL(move);
     
     ::x10::util::Random* FMGL(random);
@@ -52,9 +60,9 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     
     ::x10::lang::Rail< x10_int >* FMGL(variables);
     
-    void _constructor();
+    void _constructor(x10_long sz);
     
-    static ::cpls::solver::HeuristicSolver* _make();
+    static ::cpls::solver::HeuristicSolver* _make(x10_long sz);
     
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);

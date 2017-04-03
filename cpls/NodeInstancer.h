@@ -19,6 +19,9 @@ template<class TPMGL(T)> class Array_2;
 namespace cpls { namespace entities { 
 class NodeConfig;
 } } 
+namespace cpls { namespace problem { 
+class ProblemGenericModel;
+} } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class PlaceLocalHandle;
 } } 
@@ -30,9 +33,6 @@ template<class TPMGL(U)> class Fun_0_0;
 } } 
 namespace x10 { namespace util { 
 class Random;
-} } 
-namespace x10 { namespace util { 
-class Timer;
 } } 
 namespace x10 { namespace lang { 
 class Runtime;
@@ -58,15 +58,6 @@ class VoidFun_0_0;
 namespace cpls { namespace entities { 
 class PoolConfig;
 } } 
-namespace cpls { namespace problem { 
-class ProblemGenericModel;
-} } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
-} } 
 namespace x10 { namespace lang { 
 class Error;
 } } 
@@ -91,6 +82,9 @@ class CompilerFlags;
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
+namespace x10 { namespace lang { 
+class System;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -112,6 +106,9 @@ template<class TPMGL(T)> class Iterable;
 namespace cpls { namespace util { 
 class Logger;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__SupportedProblems;
+} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -124,7 +121,7 @@ class NodeInstancer : public ::x10::lang::X10Class   {
     ::cpls::CPLSNode* FMGL(masterNode);
     
     static void installSolvers(::cpls::entities::CPLSConfig* configCPLS, ::cpls::ParamManager* opts);
-    static void verifyWinner(::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> refPlaces,
+    static void verifyWinner(x10_long sz, ::x10::lang::PlaceLocalHandle< ::cpls::CPLSNode*> refPlaces,
                              x10_boolean verify, x10_long targetCost,
                              x10_int explorerWinner);
     static void printHeader(x10_int outF, x10_int problem);

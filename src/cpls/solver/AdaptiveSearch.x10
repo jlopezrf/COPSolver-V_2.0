@@ -45,8 +45,8 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		private var probSelectLocMin:Int;
  		private var firstBest:Boolean;
 
- 	public def this(){
- 		super();
+ 	public def this(sz:Long){
+ 		super(sz);
  	}
  
   	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -91,7 +91,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  	*/
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		var newCost:Long = -1;
- 		val sz = this.problemModel.size;
+ 		//val sz = this.problemModel.size;
  		if( !this.exhaustive ){
  			selectVarHighCost(problemModel);
  			newCost = selectVarMinConflict( currentCost);
@@ -110,7 +110,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			if (this.nVarMarked + 1 >= this.resetLimit){	
  				onLocMin();
  				val cost:Long = doReset(this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
- 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(true, super.variables as Rail[Int]{self.size == sz}) : cost;
+ 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(true, super.variables as Valuation(sz)) : cost;
  			}
  			//return otherCost;
  		}else{
@@ -118,7 +118,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			mark(move.getSecond()) = super.nSwap + this.freezeSwap; //Mark(minJ, ad.freeze_swap);
  			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);
  			super.nSwap++;
- 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables as Rail[Int]{self.size == sz});
+ 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables as Valuation(sz));
  			//currentCost = newCost;
  			returnCost = newCost ;
  		}

@@ -4,26 +4,26 @@ import x10.util.ArrayList;
 import cpls.entities.NodeConfig;
 import cpls.entities.PoolConfig;
 import cpls.entities.State;
-import cpls.solver.HeuristicSolver;
 import cpls.problem.ProblemGenericModel;
 import cpls.measurements.GlobalStats;
 import cpls.util.Logger;
 import cpls.util.Utils;
 import cpls.util.Maybe;
-import x10.util.Random;
 import cpls.util.Valuation;
+import cpls.solver.HeuristicSolver;
+import x10.util.Random;
 import x10.util.concurrent.AtomicBoolean;
 import x10.util.RailUtils;
 import x10.util.StringUtil;
 
-public class CPLSNode{
-
+public class CPLSNode(sz:Long){
+ 	property sz()=sz;
  	/*********Variables para la configuración del nodo**********/
  	private var nodeConfig:NodeConfig;
  	protected var heuristicSolver:HeuristicSolver;
- 	private var pointersComunication:PlaceLocalHandle[CPLSNode];
- 	var teamPool:SmartPool;
- 	var cplsPool:SmartPool;
+ 	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
+ 	var teamPool:SmartPool(sz);
+ 	var cplsPool:SmartPool(sz);
  	/***********************************************************/
  	/*********Variables para el manejo de estadísticas**********/
  	val stats = new GlobalStats();
@@ -72,7 +72,8 @@ public class CPLSNode{
  	protected var bestSent:Boolean=false;
  	/*************************************************************************************/
  
- 	public def this(){
+ 	public def this(size:Long){
+ 		property(size);
  		this.random = new Random();
  		val str = System.getenv("DELTA");
  		if (str != null)
@@ -88,22 +89,22 @@ public class CPLSNode{
  			this.ns = StringUtil.parseInt(nsStr);
  		else
  			this.ns = problemSize as Int / 4n;
- 		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic());
+ 		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), sz);
  		this.random.setSeed(inSeed + here.id);
  		val semilla = inSeed + here.id;
  		Console.OUT.println("Nodo " + here.id + "inicializado con semilla: " + semilla);
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.heuristicSolver.setSolverType(config.getHeuristic());
  		this.nodeConfig = config;
- 		this.confArray = new Rail[State](config.getNumberOfTeams(), State(problemSize,-1n,null,-1n,null));
+ 		this.confArray = new Rail[State](config.getNumberOfTeams(), new State(sz,-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 			this.cplsPool = new SmartPool(cplsPoolConfig);
+ 			this.cplsPool = new SmartPool(sz, cplsPoolConfig);
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
- 			this.teamPool = new SmartPool(cplsPoolConfig);
+ 			this.teamPool = new SmartPool(sz, cplsPoolConfig);
  		}
  	}
  
- 	public def setPointersCommunication(pointersComunication:PlaceLocalHandle[CPLSNode]){
+ 	public def setPointersCommunication(pointersComunication:PlaceLocalHandle[CPLSNode(sz)]){
  		this.pointersComunication = pointersComunication;
  	}
  
@@ -153,7 +154,7 @@ public class CPLSNode{
  	public def solve(tCost : Long, sLow: Boolean):Long{
  		// Initialize all variables of the search process
  		initVar(tCost, sLow);
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		// Copy the first match to bestConf vector
  		try{
@@ -196,17 +197,19 @@ public class CPLSNode{
  				break;  // kill: End solving process
  			}
  
+ 			Console.OUT.println("in maIN LOOP " + here.id+ " time "+(System.nanoTime() - this.initialTime) +" cost="+this.currentCost);
  			//Time out
  			if(this.nodeConfig.getMaxTime() > 0n){
  				val eTime = System.nanoTime() - this.initialTime; 
  				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
- 					Console.OUT.println("Ingreso por Time Out" + here.id);
+ 					Console.OUT.println("Ingreso por Time Out " + here.id);
  					Logger.debug(()=>{" Time Out"});
  					break;
  				}
  			}
- 			interact();
+ 			//interact();
  		}
+ 		Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
 
@@ -234,7 +237,7 @@ public class CPLSNode{
  	}
  
  	protected def updateCosts(){
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
  			this.bestCost = this.currentCost;
@@ -283,16 +286,16 @@ public class CPLSNode{
  
  	protected def interact(){ 
  		// Interaction with other places
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		if( this.nodeConfig.getReportI() != 0n && this.nIter % this.nodeConfig.getReportI() == 0n){
  			if(!bestSent){ 
  				val solverState = createSolverState();
- 				communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState as Rail[Int]{self.size == 3}));
+ 				communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
  				bestSent = true;
  			}else{
  				if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
  					val solverState = createSolverState();
- 					communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState as Rail[Int]{self.size == 3}));
+ 					communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
  				}		  
  			}
  			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en primer if de interact");
@@ -337,12 +340,12 @@ public class CPLSNode{
  		}
  	}
  
- 	public def communicate( info:State{info.solverState.size ==3, info.vector.size == info.sz}) {  
+ 	public def communicate( info:State(sz)) {  
  		Logger.debug(()=>" communicate: entering.");
  		val placeid = here.id as Int;
  		if ( Place(nodeConfig.getTeamId()) == here ){
  			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
- 			tryInsertConf(info);
+ 			this.tryInsertConf(info);
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
  			at(Place(nodeConfig.getTeamId())) async pointersComunication().tryInsertConf( info );
@@ -366,23 +369,24 @@ public class CPLSNode{
  		return;
  	}
  
- 	public def tryInsertConf(info:State){info.solverState.size ==3, info.vector.size == info.sz}{
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 	public def tryInsertConf(info:State(sz)){
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		if(teamPool != null){
- 			teamPool.tryInsertConf(info as State(sz){info.vector.size == info.sz});
+ 			teamPool.tryInsertConf(info);
  		}
  	}
  
  	public def getIPVector(myCost:Long):Boolean {
  		Logger.debug(()=> "CommManager: getIPVector: entering.");
- 		val sz = this.heuristicSolver.getSizeProblem();
- 		var a : Maybe[State];
+ 		//val sz = this.heuristicSolver.getSizeProblem();
+ 		val a : Maybe[State];
  		val place = Place(nodeConfig.getTeamId());
- 		if (place == here )
- 			a = getPConf();
- 		else{
- 			a = at(place) pointersComunication().getPConf();
- 		}
+ 		val refsToPlace = pointersComunication;
+ 		//if (place == here )
+ 		//	a = getPConf();
+ 		//else{
+ 		a = at(place) refsToPlace().getPConf();
+ 		//}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
  			this.heuristicSolver.setVariables(a().vector);
  			return true; 
@@ -390,7 +394,7 @@ public class CPLSNode{
  		return false;
  	}
  
- 	public def getPConf(): Maybe[State]{
+ 	public def getPConf(): Maybe[State(sz)]{
  		if(teamPool != null){
  			return teamPool.getPConf();
  		}
@@ -410,17 +414,19 @@ public class CPLSNode{
 	 		Runtime.probe();		// Give a chance to the other activities
 	 	}
  	}
+ 
+ 	private val cmp : (State,State) => Int = (a:State, b:State) => {return(a.cost - b.cost) as Int;};
  	 
  	public def interTeamComm(){
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		var teamToRest:Long = -1;
  		for ( var head:Int = 0n; head < nodeConfig.getNumberOfTeams(); head++){
  			val h = head;
- 			val conf = at( Place(h) ) pointersComunication().teamPool.getBestConf();
+ 			val conf:Maybe[State] = at( Place(h) ) pointersComunication().teamPool.getBestConf();
  			if (conf == null) {
- 				confArray(h) = State(sz, -1, null, h as Int,null);
+ 				confArray(h) = new State(sz, -1, null, h as Int,null);
  			} else {
- 				confArray(h) = State(sz, conf().cost, conf().vector as Rail[Int]{self.size == sz}, h as Int, conf().solverState as Rail[Int]{self.size == 3});
+ 				confArray(h) = new State(sz, conf().cost, conf().vector, h as Int, conf().solverState);
  			}
  		}
  		var nEqTeams:Int = 0n;
@@ -471,7 +477,7 @@ public class CPLSNode{
  		}	
  	}
  	
- 	public def communicateLM(info:State) {
+ 	public def communicateLM(info:State(sz)) {
  		Logger.debug(()=>" communicate: entering.");
  		
  		// decrease the number of vectors send it to the pool
@@ -498,13 +504,13 @@ public class CPLSNode{
  		return;
  	}
  	
- 	public def tryInsertLM(info:State{info.solverState.size ==3, info.vector.size == info.sz}){
+ 	public def tryInsertLM(info:State(sz)){
  		if(cplsPool != null){
- 			cplsPool.tryInsertConf( info as State(info.sz){info.vector.size == info.sz});
+ 			cplsPool.tryInsertConf( info as State(sz));
  		} 
  	}
  	
- 	public def getPR() : Maybe[State] { 
+ 	public def getPR() : Maybe[State(sz)] { 
  		var opt:Int = nodeConfig.getDiversificationOption();
  		if (nodeConfig.getDiversificationOption() == 3n)
  			opt = random.nextInt(3n);
@@ -516,9 +522,9 @@ public class CPLSNode{
  			return getPR2();
  	}
  	
- 	public def getPR0() : Maybe[State]{ 
+ 	public def getPR0() : Maybe[State(sz)]{ 
  		val geta = this.getLMVector();
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		if ( geta != null ){
  			val c = new Rail[Int](sz, 0n);
  			Rail.copy(geta().vector as Valuation(sz), c as Valuation(sz));
@@ -529,15 +535,15 @@ public class CPLSNode{
  				c(i) = c(j); 
  				c(j) = tmp;
  			}
- 			val newConf =  new State(sz, geta().cost, c as Rail[Int]{self.size == sz}, geta().place, geta().solverState); //Jason: Aca en cost iba -1
- 			return new Maybe(newConf as State);
+ 			val newConf =  new State(sz, -1n, c , geta().place, geta().solverState);
+ 			return new Maybe(newConf as State(sz));
  		}else
  			return null;
  	}
  	
- 	public def getPR1() : Maybe[State] {
+ 	public def getPR1() : Maybe[State(sz)] {
  		Logger.debug(()=> "CommManager: getPR: entering.");
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		val c = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
  		val geta = this.getLMVector();
  		val getb = this.getLMVector();
@@ -561,8 +567,8 @@ public class CPLSNode{
  					c(ci) = tmp;
  				}
  			}
- 			val mutConf =  new State(sz, geta().cost, c as Rail[Int]{self.size == sz}, geta().place, geta().solverState);
- 			return new Maybe(mutConf as State);//true;
+ 			val mutConf =  new State(sz, geta().cost, c, geta().place, geta().solverState);
+ 			return new Maybe[State(sz)](mutConf);//true;
  		}else
  			return null;//false;
  	}
@@ -572,9 +578,9 @@ public class CPLSNode{
  	 * "A template for scatter search and path relinking" 1998
  	 * 
  	 */
- 	public def getPR2() : Maybe[State] {
+ 	public def getPR2() : Maybe[State(sz)] {
  		Logger.debug(()=> "CommManager: getPR2: entering.");
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		val finalConf = new Rail[Int](sz, 0n);
  		val getSeedC = this.getLMVector();
  		var position:Long = 0;
@@ -585,27 +591,28 @@ public class CPLSNode{
  					finalConf( position++ ) = getSeedC().vector( j - 1 );
  				}
  			}
- 			val newConf = new State(sz, getSeedC().cost, finalConf as Rail[Int]{self.size == sz}, getSeedC().place, getSeedC().solverState);
- 			return new Maybe(newConf as State); //true;
+ 			val newConf = new State(sz, getSeedC().cost, finalConf, getSeedC().place, getSeedC().solverState);
+ 			return new Maybe[State(sz)](newConf); //true;
  		}else
  			return null; //Snew CSPSharedUnit( sz, -1n, null, -1n, -1.0, -1n); //return false;
  	}
  	
  	public def getLMVector() : Maybe[State] { 
  		Logger.debug(()=> "getLM: entering.");
- 		var a : Maybe[State];
- 		if (here == Place.FIRST_PLACE)
- 			a = getPConfFromLM();
- 		else{
- 			a = at(Place.FIRST_PLACE) pointersComunication().getPConfFromLM();
- 		}	
+ 		val reftsToPlace = pointersComunication;
+ 		//var a : Maybe[State(sz)];
+ 		//if (here == Place.FIRST_PLACE)
+ 		//	a = getPConfFromLM();
+ 		//else{
+ 			val a:Maybe[State] = at(Place.FIRST_PLACE) reftsToPlace().getPConfFromLM();
+ 		//}	
  		if (a != null){
  			return a;
  		}
  		return null;//false;
  	}
  
- 	public def getPConfFromLM(){
+ 	public def getPConfFromLM(): Maybe[State(sz)] {
  		if(teamPool != null)
  			return teamPool.getPConf();
  		return null;
@@ -630,12 +637,12 @@ public class CPLSNode{
  	}
  
  	public def verify(){
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		return this.heuristicSolver.verify(this.bestConf);
  	}
  
  	public def displaySolution(){
- 		val sz = this.heuristicSolver.getSizeProblem();
+ 		//val sz = this.heuristicSolver.getSizeProblem();
  		this.heuristicSolver.displaySolution(this.bestConf);
  	}
  	
@@ -669,13 +676,11 @@ public class CPLSNode{
  	/**
   	*  Create Solver State array to be send to Pool
   	*/
- 	protected def createSolverState():Rail[Int]{self.size==3}{
+ 	protected def createSolverState(){
  		val rsState = new Rail[Int](3,-1n);
  		rsState(0) = 1n;
  		return rsState;  
  	}
- 
- 	private val cmp : (State,State) => Int = (a:State, b:State) => {return(a.cost - b.cost) as Int;};
  
  	public def setStats(c : GlobalStats){
  		stats.setStats(c);
@@ -745,4 +750,4 @@ public class CPLSNode{
  		sampleAccStats.printAVG(count,oF,problem);
  	}
 }
-public type CPLSNode(nodeRole:Int) = CPLSNode{};
+public type CPLSNode(s:Long) = CPLSNode{self.sz==s};

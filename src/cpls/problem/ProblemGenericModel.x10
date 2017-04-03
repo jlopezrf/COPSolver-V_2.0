@@ -38,7 +38,7 @@ public class ProblemGenericModel(size:Long){
  	}
  	
  	public def getSize(){
- 		return this.size;
+ 		return size;
  	}
       
       /**
@@ -60,7 +60,8 @@ public class ProblemGenericModel(size:Long){
   /**
    * 	executed swap
    */
-  	public def executedSwap(i1:Long, i2:Long, variables:Rail[Int]{self.size == this.size}):void{
+  	//variables:Rail[Int]{self.size == this.size}
+  	public def executedSwap(i1:Long, i2:Long, variables:Valuation(size)):void{
   		Console.OUT.println("Error no executedSwap implementation");
   	}
 
@@ -70,12 +71,12 @@ public class ProblemGenericModel(size:Long){
   		variables(j) = x;
   	}*/
   
-  	public def costOfSolution(shouldBeRecorded:Boolean, solution:Rail[Int]){solution.size == this.size}:Long{
+  	public def costOfSolution(shouldBeRecorded:Boolean, solution:Rail[Int]){solution.size == size}:Long{
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
   	
-  	public def costOfSolution(solution:Rail[Int]){solution.size == this.size}:Long {
+  	public def costOfSolution(solution:Rail[Int]){solution.size == size}:Long {
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
@@ -88,7 +89,7 @@ public class ProblemGenericModel(size:Long){
   	}
   
   	public def initialize(inSeed:Long):Rail[Int]{self.size == this.size}{
-  		var variables:Rail[Int] = new Rail[Int](this.size, (i:Long) => i as Int);
+  		var variables:Rail[Int]{self.size == this.size} = new Rail[Int](size, (i:Long) => i as Int);
   		this.r.setSeed(inSeed);
   		if (!inPathVectorSol.equalsIgnoreCase(".")){
   			//initialize from inVector
@@ -110,10 +111,10 @@ public class ProblemGenericModel(size:Long){
   				variables(j++) = Int.parse(buffer);
   				//Console.OUT.println("var "+(j-1)+" = "+variables(j-1));
   			}
-  			if(j < this.size)
+  			if(j < size)
   				Console.OUT.println("ModelAS ERROR: The input vector is shorter than the variables array. Valor j: " + j);  
   				// check permutation, if a value is repeated, then its not a valid permutation
-  				val permutV = new Rail[Int](this.size, 0n);
+  				val permutV = new Rail[Int](size, 0n);
   				for (mi in variables.range()){
   					val value = variables(mi);
   					permutV(value-1)++;
@@ -127,14 +128,14 @@ public class ProblemGenericModel(size:Long){
   				variables(k) = this.baseValue + k as Int;
   				//Console.OUT.println("Variables position " + k + ": " + variables(k));
   			}
-  			for( var i:Long = this.size - 1 ; i > 0 ; i-- ){
+  			for( var i:Long = size - 1 ; i > 0 ; i-- ){
   				val j = r.nextLong( i + 1 );
   				val x = variables(i);
   				variables(i) = variables(j); 
   				variables(j) = x;
   			}
   		}
-  		return variables as Rail[Int]{self.size == this.size};
+  		return variables;
  	}
   
   /**
@@ -184,7 +185,7 @@ public class ProblemGenericModel(size:Long){
   
   //Jason: Esta es como una especie de distancia de Hamming normalizada
   //Devuelve una medida entre 0 y 1 de cuantas componenes tienen iguales
-  	public def distance(conf1 : Rail[Int], conf2 : Rail[Int]){conf1.size == this.size as long, conf2.size == this.size as long}: Double {
+  	public def distance(conf1 : Rail[Int], conf2 : Rail[Int]){conf1.size == size as long, conf2.size == size as long}: Double {
   		var count : Int = 0n;
   		for (i in 0n..(size as Int - 1n)){
   			//Logger.debug("comparing: "+conf1(i)+" - "+conf2(i));

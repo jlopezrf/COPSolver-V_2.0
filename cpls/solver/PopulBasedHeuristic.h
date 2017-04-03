@@ -16,9 +16,9 @@ class PopulBasedHeuristic : public ::cpls::solver::HeuristicSolver   {
     public:
     RTT_H_DECLS_CLASS
     
-    void _constructor();
+    void _constructor(x10_long sz);
     
-    static ::cpls::solver::PopulBasedHeuristic* _make();
+    static ::cpls::solver::PopulBasedHeuristic* _make(x10_long sz);
     
     virtual ::cpls::solver::PopulBasedHeuristic* cpls__solver__PopulBasedHeuristic____this__cpls__solver__PopulBasedHeuristic(
       );

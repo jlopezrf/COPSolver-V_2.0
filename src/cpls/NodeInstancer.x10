@@ -16,7 +16,8 @@ public class NodeInstancer{
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
- 		val refsToPlaces = PlaceLocalHandle.make[CPLSNode](PlaceGroup.WORLD, () => new CPLSNode());
+ 		val sz = configCPLS.getProblemModel().size;
+ 		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
  		val nodesPerTeam = configNodes.numElems_2;
  		val random:Random = new Random();
  		random.setSeed(configCPLS.getSeed());
@@ -63,7 +64,7 @@ public class NodeInstancer{
  				}
  		 	}
  			Console.OUT.println("Se cumple el finish");
- 			verifyWinner(refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
+ 			verifyWinner(sz, refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			wallTime += System.nanoTime();
  			val wtime = wallTime;
  			totalWallT += wallTime;
@@ -97,10 +98,9 @@ public class NodeInstancer{
  		}
  		// Clear sample accumulator for repetitions
  		refsToPlaces().clearSample();
- 		
  	}
  	
- 	public static def verifyWinner(val refPlaces:PlaceLocalHandle[CPLSNode], verify:Boolean, val targetCost:Long, explorerWinner:Int):void{
+ 	public static def verifyWinner(sz:Long, val refPlaces:PlaceLocalHandle[CPLSNode(sz)], verify:Boolean, val targetCost:Long, explorerWinner:Int):void{
  		Console.OUT.println("Y realiza el verifyWinner");
  		var minCost:Long = Long.MAX_VALUE;
  		var bestPlace:Place = here;

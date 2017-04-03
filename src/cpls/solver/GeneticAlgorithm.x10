@@ -15,8 +15,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
 	
-	public def this(){
-		super();
+	public def this(sz:Long){
+		super(sz);
  		this.random = new Random();
 	}
 

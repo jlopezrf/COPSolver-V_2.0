@@ -3,13 +3,14 @@
 #include <cpls/solver/SingleSolHeuristic.h>
 
 #include <cpls/solver/HeuristicSolver.h>
+#include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
-void cpls::solver::SingleSolHeuristic::_constructor() {
+void cpls::solver::SingleSolHeuristic::_constructor(x10_long sz) {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
-    (this)->::cpls::solver::HeuristicSolver::_constructor();
+    (this)->::cpls::solver::HeuristicSolver::_constructor(sz);
     
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/SingleSolHeuristic.x10"
     
@@ -17,9 +18,9 @@ void cpls::solver::SingleSolHeuristic::_constructor() {
     this->cpls::solver::SingleSolHeuristic::__fieldInitializers_cpls_solver_SingleSolHeuristic();
 }
 ::cpls::solver::SingleSolHeuristic* cpls::solver::SingleSolHeuristic::_make(
-  ) {
+  x10_long sz) {
     ::cpls::solver::SingleSolHeuristic* this_ = new (::x10aux::alloc_z< ::cpls::solver::SingleSolHeuristic>()) ::cpls::solver::SingleSolHeuristic();
-    this_->_constructor();
+    this_->_constructor(sz);
     return this_;
 }
 
