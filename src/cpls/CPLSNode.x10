@@ -197,19 +197,19 @@ public class CPLSNode(sz:Long){
  				break;  // kill: End solving process
  			}
  
- 			Console.OUT.println("in maIN LOOP " + here.id+ " time "+(System.nanoTime() - this.initialTime) +" cost="+this.currentCost);
+ 			//Console.OUT.println("in maIN LOOP " + here.id+ " time "+(System.nanoTime() - this.initialTime) +" cost="+this.currentCost);
  			//Time out
  			if(this.nodeConfig.getMaxTime() > 0n){
  				val eTime = System.nanoTime() - this.initialTime; 
  				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
- 					Console.OUT.println("Ingreso por Time Out " + here.id);
+ 					//Console.OUT.println("Ingreso por Time Out " + here.id);
  					Logger.debug(()=>{" Time Out"});
  					break;
  				}
  			}
  			//interact();
  		}
- 		Console.OUT.println("End maIN LOOP " + here.id);
+ 		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
 

@@ -56,7 +56,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	protected def refreshPopulation(mutatedSons:Rail[GAIndividual], parentIndex1:Long, parentIndex2:Long){
  		if(mutatedSons(0).getCost() < population(parentIndex1).getCost()) population(parentIndex1) = mutatedSons(0);
- 		if(mutatedSons(1).getCost() < population(parentIndex2).getCost()) population(parentIndex1) = mutatedSons(1);
+ 		if(mutatedSons(1).getCost() < population(parentIndex2).getCost()) population(parentIndex2) = mutatedSons(1);
  	}
 	
 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -92,7 +92,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		val indiv1 = new GAIndividual(i1);
  		val indiv2 = new GAIndividual(i2);
  		val sz = super.problemModel.size;
-  		val sons = indiv1.insertPathCrossing(indiv2);
+  		val sons = indiv1.insertPathCrossover(indiv2);
   		sons(0).setCost(this.problemModel.costOfSolution(sons(0).getGenes() as Rail[Int]{self.size == sz}));
   		sons(1).setCost(this.problemModel.costOfSolution(sons(1).getGenes() as Rail[Int]{self.size == sz}));
  		return sons;
