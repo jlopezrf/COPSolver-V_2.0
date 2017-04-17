@@ -1,5 +1,6 @@
 package cpls.solver;
 
+import cpls.CPLSOptionsEnum;
 import x10.util.Random;
 import cpls.problem.ProblemGenericModel;
 import cpls.ParamManager;
@@ -17,6 +18,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	
 	public def this(sz:Long){
 		super(sz);
+ 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
  		this.random = new Random();
 	}
 
@@ -93,8 +95,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		val indiv2 = new GAIndividual(i2);
  		val sz = super.problemModel.size;
   		val sons = indiv1.insertPathCrossover(indiv2);
-  		sons(0).setCost(this.problemModel.costOfSolution(sons(0).getGenes() as Rail[Int]{self.size == sz}));
-  		sons(1).setCost(this.problemModel.costOfSolution(sons(1).getGenes() as Rail[Int]{self.size == sz}));
+  		sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
+  		sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
  		return sons;
  	}
  
@@ -114,5 +116,5 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def swap(indiv:GAIndividual, i:Long, j:Long){
  		indiv.swap(i as Int,j as Int);
  	}
- 
 }
+public type GeneticAlgorithm(s:Long)=GeneticAlgorithm{self.sz==s};

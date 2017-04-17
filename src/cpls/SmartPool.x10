@@ -244,6 +244,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  */
 	 public def getBestConf():Maybe[State(sz)]=
 		  monitor.atomicBlock(()=> {
+		  		Console.OUT.println("Llega adentro de getBestConf de smartPool.");
 				if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < 1n) return null; // empty pool
 				var bcost:Long = Long.MAX_VALUE;
 				var best:Long = -1;

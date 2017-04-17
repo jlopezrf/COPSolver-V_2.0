@@ -49,6 +49,9 @@ class Char;
 namespace cpls { namespace util { 
 class Utils;
 } } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -81,16 +84,18 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     virtual x10_long getSize();
     virtual x10_long costOnVariable(x10_long i);
     virtual x10_long costIfSwap(x10_long current_cost, x10_long i1, x10_long i2);
-    virtual void executedSwap(x10_long i1, x10_long i2, ::x10::lang::Rail< x10_int >* variables);
-    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded, ::x10::lang::Rail< x10_int >* solution);
-    virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
+    virtual void executedSwap(x10_long sz, x10_long i1, x10_long i2, ::x10::lang::Rail< x10_int >* variables);
+    virtual x10_long costOfSolution(x10_long sz, x10_boolean shouldBeRecorded,
+                                    ::x10::lang::Rail< x10_int >* solution);
+    virtual x10_long costOfSolution(x10_long sz, ::x10::lang::Rail< x10_int >* solution);
     static void show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d);
     virtual ::x10::lang::Rail< x10_int >* initialize(x10_long inSeed);
-    virtual void displaySolution(::x10::lang::Rail< x10_int >* conf);
-    virtual x10_boolean verify(::x10::lang::Rail< x10_int >* conf);
+    virtual void displaySolution(x10_long sz, ::x10::lang::Rail< x10_int >* conf);
+    virtual x10_boolean verify(x10_long sz, ::x10::lang::Rail< x10_int >* conf);
     virtual x10_long nextJ(x10_long i, x10_long j, x10_boolean exhaustive);
     virtual x10_long nextI(x10_long i);
-    virtual x10_double distance(::x10::lang::Rail< x10_int >* conf1, ::x10::lang::Rail< x10_int >* conf2);
+    virtual x10_double distance(x10_long sz, ::x10::lang::Rail< x10_int >* conf1,
+                                ::x10::lang::Rail< x10_int >* conf2);
     virtual ::cpls::problem::ProblemGenericModel* cpls__problem__ProblemGenericModel____this__cpls__problem__ProblemGenericModel(
       );
     virtual void __fieldInitializers_cpls_problem_ProblemGenericModel(

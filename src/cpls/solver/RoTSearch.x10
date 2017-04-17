@@ -142,7 +142,7 @@ public class RoTSearch extends SingleSolHeuristic{
 			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
 			nSwap++;
 			//val sz =  super.problemModel.size;
-			super.problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables  as Valuation(sz));
+			super.problemModel.executedSwap(sz, move.getFirst(), move.getSecond(), super.variables  as Valuation(sz));
 			
 			/* forbid reverse move for a random number of iterations */
 			
@@ -236,3 +236,4 @@ public class RoTSearch extends SingleSolHeuristic{
 		//Jason: Line of interaction -> this.solver.communicateLM( new State(sz, this.currentCost, cop.getVariables() as Valuation(sz), here.id as Int, solverState) );
 	}
 }
+public type RoTSearch(s:Long)=RoTSearch{self.sz==s};

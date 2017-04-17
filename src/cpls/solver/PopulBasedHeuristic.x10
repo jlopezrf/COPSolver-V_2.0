@@ -5,3 +5,4 @@ public class PopulBasedHeuristic extends HeuristicSolver{
 		super(sz);
 	}
 }
+public type PopulBasedHeuristic(sz:Long)=PopulBasedHeuristic{self.sz==sz};

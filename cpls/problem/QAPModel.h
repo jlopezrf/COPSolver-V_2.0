@@ -106,22 +106,23 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
                                             ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* mf,
                                             ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* md);
     
-    virtual x10_long computeDelta(x10_long i, x10_long j,
-                                  ::x10::lang::Rail< x10_int >* variables);
-    virtual x10_long computeDeltaPart(x10_long i, x10_long j,
-                                      x10_long r, x10_long s,
-                                      ::x10::lang::Rail< x10_int >* variables);
-    virtual x10_long costOfSolution(x10_boolean shouldBeRecorded,
+    virtual x10_long computeDelta(x10_long sz, x10_long i,
+                                  x10_long j, ::x10::lang::Rail< x10_int >* variables);
+    virtual x10_long computeDeltaPart(x10_long sz, x10_long i,
+                                      x10_long j, x10_long r,
+                                      x10_long s, ::x10::lang::Rail< x10_int >* variables);
+    virtual x10_long costOfSolution(x10_long sz, x10_boolean shouldBeRecorded,
                                     ::x10::lang::Rail< x10_int >* variables);
-    virtual x10_long costOfSolution(::x10::lang::Rail< x10_int >* solution);
+    virtual x10_long costOfSolution(x10_long sz, ::x10::lang::Rail< x10_int >* solution);
     virtual x10_long costIfSwap(x10_long currentCost, x10_long i1,
                                 x10_long i2);
-    virtual void executedSwap(x10_long i1, x10_long i2, ::x10::lang::Rail< x10_int >* variables);
+    virtual void executedSwap(x10_long sz, x10_long i1, x10_long i2,
+                              ::x10::lang::Rail< x10_int >* variables);
     virtual x10_long costOnVariable(x10_long i);
     virtual x10_boolean loadData(::x10::lang::String* filePath);
     static ::x10::lang::Rail< x10_int >* readParameters(::x10::lang::String* line);
     void readMatrix(::x10::io::FileReader* fr, x10_int sizeF);
-    virtual x10_boolean verify(::x10::lang::Rail< x10_int >* match);
+    virtual x10_boolean verify(x10_long sz, ::x10::lang::Rail< x10_int >* match);
     void printMatrices();
     virtual ::cpls::problem::QAPModel* cpls__problem__QAPModel____this__cpls__problem__QAPModel(
       );

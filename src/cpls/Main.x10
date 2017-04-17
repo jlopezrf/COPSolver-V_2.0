@@ -1,3 +1,12 @@
+//Estrategia de depuración:
+//MsgType_0: Mensajes para probar la instanciación de lo nodos y las iteraciones correspondientes a la
+//cantidad de veces que se resuelve una misma instancia. Sirve para determinar que se cumplan los ciclos,
+//para saber cuando se encuentra el valor objetivo (BKS, óptimo) y cuando no, el valor del costo final
+//y la solución correspondiente.
+//MsgType_1: Los utilizo para cuando se visualiza una falla en el caso MsgType_0; normalmente ocurre
+//que el programa se queda colgado y entonces es necesario determinar en el ciclo interno cual es el
+//punto exacto donde se queda colgado.
+
 package cpls;
 
 import cpls.util.RandomTools;
@@ -30,7 +39,7 @@ public class Main {
  		//*********************************************************************//
  		
  		//***************************Mode Definition***************************//
- 		var modeIndicator:Boolean = (opts("-ce", 1n)==0n)?false:true;
+ 		var modeIndicator:Boolean = (opts("-ce", 1n)==0n) ? false:true;
  		val verify  = opts("-v", 0n) == 1n;
  		configCPLS.setVerify(verify);
  		configCPLS.setIsThereAMasterNode(modeIndicator);
@@ -51,10 +60,10 @@ public class Main {
  		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
  		
  		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
- 			Console.OUT.println("Inconsistencia en el numero total de nodos");
+ 			Console.OUT.println("MsgType_0. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}else if(!modeIndicator && (Place.MAX_PLACES != nodeConfigs.numElems_2*nodeConfigs.numElems_1)){
- 			Console.OUT.println("Inconsistencia en el numero total de nodos");
+ 			Console.OUT.println("MsgType_0. elseif - Inconsistencia en el numero total de nodos" + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}
  		configCPLS.setConfigNodes(nodeConfigs);
@@ -84,11 +93,11 @@ public class Main {
  			if (tCostFromCL >= 0){ // get lower or equal to target 
  				c = tCostFromCL;
  				sl = false;
- 				Console.OUT.println("Target from CL: lower or equal than "+c);
+ 				Console.OUT.println("MsgType_0. Target from CL: lower or equal than "+c);
  			} else { 
  				c = tCostFromCL * -1;
  				sl = true;
- 				Console.OUT.println("Target from CL: strictly lower than "+c);
+ 				Console.OUT.println("MsgType_0. Target from CL: strictly lower than "+c);
  			}
  		} else { // target cost loaded from file
  			sl = costFromF < 0; // strictly lower true for negative numbers
@@ -96,7 +105,7 @@ public class Main {
  				c = problemParams(1); //opt 
  			else
  				c = problemParams(2); //bks
- 			Console.OUT.println("Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
+ 			Console.OUT.println("MsgType_0. Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
  		}
  		val tCost = c >= 0 ? c : 0; // if negative cost put default value
  		val sLow = sl;
@@ -159,6 +168,7 @@ public class Main {
  	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
  
  		val nodesPerTeam:Int = opts("-N", 1n);
+ 		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
  		val numberOfTeams:Int = Place.MAX_PLACES as Int/nodesPerTeam;
  		val modeIndicator:boolean = (opts("-ce", 1n)==0n)?false:true;
  		val interTeamCommTime = opts("-I", 0);
@@ -187,6 +197,7 @@ public class Main {
  			maxUpdateI = 100000n;
  		
  		var nodeConfigs:Array_2[NodeConfig] = new Array_2[NodeConfig](numberOfTeams, nodesPerTeam, new NodeConfig());
+ 		//Console.OUT.println("Indices de nodeConfigs: " + numberOfTeams + ", " + nodesPerTeam);
  		var teamsWithMultiplicity:Rail[String];
  		if(solverIn.indexOf('-') != -1n)
  			teamsWithMultiplicity = solverIn.split("-");
@@ -315,7 +326,8 @@ public class Main {
  				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
  					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
- 					val n1 = params(0) < 0 ? 1 : params(0); //Importante para esto que el tamaño del problema esté en el archivo 
+ 					val n1 = params(0) < 0 ? 1 : params(0); //Importante para esto que el tamaño del problema esté en el archivo
+ 					//Console.OUT.println("Tamaño leido del problema: " + n1);
  					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue);
  					//problemModel.initialize(random.nextLong());
  					problemModel.loadData(inPathDataProblem);

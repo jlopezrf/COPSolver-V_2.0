@@ -17,10 +17,10 @@ import x10.util.RailUtils;
 import x10.util.StringUtil;
 
 public class CPLSNode(sz:Long){
- 	property sz()=sz;
+ 	//property(sz);//=sz;
  	/*********Variables para la configuración del nodo**********/
  	private var nodeConfig:NodeConfig;
- 	protected var heuristicSolver:HeuristicSolver;
+ 	protected var heuristicSolver:HeuristicSolver(sz);
  	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
  	var teamPool:SmartPool(sz);
  	var cplsPool:SmartPool(sz);
@@ -70,6 +70,8 @@ public class CPLSNode(sz:Long){
  	/** Number time to change vector due to communication */ 
  	protected var nChangeV : Int = 0n;
  	protected var bestSent:Boolean=false;
+ 	protected var numberofTeams:Int;
+ 	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -88,20 +90,33 @@ public class CPLSNode(sz:Long){
  		if (nsStr != null) 
  			this.ns = StringUtil.parseInt(nsStr);
  		else
- 			this.ns = problemSize as Int / 4n;
- 		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), sz);
- 		this.random.setSeed(inSeed + here.id);
- 		val semilla = inSeed + here.id;
- 		Console.OUT.println("Nodo " + here.id + "inicializado con semilla: " + semilla);
+ 			this.ns = sz as Int / 4n;
+ 		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
+ 		semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
+ 		this.random.setSeed(semilla);
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.heuristicSolver.setSolverType(config.getHeuristic());
  		this.nodeConfig = config;
- 		this.confArray = new Rail[State](config.getNumberOfTeams(), new State(sz,-1n,null,-1n,null));
+ 		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
+ 		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.cplsPool = new SmartPool(sz, cplsPoolConfig);
+ 			Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id);
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
+ 			Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id);
  		}
+ 	}
+ 
+ 	public def reInitialize(){
+ 		clear();
+ 		val semill = random.nextLong();
+ 		this.heuristicSolver.setSeed(random.nextLong());
+ 		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
+ 		this.heuristicSolver.initVariables();
+ 		this.heuristicSolver.initVar();
+ 		Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
+ 		printVector(this.heuristicSolver.getVariables());
  	}
  
  	public def setPointersCommunication(pointersComunication:PlaceLocalHandle[CPLSNode(sz)]){
@@ -111,6 +126,15 @@ public class CPLSNode(sz:Long){
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		this.heuristicSolver.configHeuristic(problemModel, opts);
  		this.heuristicSolver.initVariables();
+ 		Console.OUT.print("MsgType_0. Nodo " + here.id + ", inicializado con semilla: " + semilla + ", variables: ");
+ 		printVector(this.heuristicSolver.getVariables());
+ 	}
+ 
+ 	public static def printVector(vector:Rail[Int]){
+ 		for(var i:Int = 0n; i < vector.size; i++){
+ 			Console.OUT.print(vector(i) + "  ");
+ 		}
+ 		Console.OUT.print("\n");
  	}
  
  	public def start(targetCost : Long, strictLow: Boolean):void{
@@ -388,7 +412,7 @@ public class CPLSNode(sz:Long){
  		a = at(place) refsToPlace().getPConf();
  		//}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
- 			this.heuristicSolver.setVariables(a().vector);
+ 			this.heuristicSolver.setVariables(a().vector as Valuation(sz));
  			return true; 
  		}
  		return false;
@@ -419,14 +443,16 @@ public class CPLSNode(sz:Long){
  	 
  	public def interTeamComm(){
  		//val sz = this.heuristicSolver.getSizeProblem();
+ 		val refsToPlaces = pointersComunication;
  		var teamToRest:Long = -1;
  		for ( var head:Int = 0n; head < nodeConfig.getNumberOfTeams(); head++){
  			val h = head;
- 			val conf:Maybe[State] = at( Place(h) ) pointersComunication().teamPool.getBestConf();
+ 			val conf:Maybe[State] = at( Place(h) ) refsToPlaces().teamPool.getBestConf();
  			if (conf == null) {
  				confArray(h) = new State(sz, -1, null, h as Int,null);
  			} else {
- 				confArray(h) = new State(sz, conf().cost, conf().vector, h as Int, conf().solverState);
+ 				Console.OUT.println("Ingresa a else del primer for de interTeamComm");
+ 				confArray(h) = new State(sz, conf().cost, conf().vector as Rail[Int]{self.size == sz}, h as Int, conf().solverState as Rail[Int]{self.size == 3});
  			}
  		}
  		var nEqTeams:Int = 0n;
@@ -464,20 +490,21 @@ public class CPLSNode(sz:Long){
  		for (var rp:Long = 0; rp < nEqTeams; rp++) {
  			teamToRest = eqTeams(rp);
  			val ttr = teamToRest; 
- 			at( Place(teamToRest) ) pointersComunication().incGroupReset(); 
+ 			at( Place(teamToRest) ) refsToPlaces().incGroupReset(); 
  			Logger.info(()=>{"reset team "+ttr});
  			
  			for (var i:Long = teamToRest; i < Place.MAX_PLACES; i += nodeConfig.getNumberOfTeams()){
  				val vali = i;
  				Logger.info(()=>{"MW - interTeamComm : send signal force Restart on place "+vali});
  				if (random.nextDouble() <= nodeConfig.getAffectedPer());
- 					at(Place(i)) pointersComunication().diversify();
+ 					at(Place(i)) refsToPlaces().diversify();
  			}
- 			at(Place(teamToRest)) pointersComunication().teamPool.clear();
+ 			at(Place(teamToRest)) refsToPlaces().teamPool.clear();
  		}	
  	}
  	
  	public def communicateLM(info:State(sz)) {
+ 		val refsToPlaces = pointersComunication;
  		Logger.debug(()=>" communicate: entering.");
  		
  		// decrease the number of vectors send it to the pool
@@ -487,7 +514,7 @@ public class CPLSNode(sz:Long){
  			tryInsertLM(info);
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
- 			at(Place.FIRST_PLACE) pointersComunication().tryInsertLM( info );
+ 			at(Place.FIRST_PLACE) refsToPlaces().tryInsertLM( info );
  		}
  		//Debug
  		// if(here.id == LOCAL_MIN_NODE ){ //group head
@@ -544,14 +571,14 @@ public class CPLSNode(sz:Long){
  	public def getPR1() : Maybe[State(sz)] {
  		Logger.debug(()=> "CommManager: getPR: entering.");
  		//val sz = this.heuristicSolver.getSizeProblem();
- 		val c = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
+ 		val c:Rail[Int]{self.size == sz} = new Rail[Int](sz, 0n);
  		val geta = this.getLMVector();
  		val getb = this.getLMVector();
  		if(geta != null && getb != null) {
  			Rail.copy(geta().vector as Valuation(sz), c as Valuation(sz));
  			val nSteps = random.nextLong(ns);
  			for(i in 0..nSteps) {
- 				val bi = random.nextLong(this.heuristicSolver.getSizeProblem());
+ 				val bi = random.nextLong(sz);
  				val bval = getb().vector(bi);
  				var ci:Long = -1;
  				for (cit in c.range()){
@@ -567,7 +594,7 @@ public class CPLSNode(sz:Long){
  					c(ci) = tmp;
  				}
  			}
- 			val mutConf =  new State(sz, geta().cost, c, geta().place, geta().solverState);
+ 			val mutConf =  new State(sz, geta().cost, c, geta().place, geta().solverState as Rail[Int]{self.size == 3});
  			return new Maybe[State(sz)](mutConf);//true;
  		}else
  			return null;//false;
@@ -628,7 +655,7 @@ public class CPLSNode(sz:Long){
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
  		cGroupReset = 0n;
- 		this.heuristicSolver.initVariables();
+ 		//this.heuristicSolver.initVariables();
  	}
  	
  	public def verify_(){
@@ -724,6 +751,10 @@ public class CPLSNode(sz:Long){
  
  	public def getCost(){
  		return this.bestCost;
+ 	}
+ 
+ 	public def getVariables(){
+ 		return this.heuristicSolver.getVariables();
  	}
  
  	protected def updateTotStats(){

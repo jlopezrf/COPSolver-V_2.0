@@ -67,6 +67,9 @@ class Utils;
 namespace cpls { namespace util { 
 template<class TPMGL(T)> class Maybe;
 } } 
+namespace x10 { namespace lang { 
+class Any;
+} } 
 namespace x10 { namespace util { 
 class StringBuilder;
 } } 

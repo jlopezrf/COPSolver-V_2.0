@@ -7,7 +7,6 @@ import x10.io.File;
 import x10.io.IOException;
 
 public class ParamManager extends OptionsParser{
-
  	val paramFileName:String;
  	val paramFile:File;
  	val SEPARETOR:Char = ' ';
@@ -73,7 +72,7 @@ public class ParamManager extends OptionsParser{
  				// Parameters for RoTS
  				Option("RoTS_t", "RoTS_tabu_duration", "Set tabu duration factor (x N). Default 8"),
  				Option("RoTS_a", "RoTS_aspiration", "Set aspiration factor (x NxN). Default 5"),
- 				// Parameters for GA
+ 				// Parameters for GA. Jason
  				Option("GA_pz", "GA_population_size", "Set the population size. Default 2*n"),
  				// Parameters for Problem Models
  				Option("if", "input_vector_file", "file path for input vector . Default ."),

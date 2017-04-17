@@ -16,7 +16,7 @@ public class HeuristicSolver(sz:Long){
  	protected var nSwap : Int;
  	protected var problemModel:ProblemGenericModel;
  	protected var mySolverType:Int;
- 	protected var variables:Rail[Int]{size == sz};
+ 	protected var variables:Valuation(sz);//Rail[Int]{size == sz};
 
  	public def this(sz:Long){
  		property(sz);
@@ -26,6 +26,7 @@ public class HeuristicSolver(sz:Long){
  		this.variables = new Rail[Int](sz, (i:Long) => i as Int);
  		this.problemModel = problemModel;
  	}
+ 
  	/**
  	 *  Search process (in loop functionality)
  	 *  To be overwrited for each child class (solver) 
@@ -38,8 +39,8 @@ public class HeuristicSolver(sz:Long){
  		swapVariables(move.getFirst(), move.getSecond());
  		nSwap++;
  		
- 		this.problemModel.executedSwap(move.getFirst(), move.getSecond(), variables as Rail[Int]{self.size == sz});
- 		val costo = problemModel.costOfSolution(true, variables as Rail[Int]{self.size == sz});
+ 		this.problemModel.executedSwap(sz, move.getFirst(), move.getSecond(), variables as Valuation(sz));
+ 		val costo = problemModel.costOfSolution(sz, true, variables as Valuation(sz));
  		/*if(costo < currentCost){
  			Console.OUT.print("Costo (RandomSearch): " + costo + ". Con variables: ");
  			Console.OUT.print("\n");
@@ -60,7 +61,7 @@ public class HeuristicSolver(sz:Long){
  	}
 
  	public def setSeed(inSeed:Long){
- 		this.random = new Random(inSeed);
+ 		this.random = new Random(inSeed + here.id);
  	}
  	
  	public def setSolverType(mySolverType:Int){
@@ -91,11 +92,11 @@ public class HeuristicSolver(sz:Long){
   	}
  
  	public def initVariables(){
- 		this.variables = this.problemModel.initialize(this.random.nextLong());
+ 		this.variables = this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
  	}
  
  	public def costOfSolution(){
- 		return this.problemModel.costOfSolution(true, variables);
+ 		return this.problemModel.costOfSolution(sz, true, variables);
  	}
  
  	public def getSizeProblem(){
@@ -103,19 +104,20 @@ public class HeuristicSolver(sz:Long){
  	}
  
  	public def getDistance(a:Rail[Int], b:Rail[Int]){
- 		val sz = this.problemModel.size;
- 		return this.problemModel.distance(a as Rail[Int]{a.size == sz}, b as Rail[Int]{b.size == sz});
+ 		//val sz = this.problemModel.size;
+ 		return this.problemModel.distance(sz, a as Rail[Int]{a.size == sz}, b as Rail[Int]{b.size == sz});
 
  	}
  
  	public def verify(conf:Rail[Int]){
- 		val sz = this.problemModel.size;
- 		return this.problemModel.verify(conf);
+ 		//val sz = this.problemModel.size;
+ 		return this.problemModel.verify(sz, conf as Valuation(sz));
 
  	}
  
  	public def displaySolution(conf:Rail[Int]){
  		val sz = this.problemModel.size;
- 		this.problemModel.displaySolution(conf);
+ 		this.problemModel.displaySolution(sz, conf as Valuation(sz));
  	}
 }
+public type HeuristicSolver(s:Long) = HeuristicSolver{self.sz==s};

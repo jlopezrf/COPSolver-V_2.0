@@ -5,3 +5,4 @@ public class SingleSolHeuristic extends HeuristicSolver{
  		super(sz);
  	}
 }
+public type SingleSolHeuristic(sz:Long)=SingleSolHeuristic{self.sz==sz};

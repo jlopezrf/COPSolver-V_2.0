@@ -3,6 +3,7 @@ package cpls.solver;
 import cpls.CPLSOptionsEnum;
 import cpls.util.MovePermutation;
 import cpls.util.Utils;
+import cpls.util.Valuation;
 import x10.util.RailUtils;
 import cpls.ParamManager;
 import cpls.problem.ProblemGenericModel;
@@ -48,6 +49,7 @@ public class EOSearch extends SingleSolHeuristic{
 
  	public def this(sz:Long){
  		super(sz);
+ 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -112,7 +114,7 @@ public class EOSearch extends SingleSolHeuristic{
   	*/
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		this.selFirstVar(this.move, problemModel);
- 		val sz = this.problemModel.size;
+ 		//val sz = this.problemModel.size;
  		var newCost:Long = currentCost;
  		if (this.selSecond == 0n)
  			newCost = this.selSecondRandom(super.move, problemModel, currentCost);
@@ -120,7 +122,7 @@ public class EOSearch extends SingleSolHeuristic{
  			newCost = this.selSecondMinConf(super.move, problemModel, currentCost);
  		swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
  		nSwap++;
- 		this.problemModel.executedSwap(super.move.getFirst(), super.move.getSecond(), super.variables as Rail[Int]{self.size == sz});
+ 		this.problemModel.executedSwap(sz, super.move.getFirst(), super.move.getSecond(), super.variables);
  		/*if(newCost < bestCost){
  			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + newCost);
  			Utils.show(". Con variables: " , super.variables);
@@ -271,3 +273,4 @@ public class EOSearch extends SingleSolHeuristic{
  		}
  	} 	
 }
+public type EOSearch(s:Long)=EOSearch{self.sz==s};

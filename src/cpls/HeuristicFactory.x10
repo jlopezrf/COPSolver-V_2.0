@@ -9,14 +9,14 @@ import cpls.solver.HeuristicSolver;
 import cpls.CPLSOptionsEnum;
 
 public struct HeuristicFactory{
- 	public static def make(kind:Int, sz:Long):HeuristicSolver{
+ 	public static def make(kind:Int, sz:Long):HeuristicSolver(sz){
  		switch(kind){
- 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:   return new AdaptiveSearch(sz);
- 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:   return new EOSearch(sz);
- 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL: return new RoTSearch(sz);
- 			case CPLSOptionsEnum.HeuristicsSupported.RS_SOL: return new HeuristicSolver(sz);
- 			case CPLSOptionsEnum.HeuristicsSupported.GA_SOL: return new GeneticAlgorithm(sz);
- 			default: return new HeuristicSolver(sz);
+ 			case CPLSOptionsEnum.HeuristicsSupported.AS_SOL:   return new AdaptiveSearch(sz) as HeuristicSolver(sz);
+ 			case CPLSOptionsEnum.HeuristicsSupported.EO_SOL:   return new EOSearch(sz) as HeuristicSolver(sz);
+ 			case CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL: return new RoTSearch(sz) as HeuristicSolver(sz);
+ 			case CPLSOptionsEnum.HeuristicsSupported.RS_SOL: return new HeuristicSolver(sz) as HeuristicSolver(sz);
+ 			case CPLSOptionsEnum.HeuristicsSupported.GA_SOL: return new GeneticAlgorithm(sz) as HeuristicSolver(sz);
+ 			default: return new HeuristicSolver(sz) as HeuristicSolver(sz);
  		}
  	}
  	

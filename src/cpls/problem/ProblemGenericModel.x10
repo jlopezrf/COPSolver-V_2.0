@@ -61,7 +61,7 @@ public class ProblemGenericModel(size:Long){
    * 	executed swap
    */
   	//variables:Rail[Int]{self.size == this.size}
-  	public def executedSwap(i1:Long, i2:Long, variables:Valuation(size)):void{
+  	public def executedSwap(sz:Long, i1:Long, i2:Long, variables:Valuation(sz)):void{
   		Console.OUT.println("Error no executedSwap implementation");
   	}
 
@@ -71,12 +71,12 @@ public class ProblemGenericModel(size:Long){
   		variables(j) = x;
   	}*/
   
-  	public def costOfSolution(shouldBeRecorded:Boolean, solution:Rail[Int]){solution.size == size}:Long{
+  	public def costOfSolution(sz:Long, shouldBeRecorded:Boolean, solution:Valuation(sz)):Long{
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
   	
-  	public def costOfSolution(solution:Rail[Int]){solution.size == size}:Long {
+  	public def costOfSolution(sz:Long, solution:Valuation(sz)):Long {
   		Console.OUT.println("Error costOfSolution");
   		return 0;
   	}
@@ -88,8 +88,8 @@ public class ProblemGenericModel(size:Long){
   			x10.io.Console.OUT.println("");
   	}
   
-  	public def initialize(inSeed:Long):Rail[Int]{self.size == this.size}{
-  		var variables:Rail[Int]{self.size == this.size} = new Rail[Int](size, (i:Long) => i as Int);
+  	public def initialize(inSeed:Long):Valuation(size){;//Rail[Int]{self.size == this.size}{
+  		var variables:Valuation(size) = new Rail[Int](size, (i:Long) => i as Int);//Rail[Int]{self.size == this.size} = new Rail[Int](size, (i:Long) => i as Int);
   		this.r.setSeed(inSeed);
   		if (!inPathVectorSol.equalsIgnoreCase(".")){
   			//initialize from inVector
@@ -135,7 +135,7 @@ public class ProblemGenericModel(size:Long){
   				variables(j) = x;
   			}
   		}
-  		return variables;
+  		return variables as Valuation(size);
  	}
   
   /**
@@ -157,12 +157,12 @@ public class ProblemGenericModel(size:Long){
   		Rail.copy(array,this.variables);
   	}*/
   
-  	public def displaySolution(conf:Valuation(size)){
+  	public def displaySolution(sz:Long, conf:Valuation(sz)){
   		Utils.show("Solution",conf);
   	}
   
   	//public def verify(conf:Valuation(size)):Boolean=false;
-  	public def verify(conf:Valuation(size)):Boolean{
+  	public def verify(sz:Long, conf:Valuation(sz)):Boolean{
   		Console.OUT.println("Se ingresa al Verify de ProblemGenericModel");
   		return true;
   	}
@@ -185,7 +185,7 @@ public class ProblemGenericModel(size:Long){
   
   //Jason: Esta es como una especie de distancia de Hamming normalizada
   //Devuelve una medida entre 0 y 1 de cuantas componenes tienen iguales
-  	public def distance(conf1 : Rail[Int], conf2 : Rail[Int]){conf1.size == size as long, conf2.size == size as long}: Double {
+  	public def distance(sz:Long, conf1 : Rail[Int]{self.size == sz}, conf2 : Rail[Int]{self.size == sz}): Double {
   		var count : Int = 0n;
   		for (i in 0n..(size as Int - 1n)){
   			//Logger.debug("comparing: "+conf1(i)+" - "+conf2(i));
@@ -196,4 +196,4 @@ public class ProblemGenericModel(size:Long){
   		return dis;
   	}
 }
-public type ProblemGenericModel(s:Long) = ProblemGenericModel{self.size==s};
+public type ProblemGenericModel(sz:Long) = ProblemGenericModel{self.size==sz};

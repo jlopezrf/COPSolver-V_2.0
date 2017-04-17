@@ -47,6 +47,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
 
  	public def this(sz:Long){
  		super(sz);
+ 		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
  	}
  
   	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -110,7 +111,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			if (this.nVarMarked + 1 >= this.resetLimit){	
  				onLocMin();
  				val cost:Long = doReset(this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
- 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(true, super.variables as Valuation(sz)) : cost;
+ 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(sz, true, super.variables) : cost;
  			}
  			//return otherCost;
  		}else{
@@ -118,7 +119,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			mark(move.getSecond()) = super.nSwap + this.freezeSwap; //Mark(minJ, ad.freeze_swap);
  			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);
  			super.nSwap++;
- 			problemModel.executedSwap(move.getFirst(), move.getSecond(), super.variables as Valuation(sz));
+ 			problemModel.executedSwap(sz, move.getFirst(), move.getSecond(), super.variables);
  			//currentCost = newCost;
  			returnCost = newCost ;
  		}
@@ -346,3 +347,4 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		//solver.communicateLM( new State(sz,this.currentCost, cop.getVariables() as Valuation(sz), here.id as Int, solverState) );
  	}
 }
+public type AdaptiveSearch(s:Long)=AdaptiveSearch{self.sz==s};
