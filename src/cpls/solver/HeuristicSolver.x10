@@ -87,6 +87,7 @@ public class HeuristicSolver(sz:Long){
   	 		val i = random.nextLong(variables.size);
  			val j = random.nextLong(variables.size);
   			swapVariables(i,j);
+  			//Console.OUT.println("Este es el While problematico");
   		}
   		return -1n;
   	}

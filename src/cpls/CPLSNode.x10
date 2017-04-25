@@ -101,10 +101,10 @@ public class CPLSNode(sz:Long){
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.cplsPool = new SmartPool(sz, cplsPoolConfig);
- 			Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id);
+ 			Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
- 			Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id);
+ 			Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
  	}
  
@@ -126,7 +126,7 @@ public class CPLSNode(sz:Long){
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		this.heuristicSolver.configHeuristic(problemModel, opts);
  		this.heuristicSolver.initVariables();
- 		Console.OUT.print("MsgType_0. Nodo " + here.id + ", inicializado con semilla: " + semilla + ", variables: ");
+ 		Console.OUT.print("MsgType_0. Nodo " + here.id + ". TeamId: " + this.nodeConfig.getTeamId() + ", inicializado con semilla: " + semilla + ", variables: ");
  		printVector(this.heuristicSolver.getVariables());
  	}
  
@@ -138,15 +138,17 @@ public class CPLSNode(sz:Long){
  	}
  
  	public def start(targetCost : Long, strictLow: Boolean):void{
- 	 	val refs = pointersComunication;
+ 		//Console.OUT.println("MsgType_0. Nodo " + here + ". Arrancando");
+ 	 	val refsToPlaces = pointersComunication;
  		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
  	 	//this.random.setSeed(seedIn);
  	 	var cost:Long = Long.MAX_VALUE;
- 	 	interTeamKill = false;
+ 	 	this.interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
  	 			nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
+ 	 		Console.OUT.println("MsgType_1. Ingresa a realizar reset: InterTeamCommTime: " + nodeConfig.getInterTeamCommTime() + ". Nodo: " + here.id);
  	 		async{
  	 			System.sleep(nodeConfig.getIniDelay());
  	 			interTeamActivity();
@@ -157,32 +159,41 @@ public class CPLSNode(sz:Long){
  	 	cost = solve(targetCost, strictLow);
  	 	time += System.nanoTime();
  	 	interTeamKill = true;
+ 	 	Runtime.probe();
+ 	 	if(kill){//&& here != Place.FIRST_PLACE)
+ 	 		Console.OUT.print("Soy el nodo: " + here.id + ", y me mataron cuando tenia: (Costo) => " + bestCost + " (variables) => ");
+ 	 		printVector(bestConf);
+ 	 		return;
+ 	 	}
  	 	if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
  	 		val home = here.id;
- 	 		val winner = at(Place.FIRST_PLACE) refs().announceWinner(home); //Comunicate operation
+ 	 		val winner = at(Place.FIRST_PLACE) refsToPlaces().announceWinner(home); //Comunicate operation
  	 		bcost = cost;
  	 		if (winner){ 
- 	 			//Console.OUT.println("Encontro un ganador");
- 	 			setStats_(targetCost);
+ 	 			Console.OUT.println("Soy el nodo " + here + "Y soy el ganador");
+ 	 			setStats_(targetCost, home as Int);
  	 			if (nodeConfig.getVerify()){
  	 				displaySolution();
  	 				Console.OUT.println(", Solution is " + 
  	 				(verify() ? "perfect !!!" : "not perfect "));
+ 	 				return;
  	 			} 
+ 	 		}else{
+ 	 			Console.OUT.println("Soy el nodo " + here + " y perdi la carrera para ganar");
  	 		}
  	 	}else{
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
  	 	}
+ 	 	Console.OUT.println("MsgType_0. Nodo " + here + ". Liberando pal finish.");
  	}
  
  	public def solve(tCost : Long, sLow: Boolean):Long{
- 		// Initialize all variables of the search process
+ 		//Console.OUT.println("MsgType_0. Nodo: " + here + " pasando por solve.");
  		initVar(tCost, sLow);
- 		//val sz = this.heuristicSolver.getSizeProblem();
  		this.currentCost = this.heuristicSolver.costOfSolution();
- 		// Copy the first match to bestConf vector
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+ 			//Console.OUT.println("MsgType_0. RailCopy sin problemas.");
  		}catch(e:Exception){
  			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + "Tamaño variables: " + this.heuristicSolver.getVariables().size);
  		}
@@ -193,10 +204,19 @@ public class CPLSNode(sz:Long){
  			this.bestCost = x10.lang.Int.MAX_VALUE;
  
  		// Main Loop
+ 		//var countero:Int = 0n;
  		while( this.currentCost != 0 ){
+ 			//countero++;
+ 			//if(countero == 1000n){
+ 				//Console.OUT.println("Nodo: " + here + ". Contador detector de estancamiento");
+ 				//countero = 0n;
+ 			//}
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
  				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
+ 					Console.OUT.print("MsgType_0. Nodo " + here.id + ", finalizacion por iteraciones. Restarts: "
+ 							+ nRestart + ", Iteraciones: " + this.nIter + "mi costo: " + bestCost + ", mis variables: ");
+ 					printVector(bestConf);
  					break;
  				}else{
  					nRestart++;
@@ -226,17 +246,18 @@ public class CPLSNode(sz:Long){
  			if(this.nodeConfig.getMaxTime() > 0n){
  				val eTime = System.nanoTime() - this.initialTime; 
  				if(eTime/1e6 >= this.nodeConfig.getMaxTime()){ //comparison in miliseconds
- 					//Console.OUT.println("Ingreso por Time Out " + here.id);
+ 					Console.OUT.print("MsgType_0. Nodo " + here.id + ", finalizacion por Time Out: (tiempo) " + eTime/1e6
+ 						 + ". mi costo: " + bestCost + ", mis variables: ");
+ 					printVector(bestConf);
  					Logger.debug(()=>{" Time Out"});
  					break;
  				}
  			}
- 			//interact();
+ 			interact();
  		}
  		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
-
  	}
  
  	protected def initVar(tCost : Long, sLow: Boolean){
@@ -257,7 +278,8 @@ public class CPLSNode(sz:Long){
  		this.nChangeV = 0n;
  
  		if (this.nodeConfig.getAdaptiveComm())
- 			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());		
+ 			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
+ 			//Console.OUT.println("MsgType_0. InitVar ejecutado");
  	}
  
  	protected def updateCosts(){
@@ -288,14 +310,17 @@ public class CPLSNode(sz:Long){
  
  	/*******This methods are used when a node found a solution and then may send a kill message at the others nodes*******/
  	public def announceWinner(p:Long):Boolean {
- 		val refs = pointersComunication;
+ 		val refsToPlaces = pointersComunication;
  		val result = winnerLatch.compareAndSet(false, true);
  		if (result)	{
- 			for (k in Place.places()) 
- 				if (p != k.id){
- 					at(k) refs().kill(); // at(k) async ss().kill();  // Testing the use of this async v1
- 			}
+ 			//finish{ //Jason:Puse este finish a ver que pasa con la terminación de la ejecución.
+	 			for (k in Place.places()) 
+	 				if (p != k.id){
+	 					at(k) refsToPlaces().kill(); // at(k) async ss().kill();  // Testing the use of this async v1
+	 			}
+ 			//}
  		}
+ 		//winnerLatch.set(false); //Jason: Esto fue solo para probar que no se quede colgado
  		return result;
  	}
 
@@ -303,26 +328,45 @@ public class CPLSNode(sz:Long){
  		if (heuristicSolver != null){
  			this.kill = true; 
  			this.interTeamKill = true;
+ 			Console.OUT.println("MsgType_0. Nodo: " + here + "y pasaron a killiarme");
  		}else{
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
  		}
  	}
- 
+ 	//Jason:Variables temporales para debiguear la ejecución de la comunicación
+ 	var counterForReport:Int = 0n;
+ 	var counterForUpdate:Int = 0n;
  	protected def interact(){ 
  		// Interaction with other places
  		//val sz = this.heuristicSolver.getSizeProblem();
+ 	if(this.nodeConfig.getRol() != CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  		if( this.nodeConfig.getReportI() != 0n && this.nIter % this.nodeConfig.getReportI() == 0n){
  			if(!bestSent){ 
  				val solverState = createSolverState();
  				communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
  				bestSent = true;
+ 				counterForReport++;
+ 				//Jason: Reports
+ 				/*if(this.counterForReport%100 == 0){
+ 					Console.OUT.print("****Report******: Soy el nodo " + here.id + ". Llevo: " + this.counterForReport
+ 						+ " .Reporte Costo: " +  this.bestCost
+ 						+ ". Variables: ");
+ 					printVector(this.bestConf);
+ 				}*/
  			}else{
  				if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
  					val solverState = createSolverState();
  					communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
+ 					counterForReport++;
+ 					//Jason: Reports
+ 					/*if(this.counterForReport%100 == 0){
+ 						Console.OUT.print("****Report******: Soy el nodo " + here.id + ". Llevo: " + this.counterForReport
+ 							+ " .Reporte Costo: " +  this.currentCost
+ 							+ ". Variables: ");
+ 						printVector(this.heuristicSolver.getVariables());
+ 					}*/
  				}		  
  			}
- 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en primer if de interact");
  		}
  
  		if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n ){
@@ -334,8 +378,14 @@ public class CPLSNode(sz:Long){
  				this.nChangeV++;
  				this.currentCost = this.heuristicSolver.costOfSolution();
  				bestSent = false;
+ 				counterForUpdate++;
+ 				/*if(this.counterForUpdate%100 == 0){
+ 					Console.OUT.print("****Updates******: Soy el nodo " + here.id + ". Llevo: " + this.counterForUpdate
+ 						+ ". Me llego costo: " + this.currentCost + ". Variables: ");
+ 					printVector(this.heuristicSolver.getVariables());
+ 				}*/
  			}
- 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en segundo if de interact");
+ 			//Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en segundo if de interact");
  		}
  		// Force Restart: Inter Team Communication
  		if (this.forceRestart){
@@ -360,8 +410,13 @@ public class CPLSNode(sz:Long){
  					bestSent = false;
  				}
  			}
- 			Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en tercer if de interact");
+ 			/*if(this.nForceRestart%100 == 0){
+ 				Console.OUT.print("****Restarts******: Soy el nodo " + here.id + ". Llevo: " + this.nForceRestart
+ 					+ ". Arranco en: " + this.currentCost + ". Variables: ");
+ 				printVector(this.heuristicSolver.getVariables());
+ 			}*/
  		}
+ 	}
  	}
  
  	public def communicate( info:State(sz)) {  
@@ -373,6 +428,10 @@ public class CPLSNode(sz:Long){
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
  			at(Place(nodeConfig.getTeamId())) async pointersComunication().tryInsertConf( info );
+ 		}
+ 		//Jason: Pruebas para debuguiar la comunicación
+ 		if(this.counterForReport%100 == 0){
+ 			Console.OUT.println("Nodo " + here + ". Reportando a head en place: " + this.nodeConfig.getTeamId());
  		}
  		// Print debug information
  		//Jason: Comente esta parte de debug
@@ -409,7 +468,12 @@ public class CPLSNode(sz:Long){
  		//if (place == here )
  		//	a = getPConf();
  		//else{
+ 		Console.OUT.println();
  		a = at(place) refsToPlace().getPConf();
+ 		//Jason: Pruebas para debuguiar la comunicación
+ 		if(this.counterForReport%100 == 0){
+ 			Console.OUT.println("Nodo " + here + ". Actualizando desde head en place: " + this.nodeConfig.getTeamId());
+ 		}
  		//}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
  			this.heuristicSolver.setVariables(a().vector as Valuation(sz));
@@ -427,7 +491,8 @@ public class CPLSNode(sz:Long){
  	
  	/*************************** For diversify when the nodes are close to each other *****************************/
  	public def interTeamActivity(){
-	 	while (!interTeamKill) {
+	 	Console.OUT.println("MsgType_0. Nodo: " + here + " perdido en interTeamActivity.");
+ 		while (!interTeamKill) {
 	 		Logger.debug(()=>{" kill " + interTeamKill});
 	 		if (!System.sleep(nodeConfig.getInterTeamCommTime())){ 
 	 			Console.OUT.println(here+" interTeamActivity error: cannot execute sleep");
@@ -655,6 +720,9 @@ public class CPLSNode(sz:Long){
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
  		cGroupReset = 0n;
+ 		this.counterForReport = 0n;
+ 		this.counterForUpdate = 0n;
+ 		this.nForceRestart = 0n;
  		//this.heuristicSolver.initVariables();
  	}
  	
@@ -724,7 +792,8 @@ public class CPLSNode(sz:Long){
  		return this.cGroupReset;
  	}
  
- 	public def setStats_(targetCost:Long){
+ 	public def setStats_(targetCost:Long, explorerWinner:Int){
+ 		Console.OUT.println("MsgType_0. Nodo: " + here + " reportando estadisticas");
  		val refsToPlaces = pointersComunication;
  		val winPlace = here.id;
  		val time = time/1e9;

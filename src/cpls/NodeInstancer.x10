@@ -15,12 +15,15 @@ public class NodeInstancer{
 	var masterNode:CPLSNode;
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
+ 		printStructure(configCPLS);
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
  		val sz = configCPLS.getProblemModel().size;
  		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
  		val nodesPerTeam = configNodes.numElems_2;
  		val random:Random = new Random();
  		random.setSeed(configCPLS.getSeed());
+ 		Console.OUT.println("************************************************************************************************");
+ 		Console.OUT.println("****************************Inicializacion de los nodos*****************************************");
  		finish{
  			for(p in PlaceGroup.WORLD) at (p) async{
  				val seed = random.nextLong();
@@ -57,6 +60,7 @@ public class NodeInstancer{
  		var totalWallT :Long = 0;
  		var fWall : Long = 0;
  		for(var i:Int = 1n; i <= timesPerInstance; i++){
+ 			Console.OUT.println("****************************Resultados ejecucion: " + i + "*****************************************");
  			var wallTime:Long = -System.nanoTime();
  			//Console.OUT.println("Vez por instancia número: " + i);
  			finish{
@@ -65,6 +69,7 @@ public class NodeInstancer{
  				}
  		 	}
  			Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
+ 			//Console.OUT.println("Nodo ganador: " + refsToPlaces().getStatsObject().getExplorerWinner());
  			verifyWinner(sz, refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			//Jason: Descomentar para la tabla de resultados
  			/*wallTime += System.nanoTime();
@@ -83,11 +88,14 @@ public class NodeInstancer{
  				Console.OUT.flush();
  			}
  			Console.OUT.println("\n ");*/
- 			finish for (p in Place.places()) at (p) {   
- 				//refsToPlaces().clear();
- 				refsToPlaces().reInitialize();
+ 			if(i<10){
+ 				finish for (p in Place.places()) at (p) {   
+ 					refsToPlaces().clear();
+ 					//refsToPlaces().reInitialize();
+ 				}
  			}
  		}
+ 		Console.OUT.println("************************************************************************************************");
  		//Jason: Descomentar para la tabla de resultados
  		/*if(configCPLS.getOutFormat() == 0n){
  			//Console.OUT.print(cFile+",");
@@ -122,7 +130,7 @@ public class NodeInstancer{
  			var solWin2:Rail[Int];
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
- 				refPlaces().setStats_(targetCost);
+ 				refPlaces().setStats_(targetCost, place.id as Int);
  				/*if (verify){
  					refPlaces().verify_();
  				}*/
@@ -158,5 +166,91 @@ public class NodeInstancer{
  				Console.OUT.println("|-------|----------|----------|--------|----------|----------|----------|-------|-----|------|---------|-----|----|----------|-------|-----------|----------|");		 
  			}
  		}
+ 	}
+ 
+ 	public static def printStructure(configCPLS:CPLSConfig){
+ 			 Console.OUT.println("************************************************************************************************");
+ 			 Console.OUT.println("*****************************************Informacion general***********************************");
+			 Console.OUT.println("Distancia minima permitida: " + configCPLS.getMinDistance());
+			 Console.OUT.println("Valor objetivo: " + configCPLS.getTargetCost());
+			 Console.OUT.println("Estrictamente menor?: " + configCPLS.getStrictLow());
+			 Console.OUT.println("Formato de Salida: " + configCPLS.getOutFormat());
+			 Console.OUT.println("Semilla de entrada: " + configCPLS.getSeed());
+			 Console.OUT.println("Cantidad de veces por instancia: " + configCPLS.getTimesPerInstance());
+			 Console.OUT.println("Verify: " + configCPLS.getVerify());
+			 Console.OUT.println("****************Informacion del modelo del problema*************************");
+			 val problemModel = configCPLS.getProblemModel();
+			 Console.OUT.println("Tamano de instancia: " + problemModel.size);
+			 Console.OUT.println("Path archivo vector solucion: " + problemModel.getInPathVectorSol());
+			 Console.OUT.println("Path archivo datos del problema: " + problemModel.getInPathDataProblem());
+			 Console.OUT.println("Valor base: " + problemModel.getBaseValue());
+			 Console.OUT.println("****************Informacion de los teamPool*************************");
+			 val teamPool = configCPLS.getTeamsPoolConfig();
+			 Console.OUT.println("Tamano de problema: " + teamPool.getProblemSize());
+			 Console.OUT.println("Tamano del pool: " + teamPool.getPoolSize());
+			 Console.OUT.println("PoolMode: " + teamPool.getPoolMode());
+			 Console.OUT.println("Minima distancia: " + teamPool.getMinDist());
+ 			if(configCPLS.getIsThereAMasterNode()){
+ 				val masterConfig = configCPLS.getMasterConfig();
+ 				Console.OUT.println("************************************************************************************************");
+ 				Console.OUT.println("************************Informacion del nodo master**************************");
+ 				Console.OUT.println("Report time: " + masterConfig.getReportI());
+ 				Console.OUT.println("Update time: " + masterConfig.getUpdateI());
+ 				Console.OUT.println("MaxUpdate time: " + masterConfig.getMaxUpdateI());
+ 				Console.OUT.println("Heuristic: " + masterConfig.getHeuristic());
+ 				Console.OUT.println("Numero de teams: " + masterConfig.getNumberOfTeams());
+ 				Console.OUT.println("Nodo por team: " + masterConfig.getNodesPerTeam());
+ 				Console.OUT.println("Id del team al que pertenece: " + masterConfig.getTeamId());
+ 				Console.OUT.println("Tiempo de comunicacion para diversificar (InterTeamCommTime): " + masterConfig.getInterTeamCommTime());
+ 				Console.OUT.println("AffectedPer?: " + masterConfig.getAffectedPer());
+ 				Console.OUT.println("Espera inicial (InterTeamCommTime): " + masterConfig.getIniDelay());
+ 				Console.OUT.println("Verify?: " + masterConfig.getVerify());
+ 				Console.OUT.println("ChangeProb?: " + masterConfig.getChangeProb());
+ 				Console.OUT.println("DiversificactionOption?" + masterConfig.getDiversificationOption());
+ 				Console.OUT.println("Tiempo maximo de ejecucion: " + masterConfig.getMaxTime());
+ 				Console.OUT.println("Numero maximo de iteraciones: " + masterConfig.getMaxIters());
+ 				Console.OUT.println("Numero maximo de restarts: " + masterConfig.getMaxRestarts());
+ 				Console.OUT.println("ReportPart?: " + masterConfig.getReportPart());
+ 				Console.OUT.println("Modo de recepcion de parametros: " + masterConfig.getModParams());
+ 				Console.OUT.println("ChangeOnDiver?: " + masterConfig.getChangeOnDiver());
+ 				Console.OUT.println("**************Informacion del cplsPool***********************");
+ 				val cplsPool = configCPLS.getCPLSPoolConfig();
+ 				Console.OUT.println("Tamano de problema: " + cplsPool.getProblemSize());
+ 				Console.OUT.println("Tamano del pool: " + cplsPool.getPoolSize());
+ 				Console.OUT.println("PoolMode: " + cplsPool.getPoolMode());
+ 				Console.OUT.println("Minima distancia: " + cplsPool.getMinDist());
+ 			}else{
+ 				Console.OUT.println("************************Ejecucion sin nodo master**************************");
+ 			}
+ 		 /*******************************************/
+ 		 val nodeConfigs = configCPLS.getConfigNodes();
+ 		 Console.OUT.println("************************************************************************************************");
+ 		 Console.OUT.println("****************Informacion comun a todos los nodos*************************");
+		 Console.OUT.println("Numero de equipos: " + nodeConfigs(0,0).getNumberOfTeams());
+		 Console.OUT.println("Nodos por equipo: " + nodeConfigs(0,0).getNodesPerTeam());
+		 Console.OUT.println("InterTeamCommTime: " + nodeConfigs(0,0).getInterTeamCommTime());
+		 Console.OUT.println("AffectedPer: " + nodeConfigs(0,0).getAffectedPer());
+		 Console.OUT.println("IniDelay (InterTeamCommTime): " + nodeConfigs(0,0).getIniDelay());
+		 Console.OUT.println("Verify: " + nodeConfigs(0,0).getVerify());
+		 Console.OUT.println("ChangeProb?: " + nodeConfigs(0,0).getChangeProb());
+		 Console.OUT.println("DiversificationOption?: " + nodeConfigs(0,0).getDiversificationOption());
+		 Console.OUT.println("Tiempo maximo de ejecucion: " + nodeConfigs(0,0).getMaxTime());
+		 Console.OUT.println("Maximo numero de iteraciones: " + nodeConfigs(0,0).getMaxIters());
+		 Console.OUT.println("Maximo numero de restarts: " + nodeConfigs(0,0).getMaxRestarts());
+		 Console.OUT.println("ReportPart?: " + nodeConfigs(0,0).getReportPart());
+		 Console.OUT.println("Modo de ingreso de parametros: " + nodeConfigs(0,0).getModParams());
+		 Console.OUT.println("ChangeOnDiver: " + nodeConfigs(0,0).getChangeOnDiver());
+		 Console.OUT.println("ReportTime: " + nodeConfigs(0,0).getReportI());
+		 Console.OUT.println("UpdateTime: " + nodeConfigs(0,0).getUpdateI());
+		 Console.OUT.println("MaxUpdateI?: " + nodeConfigs(0,0).getMaxUpdateI());
+ 		 /**********************************************/
+		 Console.OUT.println("************************************************************************************************");
+		 Console.OUT.println("****************Informacion especifica de los nodos*************************");
+		 for(p in nodeConfigs){
+		 	Console.OUT.println("Id del equipo: " + p.getTeamId());
+		 	Console.OUT.println("Heuristica: " + p.getHeuristic());
+		 }
+		 Console.OUT.println("************************************************************************************************");
+		 Console.OUT.println("************************************************************************************************");
  	}
 }

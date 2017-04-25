@@ -76,6 +76,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		}
  		mark.clear();
  		listI.clear();
+ 		listIJ.clear();
  		//nRestart = 0n;
  		nSameVar = 0n;
  		nLocalMin = 0n;
@@ -110,8 +111,8 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  			
  			if (this.nVarMarked + 1 >= this.resetLimit){	
  				onLocMin();
- 				val cost:Long = doReset(this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
- 				returnCost = (cost < 0) ? this.problemModel.costOfSolution(sz, true, super.variables) : cost;
+ 				returnCost = doReset(this.nVarToReset, currentCost);//doReset(nb_var_to_reset,csp);
+ 				//returnCost = currentCost;
  			}
  			//return otherCost;
  		}else{
@@ -145,8 +146,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		cost = reset( n, currentCost );
  		mark.clear();
  		nReset++;
- 		return cost;
- 		//currentCost = (cost < 0) ? problemModel.costOfSolution(true) : cost; //Arg costofsol(1)
+ 		return (cost < 0) ? this.problemModel.costOfSolution(sz, true, super.variables) : cost; //Arg costofsol(1)
  	}
 
  	/**

@@ -29,9 +29,22 @@ public class ProblemGenericModel(size:Long){
  		this.inPathDataProblem = inPathDataProblem;
  	}
  
+ 	public def getInPathVectorSol(){
+ 		return this.inPathVectorSol;
+ 	}
+ 
+ 	public def getBaseValue(){
+ 		return this.baseValue;
+ 	}
+ 
+ 	public def getInPathDataProblem(){
+ 		return this.inPathDataProblem;
+ 	}
+ 
  	public def setInPathVectorSol(inPathVectorSol:String){
  		this.inPathVectorSol = inPathVectorSol;
  	}
+
 
  	public def setSeed(seed:Long){
  		this.inSeed = seed;

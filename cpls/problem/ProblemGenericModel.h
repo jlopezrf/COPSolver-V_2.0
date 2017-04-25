@@ -79,6 +79,9 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     
     virtual void setBaseValue(x10_int baseValue);
     virtual void setInPathDataProblem(::x10::lang::String* inPathDataProblem);
+    virtual ::x10::lang::String* getInPathVectorSol();
+    virtual x10_int getBaseValue();
+    virtual ::x10::lang::String* getInPathDataProblem();
     virtual void setInPathVectorSol(::x10::lang::String* inPathVectorSol);
     virtual void setSeed(x10_long seed);
     virtual x10_long getSize();

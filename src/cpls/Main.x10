@@ -30,6 +30,7 @@ public class Main {
  		val problemParams = new Rail[Long](3, -1 );
  		var opts:ParamManager = new ParamManager(args);
  		var configCPLS:CPLSConfig = new CPLSConfig();
+ 
  		//*********************Model Problem Creation**************************//
  		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
@@ -54,16 +55,16 @@ public class Main {
 			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristicAndOthers(0));
 			 configCPLS.setMasterConfig(masterConfig);
  		}else if(modeIndicator){
- 			Console.OUT.println("Debe indicar una heurística para el nodo master");
+ 			Console.OUT.println("Error_Ini. Debe indicar una heurística para el nodo master");
  		}
  		
  		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
  		
  		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
- 			Console.OUT.println("MsgType_0. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
+ 			Console.OUT.println("Error_Ini. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}else if(!modeIndicator && (Place.MAX_PLACES != nodeConfigs.numElems_2*nodeConfigs.numElems_1)){
- 			Console.OUT.println("MsgType_0. elseif - Inconsistencia en el numero total de nodos" + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
+ 			Console.OUT.println("Error_Ini. elseif - Inconsistencia en el numero total de nodos" + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}
  		configCPLS.setConfigNodes(nodeConfigs);
@@ -93,11 +94,11 @@ public class Main {
  			if (tCostFromCL >= 0){ // get lower or equal to target 
  				c = tCostFromCL;
  				sl = false;
- 				Console.OUT.println("MsgType_0. Target from CL: lower or equal than "+c);
+ 				Console.OUT.println("Info: Target from CL: lower or equal than "+c);
  			} else { 
  				c = tCostFromCL * -1;
  				sl = true;
- 				Console.OUT.println("MsgType_0. Target from CL: strictly lower than "+c);
+ 				Console.OUT.println("Info: Target from CL: strictly lower than "+c);
  			}
  		} else { // target cost loaded from file
  			sl = costFromF < 0; // strictly lower true for negative numbers
@@ -105,7 +106,7 @@ public class Main {
  				c = problemParams(1); //opt 
  			else
  				c = problemParams(2); //bks
- 			Console.OUT.println("MsgType_0. Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
+ 			Console.OUT.println("Info: Target from file: "+(sl?"strictly lower than ":" lower or equal than ")+c);
  		}
  		val tCost = c >= 0 ? c : 0; // if negative cost put default value
  		val sLow = sl;
@@ -245,9 +246,9 @@ public class Main {
 								nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
 								nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
 								if(modeIndicator){
- 									nodeConfigs(i,j).setTeamId(i + 1n);
+ 									nodeConfigs(i,j).setTeamId(1n + i*nodesPerTeam);
 								}else{
- 									nodeConfigs(i,j).setTeamId(i as Int);
+ 									nodeConfigs(i,j).setTeamId(i*nodesPerTeam);
 								}
 								nodeConfigs(i,j).setInterTeamCommTime(interTeamCommTime);
 								nodeConfigs(i,j).setAffectedPer(affectedPer);

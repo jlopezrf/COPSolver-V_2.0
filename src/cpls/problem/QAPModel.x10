@@ -95,6 +95,7 @@ public class QAPModel extends ProblemGenericModel{
  					for(i = 0; i < size; i++)
  						for(j = i + 1; j < size; j++)
  							delta(i,j) = computeDelta(sz, i, j, variables);
+ 		//Console.OUT.println("MsgType_0. CostOfSolution ejecutado en QAPModel");
  		return r;
  	}
  

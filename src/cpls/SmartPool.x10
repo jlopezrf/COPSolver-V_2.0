@@ -55,9 +55,32 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * variables will already have happened.
 	  */
 	 //public def tryInsertConf(cost:Long, variables:Rail[Int]{self.size==sz}, place:Int) {
+	 //var counterForReportsInvocationSamrtPool:Int = 0n;
 	 public def tryInsertConf( info : State(sz)) {
-		  monitor.atomicBlock(()=>tryInsertConf0(info));
+	 	//counterForReportsInvocationSamrtPool++;
+		 monitor.atomicBlock(()=>tryInsertConf0(info));
+		 //if(counterForReportsInvocationSamrtPool%100 == 0){
+		 //	printSolutions();
+		 //}
+		 
 	 }
+	 
+	 /*public def printSolutions(){
+	 	Console.OUT.println("*******Reporte de soluciones presentes en el smartPool del nodo " + here + "********");
+	 	for(p in pool){
+	 		for(q in p){
+	 			Console.OUT.print("Costo: " + q.cost);
+	 			printVector(q.vector);
+	 		}
+	 	}
+	 }
+	 
+	 public static def printVector(vector:Rail[Int]){
+	 	for(var i:Int = 0n; i < vector.size; i++){
+	 		Console.OUT.print(vector(i) + "  ");
+	 	}
+	 	Console.OUT.print("\n");
+	 }*/
 	 
 	 //protected def tryInsertConf0( cost : Long , variables : Rail[Int]{self.size==sz}, place : Int ):Unit {
 	 protected def tryInsertConf0( info : State(sz) ):Unit {
@@ -203,6 +226,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 /**
 	  * Get a smart configuration from HIGH, MEDIUM or LOW quality pool.
 	  */
+	 //Jason: Para debiguar el update
+	 //var counterForUpdatesSmartPool:Int = 0n;
 	 public def getPConf() : Maybe[State(sz)]=
 		  monitor.atomicBlock(()=> {
 				//Console.OUT.println("s "+nbEntries(0)+"m "+nbEntries(1)+"l "+nbEntries(2));
@@ -235,6 +260,10 @@ public class SmartPool(sz:Long, poolSize:Int) {
 					 }
 				}
 				val aux:Maybe[State(sz)] = new Maybe[State(sz)](pool(mem)(index-1));
+ 				//this.counterForUpdatesSmartPool++;
+ 				//if(this.counterForUpdatesSmartPool%100 == 0){
+ 				//	Console.OUT.println("*****SmartPool de nodo " + here + ". Enviando solucion");
+ 				//}
 				return aux;
 		  });
 	 
@@ -278,6 +307,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 					 nbEntries(i) = 0n;
 				Unit()
 		  });
+		  //this.counterForReportsInvocationSamrtPool = 0n;
+		  //this.counterForUpdatesSmartPool = 0n;
 	 }
 }
 public type SmartPool(s:Long) = SmartPool{self.sz==s};
