@@ -44,7 +44,7 @@ class cpls_Main__closure__1 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38957 = ::x10aux::makeStringLit("Magic Square Problem"); strLit__38957; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39269 = ::x10aux::makeStringLit("Magic Square Problem"); strLit__39269; }));
         
     }
     
@@ -93,7 +93,7 @@ class cpls_Main__closure__2 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38959 = ::x10aux::makeStringLit("Costas Array Problem"); strLit__38959; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39271 = ::x10aux::makeStringLit("Costas Array Problem"); strLit__39271; }));
         
     }
     
@@ -142,7 +142,7 @@ class cpls_Main__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38961 = ::x10aux::makeStringLit("All-Interval Array Problem"); strLit__38961; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39273 = ::x10aux::makeStringLit("All-Interval Array Problem"); strLit__39273; }));
         
     }
     
@@ -191,7 +191,7 @@ class cpls_Main__closure__4 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38963 = ::x10aux::makeStringLit("Langford Pairing Problem"); strLit__38963; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39275 = ::x10aux::makeStringLit("Langford Pairing Problem"); strLit__39275; }));
         
     }
     
@@ -240,7 +240,7 @@ class cpls_Main__closure__5 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38965 = ::x10aux::makeStringLit("Number Partition Problem"); strLit__38965; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39277 = ::x10aux::makeStringLit("Number Partition Problem"); strLit__39277; }));
         
     }
     
@@ -289,7 +289,7 @@ class cpls_Main__closure__6 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38967 = ::x10aux::makeStringLit("Stable Marriage Problem"); strLit__38967; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39279 = ::x10aux::makeStringLit("Stable Marriage Problem"); strLit__39279; }));
         
     }
     
@@ -338,7 +338,7 @@ class cpls_Main__closure__7 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38969 = ::x10aux::makeStringLit("HRP Problem"); strLit__38969; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39281 = ::x10aux::makeStringLit("HRP Problem"); strLit__39281; }));
         
     }
     
@@ -387,7 +387,7 @@ class cpls_Main__closure__8 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__38971 = ::x10aux::makeStringLit("QAP Problem"); strLit__38971; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__39283 = ::x10aux::makeStringLit("QAP Problem"); strLit__39283; }));
         
     }
     
@@ -438,15 +438,15 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* problemString = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                           (__extension__ ({ static ::x10::lang::String* strLit__38830 = ::x10aux::makeStringLit("-p"); strLit__38830; })),
-                                           (__extension__ ({ static ::x10::lang::String* strLit__38831 = ::x10aux::makeStringLit("QAP"); strLit__38831; })));
+                                           (__extension__ ({ static ::x10::lang::String* strLit__39142 = ::x10aux::makeStringLit("-p"); strLit__39142; })),
+                                           (__extension__ ({ static ::x10::lang::String* strLit__39143 = ::x10aux::makeStringLit("QAP"); strLit__39143; })));
     
     //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int problem = ::cpls::Main::problemDetect(problemString);
     
     //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long inSeed = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                        (__extension__ ({ static ::x10::lang::String* strLit__38832 = ::x10aux::makeStringLit("-S"); strLit__38832; })),
+                        (__extension__ ({ static ::x10::lang::String* strLit__39144 = ::x10aux::makeStringLit("-S"); strLit__39144; })),
                         ::x10::lang::System::nanoTime());
     
     //#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -461,14 +461,14 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_boolean modeIndicator = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                           (__extension__ ({ static ::x10::lang::String* strLit__38833 = ::x10aux::makeStringLit("-ce"); strLit__38833; })),
+                                                           (__extension__ ({ static ::x10::lang::String* strLit__39145 = ::x10aux::makeStringLit("-ce"); strLit__39145; })),
                                                            ((x10_int)1)),
                                                          ((x10_int)0)))
       ? (false) : (true);
     
     //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_boolean verify = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                    (__extension__ ({ static ::x10::lang::String* strLit__38834 = ::x10aux::makeStringLit("-v"); strLit__38834; })),
+                                                    (__extension__ ({ static ::x10::lang::String* strLit__39146 = ::x10aux::makeStringLit("-v"); strLit__39146; })),
                                                     ((x10_int)0)),
                                                   ((x10_int)1)));
     
@@ -484,8 +484,8 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* heuristicString = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                             (__extension__ ({ static ::x10::lang::String* strLit__38835 = ::x10aux::makeStringLit("-sl"); strLit__38835; })),
-                                             (__extension__ ({ static ::x10::lang::String* strLit__38836 = ::x10aux::makeStringLit("AS"); strLit__38836; })));
+                                             (__extension__ ({ static ::x10::lang::String* strLit__39147 = ::x10aux::makeStringLit("-sl"); strLit__39147; })),
+                                             (__extension__ ({ static ::x10::lang::String* strLit__39148 = ::x10aux::makeStringLit("AS"); strLit__39148; })));
     
     //#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     if ((!::x10aux::struct_equals(::x10aux::nullCheck(heuristicString)->x10::lang::String::indexOf(
@@ -493,7 +493,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     {
         
         //#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-        masterHeuristicAndOthers = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38837 = ::x10aux::makeStringLit("*"); strLit__38837; })), heuristicString);
+        masterHeuristicAndOthers = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39149 = ::x10aux::makeStringLit("*"); strLit__39149; })), heuristicString);
         
         //#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         heuristicString = ::x10aux::nullCheck(masterHeuristicAndOthers)->x10::lang::Rail< ::x10::lang::String* >::__apply(
@@ -515,7 +515,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
         
         //#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__38840 = ::x10aux::makeStringLit("Error_Ini. Debe indicar una heur\355stica para el nodo master"); strLit__38840; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39152 = ::x10aux::makeStringLit("Error_Ini. Debe indicar una heur\355stica para el nodo master"); strLit__39152; }))));
     }
     
     //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -530,7 +530,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
         
         //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38841 = ::x10aux::makeStringLit("Error_Ini. if - Inconsistencia en el numero total de nodos: "); strLit__38841; })), ((::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_2)) * (::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_1))))));
+          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39153 = ::x10aux::makeStringLit("Error_Ini. if - Inconsistencia en el numero total de nodos: "); strLit__39153; })), ((::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_2)) * (::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_1))))));
         
         //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         return;
@@ -542,7 +542,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
         
         //#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38842 = ::x10aux::makeStringLit("Error_Ini. elseif - Inconsistencia en el numero total de nodos"); strLit__38842; })), ((::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_2)) * (::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_1))))));
+          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39154 = ::x10aux::makeStringLit("Error_Ini. elseif - Inconsistencia en el numero total de nodos"); strLit__39154; })), ((::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_2)) * (::x10aux::nullCheck(nodeConfigs)->FMGL(numElems_1))))));
         
         //#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         return;
@@ -554,25 +554,25 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     //#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::cpls::entities::PoolConfig* cplsPoolConfig = ::cpls::entities::PoolConfig::_make(::x10aux::nullCheck(problemModel)->FMGL(size),
                                                                                        ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__38843 = ::x10aux::makeStringLit("P_lm"); strLit__38843; })),
+                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__39155 = ::x10aux::makeStringLit("P_lm"); strLit__39155; })),
                                                                                          ((x10_int)4)),
                                                                                        ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__38844 = ::x10aux::makeStringLit("P_lmM"); strLit__38844; })),
+                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__39156 = ::x10aux::makeStringLit("P_lmM"); strLit__39156; })),
                                                                                          ((x10_int)0)),
                                                                                        ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__38845 = ::x10aux::makeStringLit("P_lmD"); strLit__38845; })),
+                                                                                         (__extension__ ({ static ::x10::lang::String* strLit__39157 = ::x10aux::makeStringLit("P_lmD"); strLit__39157; })),
                                                                                          0.5));
     
     //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::cpls::entities::PoolConfig* teamsPoolConfig = ::cpls::entities::PoolConfig::_make(::x10aux::nullCheck(problemModel)->FMGL(size),
                                                                                         ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__38846 = ::x10aux::makeStringLit("P_e"); strLit__38846; })),
+                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__39158 = ::x10aux::makeStringLit("P_e"); strLit__39158; })),
                                                                                           ((x10_int)4)),
                                                                                         ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__38847 = ::x10aux::makeStringLit("P_eM"); strLit__38847; })),
+                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__39159 = ::x10aux::makeStringLit("P_eM"); strLit__39159; })),
                                                                                           ((x10_int)0)),
                                                                                         ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__38848 = ::x10aux::makeStringLit("P_eD"); strLit__38848; })),
+                                                                                          (__extension__ ({ static ::x10::lang::String* strLit__39160 = ::x10aux::makeStringLit("P_eD"); strLit__39160; })),
                                                                                           0.5));
     
     //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -587,27 +587,27 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(configCPLS)->setTimesPerInstance(
       ((x10_long)(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__38849 = ::x10aux::makeStringLit("-b"); strLit__38849; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__39161 = ::x10aux::makeStringLit("-b"); strLit__39161; })),
                     ((x10_int)10)))));
     
     //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int outFormat = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38850 = ::x10aux::makeStringLit("-of"); strLit__38850; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39162 = ::x10aux::makeStringLit("-of"); strLit__39162; })),
                           ((x10_int)1));
     
     //#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long costFromF = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__38851 = ::x10aux::makeStringLit("-tf"); strLit__38851; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__39163 = ::x10aux::makeStringLit("-tf"); strLit__39163; })),
                            ((x10_long)0ll));
     
     //#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int tCostFromCL = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                            (__extension__ ({ static ::x10::lang::String* strLit__38852 = ::x10aux::makeStringLit("-tc"); strLit__38852; })),
+                            (__extension__ ({ static ::x10::lang::String* strLit__39164 = ::x10aux::makeStringLit("-tc"); strLit__39164; })),
                             ((x10_int)0));
     
     //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int testNb = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                       (__extension__ ({ static ::x10::lang::String* strLit__38853 = ::x10aux::makeStringLit("-b"); strLit__38853; })),
+                       (__extension__ ({ static ::x10::lang::String* strLit__39165 = ::x10aux::makeStringLit("-b"); strLit__39165; })),
                        ((x10_int)10));
     
     //#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -635,7 +635,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
             
             //#line 97 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38854 = ::x10aux::makeStringLit("Info: Target from CL: lower or equal than "); strLit__38854; })), c)));
+              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39166 = ::x10aux::makeStringLit("Info: Target from CL: lower or equal than "); strLit__39166; })), c)));
         } else {
             
             //#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -646,7 +646,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
             
             //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38855 = ::x10aux::makeStringLit("Info: Target from CL: strictly lower than "); strLit__38855; })), c)));
+              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39167 = ::x10aux::makeStringLit("Info: Target from CL: strictly lower than "); strLit__39167; })), c)));
         }
         
     } else {
@@ -671,9 +671,9 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
         
         //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38858 = ::x10aux::makeStringLit("Info: Target from file: "); strLit__38858; })), sl
-            ? ((__extension__ ({ static ::x10::lang::String* strLit__38859 = ::x10aux::makeStringLit("strictly lower than "); strLit__38859; })))
-            : ((__extension__ ({ static ::x10::lang::String* strLit__38860 = ::x10aux::makeStringLit(" lower or equal than "); strLit__38860; })))), c)));
+          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39170 = ::x10aux::makeStringLit("Info: Target from file: "); strLit__39170; })), sl
+            ? ((__extension__ ({ static ::x10::lang::String* strLit__39171 = ::x10aux::makeStringLit("strictly lower than "); strLit__39171; })))
+            : ((__extension__ ({ static ::x10::lang::String* strLit__39172 = ::x10aux::makeStringLit(" lower or equal than "); strLit__39172; })))), c)));
     }
     
     //#line 111 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -690,7 +690,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 127 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(configCPLS)->setMinDistance(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                      (__extension__ ({ static ::x10::lang::String* strLit__38861 = ::x10aux::makeStringLit("-D"); strLit__38861; })),
+                                                      (__extension__ ({ static ::x10::lang::String* strLit__39173 = ::x10aux::makeStringLit("-D"); strLit__39173; })),
                                                       0.3));
     
     //#line 129 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -703,7 +703,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 134 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int nodesPerTeam = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__38862 = ::x10aux::makeStringLit("-N"); strLit__38862; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__39174 = ::x10aux::makeStringLit("-N"); strLit__39174; })),
                              ((x10_int)1));
     
     //#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -727,75 +727,75 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setInterTeamCommTime(
       ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-        (__extension__ ({ static ::x10::lang::String* strLit__38863 = ::x10aux::makeStringLit("-I"); strLit__38863; })),
+        (__extension__ ({ static ::x10::lang::String* strLit__39175 = ::x10aux::makeStringLit("-I"); strLit__39175; })),
         ((x10_long)0ll)));
     
     //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setAffectedPer(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__38864 = ::x10aux::makeStringLit("-A"); strLit__38864; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__39176 = ::x10aux::makeStringLit("-A"); strLit__39176; })),
                                                         1.0));
     
     //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setIniDelay(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                     (__extension__ ({ static ::x10::lang::String* strLit__38865 = ::x10aux::makeStringLit("-W"); strLit__38865; })),
+                                                     (__extension__ ({ static ::x10::lang::String* strLit__39177 = ::x10aux::makeStringLit("-W"); strLit__39177; })),
                                                      ((x10_long)0ll)));
     
     //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setVerify((::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                            (__extension__ ({ static ::x10::lang::String* strLit__38866 = ::x10aux::makeStringLit("-v"); strLit__38866; })),
+                                                                            (__extension__ ({ static ::x10::lang::String* strLit__39178 = ::x10aux::makeStringLit("-v"); strLit__39178; })),
                                                                             ((x10_int)0)),
                                                                           ((x10_int)1))));
     
     //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setChangeProb(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                       (__extension__ ({ static ::x10::lang::String* strLit__38867 = ::x10aux::makeStringLit("-C"); strLit__38867; })),
+                                                       (__extension__ ({ static ::x10::lang::String* strLit__39179 = ::x10aux::makeStringLit("-C"); strLit__39179; })),
                                                        ((x10_int)100)));
     
     //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setDiversificationOption(
       ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-        (__extension__ ({ static ::x10::lang::String* strLit__38868 = ::x10aux::makeStringLit("O"); strLit__38868; })),
+        (__extension__ ({ static ::x10::lang::String* strLit__39180 = ::x10aux::makeStringLit("O"); strLit__39180; })),
         ((x10_int)0)));
     
     //#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setMaxTime(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                    (__extension__ ({ static ::x10::lang::String* strLit__38869 = ::x10aux::makeStringLit("-mt"); strLit__38869; })),
+                                                    (__extension__ ({ static ::x10::lang::String* strLit__39181 = ::x10aux::makeStringLit("-mt"); strLit__39181; })),
                                                     ((x10_long)0ll)));
     
     //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setMaxIters(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                     (__extension__ ({ static ::x10::lang::String* strLit__38870 = ::x10aux::makeStringLit("-mi"); strLit__38870; })),
+                                                     (__extension__ ({ static ::x10::lang::String* strLit__39182 = ::x10aux::makeStringLit("-mi"); strLit__39182; })),
                                                      ((x10_long)100000000ll)));
     
     //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setMaxRestarts(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__38871 = ::x10aux::makeStringLit("-mr"); strLit__38871; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__39183 = ::x10aux::makeStringLit("-mr"); strLit__39183; })),
                                                         ((x10_int)0)));
     
     //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setReportPart((::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                                                (__extension__ ({ static ::x10::lang::String* strLit__38872 = ::x10aux::makeStringLit("-rp"); strLit__38872; })),
+                                                                                (__extension__ ({ static ::x10::lang::String* strLit__39184 = ::x10aux::makeStringLit("-rp"); strLit__39184; })),
                                                                                 ((x10_int)0)),
                                                                               ((x10_int)1))));
     
     //#line 150 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setModParams(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                      (__extension__ ({ static ::x10::lang::String* strLit__38873 = ::x10aux::makeStringLit("-M"); strLit__38873; })),
+                                                      (__extension__ ({ static ::x10::lang::String* strLit__39185 = ::x10aux::makeStringLit("-M"); strLit__39185; })),
                                                       ((x10_int)1)));
     
     //#line 151 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10aux::nullCheck(masterConfig)->setChangeOnDiver(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                          (__extension__ ({ static ::x10::lang::String* strLit__38874 = ::x10aux::makeStringLit("-CD"); strLit__38874; })),
+                                                          (__extension__ ({ static ::x10::lang::String* strLit__39186 = ::x10aux::makeStringLit("-CD"); strLit__39186; })),
                                                           ((x10_int)1)));
     
     //#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int rep = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__38875 = ::x10aux::makeStringLit("-R"); strLit__38875; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__39187 = ::x10aux::makeStringLit("-R"); strLit__39187; })),
                     ((x10_int)0));
     
     //#line 153 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int upd = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__38876 = ::x10aux::makeStringLit("-U"); strLit__38876; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__39188 = ::x10aux::makeStringLit("-U"); strLit__39188; })),
                     ((x10_int)0));
     
     //#line 154 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -815,7 +815,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 158 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* mustr = ::x10::lang::System::getenv(
-                                   (__extension__ ({ static ::x10::lang::String* strLit__38877 = ::x10aux::makeStringLit("MU"); strLit__38877; })));
+                                   (__extension__ ({ static ::x10::lang::String* strLit__39189 = ::x10aux::makeStringLit("MU"); strLit__39189; })));
     
     //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     if ((!::x10aux::struct_equals(mustr, reinterpret_cast< ::x10::lang::NullType*>(X10_NULL))))
@@ -849,7 +849,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 171 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int nodesPerTeam = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                             (__extension__ ({ static ::x10::lang::String* strLit__38878 = ::x10aux::makeStringLit("-N"); strLit__38878; })),
+                             (__extension__ ({ static ::x10::lang::String* strLit__39190 = ::x10aux::makeStringLit("-N"); strLit__39190; })),
                              ((x10_int)1));
     
     //#line 173 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -857,81 +857,81 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_boolean modeIndicator = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                           (__extension__ ({ static ::x10::lang::String* strLit__38879 = ::x10aux::makeStringLit("-ce"); strLit__38879; })),
+                                                           (__extension__ ({ static ::x10::lang::String* strLit__39191 = ::x10aux::makeStringLit("-ce"); strLit__39191; })),
                                                            ((x10_int)1)),
                                                          ((x10_int)0)))
       ? (false) : (true);
     
     //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long interTeamCommTime = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                   (__extension__ ({ static ::x10::lang::String* strLit__38880 = ::x10aux::makeStringLit("-I"); strLit__38880; })),
+                                   (__extension__ ({ static ::x10::lang::String* strLit__39192 = ::x10aux::makeStringLit("-I"); strLit__39192; })),
                                    ((x10_long)0ll));
     
     //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_double affectedPer = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__38881 = ::x10aux::makeStringLit("-A"); strLit__38881; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__39193 = ::x10aux::makeStringLit("-A"); strLit__39193; })),
                                1.0);
     
     //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long iniDelay = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38882 = ::x10aux::makeStringLit("-W"); strLit__38882; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39194 = ::x10aux::makeStringLit("-W"); strLit__39194; })),
                           ((x10_long)0ll));
     
     //#line 178 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_boolean verify = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                    (__extension__ ({ static ::x10::lang::String* strLit__38883 = ::x10aux::makeStringLit("-v"); strLit__38883; })),
+                                                    (__extension__ ({ static ::x10::lang::String* strLit__39195 = ::x10aux::makeStringLit("-v"); strLit__39195; })),
                                                     ((x10_int)0)),
                                                   ((x10_int)1)));
     
     //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int changeProb = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                           (__extension__ ({ static ::x10::lang::String* strLit__38884 = ::x10aux::makeStringLit("-C"); strLit__38884; })),
+                           (__extension__ ({ static ::x10::lang::String* strLit__39196 = ::x10aux::makeStringLit("-C"); strLit__39196; })),
                            ((x10_int)100));
     
     //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int divOption = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38885 = ::x10aux::makeStringLit("O"); strLit__38885; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39197 = ::x10aux::makeStringLit("O"); strLit__39197; })),
                           ((x10_int)0));
     
     //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long maxTime = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                         (__extension__ ({ static ::x10::lang::String* strLit__38886 = ::x10aux::makeStringLit("-mt"); strLit__38886; })),
+                         (__extension__ ({ static ::x10::lang::String* strLit__39198 = ::x10aux::makeStringLit("-mt"); strLit__39198; })),
                          ((x10_long)0ll));
     
     //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long maxIters = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38887 = ::x10aux::makeStringLit("-mi"); strLit__38887; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39199 = ::x10aux::makeStringLit("-mi"); strLit__39199; })),
                           ((x10_long)100000000ll));
     
     //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int maxRestarts = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                            (__extension__ ({ static ::x10::lang::String* strLit__38888 = ::x10aux::makeStringLit("-mr"); strLit__38888; })),
+                            (__extension__ ({ static ::x10::lang::String* strLit__39200 = ::x10aux::makeStringLit("-mr"); strLit__39200; })),
                             ((x10_int)0));
     
     //#line 185 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_boolean reportPart = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__38889 = ::x10aux::makeStringLit("-rp"); strLit__38889; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__39201 = ::x10aux::makeStringLit("-rp"); strLit__39201; })),
                                                         ((x10_int)0)),
                                                       ((x10_int)1)));
     
     //#line 186 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int modParams = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38890 = ::x10aux::makeStringLit("-M"); strLit__38890; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39202 = ::x10aux::makeStringLit("-M"); strLit__39202; })),
                           ((x10_int)1));
     
     //#line 187 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int changeOnDiver = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                              (__extension__ ({ static ::x10::lang::String* strLit__38891 = ::x10aux::makeStringLit("-CD"); strLit__38891; })),
+                              (__extension__ ({ static ::x10::lang::String* strLit__39203 = ::x10aux::makeStringLit("-CD"); strLit__39203; })),
                               ((x10_int)1));
     
     //#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int rep = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__38892 = ::x10aux::makeStringLit("-R"); strLit__38892; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__39204 = ::x10aux::makeStringLit("-R"); strLit__39204; })),
                     ((x10_int)0));
     
     //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int upd = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                    (__extension__ ({ static ::x10::lang::String* strLit__38893 = ::x10aux::makeStringLit("-U"); strLit__38893; })),
+                    (__extension__ ({ static ::x10::lang::String* strLit__39205 = ::x10aux::makeStringLit("-U"); strLit__39205; })),
                     ((x10_int)0));
     
     //#line 190 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -951,7 +951,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     
     //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* mustr = ::x10::lang::System::getenv(
-                                   (__extension__ ({ static ::x10::lang::String* strLit__38894 = ::x10aux::makeStringLit("MU"); strLit__38894; })));
+                                   (__extension__ ({ static ::x10::lang::String* strLit__39206 = ::x10aux::makeStringLit("MU"); strLit__39206; })));
     
     //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     if ((!::x10aux::struct_equals(mustr, reinterpret_cast< ::x10::lang::NullType*>(X10_NULL))))
@@ -980,7 +980,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
     {
         
         //#line 204 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-        teamsWithMultiplicity = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38895 = ::x10aux::makeStringLit("-"); strLit__38895; })), solverIn);
+        teamsWithMultiplicity = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39207 = ::x10aux::makeStringLit("-"); strLit__39207; })), solverIn);
     } else {
         
         //#line 206 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1036,17 +1036,17 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
                 {
                     
                     //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-                    teams = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38897 = ::x10aux::makeStringLit("/"); strLit__38897; })), ::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
+                    teams = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39209 = ::x10aux::makeStringLit("/"); strLit__39209; })), ::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                                                                                                                ((x10_long)(k))));
                 } else {
                     
                     //#line 220 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
                     ::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__set(
                       ((x10_long)(k)), ::x10::lang::String::__plus(::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
-                                                                     ((x10_long)(k))), (__extension__ ({ static ::x10::lang::String* strLit__38900 = ::x10aux::makeStringLit("/1"); strLit__38900; }))));
+                                                                     ((x10_long)(k))), (__extension__ ({ static ::x10::lang::String* strLit__39212 = ::x10aux::makeStringLit("/1"); strLit__39212; }))));
                     
                     //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-                    teams = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38901 = ::x10aux::makeStringLit("/"); strLit__38901; })), ::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
+                    teams = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39213 = ::x10aux::makeStringLit("/"); strLit__39213; })), ::x10aux::nullCheck(teamsWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                                                                                                                ((x10_long)(k))));
                 }
                 
@@ -1056,7 +1056,7 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
                 {
                     
                     //#line 224 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-                    nodesWithMultiplicity = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38903 = ::x10aux::makeStringLit(","); strLit__38903; })), ::x10aux::nullCheck(teams)->x10::lang::Rail< ::x10::lang::String* >::__apply(
+                    nodesWithMultiplicity = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39215 = ::x10aux::makeStringLit(","); strLit__39215; })), ::x10aux::nullCheck(teams)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                                                                                                                                ((x10_long)0ll)));
                     
                     //#line 225 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1077,12 +1077,12 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
                                     //#line 228 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
                                     if ((!::x10aux::struct_equals(::x10aux::nullCheck(::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                         ((x10_long)(m))))->x10::lang::String::indexOf(
-                                                                    (__extension__ ({ static ::x10::lang::String* strLit__38907 = ::x10aux::makeStringLit("x"); strLit__38907; }))),
+                                                                    (__extension__ ({ static ::x10::lang::String* strLit__39219 = ::x10aux::makeStringLit("x"); strLit__39219; }))),
                                                                   ((x10_int)-1))))
                                     {
                                         
                                         //#line 229 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-                                        nodes = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38908 = ::x10aux::makeStringLit("x"); strLit__38908; })), ::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
+                                        nodes = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39220 = ::x10aux::makeStringLit("x"); strLit__39220; })), ::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                                                                                                                                    ((x10_long)(m))));
                                     } else {
                                         
@@ -1090,10 +1090,10 @@ void cpls::Main::main(::x10::lang::Rail< ::x10::lang::String* >* args) {
                                         ::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__set(
                                           ((x10_long)(m)),
                                           ::x10::lang::String::__plus(::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
-                                                                        ((x10_long)(m))), (__extension__ ({ static ::x10::lang::String* strLit__38911 = ::x10aux::makeStringLit("x1"); strLit__38911; }))));
+                                                                        ((x10_long)(m))), (__extension__ ({ static ::x10::lang::String* strLit__39223 = ::x10aux::makeStringLit("x1"); strLit__39223; }))));
                                         
                                         //#line 232 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-                                        nodes = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__38912 = ::x10aux::makeStringLit("x"); strLit__38912; })), ::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
+                                        nodes = ::x10::lang::StringHelper::split((__extension__ ({ static ::x10::lang::String* strLit__39224 = ::x10aux::makeStringLit("x"); strLit__39224; })), ::x10aux::nullCheck(nodesWithMultiplicity)->x10::lang::Rail< ::x10::lang::String* >::__apply(
                                                                                                                                                                                                    ((x10_long)(m))));
                                     }
                                     
@@ -1299,7 +1299,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
     
     //#line 280 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     if (::x10aux::nullCheck(problem)->x10::lang::String::equalsIgnoreCase(
-          (__extension__ ({ static ::x10::lang::String* strLit__38956 = ::x10aux::makeStringLit("MSP"); strLit__38956; }))))
+          (__extension__ ({ static ::x10::lang::String* strLit__39268 = ::x10aux::makeStringLit("MSP"); strLit__39268; }))))
     {
         
         //#line 281 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1309,7 +1309,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__get)();
     } else 
     //#line 283 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38958 = ::x10aux::makeStringLit("CAP"); strLit__38958; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39270 = ::x10aux::makeStringLit("CAP"); strLit__39270; }))))
     {
         
         //#line 284 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1319,7 +1319,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__get)();
     } else 
     //#line 286 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38960 = ::x10aux::makeStringLit("AIP"); strLit__38960; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39272 = ::x10aux::makeStringLit("AIP"); strLit__39272; }))))
     {
         
         //#line 287 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1329,7 +1329,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__get)();
     } else 
     //#line 289 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38962 = ::x10aux::makeStringLit("LNP"); strLit__38962; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39274 = ::x10aux::makeStringLit("LNP"); strLit__39274; }))))
     {
         
         //#line 290 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1339,7 +1339,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__get)();
     } else 
     //#line 292 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38964 = ::x10aux::makeStringLit("NPP"); strLit__38964; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39276 = ::x10aux::makeStringLit("NPP"); strLit__39276; }))))
     {
         
         //#line 293 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1349,7 +1349,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__get)();
     } else 
     //#line 295 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38966 = ::x10aux::makeStringLit("SMP"); strLit__38966; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39278 = ::x10aux::makeStringLit("SMP"); strLit__39278; }))))
     {
         
         //#line 296 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1359,7 +1359,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__get)();
     } else 
     //#line 298 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38968 = ::x10aux::makeStringLit("HRP"); strLit__38968; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39280 = ::x10aux::makeStringLit("HRP"); strLit__39280; }))))
     {
         
         //#line 299 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1369,7 +1369,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         problemParam = ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__get)();
     } else 
     //#line 301 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__38970 = ::x10aux::makeStringLit("QAP"); strLit__38970; }))))
+    if (::x10aux::equals(problem,(__extension__ ({ static ::x10::lang::String* strLit__39282 = ::x10aux::makeStringLit("QAP"); strLit__39282; }))))
     {
         
         //#line 302 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1384,7 +1384,7 @@ x10_int cpls::Main::problemDetect(::x10::lang::String* problem) {
         
         //#line 306 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__38972 = ::x10aux::makeStringLit("Error: Type a valid CSP example: MSP, CAP, AIP, LNP, NPP , SMP, HRP or QAP"); strLit__38972; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39284 = ::x10aux::makeStringLit("Error: Type a valid CSP example: MSP, CAP, AIP, LNP, NPP , SMP, HRP or QAP"); strLit__39284; }))));
     }
     
     //#line 308 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1400,35 +1400,35 @@ x10_int cpls::Main::whichHeuristicInt(::x10::lang::String* solverIn) {
     
     //#line 343 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     if (::x10aux::nullCheck(solverIn)->x10::lang::String::equalsIgnoreCase(
-          (__extension__ ({ static ::x10::lang::String* strLit__38973 = ::x10aux::makeStringLit("AS"); strLit__38973; }))))
+          (__extension__ ({ static ::x10::lang::String* strLit__39285 = ::x10aux::makeStringLit("AS"); strLit__39285; }))))
     {
         
         //#line 344 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         heuParam = ::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__get)();
     } else 
     //#line 345 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__38974 = ::x10aux::makeStringLit("EO"); strLit__38974; }))))
+    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__39286 = ::x10aux::makeStringLit("EO"); strLit__39286; }))))
     {
         
         //#line 346 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         heuParam = ::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__get)();
     } else 
     //#line 347 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__38975 = ::x10aux::makeStringLit("RoTS"); strLit__38975; }))))
+    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__39287 = ::x10aux::makeStringLit("RoTS"); strLit__39287; }))))
     {
         
         //#line 348 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         heuParam = ::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__get)();
     } else 
     //#line 349 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__38976 = ::x10aux::makeStringLit("GA"); strLit__38976; }))))
+    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__39288 = ::x10aux::makeStringLit("GA"); strLit__39288; }))))
     {
         
         //#line 350 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
         heuParam = ::cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__get)();
     } else 
     //#line 351 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
-    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__38977 = ::x10aux::makeStringLit("HY"); strLit__38977; }))))
+    if (::x10aux::equals(solverIn,(__extension__ ({ static ::x10::lang::String* strLit__39289 = ::x10aux::makeStringLit("HY"); strLit__39289; }))))
     {
         
         //#line 352 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
@@ -1595,23 +1595,23 @@ public:
     
     //#line 313 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_long size = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                      (__extension__ ({ static ::x10::lang::String* strLit__38984 = ::x10aux::makeStringLit("-s"); strLit__38984; })),
+                      (__extension__ ({ static ::x10::lang::String* strLit__39296 = ::x10aux::makeStringLit("-s"); strLit__39296; })),
                       ((x10_long)10ll));
     
     //#line 314 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     x10_int baseValue = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                          (__extension__ ({ static ::x10::lang::String* strLit__38985 = ::x10aux::makeStringLit("-bv"); strLit__38985; })),
+                          (__extension__ ({ static ::x10::lang::String* strLit__39297 = ::x10aux::makeStringLit("-bv"); strLit__39297; })),
                           ((x10_int)0));
     
     //#line 315 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* inPathDataProblem = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                               (__extension__ ({ static ::x10::lang::String* strLit__38986 = ::x10aux::makeStringLit("-f"); strLit__38986; })),
-                                               (__extension__ ({ static ::x10::lang::String* strLit__38987 = ::x10aux::makeStringLit("."); strLit__38987; })));
+                                               (__extension__ ({ static ::x10::lang::String* strLit__39298 = ::x10aux::makeStringLit("-f"); strLit__39298; })),
+                                               (__extension__ ({ static ::x10::lang::String* strLit__39299 = ::x10aux::makeStringLit("."); strLit__39299; })));
     
     //#line 316 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::lang::String* inPathVectorSol = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                             (__extension__ ({ static ::x10::lang::String* strLit__38988 = ::x10aux::makeStringLit("-if"); strLit__38988; })),
-                                             (__extension__ ({ static ::x10::lang::String* strLit__38989 = ::x10aux::makeStringLit("."); strLit__38989; })));
+                                             (__extension__ ({ static ::x10::lang::String* strLit__39300 = ::x10aux::makeStringLit("-if"); strLit__39300; })),
+                                             (__extension__ ({ static ::x10::lang::String* strLit__39301 = ::x10aux::makeStringLit("."); strLit__39301; })));
     
     //#line 318 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/Main.x10"
     ::x10::util::Random* random = ::x10::util::Random::_make();
@@ -1704,7 +1704,7 @@ public:
 }
 ::x10::lang::String* cpls::Main__COPProblemModelFactory::toString(
   ) {
-    return (__extension__ ({ static ::x10::lang::String* strLit__38992 = ::x10aux::makeStringLit("struct cpls.Main.COPProblemModelFactory"); strLit__38992; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__39304 = ::x10aux::makeStringLit("struct cpls.Main.COPProblemModelFactory"); strLit__39304; }));
     
 }
 x10_boolean cpls::Main__COPProblemModelFactory::equals(::x10::lang::Any* other) {

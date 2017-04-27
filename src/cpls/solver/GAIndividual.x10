@@ -1,6 +1,7 @@
 package cpls.solver;
 
 import x10.util.Random;
+import cpls.util.Valuation;
 
 public class GAIndividual(size:Long){
 	
@@ -32,7 +33,8 @@ public class GAIndividual(size:Long){
 	}
 	
 	public def setGenes(genes:Rail[Int]){
-		this.genes = genes;
+ 		Rail.copy(genes as Valuation(size), this.genes as Valuation(size));	
+ 		//this.genes = genes;
 	}
 	
 	public def getCost():Long{

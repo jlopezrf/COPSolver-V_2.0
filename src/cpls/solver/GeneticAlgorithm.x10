@@ -4,6 +4,7 @@ import cpls.CPLSOptionsEnum;
 import x10.util.Random;
 import cpls.problem.ProblemGenericModel;
 import cpls.ParamManager;
+import cpls.util.Valuation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
 
@@ -41,7 +42,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			//Console.OUT.print("Costo (GASearch) in " + here + ". " + Runtime.worker() + ": " + currentCostGA);
  			//Utils.show(". Con variables: " , population(0n).getGenes());
  		}
- 		super.variables = population(0).getGenes();
+ 		super.variables = population(0).getGenes() as Valuation(sz);
  		return currentCostGA;
  	}
  
@@ -95,14 +96,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	public def initialize(populationSize:Long, individualSize:Long){	
  		this.population = new Rail[GAIndividual](populationSize, new GAIndividual(individualSize));
  		var initialValues:Rail[Int] = new Rail[Int](individualSize, 0n);
- 		var copyInitialValues:Rail[Int];
+ 		var copyInitialValues:Rail[Int];//  = new Rail[Int](individualSize, 0n);
  		var k:Int;
  		var x:Int;
 		for(k = 0n; k < individualSize; k++){
  			initialValues(k) = k as Int;
 		}
  		for(k = 0n; k < populationSize; k++){
- 			copyInitialValues =  new Rail[Int](initialValues);
+ 			copyInitialValues = new Rail[Int](individualSize, 0n);
+ 			Rail.copy(initialValues as Valuation(sz), copyInitialValues as Valuation(sz));
+ 			//copyInitialValues =  new Rail[Int](initialValues);
  			for( var i:Long = individualSize - 1 ; i > 0 ; i-- ){
  				//random.setSeed(System.nanoTime());
  				val j = random.nextLong( i + 1 );
@@ -113,6 +116,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			}
  			population(k).setGenes(copyInitialValues);
  			population(k).setCost(problemModel.costOfSolution(sz, copyInitialValues as Rail[Int]{self.size == sz}));
+ 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + problemModel.costOfSolution(sz, copyInitialValues as Rail[Int]{self.size == sz}) +
+ 				". Variables: ");
+ 			printVector(copyInitialValues);
  		}
   		for(var i:Int = 0n; i < population.size; i++){
   			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population(i).getCost() + ". Variables: ");
