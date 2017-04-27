@@ -468,7 +468,7 @@ public class CPLSNode(sz:Long){
  		//if (place == here )
  		//	a = getPConf();
  		//else{
- 		Console.OUT.println();
+ 		//Console.OUT.println();
  		a = at(place) refsToPlace().getPConf();
  		//Jason: Pruebas para debuguiar la comunicación
  		if(this.counterForReport%100 == 0){
@@ -723,7 +723,7 @@ public class CPLSNode(sz:Long){
  		this.counterForReport = 0n;
  		this.counterForUpdate = 0n;
  		this.nForceRestart = 0n;
- 		//this.heuristicSolver.initVariables();
+ 		this.heuristicSolver.initVariables();
  	}
  	
  	public def verify_(){
