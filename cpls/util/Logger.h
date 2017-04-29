@@ -157,8 +157,8 @@ inline x10_long cpls::util::Logger::FMGL(LEVEL__get)() {
     return cpls::util::Logger::FMGL(LEVEL);
 }
 
-#ifndef CPLS_UTIL_LOGGER_H_info_410
-#define CPLS_UTIL_LOGGER_H_info_410
+#ifndef CPLS_UTIL_LOGGER_H_info_409
+#define CPLS_UTIL_LOGGER_H_info_409
 template<class TPMGL(T)> void cpls::util::Logger::info(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                        TPMGL(T) t) {
     if (((::cpls::util::Logger::FMGL(INFO__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
@@ -168,9 +168,9 @@ template<class TPMGL(T)> void cpls::util::Logger::info(::x10::lang::Fun_0_1<TPMG
     }
     
 }
-#endif // CPLS_UTIL_LOGGER_H_info_410
-#ifndef CPLS_UTIL_LOGGER_H_log_413
-#define CPLS_UTIL_LOGGER_H_log_413
+#endif // CPLS_UTIL_LOGGER_H_info_409
+#ifndef CPLS_UTIL_LOGGER_H_log_412
+#define CPLS_UTIL_LOGGER_H_log_412
 template<class TPMGL(T)> void cpls::util::Logger::log(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                       TPMGL(T) t) {
     if (((::cpls::util::Logger::FMGL(LOG__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
@@ -180,9 +180,9 @@ template<class TPMGL(T)> void cpls::util::Logger::log(::x10::lang::Fun_0_1<TPMGL
     }
     
 }
-#endif // CPLS_UTIL_LOGGER_H_log_413
-#ifndef CPLS_UTIL_LOGGER_H_debug_415
-#define CPLS_UTIL_LOGGER_H_debug_415
+#endif // CPLS_UTIL_LOGGER_H_log_412
+#ifndef CPLS_UTIL_LOGGER_H_debug_414
+#define CPLS_UTIL_LOGGER_H_debug_414
 template<class TPMGL(T)> void cpls::util::Logger::debug(::x10::lang::Fun_0_1<TPMGL(T), ::x10::lang::String*>* s,
                                                         TPMGL(T) t) {
     if (((::cpls::util::Logger::FMGL(DEBUG__get)()) >= (::cpls::util::Logger::FMGL(LEVEL__get)())))
@@ -192,6 +192,6 @@ template<class TPMGL(T)> void cpls::util::Logger::debug(::x10::lang::Fun_0_1<TPM
     }
     
 }
-#endif // CPLS_UTIL_LOGGER_H_debug_415
+#endif // CPLS_UTIL_LOGGER_H_debug_414
 #endif // CPLS_UTIL_LOGGER_H_GENERICS
 #endif // __CPLS_UTIL_LOGGER_H_NODEPS

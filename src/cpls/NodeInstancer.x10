@@ -15,15 +15,15 @@ public class NodeInstancer{
 	var masterNode:CPLSNode;
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
- 		printStructure(configCPLS);
+ 		//printStructure(configCPLS);
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
  		val sz = configCPLS.getProblemModel().size;
  		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
  		val nodesPerTeam = configNodes.numElems_2;
  		val random:Random = new Random();
  		random.setSeed(configCPLS.getSeed());
- 		Console.OUT.println("************************************************************************************************");
- 		Console.OUT.println("****************************Inicializacion de los nodos*****************************************");
+ 		//Console.OUT.println("************************************************************************************************");
+ 		//Console.OUT.println("****************************Inicializacion de los nodos*****************************************");
  		finish{
  			for(p in PlaceGroup.WORLD) at (p) async{
  				val seed = random.nextLong();
@@ -56,11 +56,11 @@ public class NodeInstancer{
  		}
  		val timesPerInstance = opts("-b", 10n);
  		//Jason: Descomentar para la tabla de resultados
- 		//printHeader(configCPLS.getOutFormat(), 8n);
+ 		printHeader(configCPLS.getOutFormat(), 8n);
  		var totalWallT :Long = 0;
  		var fWall : Long = 0;
  		for(var i:Int = 1n; i <= timesPerInstance; i++){
- 			Console.OUT.println("****************************Resultados ejecucion: " + i + "*****************************************");
+ 			//Console.OUT.println("****************************Resultados ejecucion: " + i + "*****************************************");
  			var wallTime:Long = -System.nanoTime();
  			//Console.OUT.println("Vez por instancia número: " + i);
  			finish{
@@ -68,11 +68,11 @@ public class NodeInstancer{
  					refsToPlaces().start(configCPLS.getTargetCost(), configCPLS.getStrictLow());
  				}
  		 	}
- 			Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
+ 			//Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
  			//Console.OUT.println("Nodo ganador: " + refsToPlaces().getStatsObject().getExplorerWinner());
  			verifyWinner(sz, refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			//Jason: Descomentar para la tabla de resultados
- 			/*wallTime += System.nanoTime();
+ 			wallTime += System.nanoTime();
  			val wtime = wallTime;
  			totalWallT += wallTime;
  			fWall += wallTime;
@@ -87,7 +87,7 @@ public class NodeInstancer{
  				refsToPlaces().printAVG(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.flush();
  			}
- 			Console.OUT.println("\n ");*/
+ 			//Console.OUT.println("\n ");
  			if(i<10){
  				finish for (p in Place.places()) at (p) {   
  					refsToPlaces().clear();
@@ -95,9 +95,9 @@ public class NodeInstancer{
  				}
  			}
  		}
- 		Console.OUT.println("************************************************************************************************");
+ 		//Console.OUT.println("************************************************************************************************");
  		//Jason: Descomentar para la tabla de resultados
- 		/*if(configCPLS.getOutFormat() == 0n){
+ 		if(configCPLS.getOutFormat() == 0n){
  			//Console.OUT.print(cFile+",");
  			refsToPlaces().printAVG(timesPerInstance,configCPLS.getOutFormat(), 8n);
  			Console.OUT.println(","+(fWall/(timesPerInstance*1e9)));
@@ -107,7 +107,7 @@ public class NodeInstancer{
  			Console.OUT.printf(" %8.4f |\n",(fWall/(timesPerInstance*1e9)));
  			//accStats.printAVG(testNo);
  			Console.OUT.printf("\n");
- 		}*/
+ 		}
  		// Clear sample accumulator for repetitions
  		refsToPlaces().clearSample();
  	}
@@ -117,7 +117,7 @@ public class NodeInstancer{
  		var minCost:Long = Long.MAX_VALUE;
  		var bestPlace:Place = here;
  		if(explorerWinner == -1n){
- 			Console.OUT.println("MsgType_0. No se llego al valor objetivo");
+ 			//Console.OUT.println("MsgType_0. No se llego al valor objetivo");
  			Logger.debug(()=>"No winner found");
  			for (k in Place.places()){
  				val cCost = at(k) refPlaces().getCost();
@@ -136,14 +136,14 @@ public class NodeInstancer{
  				}*/
  			}
  			val solWin = at(bestPlace) refPlaces().getVariables();
- 			Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
- 			printVector(solWin);
+ 			//Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
+ 			//printVector(solWin);
  		}else{
- 			Console.OUT.println("MsgType_0. Hubo un ganador en la ejecucion.");
+ 			//Console.OUT.println("MsgType_0. Hubo un ganador en la ejecucion.");
  			val solWin = at(Place(explorerWinner)) refPlaces().getVariables();
  			val cCost = at(Place(explorerWinner)) refPlaces().getCost();
- 			Console.OUT.print("MsgType_0. El place ganador es: " + explorerWinner + ", con un costo de: " + cCost + ", y variables: ");
- 			printVector(solWin);
+ 			//Console.OUT.print("MsgType_0. El place ganador es: " + explorerWinner + ", con un costo de: " + cCost + ", y variables: ");
+ 			//printVector(solWin);
  		}
  	}
  

@@ -168,7 +168,7 @@ x10_long cpls::problem::ProblemGenericModel::getSize() {
 x10_long cpls::problem::ProblemGenericModel::costOnVariable(x10_long i) {
     
     //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39968 = ::x10aux::makeStringLit("Error bad costOnVariable"); strLit__39968; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37029 = ::x10aux::makeStringLit("Error bad costOnVariable"); strLit__37029; }))));
     
     //#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     return ((x10_long)0ll);
@@ -180,7 +180,7 @@ x10_long cpls::problem::ProblemGenericModel::costIfSwap(x10_long current_cost,
                                                         x10_long i1, x10_long i2) {
     
     //#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39969 = ::x10aux::makeStringLit("Error costIfSwap"); strLit__39969; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37030 = ::x10aux::makeStringLit("Error costIfSwap"); strLit__37030; }))));
     
     //#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     return ((x10_long)0ll);
@@ -192,7 +192,7 @@ void cpls::problem::ProblemGenericModel::executedSwap(x10_long sz, x10_long i1,
                                                       x10_long i2, ::x10::lang::Rail< x10_int >* variables) {
     
     //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39970 = ::x10aux::makeStringLit("Error no executedSwap implementation"); strLit__39970; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37031 = ::x10aux::makeStringLit("Error no executedSwap implementation"); strLit__37031; }))));
 }
 
 //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
@@ -201,7 +201,7 @@ x10_long cpls::problem::ProblemGenericModel::costOfSolution(x10_long sz, x10_boo
     
     //#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39971 = ::x10aux::makeStringLit("Error costOfSolution"); strLit__39971; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37032 = ::x10aux::makeStringLit("Error costOfSolution"); strLit__37032; }))));
     
     //#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     return ((x10_long)0ll);
@@ -214,7 +214,7 @@ x10_long cpls::problem::ProblemGenericModel::costOfSolution(x10_long sz,
     
     //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39972 = ::x10aux::makeStringLit("Error costOfSolution"); strLit__39972; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37033 = ::x10aux::makeStringLit("Error costOfSolution"); strLit__37033; }))));
     
     //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     return ((x10_long)0ll);
@@ -226,27 +226,27 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
                                               ::x10::lang::Rail< x10_int >* d) {
     
     //#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__39973 = ::x10aux::makeStringLit(" = "); strLit__39973; }))));
+    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__37034 = ::x10aux::makeStringLit(" = "); strLit__37034; }))));
     
     //#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::lang::Rail< x10_int >* rail__34369 = d;
-    x10_long i__34303min__34370 = ((x10_long)0ll);
-    x10_long i__34303max__34371 = (x10_long)(::x10aux::nullCheck(rail__34369)->FMGL(size));
+    ::x10::lang::Rail< x10_int >* rail__31481 = d;
+    x10_long i__31415min__31482 = ((x10_long)0ll);
+    x10_long i__31415max__31483 = (x10_long)(::x10aux::nullCheck(rail__31481)->FMGL(size));
     {
-        x10_long i__34372;
-        for (i__34372 = i__34303min__34370; ((i__34372) < (i__34303max__34371));
-             i__34372 = ((i__34372) + (((x10_long)1ll)))) {
-            x10_long p__34373 = i__34372;
+        x10_long i__31484;
+        for (i__31484 = i__31415min__31482; ((i__31484) < (i__31415max__31483));
+             i__31484 = ((i__31484) + (((x10_long)1ll)))) {
+            x10_long p__31485 = i__31484;
             
             //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39974 = ::x10aux::makeStringLit(" "); strLit__39974; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                      p__34373)));
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__37035 = ::x10aux::makeStringLit(" "); strLit__37035; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                      p__31485)));
         }
     }
     
     //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39976 = ::x10aux::makeStringLit(""); strLit__39976; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37037 = ::x10aux::makeStringLit(""); strLit__37037; }))));
 }
 
 //#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
@@ -263,7 +263,7 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
     
     //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     if (!(::x10aux::nullCheck(this->FMGL(inPathVectorSol))->x10::lang::String::equalsIgnoreCase(
-            (__extension__ ({ static ::x10::lang::String* strLit__39977 = ::x10aux::makeStringLit("."); strLit__39977; })))))
+            (__extension__ ({ static ::x10::lang::String* strLit__37038 = ::x10aux::makeStringLit("."); strLit__37038; })))))
     {
         
         //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
@@ -279,7 +279,7 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
         x10_long j = ((x10_long)0ll);
         
         //#line 113 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-        ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__39978 = ::x10aux::makeStringLit(""); strLit__39978; }));
+        ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__37039 = ::x10aux::makeStringLit(""); strLit__37039; }));
         
         //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
         {
@@ -296,14 +296,14 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
                     //#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
                     ::x10aux::nullCheck(variables)->x10::lang::Rail< x10_int >::__set(
                       (__extension__ ({
-                          x10_long pre__34117 = j;
+                          x10_long pre__31229 = j;
                           j = ((j) + (((x10_long)1ll)));
-                          pre__34117;
+                          pre__31229;
                       }))
                       , ::x10::lang::IntNatives::parseInt(buffer));
                     
                     //#line 118 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-                    buffer = (__extension__ ({ static ::x10::lang::String* strLit__39979 = ::x10aux::makeStringLit(""); strLit__39979; }));
+                    buffer = (__extension__ ({ static ::x10::lang::String* strLit__37040 = ::x10aux::makeStringLit(""); strLit__37040; }));
                 } else {
                     
                     //#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
@@ -314,15 +314,15 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
         }
         
         //#line 123 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-        if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__39980 = ::x10aux::makeStringLit(""); strLit__39980; })))))
+        if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__37041 = ::x10aux::makeStringLit(""); strLit__37041; })))))
         {
             
             //#line 124 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
             ::x10aux::nullCheck(variables)->x10::lang::Rail< x10_int >::__set(
               (__extension__ ({
-                  x10_long pre__34133 = j;
+                  x10_long pre__31245 = j;
                   j = ((j) + (((x10_long)1ll)));
-                  pre__34133;
+                  pre__31245;
               }))
               , ::x10::lang::IntNatives::parseInt(buffer));
         }
@@ -332,7 +332,7 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
             
             //#line 128 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39981 = ::x10aux::makeStringLit("ModelAS ERROR: The input vector is shorter than the variables array. Valor j: "); strLit__39981; })), j)));
+              reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__37042 = ::x10aux::makeStringLit("ModelAS ERROR: The input vector is shorter than the variables array. Valor j: "); strLit__37042; })), j)));
         }
         
         //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
@@ -340,60 +340,60 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
                                                                                     ((x10_int)0));
         
         //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-        ::x10::lang::Rail< x10_int >* rail__34378 = variables;
-        x10_long i__34320min__34379 = ((x10_long)0ll);
-        x10_long i__34320max__34380 = (x10_long)(::x10aux::nullCheck(rail__34378)->FMGL(size));
+        ::x10::lang::Rail< x10_int >* rail__31490 = variables;
+        x10_long i__31432min__31491 = ((x10_long)0ll);
+        x10_long i__31432max__31492 = (x10_long)(::x10aux::nullCheck(rail__31490)->FMGL(size));
         {
-            x10_long i__34381;
-            for (i__34381 = i__34320min__34379; ((i__34381) < (i__34320max__34380));
-                 i__34381 = ((i__34381) + (((x10_long)1ll))))
+            x10_long i__31493;
+            for (i__31493 = i__31432min__31491; ((i__31493) < (i__31432max__31492));
+                 i__31493 = ((i__31493) + (((x10_long)1ll))))
             {
-                x10_long mi__34382 = i__34381;
+                x10_long mi__31494 = i__31493;
                 
                 //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-                x10_int value__34377 = ::x10aux::nullCheck(variables)->x10::lang::Rail< x10_int >::__apply(
-                                         mi__34382);
+                x10_int value__31489 = ::x10aux::nullCheck(variables)->x10::lang::Rail< x10_int >::__apply(
+                                         mi__31494);
                 
                 //#line 133 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-                ::x10::lang::Rail< x10_int >* a__34374 = permutV;
-                x10_long i__34375 = ((((x10_long)(value__34377))) - (((x10_long)1ll)));
-                x10_int r__34376 = ((a__34374->x10::lang::Rail< x10_int >::__apply(
-                                       i__34375)) + (((x10_int)1)));
-                a__34374->x10::lang::Rail< x10_int >::__set(
-                  i__34375, r__34376);
+                ::x10::lang::Rail< x10_int >* a__31486 = permutV;
+                x10_long i__31487 = ((((x10_long)(value__31489))) - (((x10_long)1ll)));
+                x10_int r__31488 = ((a__31486->x10::lang::Rail< x10_int >::__apply(
+                                       i__31487)) + (((x10_int)1)));
+                a__31486->x10::lang::Rail< x10_int >::__set(
+                  i__31487, r__31488);
                 
                 //#line 134 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
                 if (((((x10_long)(permutV->x10::lang::Rail< x10_int >::__apply(
-                                    ((((x10_long)(value__34377))) - (((x10_long)1ll))))))) > (((x10_long)1ll))))
+                                    ((((x10_long)(value__31489))) - (((x10_long)1ll))))))) > (((x10_long)1ll))))
                 {
                     
                     //#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
                     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-                      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__39985 = ::x10aux::makeStringLit("ERROR: Not valid permutation, value "); strLit__39985; })), value__34377), (__extension__ ({ static ::x10::lang::String* strLit__39986 = ::x10aux::makeStringLit(" is repeted "); strLit__39986; }))), mi__34382)));
+                      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__37046 = ::x10aux::makeStringLit("ERROR: Not valid permutation, value "); strLit__37046; })), value__31489), (__extension__ ({ static ::x10::lang::String* strLit__37047 = ::x10aux::makeStringLit(" is repeted "); strLit__37047; }))), mi__31494)));
                 }
                 
             }
         }
         
         //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__39987 = ::x10aux::makeStringLit("after ini"); strLit__39987; })),
+        ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__37048 = ::x10aux::makeStringLit("after ini"); strLit__37048; })),
                                   variables);
     } else {
         
         //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-        ::x10::lang::Rail< x10_int >* rail__34383 = variables;
-        x10_long i__34337min__34384 = ((x10_long)0ll);
-        x10_long i__34337max__34385 = (x10_long)(::x10aux::nullCheck(rail__34383)->FMGL(size));
+        ::x10::lang::Rail< x10_int >* rail__31495 = variables;
+        x10_long i__31449min__31496 = ((x10_long)0ll);
+        x10_long i__31449max__31497 = (x10_long)(::x10aux::nullCheck(rail__31495)->FMGL(size));
         {
-            x10_long i__34386;
-            for (i__34386 = i__34337min__34384; ((i__34386) < (i__34337max__34385));
-                 i__34386 = ((i__34386) + (((x10_long)1ll))))
+            x10_long i__31498;
+            for (i__31498 = i__31449min__31496; ((i__31498) < (i__31449max__31497));
+                 i__31498 = ((i__31498) + (((x10_long)1ll))))
             {
-                x10_long k__34387 = i__34386;
+                x10_long k__31499 = i__31498;
                 
                 //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
                 ::x10aux::nullCheck(variables)->x10::lang::Rail< x10_int >::__set(
-                  k__34387, ((this->FMGL(baseValue)) + (((x10_int) (k__34387)))));
+                  k__31499, ((this->FMGL(baseValue)) + (((x10_int) (k__31499)))));
             }
         }
         
@@ -426,13 +426,13 @@ void cpls::problem::ProblemGenericModel::show(::x10::lang::String* s,
     }
     
     //#line 151 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::x10::lang::Rail< x10_int >* t__34388 = variables;
-    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__34388)->FMGL(size)),
+    ::x10::lang::Rail< x10_int >* t__31500 = variables;
+    if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__31500)->FMGL(size)),
                                    ::x10aux::nullCheck(this)->FMGL(size)))))
     {
-        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__39990 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==this(:cpls.problem.ProblemGenericModel).size}"); strLit__39990; })))));
+        ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__37051 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==this(:cpls.problem.ProblemGenericModel).size}"); strLit__37051; })))));
     }
-    return t__34388;
+    return t__31500;
     
 }
 
@@ -441,7 +441,7 @@ void cpls::problem::ProblemGenericModel::displaySolution(
   x10_long sz, ::x10::lang::Rail< x10_int >* conf) {
     
     //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__39991 = ::x10aux::makeStringLit("Solution"); strLit__39991; })),
+    ::cpls::util::Utils::show((__extension__ ({ static ::x10::lang::String* strLit__37052 = ::x10aux::makeStringLit("Solution"); strLit__37052; })),
                               conf);
 }
 
@@ -451,7 +451,7 @@ x10_boolean cpls::problem::ProblemGenericModel::verify(x10_long sz,
     
     //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__39992 = ::x10aux::makeStringLit("Se ingresa al Verify de ProblemGenericModel"); strLit__39992; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__37053 = ::x10aux::makeStringLit("Se ingresa al Verify de ProblemGenericModel"); strLit__37053; }))));
     
     //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
     return true;
@@ -495,19 +495,19 @@ x10_double cpls::problem::ProblemGenericModel::distance(x10_long sz,
     x10_int count = ((x10_int)0);
     
     //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
-    x10_int i__34354min__34389 = ((x10_int)0);
-    x10_int i__34354max__34390 = ((((x10_int) (this->FMGL(size)))) - (((x10_int)1)));
+    x10_int i__31466min__31501 = ((x10_int)0);
+    x10_int i__31466max__31502 = ((((x10_int) (this->FMGL(size)))) - (((x10_int)1)));
     {
-        x10_int i__34391;
-        for (i__34391 = i__34354min__34389; ((i__34391) <= (i__34354max__34390));
-             i__34391 = ((i__34391) + (((x10_int)1)))) {
-            x10_int i__34392 = i__34391;
+        x10_int i__31503;
+        for (i__31503 = i__31466min__31501; ((i__31503) <= (i__31466max__31502));
+             i__31503 = ((i__31503) + (((x10_int)1)))) {
+            x10_int i__31504 = i__31503;
             
             //#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/ProblemGenericModel.x10"
             if ((!::x10aux::struct_equals(::x10aux::nullCheck(conf1)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__34392))),
+                                            ((x10_long)(i__31504))),
                                           ::x10aux::nullCheck(conf2)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__34392))))))
+                                            ((x10_long)(i__31504))))))
             {
                 count = ((count) + (((x10_int)1)));
             }

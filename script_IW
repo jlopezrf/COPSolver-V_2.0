@@ -1,47 +1,47 @@
 #! /bin/bash
 #Instancias para las que Danny alcanzó 10 veces la BKS
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/bur26d.qap > /home/jason/outputs/bur26d.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/kra30b.qap > /home/jason/outputs/kra30b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/lipa80a.qap > /home/jason/outputs/lipa80a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/lipa90a.qap > /home/jason/outputs/lipa90a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko42.qap > /home/jason/outputs/sko42.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko49.qap > /home/jason/outputs/sko49.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36a.qap > /home/jason/outputs/ste36a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36b.qap > /home/jason/outputs/ste36b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36c.qap > /home/jason/outputs/ste36c.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/wil50.qap > /home/jason/outputs/wil50.out
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/bur26d.qap > /home/jason/outputs/bur26d.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/kra30b.qap > /home/jason/outputs/kra30b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/lipa80a.qap > /home/jason/outputs/lipa80a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/lipa90a.qap > /home/jason/outputs/lipa90a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko42.qap > /home/jason/outputs/sko42.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko49.qap > /home/jason/outputs/sko49.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36a.qap > /home/jason/outputs/ste36a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36b.qap > /home/jason/outputs/ste36b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/ste36c.qap > /home/jason/outputs/ste36c.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/wil50.qap > /home/jason/outputs/wil50.out -of 0
 #Instancias para las que Danny alcanzó por lo menos una vez la BKS pero no todas las veces > /home/jason/outputs/wil50.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/els19.qap > /home/jason/outputs/els19.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/kra30a.qap > /home/jason/outputs/kra30a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko56.qap > /home/jason/outputs/sko56.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko64.qap > /home/jason/outputs/sko64.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko72.qap > /home/jason/outputs/sko72.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko81.qap > /home/jason/outputs/sko81.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko90.qap > /home/jason/outputs/sko90.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai20b.qap > /home/jason/outputs/tai20b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai25b.qap > /home/jason/outputs/tai25b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai30b.qap > /home/jason/outputs/tai30b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai35b.qap > /home/jason/outputs/tai35b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai40b.qap > /home/jason/outputs/tai40b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai64c.qap > /home/jason/outputs/tai64c.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tho40.qap > /home/jason/outputs/tho40.out
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/els19.qap > /home/jason/outputs/els19.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/kra30a.qap > /home/jason/outputs/kra30a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko56.qap > /home/jason/outputs/sko56.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko64.qap > /home/jason/outputs/sko64.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko72.qap > /home/jason/outputs/sko72.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko81.qap > /home/jason/outputs/sko81.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko90.qap > /home/jason/outputs/sko90.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai20b.qap > /home/jason/outputs/tai20b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai25b.qap > /home/jason/outputs/tai25b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai30b.qap > /home/jason/outputs/tai30b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai35b.qap > /home/jason/outputs/tai35b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai40b.qap > /home/jason/outputs/tai40b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai64c.qap > /home/jason/outputs/tai64c.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tho40.qap > /home/jason/outputs/tho40.out -of 0
 #Instancias para las que nunca se encontró la BKS
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100a.qap > /home/jason/outputs/sko100a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100b.qap > /home/jason/outputs/sko100b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100c.qap > /home/jason/outputs/sko100c.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100d.qap > /home/jason/outputs/sko100d.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100e.qap > /home/jason/outputs/sko100e.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100f.qap > /home/jason/outputs/sko100f.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai40a.qap > /home/jason/outputs/tai40a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai50a.qap > /home/jason/outputs/tai50a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai60a.qap > /home/jason/outputs/tai60a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai80a.qap > /home/jason/outputs/tai80a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai100a.qap > /home/jason/outputs/tai100a.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai50b.qap > /home/jason/outputs/tai50b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai60b.qap > /home/jason/outputs/tai60b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai80b.qap > /home/jason/outputs/tai80b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai100b.qap > /home/jason/outputs/tai100b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai150b.qap > /home/jason/outputs/tai150b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai256c.qap > /home/jason/outputs/tai256c.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tho150.qap > /home/jason/outputs/tho150.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/wil100.qap > /home/jason/outputs/wil100.out
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100a.qap > /home/jason/outputs/sko100a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100b.qap > /home/jason/outputs/sko100b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100c.qap > /home/jason/outputs/sko100c.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100d.qap > /home/jason/outputs/sko100d.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100e.qap > /home/jason/outputs/sko100e.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/sko100f.qap > /home/jason/outputs/sko100f.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai40a.qap > /home/jason/outputs/tai40a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai50a.qap > /home/jason/outputs/tai50a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai60a.qap > /home/jason/outputs/tai60a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai80a.qap > /home/jason/outputs/tai80a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai100a.qap > /home/jason/outputs/tai100a.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai50b.qap > /home/jason/outputs/tai50b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai60b.qap > /home/jason/outputs/tai60b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai80b.qap > /home/jason/outputs/tai80b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai100b.qap > /home/jason/outputs/tai100b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai150b.qap > /home/jason/outputs/tai150b.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tai256c.qap > /home/jason/outputs/tai256c.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/tho150.qap > /home/jason/outputs/tho150.out -of 0
+mpirun -x LM=0 -x X10_NTHREADS=2 -H node11 -n 32 MainX -p QAP -tf 2 -b 10 -mt 300000 -ce 0 -sl EO -v 0 -f Data/wil100.qap > /home/jason/outputs/wil100.out -of 0
