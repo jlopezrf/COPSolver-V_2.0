@@ -2,6 +2,7 @@ package cpls.solver;
 
 import x10.util.Random;
 import cpls.util.Valuation;
+//import x10.compiler.*;
 
 public class GAIndividual(size:Long){
 	
@@ -12,17 +13,39 @@ public class GAIndividual(size:Long){
 	
 	public def this(individualSize:Long){
 		property(individualSize);
-		this.genes = new Rail[Int](individualSize, 0n);
+		this.genes = new Rail[Int](individualSize, (i:Long) => i as Int);
 		this.randomGenerator = new Random();
+ 		this.randomGenerator.setSeed(System.nanoTime());
+ 		//initialize();
+ 		//printGenes();
 	}
 
  	public def this(indiv:GAIndividual){
  		property(indiv.size);
- 		this.genes = new Rail[Int](indiv.size, 0n);
+ 		this.genes = new Rail[Int](indiv.getGenes().size, (i:Long) => i as Int);
  		this.randomGenerator = new Random();
- 		this.genes = indiv.getGenes();
+ 		this.randomGenerator.setSeed(System.nanoTime());
+ 		Rail.copy(indiv.getGenes() as Valuation(size), this.genes as Valuation(size));
  		this.cost = indiv.getCost();
  	}
+
+ 	public def initialize(){
+ 		var x:Int;
+ 		for( var i:Long = size - 1 ; i > 0 ; i-- ){
+ 			val j = randomGenerator.nextLong( i + 1 );
+ 			x = this.genes(i);
+ 			this.genes(i) = this.genes(j); 
+ 			this.genes(j) = x;
+ 		}
+ 	}
+ 
+ 	/*@NonEscaping private def printGenes(){
+ 		Console.OUT.println("Individuo inicializado con: ");
+ 		for(var i:Int = 0n; i < this.genes.size; i++){
+ 			Console.OUT.print(this.genes(i) + "  ");
+ 		}
+ 		Console.OUT.print("\n");
+ 	}*/
  
  	public def getSize(){
  		return this.genes.size;
@@ -33,7 +56,7 @@ public class GAIndividual(size:Long){
 	}
 	
 	public def setGenes(genes:Rail[Int]){
- 		Rail.copy(genes as Valuation(size), this.genes as Valuation(size));	
+ 		Rail.copy(genes as Valuation(size), this.genes as Valuation(size));
  		//this.genes = genes;
 	}
 	
@@ -105,7 +128,9 @@ public class GAIndividual(size:Long){
 			initializedPositions++;
 			indexIni++;
 		}
-		val sons = new Rail[GAIndividual](2, new GAIndividual(size));
+		val sons = new Rail[GAIndividual](2);
+ 		sons(0) = new GAIndividual(size);
+ 		sons(1) = new GAIndividual(size);
 		sons(0).setGenes(son1);
 		sons(1).setGenes(son2);
 		return sons;

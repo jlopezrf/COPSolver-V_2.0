@@ -14,35 +14,53 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	var population:Rail[GAIndividual];
  	var populationSize:Int;
  	var mutationRate:float;
- 	val random:Random;
+ 	//val random:Random;
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
 	
 	public def this(sz:Long){
 		super(sz);
  		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
- 		this.random = new Random();
- 		this.random.setSeed(System.nanoTime());
+ 		//this.random = new Random();
+ 		//this.random.setSeed(System.nanoTime());
 	}
 
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
- 		val index1 = random.nextLong(populationSize);
- 		val index2 = random.nextLong(populationSize);
- 		Console.OUT.println("Index1: " + index1);
- 		Console.OUT.println("Index2: " + index2);
+ 		val index1 = super.random.nextLong(populationSize);
+ 		var index2:Long;
+ 		do{
+ 			index2 = super.random.nextLong(populationSize);
+ 		}
+ 		while(index2 == index1);
+ 		//Jason: Pruebas del GA
+ 		Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		printVector(population(index1).getGenes());
+ 		Console.OUT.print("Individuo para cruzamiento 2. Costo: " + population(index2).getCost() + ".Variables: ");
+ 		printVector(population(index2).getGenes());
  		val indiv1 = population(index1);
  		val indiv2 = population(index2);
  		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
+ 		Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		printVector(population(index1).getGenes());
+ 		Console.OUT.print("Individuo 2 despues de cruzamiento. Costo: " + population(index2).getCost() + ".Variables: ");
+ 		printVector(population(index2).getGenes());
+ 		Console.OUT.print("Hijo 1. Costo: " + sons(0).getCost() + ".Variables: ");
+ 		printVector(sons(0).getGenes());
+ 		Console.OUT.print("Hijo 2. Costo: " + sons(1).getCost() + ".Variables: ");
+ 		printVector(sons(1).getGenes());
  		var mutatedSons:Rail[GAIndividual] = mutate(sons);
+ 		Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
+ 		printVector(mutatedSons(0).getGenes());
+ 		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
+ 		printVector(mutatedSons(1).getGenes());
  		refreshPopulation(mutatedSons, index1, index2);
  		sortPopulation();
+ 		printPopulation();
  		this.currentCostGA = population(0).getCost();
  		if(currentCostGA < bestCostGA){
  			bestCostGA = currentCostGA;
- 			//Console.OUT.print("Costo (GASearch) in " + here + ". " + Runtime.worker() + ": " + currentCostGA);
- 			//Utils.show(". Con variables: " , population(0n).getGenes());
+ 			super.variables = population(0).getGenes() as Valuation(sz);
  		}
- 		super.variables = population(0).getGenes() as Valuation(sz);
  		return currentCostGA;
  	}
  
@@ -60,6 +78,18 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  				}
  			}
  		}*/
+ 		/*Console.OUT.println("Poblacion ordenada: ");
+ 		for(var k:Int = 0n; k < this.population.size; k++){
+ 			printVector(this.population(k).getGenes());
+ 		}*/
+ 	}
+ 
+ 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		super.configHeuristic(problemModel, opts);
+ 		this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
+ 		this.mutationRate = opts("-GA_mr", 0.4f);
+ 		//initialize(populationSize, problemModel.size);
+ 		//sortPopulation();
  	}
  
  	public def initVariables(){
@@ -69,7 +99,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	protected def refreshPopulation(mutatedSons:Rail[GAIndividual], parentIndex1:Long, parentIndex2:Long){
  		//Jason: Estrategia de reemplazo comparando con los dos peores
  		RailUtils.sort(mutatedSons, cmp);
- 		if(mutatedSons(0).getCost() < this.population(populationSize -1).getCost()){
+ 		this.population(populationSize -2) = mutatedSons(0);
+ 		this.population(populationSize -1) = mutatedSons(1);
+ 		/*if(mutatedSons(0).getCost() < this.population(populationSize -1).getCost()){
  			this.population(populationSize -1) = mutatedSons(0);
  			if(mutatedSons(1).getCost() < this.population(populationSize -2).getCost()){
  				this.population(populationSize -2) = mutatedSons(1);
@@ -78,53 +110,50 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			if(mutatedSons(0).getCost() < this.population(populationSize -2).getCost()){
  				this.population(populationSize -2) = mutatedSons(0);
  			}
- 		}
+ 		}*/
  		//Jason: Estrategia de reemplazo comparando solo con los padres directos
  		//if(mutatedSons(0).getCost() < population(parentIndex1).getCost()) population(parentIndex1) = mutatedSons(0);
  		//if(mutatedSons(1).getCost() < population(parentIndex2).getCost()) population(parentIndex2) = mutatedSons(1);
  	}
 	
-	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		super.configHeuristic(problemModel, opts);
- 		this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
- 		this.mutationRate = opts("-GA_mr", 0.4f);
- 		initialize(populationSize, problemModel.size);
- 		sortPopulation();
-	}
-	
  	//Population ramdomly initialized without verification
 	public def initialize(populationSize:Long, individualSize:Long){	
- 		this.population = new Rail[GAIndividual](populationSize, new GAIndividual(individualSize));
- 		var initialValues:Rail[Int] = new Rail[Int](individualSize, 0n);
- 		var copyInitialValues:Rail[Int];//  = new Rail[Int](individualSize, 0n);
+ 		this.population = new Rail[GAIndividual](populationSize);//(populationSize, new GAIndividual(individualSize));
+ 		for(var k:Int = 0n; k < this.population.size; k++){
+ 			this.population(k) = new GAIndividual(individualSize);
+ 			this.population(k).initialize();
+ 			this.population(k).setCost(problemModel.costOfSolution(sz, this.population(k).getGenes() as Rail[Int]{self.size == sz}));
+ 		}
+ 		/*//var copyInitialValues:Rail[Int];//  = new Rail[Int](individualSize, 0n);
  		var k:Int;
  		var x:Int;
-		for(k = 0n; k < individualSize; k++){
- 			initialValues(k) = k as Int;
-		}
+  		Console.OUT.println("MsgType_0. Permutaciones generadas: ");
  		for(k = 0n; k < populationSize; k++){
- 			copyInitialValues = new Rail[Int](individualSize, 0n);
- 			Rail.copy(initialValues as Valuation(sz), copyInitialValues as Valuation(sz));
- 			//copyInitialValues =  new Rail[Int](initialValues);
+ 			var initialValues:Rail[Int] = new Rail[Int](individualSize, (i:Long) => i as Int);
  			for( var i:Long = individualSize - 1 ; i > 0 ; i-- ){
- 				//random.setSeed(System.nanoTime());
  				val j = random.nextLong( i + 1 );
- 				Console.OUT.println("J randomciada: " + j);
- 				x = copyInitialValues(i);
- 				copyInitialValues(i) = copyInitialValues(j); 
- 				copyInitialValues(j) = x;
+ 				x = initialValues(i);
+ 				initialValues(i) = initialValues(j); 
+ 				initialValues(j) = x;
  			}
- 			population(k).setGenes(copyInitialValues);
- 			population(k).setCost(problemModel.costOfSolution(sz, copyInitialValues as Rail[Int]{self.size == sz}));
- 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + problemModel.costOfSolution(sz, copyInitialValues as Rail[Int]{self.size == sz}) +
+ 			this.population(k).setGenes(initialValues);
+ 			this.population(k).setCost(problemModel.costOfSolution(sz, initialValues as Rail[Int]{self.size == sz}));
+ 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + problemModel.costOfSolution(sz, initialValues as Rail[Int]{self.size == sz}) +
  				". Variables: ");
- 			printVector(copyInitialValues);
+ 			printVector(initialValues);
  		}
-  		for(var i:Int = 0n; i < population.size; i++){
-  			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population(i).getCost() + ". Variables: ");
-  			printVector(population(i).getGenes()); 
-  		}
+ 		Console.OUT.println("MsgType_0. Poblacion generada: ");*/
+ 		sortPopulation();
+ 		printPopulation();
+  		
 	}
+
+ 	public def printPopulation(){
+ 		for(var i:Int = 0n; i < population.size; i++){
+ 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population(i).getCost() + ". Variables: ");
+ 			printVector(population(i).getGenes()); 
+ 		}
+ 	}
 
  	public static def printVector(vector:Rail[Int]){
  		for(var i:Int = 0n; i < vector.size; i++){
@@ -136,10 +165,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def crossing(i1:GAIndividual, i2:GAIndividual):Rail[GAIndividual]{
  		val indiv1 = new GAIndividual(i1);
  		val indiv2 = new GAIndividual(i2);
- 		val sz = super.problemModel.size;
-  		val sons = indiv1.insertPathCrossover(indiv2);
-  		sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
-  		sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
+ 		//val sz = super.problemModel.size;
+  		val sons = indiv1.uniformCrossover(indiv2);
  		return sons;
  	}
  
@@ -147,12 +174,22 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		var index1:Long;
  		var index2:Long;
  		for(son in sons){
- 			if(this.random.nextFloat() < this.mutationRate){ //En esta parte sería necesario poner el parámetro de la tasa de mutación
- 				index1 = random.nextLong(son.getSize());
- 				index2 = random.nextLong(son.getSize());
+ 			if(this.random.nextFloat() < this.mutationRate){
+ 				index1 = super.random.nextLong(son.getSize());
+ 				index2 = super.random.nextLong(son.getSize());
+ 				Console.OUT.println("Index1 para mutacion: " + index1);
+ 				Console.OUT.println("Index2 para mutacion: " + index2);
  				swap(son, index1, index2);
- 			}
+ 			}//else{
+ 			 //	Console.OUT.println("No muta");
+ 			 //}
  		}
+  		sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
+ 		sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
+ 		Console.OUT.print("Hijo 1 despues de mutacion. Adentro. Costo: " + sons(0).getCost() + ".Variables: ");
+ 		printVector(sons(0).getGenes());
+ 		Console.OUT.print("Hijo 2 despues de mutacion. Adentro. Costo: " + sons(1).getCost() + ".Variables: ");
+ 		printVector(sons(1).getGenes());
  		return sons;
  	}
  

@@ -99,7 +99,7 @@ public class QAPModel extends ProblemGenericModel{
  		return r;
  	}
  
- 	//Jason: New method for calculate costofSolution for a in solution 
+ 	//Jason: New method for calculate costofSolution for an input solution 
  	public def costOfSolution(sz:Long, solution:Valuation(sz)):Long{
  		var i : Long, j : Long;
  		var r : Long  = 0;

@@ -130,12 +130,12 @@ public class CPLSNode(sz:Long){
  		//printVector(this.heuristicSolver.getVariables());
  	}
  
- 	/*public static def printVector(vector:Rail[Int]){
+ 	public static def printVector(vector:Rail[Int]){
  		for(var i:Int = 0n; i < vector.size; i++){
  			Console.OUT.print(vector(i) + "  ");
  		}
  		Console.OUT.print("\n");
- 	}*/
+ 	}
  
  	public def start(targetCost : Long, strictLow: Boolean):void{
  		//Console.OUT.println("MsgType_0. Nodo " + here + ". Arrancando");
@@ -184,6 +184,9 @@ public class CPLSNode(sz:Long){
  	 	}else{
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
  	 	}
+ 	 //Jason: Pruebas del GA
+ 	 Console.OUT.print("MsgType_0. Solucion final. Costo: " + this.currentCost + ". Variables: " );
+ 	 printVector(this.heuristicSolver.getVariables());
  	 	//Console.OUT.println("MsgType_0. Nodo " + here + ". Liberando pal finish.");
  	}
  

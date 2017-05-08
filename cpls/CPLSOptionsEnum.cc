@@ -38,7 +38,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36113 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__36113; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37109 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum"); strLit__37109; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum::equals(::x10::lang::Any* other) {
@@ -117,8 +117,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__do_init)() {
     FMGL(UNKNOWN_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.UNKNOWN_PROBLEM");
-    x10_int __var70__ = ((x10_int)0);
-    FMGL(UNKNOWN_PROBLEM) = __var70__;
+    x10_int __var71__ = ((x10_int)0);
+    FMGL(UNKNOWN_PROBLEM) = __var71__;
     FMGL(UNKNOWN_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(UNKNOWN_PROBLEM__init)() {
@@ -133,8 +133,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__do_init)() {
     FMGL(MAGIC_SQUARE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.MAGIC_SQUARE_PROBLEM");
-    x10_int __var71__ = ((x10_int)1);
-    FMGL(MAGIC_SQUARE_PROBLEM) = __var71__;
+    x10_int __var72__ = ((x10_int)1);
+    FMGL(MAGIC_SQUARE_PROBLEM) = __var72__;
     FMGL(MAGIC_SQUARE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(MAGIC_SQUARE_PROBLEM__init)() {
@@ -149,8 +149,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__do_init)() {
     FMGL(COSTAS_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.COSTAS_PROBLEM");
-    x10_int __var72__ = ((x10_int)2);
-    FMGL(COSTAS_PROBLEM) = __var72__;
+    x10_int __var73__ = ((x10_int)2);
+    FMGL(COSTAS_PROBLEM) = __var73__;
     FMGL(COSTAS_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(COSTAS_PROBLEM__init)() {
@@ -165,8 +165,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__do_init)() {
     FMGL(ALL_INTERVAL_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.ALL_INTERVAL_PROBLEM");
-    x10_int __var73__ = ((x10_int)3);
-    FMGL(ALL_INTERVAL_PROBLEM) = __var73__;
+    x10_int __var74__ = ((x10_int)3);
+    FMGL(ALL_INTERVAL_PROBLEM) = __var74__;
     FMGL(ALL_INTERVAL_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(ALL_INTERVAL_PROBLEM__init)() {
@@ -181,8 +181,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__do_init)() {
     FMGL(LANGFORD_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.LANGFORD_PROBLEM");
-    x10_int __var74__ = ((x10_int)4);
-    FMGL(LANGFORD_PROBLEM) = __var74__;
+    x10_int __var75__ = ((x10_int)4);
+    FMGL(LANGFORD_PROBLEM) = __var75__;
     FMGL(LANGFORD_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(LANGFORD_PROBLEM__init)() {
@@ -197,8 +197,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__do_init)() {
     FMGL(PARTIT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.PARTIT_PROBLEM");
-    x10_int __var75__ = ((x10_int)5);
-    FMGL(PARTIT_PROBLEM) = __var75__;
+    x10_int __var76__ = ((x10_int)5);
+    FMGL(PARTIT_PROBLEM) = __var76__;
     FMGL(PARTIT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(PARTIT_PROBLEM__init)() {
@@ -213,8 +213,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__do_init)() {
     FMGL(STABLE_MARRIAGE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.STABLE_MARRIAGE_PROBLEM");
-    x10_int __var76__ = ((x10_int)6);
-    FMGL(STABLE_MARRIAGE_PROBLEM) = __var76__;
+    x10_int __var77__ = ((x10_int)6);
+    FMGL(STABLE_MARRIAGE_PROBLEM) = __var77__;
     FMGL(STABLE_MARRIAGE_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__init)() {
@@ -229,8 +229,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__do_init)() {
     FMGL(HOSPITAL_RESIDENT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.HOSPITAL_RESIDENT_PROBLEM");
-    x10_int __var77__ = ((x10_int)7);
-    FMGL(HOSPITAL_RESIDENT_PROBLEM) = __var77__;
+    x10_int __var78__ = ((x10_int)7);
+    FMGL(HOSPITAL_RESIDENT_PROBLEM) = __var78__;
     FMGL(HOSPITAL_RESIDENT_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__init)() {
@@ -245,8 +245,8 @@ x10_int cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM);
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__do_init)() {
     FMGL(QA_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__SupportedProblems.QA_PROBLEM");
-    x10_int __var78__ = ((x10_int)8);
-    FMGL(QA_PROBLEM) = __var78__;
+    x10_int __var79__ = ((x10_int)8);
+    FMGL(QA_PROBLEM) = __var79__;
     FMGL(QA_PROBLEM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__SupportedProblems::FMGL(QA_PROBLEM__init)() {
@@ -261,7 +261,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Supported
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__SupportedProblems::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36126 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__36126; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37122 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.SupportedProblems"); strLit__37122; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__SupportedProblems::equals(::x10::lang::Any* other) {
@@ -345,8 +345,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__do_init)() {
     FMGL(UNKNOWN_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.UNKNOWN_SOL");
-    x10_int __var88__ = ((x10_int)0);
-    FMGL(UNKNOWN_SOL) = __var88__;
+    x10_int __var89__ = ((x10_int)0);
+    FMGL(UNKNOWN_SOL) = __var89__;
     FMGL(UNKNOWN_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(UNKNOWN_SOL__init)() {
@@ -361,8 +361,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__do_init)() {
     FMGL(RS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.RS_SOL");
-    x10_int __var89__ = ((x10_int)1);
-    FMGL(RS_SOL) = __var89__;
+    x10_int __var90__ = ((x10_int)1);
+    FMGL(RS_SOL) = __var90__;
     FMGL(RS_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RS_SOL__init)() {
@@ -377,8 +377,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__do_init)() {
     FMGL(AS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.AS_SOL");
-    x10_int __var90__ = ((x10_int)2);
-    FMGL(AS_SOL) = __var90__;
+    x10_int __var91__ = ((x10_int)2);
+    FMGL(AS_SOL) = __var91__;
     FMGL(AS_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(AS_SOL__init)() {
@@ -393,8 +393,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__do_init)() {
     FMGL(EO_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.EO_SOL");
-    x10_int __var91__ = ((x10_int)3);
-    FMGL(EO_SOL) = __var91__;
+    x10_int __var92__ = ((x10_int)3);
+    FMGL(EO_SOL) = __var92__;
     FMGL(EO_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(EO_SOL__init)() {
@@ -409,8 +409,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__do_init)() {
     FMGL(RoTS_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.RoTS_SOL");
-    x10_int __var92__ = ((x10_int)4);
-    FMGL(RoTS_SOL) = __var92__;
+    x10_int __var93__ = ((x10_int)4);
+    FMGL(RoTS_SOL) = __var93__;
     FMGL(RoTS_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(RoTS_SOL__init)() {
@@ -425,8 +425,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__do_init)() {
     FMGL(GA_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.GA_SOL");
-    x10_int __var93__ = ((x10_int)5);
-    FMGL(GA_SOL) = __var93__;
+    x10_int __var94__ = ((x10_int)5);
+    FMGL(GA_SOL) = __var94__;
     FMGL(GA_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(GA_SOL__init)() {
@@ -441,8 +441,8 @@ x10_int cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL);
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__do_init)() {
     FMGL(Hybrid_SOL__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__HeuristicsSupported.Hybrid_SOL");
-    x10_int __var94__ = ((x10_int)6);
-    FMGL(Hybrid_SOL) = __var94__;
+    x10_int __var95__ = ((x10_int)6);
+    FMGL(Hybrid_SOL) = __var95__;
     FMGL(Hybrid_SOL__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__HeuristicsSupported::FMGL(Hybrid_SOL__init)() {
@@ -459,7 +459,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__Heuristic
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__HeuristicsSupported::toString(
   ) {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36139 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__36139; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37135 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.HeuristicsSupported"); strLit__37135; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__HeuristicsSupported::equals(::x10::lang::Any* other) {
@@ -543,8 +543,8 @@ x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__do_init)() {
     FMGL(EXPLORER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.EXPLORER_NODE");
-    x10_int __var104__ = ((x10_int)0);
-    FMGL(EXPLORER_NODE) = __var104__;
+    x10_int __var105__ = ((x10_int)0);
+    FMGL(EXPLORER_NODE) = __var105__;
     FMGL(EXPLORER_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(EXPLORER_NODE__init)() {
@@ -559,8 +559,8 @@ x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__do_init)() {
     FMGL(HEAD_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.HEAD_NODE");
-    x10_int __var105__ = ((x10_int)1);
-    FMGL(HEAD_NODE) = __var105__;
+    x10_int __var106__ = ((x10_int)1);
+    FMGL(HEAD_NODE) = __var106__;
     FMGL(HEAD_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(HEAD_NODE__init)() {
@@ -575,8 +575,8 @@ x10_int cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE);
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__do_init)() {
     FMGL(MASTER_NODE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__NodeRoles.MASTER_NODE");
-    x10_int __var106__ = ((x10_int)2);
-    FMGL(MASTER_NODE) = __var106__;
+    x10_int __var107__ = ((x10_int)2);
+    FMGL(MASTER_NODE) = __var107__;
     FMGL(MASTER_NODE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__NodeRoles::FMGL(MASTER_NODE__init)() {
@@ -591,7 +591,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__NodeRoles
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__NodeRoles::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36152 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__36152; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37148 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.NodeRoles"); strLit__37148; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__NodeRoles::equals(::x10::lang::Any* other) {
@@ -672,8 +672,8 @@ x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__do_init)() {
     FMGL(HIGH__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.HIGH");
-    x10_int __var116__ = ((x10_int)0);
-    FMGL(HIGH) = __var116__;
+    x10_int __var117__ = ((x10_int)0);
+    FMGL(HIGH) = __var117__;
     FMGL(HIGH__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(HIGH__init)() {
@@ -688,8 +688,8 @@ x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__do_init)() {
     FMGL(MEDIUM__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.MEDIUM");
-    x10_int __var117__ = ((x10_int)1);
-    FMGL(MEDIUM) = __var117__;
+    x10_int __var118__ = ((x10_int)1);
+    FMGL(MEDIUM) = __var118__;
     FMGL(MEDIUM__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(MEDIUM__init)() {
@@ -704,8 +704,8 @@ x10_int cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW);
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__do_init)() {
     FMGL(LOW__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolLevels.LOW");
-    x10_int __var118__ = ((x10_int)2);
-    FMGL(LOW) = __var118__;
+    x10_int __var119__ = ((x10_int)2);
+    FMGL(LOW) = __var119__;
     FMGL(LOW__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolLevels::FMGL(LOW__init)() {
@@ -720,7 +720,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolLevel
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolLevels::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36165 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__36165; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37161 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolLevels"); strLit__37161; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolLevels::equals(::x10::lang::Any* other) {
@@ -802,8 +802,8 @@ x10_long cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART);
 void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__do_init)() {
     FMGL(SMART__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::CPLSOptionsEnum__PoolModes.SMART");
-    x10_long __var128__ = ((x10_long)1ll);
-    FMGL(SMART) = __var128__;
+    x10_long __var129__ = ((x10_long)1ll);
+    FMGL(SMART) = __var129__;
     FMGL(SMART__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::CPLSOptionsEnum__PoolModes::FMGL(SMART__init)() {
@@ -818,7 +818,7 @@ volatile ::x10aux::StaticInitController::status cpls::CPLSOptionsEnum__PoolModes
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::CPLSOptionsEnum__PoolModes::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__36178 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__36178; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__37174 = ::x10aux::makeStringLit("struct cpls.CPLSOptionsEnum.PoolModes"); strLit__37174; }));
     
 }
 x10_boolean cpls::CPLSOptionsEnum__PoolModes::equals(::x10::lang::Any* other) {

@@ -38,7 +38,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::util::Unit::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__37288 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__37288; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__38284 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__38284; }));
     
 }
 x10_boolean cpls::util::Unit::equals(::x10::lang::Any* other) {
