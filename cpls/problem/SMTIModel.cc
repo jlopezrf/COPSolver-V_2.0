@@ -6,16 +6,17 @@
 #include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/SMTIModel.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
 void cpls::problem::SMTIModel::_constructor(x10_long sz) {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/SMTIModel.x10"
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
     (this)->::cpls::problem::ProblemGenericModel::_constructor(sz);
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/SMTIModel.x10"
+    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/SMTIModel.x10"
-    this->cpls::problem::SMTIModel::__fieldInitializers_cpls_problem_SMTIModel();
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
+    ::cpls::problem::SMTIModel* this__983 = this;
+    
 }
 ::cpls::problem::SMTIModel* cpls::problem::SMTIModel::_make(x10_long sz) {
     ::cpls::problem::SMTIModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::SMTIModel>()) ::cpls::problem::SMTIModel();
@@ -25,7 +26,7 @@ void cpls::problem::SMTIModel::_constructor(x10_long sz) {
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/SMTIModel.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/SMTIModel.x10"
 ::cpls::problem::SMTIModel* cpls::problem::SMTIModel::cpls__problem__SMTIModel____this__cpls__problem__SMTIModel(
   ) {
     return this;

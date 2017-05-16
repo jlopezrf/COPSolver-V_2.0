@@ -29,7 +29,13 @@ namespace x10 { namespace lang {
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace lang { 
-class System;
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace x10 { namespace util { 
+class Timer;
 } } 
 namespace x10 { namespace io { 
 class File;

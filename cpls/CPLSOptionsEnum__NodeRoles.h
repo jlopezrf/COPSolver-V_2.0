@@ -83,7 +83,8 @@ class CPLSOptionsEnum__NodeRoles   {
         
     }
     void _constructor() {
-        (*this)->cpls::CPLSOptionsEnum__NodeRoles::__fieldInitializers_cpls_CPLSOptionsEnum_NodeRoles();
+        ::cpls::CPLSOptionsEnum__NodeRoles this__209 = (*this);
+        
     }
     static ::cpls::CPLSOptionsEnum__NodeRoles _make() {
         ::cpls::CPLSOptionsEnum__NodeRoles this_; 

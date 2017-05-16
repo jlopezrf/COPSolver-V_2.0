@@ -73,14 +73,14 @@ public class EOSearch extends SingleSolHeuristic{
  	public def initVar(){
  		super.initVar();
  		if ( this.pdfUserSel == -1n ) { // Select a random PDF
- 			this.pdfS = random.nextInt(4n);//+1n; // from 1 to 3 Jason: Se pone el random hasta tres para cubrir todo el rango
+ 			this.pdfS = random.nextInt(2n)+1n;
  		}else
  			this.pdfS = pdfUserSel;
  
  		if ( this.tauUserSel == -1.0 ) { // Select a random tau from 0 to tau 
  			if ( this.pdfS == 1n) {
  				this.tau = this.powDown + (powUp - powDown) * random.nextDouble();
- 			}else{//}else if ( this.pdfS == 2n) { //Jason: Se pone también la inicialización para el tercer caso
+ 			}else if ( this.pdfS == 2n) {
  				this.tau = this.expDown + (expUp - expDown) * random.nextDouble();
  			}
  		}else
