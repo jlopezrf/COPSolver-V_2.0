@@ -186,8 +186,8 @@ public class CPLSNode(sz:Long){
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
  	 	}
  	 	//Jason: Pruebas del GA
- 	 	Console.OUT.print("MsgType_0. Nodo:" + here + ". Solucion final. Costo: " + this.currentCost + ". Variables: " );
- 	 	printVector(this.heuristicSolver.getVariables());
+ 	 	//Console.OUT.print("MsgType_0. Nodo:" + here + ". Solucion final. Costo: " + this.currentCost + ". Variables: " );
+ 	 	//printVector(this.heuristicSolver.getVariables());
  	 	//Console.OUT.println("MsgType_0. Nodo " + here + ". Liberando pal finish.");
  	}
  
@@ -247,7 +247,7 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
- 				Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
+ 				//Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
  
