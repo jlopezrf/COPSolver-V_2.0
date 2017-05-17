@@ -166,6 +166,9 @@ public class Main {
  		return masterConfig;
  	}
  
+ 	//Jason: Problemas a resolver en este procedimiento
+ 	//Debería poderse identificar los nodos por equipo a partir del estring de las heuristicas que se utilizaran en la solución,
+ 	//combinado con la cantidad de nodos a utilizar y la indicación del tipo de estrategia (ce)
  	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
  
  		val nodesPerTeam:Int = opts("-N", 1n);

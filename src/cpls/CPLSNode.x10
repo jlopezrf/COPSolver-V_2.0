@@ -106,7 +106,7 @@ public class CPLSNode(sz:Long){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		printConfig();
+ 		//printConfig();
  	}
  
  	public def reInitialize(){
@@ -161,11 +161,11 @@ public class CPLSNode(sz:Long){
  	 	time += System.nanoTime();
  	 	interTeamKill = true;
  	 	Runtime.probe();
- 	 	if(kill){//&& here != Place.FIRST_PLACE)
+ 	 	//if(kill){//&& here != Place.FIRST_PLACE)
  	 		//Console.OUT.print("Soy el nodo: " + here.id + ", y me mataron cuando tenia: (Costo) => " + bestCost + " (variables) => ");
  	 		//printVector(bestConf);
- 	 		return;
- 	 	}
+ 	 		//return;
+ 	 	//}
  	 	if ( ( strictLow && cost < targetCost ) || (!strictLow && cost <= targetCost) ){
  	 		val home = here.id;
  	 		val winner = at(Place.FIRST_PLACE) refsToPlaces().announceWinner(home); //Comunicate operation
@@ -185,9 +185,9 @@ public class CPLSNode(sz:Long){
  	 	}else{
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
  	 	}
- 	 //Jason: Pruebas del GA
- 	 Console.OUT.print("MsgType_0. Nodo:" + here + ". Solucion final. Costo: " + this.currentCost + ". Variables: " );
- 	 printVector(this.heuristicSolver.getVariables());
+ 	 	//Jason: Pruebas del GA
+ 	 	Console.OUT.print("MsgType_0. Nodo:" + here + ". Solucion final. Costo: " + this.currentCost + ". Variables: " );
+ 	 	printVector(this.heuristicSolver.getVariables());
  	 	//Console.OUT.println("MsgType_0. Nodo " + here + ". Liberando pal finish.");
  	}
  
@@ -247,6 +247,7 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
+ 				Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
  
@@ -859,7 +860,7 @@ public class CPLSNode(sz:Long){
  		sampleAccStats.printAVG(count,oF,problem);
  	}
  
- 	public def printConfig(){
+ 	/*public def printConfig(){
  		Console.OUT.println("************************************************************************************************");
  		Console.OUT.println("****************Informacion comun a todos los nodos*************************");
  		Console.OUT.println("Numero de equipos: " + this.nodeConfig.getNumberOfTeams());
@@ -879,6 +880,6 @@ public class CPLSNode(sz:Long){
  		Console.OUT.println("ReportTime: " + this.nodeConfig.getReportI());
  		Console.OUT.println("UpdateTime: " + this.nodeConfig.getUpdateI());
  		Console.OUT.println("MaxUpdateI?: " + this.nodeConfig.getMaxUpdateI());
- 	}
+ 	}*/
 }
 public type CPLSNode(s:Long) = CPLSNode{self.sz==s};

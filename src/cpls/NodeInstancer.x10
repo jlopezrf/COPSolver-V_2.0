@@ -224,33 +224,31 @@ public class NodeInstancer{
  			}
  		 /*******************************************/
  		 val nodeConfigs = configCPLS.getConfigNodes();
- 		 Console.OUT.println("************************************************************************************************");
- 		 Console.OUT.println("****************Informacion comun a todos los nodos*************************");
-		 Console.OUT.println("Numero de equipos: " + nodeConfigs(0,0).getNumberOfTeams());
-		 Console.OUT.println("Nodos por equipo: " + nodeConfigs(0,0).getNodesPerTeam());
-		 Console.OUT.println("InterTeamCommTime: " + nodeConfigs(0,0).getInterTeamCommTime());
-		 Console.OUT.println("AffectedPer: " + nodeConfigs(0,0).getAffectedPer());
-		 Console.OUT.println("IniDelay (InterTeamCommTime): " + nodeConfigs(0,0).getIniDelay());
-		 Console.OUT.println("Verify: " + nodeConfigs(0,0).getVerify());
-		 Console.OUT.println("ChangeProb?: " + nodeConfigs(0,0).getChangeProb());
-		 Console.OUT.println("DiversificationOption?: " + nodeConfigs(0,0).getDiversificationOption());
-		 Console.OUT.println("Tiempo maximo de ejecucion: " + nodeConfigs(0,0).getMaxTime());
-		 Console.OUT.println("Maximo numero de iteraciones: " + nodeConfigs(0,0).getMaxIters());
-		 Console.OUT.println("Maximo numero de restarts: " + nodeConfigs(0,0).getMaxRestarts());
-		 Console.OUT.println("ReportPart?: " + nodeConfigs(0,0).getReportPart());
-		 Console.OUT.println("Modo de ingreso de parametros: " + nodeConfigs(0,0).getModParams());
-		 Console.OUT.println("ChangeOnDiver: " + nodeConfigs(0,0).getChangeOnDiver());
-		 Console.OUT.println("ReportTime: " + nodeConfigs(0,0).getReportI());
-		 Console.OUT.println("UpdateTime: " + nodeConfigs(0,0).getUpdateI());
-		 Console.OUT.println("MaxUpdateI?: " + nodeConfigs(0,0).getMaxUpdateI());
- 		 /**********************************************/
-		 Console.OUT.println("************************************************************************************************");
-		 Console.OUT.println("****************Informacion especifica de los nodos*************************");
-		 for(p in nodeConfigs){
-		 	Console.OUT.println("Id del equipo: " + p.getTeamId());
-		 	Console.OUT.println("Heuristica: " + p.getHeuristic());
-		 }
-		 Console.OUT.println("************************************************************************************************");
-		 Console.OUT.println("************************************************************************************************");
+ 		 for(conf in nodeConfigs){
+ 		 	Console.OUT.println("************************************************************************************************");
+ 		 	Console.OUT.println("************************************************************************************************");
+ 		 	Console.OUT.println("Id del equipo: " + conf.getTeamId());
+ 		 	Console.OUT.println("Heuristica: " + conf.getHeuristic());
+ 		 	Console.OUT.println("****************Informacion comun a todos los nodos*************************");
+ 		 	Console.OUT.println("Numero de equipos: " + conf.getNumberOfTeams());
+ 		 	Console.OUT.println("Nodos por equipo: " + conf.getNodesPerTeam());
+ 		 	Console.OUT.println("InterTeamCommTime: " + conf.getInterTeamCommTime());
+ 		 	Console.OUT.println("AffectedPer: " + conf.getAffectedPer());
+ 		 	Console.OUT.println("IniDelay (InterTeamCommTime): " + conf.getIniDelay());
+ 		 	Console.OUT.println("Verify: " + conf.getVerify());
+ 		 	Console.OUT.println("ChangeProb?: " + conf.getChangeProb());
+ 		 	Console.OUT.println("DiversificationOption?: " + conf.getDiversificationOption());
+ 		 	Console.OUT.println("Tiempo maximo de ejecucion: " + conf.getMaxTime());
+ 		 	Console.OUT.println("Maximo numero de iteraciones: " + conf.getMaxIters());
+ 		 	Console.OUT.println("Maximo numero de restarts: " + conf.getMaxRestarts());
+ 		 	Console.OUT.println("ReportPart?: " + conf.getReportPart());
+ 		 	Console.OUT.println("Modo de ingreso de parametros: " + conf.getModParams());
+ 		 	Console.OUT.println("ChangeOnDiver: " + conf.getChangeOnDiver());
+ 		 	Console.OUT.println("ReportTime: " + conf.getReportI());
+ 		 	Console.OUT.println("UpdateTime: " + conf.getUpdateI());
+ 		 	Console.OUT.println("MaxUpdateI?: " + conf.getMaxUpdateI());
+ 		 	/**********************************************/
+ 		 }
+		 
  	}
 }
