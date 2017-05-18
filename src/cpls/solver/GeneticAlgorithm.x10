@@ -33,29 +33,29 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		}
  		while(index2 == index1);
  		//Jason: Pruebas del GA
- 		Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo para cruzamiento 2. Costo: " + population(index2).getCost() + ".Variables: ");
- 		printVector(population(index2).getGenes());
+ 		printVector(population(index2).getGenes());*/
  		val indiv1 = population(index1);
  		val indiv2 = population(index2);
  		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
- 		Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo 2 despues de cruzamiento. Costo: " + population(index2).getCost() + ".Variables: ");
  		printVector(population(index2).getGenes());
  		Console.OUT.print("Hijo 1. Costo: " + sons(0).getCost() + ".Variables: ");
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2. Costo: " + sons(1).getCost() + ".Variables: ");
- 		printVector(sons(1).getGenes());
+ 		printVector(sons(1).getGenes());*/
  		var mutatedSons:Rail[GAIndividual] = mutate(sons);
- 		Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
- 		printVector(mutatedSons(1).getGenes());
+ 		printVector(mutatedSons(1).getGenes());*/
  		refreshPopulation(mutatedSons, index1, index2);
  		sortPopulation();
- 		printPopulation();
+ 		//printPopulation();
  		this.currentCostGA = population(0).getCost();
  		if(currentCostGA < bestCostGA){
  			bestCostGA = currentCostGA;
@@ -144,7 +144,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		}
  		Console.OUT.println("MsgType_0. Poblacion generada: ");*/
  		sortPopulation();
- 		printPopulation();
+ 		//printPopulation();
   		
 	}
 
@@ -176,25 +176,28 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		for(son in sons){
  			if(this.random.nextFloat() < this.mutationRate){
  				index1 = super.random.nextLong(son.getSize());
- 				index2 = super.random.nextLong(son.getSize());
- 				Console.OUT.println("Index1 para mutacion: " + index1);
- 				Console.OUT.println("Index2 para mutacion: " + index2);
- 				swap(son, index1, index2);
+ 				do{
+ 					index2 = super.random.nextLong(son.getSize());
+ 				}while(index2 == index1);	
+ 				//Console.OUT.println("Index1 para mutacion: " + index1);
+ 				//Console.OUT.println("Index2 para mutacion: " + index2);
+ 				son.swap(index1 as Int, index2 as Int);
+ 				//swap(son, index1, index2);
  			}//else{
  			 //	Console.OUT.println("No muta");
  			 //}
  		}
   		sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
  		sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
- 		Console.OUT.print("Hijo 1 despues de mutacion. Adentro. Costo: " + sons(0).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Hijo 1 despues de mutacion. Adentro. Costo: " + sons(0).getCost() + ".Variables: ");
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Adentro. Costo: " + sons(1).getCost() + ".Variables: ");
- 		printVector(sons(1).getGenes());
+ 		printVector(sons(1).getGenes());*/
  		return sons;
  	}
  
- 	public def swap(indiv:GAIndividual, i:Long, j:Long){
- 		indiv.swap(i as Int,j as Int);
- 	}
+ 	//public def swap(indiv:GAIndividual, i:Long, j:Long){
+ 	//	indiv.swap(i as Int,j as Int);
+ 	//}
 }
 public type GeneticAlgorithm(s:Long)=GeneticAlgorithm{self.sz==s};

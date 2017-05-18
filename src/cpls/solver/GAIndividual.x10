@@ -20,6 +20,16 @@ public class GAIndividual(size:Long){
  		//printGenes();
 	}
 
+ 	public def this(genes:Rail[Int]){
+ 		property(genes.size);
+ 		this.genes = new Rail[Int](genes.size, (i:Long) => i as Int);
+ 		this.randomGenerator = new Random();
+ 		this.randomGenerator.setSeed(System.nanoTime());
+ 		Rail.copy(genes as Valuation(size), this.genes as Valuation(size));
+ 		//initialize();
+ 		//printGenes();
+ 	}
+
  	public def this(indiv:GAIndividual){
  		property(indiv.size);
  		this.genes = new Rail[Int](indiv.getGenes().size, (i:Long) => i as Int);
@@ -253,24 +263,26 @@ public class GAIndividual(size:Long){
  		for(var i:Int=0n; i<this.genes.size; i++){
  			if(son1(i) == -1n){
  				circularIndex = randomGenerator.nextLong(size);
+ 				posIni = circularIndex;
  				do{
  					circularIndex = ++circularIndex % size;
- 				}while(auxVectorSon1(circularIndex) != -1n);
+ 				}while(auxVectorSon1(circularIndex) != -1n && circularIndex != posIni);
  				son1(i) = circularIndex as Int;
  				auxVectorSon1(circularIndex) = 0n;
  			}
  			if(son2(i) == -1n){
  				circularIndex = randomGenerator.nextLong(size);
+ 				posIni = circularIndex;
  				do{
  					circularIndex = ++circularIndex % size;
- 				}while(auxVectorSon2(circularIndex) != -1n);
+ 				}while(auxVectorSon2(circularIndex) != -1n && circularIndex != posIni);
  				son2(i) = circularIndex as Int;
  				auxVectorSon2(circularIndex) = 0n;
  			}
  		}
- 		val sons = new Rail[GAIndividual](2, new GAIndividual(size));
- 		sons(0).setGenes(son1);
- 		sons(1).setGenes(son2);
+ 		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
+ 		sons(0) = new GAIndividual(son1);//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2);//setGenes(son2);
  		return sons;
  	}
  
