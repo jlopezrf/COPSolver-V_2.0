@@ -1,8 +1,10 @@
 /csp
-/cpls
+cpls/
 /bin
 .metadata
 Main
 MainX
+xxx_main_xxx.cc
+xxx_main_xxx.o
 *~
 *#
