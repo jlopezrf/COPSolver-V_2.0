@@ -34,26 +34,26 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		}
  		while(index2 == index1);
  		//Jason: Pruebas del GA
- 		Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo para cruzamiento 2. Costo: " + population(index2).getCost() + ".Variables: ");
- 		printVector(population(index2).getGenes());
+ 		printVector(population(index2).getGenes());*/
  		val indiv1 = population(index1);
  		val indiv2 = population(index2);
  		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
- 		Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo 2 despues de cruzamiento. Costo: " + population(index2).getCost() + ".Variables: ");
  		printVector(population(index2).getGenes());
  		Console.OUT.print("Hijo 1. Costo: " + sons(0).getCost() + ".Variables: ");
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2. Costo: " + sons(1).getCost() + ".Variables: ");
- 		printVector(sons(1).getGenes());
+ 		printVector(sons(1).getGenes());*/
  		var mutatedSons:Rail[GAIndividual] = mutate(sons);
- 		Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
+ 		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
- 		printVector(mutatedSons(1).getGenes());
+ 		printVector(mutatedSons(1).getGenes());*/
  		refreshPopulation(mutatedSons, index1, index2);
  		sortPopulation();
  		//printPopulation();

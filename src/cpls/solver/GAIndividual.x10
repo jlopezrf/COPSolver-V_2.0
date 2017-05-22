@@ -99,7 +99,7 @@ public class GAIndividual(size:Long){
 		var insertedinSon1:Int = -1n;
 		var insertedinSon2:Int = -1n;
 		var indexIni:Long = randomGenerator.nextLong(size);
- 		Console.OUT.println("Indice aleatorio: " + indexIni);
+ 		//Console.OUT.println("Indice aleatorio: " + indexIni);
 		var index:Long = 0n;
 		var indexBack:Long = 0n;
 		var insertFlag:Boolean = false;
