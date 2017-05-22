@@ -99,12 +99,13 @@ public class GAIndividual(size:Long){
 		var insertedinSon1:Int = -1n;
 		var insertedinSon2:Int = -1n;
 		var indexIni:Long = randomGenerator.nextLong(size);
+ 		Console.OUT.println("Indice aleatorio: " + indexIni);
 		var index:Long = 0n;
 		var indexBack:Long = 0n;
 		var insertFlag:Boolean = false;
 		while(initializedPositions < size){
 			index = indexIni%size;
-			if(copyMyGenes(index) == genesOther(index)){
+			if(copyMyGenes(index) != -1n && copyMyGenes(index) == genesOther(index)){
 				son1(index) = copyMyGenes(index);
 				son2(index) = genesOther(index);
 				genesOther(index) = -1n;
@@ -115,6 +116,8 @@ public class GAIndividual(size:Long){
 					insertedinSon2 = copyMyGenes(index);
 					son1(index) = insertedinSon1;
 					son2(index) = insertedinSon2;
+ 					//genesOther(index) = -1n;
+ 					//copyMyGenes(index) = -1n;
 					insertFlag = true;
 				}else{
 					indexBack = indexIni%size;
@@ -138,12 +141,10 @@ public class GAIndividual(size:Long){
 			initializedPositions++;
 			indexIni++;
 		}
-		val sons = new Rail[GAIndividual](2);
- 		sons(0) = new GAIndividual(size);
- 		sons(1) = new GAIndividual(size);
-		sons(0).setGenes(son1);
-		sons(1).setGenes(son2);
-		return sons;
+ 		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
+ 		sons(0) = new GAIndividual(son1);//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2);//setGenes(son2);
+ 		return sons;
 	}
 
  	//This is the crossover operator of Tosun in: A robust Island Parallel Genetic Algorithm for the Quadratic Assignment Problem
@@ -153,12 +154,16 @@ public class GAIndividual(size:Long){
  		var son1:Rail[Int] = new Rail[Int](size, -1n); //Mother: this
  		var son2:Rail[Int] = new Rail[Int](size, -1n); //Mother: the Other individual
  		var indexIni:Long = randomGenerator.nextLong(size);
- 		var indexEnd:Long = randomGenerator.nextLong(size);
+ 		var indexEnd:Long;
+ 		do{
+ 			indexEnd = randomGenerator.nextLong(size);
+ 		}while(indexIni == indexEnd);
  		if(indexIni > indexEnd){
  			val aux = indexEnd;
  			indexEnd = indexIni;
  			indexIni = aux;
  		}
+ 		//Console.OUT.println("Indices de cruzamiento. Inicial: " + indexIni + ". Final: " + indexEnd);
  		var positionsForSon1:Rail[Long] = new Rail[Long]((indexEnd - indexIni) + 1, -1n);
  		var positionsForSon2:Rail[Long] = new Rail[Long]((indexEnd - indexIni) + 1, -1n);
  		var i:Long;
@@ -196,7 +201,7 @@ public class GAIndividual(size:Long){
  		k = 0n; //For iterate over the positionsForSon1
  		l = 0n; //For Contain the value in the position indicate for k in positionForSon1
  		var positionAux:Long;
- 		while(positionsForSon1(k) != -1){
+ 		while(positionsForSon1(k) != -1 && k < positionsForSon1.size){
  			positionAux = positionsForSon1(k);
  			do{
  				l = this.genes(positionAux);
@@ -207,7 +212,7 @@ public class GAIndividual(size:Long){
  		}
  		k = 0n; //For iterate over the positionsForSon2
  		l = 0n; //For Contain the value in the position indicate for n in positionForSon2
- 		while(positionsForSon2(k) != -1){
+ 		while(positionsForSon2(k) != -1 && k < positionsForSon2.size){
  			positionAux = positionsForSon2(k);
  			do{
  				l = individual.genes(positionAux);
@@ -225,10 +230,9 @@ public class GAIndividual(size:Long){
  				son2(i) = this.genes(i);
  			}
  		}
- 
- 		val sons = new Rail[GAIndividual](2, new GAIndividual(size));
- 		sons(0).setGenes(son1);
- 		sons(1).setGenes(son2);
+ 		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
+ 		sons(0) = new GAIndividual(son1);//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2);//setGenes(son2);
  		return sons;
  	}
  

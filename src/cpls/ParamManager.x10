@@ -75,6 +75,7 @@ public class ParamManager extends OptionsParser{
  				// Parameters for GA. Jason
  				Option("GA_pz", "GA_population_size", "Set the population size. Default 2*n"),
  				Option("GA_mr", "GA_mutation_rate", "Set the mutation rate. Default 40\\%"),
+ 				Option("-GA_co", "GA_Crossing_Operator", "Set the crossing operator. Default UniforCrossover"),
  				// Parameters for Problem Models
  				Option("if", "input_vector_file", "file path for input vector . Default ."),
  				Option("bv", "model_baseValue", "Domain base value for the model . 0 or 1"),

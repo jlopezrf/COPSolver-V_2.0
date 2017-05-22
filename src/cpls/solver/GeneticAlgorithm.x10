@@ -14,6 +14,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	var population:Rail[GAIndividual];
  	var populationSize:Int;
  	var mutationRate:float;
+ 	var crossingOperator:Int;
  	//val random:Random;
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
@@ -33,26 +34,26 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		}
  		while(index2 == index1);
  		//Jason: Pruebas del GA
- 		/*Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		Console.OUT.print("Individuo para cruzamiento 1. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo para cruzamiento 2. Costo: " + population(index2).getCost() + ".Variables: ");
- 		printVector(population(index2).getGenes());*/
+ 		printVector(population(index2).getGenes());
  		val indiv1 = population(index1);
  		val indiv2 = population(index2);
  		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
- 		/*Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
+ 		Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo 2 despues de cruzamiento. Costo: " + population(index2).getCost() + ".Variables: ");
  		printVector(population(index2).getGenes());
  		Console.OUT.print("Hijo 1. Costo: " + sons(0).getCost() + ".Variables: ");
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2. Costo: " + sons(1).getCost() + ".Variables: ");
- 		printVector(sons(1).getGenes());*/
+ 		printVector(sons(1).getGenes());
  		var mutatedSons:Rail[GAIndividual] = mutate(sons);
- 		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
+ 		Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
- 		printVector(mutatedSons(1).getGenes());*/
+ 		printVector(mutatedSons(1).getGenes());
  		refreshPopulation(mutatedSons, index1, index2);
  		sortPopulation();
  		//printPopulation();
@@ -88,6 +89,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		super.configHeuristic(problemModel, opts);
  		this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
  		this.mutationRate = opts("-GA_mr", 0.4f);
+ 		this.crossingOperator = opts("-GA_co", 0n);
  		//initialize(populationSize, problemModel.size);
  		//sortPopulation();
  	}
@@ -165,8 +167,14 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def crossing(i1:GAIndividual, i2:GAIndividual):Rail[GAIndividual]{
  		val indiv1 = new GAIndividual(i1);
  		val indiv2 = new GAIndividual(i2);
- 		//val sz = super.problemModel.size;
-  		val sons = indiv1.uniformCrossover(indiv2);
+ 		var sons:Rail[GAIndividual];
+ 		if(this.crossingOperator == 0n){
+ 			sons = indiv1.uniformCrossover(indiv2);
+ 		}else if(this.crossingOperator == 1n){
+ 			sons = indiv1.partiallyMatchedCrossover(indiv2);
+ 		}else{
+ 			sons = indiv1.insertPathCrossover(indiv2);
+ 		}
  		return sons;
  	}
  
