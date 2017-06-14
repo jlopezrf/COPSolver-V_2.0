@@ -130,7 +130,6 @@ public class SmartPool(sz:Long, poolSize:Int) {
 						//   simConf = i; 
 					 // }	 
 				}
-				
 				// Replace the worst conf in the pool with a new one
 				if (this.nbEntries(poolType) < this.poolSize && inInfo.cost < worstCost ){
 					 pool(poolType)(this.nbEntries(poolType)++) = inInfo;
@@ -226,7 +225,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 /**
 	  * Get a smart configuration from HIGH, MEDIUM or LOW quality pool.
 	  */
-	 //Jason: Para debiguar el update
+	 //Jason: Para debuguiar el update
 	 //var counterForUpdatesSmartPool:Int = 0n;
 	 public def getPConf() : Maybe[State(sz)]=
 		  monitor.atomicBlock(()=> {

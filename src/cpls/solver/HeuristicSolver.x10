@@ -82,6 +82,18 @@ public class HeuristicSolver(sz:Long){
  		variables(j) = x;
  	}
  
+ 	//Jason: Migration
+ 	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
+ 		Console.OUT.println("BadInvocation of tryInsertIndividual, this its not a GA Heuristic");
+ 		return false;
+ 	}
+ 
+ 	//Jason: Migration
+ 	public def getConfigForPop(replace:Boolean):Rail[Int]{
+ 		Console.OUT.println("BadInvocation of getConfigForPop, this is not a GA Heuristic");
+ 		return null;
+ 	}
+ 
  	public def reset ( var n : Long, totalCost : Long ) : Long {
   	 	while( n-- != 0 ){
   	 		val i = random.nextLong(variables.size);

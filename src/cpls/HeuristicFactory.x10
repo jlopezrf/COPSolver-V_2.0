@@ -30,4 +30,19 @@ public struct HeuristicFactory{
  			default: return "Default";
  		}
  	}
+ 
+ //Jason: Migration
+ public static def getHeuristicType(heu:HeuristicSolver):Int{
+ if(heu instanceof GeneticAlgorithm){
+ return CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
+ }else if(heu instanceof AdaptiveSearch){
+ return CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
+ }else if(heu instanceof EOSearch){
+ return CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
+ }else if(heu instanceof RoTSearch){
+ return CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
+ }else{
+ return CPLSOptionsEnum.HeuristicsSupported.RS_SOL;
+ }
+ }
 }

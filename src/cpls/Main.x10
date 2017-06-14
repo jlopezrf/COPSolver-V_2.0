@@ -49,16 +49,18 @@ public class Main {
  		//***********************Structure Definition*************************//
  		var masterHeuristicAndOthers:Rail[String];
  		var heuristicString:String = opts("-sl", "AS");
+ 		var masterHeuristic:String = null;
  		if(heuristicString.indexOf('*') != -1n){
  			 masterHeuristicAndOthers = heuristicString.split("*");
 			 heuristicString = masterHeuristicAndOthers(1);
+			 masterHeuristic = masterHeuristicAndOthers(0);
 			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristicAndOthers(0));
 			 configCPLS.setMasterConfig(masterConfig);
  		}else if(modeIndicator){
  			Console.OUT.println("Error_Ini. Debe indicar una heurística para el nodo master");
  		}
  		
- 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
+ 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString, masterHeuristic);
  		
  		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
  			Console.OUT.println("Error_Ini. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
@@ -71,8 +73,15 @@ public class Main {
  		//*********************************************************************//
  		
  		//***************************Pools Options*****************************//
- 		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("P_lm", 4n), opts("P_lmM", 0n), opts("P_lmD", 0.5));
- 		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("P_e", 4n), opts("P_eM", 0n), opts("P_eD", 0.5));
+ 		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_lm", 4n), opts("-P_lmM", 0n), opts("-P_lmD", 0.5));
+ 		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_e", 4n), opts("-P_eM", 0n), opts("-P_eD", 0.5));
+ 		/*val totalNodes = nodeConfigs.numElems_2*nodeConfigs.numElems_1;
+ 		val nodesPerTeam:Int = opts("-N", 1n);
+ 		val temPoolSize = 2n*nodesPerTeam;
+ 		val numberOfTeams = Place.MAX_PLACES as Int/nodesPerTeam;
+ 		val cplsPoolSize = 2n*numberOfTeams;
+ 		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_lm", cplsPoolSize as Int), opts("-P_lmM", 0n), opts("-P_lmD", 0.5));
+ 		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_e", temPoolSize), opts("-P_eM", 0n), opts("-P_eD", 0.5));*/
  		configCPLS.setCPLSPoolConfig(cplsPoolConfig);
  		configCPLS.setTeamsPoolConfig(teamsPoolConfig);
  		//*********************************************************************//
@@ -149,6 +158,8 @@ public class Main {
  		masterConfig.setReportPart(opts("-rp", 0n) == 1n);
  		masterConfig.setModParams(opts("-M", 1n));
  		masterConfig.setChangeOnDiver(opts("-CD", 1n));
+ 		//Jason: Migration
+ 		masterConfig.setItersWhitoutImprovements(opts("-iwi", 1000n));
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -169,7 +180,7 @@ public class Main {
  	//Jason: Problemas a resolver en este procedimiento
  	//Debería poderse identificar los nodos por equipo a partir del estring de las heuristicas que se utilizaran en la solución,
  	//combinado con la cantidad de nodos a utilizar y la indicación del tipo de estrategia (ce)
- 	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
+ 	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String, masterHeuristic:String):Array_2[NodeConfig]{
  
  		val nodesPerTeam:Int = opts("-N", 1n);
  		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
@@ -181,7 +192,8 @@ public class Main {
  		val verify:Boolean = opts("-v", 0n) == 1n;
  		val changeProb:Int = opts("-C", 100n);
  		val divOption:Int = opts("O", 0n);
- 		
+ 		//Jason: Migration
+ 		val nItersWhitoutImprovements = opts("-iwi", 100n);
  		val maxTime = opts("-mt", 0);
  		val maxIters = opts("-mi", 100000000); 
  		val maxRestarts = opts("-mr", 0n);
@@ -268,6 +280,9 @@ public class Main {
 								nodeConfigs(i,j).setReportI(reportI);
 								nodeConfigs(i,j).setUpdateI(updateI);
 								nodeConfigs(i,j).setMaxUpdateI(maxUpdateI);
+ 								//Jason: Migration
+ 								nodeConfigs(i,j).setItersWhitoutImprovements(nItersWhitoutImprovements);
+ 								nodeConfigs(i,j).setMasterHeuristic(masterHeuristic);
  								counter++;
  							}
  						}

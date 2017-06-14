@@ -87,7 +87,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		super.configHeuristic(problemModel, opts);
- 		this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
+ 		//this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
+ 		this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
  		this.mutationRate = opts("-GA_mr", 0.4f);
  		this.crossingOperator = opts("-GA_co", 0n);
  		//initialize(populationSize, problemModel.size);
@@ -195,13 +196,69 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			 //	Console.OUT.println("No muta");
  			 //}
  		}
-  		sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
- 		sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
+ 		for(var i:Int = 0n; i< sons.size; i++){
+ 			sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
+ 		}
+  		//sons(0).setCost(this.problemModel.costOfSolution(sz, sons(0).getGenes() as Rail[Int]{self.size == sz}));
+ 		//sons(1).setCost(this.problemModel.costOfSolution(sz, sons(1).getGenes() as Rail[Int]{self.size == sz}));
  		/*Console.OUT.print("Hijo 1 despues de mutacion. Adentro. Costo: " + sons(0).getCost() + ".Variables: ");
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Adentro. Costo: " + sons(1).getCost() + ".Variables: ");
  		printVector(sons(1).getGenes());*/
  		return sons;
+ 	}
+ 
+ 	public def mutateIndiv(indiv:GAIndividual){
+ 		var index1:Long;
+ 		var index2:Long;
+ 		index1 = super.random.nextLong(indiv.getSize());
+ 		do{
+ 			index2 = super.random.nextLong(indiv.getSize());
+ 		}while(index2 == index1);	
+ 		//Console.OUT.println("Index1 para mutacion: " + index1);
+ 		//Console.OUT.println("Index2 para mutacion: " + index2);
+ 		indiv.swap(index1 as Int, index2 as Int);
+ 		//swap(son, index1, index2);
+ 		return indiv;
+ 	}
+ 
+ 	//Jason: Migration
+ 	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
+ 		var minDistance: Double = Double.MAX_VALUE;
+ 		var distance: Double = 0n;
+ 		for(var i:Int = 0n; i < population.size; i++){
+ 			distance = distance(varables, population(i).getGenes() as Valuation(sz));			
+ 			if(distance < minDistance){
+ 				minDistance = distance;
+ 			}
+ 		}
+ 		//Inserta Aleatoriamente el individuo dentro de la población
+ 		if(minDistance != 0.0){
+ 			val index = super.random.nextInt(populationSize);
+ 			population(index) = new GAIndividual(varables);
+ 			population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
+ 			return true;
+ 		}else{
+ 			return false;
+ 		}
+ 	}
+ 
+ 	//Jason: Migration
+ 	public def getConfigForPop(replace:Boolean):Rail[Int]{
+ 		val indiv = population(0);
+ 		population(0) = mutateIndiv(population(0));
+ 		return indiv.getGenes();
+ 	}
+ 
+ 	protected def distance(conf1 : Valuation(sz), conf2 : Valuation(sz)) : Double {
+ 		var count : Int = 0n;
+ 		for (i in 0n..(sz as Int - 1n)){
+ 			//Logger.debug("comparing: "+conf1(i)+" - "+conf2(i));
+ 			if(conf1(i) != conf2(i)) count++; 
+ 		}
+ 		val dist = count as Double / sz;
+ 		//Console.OUT.println("distance in Pool = "+dis);
+ 		return dist;
  	}
  
  	//public def swap(indiv:GAIndividual, i:Long, j:Long){

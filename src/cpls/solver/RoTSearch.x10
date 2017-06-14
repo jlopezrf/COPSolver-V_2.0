@@ -38,8 +38,8 @@ public class RoTSearch extends SingleSolHeuristic{
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
  		super.configHeuristic(problemModel, opts);
  		this.tabuList = new Array_2 [Long](problemModel.size, problemModel.size, 0);
- 		this.tabuDurationFactorUS = opts("--RoTS_tabu_duration", -1.0);
- 		this.aspirationFactorUS = opts("--RoTS_aspiration", -1.0);
+ 		this.tabuDurationFactorUS = opts("-RoTS_t", -1.0);
+ 		this.aspirationFactorUS = opts("-RoTS_a", -1.0);
  	}
 	
 	var tabuDurationLower:Int;
