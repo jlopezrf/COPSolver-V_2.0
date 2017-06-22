@@ -15,7 +15,7 @@ public class NodeInstancer{
 	var masterNode:CPLSNode;
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
- 		//printStructure(configCPLS);
+ 		printStructure(configCPLS);
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
  		val sz = configCPLS.getProblemModel().size;
  		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
@@ -66,9 +66,10 @@ public class NodeInstancer{
  			finish{
  				for(p in PlaceGroup.WORLD) at (p) async{
  					refsToPlaces().start(configCPLS.getTargetCost(), configCPLS.getStrictLow());
+ 					//Runtime.probe();
  				}
  		 	}
- 			//Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
+ 			Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
  			//Console.OUT.println("Nodo ganador: " + refsToPlaces().getStatsObject().getExplorerWinner());
  			verifyWinner(sz, refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			//Jason: Descomentar para la tabla de resultados
@@ -247,6 +248,8 @@ public class NodeInstancer{
  		 	Console.OUT.println("ReportTime: " + conf.getReportI());
  		 	Console.OUT.println("UpdateTime: " + conf.getUpdateI());
  		 	Console.OUT.println("MaxUpdateI?: " + conf.getMaxUpdateI());
+ 		 	Console.OUT.println("NodeRole: " + conf.getRol());
+ 		 	Console.OUT.println("MasterHeuristic: " + conf.getMasterHeuristic());
  		 	/**********************************************/
  		 }
 		 

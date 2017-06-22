@@ -224,10 +224,11 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	//Jason: Migration
  	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
+ 		//Console.OUT.println("Soy nodo master: " + here.id + ", y acabo de ingresar a tryInsertIndividual");
  		var minDistance: Double = Double.MAX_VALUE;
  		var distance: Double = 0n;
  		for(var i:Int = 0n; i < population.size; i++){
- 			distance = distance(varables, population(i).getGenes() as Valuation(sz));			
+ 			distance = distance(varables as Valuation(sz), population(i).getGenes() as Valuation(sz));			
  			if(distance < minDistance){
  				minDistance = distance;
  			}
@@ -237,8 +238,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			val index = super.random.nextInt(populationSize);
  			population(index) = new GAIndividual(varables);
  			population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
+ 			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
  			return true;
  		}else{
+ 			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
  			return false;
  		}
  	}
@@ -247,6 +250,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def getConfigForPop(replace:Boolean):Rail[Int]{
  		val indiv = population(0);
  		population(0) = mutateIndiv(population(0));
+ 		//Console.OUT.println("A punto de terminar la migración, nodo master respondiendo: " + here.id);
  		return indiv.getGenes();
  	}
  

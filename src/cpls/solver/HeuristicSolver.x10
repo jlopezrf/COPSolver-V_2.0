@@ -69,6 +69,7 @@ public class HeuristicSolver(sz:Long){
  	}
  
  	public def getVariables():Rail[Int]{
+ 		//Console.OUT.println("Nodo: " + here.id + " pidiendo variables para crear State");
  		return this.variables;
  	}
  
