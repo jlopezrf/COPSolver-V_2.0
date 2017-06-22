@@ -466,10 +466,10 @@ public class CPLSNode(sz:Long){
  				val refsToPlace = pointersComunication;
  				//finish{
  					val state = new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState);
- 					//val result = 
- 					at(Place(0)) async refsToPlace().tryInsertForGADiversification(state);
+ 					val result = 
+ 					at(Place(0)) refsToPlace().tryInsertForGADiversification(state);
  					//Console.OUT.println("Nodo: " + here.id + " regresando de la invocación de tryInsertForGADiversification");
- 					/*if (result != null){
+ 					if (result != null){
  						//Console.OUT.println("El resulto es diferente de null: " + here.id + ": " + result);
  						this.nChangeV++;
  						this.heuristicSolver.setVariables(result as Valuation(sz));
@@ -478,7 +478,7 @@ public class CPLSNode(sz:Long){
  						this.nIterWhitoutImprovements = 0n;
  					}else{
  						//Console.OUT.println("Recibo nulo desde el master: " +  here.id);
- 					}*/
+ 					}
  				//}
  				//Console.OUT.println("Se cumple el finish en el nodo: " + here.id);
  			}
@@ -490,10 +490,10 @@ public class CPLSNode(sz:Long){
  	}
  	
  	//Jason: Migration
- 	//public def tryInsertForGADiversification(info:State(sz)):Rail[Int] =
- 	//		monitor.atomicBlock(()=> {return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
- 	//});
- 	public def tryInsertForGADiversification(info:State(sz)):Boolean =
+ 	public def tryInsertForGADiversification(info:State(sz)):Rail[Int] =
+ 			monitor.atomicBlock(()=> {return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
+ 	});
+ 	/*public def tryInsertForGADiversification(info:State(sz)):Boolean =
  		monitor.atomicBlock(()=> {
  			async responseToExplorer(info.place);
  			return this.heuristicSolver.tryInsertIndividual(info.vector, sz);	
@@ -502,9 +502,9 @@ public class CPLSNode(sz:Long){
  	public def responseToExplorer(place:Int){
  		val newSol = this.heuristicSolver.getConfigForPop(true);
  		at (Place(place)) receiveSolFromMaster(newSol);
- 	}
+ 	}*/
  
- 	public def receiveSolFromMaster(sol:Rail[Int]) =
+ 	/*public def receiveSolFromMaster(sol:Rail[Int]) =
  		monitor.atomicBlock(()=> {
  			if (sol != null){
  				this.nChangeV++;
@@ -515,7 +515,7 @@ public class CPLSNode(sz:Long){
  				return true;
  			}
  			return false;
- 	});
+ 	});*/
  
  	public def communicate( info:State(sz)) {  
  		Logger.debug(()=>" communicate: entering.");
