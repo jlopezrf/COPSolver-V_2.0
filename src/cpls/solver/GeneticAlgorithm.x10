@@ -11,7 +11,7 @@ import x10.util.RailUtils;
 
 public class GeneticAlgorithm extends PopulBasedHeuristic{
 	
-	var population:Rail[GAIndividual];
+	var population:GAPopulation = new GAPopulation();
  	var populationSize:Int;
  	var mutationRate:float;
  	var crossingOperator:Int;
@@ -38,8 +38,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(population(index1).getGenes());
  		Console.OUT.print("Individuo para cruzamiento 2. Costo: " + population(index2).getCost() + ".Variables: ");
  		printVector(population(index2).getGenes());*/
- 		val indiv1 = population(index1);
- 		val indiv2 = population(index2);
+ 		val indiv1 = population.getIndividual(index1);
+ 		val indiv2 = population.getIndividual(index2);
  		var sons:Rail[GAIndividual] = crossing(indiv1, indiv2);
  		/*Console.OUT.print("Individuo 1 despues de cruzamiento. Costo: " + population(index1).getCost() + ".Variables: ");
  		printVector(population(index1).getGenes());
@@ -54,13 +54,13 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
  		printVector(mutatedSons(1).getGenes());*/
- 		refreshPopulation(mutatedSons, index1, index2);
- 		sortPopulation();
+ 		this.population.refreshPopulation(mutatedSons, index1, index2);
+ 		this.population.sort();
  		//printPopulation();
- 		this.currentCostGA = population(0).getCost();
+ 		this.currentCostGA = population.getIndividual(0).getCost();
  		if(currentCostGA < bestCostGA){
  			bestCostGA = currentCostGA;
- 			super.variables = population(0).getGenes() as Valuation(sz);
+ 			super.variables = population.getIndividual(0).getGenes() as Valuation(sz);
  		}
  		return currentCostGA;
  	}
@@ -68,21 +68,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};
  
  	protected def sortPopulation(){
- 		RailUtils.sort(this.population, cmp);
- 		/*var aux:GAIndividual;
- 		for(var i:Long = 1n; i < population.size + 1 as Int; i++){
- 			for(var j:Int = 0n; j < population.size - i; j++){
- 				if(population(j).getCost() > population(j+1).getCost()){
- 					aux = population(j);
- 					population(j) = population(j+1);
- 					population(j+1) = aux;
- 				}
- 			}
- 		}*/
- 		/*Console.OUT.println("Poblacion ordenada: ");
- 		for(var k:Int = 0n; k < this.population.size; k++){
- 			printVector(this.population(k).getGenes());
- 		}*/
+ 		this.population.sort();
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -96,14 +82,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	}
  
  	public def initVariables(){
- 		initialize(this.populationSize, super.sz);
+ 		//initialize(this.populationSize, super.sz);
+ 		this.population.initialize(populationSize, super.sz, super.problemModel);
+ 		this.population.sort();
  	}
  
- 	protected def refreshPopulation(mutatedSons:Rail[GAIndividual], parentIndex1:Long, parentIndex2:Long){
+ 	//protected def refreshPopulation(mutatedSons:Rail[GAIndividual], parentIndex1:Long, parentIndex2:Long){
  		//Jason: Estrategia de reemplazo comparando con los dos peores
- 		RailUtils.sort(mutatedSons, cmp);
- 		this.population(populationSize -2) = mutatedSons(0);
- 		this.population(populationSize -1) = mutatedSons(1);
+ 		//RailUtils.sort(mutatedSons, cmp);
+ 		//this.population.setIndividual(populationSize -2, mutatedSons(0);
+ 		//this.population.setIndividual(populationSize -1, mutatedSons(1);
  		/*if(mutatedSons(0).getCost() < this.population(populationSize -1).getCost()){
  			this.population(populationSize -1) = mutatedSons(0);
  			if(mutatedSons(1).getCost() < this.population(populationSize -2).getCost()){
@@ -117,16 +105,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//Jason: Estrategia de reemplazo comparando solo con los padres directos
  		//if(mutatedSons(0).getCost() < population(parentIndex1).getCost()) population(parentIndex1) = mutatedSons(0);
  		//if(mutatedSons(1).getCost() < population(parentIndex2).getCost()) population(parentIndex2) = mutatedSons(1);
- 	}
+ 	//}
 	
  	//Population ramdomly initialized without verification
-	public def initialize(populationSize:Long, individualSize:Long){	
- 		this.population = new Rail[GAIndividual](populationSize);//(populationSize, new GAIndividual(individualSize));
- 		for(var k:Int = 0n; k < this.population.size; k++){
- 			this.population(k) = new GAIndividual(individualSize);
- 			this.population(k).initialize();
- 			this.population(k).setCost(problemModel.costOfSolution(sz, this.population(k).getGenes() as Rail[Int]{self.size == sz}));
- 		}
+	//public def initialize(populationSize:Long, individualSize:Long){	
+ 		//this.population.initialize(populationSize);// = new Rail[GAIndividual](populationSize);//(populationSize, new GAIndividual(individualSize));
+ 		//for(var k:Int = 0n; k < this.population.size; k++){
+ 		//	this.population(k) = new GAIndividual(individualSize);
+ 		//	this.population(k).initialize();
+ 		//	this.population(k).setCost(problemModel.costOfSolution(sz, this.population(k).getGenes() as Rail[Int]{self.size == sz}));
+ 		//}
  		/*//var copyInitialValues:Rail[Int];//  = new Rail[Int](individualSize, 0n);
  		var k:Int;
  		var x:Int;
@@ -146,15 +134,15 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			printVector(initialValues);
  		}
  		Console.OUT.println("MsgType_0. Poblacion generada: ");*/
- 		sortPopulation();
+ 		//this.population.sort();
  		//printPopulation();
   		
-	}
+	//}
 
  	public def printPopulation(){
- 		for(var i:Int = 0n; i < population.size; i++){
- 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population(i).getCost() + ". Variables: ");
- 			printVector(population(i).getGenes()); 
+ 		for(var i:Int = 0n; i < population.getPopulationSize(); i++){
+ 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population.getIndividual(i).getCost() + ". Variables: ");
+ 			printVector(population.getIndividual(i).getGenes()); 
  		}
  	}
 
@@ -227,8 +215,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//Console.OUT.println("Soy nodo master: " + here.id + ", y acabo de ingresar a tryInsertIndividual");
  		var minDistance: Double = Double.MAX_VALUE;
  		var distance: Double = 0n;
- 		for(var i:Int = 0n; i < population.size; i++){
- 			distance = distance(varables as Valuation(sz), population(i).getGenes() as Valuation(sz));			
+ 		for(var i:Int = 0n; i < population.getPopulationSize(); i++){
+ 			distance = distance(varables as Valuation(sz), population.getIndividual(i).getGenes() as Valuation(sz));			
  			if(distance < minDistance){
  				minDistance = distance;
  			}
@@ -236,8 +224,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//Inserta Aleatoriamente el individuo dentro de la población
  		if(minDistance != 0.0){
  			val index = super.random.nextInt(populationSize);
- 			population(index) = new GAIndividual(varables);
- 			population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
+ 			population.setIndividual(index, new GAIndividual(varables));
+ 			population.setCost(index, this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
+ 			//population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
  			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
  			return true;
  		}else{
@@ -248,8 +237,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	//Jason: Migration
  	public def getConfigForPop(replace:Boolean):Rail[Int]{
- 		val indiv = population(0);
- 		population(0) = mutateIndiv(population(0));
+ 		val indiv = population.getIndividual(0);
+ 		population.setIndividual(0, mutateIndiv(population.getIndividual(0)));
  		//Console.OUT.println("A punto de terminar la migración, nodo master respondiendo: " + here.id);
  		return indiv.getGenes();
  	}

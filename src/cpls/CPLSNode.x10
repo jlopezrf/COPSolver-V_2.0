@@ -15,7 +15,7 @@ import x10.util.Random;
 import x10.util.concurrent.AtomicBoolean;
 import x10.util.RailUtils;
 import x10.util.StringUtil;
-import cpls.util.Monitor;
+//import cpls.util.Monitor;
 
 public class CPLSNode(sz:Long){
  	//property(sz);//=sz;
@@ -27,7 +27,7 @@ public class CPLSNode(sz:Long){
  	var cplsPool:SmartPool(sz);
  	//var fromTheMasterConfigs:Rail[Rail[Int]];
  	//Jason: Migration
- 	protected val monitor = new Monitor("CPLSNode");
+ 	//protected val monitor = new Monitor("CPLSNode");
  	/***********************************************************/
  	/*********Variables para el manejo de estadísticas**********/
  	val stats = new GlobalStats();
@@ -470,7 +470,7 @@ public class CPLSNode(sz:Long){
  					at(Place(0)) refsToPlace().tryInsertForGADiversification(state);
  					//Console.OUT.println("Nodo: " + here.id + " regresando de la invocación de tryInsertForGADiversification");
  					if (result != null){
- 						//Console.OUT.println("El resulto es diferente de null: " + here.id + ": " + result);
+ 						//Console.OUT.println("El resultado es diferente de null: " + here.id + ": " + result);
  						this.nChangeV++;
  						this.heuristicSolver.setVariables(result as Valuation(sz));
  						this.currentCost = this.heuristicSolver.costOfSolution();
@@ -490,9 +490,13 @@ public class CPLSNode(sz:Long){
  	}
  	
  	//Jason: Migration
- 	public def tryInsertForGADiversification(info:State(sz)):Rail[Int] =
- 			monitor.atomicBlock(()=> {return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
- 	});
+ 	public def tryInsertForGADiversification(info:State(sz)):Rail[Int]{
+ 		return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
+ 	}
+ 			
+ 	//public def tryInsertForGADiversification(info:State(sz)):Rail[Int] =
+ 	//	monitor.atomicBlock(()=> {return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
+ 	//});
  	/*public def tryInsertForGADiversification(info:State(sz)):Boolean =
  		monitor.atomicBlock(()=> {
  			async responseToExplorer(info.place);
