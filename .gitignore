@@ -1,6 +1,8 @@
 /csp
-cpls/
-!cpls/.x10
+cpls/*.h
+cpls/*.o
+cpls/*.d
+cpls/*.cc
 /bin
 .metadata
 Main
