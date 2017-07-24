@@ -15,7 +15,7 @@ public class NodeInstancer{
 	var masterNode:CPLSNode;
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
- 		printStructure(configCPLS);
+ 		//printStructure(configCPLS);
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
  		val sz = configCPLS.getProblemModel().size;
  		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
@@ -31,7 +31,7 @@ public class NodeInstancer{
  				val problem = Main.problemDetect(problemString);
  				val problemParams = new Rail[Long](3, -1 );
  				val problemModel = Main.COPProblemModelFactory.make(opts, problem, problemParams, seed);*/
- 				if(configCPLS.getIsThereAMasterNode()){
+ 				if(configCPLS.getModeIndicator() == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
 					 if(p == Place.FIRST_PLACE){
  						refsToPlaces().initialize(configCPLS.getMasterConfig(),
 					 							configCPLS.getCPLSPoolConfig(),
@@ -69,7 +69,6 @@ public class NodeInstancer{
  					//Runtime.probe();
  				}
  		 	}
- 			Console.OUT.println("MsgType_0. Se cumple el finish iteracion: " + i);
  			//Console.OUT.println("Nodo ganador: " + refsToPlaces().getStatsObject().getExplorerWinner());
  			verifyWinner(sz, refsToPlaces, configCPLS.getVerify(), configCPLS.getTargetCost(), refsToPlaces().getStatsObject().getExplorerWinner());
  			//Jason: Descomentar para la tabla de resultados
@@ -87,6 +86,8 @@ public class NodeInstancer{
  				Console.OUT.printf(" %8.4f |\n",wallTime/1e9);
  				refsToPlaces().printAVG(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.flush();
+ 				//Jason: Impresión de ChangesForDivs
+ 				//refsToPlaces().printChangesForDivs();
  			}
  			//Console.OUT.println("\n ");
  			if(i<10){
@@ -131,17 +132,19 @@ public class NodeInstancer{
  			var solWin2:Rail[Int];
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
- 				refPlaces().setStats_(targetCost, place.id as Int);
- 				/*if (verify){
+ 				val changeForDiv = refPlaces().getChangeforDiv();
+ 				Console.OUT.println("Numero de reinicios por diversificacion: " + changeForDiv);
+ 				refPlaces().setStats_(targetCost, place.id as Int, changeForDiv);
+ 				if (verify){
  					refPlaces().verify_();
- 				}*/
+ 				}
  			}
- 			val solWin = at(bestPlace) refPlaces().getVariables();
+ 			val solWin = at(bestPlace) refPlaces().getBestConf();
  			//Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
  			//printVector(solWin);
  		}else{
  			//Console.OUT.println("MsgType_0. Hubo un ganador en la ejecucion.");
- 			val solWin = at(Place(explorerWinner)) refPlaces().getVariables();
+ 			val solWin = at(Place(explorerWinner)) refPlaces().getBestConf();
  			val cCost = at(Place(explorerWinner)) refPlaces().getCost();
  			//Console.OUT.print("MsgType_0. El place ganador es: " + explorerWinner + ", con un costo de: " + cCost + ", y variables: ");
  			//printVector(solWin);
@@ -191,7 +194,7 @@ public class NodeInstancer{
 			 Console.OUT.println("Tamano del pool: " + teamPool.getPoolSize());
 			 Console.OUT.println("PoolMode: " + teamPool.getPoolMode());
 			 Console.OUT.println("Minima distancia: " + teamPool.getMinDist());
- 			if(configCPLS.getIsThereAMasterNode()){
+ 			if(configCPLS.getModeIndicator() == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
  				val masterConfig = configCPLS.getMasterConfig();
  				Console.OUT.println("************************************************************************************************");
  				Console.OUT.println("************************Informacion del nodo master**************************");

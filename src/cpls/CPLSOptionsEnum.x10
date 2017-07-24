@@ -39,4 +39,10 @@ public struct CPLSOptionsEnum {
  	public static struct PoolModes{
  		public static val SMART = 1;
  	}
+ 
+ 	public static struct ModeIndicator{
+ 		public static val COOPERATIVE_WITH_MASTER = 2n;
+ 		public static val COOPERATIVE_WITHOUT_MASTER = 1n;
+ 		public static val IW = 0n;
+ 	}
 }

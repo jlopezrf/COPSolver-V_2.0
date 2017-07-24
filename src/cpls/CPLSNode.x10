@@ -11,6 +11,7 @@ import cpls.util.Utils;
 import cpls.util.Maybe;
 import cpls.util.Valuation;
 import cpls.solver.HeuristicSolver;
+import cpls.solver.PopulBasedHeuristic;
 import x10.util.Random;
 import x10.util.concurrent.AtomicBoolean;
 import x10.util.RailUtils;
@@ -24,10 +25,8 @@ public class CPLSNode(sz:Long){
  	protected var heuristicSolver:HeuristicSolver(sz);
  	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
  	var teamPool:SmartPool(sz);
- 	var cplsPool:SmartPool(sz);
- 	//var fromTheMasterConfigs:Rail[Rail[Int]];
- 	//Jason: Migration
- 	//protected val monitor = new Monitor("CPLSNode");
+ 	var stackForDiv:StackForDiv(sz);
+ 	var globalBestConf:GlobalBestConf(sz);
  	/***********************************************************/
  	/*********Variables para el manejo de estadísticas**********/
  	val stats = new GlobalStats();
@@ -64,6 +63,7 @@ public class CPLSNode(sz:Long){
  	protected var nSwapTot : Int;
  	// -> Result
  	protected var bestConf:Rail[Int];
+ 	protected var bestConfForTeam:State(sz) = new State(sz, -1, null, -1 as Int,null);
  	protected var bestCost:Long = Long.MAX_VALUE;
  	protected var currentCost:Long;
  	// -> Stop search process 
@@ -76,9 +76,12 @@ public class CPLSNode(sz:Long){
  	protected var forceRestart : Boolean = false;
  	/** Number time to change vector due to communication */ 
  	protected var nChangeV : Int = 0n;
+ 	protected var nChangeforDiv : Int = 0n;
  	protected var bestSent:Boolean=false;
+ 	protected var newBestConfReported:Boolean = false;
  	protected var numberofTeams:Int;
  	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
+ 	protected var flagsForMaster:Rail[Boolean];
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -111,10 +114,14 @@ public class CPLSNode(sz:Long){
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 			this.cplsPool = new SmartPool(sz, cplsPoolConfig);
+ 			this.globalBestConf = new GlobalBestConf(sz, config.getNumberOfTeams());
+ 			//this.divCplsPool = new SmartPool(sz, configPool);
+ 			this.flagsForMaster = new Rail[Boolean](config.getNumberOfTeams(), false);
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
+ 			this.stackForDiv = new StackForDiv(sz);
+ 			//this.divCplsPool = new SmartPool(sz, cplsPoolConfig);
  			//if(this.nodeConfig.getMasterHeuristic() != null && this.nodeConfig.getMasterHeuristic().equals("GA")){
  				//this.fromTheExplorersConfigs = new Rail[Rail[Int]](this.nodeConfig.getNodesPerTeam(), new Rail[Int](sz));
  			//}
@@ -186,7 +193,8 @@ public class CPLSNode(sz:Long){
  	 		bcost = cost;
  	 		if (winner){ 
  	 			Console.OUT.println("Soy el nodo " + here + "Y soy el ganador");
- 	 			setStats_(targetCost, home as Int);
+ 	 			val changeForDivs = getChangeforDiv();
+ 	 			setStats_(targetCost, home as Int, changeForDivs);
  	 			if (nodeConfig.getVerify()){
  	 				displaySolution();
  	 				Console.OUT.println(", Solution is " + 
@@ -198,7 +206,7 @@ public class CPLSNode(sz:Long){
  	 		}
  	 	}else{
  	 		solString = "Solution "+here+ " is "+(verify()? "perfect !!!" : "not perfect, maybe wrong ...");
- 	 		Console.OUT.println("Se termina el start y no se llego a la solucion: " + here.id);
+ 	 		//Console.OUT.println("Se termina el start y no se llego a la solucion: " + here.id);
  	 	}
  	 	//Jason: Pruebas del GA
  	 	//Console.OUT.print("MsgType_0. Nodo:" + here + ". Solucion final. Costo: " + this.currentCost + ". Variables: " );
@@ -265,7 +273,9 @@ public class CPLSNode(sz:Long){
  				//Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
- 
+ 			//if(solForDiv){
+ 			//	this.heuristicSolver.tryInsertIndividual();
+ 			//}
  			//Console.OUT.println("in maIN LOOP " + here.id+ " time "+(System.nanoTime() - this.initialTime) +" cost="+this.currentCost);
  			//Time out
  			if(this.nodeConfig.getMaxTime() > 0n){
@@ -293,6 +303,7 @@ public class CPLSNode(sz:Long){
  		this.nIter = 0n;
  		this.nRestart = 0n;
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
+ 		this.bestConfForTeam = new State(sz, -1, null, -1 as Int,null);
  		// clear Tot stats
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
@@ -304,6 +315,7 @@ public class CPLSNode(sz:Long){
  		this.bestSent = false;
  		this.nForceRestart = 0n;
  		this.nChangeV = 0n;
+ 		this.nChangeforDiv = 0n;
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
@@ -366,10 +378,13 @@ public class CPLSNode(sz:Long){
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
  		}
  	}
- 	//Jason:Variables temporales para debiguear la ejecución de la comunicación
- 	//var counterForReport:Int = 0n;
- 	//var counterForUpdate:Int = 0n;
- 	protected def interact(){ 
+ 	
+ 	protected def interact(){
+ 		interactForIntensification();
+ 		interactForDiversification();
+ 	} 
+ 
+ 	protected def interactForIntensification(){ 
  		// Interaction with other places
  		//val sz = this.heuristicSolver.getSizeProblem();
  		//Console.OUT.println("Nodo: " + here.id + ", ingresando a interact.");
@@ -450,49 +465,170 @@ public class CPLSNode(sz:Long){
  					printVector(this.heuristicSolver.getVariables());
  				}*/
  			}
- 			//Jason: Migration
- 			//Si después de cierto número de iteraciones el nodo no consigue una mejora, entonces decide tomar una nueva
- 			//solución. Con una probabilidad del 50% se toma una solución o bien del teamPool, o bien del trasnferIndividual.
- 			//El head entonces tendrá tres pool, uno para intensificación en el team (probada por Danny suficientemente), otro
- 			//para almacenar los individuos que el GA propone para explorar, y otro para almacenar las soluciones que los nodos
- 			//van reportando para que empiecen a hacer parte de la población del GA
- 			//if(here.id == 2 || here.id == 4){
- 			//Console.OUT.println("Nodo: " + here.id +
- 			//					". Cantidad de iteraciones sin mejora: " + this.nIterWhitoutImprovements);}
- 			if(this.nIterWhitoutImprovements >= this.nodeConfig.getItersWhitoutImprovements() &&
- 					this.nodeConfig.getMasterHeuristic() != null && this.nodeConfig.getMasterHeuristic().equals("GA")){
- 				//Console.OUT.println("Se ingresa a a la parte de migracion en el nodo: " + here.id);
- 				val solverState = createSolverState();
- 				val refsToPlace = pointersComunication;
- 				//finish{
- 					val state = new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState);
- 					val result = 
- 					at(Place(0)) refsToPlace().tryInsertForGADiversification(state);
- 					//Console.OUT.println("Nodo: " + here.id + " regresando de la invocación de tryInsertForGADiversification");
- 					if (result != null){
- 						//Console.OUT.println("El resultado es diferente de null: " + here.id + ": " + result);
- 						this.nChangeV++;
- 						this.heuristicSolver.setVariables(result as Valuation(sz));
- 						this.currentCost = this.heuristicSolver.costOfSolution();
- 						bestSent = false;
- 						this.nIterWhitoutImprovements = 0n;
- 					}else{
- 						//Console.OUT.println("Recibo nulo desde el master: " +  here.id);
- 					}
- 				//}
- 				//Console.OUT.println("Se cumple el finish en el nodo: " + here.id);
- 			}
- 		}else if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 			//Console.OUT.println("Nodo master: " + here.id + "dando pruebas de ejecucion de interact");
- 			//Jason: El master por el momento solo responde a quienes lo llaman;
- 			//Una buena idea puede ser insertar en su pool las soluciones que el mismo va obteniendo con buenos resultados
  		}
  	}
- 	
+ 
  	//Jason: Migration
- 	public def tryInsertForGADiversification(info:State(sz)):Rail[Int]{
- 		return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
+ 	//Si después de cierto número de iteraciones el nodo no consigue una mejora, entonces decide tomar una nueva
+ 	//solución. Con una probabilidad del 50% se toma una solución o bien del teamPool, o bien del trasnferIndividual.
+ 	//El head entonces tendrá tres pool, uno para intensificación en el team (probada por Danny suficientemente), otro
+ 	//para almacenar los individuos que el GA propone para explorar, y otro para almacenar las soluciones que los nodos
+ 	//van reportando para que empiecen a hacer parte de la población del GA
+ 	public def interactForDiversification(){
+ 		val refsToPlace = pointersComunication;
+ 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
+ 			if(this.nIterWhitoutImprovements >= this.nodeConfig.getItersWhitoutImprovements()){
+ 				val solverState = createSolverState();
+ 				val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
+ 				val result = at(Place(nodeConfig.getTeamId())) refsToPlace().communicateForDiversification(state);
+ 				if (result.vector != null){
+ 					this.nChangeforDiv++;
+ 					this.heuristicSolver.setVariables(result.vector as Valuation(sz));
+ 					this.currentCost = this.heuristicSolver.costOfSolution();
+ 					//this.currentCost = result.cost;
+ 					bestSent = false;
+ 					this.nIterWhitoutImprovements = 0n;
+ 					//Console.OUT.println("Explorer: " + here.id + " recibe respuesta no nula luego de estancamiento");
+ 				}
+ 			}
+ 		}
+ 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE
+ 			&& this.newBestConfReported && this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
+ 				//Console.OUT.println("Head: " + here.id + " inicia ida al master a reportar una nueva mejor solución");
+ 				val indice = here.id/this.nodeConfig.getNodesPerTeam();
+ 				at(Place(0)) refsToPlace().newBestConfForTeam(indice as Int);
+ 				this.newBestConfReported = false;
+ 				//Console.OUT.println("Head: " + here.id + " termina ida al master a reportar una nueva mejor solución");
+ 		}
+ 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
+ 			val conf = this.globalBestConf.getBestConfEver();
+ 			if(conf.vector != null){
+ 				//Console.OUT.println("Master: " + here.id + " ingresa a su diversificación y toma mejor de mejores soluciones");
+ 				if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 					this.heuristicSolver.tryInsertIndividual(conf.vector, sz);
+ 				}else{
+ 					this.heuristicSolver.setVariables(conf.vector);
+ 					this.currentCost = this.heuristicSolver.costOfSolution();
+ 				}
+ 				this.nChangeforDiv++;
+ 				this.nIterWhitoutImprovements = 0n;
+ 			}
+ 			if(this.nIter%this.nodeConfig.getItersWhitoutImprovements() == 0n){
+ 				//Generar una solución diversa para cada Head y enviarla
+ 				//Console.OUT.println("Master: " + here.id + " distribuye soluciones por IWI");
+ 				var node:Long = 0;
+ 				for(var i:Int = 0n; i < this.nodeConfig.getNumberOfTeams(); i++){
+ 					node = 1 + i*this.nodeConfig.getNodesPerTeam();
+ 					val newDivConf = createDivConf();
+ 					at(Place(node)) refsToPlace().insertConfOnDivPool(newDivConf);
+ 				}
+ 				//Console.OUT.println("Master: " + here.id + " termina de distribuir soluciones");
+ 			}
+ 		}
  	}
+ 
+ 	/**
+ 	 * Método que se ejecuta en el head cuando el explorer se estanca por IWI
+ 	 **/
+ 	public def communicateForDiversification(info:State(sz)):State(sz){
+ 		if(this.teamPool.insertFromIWI(info)){
+ 			this.newBestConfReported = true;
+ 			this.bestConfForTeam = info;
+ 		}
+ 		val newConf = this.stackForDiv.pop();
+ 		if(newConf.vector != null){
+ 			return newConf;
+ 		}else{
+ 			val conf = this.heuristicSolver.createNewConf();
+ 			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
+ 			return new State(sz, -1, conf, -1n, null);
+ 		}
+ 	}
+ 
+ 	/**
+ 	 * Método que se ejecuta en el master cuando lo llaman porque un team mejoró
+ 	 * su solución
+ 	 * */
+ 	public def newBestConfForTeam(place:Int){
+ 		//Que retorne un booleano para indicar si la nueva solución que llegó es mejor
+ 		//que todas las demás que hay en el pool; en ese caso empezar desde esa
+ 		this.globalBestConf.put(this.bestConfForTeam, place);
+ 	}
+ 	
+ 	/**
+ 	 * Método que se ejecuta en el head cuando lo llaman porque un team mejoró la mejor solución
+ 	 **/
+ 	public def insertConfOnDivPool(newDivConf:State(sz)){
+ 		this.stackForDiv.push(newDivConf);
+ 	}
+ 	
+ 	/**
+  	* Método que se ejecuta en el master para generar las soluciones que va a distribuir
+  	* en cada equipo. Se generan cada IWI iteraciones.
+  	* */
+ 	public def createDivConf():State(sz){
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 			val conf = this.heuristicSolver.getConfigForPop(true);
+ 			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
+ 			return new State(sz, -1, conf as Valuation(sz), 1n, null);
+ 		}else{
+ 			val state1 = this.globalBestConf.get(this.random.nextInt(sz as Int));
+ 			val state2 = this.globalBestConf.get(this.random.nextInt(sz as Int));
+ 			val conf = insertPathConf(state1.vector, state2.vector);
+ 			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
+ 			return new State(sz, -1, conf as Valuation(sz), 1n, null); //Jason: hacer que retorne algo bueno
+ 		}
+ 	}
+ 
+ 	public static def insertPathConf(padre1:Rail[Int], padre2:Rail[Int]):Rail[Int]{
+ 		var copyMyGenes:Rail[Int] = new Rail[Int](padre1); 
+ 		var genesOther:Rail[Int] = new Rail[Int](padre2);
+ 		val randomGenerator:Random = new Random();
+ 		val size = copyMyGenes.size;
+ 		var son1:Rail[Int] = new Rail[Int](size, -1n);
+ 		var initializedPositions:Int = 0n;
+ 		var insertedinSon1:Int = -1n;
+ 		var indexIni:Long = randomGenerator.nextLong(size);
+ 		Console.OUT.println("Indice inicial: " + indexIni);
+ 		var index:Long = 0n;
+ 		var indexBack:Long = 0n;
+ 		var insertFlag:Boolean = false;
+ 		while(initializedPositions < size){
+ 			index = indexIni%size;
+ 			if(copyMyGenes(index) != -1n && copyMyGenes(index) == genesOther(index)){
+ 				son1(index) = copyMyGenes(index);
+ 				genesOther(index) = -1n;
+ 				copyMyGenes(index) = -1n;
+ 			}else{
+ 				if(!insertFlag){
+ 					insertedinSon1 = genesOther(index);
+ 					son1(index) = insertedinSon1;
+ 					insertFlag = true;
+ 				}else{
+ 					indexBack = indexIni%size;
+ 					do{
+ 						indexBack = (indexBack-1) >= 0 ? indexBack - 1:size-1;
+ 					}while(copyMyGenes(indexBack) == -1n
+ 						|| copyMyGenes(indexBack) == genesOther(indexBack)
+ 						|| (insertFlag && copyMyGenes(indexBack) == insertedinSon1));
+ 					Console.OUT.println("IndexBack: " + indexBack + ". IndexIni: " + indexIni + ". index: " + index);
+ 					son1(index) = copyMyGenes(indexBack);
+ 					copyMyGenes(indexBack) = -1n;
+ 					genesOther(indexBack) = -1n;
+ 				}
+ 			}
+ 			initializedPositions++;
+ 			indexIni++;
+ 		}
+ 		return son1;
+ 	}
+ 
+ 	//Jason: Migration
+ 	//public def tryInsertForGADiversification(info:State(sz)):Rail[Int]{
+ 	//	tryInsertLM(info);
+ 	//	solForDiv = true;
+ 	//	return this.heuristicSolver.getConfigForPop(true);
+ 	//}
  			
  	//public def tryInsertForGADiversification(info:State(sz)):Rail[Int] =
  	//	monitor.atomicBlock(()=> {return this.heuristicSolver.getConfigForPop(this.heuristicSolver.tryInsertIndividual(info.vector, sz));
@@ -522,6 +658,7 @@ public class CPLSNode(sz:Long){
  	});*/
  
  	public def communicate( info:State(sz)) {  
+ 		val refsToPlaces = pointersComunication;
  		Logger.debug(()=>" communicate: entering.");
  		val placeid = here.id as Int;
  		if ( Place(nodeConfig.getTeamId()) == here ){
@@ -529,7 +666,7 @@ public class CPLSNode(sz:Long){
  			this.tryInsertConf(info);
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
- 			at(Place(nodeConfig.getTeamId())) async pointersComunication().tryInsertConf( info );
+ 			at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConf( info );
  		}
  		//Jason: Pruebas para debuguiar la comunicación
  		//if(this.counterForReport%100 == 0){
@@ -578,8 +715,14 @@ public class CPLSNode(sz:Long){
  		//}
  		//}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
- 			this.heuristicSolver.setVariables(a().vector as Valuation(sz));
- 			return true; 
+ 			//Jason: Migración
+ 			if(this.nodeConfig.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.GA_SOL){
+ 				this.heuristicSolver.tryInsertIndividual(a().vector as Valuation(sz), sz);
+ 			}else{
+ 				this.heuristicSolver.setVariables(a().vector as Valuation(sz));
+ 				return true; 
+ 			}
+ 			
  		}
  		return false;
  	}
@@ -672,39 +815,39 @@ public class CPLSNode(sz:Long){
  		}	
  	}
  	
- 	public def communicateLM(info:State(sz)){
- 		val refsToPlaces = pointersComunication;
- 		Logger.debug(()=>" communicate: entering.");
- 		
- 		// decrease the number of vectors send it to the pool
- 		if (random.nextDouble() >= pSendLM) return;		
- 		if (here == Place.FIRST_PLACE){
- 			Logger.debug(()=>"try to insert in local place: " + here);
- 			tryInsertLM(info);
- 		}else{
- 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
- 			at(Place.FIRST_PLACE) refsToPlaces().tryInsertLM( info );
- 		}
- 		//Debug
- 		// if(here.id == LOCAL_MIN_NODE ){ //group head
- 		//   	Console.OUT.println("I'm "+myTeamId+" head group, here my Local MIN pool Vectors");
- 		//   	lmp.printVectors();
- 		// }
- 		//TODO: Jason: Comente esta parte de debug 
- 		/*if (this.debug && here.id == Place.FIRST_PLACE.id()){
- 			val s = cplsPool.getCostList();
- 			p.print("\033[H\033["+(nodeConfig.getNumberOfTeams() + 1)+"B");
- 			p.print("\033[2K\rDiv Pool Costs: "+s);
- 			p.flush();
- 		}*/
- 		return;
- 	}
+ 	//public def communicateLM(info:State(sz)){
+ 	//	val refsToPlaces = pointersComunication;
+ 	//	Logger.debug(()=>" communicate: entering.");
+ 	//	
+ 	//	// decrease the number of vectors send it to the pool
+ 	//	if (random.nextDouble() >= pSendLM) return;		
+ 	//	if (here == Place.FIRST_PLACE){
+ 	//		Logger.debug(()=>"try to insert in local place: " + here);
+ 	//		tryInsertLM(info);
+ 	//	}else{
+ 	//		Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 	//		at(Place.FIRST_PLACE) refsToPlaces().tryInsertLM( info );
+ 	//	}
+ 	//	//Debug
+ 	//	// if(here.id == LOCAL_MIN_NODE ){ //group head
+ 	//	//   	Console.OUT.println("I'm "+myTeamId+" head group, here my Local MIN pool Vectors");
+ 	//	//   	lmp.printVectors();
+ 	//	// }
+ 	//	//TODO: Jason: Comente esta parte de debug 
+ 	//	/*if (this.debug && here.id == Place.FIRST_PLACE.id()){
+  	//		val s = cplsPool.getCostList();
+  	//	p.print("\033[H\033["+(nodeConfig.getNumberOfTeams() + 1)+"B");
+  	//		p.print("\033[2K\rDiv Pool Costs: "+s);
+  	//		p.flush();
+    //	}*/
+   	//return;
+ 	//}
  	
- 	public def tryInsertLM(info:State(sz)){
- 		if(cplsPool != null){
- 			cplsPool.tryInsertConf( info as State(sz));
- 		} 
- 	}
+ 	//public def tryInsertLM(info:State(sz)){
+ 	//	if(cplsPool != null){
+ 	//		cplsPool.tryInsertConf( info as State(sz));
+ 	//	} 
+ 	//}
  	
  	public def getPR() : Maybe[State(sz)] { 
  		var opt:Int = nodeConfig.getDiversificationOption();
@@ -814,12 +957,21 @@ public class CPLSNode(sz:Long){
  		return null;
  	}
  	
+ 	//public def getConfFromCPLSPool(){
+ 	//	if(this.cplsPool != null)
+ 	//		return cplsPool.getPConf();
+ 	//	return null;
+ 	//}
+ 	
  	public def clear(){
  		winnerLatch.set(false);
  		if(teamPool != null)
  			teamPool.clear();
- 		if(cplsPool != null)
- 			cplsPool.clear();
+ 		this.stackForDiv = new StackForDiv(sz);
+ 		this.globalBestConf = new GlobalBestConf(sz, nodeConfig.getNumberOfTeams());
+ 		this.flagsForMaster = new Rail[Boolean](nodeConfig.getNumberOfTeams(), false);
+ 		//if(divCplsPool != null)
+ 		//	divCplsPool.clear();
  		stats.clear();
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
@@ -827,14 +979,23 @@ public class CPLSNode(sz:Long){
  		//this.counterForReport = 0n;
  		//this.counterForUpdate = 0n;
  		this.nForceRestart = 0n;
+ 		this.nChangeforDiv = 0n;
  		this.heuristicSolver.initVariables();
+ 		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
+ 		this.bestConfForTeam = new State(sz, -1, null, -1 as Int,null);
+ 		this.newBestConfReported = false;
  	}
  	
  	public def verify_(){
  		Utils.show("Solution", this.bestConf);
  		Console.OUT.println(solString);
+ 		//Console.OUT.println("Changes for diversification: " + this.nChangeforDiv);
  	}
  
+ 	public def getChangeforDiv(){
+ 		return this.nChangeforDiv; 
+ 	}
+ 	
  	public def verify(){
  		//val sz = this.heuristicSolver.getSizeProblem();
  		return this.heuristicSolver.verify(this.bestConf);
@@ -867,6 +1028,7 @@ public class CPLSNode(sz:Long){
  		c.setCost(this.bestCost);
  		c.setRestart(this.nRestart);
  		c.setChange(this.nChangeV);
+ 		c.setChangeForDiv(this.nChangeforDiv);
  		c.setForceRestart(this.nForceRestart);
  		val state = createSolverState();
  		c.setSState(state);
@@ -897,7 +1059,7 @@ public class CPLSNode(sz:Long){
  		return this.cGroupReset;
  	}
  
- 	public def setStats_(targetCost:Long, explorerWinner:Int){
+ 	public def setStats_(targetCost:Long, explorerWinner:Int, nChangesForDivers:Int){
  		//Console.OUT.println("MsgType_0. Nodo: " + here + " reportando estadisticas");
  		val refsToPlaces = pointersComunication;
  		val winPlace = here.id;
@@ -918,7 +1080,8 @@ public class CPLSNode(sz:Long){
  		c.setTeam(winPlace as Int);
  		c.setGroupR(gReset);
  		c.setFFTarget(fft as Int);
- 		c.setExplorerWinner(0n); //To notify that there was a solution
+ 		c.setChangeForDiv(nChangesForDivers);
+ 		c.setExplorerWinner(explorerWinner); //To notify that there was a solution
  		at (Place.FIRST_PLACE) /*async*/ 
  			refsToPlaces().setStats(c);
  	}
@@ -929,6 +1092,10 @@ public class CPLSNode(sz:Long){
  
  	public def getVariables(){
  		return this.heuristicSolver.getVariables();
+ 	}
+ 	
+ 	public def getBestConf(){
+ 		return this.bestConf;
  	}
  
  	protected def updateTotStats(){
@@ -953,6 +1120,10 @@ public class CPLSNode(sz:Long){
  	
  	public def printAVG(count:Int, oF:Int, problem:Int):void{
  		sampleAccStats.printAVG(count,oF,problem);
+ 	}
+ 
+ 	public def printChangesForDivs(){
+ 		stats.printChangesForDivs();
  	}
  
  	/*public def printConfig(){

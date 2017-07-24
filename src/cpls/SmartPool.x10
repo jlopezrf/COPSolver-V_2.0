@@ -26,7 +26,8 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 
 	 protected var random:Random = new Random();
 	 protected val monitor = new Monitor("SmartPool");
-	 protected var distance:double; 
+	 protected var distance:double;
+	
 	 
 	 public def this(size:Long, poolConfig:PoolConfig){
 		 property(size, poolConfig.getPoolSize());
@@ -225,8 +226,6 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 /**
 	  * Get a smart configuration from HIGH, MEDIUM or LOW quality pool.
 	  */
-	 //Jason: Para debuguiar el update
-	 //var counterForUpdatesSmartPool:Int = 0n;
 	 public def getPConf() : Maybe[State(sz)]=
 		  monitor.atomicBlock(()=> {
 				//Console.OUT.println("s "+nbEntries(0)+"m "+nbEntries(1)+"l "+nbEntries(2));
@@ -259,10 +258,6 @@ public class SmartPool(sz:Long, poolSize:Int) {
 					 }
 				}
 				val aux:Maybe[State(sz)] = new Maybe[State(sz)](pool(mem)(index-1));
- 				//this.counterForUpdatesSmartPool++;
- 				//if(this.counterForUpdatesSmartPool%100 == 0){
- 				//	Console.OUT.println("*****SmartPool de nodo " + here + ". Enviando solucion");
- 				//}
 				return aux;
 		  });
 	 
@@ -272,7 +267,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  */
 	 public def getBestConf():Maybe[State(sz)]=
 		  monitor.atomicBlock(()=> {
-		  		Console.OUT.println("Llega adentro de getBestConf de smartPool.");
+		  		//Console.OUT.println("Llega adentro de getBestConf de smartPool.");
 				if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < 1n) return null; // empty pool
 				var bcost:Long = Long.MAX_VALUE;
 				var best:Long = -1;
@@ -296,6 +291,48 @@ public class SmartPool(sz:Long, poolSize:Int) {
 		  
 		  return str.toString();
 	 }
+	 
+	 /*********************** Inicio Métodos Jason *********************************/
+	 /******************************************************************************/ 
+	 /**
+	  * Se invoca desde el explorer (hacia el head) para insertar la solución
+	  * estancada en el teamPool (el mismo de Danny)
+	  * */
+	 public def insertFromIWI(info : State(sz)):Boolean{
+		 //Implementar acá la inserción laxa
+		 //La inserción devuelve true si esa inserción significo una mejor solución
+		 var bestCost:Long = Long.MIN_VALUE;
+		 // Searching the worst conf (highest cost)
+		 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) == 0n){  // I'm the first in the pool!
+			 pool(CPLSOptionsEnum.PoolLevels.HIGH)(nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
+			 //Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Arriba");
+			 //Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
+			 return true;
+		 }else{
+			 for ( var i:Int = 0n; i < this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH); i++){
+				 // Select worst conf
+				 val thisCost = pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).cost;
+				 if (thisCost == info.cost && distance(info.vector, pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector) < 0.2)
+					 return false;
+				 if (thisCost < info.cost){
+					 bestCost = thisCost;
+				 }else{
+					 bestCost = info.cost;
+				 }  
+			 }
+			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize && info.cost < bestCost ){
+				 pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
+				 //Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Abajo");
+				 //Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
+				 return true;
+			 }else{
+				 return false;
+			 }
+		 }
+	 }
+	 
+	 /*********************** Fin Métodos Jason *********************************/
+	 /***************************************************************************/
 	 
 	 /**
 	  *  Clear all the entries in the pool

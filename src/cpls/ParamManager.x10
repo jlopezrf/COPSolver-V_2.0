@@ -21,7 +21,7 @@ public class ParamManager extends OptionsParser{
  				Option("S", "seed", "seed. Default 0"),
  				Option("sm", "solver_mode", "Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."),
  				//jason options
- 				Option("ce", "Control Strategy" ,"In parallel mode, with master node 1, without 0. Default 1."),
+ 				Option("ce", "Control Strategy" ,"In parallel mode, with master node 2, without 1, IW 0. Default 0"),
  				//Jason: Migration
  				Option("iwi", "Iters Whitout Improvements" ,"In parallel mode, number of iters for take a new solution."),
  				//end jason options

@@ -9,6 +9,7 @@ import cpls.measurements.GlobalStats;
 import x10.util.Random;
 import cpls.ParamManager;
 import x10.util.StringUtil;
+import cpls.util.Valuation;
 
 public class HeuristicSolver(sz:Long){
  	protected val move = new MovePermutation(-1n, -1n);
@@ -109,6 +110,15 @@ public class HeuristicSolver(sz:Long){
  		this.variables = this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
  	}
  
+ 	/**
+  	* Método agregado para Migración, para crear una nueva solución cuando en el stackForDiv
+  	* no hay nada
+  	* su solución
+  	* */
+ 	public def createNewConf(){
+ 		return this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
+ 	}
+ 
  	public def costOfSolution(){
  		return this.problemModel.costOfSolution(sz, true, variables);
  	}
@@ -132,6 +142,10 @@ public class HeuristicSolver(sz:Long){
  	public def displaySolution(conf:Rail[Int]){
  		val sz = this.problemModel.size;
  		this.problemModel.displaySolution(sz, conf as Valuation(sz));
+ 	}
+ 
+ 	public def costOfSolution(sz:Long, conf:Valuation(sz)):Long{
+ 		return this.problemModel.costOfSolution(sz, conf);
  	}
 }
 public type HeuristicSolver(s:Long) = HeuristicSolver{self.sz==s};

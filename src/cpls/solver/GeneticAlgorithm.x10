@@ -228,11 +228,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			population.setCost(index, this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
  			//population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
  			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
- 			return true;
- 		}else{
- 			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
- 			return false;
  		}
+ 		return true;
  	}
  
  	//Jason: Migration

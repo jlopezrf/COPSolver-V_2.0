@@ -28,4 +28,20 @@ public class PoolConfig {
 	public def getMinDist(){
 		return this.minDist;
 	}
+	
+	public def setProblemSize(problemSize:Long){
+		this.problemSize = problemSize;
+	}
+	
+	public def setPoolSize(poolSize:Int){
+		this.poolSize = poolSize;
+	}
+	
+	public def setPoolMode(poolMode:Int){
+		this.poolMode = poolMode;
+	}
+	
+	public def setMinDist(minDist:Double){
+		this.minDist = minDist;
+	}
 }

@@ -62,6 +62,10 @@ public class GlobalStats{
 	 private var change : Int = 0n;
 	 public def setChange(change:Int){this.change = change;}
 	 public def getChange(){return this.change;}
+	 /** Number of changes for diversification */
+	 private var changeForDiv : Int = 0n;
+	 public def setChangeForDiv(changeForDiv:Int){this.changeForDiv = changeForDiv;}
+	 public def getChangeForDiv(){return this.changeForDiv;}
 	 /** number of restarts */  
 	 private var forceRestart:Int = 0n;
 	 public def setForceRestart(forceRestart:Int){this.forceRestart = forceRestart;}
@@ -121,7 +125,7 @@ public class GlobalStats{
 	 * 	@param rs restarts
 	 */
 	public def setStats(co : Long, p : Int, e : Int, t:Double, it:Int, loc:Int, sw:Int, 
-			  re:Int, sa:Int, rs:Int, ch:Int, fr : Int, gr:Int, target:Boolean, fft:Int, 
+			  re:Int, sa:Int, rs:Int, ch:Int, chFDiv:Int, fr : Int, gr:Int, target:Boolean, fft:Int, 
 			  vs:Long, ss:Rail[Int]{self.size==3}){
 	        this.cost = co;
 	        this.team = p;
@@ -134,6 +138,7 @@ public class GlobalStats{
 	        this.same = sa;
 	        this.restart = rs;
 	        this.change = ch;
+	        this.changeForDiv = chFDiv;
 	        this.forceRestart = fr;
 	        //this.bp = bp;
 	        //this.singles = sg;
@@ -156,6 +161,7 @@ public class GlobalStats{
 		 this.same = c.same;
 		 this.restart = c.restart;
 		 this.change = c.change;
+		 this.changeForDiv = c.getChangeForDiv();
 		 this.forceRestart = c.forceRestart;
 		 //this.bp = c.bp;
 		 //this.singles = c.singles;
@@ -180,6 +186,7 @@ public class GlobalStats{
 	    this.same += stats.same;
 	    this.restart += stats.restart;
 	    this.change += stats.change;
+	    this.changeForDiv += stats.changeForDiv;
 	    this.forceRestart += stats.forceRestart;
 	    
 	    val sing = stats.cost % stats.vectorSize; 
@@ -229,6 +236,10 @@ public class GlobalStats{
 		} 
 	}
 
+ 	public def printChangesForDivs(){
+ 		Console.OUT.println("Changes for Diversification: " + this.changeForDiv);
+ 	}
+
 	/**
 	 * 	Print the stat averages
 	 * 	@param no total number of iterations
@@ -268,6 +279,7 @@ public class GlobalStats{
 		 this.same = 0n;
 		 this.restart = 0n;
 		 this.change = 0n;
+		 this.changeForDiv = 0n;
 		 this.forceRestart = 0n;
 		 this.groupR = 0n;
 		 

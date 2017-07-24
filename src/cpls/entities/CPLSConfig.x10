@@ -6,7 +6,7 @@ import cpls.entities.NodeConfig;
 
 public class CPLSConfig {
 
- 	private var isThereAMasterNode:boolean;
+ 	private var modeIndicator:Int;
  	private var configNodes:Array_2[NodeConfig];
  	private var problemModel:ProblemGenericModel;
  	private var cplsPoolConfig:PoolConfig;
@@ -22,7 +22,7 @@ public class CPLSConfig {
  
  	
  	public def getProblemModel(){return this.problemModel;}
- 	public def getIsThereAMasterNode(){return this.isThereAMasterNode;}
+ 	public def getModeIndicator(){return this.modeIndicator;}
  	public def getConfigNodes():Array_2[NodeConfig]{return this.configNodes;}
  	public def getCPLSPoolConfig(){return this.cplsPoolConfig;}
  	public def getTeamsPoolConfig(){return this.teamsPoolConfig;}
@@ -39,7 +39,7 @@ public class CPLSConfig {
  	public def setConfigNodes(configNodes:Array_2[NodeConfig]){this.configNodes = configNodes;}
  	public def setCPLSPoolConfig(cplsPoolConfig:PoolConfig){this.cplsPoolConfig = cplsPoolConfig;}
  	public def setTeamsPoolConfig(teamsPoolConfig:PoolConfig){this.teamsPoolConfig = teamsPoolConfig;}
- 	public def setIsThereAMasterNode(isThereAMasterNode:boolean){this.isThereAMasterNode = isThereAMasterNode;}
+ 	public def setModeIndicator(modeIndicator:Int){this.modeIndicator = modeIndicator;}
  	public def setMinDistance(minDistance:Double){this.minDistance = minDistance;}
  	public def setStrictLow(strictLow:Boolean){this.strictLow = strictLow;}
  	public def setTargetCost(targetCost:Long){this.targetCost = targetCost;}
