@@ -133,7 +133,7 @@ public class NodeInstancer{
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
  				val changeForDiv = refPlaces().getChangeforDiv();
- 				Console.OUT.println("Numero de reinicios por diversificacion: " + changeForDiv);
+ 				Console.OUT.println("Numero de reinicios por diversificacion: " + changeForDiv + "Soy place: " + here.id);
  				refPlaces().setStats_(targetCost, place.id as Int, changeForDiv);
  				if (verify){
  					refPlaces().verify_();
@@ -146,6 +146,8 @@ public class NodeInstancer{
  			//Console.OUT.println("MsgType_0. Hubo un ganador en la ejecucion.");
  			val solWin = at(Place(explorerWinner)) refPlaces().getBestConf();
  			val cCost = at(Place(explorerWinner)) refPlaces().getCost();
+ 			val restartsForDivs = at(Place(explorerWinner)) refPlaces().getChangeforDiv();
+ 			Console.OUT.println("Numero de reinicios por diversificacion: " + restartsForDivs + "Soy place: " + explorerWinner);
  			//Console.OUT.print("MsgType_0. El place ganador es: " + explorerWinner + ", con un costo de: " + cCost + ", y variables: ");
  			//printVector(solWin);
  		}
