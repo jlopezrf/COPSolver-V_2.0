@@ -308,7 +308,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 			 pool(CPLSOptionsEnum.PoolLevels.HIGH)(nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
 			 //Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Arriba");
 			 //Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
-			 Console.OUT.println("INSERCION en el pool del head (El de Danny) porque es el primero. Nodo: " + here.id);
+			 Console.OUT.println("INSERCION en el pool del head (El de Danny) porque es el primero. Nodo: " + here.id + "Costo: " + info.cost);
 			 return true;
 		 }else{
 			 for ( var i:Int = 0n; i < this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH); i++){
@@ -329,7 +329,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize){
 			 	if(minDist != 0.0 ){
 			 		pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
-			 		//Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Abajo");
+			 		Console.OUT.println("INSERCION en el pool del head (El de Danny)" + "Costo: " + here.id + info.cost);
 			 		//Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
 			 		return true;
 			 	}else{

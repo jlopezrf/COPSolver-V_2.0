@@ -112,7 +112,7 @@ public class HeuristicSolver(sz:Long){
  
  	public def createNewSol(){
  		val conf = this.problemModel.createNewSol();
- 		Console.OUT.println("at Heuristic Sover created Solution: " + conf);
+ 		//Console.OUT.println("at Heuristic Sover created Solution: " + conf);
  		return conf;
  	}
  

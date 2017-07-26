@@ -11,10 +11,10 @@ public class GlobalBestConf(sz:Long, confSize:Long){
 	public def this(size:Long, confSize:Long){
 		property(size, confSize);
 		this.globalBestConf = new Rail[State(sz)](confSize, new State(sz, Long.MAX_VALUE, new Rail[Int](sz, 1n), -1 as Int,null));
- 		Console.OUT.println("Creacion del GlobalBestConf: ");
+ 		//Console.OUT.println("Creacion del GlobalBestConf: ");
  		for(var i:Int = 0n; i < confSize; i++){
  			this.globalBestConf(i) = new State(sz, Long.MAX_VALUE, new Rail[Int](sz, 1n), -1 as Int,null);
- 			Console.OUT.println(this.globalBestConf(i));
+ 			//Console.OUT.println(this.globalBestConf(i));
  		}
 	}
 	
@@ -25,9 +25,9 @@ public class GlobalBestConf(sz:Long, confSize:Long){
  		if(this.bestConfEver.cost == Long.MAX_VALUE || this.bestConfEver.cost != Long.MAX_VALUE && this.bestConfEver.cost > info.cost){
  			this.bestConfEver = new State(info.sz, info.cost, info.vector, info.place, info.solverState);
  		}
- 		Console.OUT.println("Informacion en el GlobalBestConf");
+ 		Console.OUT.println("    Informacion en el GlobalBestConf");
  		for(var i:Int = 0n; i < this.globalBestConf.size; i++){
- 			Console.OUT.println(this.globalBestConf(i));
+ 			Console.OUT.println("    "+ this.globalBestConf(i).vector);
  		}
 	}
 	

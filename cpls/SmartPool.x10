@@ -329,7 +329,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize){
 			 	if(minDist != 0.0 ){
 			 		pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
-			 		//Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Abajo");
+			 		Console.OUT.println("INSERCION en el pool del head (El de Danny)");
 			 		//Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
 			 		return true;
 			 	}else{

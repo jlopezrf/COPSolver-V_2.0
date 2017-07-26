@@ -139,8 +139,8 @@ public class NodeInstancer{
  					refPlaces().verify_();
  				}
  			}
- 			val iterMaster = at(Place.place(0)) refPlaces().getnIter();
- 			Console.OUT.println("El master itero veces: " + iterMaster);
+ 			//val iterMaster = at(Place.place(0)) refPlaces().getnIter();
+ 			//Console.OUT.println("El master itero veces: " + iterMaster);
  			val solWin = at(bestPlace) refPlaces().getBestConf();
  			//Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
  			//printVector(solWin);

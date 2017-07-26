@@ -481,7 +481,7 @@ public class CPLSNode(sz:Long){
  				val solverState = createSolverState();
  				val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
  				val result = at(Place(nodeConfig.getTeamId())) refsToPlace().communicateForDiversification(state);
- 				Console.OUT.println("at CPLSNode func interactForDiversification created Solution: " + result.vector);
+ 				//Console.OUT.println("at CPLSNode func interactForDiversification created Solution: " + result.vector);
  				if (result.vector != null){
  					this.nChangeforDiv++;
  					this.heuristicSolver.setVariables(result.vector as Valuation(sz));
@@ -507,7 +507,8 @@ public class CPLSNode(sz:Long){
  			&& this.newBestConfReportedForTeam && this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
  				//Console.OUT.println("Head: " + here.id + " inicia ida al master a reportar una nueva mejor solución");
  				val indice = here.id/this.nodeConfig.getNodesPerTeam();
- 				at(Place(0)) refsToPlace().newBestConfForTeam(indice as Int);
+ 				val aux = this.bestConfForTeam;
+ 				at(Place(0)) refsToPlace().newBestConfForTeam(aux, indice as Int);
  				this.newBestConfReportedForTeam = false;
  				//if (this.nodeConfig.getReportPart()){
  					val eT = (System.nanoTime() - initialTime)/1e9;
@@ -533,7 +534,7 @@ public class CPLSNode(sz:Long){
  					val eT = (System.nanoTime() - initialTime)/1e9;
  					var gap:Double = (conf.cost-this.target)/(conf.cost as Double)*100.0;
  					Utils.show("Master toma una nueva solucion: ", conf.vector);
- 					Console.OUT.println("Tamaño de GlobalBestConf del master: " + this.globalBestConf.getSize());
+ 					//Console.OUT.println("Tamaño de GlobalBestConf del master: " + this.globalBestConf.getSize());
  					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,conf.vector,gap);
  				//}
  			}
@@ -568,22 +569,23 @@ public class CPLSNode(sz:Long){
  	 * Método que se ejecuta en el head cuando el explorer se estanca por IWI
  	 **/
  	public def communicateForDiversification(info:State(sz)):State(sz){
+ 		this.teamPool.insertFromIWI(info);
  		if(this.bestConfForTeam.cost > info.cost){
  			Console.OUT.println("Efectivamente el costo es mejor y entonces el bestConfForTeam cambia");
  			this.newBestConfReportedForTeam = true;
  			this.bestConfForTeam =  new State(info.sz, info.cost, info.vector, info.place, info.solverState);
+ 			//Console.OUT.println("INSERT: communicateForDiversification: " + this.bestConfForTeam.vector);
  		}
  		val newConf = this.stackForDiv.pop();
  		if(newConf.vector != null){
- 			Console.OUT.println("La solucion para explorer provino del stackForDiv: " + newConf);
+ 			//Console.OUT.println("La solucion para explorer provino del stackForDiv: " + newConf);
  			return newConf;
  		}else{
  			val conf = this.heuristicSolver.createNewSol();
- 			Console.OUT.println("at CPLSNode created Solution: " + conf);
+ 			//Console.OUT.println("at CPLSNode created Solution: " + conf);
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
  			//Console.OUT.println("La solucion para explorer fue creada desde cero: " + newConf);
  			val randomConf = new State(sz, -1, conf as Rail[Int]{self.size==sz} , -1n, null);
- 			
  			return randomConf;
  		}
  	}
@@ -592,10 +594,11 @@ public class CPLSNode(sz:Long){
  	 * Método que se ejecuta en el master cuando lo llaman porque un team mejoró
  	 * su solución
  	 * */
- 	public def newBestConfForTeam(place:Int){
+ 	public def newBestConfForTeam(info:State(sz), place:Int){
  		//Que retorne un booleano para indicar si la nueva solución que llegó es mejor
  		//que todas las demás que hay en el pool; en ese caso empezar desde esa
- 		this.globalBestConf.put(this.bestConfForTeam, place);
+ 		//Console.OUT.println("   INSERT: " + info.vector);
+ 		this.globalBestConf.put(info, place);
  	}
  	
  	/**
@@ -616,7 +619,7 @@ public class CPLSNode(sz:Long){
  				conf = this.heuristicSolver.getConfigForPop(true);
  			//}while(verifyDiference(conf));
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			Console.OUT.println("Lo sacó de la poblacion");
+ 			Console.OUT.println("Lo saco de la poblacion");
  			return new State(sz, -1n, conf as Valuation(sz), -1n, null);
  		}else{
  			val state1 = this.globalBestConf.get(this.random.nextInt(sz as Int));
