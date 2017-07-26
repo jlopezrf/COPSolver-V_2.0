@@ -481,6 +481,7 @@ public class CPLSNode(sz:Long){
  				val solverState = createSolverState();
  				val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
  				val result = at(Place(nodeConfig.getTeamId())) refsToPlace().communicateForDiversification(state);
+ 				Console.OUT.println("at CPLSNode func interactForDiversification created Solution: " + result.vector);
  				if (result.vector != null){
  					this.nChangeforDiv++;
  					this.heuristicSolver.setVariables(result.vector as Valuation(sz));
@@ -578,9 +579,12 @@ public class CPLSNode(sz:Long){
  			return newConf;
  		}else{
  			val conf = this.heuristicSolver.createNewSol();
+ 			Console.OUT.println("at CPLSNode created Solution: " + conf);
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			Console.OUT.println("La solucion para explorer fue creada desde cero: " + newConf);
- 			return new State(sz, -1, conf, -1n, null);
+ 			//Console.OUT.println("La solucion para explorer fue creada desde cero: " + newConf);
+ 			val randomConf = new State(sz, -1, conf as Rail[Int]{self.size==sz} , -1n, null);
+ 			
+ 			return randomConf;
  		}
  	}
  
