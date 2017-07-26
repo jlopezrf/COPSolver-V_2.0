@@ -196,6 +196,20 @@ public class ProblemGenericModel(size:Long){
   		return i + 1;
   	}
   
+  public def createNewSol(){
+  	var variables:Valuation(size) = new Rail[Int](size, (i:Long) => i as Int);
+  	for(k in variables.range()){
+  		variables(k) = this.baseValue + k as Int;
+  	}
+  	for( var i:Long = size - 1 ; i > 0 ; i-- ){
+  		val j = r.nextLong( i + 1 );
+  		val x = variables(i);
+  		variables(i) = variables(j); 
+  		variables(j) = x;
+  	}
+  	return variables as Valuation(size);
+  }
+ 
   //Jason: Esta es como una especie de distancia de Hamming normalizada
   //Devuelve una medida entre 0 y 1 de cuantas componenes tienen iguales
   	public def distance(sz:Long, conf1 : Rail[Int]{self.size == sz}, conf2 : Rail[Int]{self.size == sz}): Double {

@@ -110,6 +110,12 @@ public class HeuristicSolver(sz:Long){
  		this.variables = this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
  	}
  
+ 	public def createNewSol(){
+ 		val conf = this.problemModel.createNewSol();
+ 		Console.OUT.println("Solucion creada: " + conf);
+ 		return conf;
+ 	}
+ 
  	/**
   	* Método agregado para Migración, para crear una nueva solución cuando en el stackForDiv
   	* no hay nada

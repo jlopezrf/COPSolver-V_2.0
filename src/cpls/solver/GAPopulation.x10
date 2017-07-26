@@ -3,6 +3,7 @@ package cpls.solver;
 import x10.util.RailUtils;
 import cpls.problem.ProblemGenericModel;
 import cpls.util.Monitor;
+import x10.util.Random;
 
 public class GAPopulation{
 
@@ -28,10 +29,16 @@ public class GAPopulation{
  		this.population(index) = individual;
  	}
  
- 	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long){
+ 	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long, random:Random){
  		RailUtils.sort(mutatedSons, cmp);
- 		this.population(populationSize -2) = mutatedSons(0);
- 		this.population(populationSize -1) = mutatedSons(1);
+ 		var prob:Double = random.nextDouble();
+ 		if(prob> 0.5){
+ 			this.population(populationSize -2) = mutatedSons(0);
+ 		}
+ 		prob = random.nextDouble();
+ 		if(prob> 0.5){
+ 			this.population(populationSize -1) = mutatedSons(1);
+ 		}
  	}
  
  	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};

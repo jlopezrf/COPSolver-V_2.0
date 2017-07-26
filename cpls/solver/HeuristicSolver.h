@@ -35,9 +35,6 @@ namespace x10 { namespace lang {
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
 class Place;
 } } 
 namespace x10 { namespace lang { 
@@ -51,6 +48,9 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+class String;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -97,6 +97,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
       x10_boolean replace);
     virtual x10_long reset(x10_long n, x10_long totalCost);
     virtual void initVariables();
+    virtual ::x10::lang::Rail< x10_int >* createNewSol();
     virtual ::x10::lang::Rail< x10_int >* createNewConf();
     virtual x10_long costOfSolution();
     virtual x10_long getSizeProblem();

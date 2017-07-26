@@ -25,17 +25,20 @@ class Monitor;
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
 namespace x10 { namespace util { 
-class RailUtils;
+class Random;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
+namespace x10 { namespace util { 
+class RailUtils;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
+} } 
+namespace x10 { namespace lang { 
+class String;
 } } 
 namespace cpls { namespace solver { 
 
@@ -53,7 +56,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
-                                   x10_long index1, x10_long index2);
+                                   x10_long index1, x10_long index2,
+                                   ::x10::util::Random* random);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*
       FMGL(cmp);
     

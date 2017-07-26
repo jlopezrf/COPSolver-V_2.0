@@ -54,7 +54,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
  		printVector(mutatedSons(1).getGenes());*/
- 		this.population.refreshPopulation(mutatedSons, index1, index2);
+ 		this.population.refreshPopulation(mutatedSons, index1, index2, super.random);
  		this.population.sort();
  		//printPopulation();
  		this.currentCostGA = population.getIndividual(0).getCost();
@@ -234,8 +234,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	//Jason: Migration
  	public def getConfigForPop(replace:Boolean):Rail[Int]{
- 		val indiv = population.getIndividual(0);
- 		population.setIndividual(0, mutateIndiv(population.getIndividual(0)));
+ 		val index = super.random.nextInt(populationSize);
+ 		val indiv = population.getIndividual(index);
+ 		//population.setIndividual(index, mutateIndiv(population.getIndividual(index)));
  		//Console.OUT.println("A punto de terminar la migración, nodo master respondiendo: " + here.id);
  		return indiv.getGenes();
  	}

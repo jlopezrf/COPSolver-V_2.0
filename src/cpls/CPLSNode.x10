@@ -62,8 +62,8 @@ public class CPLSNode(sz:Long){
  	protected var nIterTot : Int;
  	protected var nSwapTot : Int;
  	// -> Result
- 	protected var bestConf:Rail[Int];
- 	protected var bestConfForTeam:State(sz) = new State(sz, -1, null, -1 as Int,null);
+ 	protected var bestConf:Rail[Int] = new Rail[Int](sz, 0n);
+ 	protected var bestConfForTeam:State(sz) = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  	protected var bestCost:Long = Long.MAX_VALUE;
  	protected var currentCost:Long;
  	// -> Stop search process 
@@ -78,7 +78,7 @@ public class CPLSNode(sz:Long){
  	protected var nChangeV : Int = 0n;
  	protected var nChangeforDiv : Int = 0n;
  	protected var bestSent:Boolean=false;
- 	protected var newBestConfReported:Boolean = false;
+ 	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
  	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
  	protected var flagsForMaster:Rail[Boolean];
@@ -303,7 +303,7 @@ public class CPLSNode(sz:Long){
  		this.nIter = 0n;
  		this.nRestart = 0n;
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
- 		this.bestConfForTeam = new State(sz, -1, null, -1 as Int,null);
+ 		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  		// clear Tot stats
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
@@ -488,21 +488,37 @@ public class CPLSNode(sz:Long){
  					//this.currentCost = result.cost;
  					bestSent = false;
  					this.nIterWhitoutImprovements = 0n;
- 					//Console.OUT.println("Explorer: " + here.id + " recibe respuesta no nula luego de estancamiento");
+ 					//Jason: Se agrega esta parte para hacer el debug
+ 					//if (this.nodeConfig.getReportPart()){
+ 						val eT = (System.nanoTime() - initialTime)/1e9;
+ 						var gap:Double = (state.cost-this.target)/(state.cost as Double)*100.0;
+ 						Utils.show("Explorer solucion anterior: ", state.vector);
+ 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,state.cost,gap);
+ 						Utils.show("Explorer solucion nueva", result.vector);
+ 						gap = (this.currentCost-this.target)/(this.currentCost as Double)*100.0;
+ 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,result.vector,gap);
+ 						
+ 					//}
  				}
  			}
  		}
  		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE
- 			&& this.newBestConfReported && this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
+ 			&& this.newBestConfReportedForTeam && this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
  				//Console.OUT.println("Head: " + here.id + " inicia ida al master a reportar una nueva mejor solución");
  				val indice = here.id/this.nodeConfig.getNodesPerTeam();
  				at(Place(0)) refsToPlace().newBestConfForTeam(indice as Int);
- 				this.newBestConfReported = false;
+ 				this.newBestConfReportedForTeam = false;
+ 				//if (this.nodeConfig.getReportPart()){
+ 					val eT = (System.nanoTime() - initialTime)/1e9;
+ 					var gap:Double = (this.bestConfForTeam.cost-this.target)/(this.bestConfForTeam.cost as Double)*100.0;
+ 					Utils.show("Head reporta nueva mejor solucion para su team: ", this.bestConfForTeam.vector);
+ 					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,this.bestConfForTeam.vector,gap);
+ 				//}
  				//Console.OUT.println("Head: " + here.id + " termina ida al master a reportar una nueva mejor solución");
  		}
  		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			val conf = this.globalBestConf.getBestConfEver();
- 			if(conf.vector != null){
+ 			if(conf.cost != Long.MAX_VALUE){
  				//Console.OUT.println("Master: " + here.id + " ingresa a su diversificación y toma mejor de mejores soluciones");
  				if(this.heuristicSolver instanceof PopulBasedHeuristic){
  					this.heuristicSolver.tryInsertIndividual(conf.vector, sz);
@@ -512,8 +528,16 @@ public class CPLSNode(sz:Long){
  				}
  				this.nChangeforDiv++;
  				this.nIterWhitoutImprovements = 0n;
+ 				//if (this.nodeConfig.getReportPart()){
+ 					val eT = (System.nanoTime() - initialTime)/1e9;
+ 					var gap:Double = (conf.cost-this.target)/(conf.cost as Double)*100.0;
+ 					Utils.show("Master toma una nueva solucion: ", conf.vector);
+ 					Console.OUT.println("Tamaño de GlobalBestConf del master: " + this.globalBestConf.getSize());
+ 					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,conf.vector,gap);
+ 				//}
  			}
  			if(this.nIter%this.nodeConfig.getItersWhitoutImprovements() == 0n){
+ 				Console.OUT.println("***********Inicio: Master distribuyendo soluciones a los teams***************");
  				//Generar una solución diversa para cada Head y enviarla
  				//Console.OUT.println("Master: " + here.id + " distribuye soluciones por IWI");
  				var node:Long = 0;
@@ -521,26 +545,41 @@ public class CPLSNode(sz:Long){
  					node = 1 + i*this.nodeConfig.getNodesPerTeam();
  					val newDivConf = createDivConf();
  					at(Place(node)) refsToPlace().insertConfOnDivPool(newDivConf);
+ 					//if (this.nodeConfig.getReportPart()){
+ 						val eT = (System.nanoTime() - initialTime)/1e9;
+ 						var gap:Double = (newDivConf.cost-this.target)/(newDivConf.cost as Double)*100.0;
+ 						Console.OUT.println("Solucion para nodo: " + node);
+ 						Utils.show("Conf: ", newDivConf.vector);
+ 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,newDivConf.vector,gap);
+ 					//}
  				}
+ 				Console.OUT.println("***********Fin: Master distribuyendo soluciones a los teams******************");
  				//Console.OUT.println("Master: " + here.id + " termina de distribuir soluciones");
  			}
  		}
+ 	}
+ 
+ 	public def getnIter(){
+ 		return this.nIter;
  	}
  
  	/**
  	 * Método que se ejecuta en el head cuando el explorer se estanca por IWI
  	 **/
  	public def communicateForDiversification(info:State(sz)):State(sz){
- 		if(this.teamPool.insertFromIWI(info)){
- 			this.newBestConfReported = true;
- 			this.bestConfForTeam = info;
+ 		if(this.bestConfForTeam.cost > info.cost){
+ 			Console.OUT.println("Efectivamente el costo es mejor y entonces el bestConfForTeam cambia");
+ 			this.newBestConfReportedForTeam = true;
+ 			this.bestConfForTeam =  new State(info.sz, info.cost, info.vector, info.place, info.solverState);
  		}
  		val newConf = this.stackForDiv.pop();
  		if(newConf.vector != null){
+ 			Console.OUT.println("La solucion para explorer provino del stackForDiv: " + newConf);
  			return newConf;
  		}else{
- 			val conf = this.heuristicSolver.createNewConf();
+ 			val conf = this.heuristicSolver.createNewSol();
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
+ 			Console.OUT.println("La solucion para explorer fue creada desde cero: " + newConf);
  			return new State(sz, -1, conf, -1n, null);
  		}
  	}
@@ -568,19 +607,33 @@ public class CPLSNode(sz:Long){
   	* */
  	public def createDivConf():State(sz){
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
- 			val conf = this.heuristicSolver.getConfigForPop(true);
+ 			var conf:Rail[Int]; 
+ 			//do{
+ 				conf = this.heuristicSolver.getConfigForPop(true);
+ 			//}while(verifyDiference(conf));
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			return new State(sz, -1, conf as Valuation(sz), 1n, null);
+ 			Console.OUT.println("Lo sacó de la poblacion");
+ 			return new State(sz, -1n, conf as Valuation(sz), -1n, null);
  		}else{
  			val state1 = this.globalBestConf.get(this.random.nextInt(sz as Int));
  			val state2 = this.globalBestConf.get(this.random.nextInt(sz as Int));
  			val conf = insertPathConf(state1.vector, state2.vector);
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			return new State(sz, -1, conf as Valuation(sz), 1n, null); //Jason: hacer que retorne algo bueno
+ 			Console.OUT.println("Lo creo con el insertPath");
+ 			return new State(sz, -1n, conf as Valuation(sz), -1n, null); //Jason: hacer que retorne algo bueno
  		}
  	}
  
- 	public static def insertPathConf(padre1:Rail[Int], padre2:Rail[Int]):Rail[Int]{
+ 	public def verifyDiference(conf:Rail[Int]):Boolean{
+ 		var dist:Double;
+ 		for(var i:Int = 0n; i < this.globalBestConf.getSize(); i++){
+ 			dist = this.heuristicSolver.getDistance(conf, this.globalBestConf.get(i).vector);
+ 			if(dist == 0.0) return false;
+ 		}
+ 		return true;
+ 	}
+ 
+ 	public def insertPathConf(padre1:Rail[Int], padre2:Rail[Int]):Rail[Int]{
  		var copyMyGenes:Rail[Int] = new Rail[Int](padre1); 
  		var genesOther:Rail[Int] = new Rail[Int](padre2);
  		val randomGenerator:Random = new Random();
@@ -968,7 +1021,9 @@ public class CPLSNode(sz:Long){
  		if(teamPool != null)
  			teamPool.clear();
  		this.stackForDiv = new StackForDiv(sz);
- 		this.globalBestConf = new GlobalBestConf(sz, nodeConfig.getNumberOfTeams());
+ 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
+ 			this.globalBestConf = new GlobalBestConf(sz, nodeConfig.getNumberOfTeams());
+ 		}
  		this.flagsForMaster = new Rail[Boolean](nodeConfig.getNumberOfTeams(), false);
  		//if(divCplsPool != null)
  		//	divCplsPool.clear();
@@ -982,8 +1037,8 @@ public class CPLSNode(sz:Long){
  		this.nChangeforDiv = 0n;
  		this.heuristicSolver.initVariables();
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
- 		this.bestConfForTeam = new State(sz, -1, null, -1 as Int,null);
- 		this.newBestConfReported = false;
+ 		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
+ 		this.newBestConfReportedForTeam = false;
  	}
  	
  	public def verify_(){

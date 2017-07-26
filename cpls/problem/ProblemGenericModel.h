@@ -22,6 +22,9 @@ class Random;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace x10 { namespace util { 
+class Timer;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -48,9 +51,6 @@ class Char;
 } } 
 namespace cpls { namespace util { 
 class Utils;
-} } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -97,6 +97,7 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     virtual x10_boolean verify(x10_long sz, ::x10::lang::Rail< x10_int >* conf);
     virtual x10_long nextJ(x10_long i, x10_long j, x10_boolean exhaustive);
     virtual x10_long nextI(x10_long i);
+    virtual ::x10::lang::Rail< x10_int >* createNewSol();
     virtual x10_double distance(x10_long sz, ::x10::lang::Rail< x10_int >* conf1,
                                 ::x10::lang::Rail< x10_int >* conf2);
     virtual ::cpls::problem::ProblemGenericModel* cpls__problem__ProblemGenericModel____this__cpls__problem__ProblemGenericModel(

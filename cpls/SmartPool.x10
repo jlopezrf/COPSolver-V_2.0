@@ -298,38 +298,50 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * Se invoca desde el explorer (hacia el head) para insertar la solución
 	  * estancada en el teamPool (el mismo de Danny)
 	  * */
-	 public def insertFromIWI(info : State(sz)):Boolean{
+	 public def insertFromIWI(info : State(sz)):Boolean =
+	 	monitor.atomicBlock(()=> {
 		 //Implementar acá la inserción laxa
 		 //La inserción devuelve true si esa inserción significo una mejor solución
-		 var bestCost:Long = Long.MIN_VALUE;
+		 var minDist:Double = 1.0;
 		 // Searching the worst conf (highest cost)
 		 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) == 0n){  // I'm the first in the pool!
 			 pool(CPLSOptionsEnum.PoolLevels.HIGH)(nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
 			 //Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Arriba");
 			 //Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
+			 Console.OUT.println("INSERCION en el pool del head (El de Danny) porque es el primero. Nodo: " + here.id);
 			 return true;
 		 }else{
 			 for ( var i:Int = 0n; i < this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH); i++){
 				 // Select worst conf
-				 val thisCost = pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).cost;
-				 if (thisCost == info.cost && distance(info.vector, pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector) < 0.2)
-					 return false;
-				 if (thisCost < info.cost){
-					 bestCost = thisCost;
-				 }else{
-					 bestCost = info.cost;
-				 }  
+				 val thisConf = pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector;
+				 val dist = distance(thisConf as Valuation(sz), info.vector as Valuation(sz));
+				 if(dist < minDist){
+				 	minDist = dist;
+				 }
+				 //if (thisCost == info.cost && distance(info.vector, pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector) < 0.2)
+				//	 return false;
+				 //if (thisCost < info.cost){
+				//	 bestCost = thisCost;
+				 //}else{
+				//	 bestCost = info.cost;
+				 //}  
 			 }
-			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize && info.cost < bestCost ){
-				 pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
-				 //Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Abajo");
-				 //Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
-				 return true;
+			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize){
+			 	if(minDist != 0.0 ){
+			 		pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
+			 		//Console.OUT.println("Insecion exitosa en el smartpool del head por IWI. Abajo");
+			 		//Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
+			 		return true;
+			 	}else{
+			 		Console.OUT.println("FALLO EN INSERCION en el pool del head (El de Danny). Igual a alguna anterior. Nodo: " + here.id);
+			 		return false;
+			 	}
 			 }else{
-				 return false;
-			 }
+			 	Console.OUT.println("FALLO EN INSERCION en el pool del head (El de Danny). Cupo completo. Nodo: " + here.id);
+			 	return false;
+			 } 
 		 }
-	 }
+	 });
 	 
 	 /*********************** Fin Métodos Jason *********************************/
 	 /***************************************************************************/
