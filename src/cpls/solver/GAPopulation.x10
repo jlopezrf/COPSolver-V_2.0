@@ -11,11 +11,14 @@ public class GAPopulation{
  	private var populationSize:Long;
  	protected val monitor = new Monitor("CPLSNode");
 
- 	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel){
+ 	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel, seed:Long){
  		this.population = new Rail[GAIndividual](populationSize);
  		this.populationSize = populationSize;
+ 		val random = new Random(seed);
  		for(var k:Int = 0n; k < this.population.size; k++){
- 			this.population(k) = new GAIndividual(size);
+ 			val seed1 = random.nextLong();
+ 			//Console.OUT.println("Semilla individuo " + k + ": " + seed1);
+ 			this.population(k) = new GAIndividual(size, seed1);
  			this.population(k).initialize();
  			this.population(k).setCost(problemModel.costOfSolution(size, this.population(k).getGenes() as Rail[Int]{self.size == size}));
  		}
@@ -31,14 +34,14 @@ public class GAPopulation{
  
  	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long, random:Random){
  		RailUtils.sort(mutatedSons, cmp);
- 		var prob:Double = random.nextDouble();
- 		if(prob> 0.5){
+ 		//var prob:Double = random.nextDouble();
+ 		//if(prob> 0.5){
  			this.population(populationSize -2) = mutatedSons(0);
- 		}
- 		prob = random.nextDouble();
- 		if(prob> 0.5){
+ 		//}
+ 		//prob = random.nextDouble();
+ 		//if(prob> 0.5){
  			this.population(populationSize -1) = mutatedSons(1);
- 		}
+ 		//}
  	}
  
  	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};

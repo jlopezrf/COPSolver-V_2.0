@@ -84,6 +84,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     
     x10_int FMGL(crossingOperator);
     
+    x10_int FMGL(mutationOperator);
+    
     x10_long FMGL(bestCostGA);
     
     x10_long FMGL(currentCostGA);
@@ -106,7 +108,10 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       crossing(::cpls::solver::GAIndividual* i1, ::cpls::solver::GAIndividual* i2);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
-    virtual ::cpls::solver::GAIndividual* mutateIndiv(::cpls::solver::GAIndividual* indiv);
+    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
+      mutate2(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
+    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
+      transformIndiv(::cpls::solver::GAIndividual* indiv);
     virtual x10_boolean tryInsertIndividual(::x10::lang::Rail< x10_int >* varables,
                                             x10_long sze);
     virtual ::x10::lang::Rail< x10_int >* getConfigForPop(

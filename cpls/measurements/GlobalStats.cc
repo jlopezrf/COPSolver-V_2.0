@@ -11,334 +11,333 @@
 #include <x10/io/Console.h>
 #include <x10/lang/String.h>
 #include <x10/lang/Any.h>
-#include <cpls/CPLSOptionsEnum__SupportedProblems.h>
 #include <x10/lang/Float.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Desired Target */
 
-//#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setDTarget(x10_long dTarget) {
     this->FMGL(dTarget) = dTarget;
 }
 
-//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getDTarget() {
     return this->FMGL(dTarget);
     
 }
 
-//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Final Cost of solution */
 
-//#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setCost(x10_long cost) {
     this->FMGL(cost) = cost;
 }
 
-//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getCost() {
     return this->FMGL(cost);
     
 }
 
-//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Team id solution */
 
-//#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setTeam(x10_int team) {
     this->FMGL(team) = team;
 }
 
-//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getTeam() {
     return this->FMGL(team);
     
 }
 
-//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** explorer id solution */
 
-//#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setExplorerWinner(x10_int explorerWinner) {
     this->FMGL(explorerWinner) = explorerWinner;
 }
 
-//#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getExplorerWinner() {
     return this->FMGL(explorerWinner);
     
 }
 
-//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** time to reach the solution */
 
-//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setTime(x10_double time) {
     this->FMGL(time) = time;
 }
 
-//#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_double cpls::measurements::GlobalStats::getTime() {
     return this->FMGL(time);
     
 }
 
-//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number of iterations */
 
-//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setIters(x10_long iters) {
     this->FMGL(iters) = iters;
 }
 
-//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getIters() {
     return this->FMGL(iters);
     
 }
 
-//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number of local minimum */
 
-//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setLocMin(x10_int locmin) {
     this->FMGL(locmin) = locmin;
 }
 
-//#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getLocMin() {
     return this->FMGL(locmin);
     
 }
 
-//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number of swaps */
 
-//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setSwaps(x10_long swaps) {
     this->FMGL(swaps) = swaps;
 }
 
-//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getSwaps() {
     return this->FMGL(swaps);
     
 }
 
-//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number of resets */
 
-//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setReset(x10_int reset) {
     this->FMGL(reset) = reset;
 }
 
-//#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getReset() {
     return this->FMGL(reset);
     
 }
 
-//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of same variables */
 
-//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setSame(x10_long same) {
     this->FMGL(same) = same;
 }
 
-//#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getSame() {
     return this->FMGL(same);
     
 }
 
-//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of restarts */
 
-//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setRestart(x10_int restart) {
     this->FMGL(restart) = restart;
 }
 
-//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getRestart() {
     return this->FMGL(restart);
     
 }
 
-//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number time to change vector due to communication */
 
-//#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setChange(x10_int change) {
     this->FMGL(change) = change;
 }
 
-//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getChange() {
     return this->FMGL(change);
     
 }
 
-//#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Number of changes for diversification */
 
-//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setChangeForDiv(x10_int changeForDiv) {
     this->FMGL(changeForDiv) = changeForDiv;
 }
 
-//#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getChangeForDiv() {
     return this->FMGL(changeForDiv);
     
 }
 
-//#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of restarts */
 
-//#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setForceRestart(x10_int forceRestart) {
     this->FMGL(forceRestart) = forceRestart;
 }
 
-//#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getForceRestart() {
     return this->FMGL(forceRestart);
     
 }
 
-//#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** acc perfect Solutions best cost == 0*/
 
-//#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setAccPS(x10_int accPS) {
     this->FMGL(accPS) = accPS;
 }
 
-//#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getAccPS() {
     return this->FMGL(accPS);
     
 }
 
-//#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of restart of the group */
 
-//#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setGroupR(x10_int groupR) {
     this->FMGL(groupR) = groupR;
 }
 
-//#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getGroupR() {
     return this->FMGL(groupR);
     
 }
 
-//#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** taget succeded ?  best cost <= target cost*/
 
-//#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setTarget(x10_boolean target) {
     this->FMGL(target) = target;
 }
 
-//#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_boolean cpls::measurements::GlobalStats::getTarget() {
     return this->FMGL(target);
     
 }
 
-//#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** far from target - target cost - best cost*/
 
-//#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setFFTarget(x10_int fftarget) {
     this->FMGL(fftarget) = fftarget;
 }
 
-//#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getFFTarget() {
     return this->FMGL(fftarget);
     
 }
 
-//#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of targets accomplished */
 
-//#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setNTarget(x10_int ntarget) {
     this->FMGL(ntarget) = ntarget;
 }
 
-//#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getNTarget() {
     return this->FMGL(ntarget);
     
 }
 
-//#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Vector Size */
 
-//#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setVectorSize(x10_long vectorSize) {
     this->FMGL(vectorSize) = vectorSize;
 }
 
-//#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_long cpls::measurements::GlobalStats::getVectorSize() {
     return this->FMGL(vectorSize);
     
 }
 
-//#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of BP */
 
-//#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setBp(x10_int bp) {
     this->FMGL(bp) = bp;
 }
 
-//#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getBP() {
     return this->FMGL(bp);
     
 }
 
-//#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** number of singles */
 
-//#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setSingles(x10_int singles) {
     this->FMGL(singles) = singles;
 }
 
-//#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 x10_int cpls::measurements::GlobalStats::getSingles() {
     return this->FMGL(singles);
     
 }
 
-//#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 /** Solver State **/
 
-//#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setSState(::x10::lang::Rail< x10_int >* sstate) {
     this->FMGL(sstate) = sstate;
 }
 
-//#line 111 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 111 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 ::x10::lang::Rail< x10_int >* cpls::measurements::GlobalStats::getSState(
   ) {
     return this->FMGL(sstate);
     
 }
 
-//#line 127 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 127 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setStats(x10_long co, x10_int p, x10_int e,
                                                x10_double t, x10_int it,
                                                x10_int loc, x10_int sw,
@@ -349,218 +348,218 @@ void cpls::measurements::GlobalStats::setStats(x10_long co, x10_int p, x10_int e
                                                x10_int fft, x10_long vs,
                                                ::x10::lang::Rail< x10_int >* ss) {
     
-    //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(cost) = co;
     
-    //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(team) = p;
     
-    //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(explorerWinner) = e;
     
-    //#line 133 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 133 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(time) = t;
     
-    //#line 134 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 134 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(iters) = ((x10_long)(it));
     
-    //#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(locmin) = loc;
     
-    //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(swaps) = ((x10_long)(sw));
     
-    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(reset) = re;
     
-    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(same) = ((x10_long)(sa));
     
-    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(restart) = rs;
     
-    //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(change) = ch;
     
-    //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(changeForDiv) = chFDiv;
     
-    //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(forceRestart) = fr;
     
-    //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(groupR) = gr;
     
-    //#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(target) = target;
     
-    //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(fftarget) = fft;
     
-    //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(vectorSize) = vs;
     
-    //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(sstate) = ss;
 }
 
-//#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setStats(::cpls::measurements::GlobalStats* c) {
     
-    //#line 153 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 153 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(cost) = ::x10aux::nullCheck(c)->FMGL(cost);
     
-    //#line 154 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 154 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(team) = ::x10aux::nullCheck(c)->FMGL(team);
     
-    //#line 155 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 155 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(explorerWinner) = ::x10aux::nullCheck(c)->getExplorerWinner();
     
-    //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(time) = ::x10aux::nullCheck(c)->FMGL(time);
     
-    //#line 157 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 157 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(iters) = ::x10aux::nullCheck(c)->FMGL(iters);
     
-    //#line 158 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 158 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(locmin) = ::x10aux::nullCheck(c)->FMGL(locmin);
     
-    //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(swaps) = ::x10aux::nullCheck(c)->FMGL(swaps);
     
-    //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(reset) = ::x10aux::nullCheck(c)->FMGL(reset);
     
-    //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(same) = ::x10aux::nullCheck(c)->FMGL(same);
     
-    //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(restart) = ::x10aux::nullCheck(c)->FMGL(restart);
     
-    //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 163 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(change) = ::x10aux::nullCheck(c)->FMGL(change);
     
-    //#line 164 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 164 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(changeForDiv) = ::x10aux::nullCheck(c)->getChangeForDiv();
     
-    //#line 165 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 165 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(forceRestart) = ::x10aux::nullCheck(c)->FMGL(forceRestart);
     
-    //#line 168 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 168 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(groupR) = ::x10aux::nullCheck(c)->FMGL(groupR);
     
-    //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(target) = ::x10aux::nullCheck(c)->FMGL(target);
     
-    //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(fftarget) = ::x10aux::nullCheck(c)->FMGL(fftarget);
     
-    //#line 171 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 171 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(vectorSize) = ::x10aux::nullCheck(c)->FMGL(vectorSize);
     
-    //#line 172 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 172 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(sstate) = ::x10aux::nullCheck(c)->FMGL(sstate);
 }
 
-//#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::accStats(::cpls::measurements::GlobalStats* stats) {
     
-    //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(cost) = ((this->FMGL(cost)) + (::x10aux::nullCheck(stats)->FMGL(cost)));
     
-    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(time) = ((this->FMGL(time)) + (::x10aux::nullCheck(stats)->FMGL(time)));
     
-    //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 182 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(iters) = ((this->FMGL(iters)) + (::x10aux::nullCheck(stats)->FMGL(iters)));
     
-    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(locmin) = ((this->FMGL(locmin)) + (::x10aux::nullCheck(stats)->FMGL(locmin)));
     
-    //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(swaps) = ((this->FMGL(swaps)) + (::x10aux::nullCheck(stats)->FMGL(swaps)));
     
-    //#line 185 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 185 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(reset) = ((this->FMGL(reset)) + (::x10aux::nullCheck(stats)->FMGL(reset)));
     
-    //#line 186 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 186 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(same) = ((this->FMGL(same)) + (::x10aux::nullCheck(stats)->FMGL(same)));
     
-    //#line 187 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 187 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(restart) = ((this->FMGL(restart)) + (::x10aux::nullCheck(stats)->FMGL(restart)));
     
-    //#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 188 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(change) = ((this->FMGL(change)) + (::x10aux::nullCheck(stats)->FMGL(change)));
     
-    //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 189 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(changeForDiv) = ((this->FMGL(changeForDiv)) + (::x10aux::nullCheck(stats)->FMGL(changeForDiv)));
     
-    //#line 190 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 190 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(forceRestart) = ((this->FMGL(forceRestart)) + (::x10aux::nullCheck(stats)->FMGL(forceRestart)));
     
-    //#line 192 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 192 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_long sing = ((::x10aux::nullCheck(stats)->FMGL(cost)) % ::x10aux::zeroCheck(::x10aux::nullCheck(stats)->FMGL(vectorSize)));
     
-    //#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_long blockPair = ((((::x10aux::nullCheck(stats)->FMGL(cost)) - (sing))) / ::x10aux::zeroCheck(::x10aux::nullCheck(stats)->FMGL(vectorSize)));
     
-    //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(bp) = (::x10aux::class_cast_unchecked<x10_int>(((((x10_long)(this->FMGL(bp)))) + (blockPair))));
     
-    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(singles) = (::x10aux::class_cast_unchecked<x10_int>(((((x10_long)(this->FMGL(singles)))) + (sing))));
     
-    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(groupR) = ((this->FMGL(groupR)) + (::x10aux::nullCheck(stats)->FMGL(groupR)));
     
-    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     if (((::x10aux::struct_equals(blockPair, ((x10_long)0ll))) &&
         (::x10aux::struct_equals(sing, ((x10_long)0ll))))) {
         
-        //#line 200 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+        //#line 200 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
         this->FMGL(accPS) = ((this->FMGL(accPS)) + (((x10_int)1)));
     }
     
-    //#line 202 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 202 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     if (::x10aux::nullCheck(stats)->FMGL(target)) {
         
-        //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+        //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
         this->FMGL(ntarget) = ((this->FMGL(ntarget)) + (((x10_int)1)));
     }
     
 }
 
-//#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::print(x10_int count, x10_int oF,
                                             x10_int problem) {
     
-    //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double sameIter = ((((x10_double) (this->FMGL(same)))) / (((x10_double) (this->FMGL(iters)))));
     
-    //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double gap = ((((((x10_double) (((this->FMGL(cost)) - (this->FMGL(dTarget)))))) / (((x10_double) (this->FMGL(dTarget)))))) * (100.0));
     
-    //#line 214 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 214 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_long sgl = ((this->FMGL(cost)) % ::x10aux::zeroCheck(this->FMGL(vectorSize)));
     
-    //#line 215 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 215 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_long bpl = ((((this->FMGL(cost)) - (sgl))) / ::x10aux::zeroCheck(this->FMGL(vectorSize)));
     
-    //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     if ((::x10aux::struct_equals(oF, ((x10_int)0)))) {
         
-        //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(count, (__extension__ ({ static ::x10::lang::String* strLit__38629 = ::x10aux::makeStringLit(","); strLit__38629; }))), this->FMGL(time)), (__extension__ ({ static ::x10::lang::String* strLit__38630 = ::x10aux::makeStringLit(","); strLit__38630; }))), this->FMGL(iters)), (__extension__ ({ static ::x10::lang::String* strLit__38631 = ::x10aux::makeStringLit(","); strLit__38631; }))), this->FMGL(team)), (__extension__ ({ static ::x10::lang::String* strLit__38632 = ::x10aux::makeStringLit(","); strLit__38632; }))), this->FMGL(locmin)), (__extension__ ({ static ::x10::lang::String* strLit__38633 = ::x10aux::makeStringLit(","); strLit__38633; }))), this->FMGL(swaps)), (__extension__ ({ static ::x10::lang::String* strLit__38634 = ::x10aux::makeStringLit(","); strLit__38634; }))), this->FMGL(reset)), (__extension__ ({ static ::x10::lang::String* strLit__38635 = ::x10aux::makeStringLit(","); strLit__38635; }))), sameIter), (__extension__ ({ static ::x10::lang::String* strLit__38636 = ::x10aux::makeStringLit(","); strLit__38636; }))), this->FMGL(restart)), (__extension__ ({ static ::x10::lang::String* strLit__38637 = ::x10aux::makeStringLit(","); strLit__38637; }))), bpl), (__extension__ ({ static ::x10::lang::String* strLit__38638 = ::x10aux::makeStringLit(","); strLit__38638; }))), sgl), (__extension__ ({ static ::x10::lang::String* strLit__38639 = ::x10aux::makeStringLit(","); strLit__38639; }))), this->FMGL(change)), (__extension__ ({ static ::x10::lang::String* strLit__38640 = ::x10aux::makeStringLit(","); strLit__38640; }))), this->FMGL(forceRestart)), (__extension__ ({ static ::x10::lang::String* strLit__38641 = ::x10aux::makeStringLit(","); strLit__38641; }))), this->FMGL(groupR)), (__extension__ ({ static ::x10::lang::String* strLit__38642 = ::x10aux::makeStringLit(","); strLit__38642; }))), (::x10aux::struct_equals(this->FMGL(cost),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ((x10_long)0ll)))), (__extension__ ({ static ::x10::lang::String* strLit__38643 = ::x10aux::makeStringLit(","); strLit__38643; }))), this->FMGL(target)
-                                                      ? ((__extension__ ({ static ::x10::lang::String* strLit__38644 = ::x10aux::makeStringLit("S"); strLit__38644; })))
-                                                      : ((__extension__ ({ static ::x10::lang::String* strLit__38645 = ::x10aux::makeStringLit("-"); strLit__38645; })))), (__extension__ ({ static ::x10::lang::String* strLit__38646 = ::x10aux::makeStringLit(","); strLit__38646; }))), this->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__38647 = ::x10aux::makeStringLit(","); strLit__38647; }))), this->FMGL(fftarget)), (__extension__ ({ static ::x10::lang::String* strLit__38648 = ::x10aux::makeStringLit(","); strLit__38648; }))), gap), (__extension__ ({ static ::x10::lang::String* strLit__38649 = ::x10aux::makeStringLit(","); strLit__38649; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ((x10_long)0ll))), (__extension__ ({ static ::x10::lang::String* strLit__38651 = ::x10aux::makeStringLit(","); strLit__38651; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__38653 = ::x10aux::makeStringLit(","); strLit__38653; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ((x10_long)2ll))));
+        //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(count, (__extension__ ({ static ::x10::lang::String* strLit__4667 = ::x10aux::makeStringLit(","); strLit__4667; }))), this->FMGL(time)), (__extension__ ({ static ::x10::lang::String* strLit__4668 = ::x10aux::makeStringLit(","); strLit__4668; }))), this->FMGL(iters)), (__extension__ ({ static ::x10::lang::String* strLit__4669 = ::x10aux::makeStringLit(","); strLit__4669; }))), this->FMGL(team)), (__extension__ ({ static ::x10::lang::String* strLit__4670 = ::x10aux::makeStringLit(","); strLit__4670; }))), this->FMGL(locmin)), (__extension__ ({ static ::x10::lang::String* strLit__4671 = ::x10aux::makeStringLit(","); strLit__4671; }))), this->FMGL(swaps)), (__extension__ ({ static ::x10::lang::String* strLit__4672 = ::x10aux::makeStringLit(","); strLit__4672; }))), this->FMGL(reset)), (__extension__ ({ static ::x10::lang::String* strLit__4673 = ::x10aux::makeStringLit(","); strLit__4673; }))), sameIter), (__extension__ ({ static ::x10::lang::String* strLit__4674 = ::x10aux::makeStringLit(","); strLit__4674; }))), this->FMGL(restart)), (__extension__ ({ static ::x10::lang::String* strLit__4675 = ::x10aux::makeStringLit(","); strLit__4675; }))), bpl), (__extension__ ({ static ::x10::lang::String* strLit__4676 = ::x10aux::makeStringLit(","); strLit__4676; }))), sgl), (__extension__ ({ static ::x10::lang::String* strLit__4677 = ::x10aux::makeStringLit(","); strLit__4677; }))), this->FMGL(change)), (__extension__ ({ static ::x10::lang::String* strLit__4678 = ::x10aux::makeStringLit(","); strLit__4678; }))), this->FMGL(forceRestart)), (__extension__ ({ static ::x10::lang::String* strLit__4679 = ::x10aux::makeStringLit(","); strLit__4679; }))), this->FMGL(groupR)), (__extension__ ({ static ::x10::lang::String* strLit__4680 = ::x10aux::makeStringLit(","); strLit__4680; }))), (::x10aux::struct_equals(this->FMGL(cost),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ((x10_long)0ll)))), (__extension__ ({ static ::x10::lang::String* strLit__4681 = ::x10aux::makeStringLit(","); strLit__4681; }))), this->FMGL(target)
+                                                      ? ((__extension__ ({ static ::x10::lang::String* strLit__4682 = ::x10aux::makeStringLit("S"); strLit__4682; })))
+                                                      : ((__extension__ ({ static ::x10::lang::String* strLit__4683 = ::x10aux::makeStringLit("-"); strLit__4683; })))), (__extension__ ({ static ::x10::lang::String* strLit__4684 = ::x10aux::makeStringLit(","); strLit__4684; }))), this->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__4685 = ::x10aux::makeStringLit(","); strLit__4685; }))), this->FMGL(fftarget)), (__extension__ ({ static ::x10::lang::String* strLit__4686 = ::x10aux::makeStringLit(","); strLit__4686; }))), gap), (__extension__ ({ static ::x10::lang::String* strLit__4687 = ::x10aux::makeStringLit(","); strLit__4687; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ((x10_long)0ll))), (__extension__ ({ static ::x10::lang::String* strLit__4689 = ::x10aux::makeStringLit(","); strLit__4689; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__4691 = ::x10aux::makeStringLit(","); strLit__4691; }))), ::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ((x10_long)2ll))));
     } else {
         
-        //#line 226 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38655 = ::x10aux::makeStringLit("|  %3d  | %8.4f | %8d | %3d-%2d | %8d |"); strLit__38655; })),
+        //#line 226 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4693 = ::x10aux::makeStringLit("|  %3d  | %8.4f | %8d | %3d-%2d | %8d |"); strLit__4693; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(count),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(time)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(iters)),
@@ -568,27 +567,27 @@ void cpls::measurements::GlobalStats::print(x10_int count, x10_int oF,
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(explorerWinner)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(locmin)));
         
-        //#line 228 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38656 = ::x10aux::makeStringLit(" %8d | %8d | %5.1f | %3d |"); strLit__38656; })),
+        //#line 228 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4694 = ::x10aux::makeStringLit(" %8d | %8d | %5.1f | %3d |"); strLit__4694; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(swaps)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(reset)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(sameIter),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(restart)));
         
-        //#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        if (((::x10aux::struct_equals(problem, ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__get)())) ||
-            (::x10aux::struct_equals(problem, ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__get)()))))
+        //#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        if (((::x10aux::struct_equals(problem, ((x10_int)6))) ||
+            (::x10aux::struct_equals(problem, ((x10_int)7)))))
         {
             
-            //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+            //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
             ::x10::io::Console::FMGL(OUT__get)()->printf(
-              (__extension__ ({ static ::x10::lang::String* strLit__38657 = ::x10aux::makeStringLit(" %3d | %3d |"); strLit__38657; })),
+              (__extension__ ({ static ::x10::lang::String* strLit__4695 = ::x10aux::makeStringLit(" %3d | %3d |"); strLit__4695; })),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(bpl),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(sgl));
         }
         
-        //#line 232 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38658 = ::x10aux::makeStringLit(" %4d | %3d-%3d | %3d |"); strLit__38658; })),
+        //#line 232 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4696 = ::x10aux::makeStringLit(" %4d | %3d-%3d | %3d |"); strLit__4696; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(change)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(forceRestart)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(groupR)),
@@ -597,16 +596,16 @@ void cpls::measurements::GlobalStats::print(x10_int count, x10_int oF,
                                                        ? (((x10_long)1ll))
                                                        : (((x10_long)0ll))));
         
-        //#line 234 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38659 = ::x10aux::makeStringLit("  %s | %8d |%6.3f |"); strLit__38659; })),
+        //#line 234 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4697 = ::x10aux::makeStringLit("  %s | %8d |%6.3f |"); strLit__4697; })),
                                                      reinterpret_cast< ::x10::lang::Any*>(this->FMGL(target)
-                                                       ? ((__extension__ ({ static ::x10::lang::String* strLit__38660 = ::x10aux::makeStringLit("S"); strLit__38660; })))
-                                                       : ((__extension__ ({ static ::x10::lang::String* strLit__38661 = ::x10aux::makeStringLit("-"); strLit__38661; })))),
+                                                       ? ((__extension__ ({ static ::x10::lang::String* strLit__4698 = ::x10aux::makeStringLit("S"); strLit__4698; })))
+                                                       : ((__extension__ ({ static ::x10::lang::String* strLit__4699 = ::x10aux::makeStringLit("-"); strLit__4699; })))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(cost)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(gap));
         
-        //#line 235 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38662 = ::x10aux::makeStringLit("  %1d %3d %3d |"); strLit__38662; })),
+        //#line 235 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4700 = ::x10aux::makeStringLit("  %1d %3d %3d |"); strLit__4700; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
                                                                                                           ((x10_long)0ll))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(::x10aux::nullCheck(this->FMGL(sstate))->x10::lang::Rail< x10_int >::__apply(
@@ -617,73 +616,73 @@ void cpls::measurements::GlobalStats::print(x10_int count, x10_int oF,
     
 }
 
-//#line 239 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 239 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::printChangesForDivs(
   ) {
     
-    //#line 240 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 240 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38666 = ::x10aux::makeStringLit("Changes for Diversification: "); strLit__38666; })), this->FMGL(changeForDiv))));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__4704 = ::x10aux::makeStringLit("Changes for Diversification: "); strLit__4704; })), this->FMGL(changeForDiv))));
 }
 
-//#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::printAVG(x10_int no,
                                                x10_int oF,
                                                x10_int problem) {
     
-    //#line 250 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 250 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double sameIter = ((((x10_double) (this->FMGL(same)))) / (((x10_double) (this->FMGL(iters)))));
     
-    //#line 251 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 251 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double changeF = ((((x10_double) (this->FMGL(change)))) / (((x10_double) (no))));
     
-    //#line 252 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 252 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double avgCost = ((((x10_double) (this->FMGL(cost)))) / (((x10_double) (no))));
     
-    //#line 253 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 253 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     x10_double gap = ((((((avgCost) - (((x10_double) (this->FMGL(dTarget)))))) / (((x10_double) (this->FMGL(dTarget)))))) * (100.0));
     
-    //#line 255 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 255 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     if ((::x10aux::struct_equals(oF, ((x10_int)0)))) {
         
-        //#line 256 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__38667 = ::x10aux::makeStringLit("AVG,"); strLit__38667; })), ((this->FMGL(time)) / (((x10_double) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__38668 = ::x10aux::makeStringLit(","); strLit__38668; }))), ((this->FMGL(iters)) / ::x10aux::zeroCheck(((x10_long)(no))))), (__extension__ ({ static ::x10::lang::String* strLit__38669 = ::x10aux::makeStringLit(",,"); strLit__38669; }))), ((this->FMGL(locmin)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__38670 = ::x10aux::makeStringLit(","); strLit__38670; }))), ((this->FMGL(swaps)) / ::x10aux::zeroCheck(((x10_long)(no))))), (__extension__ ({ static ::x10::lang::String* strLit__38671 = ::x10aux::makeStringLit(","); strLit__38671; }))), ((this->FMGL(reset)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__38672 = ::x10aux::makeStringLit(","); strLit__38672; }))), sameIter), (__extension__ ({ static ::x10::lang::String* strLit__38673 = ::x10aux::makeStringLit(","); strLit__38673; }))), ((this->FMGL(restart)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__38674 = ::x10aux::makeStringLit(","); strLit__38674; }))), ((((x10_float) (this->FMGL(bp)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__38675 = ::x10aux::makeStringLit(","); strLit__38675; }))), ((((x10_double) (this->FMGL(singles)))) / (((x10_double) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__38676 = ::x10aux::makeStringLit(","); strLit__38676; }))), changeF), (__extension__ ({ static ::x10::lang::String* strLit__38677 = ::x10aux::makeStringLit(","); strLit__38677; }))), ((((x10_float) (this->FMGL(forceRestart)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__38678 = ::x10aux::makeStringLit(","); strLit__38678; }))), ((((x10_float) (this->FMGL(groupR)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__38679 = ::x10aux::makeStringLit(","); strLit__38679; }))), this->FMGL(accPS)), (__extension__ ({ static ::x10::lang::String* strLit__38680 = ::x10aux::makeStringLit(","); strLit__38680; }))), this->FMGL(ntarget)), (__extension__ ({ static ::x10::lang::String* strLit__38681 = ::x10aux::makeStringLit(","); strLit__38681; }))), avgCost), (__extension__ ({ static ::x10::lang::String* strLit__38682 = ::x10aux::makeStringLit(",,"); strLit__38682; }))), gap));
+        //#line 256 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__4705 = ::x10aux::makeStringLit("AVG,"); strLit__4705; })), ((this->FMGL(time)) / (((x10_double) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__4706 = ::x10aux::makeStringLit(","); strLit__4706; }))), ((this->FMGL(iters)) / ::x10aux::zeroCheck(((x10_long)(no))))), (__extension__ ({ static ::x10::lang::String* strLit__4707 = ::x10aux::makeStringLit(",,"); strLit__4707; }))), ((this->FMGL(locmin)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__4708 = ::x10aux::makeStringLit(","); strLit__4708; }))), ((this->FMGL(swaps)) / ::x10aux::zeroCheck(((x10_long)(no))))), (__extension__ ({ static ::x10::lang::String* strLit__4709 = ::x10aux::makeStringLit(","); strLit__4709; }))), ((this->FMGL(reset)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__4710 = ::x10aux::makeStringLit(","); strLit__4710; }))), sameIter), (__extension__ ({ static ::x10::lang::String* strLit__4711 = ::x10aux::makeStringLit(","); strLit__4711; }))), ((this->FMGL(restart)) / ::x10aux::zeroCheck(no))), (__extension__ ({ static ::x10::lang::String* strLit__4712 = ::x10aux::makeStringLit(","); strLit__4712; }))), ((((x10_float) (this->FMGL(bp)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__4713 = ::x10aux::makeStringLit(","); strLit__4713; }))), ((((x10_double) (this->FMGL(singles)))) / (((x10_double) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__4714 = ::x10aux::makeStringLit(","); strLit__4714; }))), changeF), (__extension__ ({ static ::x10::lang::String* strLit__4715 = ::x10aux::makeStringLit(","); strLit__4715; }))), ((((x10_float) (this->FMGL(forceRestart)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__4716 = ::x10aux::makeStringLit(","); strLit__4716; }))), ((((x10_float) (this->FMGL(groupR)))) / (((x10_float) (no))))), (__extension__ ({ static ::x10::lang::String* strLit__4717 = ::x10aux::makeStringLit(","); strLit__4717; }))), this->FMGL(accPS)), (__extension__ ({ static ::x10::lang::String* strLit__4718 = ::x10aux::makeStringLit(","); strLit__4718; }))), this->FMGL(ntarget)), (__extension__ ({ static ::x10::lang::String* strLit__4719 = ::x10aux::makeStringLit(","); strLit__4719; }))), avgCost), (__extension__ ({ static ::x10::lang::String* strLit__4720 = ::x10aux::makeStringLit(",,"); strLit__4720; }))), gap));
     } else {
         
-        //#line 261 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38683 = ::x10aux::makeStringLit("|avg-%3d| %8.4f | %8d |  N/A   | %8d |"); strLit__38683; })),
+        //#line 261 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4721 = ::x10aux::makeStringLit("|avg-%3d| %8.4f | %8d |  N/A   | %8d |"); strLit__4721; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(no),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(time)) / (((x10_double) (no))))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(iters)) / ::x10aux::zeroCheck(((x10_long)(no))))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(locmin)) / ::x10aux::zeroCheck(no))));
         
-        //#line 262 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38684 = ::x10aux::makeStringLit(" %8d | %8d | %5.1f | %3d |"); strLit__38684; })),
+        //#line 262 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4722 = ::x10aux::makeStringLit(" %8d | %8d | %5.1f | %3d |"); strLit__4722; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(swaps)) / ::x10aux::zeroCheck(((x10_long)(no))))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(reset)) / ::x10aux::zeroCheck(no))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(sameIter),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((this->FMGL(restart)) / ::x10aux::zeroCheck(no))));
         
-        //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        if (((::x10aux::struct_equals(problem, ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(STABLE_MARRIAGE_PROBLEM__get)())) ||
-            (::x10aux::struct_equals(problem, ::cpls::CPLSOptionsEnum__SupportedProblems::FMGL(HOSPITAL_RESIDENT_PROBLEM__get)()))))
+        //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        if (((::x10aux::struct_equals(problem, ((x10_int)6))) ||
+            (::x10aux::struct_equals(problem, ((x10_int)7)))))
         {
             
-            //#line 264 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+            //#line 264 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
             ::x10::io::Console::FMGL(OUT__get)()->printf(
-              (__extension__ ({ static ::x10::lang::String* strLit__38685 = ::x10aux::makeStringLit(" %3.1f | %3.1f |"); strLit__38685; })),
+              (__extension__ ({ static ::x10::lang::String* strLit__4723 = ::x10aux::makeStringLit(" %3.1f | %3.1f |"); strLit__4723; })),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((((x10_float) (this->FMGL(bp)))) / (((x10_float) (no))))),
               ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((((x10_double) (this->FMGL(singles)))) / (((x10_double) (no))))));
         }
         
-        //#line 265 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38686 = ::x10aux::makeStringLit(" %4.1f | %2.1f-%2.1f |"); strLit__38686; })),
+        //#line 265 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4724 = ::x10aux::makeStringLit(" %4.1f | %2.1f-%2.1f |"); strLit__4724; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(changeF),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((((x10_float) (this->FMGL(forceRestart)))) / (((x10_float) (no))))),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(((((x10_float) (this->FMGL(groupR)))) / (((x10_float) (no))))));
         
-        //#line 266 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
-        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__38687 = ::x10aux::makeStringLit(" %3d | %2d |%10.1f|%6.3f |           |"); strLit__38687; })),
+        //#line 266 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
+        ::x10::io::Console::FMGL(OUT__get)()->printf((__extension__ ({ static ::x10::lang::String* strLit__4725 = ::x10aux::makeStringLit(" %3d | %2d |%10.1f|%6.3f |           |"); strLit__4725; })),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(accPS)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(this->FMGL(ntarget)),
                                                      ::x10aux::class_cast_unchecked< ::x10::lang::Any*>(avgCost),
@@ -692,79 +691,79 @@ void cpls::measurements::GlobalStats::printAVG(x10_int no,
     
 }
 
-//#line 270 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 270 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::clear() {
     
-    //#line 271 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 271 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(cost) = ((x10_long)(((x10_int)0)));
     
-    //#line 272 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 272 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(team) = ((x10_int)-1);
     
-    //#line 273 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 273 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(explorerWinner) = ((x10_int)-1);
     
-    //#line 274 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 274 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(time) = 0.0;
     
-    //#line 275 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 275 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(iters) = ((x10_long)(((x10_int)0)));
     
-    //#line 276 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 276 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(locmin) = ((x10_int)0);
     
-    //#line 277 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 277 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(swaps) = ((x10_long)(((x10_int)0)));
     
-    //#line 278 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 278 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(reset) = ((x10_int)0);
     
-    //#line 279 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 279 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(same) = ((x10_long)(((x10_int)0)));
     
-    //#line 280 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 280 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(restart) = ((x10_int)0);
     
-    //#line 281 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 281 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(change) = ((x10_int)0);
     
-    //#line 282 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 282 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(changeForDiv) = ((x10_int)0);
     
-    //#line 283 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 283 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(forceRestart) = ((x10_int)0);
     
-    //#line 284 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 284 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(groupR) = ((x10_int)0);
     
-    //#line 286 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 286 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(bp) = ((x10_int)0);
     
-    //#line 287 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 287 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(singles) = ((x10_int)0);
     
-    //#line 288 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 288 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(accPS) = ((x10_int)0);
     
-    //#line 289 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 289 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(ntarget) = ((x10_int)0);
     
-    //#line 290 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 290 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(vectorSize) = ((x10_long)1ll);
     
-    //#line 291 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 291 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(sstate) = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
                                                              ((x10_int)-1));
 }
 
-//#line 295 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 295 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 void cpls::measurements::GlobalStats::setTarget(x10_long target) {
     
-    //#line 297 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+    //#line 297 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
     this->FMGL(dTarget) = target;
 }
 
-//#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/measurements/GlobalStats.x10"
+//#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/measurements/GlobalStats.x10"
 ::cpls::measurements::GlobalStats* cpls::measurements::GlobalStats::cpls__measurements__GlobalStats____this__cpls__measurements__GlobalStats(
   ) {
     return this;

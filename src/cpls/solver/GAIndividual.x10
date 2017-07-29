@@ -11,30 +11,30 @@ public class GAIndividual(size:Long){
 	
 	var randomGenerator:Random;
 	
-	public def this(individualSize:Long){
+	public def this(individualSize:Long, seed:Long){
 		property(individualSize);
 		this.genes = new Rail[Int](individualSize, (i:Long) => i as Int);
 		this.randomGenerator = new Random();
- 		this.randomGenerator.setSeed(System.nanoTime());
+ 		this.randomGenerator.setSeed(seed);
  		//initialize();
  		//printGenes();
 	}
 
- 	public def this(genes:Rail[Int]){
+ 	public def this(genes:Rail[Int], seed:Long){
  		property(genes.size);
  		this.genes = new Rail[Int](genes.size, (i:Long) => i as Int);
  		this.randomGenerator = new Random();
- 		this.randomGenerator.setSeed(System.nanoTime());
+ 		this.randomGenerator.setSeed(seed);
  		Rail.copy(genes as Valuation(size), this.genes as Valuation(size));
  		//initialize();
  		//printGenes();
  	}
 
- 	public def this(indiv:GAIndividual){
+ 	public def this(indiv:GAIndividual, seed:Long){
  		property(indiv.size);
  		this.genes = new Rail[Int](indiv.getGenes().size, (i:Long) => i as Int);
  		this.randomGenerator = new Random();
- 		this.randomGenerator.setSeed(System.nanoTime());
+ 		this.randomGenerator.setSeed(seed);
  		Rail.copy(indiv.getGenes() as Valuation(size), this.genes as Valuation(size));
  		this.cost = indiv.getCost();
  	}
@@ -43,6 +43,7 @@ public class GAIndividual(size:Long){
  		var x:Int;
  		for( var i:Long = size - 1 ; i > 0 ; i-- ){
  			val j = randomGenerator.nextLong( i + 1 );
+ 			//Console.OUT.println("Valor j: " + j);
  			x = this.genes(i);
  			this.genes(i) = this.genes(j); 
  			this.genes(j) = x;
@@ -142,8 +143,8 @@ public class GAIndividual(size:Long){
 			indexIni++;
 		}
  		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
- 		sons(0) = new GAIndividual(son1);//setGenes(son1);
- 		sons(1) = new GAIndividual(son2);//setGenes(son2);
+ 		sons(0) = new GAIndividual(son1, this.randomGenerator.nextLong());//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2, this.randomGenerator.nextLong());//setGenes(son2);
  		return sons;
 	}
 
@@ -231,8 +232,8 @@ public class GAIndividual(size:Long){
  			}
  		}
  		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
- 		sons(0) = new GAIndividual(son1);//setGenes(son1);
- 		sons(1) = new GAIndividual(son2);//setGenes(son2);
+ 		sons(0) = new GAIndividual(son1, this.randomGenerator.nextLong());//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2, this.randomGenerator.nextLong());//setGenes(son2);
  		return sons;
  	}
  
@@ -285,8 +286,8 @@ public class GAIndividual(size:Long){
  			}
  		}
  		var sons:Rail[GAIndividual] = new Rail[GAIndividual](2);
- 		sons(0) = new GAIndividual(son1);//setGenes(son1);
- 		sons(1) = new GAIndividual(son2);//setGenes(son2);
+ 		sons(0) = new GAIndividual(son1, this.randomGenerator.nextLong());//setGenes(son1);
+ 		sons(1) = new GAIndividual(son2, this.randomGenerator.nextLong());//setGenes(son2);
  		return sons;
  	}
  

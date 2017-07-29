@@ -7,6 +7,7 @@ public class GlobalBestConf(sz:Long, confSize:Long){
 	
 	protected var globalBestConf:Rail[State(sz)];
 	protected var bestConfEver:State(sz) = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
+	protected var bestConfEverChanged:Boolean = false;
 	
 	public def this(size:Long, confSize:Long){
 		property(size, confSize);
@@ -20,15 +21,13 @@ public class GlobalBestConf(sz:Long, confSize:Long){
 	
 	public def put(info:State(sz), index:Int){
 		this.globalBestConf(index) = new State(info.sz, info.cost, info.vector, info.place, info.solverState);
- 		//Console.OUT.println("Se realiza insercion en el globalBestConf");
- 		//Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
- 		if(this.bestConfEver.cost == Long.MAX_VALUE || this.bestConfEver.cost != Long.MAX_VALUE && this.bestConfEver.cost > info.cost){
- 			this.bestConfEver = new State(info.sz, info.cost, info.vector, info.place, info.solverState);
- 			Console.OUT.println("Costo del bestConfEver. En el put del GlobalBestConf: " + this.bestConfEver.cost);
- 		}
+		if(info.cost < this.bestConfEver.cost){
+			this.bestConfEver = new State(info.sz, info.cost, info.vector, info.place, info.solverState);
+			this.bestConfEverChanged = true;
+		}
  		Console.OUT.println("    Informacion en el GlobalBestConf");
  		for(var i:Int = 0n; i < this.globalBestConf.size; i++){
- 			Console.OUT.println("    "+ this.globalBestConf(i).vector + "Costo: " + info.cost);
+ 			Console.OUT.println("    "+ this.globalBestConf(i).vector + "Costo: " +  this.globalBestConf(i).cost);
  		}
 	}
 	
@@ -41,8 +40,12 @@ public class GlobalBestConf(sz:Long, confSize:Long){
 	
 	public def getBestConfEver(){
 		val copy = new State(this.bestConfEver.sz, this.bestConfEver.cost, this.bestConfEver.vector, this.bestConfEver.place, this.bestConfEver.solverState);
-		this.bestConfEver = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
+		this.bestConfEverChanged = false;
 		return copy;
+	}
+	
+	public def isANewBestConfEver(){
+		return this.bestConfEverChanged;
 	}
 
  	public def getSize(){

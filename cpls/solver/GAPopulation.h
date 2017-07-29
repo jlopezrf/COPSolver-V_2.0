@@ -52,7 +52,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     
     ::cpls::util::Monitor* FMGL(monitor);
     
-    virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel);
+    virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
+                            x10_long seed);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,

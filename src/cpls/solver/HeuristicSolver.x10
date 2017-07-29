@@ -96,6 +96,10 @@ public class HeuristicSolver(sz:Long){
  		return null;
  	}
  
+ 	public def printPopulation(){
+ 
+ 	}
+ 
  	public def reset ( var n : Long, totalCost : Long ) : Long {
   	 	while( n-- != 0 ){
   	 		val i = random.nextLong(variables.size);

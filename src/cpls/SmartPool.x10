@@ -298,7 +298,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	  * Se invoca desde el explorer (hacia el head) para insertar la solución
 	  * estancada en el teamPool (el mismo de Danny)
 	  * */
-	 public def insertFromIWI(info : State(sz)):Boolean =
+	 public def insertFromIWI(info:State(sz)):Boolean =
 	 	monitor.atomicBlock(()=> {
 		 //Implementar acá la inserción laxa
 		 //La inserción devuelve true si esa inserción significo una mejor solución
@@ -311,12 +311,19 @@ public class SmartPool(sz:Long, poolSize:Int) {
 			 Console.OUT.println("INSERCION en el pool del head (El de Danny) porque es el primero. Nodo: " + here.id + "Costo: " + info.cost);
 			 return true;
 		 }else{
+		 	 var worstCost:Long = 0n;
+		 	 var worstIndex:Int = 0n;
 			 for ( var i:Int = 0n; i < this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH); i++){
 				 // Select worst conf
 				 val thisConf = pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector;
+				 val thisCost = pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).cost;
 				 val dist = distance(thisConf as Valuation(sz), info.vector as Valuation(sz));
 				 if(dist < minDist){
 				 	minDist = dist;
+				 }
+				 if(worstCost < thisCost){
+				 	worstCost = thisCost;
+				 	worstIndex = i;
 				 }
 				 //if (thisCost == info.cost && distance(info.vector, pool(CPLSOptionsEnum.PoolLevels.HIGH)(i).vector) < 0.2)
 				//	 return false;
@@ -326,6 +333,7 @@ public class SmartPool(sz:Long, poolSize:Int) {
 				//	 bestCost = info.cost;
 				 //}  
 			 }
+			 
 			 if (this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH) < this.poolSize){
 			 	if(minDist != 0.0 ){
 			 		pool(CPLSOptionsEnum.PoolLevels.HIGH)(this.nbEntries(CPLSOptionsEnum.PoolLevels.HIGH)++) = info;
@@ -337,8 +345,14 @@ public class SmartPool(sz:Long, poolSize:Int) {
 			 		return false;
 			 	}
 			 }else{
-			 	Console.OUT.println("FALLO EN INSERCION en el pool del head (El de Danny). Cupo completo. Nodo: " + here.id);
-			 	return false;
+			 	if(minDist != 0.0 && info.cost < worstCost){
+			 		pool(CPLSOptionsEnum.PoolLevels.HIGH)(worstIndex) = info;
+			 		Console.OUT.println("INSERCION en el pool del head (El de Danny). Se sacrifica una del pool");
+			 		return true;
+			 	}else{
+			 		Console.OUT.println("FALLO EN INSERCION en el pool del head (El de Danny). Pool lleno, diferente a todas pero peor costo");
+			 		return false;
+			 	}
 			 } 
 		 }
 	 });

@@ -22,11 +22,8 @@ class Random;
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
-namespace x10 { namespace lang { 
-class System;
-} } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
+namespace x10 { namespace util { 
+class Timer;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -45,17 +42,19 @@ class GAIndividual : public ::x10::lang::X10Class   {
     
     ::x10::util::Random* FMGL(randomGenerator);
     
-    void _constructor(x10_long individualSize);
+    void _constructor(x10_long individualSize, x10_long seed);
     
-    static ::cpls::solver::GAIndividual* _make(x10_long individualSize);
+    static ::cpls::solver::GAIndividual* _make(x10_long individualSize, x10_long seed);
     
-    void _constructor(::x10::lang::Rail< x10_int >* genes);
+    void _constructor(::x10::lang::Rail< x10_int >* genes, x10_long seed);
     
-    static ::cpls::solver::GAIndividual* _make(::x10::lang::Rail< x10_int >* genes);
+    static ::cpls::solver::GAIndividual* _make(::x10::lang::Rail< x10_int >* genes,
+                                               x10_long seed);
     
-    void _constructor(::cpls::solver::GAIndividual* indiv);
+    void _constructor(::cpls::solver::GAIndividual* indiv, x10_long seed);
     
-    static ::cpls::solver::GAIndividual* _make(::cpls::solver::GAIndividual* indiv);
+    static ::cpls::solver::GAIndividual* _make(::cpls::solver::GAIndividual* indiv,
+                                               x10_long seed);
     
     virtual void initialize();
     virtual x10_long getSize();
@@ -64,10 +63,10 @@ class GAIndividual : public ::x10::lang::X10Class   {
     virtual x10_long getCost();
     virtual void setCost(x10_long cost);
     virtual void swap(x10_int i, x10_int j);
-    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* insertPathCrossover(
-      ::cpls::solver::GAIndividual* individual);
-    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* partiallyMatchedCrossover(
-      ::cpls::solver::GAIndividual* individual);
+    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
+      insertPathCrossover(::cpls::solver::GAIndividual* individual);
+    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
+      partiallyMatchedCrossover(::cpls::solver::GAIndividual* individual);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       uniformCrossover(::cpls::solver::GAIndividual* individual);
     virtual x10_long findNumberPosition(x10_long number, ::x10::lang::Rail< x10_int >* vector);
