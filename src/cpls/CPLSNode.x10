@@ -36,6 +36,7 @@ public class CPLSNode(sz:Long){
  	/***********************************************************/
  	/***********************************************************/
  	val winnerLatch = new AtomicBoolean(false);
+ 	val winnerLatchForDivs = new AtomicBoolean(false);
  	var bcost:Long;
  	var solString : String =  new String();
  	var cGroupReset:Int = 0n;
@@ -82,6 +83,7 @@ public class CPLSNode(sz:Long){
  	protected var numberofTeams:Int;
  	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
  	//protected var flagsForMaster:Rail[Boolean];
+ 	protected var spreadDivConf:Boolean = false;
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -368,6 +370,18 @@ public class CPLSNode(sz:Long){
  		//winnerLatch.set(false); //Jason: Esto fue solo para probar que no se quede colgado
  		return result;
  	}
+ 
+ 	/*Jason: Se crea este método para reemplazar el mecanismo de generación de soluciones hacia los StackForDivs*/
+ 	public def spreadDivConfigs():Boolean{
+ 		val refsToPlaces = pointersComunication;
+ 		val result = winnerLatchForDivs.compareAndSet(false, true);
+ 		if(result){
+ 			this.spreadDivConf = true;
+ 			return true;
+ 		}else{
+ 			return false;
+ 		}
+ 	}
 
  	public def kill(){
  		if (heuristicSolver != null){
@@ -538,8 +552,9 @@ public class CPLSNode(sz:Long){
  					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,conf.vector,gap);
  				//}
  			}
- 			val auxDiv:Long = 2n*this.nodeConfig.getNodesPerTeam();
- 			if(this.nIter%(this.nodeConfig.getItersWhitoutImprovements()/auxDiv) == 0){ //Jason: Pongo a generar cada mitad de IWI para ver si se suple
+ 			//val auxDiv:Long = 2n*this.nodeConfig.getNodesPerTeam();
+ 			//if(this.nIter%(this.nodeConfig.getItersWhitoutImprovements()/auxDiv) == 0){ //Jason: Pongo a generar cada mitad de IWI para ver si se suple
+ 			if(spreadDivConf){	
  				Console.OUT.println("***********Inicio: Master distribuyendo soluciones a los teams***************");
  				//Generar una solución diversa para cada Head y enviarla
  				//Console.OUT.println("Master: " + here.id + " distribuye soluciones por IWI");
@@ -556,6 +571,8 @@ public class CPLSNode(sz:Long){
  						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,newDivConf.vector,gap);
  					//}
  				}
+ 				this.spreadDivConf = false;
+ 				this.winnerLatchForDivs.set(false);
  				Console.OUT.println("***********Fin: Master distribuyendo soluciones a los teams******************");
  				//Console.OUT.println("Master: " + here.id + " termina de distribuir soluciones");
  			}
@@ -570,6 +587,7 @@ public class CPLSNode(sz:Long){
  	 * Método que se ejecuta en el head cuando el explorer se estanca por IWI
  	 **/
  	public def communicateForDiversification(info:State(sz)):State(sz){
+ 		val refsToPlaces = pointersComunication;
  		this.teamPool.insertFromIWI(info);
  		if(this.bestConfForTeam.cost > info.cost){
  			//Console.OUT.println("Efectivamente el costo es mejor y entonces el bestConfForTeam cambia");
@@ -584,6 +602,7 @@ public class CPLSNode(sz:Long){
  			return newConf;
  		}else{
  			val conf = this.heuristicSolver.createNewSol();
+ 			at(Place.FIRST_PLACE) refsToPlaces().spreadDivConfigs(); 
  			//Console.OUT.println("at CPLSNode created Solution: " + conf);
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
  			Console.OUT.println("La solucion para explorer fue creada desde cero: " + conf);
@@ -1032,6 +1051,7 @@ public class CPLSNode(sz:Long){
  	
  	public def clear(){
  		winnerLatch.set(false);
+ 		winnerLatchForDivs.set(false);
  		if(teamPool != null)
  			teamPool.clear();
  		this.stackForDiv = new StackForDiv(sz);
@@ -1053,6 +1073,7 @@ public class CPLSNode(sz:Long){
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
  		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  		this.newBestConfReportedForTeam = false;
+ 		this.spreadDivConf = false;
  	}
  	
  	public def verify_(){
