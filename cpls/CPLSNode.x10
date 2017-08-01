@@ -490,7 +490,8 @@ public class CPLSNode(sz:Long){
  	//van reportando para que empiecen a hacer parte de la población del GA
  	public def interactForDiversification(){
  		val refsToPlace = pointersComunication;
- 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
+ 		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE
+ 			&& this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
  			if(this.nIterWhitoutImprovements >= this.nodeConfig.getItersWhitoutImprovements()){
  				val solverState = createSolverState();
  				val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
@@ -499,7 +500,7 @@ public class CPLSNode(sz:Long){
  				if (result.vector != null){
  					this.nChangeforDiv++;
  					this.heuristicSolver.setVariables(result.vector as Valuation(sz));
- 					this.currentCost = this.heuristicSolver.costOfSolution();
+ 					this.currentCost = this.heuristicSolver.costOfSolution(sz ,result.vector as Valuation(sz));
  					//this.currentCost = result.cost;
  					bestSent = false;
  					this.nIterWhitoutImprovements = 0n;
