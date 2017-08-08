@@ -25,10 +25,10 @@ public class GlobalBestConf(sz:Long, confSize:Long){
 			this.bestConfEver = new State(info.sz, info.cost, info.vector, info.place, info.solverState);
 			this.bestConfEverChanged = true;
 		}
- 		Console.OUT.println("    Informacion en el GlobalBestConf");
- 		for(var i:Int = 0n; i < this.globalBestConf.size; i++){
- 			Console.OUT.println("    "+ this.globalBestConf(i).vector + "Costo: " +  this.globalBestConf(i).cost);
- 		}
+ 		//Console.OUT.println("    Informacion en el GlobalBestConf");
+ 		//for(var i:Int = 0n; i < this.globalBestConf.size; i++){
+ 		//	Console.OUT.println("    "+ this.globalBestConf(i).vector + "Costo: " +  this.globalBestConf(i).cost);
+ 		//}
 	}
 	
 	public def get(index:Int):State(sz){

@@ -128,6 +128,7 @@ class QAPModel : public ::cpls::problem::ProblemGenericModel   {
     virtual x10_boolean loadData(::x10::lang::String* filePath);
     static ::x10::lang::Rail< x10_int >* readParameters(::x10::lang::String* line);
     void readMatrix(::x10::io::FileReader* fr, x10_int sizeF);
+    virtual void printMatrix(x10_int size, ::x10::lang::Rail< ::x10::lang::Rail< x10_int >* >* matrix);
     virtual x10_boolean verify(x10_long sz, ::x10::lang::Rail< x10_int >* match);
     void printMatrices();
     virtual ::cpls::problem::QAPModel* cpls__problem__QAPModel____this__cpls__problem__QAPModel(

@@ -259,9 +259,21 @@ public class QAPModel extends ProblemGenericModel{
  					dLine++;
  				}
  			}
+ 			//printMatrix(sizeF, flow);
+ 			//printMatrix(sizeF, dist);
  		}catch(Exception){
  			Console.OUT.println("Error reading file");
  			//EOF
+ 		}
+ 	}
+ 
+ 	public def printMatrix(size:Int, matrix:Rail[Rail[Int]]){
+ 		Console.OUT.println("*******");
+ 		for(var i:Int = 0n; i < size; i++){
+ 			for(var j:Int = 0n; j < size; j++){
+ 				Console.OUT.print(matrix(i)(j) + " ");
+ 			}
+ 			Console.OUT.println("");
  		}
  	}
 

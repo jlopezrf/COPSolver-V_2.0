@@ -57,6 +57,7 @@ public class CPLSNode(sz:Long){
  	protected var nIter : Int;
  	//Jason: Migration begin
  	protected var nIterWhitoutImprovements : Int = 0n;
+ 	protected var nItersForUpdate:Int = 0n;
  	//Jason: Migration end
  	protected var nForceRestart : Int = 0n;
  	/** Total Statistics */
@@ -84,6 +85,7 @@ public class CPLSNode(sz:Long){
  	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
  	//protected var flagsForMaster:Rail[Boolean];
  	protected var spreadDivConf:Boolean = false;
+ 	protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -194,7 +196,7 @@ public class CPLSNode(sz:Long){
  	 		val winner = at(Place.FIRST_PLACE) refsToPlaces().announceWinner(home); //Comunicate operation
  	 		bcost = cost;
  	 		if (winner){ 
- 	 			Console.OUT.println("Soy el nodo " + here + "Y soy el ganador");
+ 	 			//Console.OUT.println("Soy el nodo " + here + "Y soy el ganador");
  	 			val changeForDivs = getChangeforDiv();
  	 			setStats_(targetCost, home as Int, changeForDivs);
  	 			if (nodeConfig.getVerify()){
@@ -231,20 +233,8 @@ public class CPLSNode(sz:Long){
  			this.bestCost = currentCost;
  		else
  			this.bestCost = x10.lang.Int.MAX_VALUE;
- 
- 		// Main Loop
- 		//var countero:Int = 0n;
- 		//var switche:boolean = true;
+
  		while( this.currentCost != 0 ){
- 			//if(switche){
- 			//	switche = false;
- 			//	Console.OUT.println("Nodo: " + here + ". Ingresando al While");
- 			//}
- 			//countero++;
- 			//if(countero == 10000n){
- 			//	Console.OUT.println("Nodo: " + here + ". Contador detector de estancamiento");
- 			//	countero = 0n;
- 			//}
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
  				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
@@ -265,7 +255,9 @@ public class CPLSNode(sz:Long){
  			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
  			this.nIter++;
  			this.currentCost = this.heuristicSolver.search(this.currentCost, this.bestCost, this.nIter);
- 
+ 			if(!isOnDiversification){
+ 				this.nItersForUpdate++;
+ 			}
  			//Update the best configuration found so far
  			updateCosts();
 
@@ -310,6 +302,7 @@ public class CPLSNode(sz:Long){
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
  		this.nIterWhitoutImprovements = 0n;
+ 		this.nItersForUpdate = 0n;
  		//Jason: Migration end
  		this.nSwapTot = 0n;
  		this.initialTime = System.nanoTime();
@@ -344,11 +337,11 @@ public class CPLSNode(sz:Long){
  				this.targetSucc = true;
  				this.kill = true;
  			}
- 			//Jason: Migration begin
+
  			nIterWhitoutImprovements = 0n;
+
  		}else{
- 			nIterWhitoutImprovements++;
- 			//Jason: Migration end
+ 			this.nIterWhitoutImprovements++;
  		}
  	}
  
@@ -432,14 +425,14 @@ public class CPLSNode(sz:Long){
  				}
  			}
  
- 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n ){
+ 			if( this.nodeConfig.getUpdateI() != 0n && this.nItersForUpdate % this.nodeConfig.getUpdateI() == 0n && !this.isOnDiversification){
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
  				}
  				val result = getIPVector(this.currentCost);
  				if (result) {
  					this.nChangeV++;
- 					this.currentCost = this.heuristicSolver.costOfSolution();
+ 					//this.currentCost = this.heuristicSolver.costOfSolution();
  					bestSent = false;
  					//counterForUpdate++;
  					/*if(this.counterForUpdate%100 == 0){
@@ -448,7 +441,10 @@ public class CPLSNode(sz:Long){
  						printVector(this.heuristicSolver.getVariables());
  					}*/
  				}
+ 				this.nItersForUpdate = 0n;
+ 				//this.isOnDiversification = false;
  				//Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en segundo if de interact");
+ 				Console.OUT.println("Nodo: " + here.id + ". Cambia a diversificacion");
  			}
  			// Force Restart: Inter Team Communication
  			if (this.forceRestart){
@@ -492,6 +488,7 @@ public class CPLSNode(sz:Long){
  		val refsToPlace = pointersComunication;
  		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE
  			&& this.nodeConfig.getMasterHeuristic() != null && !this.nodeConfig.getMasterHeuristic().equals("")){
+ 			//&& !this.isOnIntensification){
  			if(this.nIterWhitoutImprovements >= this.nodeConfig.getItersWhitoutImprovements()){
  				val solverState = createSolverState();
  				val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
@@ -500,7 +497,8 @@ public class CPLSNode(sz:Long){
  				if (result.vector != null){
  					this.nChangeforDiv++;
  					this.heuristicSolver.setVariables(result.vector as Valuation(sz));
- 					this.currentCost = this.heuristicSolver.costOfSolution(sz ,result.vector as Valuation(sz));
+ 					this.currentCost = this.heuristicSolver.costOfSolution();
+ 					//updateTotStats();
  					//this.currentCost = result.cost;
  					bestSent = false;
  					this.nIterWhitoutImprovements = 0n;
@@ -508,12 +506,14 @@ public class CPLSNode(sz:Long){
  					//if (this.nodeConfig.getReportPart()){
  						val eT = (System.nanoTime() - initialTime)/1e9;
  						var gap:Double = (state.cost-this.target)/(state.cost as Double)*100.0;
- 						Utils.show("Explorer solucion anterior: ", state.vector);
- 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,state.cost,gap);
- 						Utils.show("Explorer solucion nueva", result.vector);
- 						gap = (this.currentCost-this.target)/(this.currentCost as Double)*100.0;
- 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,result.vector,gap);
- 						
+ 						//Utils.show("Explorer solucion anterior: ", state.vector);
+ 						//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,state.cost,gap);
+ 						gap = (result.cost-this.target)/(result.cost as Double)*100.0;
+ 						//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,result.vector,gap);
+ 						this.isOnDiversification = !this.isOnDiversification;
+ 						//Utils.show("Explorer solucion nueva: ", result.vector);
+ 						//Console.OUT.println("Costo de la nueva solucion: " + result.cost + " Gap: " + gap);
+ 						//Console.OUT.println("Nodo: " + here.id + ". Cambia a intensificacion");
  					//}
  				}
  			}
@@ -528,8 +528,8 @@ public class CPLSNode(sz:Long){
  				//if (this.nodeConfig.getReportPart()){
  					val eT = (System.nanoTime() - initialTime)/1e9;
  					var gap:Double = (this.bestConfForTeam.cost-this.target)/(this.bestConfForTeam.cost as Double)*100.0;
- 					Utils.show("Head reporta nueva mejor solucion para su team: ", this.bestConfForTeam.vector);
- 					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,this.bestConfForTeam.vector,gap);
+ 					//Utils.show("Head reporta nueva mejor solucion para su team: ", this.bestConfForTeam.vector);
+ 					//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,this.bestConfForTeam.vector,gap);
  				//}
  				//Console.OUT.println("Head: " + here.id + " termina ida al master a reportar una nueva mejor solución");
  		}
@@ -542,21 +542,23 @@ public class CPLSNode(sz:Long){
  				}else{
  					this.heuristicSolver.setVariables(conf.vector);
  					this.currentCost = this.heuristicSolver.costOfSolution();
+ 					//updateTotStats();
+ 					bestSent = false;
  				}
  				this.nChangeforDiv++;
  				this.nIterWhitoutImprovements = 0n;
  				//if (this.nodeConfig.getReportPart()){
  					val eT = (System.nanoTime() - initialTime)/1e9;
  					var gap:Double = (conf.cost-this.target)/(conf.cost as Double)*100.0;
- 					Utils.show("Master toma una nueva solucion: ", conf.vector);
+ 					//Utils.show("Master toma una nueva solucion: ", conf.vector);
  					//Console.OUT.println("Tamaño de GlobalBestConf del master: " + this.globalBestConf.getSize());
- 					Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,conf.vector,gap);
+ 					//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,conf.vector,gap);
  				//}
  			}
  			//val auxDiv:Long = 2n*this.nodeConfig.getNodesPerTeam();
  			//if(this.nIter%(this.nodeConfig.getItersWhitoutImprovements()/auxDiv) == 0){ //Jason: Pongo a generar cada mitad de IWI para ver si se suple
  			if(spreadDivConf){	
- 				Console.OUT.println("***********Inicio: Master distribuyendo soluciones a los teams***************");
+ 				//Console.OUT.println("***********Inicio: Master distribuyendo soluciones a los teams***************");
  				//Generar una solución diversa para cada Head y enviarla
  				//Console.OUT.println("Master: " + here.id + " distribuye soluciones por IWI");
  				var node:Long = 0;
@@ -567,14 +569,14 @@ public class CPLSNode(sz:Long){
  					//if (this.nodeConfig.getReportPart()){
  						val eT = (System.nanoTime() - initialTime)/1e9;
  						var gap:Double = (newDivConf.cost-this.target)/(newDivConf.cost as Double)*100.0;
- 						Console.OUT.println("Solucion para nodo: " + node);
- 						Utils.show("Conf: ", newDivConf.vector);
- 						Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,newDivConf.vector,gap);
+ 						//Console.OUT.println("Solucion para nodo: " + node);
+ 						//Utils.show("Conf: ", newDivConf.vector);
+ 						//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,newDivConf.vector,gap);
  					//}
  				}
  				this.spreadDivConf = false;
  				this.winnerLatchForDivs.set(false);
- 				Console.OUT.println("***********Fin: Master distribuyendo soluciones a los teams******************");
+ 				//Console.OUT.println("***********Fin: Master distribuyendo soluciones a los teams******************");
  				//Console.OUT.println("Master: " + here.id + " termina de distribuir soluciones");
  			}
  		}
@@ -606,7 +608,7 @@ public class CPLSNode(sz:Long){
  			at(Place.FIRST_PLACE) refsToPlaces().spreadDivConfigs(); 
  			//Console.OUT.println("at CPLSNode created Solution: " + conf);
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			Console.OUT.println("La solucion para explorer fue creada desde cero: " + conf);
+ 			//Console.OUT.println("La solucion para explorer fue creada desde cero: " + conf);
  			val randomConf = new State(sz, -1, conf as Rail[Int]{self.size==sz} , -1n, null);
  			return randomConf;
  		}
@@ -642,7 +644,7 @@ public class CPLSNode(sz:Long){
  				conf = this.heuristicSolver.getConfigForPop(true);
  			//}while(verifyDiference(conf));
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			Console.OUT.println("Lo saco de la poblacion");
+ 			//Console.OUT.println("Lo saco de la poblacion");
  			val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
  			return new State(sz, cost, conf as Valuation(sz), -1n, null);
  		}else{
@@ -651,7 +653,7 @@ public class CPLSNode(sz:Long){
  			val conf = insertPathConf(state1.vector, state2.vector);
  			val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
  			//val cost = this.heuristicSolver.costOfSolution(sz, conf as Valuation(sz));
- 			Console.OUT.println("Lo creo con el insertPath");
+ 			//Console.OUT.println("Lo creo con el insertPath");
  			return new State(sz, cost, conf as Valuation(sz), -1n, null);
  		}
  	}
@@ -807,6 +809,7 @@ public class CPLSNode(sz:Long){
  				this.heuristicSolver.tryInsertIndividual(a().vector as Valuation(sz), sz);
  			}else{
  				this.heuristicSolver.setVariables(a().vector as Valuation(sz));
+ 				this.heuristicSolver.costOfSolution();
  				return true; 
  			}
  			
@@ -1075,6 +1078,9 @@ public class CPLSNode(sz:Long){
  		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  		this.newBestConfReportedForTeam = false;
  		this.spreadDivConf = false;
+ 		this.nItersForUpdate = 0n;
+ 		this.nIterWhitoutImprovements = 0n;
+ 		//this.isOnIntensification = false;
  	}
  	
  	public def verify_(){
