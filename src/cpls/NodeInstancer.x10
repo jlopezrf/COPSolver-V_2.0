@@ -256,7 +256,7 @@ public class NodeInstancer{
  		 	Console.OUT.println("UpdateTime: " + conf.getUpdateI());
  		 	Console.OUT.println("MaxUpdateI?: " + conf.getMaxUpdateI());
  		 	Console.OUT.println("NodeRole: " + conf.getRol());
- 		 	Console.OUT.println("MasterHeuristic: " + conf.getMasterHeuristic());
+ 		 	Console.OUT.println("MasterHeuristic: " + conf.getModeIndicator());
  		 	/**********************************************/
  		 }
 		 

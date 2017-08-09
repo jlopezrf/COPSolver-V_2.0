@@ -28,9 +28,6 @@
 #define X10_LANG_BOOLEAN_H_NODEPS
 #include <x10/lang/Boolean.h>
 #undef X10_LANG_BOOLEAN_H_NODEPS
-namespace x10 { namespace lang { 
-class String;
-} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 
@@ -84,7 +81,7 @@ class NodeConfig : public ::x10::lang::X10Class   {
     
     x10_int FMGL(nIntersWhitoutImprovements);
     
-    ::x10::lang::String* FMGL(masterHeuristic);
+    x10_int FMGL(modeIndicator);
     
     void _constructor();
     
@@ -116,7 +113,7 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual void setMaxUpdateI(x10_int maxUpdateI);
     virtual void setAdaptiveComm(x10_boolean adaptiveComm);
     virtual void setItersWhitoutImprovements(x10_int nIntersWhitoutImprovements);
-    virtual void setMasterHeuristic(::x10::lang::String* masterHeuristic);
+    virtual void setModeIndicator(x10_int modeIndicator);
     virtual x10_int getHeuristic();
     virtual x10_int getNumberOfTeams();
     virtual x10_int getNodesPerTeam();
@@ -139,7 +136,7 @@ class NodeConfig : public ::x10::lang::X10Class   {
     virtual x10_int getMaxUpdateI();
     virtual x10_boolean getAdaptiveComm();
     virtual x10_int getItersWhitoutImprovements();
-    virtual ::x10::lang::String* getMasterHeuristic();
+    virtual x10_int getModeIndicator();
     virtual ::cpls::entities::NodeConfig* cpls__entities__NodeConfig____this__cpls__entities__NodeConfig(
       );
     virtual void __fieldInitializers_cpls_entities_NodeConfig();

@@ -28,7 +28,7 @@ public class NodeConfig{
  	private var adaptiveComm:Boolean;
  	//Jason: Migration
  	private var nIntersWhitoutImprovements:Int;
- 	private var masterHeuristic:String;
+ 	private var modeIndicator:Int;
  
  	public def this(){}
  	public def this(heuristic:Int, rol:Int){this.heuristic = heuristic;	this.rol = rol;}
@@ -56,7 +56,7 @@ public class NodeConfig{
  	public def setAdaptiveComm(adaptiveComm:Boolean){this.adaptiveComm = adaptiveComm;}
  	//Jason: Migration
  	public def setItersWhitoutImprovements(nIntersWhitoutImprovements:Int){this.nIntersWhitoutImprovements = nIntersWhitoutImprovements;}
- 	public def setMasterHeuristic(masterHeuristic:String){this.masterHeuristic = masterHeuristic;}
+ 	public def setModeIndicator(modeIndicator:Int){this.modeIndicator = modeIndicator;}
  
  	public def getHeuristic(){return this.heuristic;}
  	public def getNumberOfTeams(){return this.numberOfTeams;}
@@ -81,5 +81,5 @@ public class NodeConfig{
  	public def getAdaptiveComm(){return this.adaptiveComm;}
  	//Jason: Migration
  	public def getItersWhitoutImprovements(){return this.nIntersWhitoutImprovements;}
- 	public def getMasterHeuristic(){return this.masterHeuristic;}
+ 	public def getModeIndicator(){return this.modeIndicator;}
 }

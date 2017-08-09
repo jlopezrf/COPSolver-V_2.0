@@ -58,7 +58,7 @@ public class Main {
 			 configCPLS.setMasterConfig(masterConfig);
  		}
  
- 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString, masterHeuristic);
+ 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
  		
  		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
  			Console.OUT.println("Error_Ini. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
@@ -154,7 +154,13 @@ public class Main {
  		masterConfig.setModParams(opts("-M", 1n));
  		masterConfig.setChangeOnDiver(opts("-CD", 1n));
  		//Jason: Migration
- 		masterConfig.setItersWhitoutImprovements(opts("-iwi", (problemSize*200n) as Int));
+ 		var nItersWhitoutImprovements:Int;
+ 		if(problemSize*1500n > 100000){
+ 			nItersWhitoutImprovements = 100000n;
+ 		}else{
+ 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		}
+ 		masterConfig.setItersWhitoutImprovements(nItersWhitoutImprovements);
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -175,7 +181,7 @@ public class Main {
  	//Jason: Problemas a resolver en este procedimiento
  	//Debería poderse identificar los nodos por equipo a partir del estring de las heuristicas que se utilizaran en la solución,
  	//combinado con la cantidad de nodos a utilizar y la indicación del tipo de estrategia (ce)
- 	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String, masterHeuristic:String):Array_2[NodeConfig]{
+ 	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
  
  		val nodesPerTeam:Int = opts("-N", 1n);
  		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
@@ -188,7 +194,12 @@ public class Main {
  		val changeProb:Int = opts("-C", 100n);
  		val divOption:Int = opts("O", 0n);
  		//Jason: Migration
- 		val nItersWhitoutImprovements = opts("-iwi", problemSize*200n as Int);
+ 		var nItersWhitoutImprovements:Int;
+ 		if(problemSize*1500n > 100000){
+ 			nItersWhitoutImprovements = 100000n;
+ 		}else{
+ 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		}
  		val maxTime = opts("-mt", 0);
  		val maxIters = opts("-mi", 100000000); 
  		val maxRestarts = opts("-mr", 0n);
@@ -246,7 +257,8 @@ public class Main {
  							for(n = 0n; n < multiplicityOfNode; n++){
  								i = counter/nodesPerTeam;
  								j = counter%nodesPerTeam;
- 								if(counter%nodesPerTeam == 0n)
+ 								if(counter%nodesPerTeam == 0n && (modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER ||
+ 										modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITHOUT_MASTER))
 									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
 									 						CPLSOptionsEnum.NodeRoles.HEAD_NODE);
  								else
@@ -277,7 +289,7 @@ public class Main {
 								nodeConfigs(i,j).setMaxUpdateI(maxUpdateI);
  								//Jason: Migration
  								nodeConfigs(i,j).setItersWhitoutImprovements(nItersWhitoutImprovements as Int);
- 								nodeConfigs(i,j).setMasterHeuristic(masterHeuristic);
+ 								nodeConfigs(i,j).setModeIndicator(modeIndicator);
  								counter++;
  							}
  						}

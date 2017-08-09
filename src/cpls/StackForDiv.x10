@@ -17,7 +17,7 @@ public class StackForDiv(sz:Long){
  
  	public def push(info:State(sz)){
  		//if(numElements < stackSize){
- 			//Console.OUT.println("Se realiza insercion en el StackForDiv");
+ 			Console.OUT.println("Se realiza insercion en el StackForDiv " + here.id);
  			//Console.OUT.println("Costo: " + info.cost + "Vector: " + info.vector);
  			return monitor.atomicBlock(()=> stack.push(info));
  			

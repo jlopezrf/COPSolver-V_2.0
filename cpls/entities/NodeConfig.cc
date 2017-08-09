@@ -6,7 +6,6 @@
 #include <x10/lang/Long.h>
 #include <x10/lang/Double.h>
 #include <x10/lang/Boolean.h>
-#include <x10/lang/String.h>
 #include <x10/compiler/Synthetic.h>
 
 //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
@@ -200,8 +199,8 @@ void cpls::entities::NodeConfig::setItersWhitoutImprovements(x10_int nIntersWhit
 }
 
 //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-void cpls::entities::NodeConfig::setMasterHeuristic(::x10::lang::String* masterHeuristic) {
-    this->FMGL(masterHeuristic) = masterHeuristic;
+void cpls::entities::NodeConfig::setModeIndicator(x10_int modeIndicator) {
+    this->FMGL(modeIndicator) = modeIndicator;
 }
 
 //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
@@ -337,9 +336,8 @@ x10_int cpls::entities::NodeConfig::getItersWhitoutImprovements() {
 }
 
 //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/NodeConfig.x10"
-::x10::lang::String* cpls::entities::NodeConfig::getMasterHeuristic(
-  ) {
-    return this->FMGL(masterHeuristic);
+x10_int cpls::entities::NodeConfig::getModeIndicator() {
+    return this->FMGL(modeIndicator);
     
 }
 
@@ -373,7 +371,7 @@ void cpls::entities::NodeConfig::__fieldInitializers_cpls_entities_NodeConfig(
     this->FMGL(maxUpdateI) = ((x10_int)0);
     this->FMGL(adaptiveComm) = false;
     this->FMGL(nIntersWhitoutImprovements) = ((x10_int)0);
-    this->FMGL(masterHeuristic) = (::x10aux::class_cast_unchecked< ::x10::lang::String*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    this->FMGL(modeIndicator) = ((x10_int)0);
 }
 const ::x10aux::serialization_id_t cpls::entities::NodeConfig::_serialization_id = 
     ::x10aux::DeserializationDispatcher::addDeserializer(::cpls::entities::NodeConfig::_deserializer, ::x10aux::CLOSURE_KIND_NOT_ASYNC);
@@ -401,7 +399,7 @@ void cpls::entities::NodeConfig::_serialize_body(::x10aux::serialization_buffer&
     buf.write(this->FMGL(maxUpdateI));
     buf.write(this->FMGL(adaptiveComm));
     buf.write(this->FMGL(nIntersWhitoutImprovements));
-    buf.write(this->FMGL(masterHeuristic));
+    buf.write(this->FMGL(modeIndicator));
     
 }
 
@@ -435,7 +433,7 @@ void cpls::entities::NodeConfig::_deserialize_body(::x10aux::deserialization_buf
     FMGL(maxUpdateI) = buf.read<x10_int>();
     FMGL(adaptiveComm) = buf.read<x10_boolean>();
     FMGL(nIntersWhitoutImprovements) = buf.read<x10_int>();
-    FMGL(masterHeuristic) = buf.read< ::x10::lang::String*>();
+    FMGL(modeIndicator) = buf.read<x10_int>();
 }
 
 ::x10aux::RuntimeType cpls::entities::NodeConfig::rtt;
