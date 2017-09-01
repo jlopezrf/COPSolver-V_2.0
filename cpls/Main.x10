@@ -154,7 +154,13 @@ public class Main {
  		masterConfig.setModParams(opts("-M", 1n));
  		masterConfig.setChangeOnDiver(opts("-CD", 1n));
  		//Jason: Migration
- 		masterConfig.setItersWhitoutImprovements(opts("-iwi", (problemSize*200n) as Int));
+ 		var nItersWhitoutImprovements:Int;
+ 		if(problemSize*1500n > 100000){
+ 			nItersWhitoutImprovements = 100000n;
+ 		}else{
+ 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		}
+ 		masterConfig.setItersWhitoutImprovements(nItersWhitoutImprovements);
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -188,7 +194,12 @@ public class Main {
  		val changeProb:Int = opts("-C", 100n);
  		val divOption:Int = opts("O", 0n);
  		//Jason: Migration
- 		val nItersWhitoutImprovements = opts("-iwi", problemSize*200n as Int);
+ 		var nItersWhitoutImprovements:Int;
+ 		if(problemSize*1500n > 100000){
+ 			nItersWhitoutImprovements = 100000n;
+ 		}else{
+ 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		}
  		val maxTime = opts("-mt", 0);
  		val maxIters = opts("-mi", 100000000); 
  		val maxRestarts = opts("-mr", 0n);

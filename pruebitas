@@ -1,5 +1,0 @@
-#! /bin/bash
-#Instancias para las que Danny alcanzó 10 veces la BKS
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 3 -mt 75 -ce 0 -sl EO -v 0 -f Data/bur26d.qap > /home/jason/outputs/bur26d.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 3 -mt 75 -ce 0 -sl EO -v 0 -f Data/kra30b.qap > /home/jason/outputs/kra30b.out
-mpirun -x LM=0 -x X10_NTHREADS=2 -n 32 MainX -p QAP -tf 2 -b 3 -mt 75 -ce 0 -sl EO -v 0 -f Data/lipa80a.qap > /home/jason/outputs/lipa80a.out

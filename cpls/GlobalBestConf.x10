@@ -4,21 +4,21 @@ import cpls.entities.State;
 import cpls.util.Utils;
 import x10.util.Random;
 
-public class GlobalBestConf(sz:Long, confSize:Long){
+public class GlobalBestConf(sz:Long, globalBestConfSize:Long){
 	
 	protected var globalBestConf:Rail[State(sz)];
 	protected var bestConfEver:State(sz) = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
 	protected var bestConfEverChanged:Boolean = false;
  	protected var randomGenerator:Random;
 	
-	public def this(size:Long, confSize:Long, seed:Long){
-		property(size, confSize);
+	public def this(size:Long, globalBestConfSize:Long, seed:Long){
+		property(size, globalBestConfSize);
  		this.randomGenerator = new Random();
  		randomGenerator.setSeed(seed);
-		this.globalBestConf = new Rail[State(sz)](confSize, new State(sz, Long.MAX_VALUE, new Rail[Int](sz, 1n), -1 as Int,null));
+		this.globalBestConf = new Rail[State(sz)](globalBestConfSize, new State(sz, Long.MAX_VALUE, new Rail[Int](sz, 1n), -1 as Int,null));
  		//Console.OUT.println("Creacion del GlobalBestConf: ");
  		var variables:Rail[Int];
- 		for(var l:Int = 0n; l < confSize; l++){
+ 		for(var l:Int = 0n; l < globalBestConfSize; l++){
  			variables = new Rail[Int](sz, (i:Long) => i as Int);
  			for(k in variables.range()){
  				variables(k) = k as Int;
@@ -29,7 +29,7 @@ public class GlobalBestConf(sz:Long, confSize:Long){
  				variables(i) = variables(j); 
  				variables(j) = x;
  			}
- 			this.globalBestConf(l) = new State(sz, Long.MAX_VALUE, variables, -1 as Int,null);
+ 			this.globalBestConf(l) = new State(sz, Long.MAX_VALUE, variables as Rail[Int]{self.size == sz}, -1 as Int,null);
  			//Console.OUT.println(this.globalBestConf(i));
  		}
 	}

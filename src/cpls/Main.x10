@@ -94,6 +94,7 @@ public class Main {
 
  		var c : Long = 0;
  		var sl : Boolean = false;
+ 		Console.OUT.println("Semilla de inicio: " + inSeed);
  		if ( costFromF == 0 ) { // target cost loaded from command line parameter
  			if (tCostFromCL >= 0){ // get lower or equal to target 
  				c = tCostFromCL;

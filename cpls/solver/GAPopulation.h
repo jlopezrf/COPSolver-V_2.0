@@ -29,16 +29,16 @@ namespace x10 { namespace util {
 class Random;
 } } 
 namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
+} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
-} } 
-namespace x10 { namespace lang { 
-class String;
 } } 
 namespace cpls { namespace solver { 
 
