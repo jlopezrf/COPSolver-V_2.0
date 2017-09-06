@@ -31,7 +31,7 @@ public class NodeInstancer{
  				val problem = Main.problemDetect(problemString);
  				val problemParams = new Rail[Long](3, -1 );
  				val problemModel = Main.COPProblemModelFactory.make(opts, problem, problemParams, seed);*/
- 				if(configCPLS.getIsThereAMasterNode()){
+ 				if(configCPLS.getModeIndicator() == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
 					 if(p == Place.FIRST_PLACE){
  						refsToPlaces().initialize(configCPLS.getMasterConfig(),
 					 							configCPLS.getCPLSPoolConfig(),
@@ -190,7 +190,7 @@ public class NodeInstancer{
 			 Console.OUT.println("Tamano del pool: " + teamPool.getPoolSize());
 			 Console.OUT.println("PoolMode: " + teamPool.getPoolMode());
 			 Console.OUT.println("Minima distancia: " + teamPool.getMinDist());
- 			if(configCPLS.getIsThereAMasterNode()){
+ 			if(configCPLS.getModeIndicator() == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
  				val masterConfig = configCPLS.getMasterConfig();
  				Console.OUT.println("************************************************************************************************");
  				Console.OUT.println("************************Informacion del nodo master**************************");

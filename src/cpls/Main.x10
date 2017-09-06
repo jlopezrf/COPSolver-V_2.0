@@ -35,36 +35,34 @@ public class Main {
  		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
  		val inSeed = opts("-S", System.nanoTime());
+ 		Console.OUT.println("La semilla de inicio es: " + inSeed);
  		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams, inSeed);
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
  		
  		//***************************Mode Definition***************************//
- 		var modeIndicator:Boolean = (opts("-ce", 1n)==0n) ? false:true;
- 		val verify  = opts("-v", 0n) == 1n;
+ 		var modeIndicator:Int = opts("-ce", 0n);
+ 		val verify = opts("-v", 0n) == 1n;
  		configCPLS.setVerify(verify);
- 		configCPLS.setIsThereAMasterNode(modeIndicator);
+ 		configCPLS.setModeIndicator(modeIndicator);
  		//*********************************************************************//
  		
  		//***********************Structure Definition*************************//
  		var masterHeuristicAndOthers:Rail[String];
  		var heuristicString:String = opts("-sl", "AS");
- 		if(heuristicString.indexOf('*') != -1n){
+ 		var masterHeuristic:String = "";
+ 		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && heuristicString.indexOf('*') != -1n){
  			 masterHeuristicAndOthers = heuristicString.split("*");
 			 heuristicString = masterHeuristicAndOthers(1);
+			 masterHeuristic = masterHeuristicAndOthers(0);
 			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristicAndOthers(0));
 			 configCPLS.setMasterConfig(masterConfig);
- 		}else if(modeIndicator){
- 			Console.OUT.println("Error_Ini. Debe indicar una heurística para el nodo master");
  		}
  		
  		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
  		
- 		if(modeIndicator && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
+ 		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
  			Console.OUT.println("Error_Ini. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
- 				return;
- 		}else if(!modeIndicator && (Place.MAX_PLACES != nodeConfigs.numElems_2*nodeConfigs.numElems_1)){
- 			Console.OUT.println("Error_Ini. elseif - Inconsistencia en el numero total de nodos" + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}
  		configCPLS.setConfigNodes(nodeConfigs);
@@ -174,7 +172,7 @@ public class Main {
  		val nodesPerTeam:Int = opts("-N", 1n);
  		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
  		val numberOfTeams:Int = Place.MAX_PLACES as Int/nodesPerTeam;
- 		val modeIndicator:boolean = (opts("-ce", 1n)==0n)?false:true;
+ 		var modeIndicator:Int = opts("-ce", 0n);
  		val interTeamCommTime = opts("-I", 0);
  		val affectedPer:Double = opts("-A", 1.0);
  		val iniDelay:Long = opts("-W", 0);
@@ -239,7 +237,8 @@ public class Main {
  							for(n = 0n; n < multiplicityOfNode; n++){
  								i = counter/nodesPerTeam;
  								j = counter%nodesPerTeam;
- 								if(counter%nodesPerTeam == 0n)
+ 								if(counter%nodesPerTeam == 0n  && (modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER ||
+ 										modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITHOUT_MASTER))
 									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
 									 						CPLSOptionsEnum.NodeRoles.HEAD_NODE);
  								else
@@ -248,7 +247,7 @@ public class Main {
 								nodeConfigs(i,j).setHeuristic(whichHeuristicInt(heuristic));
 								nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
 								nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
-								if(modeIndicator){
+								if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
  									nodeConfigs(i,j).setTeamId(1n + i*nodesPerTeam);
 								}else{
  									nodeConfigs(i,j).setTeamId(i*nodesPerTeam);
