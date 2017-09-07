@@ -9,6 +9,7 @@ import cpls.measurements.GlobalStats;
 import x10.util.Random;
 import cpls.ParamManager;
 import x10.util.StringUtil;
+import cpls.CPLSOptionsEnum;
 
 public class HeuristicSolver(sz:Long){
  	protected val move = new MovePermutation(-1n, -1n);
@@ -20,6 +21,7 @@ public class HeuristicSolver(sz:Long){
 
  	public def this(sz:Long){
  		property(sz);
+ 		//this.mySolverType = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){

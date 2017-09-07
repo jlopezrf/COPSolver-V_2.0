@@ -90,8 +90,8 @@ public class NodeInstancer{
  			//Console.OUT.println("\n ");
  			if(i<10){
  				finish for (p in Place.places()) at (p) {   
- 					refsToPlaces().clear();
- 					//refsToPlaces().reInitialize();
+ 					//refsToPlaces().clear();
+ 					refsToPlaces().reInitialize();
  				}
  			}
  		}

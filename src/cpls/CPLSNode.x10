@@ -71,7 +71,7 @@ public class CPLSNode(sz:Long){
  	protected var nChangeV : Int = 0n;
  	protected var bestSent:Boolean=false;
  	protected var numberofTeams:Int;
- 	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
+ 	//protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -92,13 +92,14 @@ public class CPLSNode(sz:Long){
  		else
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
- 		semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
- 		this.random.setSeed(semilla);
+ 		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
+ 		this.random.setSeed(inSeed + here.id);
  		this.heuristicSolver.setSeed(random.nextLong());
- 		this.heuristicSolver.setSolverType(config.getHeuristic());
+ 		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
  		this.nodeConfig = config;
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
+ 
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.cplsPool = new SmartPool(sz, cplsPoolConfig);
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id + ". TeamId: " + config.getTeamId());
@@ -111,7 +112,7 @@ public class CPLSNode(sz:Long){
  
  	public def reInitialize(){
  		clear();
- 		val semill = random.nextLong();
+ 		//val semill = random.nextLong();
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		this.heuristicSolver.initVariables();
