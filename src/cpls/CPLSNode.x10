@@ -145,12 +145,10 @@ public class CPLSNode(sz:Long){
  		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
- 	 	//this.random.setSeed(seedIn);
  	 	var cost:Long = Long.MAX_VALUE;
  	 	this.interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
  	 			nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 	 		//Console.OUT.println("MsgType_1. Ingresa a realizar reset: InterTeamCommTime: " + nodeConfig.getInterTeamCommTime() + ". Nodo: " + here.id);
  	 		async{
  	 			System.sleep(nodeConfig.getIniDelay());
  	 			interTeamActivity();
@@ -198,7 +196,6 @@ public class CPLSNode(sz:Long){
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
- 			//Console.OUT.println("MsgType_0. RailCopy sin problemas.");
  		}catch(e:Exception){
  			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + ". Tamaño variables: " + this.heuristicSolver.getVariables().size);
  		}
@@ -224,9 +221,6 @@ public class CPLSNode(sz:Long){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
  				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
- 					//Console.OUT.print("MsgType_0. Nodo " + here.id + ", Maximo Iters: " + this.nodeConfig.getMaxIters() + ", finalizacion por iteraciones. Restarts: "
- 					//		+ nRestart + ", Iteraciones: " + this.nIter + "mi costo: " + bestCost + ", mis variables: ");
- 					//printVector(bestConf);
  					break;
  				}else{
  					nRestart++;
@@ -248,7 +242,6 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
- 				//Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
  
@@ -290,7 +283,6 @@ public class CPLSNode(sz:Long){
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
- 			//Console.OUT.println("MsgType_0. InitVar ejecutado");
  	}
  
  	protected def updateCosts(){

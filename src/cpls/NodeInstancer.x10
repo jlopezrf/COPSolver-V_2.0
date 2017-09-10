@@ -22,15 +22,9 @@ public class NodeInstancer{
  		val nodesPerTeam = configNodes.numElems_2;
  		val random:Random = new Random();
  		random.setSeed(configCPLS.getSeed());
- 		//Console.OUT.println("************************************************************************************************");
- 		//Console.OUT.println("****************************Inicializacion de los nodos*****************************************");
  		finish{
  			for(p in PlaceGroup.WORLD) at (p) async{
  				val seed = random.nextLong();
- 				/*val problemString = opts("-p", "QAP");
- 				val problem = Main.problemDetect(problemString);
- 				val problemParams = new Rail[Long](3, -1 );
- 				val problemModel = Main.COPProblemModelFactory.make(opts, problem, problemParams, seed);*/
  				if(configCPLS.getModeIndicator() == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
 					 if(p == Place.FIRST_PLACE){
  						refsToPlaces().initialize(configCPLS.getMasterConfig(),
@@ -51,7 +45,7 @@ public class NodeInstancer{
  				}
  				refsToPlaces().setPointersCommunication(refsToPlaces);
  				refsToPlaces().configHeuristic(configCPLS.getProblemModel(), opts);
- 				random.setSeed(seed);
+ 				//random.setSeed(seed);
  			}
  		}
  		val timesPerInstance = opts("-b", 10n);
@@ -131,9 +125,9 @@ public class NodeInstancer{
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
  				refPlaces().setStats_(targetCost, place.id as Int);
- 				/*if (verify){
+ 				if (verify){
  					refPlaces().verify_();
- 				}*/
+ 				}
  			}
  			val solWin = at(bestPlace) refPlaces().getVariables();
  			//Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
