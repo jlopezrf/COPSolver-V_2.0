@@ -82,8 +82,7 @@ public class CPLSNode(sz:Long){
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
- 	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
- 	//protected var flagsForMaster:Rail[Boolean];
+
  	protected var spreadDivConf:Boolean = false;
  	protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
@@ -110,13 +109,14 @@ public class CPLSNode(sz:Long){
  		else
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
- 		semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
- 		this.random.setSeed(semilla);
+ 		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
+ 		this.random.setSeed(inSeed + here.id);
  		this.heuristicSolver.setSeed(random.nextLong());
- 		this.heuristicSolver.setSolverType(config.getHeuristic());
+ 		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
  		this.nodeConfig = config;
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
+ 
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.globalBestConf = new GlobalBestConf(sz, config.getNumberOfTeams(), this.random.nextLong());
  			//this.divCplsPool = new SmartPool(sz, configPool);
@@ -136,7 +136,7 @@ public class CPLSNode(sz:Long){
  
  	public def reInitialize(){
  		clear();
- 		val semill = random.nextLong();
+ 		//val semill = random.nextLong();
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		this.heuristicSolver.initVariables();
@@ -169,12 +169,10 @@ public class CPLSNode(sz:Long){
  		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
- 	 	//this.random.setSeed(seedIn);
  	 	var cost:Long = Long.MAX_VALUE;
  	 	this.interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
  	 			nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 	 		//Console.OUT.println("MsgType_1. Ingresa a realizar reset: InterTeamCommTime: " + nodeConfig.getInterTeamCommTime() + ". Nodo: " + here.id);
  	 		async{
  	 			System.sleep(nodeConfig.getIniDelay());
  	 			interTeamActivity();
@@ -224,7 +222,6 @@ public class CPLSNode(sz:Long){
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
- 			//Console.OUT.println("MsgType_0. RailCopy sin problemas.");
  		}catch(e:Exception){
  			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + ". Tamaño variables: " + this.heuristicSolver.getVariables().size);
  		}
@@ -238,9 +235,6 @@ public class CPLSNode(sz:Long){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
  				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
- 					//Console.OUT.print("MsgType_0. Nodo " + here.id + ", Maximo Iters: " + this.nodeConfig.getMaxIters() + ", finalizacion por iteraciones. Restarts: "
- 					//		+ nRestart + ", Iteraciones: " + this.nIter + "mi costo: " + bestCost + ", mis variables: ");
- 					//printVector(bestConf);
  					break;
  				}else{
  					nRestart++;
@@ -264,7 +258,6 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
- 				//Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
  			//if(solForDiv){
@@ -314,7 +307,6 @@ public class CPLSNode(sz:Long){
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
- 			//Console.OUT.println("MsgType_0. InitVar ejecutado");
  	}
  
  	protected def updateCosts(){

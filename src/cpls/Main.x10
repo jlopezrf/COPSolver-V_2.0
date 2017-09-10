@@ -1,18 +1,9 @@
-//Estrategia de depuración:
-//MsgType_0: Mensajes para probar la instanciación de lo nodos y las iteraciones correspondientes a la
-//cantidad de veces que se resuelve una misma instancia. Sirve para determinar que se cumplan los ciclos,
-//para saber cuando se encuentra el valor objetivo (BKS, óptimo) y cuando no, el valor del costo final
-//y la solución correspondiente.
-//MsgType_1: Los utilizo para cuando se visualiza una falla en el caso MsgType_0; normalmente ocurre
-//que el programa se queda colgado y entonces es necesario determinar en el ciclo interno cual es el
-//punto exacto donde se queda colgado.
-
 package cpls;
 
+import cpls.ParamManager;
 import cpls.util.RandomTools;
 import cpls.util.Logger;
 import cpls.util.CPLSFileReader;
-import cpls.ParamManager;
 import cpls.problem.ProblemGenericModel;
 import cpls.problem.*;
 import cpls.entities.NodeConfig;
@@ -35,6 +26,7 @@ public class Main {
  		val problemString = opts("-p", "QAP");
  		val problem = problemDetect(problemString);
  		val inSeed = opts("-S", System.nanoTime());
+ 		Console.OUT.println("La semilla de inicio es: " + inSeed);
  		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams, inSeed);
  		configCPLS.setProblemModel(problemModel);
  		//*********************************************************************//
@@ -50,6 +42,9 @@ public class Main {
  		var masterHeuristicAndOthers:Rail[String];
  		var heuristicString:String = opts("-sl", "AS");
  		var masterHeuristic:String = "";
+
+ 		//If no heuristic for master is indicated, then the masterConfig atribute of the ConfigCPLS is empty
+
  		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && heuristicString.indexOf('*') != -1n){
  			 masterHeuristicAndOthers = heuristicString.split("*");
 			 heuristicString = masterHeuristicAndOthers(1);
@@ -187,12 +182,14 @@ public class Main {
  		val nodesPerTeam:Int = opts("-N", 1n);
  		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
  		val numberOfTeams:Int = Place.MAX_PLACES as Int/nodesPerTeam;
- 		val modeIndicator:Int = opts("-ce", 1n);
+ 		var modeIndicator:Int = opts("-ce", 0n);
+
  		val interTeamCommTime = opts("-I", 0);
  		val affectedPer:Double = opts("-A", 1.0);
  		val iniDelay:Long = opts("-W", 0);
  		val verify:Boolean = opts("-v", 0n) == 1n;
  		val changeProb:Int = opts("-C", 100n);
+
  		val divOption:Int = opts("O", 0n);
  		//Jason: Migration
  		var nItersWhitoutImprovements:Int;
@@ -201,6 +198,7 @@ public class Main {
  		}else{
  			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
  		}
+
  		val maxTime = opts("-mt", 0);
  		val maxIters = opts("-mi", 100000000); 
  		val maxRestarts = opts("-mr", 0n);
@@ -301,6 +299,10 @@ public class Main {
  		return nodeConfigs;
  	}
  
+ 	/**
+  	* This method simply convert the string description problem into a correspond Int
+  	* defined in the CPLOptionsEnum class
+  	*/
  	public static def problemDetect(problem:String):Int{
  		var problemParam:Int;	//ter
  		if (problem.equalsIgnoreCase("MSP")){
@@ -334,6 +336,9 @@ public class Main {
  		return problemParam;
  	}
  
+ 	/*This method make the initialize of the correspond problem model
+  	* In the QAPModel: Read the size, the BKS and the flow and distance matrices
+  	*/
   	public static struct COPProblemModelFactory{
  		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long], inSeed:Long){
  			val size = opts("-s", 10); //Jason: Pilas con esto tamaño por defecto !!
@@ -353,10 +358,8 @@ public class Main {
  				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
  				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
  					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
- 					val n1 = params(0) < 0 ? 1 : params(0); //Importante para esto que el tamaño del problema esté en el archivo
- 					//Console.OUT.println("Tamaño leido del problema: " + n1);
+ 					val n1 = params(0) < 0 ? 1 : params(0); //params(0) correspond to the problem size
  					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue);
- 					//problemModel.initialize(random.nextLong());
  					problemModel.loadData(inPathDataProblem);
  					return problemModel;
  				default: return new PNPModel(size);

@@ -21,9 +21,10 @@ public class ParamManager extends OptionsParser{
  				Option("S", "seed", "seed. Default 0"),
  				Option("sm", "solver_mode", "Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."),
  				//jason options
- 				Option("ce", "Control Strategy" ,"In parallel mode, with master node 2, without 1, IW 0. Default 0"),
  				//Jason: Migration
  				Option("iwi", "Iters Whitout Improvements" ,"In parallel mode, number of iters for take a new solution."),
+ 				Option("ce", "Control Strategy" ,"0-IW, 1-CW Whitout master, 2-CW with master"),
+
  				//end jason options
  				Option("sl", "solver", "Solver to use"), //Jason: Can I make that this parameter have many values?(p.e: AS,RoTS,RS/AS,RoTS,RS)
  				Option("of", "out_format", "output format: csv 0, info 1"),
