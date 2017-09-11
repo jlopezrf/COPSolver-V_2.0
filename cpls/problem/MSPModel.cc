@@ -6,16 +6,17 @@
 #include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/MSPModel.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
 void cpls::problem::MSPModel::_constructor(x10_long sz) {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/MSPModel.x10"
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
     (this)->::cpls::problem::ProblemGenericModel::_constructor(sz);
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/MSPModel.x10"
+    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/MSPModel.x10"
-    this->cpls::problem::MSPModel::__fieldInitializers_cpls_problem_MSPModel();
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
+    ::cpls::problem::MSPModel* this__1115 = this;
+    
 }
 ::cpls::problem::MSPModel* cpls::problem::MSPModel::_make(x10_long sz) {
     ::cpls::problem::MSPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::MSPModel>()) ::cpls::problem::MSPModel();
@@ -25,7 +26,7 @@ void cpls::problem::MSPModel::_constructor(x10_long sz) {
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/MSPModel.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/MSPModel.x10"
 ::cpls::problem::MSPModel* cpls::problem::MSPModel::cpls__problem__MSPModel____this__cpls__problem__MSPModel(
   ) {
     return this;

@@ -130,7 +130,7 @@ template<class TPMGL(T)> class cpls_util_Utils__closure__1 : public ::x10::lang:
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_1<x10_long, TPMGL(T)> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10:4";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10:4";
     }
 
 };
@@ -144,14 +144,14 @@ template<class TPMGL(T)> const ::x10aux::serialization_id_t cpls_util_Utils__clo
 #endif // CPLS_UTIL_UTILS__CLOSURE__1_CLOSURE
 #ifndef CPLS_UTIL_UTILS_H_GENERICS
 #define CPLS_UTIL_UTILS_H_GENERICS
-#ifndef CPLS_UTIL_UTILS_H_copy_518
-#define CPLS_UTIL_UTILS_H_copy_518
+#ifndef CPLS_UTIL_UTILS_H_copy_0
+#define CPLS_UTIL_UTILS_H_copy_0
 template<class TPMGL(T)> ::x10::lang::Rail< TPMGL(T) >* cpls::util::Utils::copy(
   ::x10::lang::Rail< TPMGL(T) >* a) {
     return ::x10::lang::Rail< TPMGL(T) >::_make((x10_long)(::x10aux::nullCheck(a)->FMGL(size)),
                                                 reinterpret_cast< ::x10::lang::Fun_0_1<x10_long, TPMGL(T)>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_1<x10_long, TPMGL(T)> >(sizeof(cpls_util_Utils__closure__1<TPMGL(T)>)))cpls_util_Utils__closure__1<TPMGL(T)>(a))));
     
 }
-#endif // CPLS_UTIL_UTILS_H_copy_518
+#endif // CPLS_UTIL_UTILS_H_copy_0
 #endif // CPLS_UTIL_UTILS_H_GENERICS
 #endif // __CPLS_UTIL_UTILS_H_NODEPS

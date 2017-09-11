@@ -91,7 +91,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//initialize(this.populationSize, super.sz);
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.sort();
- 		//printPopulation();
+ 		Console.OUT.println("Poblacion inicial: ");
+ 		printPopulation();
  	}
 
  	public def printPopulation(){

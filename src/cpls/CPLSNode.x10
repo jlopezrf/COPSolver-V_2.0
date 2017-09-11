@@ -139,7 +139,7 @@ public class CPLSNode(sz:Long){
  		//val semill = random.nextLong();
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
- 		this.heuristicSolver.initVariables();
+ 		//this.heuristicSolver.initVariables();
  		this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
  		//printVector(this.heuristicSolver.getVariables());
@@ -277,6 +277,7 @@ public class CPLSNode(sz:Long){
  			}
  			interact();
  		}
+ 		this.heuristicSolver.printPopulation();
  		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;

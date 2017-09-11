@@ -82,8 +82,7 @@ public class CPLSNode(sz:Long){
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
- 	protected var semilla:Long; //La utilizo solo para poder imprimirla junto con las variables
- 	//protected var flagsForMaster:Rail[Boolean];
+
  	protected var spreadDivConf:Boolean = false;
  	protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
@@ -110,13 +109,14 @@ public class CPLSNode(sz:Long){
  		else
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
- 		semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
- 		this.random.setSeed(semilla);
+ 		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
+ 		this.random.setSeed(inSeed + here.id);
  		this.heuristicSolver.setSeed(random.nextLong());
- 		this.heuristicSolver.setSolverType(config.getHeuristic());
+ 		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
  		this.nodeConfig = config;
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
+ 
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.globalBestConf = new GlobalBestConf(sz, config.getNumberOfTeams(), this.random.nextLong());
  			//this.divCplsPool = new SmartPool(sz, configPool);
@@ -136,10 +136,10 @@ public class CPLSNode(sz:Long){
  
  	public def reInitialize(){
  		clear();
- 		val semill = random.nextLong();
+ 		//val semill = random.nextLong();
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
- 		this.heuristicSolver.initVariables();
+ 		//this.heuristicSolver.initVariables();
  		this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
  		//printVector(this.heuristicSolver.getVariables());
@@ -169,12 +169,10 @@ public class CPLSNode(sz:Long){
  		stats.setTarget(targetCost);
  	 	sampleAccStats.setTarget(targetCost);
  	 	genAccStats.setTarget(targetCost);
- 	 	//this.random.setSeed(seedIn);
  	 	var cost:Long = Long.MAX_VALUE;
  	 	this.interTeamKill = false;
  	 	if (nodeConfig.getInterTeamCommTime() > 0 && nodeConfig.getNodesPerTeam() > 1n &&
  	 			nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 	 		//Console.OUT.println("MsgType_1. Ingresa a realizar reset: InterTeamCommTime: " + nodeConfig.getInterTeamCommTime() + ". Nodo: " + here.id);
  	 		async{
  	 			System.sleep(nodeConfig.getIniDelay());
  	 			interTeamActivity();
@@ -224,7 +222,6 @@ public class CPLSNode(sz:Long){
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
- 			//Console.OUT.println("MsgType_0. RailCopy sin problemas.");
  		}catch(e:Exception){
  			Console.OUT.println("Ocurrió una excepción en el Rail.Copy. " + "sz: " + sz  + ". Tamaño variables: " + this.heuristicSolver.getVariables().size);
  		}
@@ -238,9 +235,6 @@ public class CPLSNode(sz:Long){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
  				if(nRestart >= this.nodeConfig.getMaxRestarts() as Int){
- 					//Console.OUT.print("MsgType_0. Nodo " + here.id + ", Maximo Iters: " + this.nodeConfig.getMaxIters() + ", finalizacion por iteraciones. Restarts: "
- 					//		+ nRestart + ", Iteraciones: " + this.nIter + "mi costo: " + bestCost + ", mis variables: ");
- 					//printVector(bestConf);
  					break;
  				}else{
  					nRestart++;
@@ -264,7 +258,6 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
- 				//Console.OUT.println("Soy" + here + ". I am the winner, jejeje, así que debería empezar una matanza");
  				break;  // kill: End solving process
  			}
  			//if(solForDiv){
@@ -284,6 +277,7 @@ public class CPLSNode(sz:Long){
  			}
  			interact();
  		}
+ 		this.heuristicSolver.printPopulation();
  		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
@@ -314,7 +308,6 @@ public class CPLSNode(sz:Long){
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
- 			//Console.OUT.println("MsgType_0. InitVar ejecutado");
  	}
  
  	protected def updateCosts(){
@@ -392,35 +385,17 @@ public class CPLSNode(sz:Long){
  	} 
  
  	protected def interactForIntensification(){ 
- 		// Interaction with other places
- 		//val sz = this.heuristicSolver.getSizeProblem();
- 		//Console.OUT.println("Nodo: " + here.id + ", ingresando a interact.");
  		if(this.nodeConfig.getRol() != CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			if( this.nodeConfig.getReportI() != 0n && this.nIter % this.nodeConfig.getReportI() == 0n){
  				if(!bestSent){ 
  					val solverState = createSolverState();
  					communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
  					bestSent = true;
- 					//counterForReport++;
- 					//Jason: Reports
- 					/*if(this.counterForReport%100 == 0){
- 						Console.OUT.print("****Report******: Soy el nodo " + here.id + ". Llevo: " + this.counterForReport
- 							+ " .Reporte Costo: " +  this.bestCost
- 							+ ". Variables: ");
- 						printVector(this.bestConf);
- 					}*/
+ 					
  				}else{
  					if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
  						val solverState = createSolverState();
  						communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
- 						//counterForReport++;
- 						//Jason: Reports
- 						/*if(this.counterForReport%100 == 0){
- 							Console.OUT.print("****Report******: Soy el nodo " + here.id + ". Llevo: " + this.counterForReport
- 								+ " .Reporte Costo: " +  this.currentCost
- 								+ ". Variables: ");
- 							printVector(this.heuristicSolver.getVariables());
- 						}*/
  					}		  
  				}
  			}
@@ -432,19 +407,9 @@ public class CPLSNode(sz:Long){
  				val result = getIPVector(this.currentCost);
  				if (result) {
  					this.nChangeV++;
- 					//this.currentCost = this.heuristicSolver.costOfSolution();
  					bestSent = false;
- 					//counterForUpdate++;
- 					/*if(this.counterForUpdate%100 == 0){
- 						Console.OUT.print("****Updates******: Soy el nodo " + here.id + ". Llevo: " + this.counterForUpdate
- 							+ ". Me llego costo: " + this.currentCost + ". Variables: ");
- 						printVector(this.heuristicSolver.getVariables());
- 					}*/
  				}
  				this.nItersForUpdate = 0n;
- 				//this.isOnDiversification = false;
- 				//Console.OUT.println("Soy el nodo " + here.id + "y estoy desubicado en segundo if de interact");
- 				//Console.OUT.println("Nodo: " + here.id + ". Cambia a diversificacion");
  			}
  			// Force Restart: Inter Team Communication
  			if (this.forceRestart){
@@ -469,11 +434,6 @@ public class CPLSNode(sz:Long){
  						bestSent = false;
  					}
  				}
- 				/*if(this.nForceRestart%100 == 0){
- 					Console.OUT.print("****Restarts******: Soy el nodo " + here.id + ". Llevo: " + this.nForceRestart
- 						+ ". Arranco en: " + this.currentCost + ". Variables: ");
- 					printVector(this.heuristicSolver.getVariables());
- 				}*/
  			}
  		}
  	}
@@ -488,34 +448,21 @@ public class CPLSNode(sz:Long){
  		val refsToPlace = pointersComunication;
  		if((this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE)
  			&& this.nodeConfig.getModeIndicator() != CPLSOptionsEnum.ModeIndicator.IW){
- 			//&& !this.isOnIntensification){
  			if(!(this.heuristicSolver instanceof PopulBasedHeuristic)){
  				if(this.nIterWhitoutImprovements >= this.nodeConfig.getItersWhitoutImprovements()){
- 					val solverState = createSolverState();
- 					val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
- 					val result = at(Place(nodeConfig.getTeamId())) refsToPlace().communicateForDiversification(state);
- 					//Console.OUT.println("at CPLSNode func interactForDiversification created Solution: " + result.vector);
- 					if (result.vector != null){
- 						this.nChangeforDiv++;
- 						this.heuristicSolver.setVariables(result.vector as Valuation(sz));
- 						this.currentCost = this.heuristicSolver.costOfSolution();
- 						//updateTotStats();
- 						//this.currentCost = result.cost;
- 						bestSent = false;
- 						this.nIterWhitoutImprovements = 0n;
- 						//Jason: Se agrega esta parte para hacer el debug
- 						//if (this.nodeConfig.getReportPart()){
- 							//val eT = (System.nanoTime() - initialTime)/1e9;
- 							//var gap:Double = (state.cost-this.target)/(state.cost as Double)*100.0;
- 							//Utils.show("Explorer solucion anterior: ", state.vector);
- 							//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,state.cost,gap);
- 							//gap = (result.cost-this.target)/(result.cost as Double)*100.0;
- 							//Console.OUT.printf("%s\ttime: %5.1f s\tbest cost: %10d\tgap: %5.2f%% \n",here,eT,result.vector,gap);
- 							this.isOnDiversification = !this.isOnDiversification;
- 							//Utils.show("Explorer solucion nueva: ", result.vector);
- 							//Console.OUT.println("Costo de la nueva solucion: " + result.cost + " Gap: " + gap);
- 							//Console.OUT.println("Nodo: " + here.id + ". Cambia a intensificacion");
- 						//}
+ 					this.isOnDiversification = !this.isOnDiversification;
+ 					if(this.isOnDiversification){
+	 					val solverState = createSolverState();
+	 					val state = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
+	 					val result = at(Place(nodeConfig.getTeamId())) refsToPlace().communicateForDiversification(state);
+	 					if (result.vector != null){
+	 						this.nChangeforDiv++;
+	 						this.heuristicSolver.setVariables(result.vector as Valuation(sz));
+	 						this.currentCost = this.heuristicSolver.costOfSolution();
+	 						bestSent = false;
+	 						this.nIterWhitoutImprovements = 0n;
+	 						
+	 					}
  					}
  				}
  			}else{

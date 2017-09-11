@@ -29,16 +29,16 @@ namespace x10 { namespace util {
 class Random;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
-} } 
 namespace x10 { namespace compiler { 
 class Synthetic;
+} } 
+namespace x10 { namespace lang { 
+class String;
 } } 
 namespace cpls { namespace solver { 
 
@@ -59,6 +59,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
+    virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,
+                                ::x10::lang::Rail< x10_int >* indiv2);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*
       FMGL(cmp);
     

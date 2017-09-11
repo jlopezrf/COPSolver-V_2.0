@@ -34,15 +34,37 @@ public class GAPopulation{
  
  	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long, random:Random){
  		RailUtils.sort(mutatedSons, cmp);
- 		//var prob:Double = random.nextDouble();
- 		//if(prob> 0.5){
- 			this.population(populationSize -2) = mutatedSons(0);
- 		//}
- 		//prob = random.nextDouble();
- 		//if(prob> 0.5){
- 			this.population(populationSize -1) = mutatedSons(1);
- 		//}
+ 		var dist:Double = 0.0;
+ 		var meanDist:Double = 0.0;
+ 		var count:Int = 0n;
+ 		for(mutSon in mutatedSons){
+	 		for ( var i:Int = 0n; i < this.population.size; i++){
+	 			dist = distance(mutSon.getGenes(), population(i).getGenes());
+	 			if(dist == 0.0){
+	 				meanDist = 0.0;
+ 					break;
+	 			}
+	 			meanDist += dist;
+	 		}
+	 		meanDist = meanDist/populationSize;
+	 		if(meanDist > 0.5){
+	 			this.population(populationSize - (2 - count)) = mutSon;
+	 		}
+	 		count++;
+	 		meanDist = 0.0;
+ 		}
  	}
+ 
+ 	public def distance(indiv1:Rail[Int], indiv2:Rail[Int]):Double {
+ 		var count : Int = 0n;
+ 		val siz = indiv1.size;
+ 		for (i in 0n..(siz as Int - 1n)){
+ 			if(indiv1(i) != indiv2(i)) count++; 
+ 		}
+ 		val dist = count as Double / siz;
+ 		return dist;
+ 	}
+ 
  
  	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};
  

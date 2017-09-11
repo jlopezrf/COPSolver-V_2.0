@@ -22,6 +22,9 @@ class Random;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace x10 { namespace util { 
+class Timer;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -48,9 +51,6 @@ class Char;
 } } 
 namespace cpls { namespace util { 
 class Utils;
-} } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;

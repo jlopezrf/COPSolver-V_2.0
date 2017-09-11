@@ -31,9 +31,6 @@ class GAPopulation;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
 namespace x10 { namespace util { 
 class Random;
 } } 
@@ -42,9 +39,6 @@ class GAIndividual;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
-} } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
@@ -66,6 +60,9 @@ class Printer;
 } } 
 namespace x10 { namespace io { 
 class Console;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace lang { 
 class String;

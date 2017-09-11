@@ -121,7 +121,7 @@ public class EOSearch extends SingleSolHeuristic{
  		else 
  			newCost = this.selSecondMinConf(super.move, problemModel, currentCost);
  		swapVariables(super.move.getFirst(), super.move.getSecond()); //adSwap(maxI, minJ,csp);
- 		nSwap++;
+ 		super.nSwap++;
  		this.problemModel.executedSwap(sz, super.move.getFirst(), super.move.getSecond(), super.variables);
  		/*if(newCost < bestCost){
  			Console.OUT.print("Costo (EOSearch) in " + here + ". " + Runtime.worker() + ": " + newCost);
