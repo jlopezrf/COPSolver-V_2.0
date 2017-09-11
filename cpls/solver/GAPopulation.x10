@@ -65,7 +65,6 @@ public class GAPopulation{
  		return dist;
  	}
  
- 
  	private val cmp : (GAIndividual,GAIndividual) => Int = (a:GAIndividual, b:GAIndividual) => {return(a.getCost() - b.getCost()) as Int;};
  
  	public def sort(){

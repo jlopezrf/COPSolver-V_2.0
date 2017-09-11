@@ -19,7 +19,6 @@
 #include <x10/lang/Place.h>
 #include <x10/io/Printer.h>
 #include <x10/io/Console.h>
-#include <x10/lang/Any.h>
 #include <x10/lang/String.h>
 #include <x10/lang/Runtime.h>
 #include <x10/lang/Double.h>
@@ -200,22 +199,22 @@ void cpls::solver::GeneticAlgorithm::configHeuristic(::cpls::problem::ProblemGen
     
     //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
     this->FMGL(populationSize) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                   (__extension__ ({ static ::x10::lang::String* strLit__13808 = ::x10aux::makeStringLit("-GA_pz"); strLit__13808; })),
+                                   (__extension__ ({ static ::x10::lang::String* strLit__13807 = ::x10aux::makeStringLit("-GA_pz"); strLit__13807; })),
                                    ((((x10_int)2)) * (((x10_int) (((x10_long)::x10aux::num_hosts))))));
     
     //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
     this->FMGL(mutationRate) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                 (__extension__ ({ static ::x10::lang::String* strLit__13809 = ::x10aux::makeStringLit("-GA_mr"); strLit__13809; })),
+                                 (__extension__ ({ static ::x10::lang::String* strLit__13808 = ::x10aux::makeStringLit("-GA_mr"); strLit__13808; })),
                                  0.4f);
     
     //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
     this->FMGL(crossingOperator) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                     (__extension__ ({ static ::x10::lang::String* strLit__13810 = ::x10aux::makeStringLit("-GA_co"); strLit__13810; })),
+                                     (__extension__ ({ static ::x10::lang::String* strLit__13809 = ::x10aux::makeStringLit("-GA_co"); strLit__13809; })),
                                      ((x10_int)0));
     
     //#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
     this->FMGL(mutationOperator) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                     (__extension__ ({ static ::x10::lang::String* strLit__13811 = ::x10aux::makeStringLit("-GA_mo"); strLit__13811; })),
+                                     (__extension__ ({ static ::x10::lang::String* strLit__13810 = ::x10aux::makeStringLit("-GA_mo"); strLit__13810; })),
                                      ((x10_int)0));
 }
 
@@ -230,13 +229,6 @@ void cpls::solver::GeneticAlgorithm::initVariables() {
     
     //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
     ::x10aux::nullCheck(this->FMGL(population))->sort();
-    
-    //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__13812 = ::x10aux::makeStringLit("Poblacion inicial: "); strLit__13812; }))));
-    
-    //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-    this->printPopulation();
 }
 
 //#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
@@ -249,8 +241,8 @@ void cpls::solver::GeneticAlgorithm::printPopulation() {
              i = ((i) + (((x10_int)1)))) {
             
             //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__13813 = ::x10aux::makeStringLit("MsgType_0."); strLit__13813; })), (__extension__ ({ static ::x10::lang::String* strLit__13814 = ::x10aux::makeStringLit("Nodo: "); strLit__13814; }))), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__13815 = ::x10aux::makeStringLit(". Costo: "); strLit__13815; }))), ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->getIndividual(
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ((x10_long)(i))))->getCost()), (__extension__ ({ static ::x10::lang::String* strLit__13816 = ::x10aux::makeStringLit(". Variables: "); strLit__13816; }))));
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__13811 = ::x10aux::makeStringLit("MsgType_0."); strLit__13811; })), (__extension__ ({ static ::x10::lang::String* strLit__13812 = ::x10aux::makeStringLit("Nodo: "); strLit__13812; }))), ::x10::lang::Place::_make(::x10aux::here)), (__extension__ ({ static ::x10::lang::String* strLit__13813 = ::x10aux::makeStringLit(". Costo: "); strLit__13813; }))), ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->getIndividual(
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ((x10_long)(i))))->getCost()), (__extension__ ({ static ::x10::lang::String* strLit__13814 = ::x10aux::makeStringLit(". Variables: "); strLit__13814; }))));
             
             //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
             ::cpls::solver::GeneticAlgorithm::printVector(
@@ -272,12 +264,12 @@ void cpls::solver::GeneticAlgorithm::printVector(::x10::lang::Rail< x10_int >* v
             
             //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
             ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10aux::nullCheck(vector)->x10::lang::Rail< x10_int >::__apply(
-                                                                                      ((x10_long)(i))), (__extension__ ({ static ::x10::lang::String* strLit__13818 = ::x10aux::makeStringLit("  "); strLit__13818; }))));
+                                                                                      ((x10_long)(i))), (__extension__ ({ static ::x10::lang::String* strLit__13816 = ::x10aux::makeStringLit("  "); strLit__13816; }))));
         }
     }
     
     //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__13819 = ::x10aux::makeStringLit("\n"); strLit__13819; })));
+    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__13817 = ::x10aux::makeStringLit("\n"); strLit__13817; })));
 }
 
 //#line 112 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
@@ -332,16 +324,16 @@ void cpls::solver::GeneticAlgorithm::printVector(::x10::lang::Rail< x10_int >* v
     x10_long index2;
     
     //#line 129 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* rail__13791 =
+    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* rail__13790 =
       sons;
-    x10_long size__13792 = (x10_long)(::x10aux::nullCheck(rail__13791)->FMGL(size));
+    x10_long size__13791 = (x10_long)(::x10aux::nullCheck(rail__13790)->FMGL(size));
     {
-        x10_long idx__13793;
-        for (idx__13793 = ((x10_long)0ll); ((idx__13793) < (size__13792));
-             idx__13793 = ((idx__13793) + (((x10_long)1ll))))
+        x10_long idx__13792;
+        for (idx__13792 = ((x10_long)0ll); ((idx__13792) < (size__13791));
+             idx__13792 = ((idx__13792) + (((x10_long)1ll))))
         {
-            ::cpls::solver::GAIndividual* son__13794 = ::x10aux::nullCheck(rail__13791)->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
-                                                         idx__13793);
+            ::cpls::solver::GAIndividual* son__13793 = ::x10aux::nullCheck(rail__13790)->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                                                         idx__13792);
             
             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
             if (((::x10aux::nullCheck(this->FMGL(random))->nextFloat()) < (this->FMGL(mutationRate))))
@@ -349,19 +341,19 @@ void cpls::solver::GeneticAlgorithm::printVector(::x10::lang::Rail< x10_int >* v
                 
                 //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
                 index1 = ::x10aux::nullCheck(this->::cpls::solver::PopulBasedHeuristic::FMGL(random))->nextLong(
-                           ::x10aux::nullCheck(son__13794)->getSize());
+                           ::x10aux::nullCheck(son__13793)->getSize());
                 
                 //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
                 do {
                     
                     //#line 133 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
                     index2 = ::x10aux::nullCheck(this->::cpls::solver::PopulBasedHeuristic::FMGL(random))->nextLong(
-                               ::x10aux::nullCheck(son__13794)->getSize());
+                               ::x10aux::nullCheck(son__13793)->getSize());
                 } while ((::x10aux::struct_equals(index2,
                                                   index1)));
                 
                 //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-                ::x10aux::nullCheck(son__13794)->swap(((x10_int) (index1)),
+                ::x10aux::nullCheck(son__13793)->swap(((x10_int) (index1)),
                                                       ((x10_int) (index2)));
             }
             
@@ -410,19 +402,19 @@ void cpls::solver::GeneticAlgorithm::printVector(::x10::lang::Rail< x10_int >* v
                                                ((x10_long)(l))))->getGenes();
                 
                 //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-                ::x10::lang::Rail< x10_int >* rail__13795 =
+                ::x10::lang::Rail< x10_int >* rail__13794 =
                   variab;
-                x10_long i__2062max__13796 = (x10_long)(::x10aux::nullCheck(rail__13795)->FMGL(size));
+                x10_long i__2061max__13795 = (x10_long)(::x10aux::nullCheck(rail__13794)->FMGL(size));
                 {
-                    x10_long i__13797;
-                    for (i__13797 = ((x10_long)0ll); ((i__13797) < (i__2062max__13796));
-                         i__13797 = ((i__13797) + (((x10_long)1ll))))
+                    x10_long i__13796;
+                    for (i__13796 = ((x10_long)0ll); ((i__13796) < (i__2061max__13795));
+                         i__13796 = ((i__13796) + (((x10_long)1ll))))
                     {
-                        x10_long k__13798 = i__13797;
+                        x10_long k__13797 = i__13796;
                         
                         //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
                         ::x10aux::nullCheck(variab)->x10::lang::Rail< x10_int >::__set(
-                          k__13798, ((((x10_int)0)) + (((x10_int) (k__13798)))));
+                          k__13797, ((((x10_int)0)) + (((x10_int) (k__13797)))));
                     }
                 }
                 
@@ -557,11 +549,11 @@ x10_boolean cpls::solver::GeneticAlgorithm::tryInsertIndividual(
         //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
         ::x10aux::nullCheck(this->FMGL(population))->setIndividual(
           ((x10_long)(index)), (__extension__ ({
-              ::cpls::solver::GAIndividual* alloc__2000 =
+              ::cpls::solver::GAIndividual* alloc__1999 =
                  (new (::x10aux::alloc_z< ::cpls::solver::GAIndividual>()) ::cpls::solver::GAIndividual());
-              (alloc__2000)->::cpls::solver::GAIndividual::_constructor(
+              (alloc__1999)->::cpls::solver::GAIndividual::_constructor(
                 varables, ::x10aux::nullCheck(this->::cpls::solver::PopulBasedHeuristic::FMGL(random))->nextLong());
-              alloc__2000;
+              alloc__1999;
           }))
           );
         
@@ -611,18 +603,18 @@ x10_double cpls::solver::GeneticAlgorithm::distance(::x10::lang::Rail< x10_int >
     x10_int count = ((x10_int)0);
     
     //#line 235 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-    x10_int i__2079max__13799 = ((((x10_int) (this->FMGL(sz)))) - (((x10_int)1)));
+    x10_int i__2078max__13798 = ((((x10_int) (this->FMGL(sz)))) - (((x10_int)1)));
     {
-        x10_int i__13800;
-        for (i__13800 = ((x10_int)0); ((i__13800) <= (i__2079max__13799));
-             i__13800 = ((i__13800) + (((x10_int)1)))) {
-            x10_int i__13801 = i__13800;
+        x10_int i__13799;
+        for (i__13799 = ((x10_int)0); ((i__13799) <= (i__2078max__13798));
+             i__13799 = ((i__13799) + (((x10_int)1)))) {
+            x10_int i__13800 = i__13799;
             
             //#line 237 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
             if ((!::x10aux::struct_equals(::x10aux::nullCheck(conf1)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__13801))),
+                                            ((x10_long)(i__13800))),
                                           ::x10aux::nullCheck(conf2)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__13801))))))
+                                            ((x10_long)(i__13800))))))
             {
                 count = ((count) + (((x10_int)1)));
             }
@@ -649,11 +641,11 @@ void cpls::solver::GeneticAlgorithm::__fieldInitializers_cpls_solver_GeneticAlgo
     this->FMGL(population) = (__extension__ ({
         
         //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GeneticAlgorithm.x10"
-        ::cpls::solver::GAPopulation* alloc__2001 =  (new (::x10aux::alloc_z< ::cpls::solver::GAPopulation>()) ::cpls::solver::GAPopulation());
+        ::cpls::solver::GAPopulation* alloc__2000 =  (new (::x10aux::alloc_z< ::cpls::solver::GAPopulation>()) ::cpls::solver::GAPopulation());
         
         //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-        alloc__2001->cpls::solver::GAPopulation::__fieldInitializers_cpls_solver_GAPopulation();
-        alloc__2001;
+        alloc__2000->cpls::solver::GAPopulation::__fieldInitializers_cpls_solver_GAPopulation();
+        alloc__2000;
     }))
     ;
     this->FMGL(populationSize) = ((x10_int)0);

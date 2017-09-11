@@ -62,9 +62,6 @@ namespace x10 { namespace io {
 class Console;
 } } 
 namespace x10 { namespace lang { 
-class Any;
-} } 
-namespace x10 { namespace lang { 
 class String;
 } } 
 namespace x10 { namespace lang { 

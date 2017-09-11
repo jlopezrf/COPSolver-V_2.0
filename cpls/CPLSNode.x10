@@ -56,7 +56,7 @@ public class CPLSNode(sz:Long){
  	protected var nRestart : Int = 0n;
  	protected var nIter : Int;
  	//Jason: Migration begin
- 	protected var nIterWhitoutImprovements : Int = 0n;
+ 	//protected var nIterWhitoutImprovements : Int = 0n;
  	protected var nItersForUpdate:Int = 0n;
  	//Jason: Migration end
  	protected var nForceRestart : Int = 0n;
@@ -78,13 +78,13 @@ public class CPLSNode(sz:Long){
  	protected var forceRestart : Boolean = false;
  	/** Number time to change vector due to communication */ 
  	protected var nChangeV : Int = 0n;
- 	protected var nChangeforDiv : Int = 0n;
+ 	//protected var nChangeforDiv : Int = 0n;
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
 
- 	protected var spreadDivConf:Boolean = false;
- 	protected var isOnDiversification:Boolean = false;
+ 	//protected var spreadDivConf:Boolean = false;
+ 	//protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -195,8 +195,8 @@ public class CPLSNode(sz:Long){
  	 		bcost = cost;
  	 		if (winner){ 
  	 			//Console.OUT.println("Soy el nodo " + here + "Y soy el ganador");
- 	 			val changeForDivs = getChangeforDiv();
- 	 			setStats_(targetCost, home as Int, changeForDivs);
+ 	 			//val changeForDivs = getChangeforDiv();
+ 	 			setStats_(targetCost, home as Int, 0n);
  	 			if (nodeConfig.getVerify()){
  	 				displaySolution();
  	 				Console.OUT.println(", Solution is " + 
@@ -249,9 +249,9 @@ public class CPLSNode(sz:Long){
  			//Console.OUT.println("Debug mark: Next step after of restart-end verification (HeuristicSolver.solve)");
  			this.nIter++;
  			this.currentCost = this.heuristicSolver.search(this.currentCost, this.bestCost, this.nIter);
- 			if(!isOnDiversification){
- 				this.nItersForUpdate++;
- 			}
+ 			//if(!isOnDiversification){
+ 			//	this.nItersForUpdate++;
+ 			//}
  			//Update the best configuration found so far
  			updateCosts();
 
@@ -277,7 +277,7 @@ public class CPLSNode(sz:Long){
  			}
  			interact();
  		}
- 		this.heuristicSolver.printPopulation();
+ 		//this.heuristicSolver.printPopulation();
  		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
@@ -295,7 +295,7 @@ public class CPLSNode(sz:Long){
  		// clear Tot stats
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
- 		this.nIterWhitoutImprovements = 0n;
+ 		//this.nIterWhitoutImprovements = 0n;
  		this.nItersForUpdate = 0n;
  		//Jason: Migration end
  		this.nSwapTot = 0n;
@@ -304,7 +304,7 @@ public class CPLSNode(sz:Long){
  		this.bestSent = false;
  		this.nForceRestart = 0n;
  		this.nChangeV = 0n;
- 		this.nChangeforDiv = 0n;
+ 		//this.nChangeforDiv = 0n;
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
@@ -331,11 +331,11 @@ public class CPLSNode(sz:Long){
  				this.kill = true;
  			}
 
- 			nIterWhitoutImprovements = 0n;
+ 			//nIterWhitoutImprovements = 0n;
 
- 		}else{
+ 		}/*else{
  			this.nIterWhitoutImprovements++;
- 		}
+ 		}*/
  	}
  
  	/*********************************************This is the comunication section****************************************/
@@ -358,7 +358,7 @@ public class CPLSNode(sz:Long){
  	}
  
  	/*Jason: Se crea este método para reemplazar el mecanismo de generación de soluciones hacia los StackForDivs*/
- 	public def spreadDivConfigs():Boolean{
+ 	/*public def spreadDivConfigs():Boolean{
  		val refsToPlaces = pointersComunication;
  		val result = winnerLatchForDivs.compareAndSet(false, true);
  		if(result){
@@ -367,7 +367,7 @@ public class CPLSNode(sz:Long){
  		}else{
  			return false;
  		}
- 	}
+ 	}*/
 
  	public def kill(){
  		if (heuristicSolver != null){
@@ -381,7 +381,7 @@ public class CPLSNode(sz:Long){
  	
  	protected def interact(){
  		interactForIntensification();
- 		interactForDiversification();
+ 		//interactForDiversification();
  	} 
  
  	protected def interactForIntensification(){ 
@@ -400,7 +400,7 @@ public class CPLSNode(sz:Long){
  				}
  			}
  
- 			if( this.nodeConfig.getUpdateI() != 0n && this.nItersForUpdate % this.nodeConfig.getUpdateI() == 0n && !this.isOnDiversification){
+ 			if( this.nodeConfig.getUpdateI() != 0n && this.nItersForUpdate % this.nodeConfig.getUpdateI() == 0n){// && !this.isOnDiversification){
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
  				}
@@ -444,7 +444,7 @@ public class CPLSNode(sz:Long){
  	//El head entonces tendrá tres pool, uno para intensificación en el team (probada por Danny suficientemente), otro
  	//para almacenar los individuos que el GA propone para explorar, y otro para almacenar las soluciones que los nodos
  	//van reportando para que empiecen a hacer parte de la población del GA
- 	public def interactForDiversification(){
+ 	/*public def interactForDiversification(){
  		val refsToPlace = pointersComunication;
  		if((this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.EXPLORER_NODE || this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE)
  			&& this.nodeConfig.getModeIndicator() != CPLSOptionsEnum.ModeIndicator.IW){
@@ -531,7 +531,7 @@ public class CPLSNode(sz:Long){
  				//Console.OUT.println("Master: " + here.id + " termina de distribuir soluciones");
  			}
  		}
- 	}
+ 	}*/
  
  	public def getnIter(){
  		return this.nIter;
@@ -540,7 +540,7 @@ public class CPLSNode(sz:Long){
  	/**
  	 * Método que se ejecuta en el head cuando el explorer se estanca por IWI
  	 **/
- 	public def communicateForDiversification(info:State(sz)):State(sz){
+ 	/*public def communicateForDiversification(info:State(sz)):State(sz){
  		val refsToPlaces = pointersComunication;
  		this.teamPool.insertFromIWI(info);
  		if(this.bestConfForTeam.cost > info.cost){
@@ -564,7 +564,7 @@ public class CPLSNode(sz:Long){
  			val randomConf = new State(sz, -1, conf as Rail[Int]{self.size==sz} , -1n, null);
  			return randomConf;
  		}
- 	}
+ 	}*/
  
  	/**
  	 * Método que se ejecuta en el master cuando lo llaman porque un team mejoró
@@ -1024,14 +1024,14 @@ public class CPLSNode(sz:Long){
  		//this.counterForReport = 0n;
  		//this.counterForUpdate = 0n;
  		this.nForceRestart = 0n;
- 		this.nChangeforDiv = 0n;
+ 		//this.nChangeforDiv = 0n;
  		this.heuristicSolver.initVariables();
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
  		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  		this.newBestConfReportedForTeam = false;
- 		this.spreadDivConf = false;
+ 		//this.spreadDivConf = false;
  		this.nItersForUpdate = 0n;
- 		this.nIterWhitoutImprovements = 0n;
+ 		//this.nIterWhitoutImprovements = 0n;
  		//this.isOnIntensification = false;
  	}
  	
@@ -1041,9 +1041,9 @@ public class CPLSNode(sz:Long){
  		//Console.OUT.println("Changes for diversification: " + this.nChangeforDiv);
  	}
  
- 	public def getChangeforDiv(){
+ 	/*public def getChangeforDiv(){
  		return this.nChangeforDiv; 
- 	}
+ 	}*/
  	
  	public def verify(){
  		//val sz = this.heuristicSolver.getSizeProblem();
@@ -1077,7 +1077,7 @@ public class CPLSNode(sz:Long){
  		c.setCost(this.bestCost);
  		c.setRestart(this.nRestart);
  		c.setChange(this.nChangeV);
- 		c.setChangeForDiv(this.nChangeforDiv);
+ 		//c.setChangeForDiv(this.nChangeforDiv);
  		c.setForceRestart(this.nForceRestart);
  		val state = createSolverState();
  		c.setSState(state);

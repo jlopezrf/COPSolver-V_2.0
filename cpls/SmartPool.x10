@@ -359,7 +359,6 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 
 	 /*********************** Fin Métodos Jason *********************************/
 	 /***************************************************************************/
-	 
 	 /**
 	  *  Clear all the entries in the pool
 	  */
