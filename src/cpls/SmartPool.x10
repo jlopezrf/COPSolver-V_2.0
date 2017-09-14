@@ -59,6 +59,9 @@ public class SmartPool(sz:Long, poolSize:Int) {
 	 //var counterForReportsInvocationSamrtPool:Int = 0n;
 	 public def tryInsertConf( info : State(sz)) {
 	 	//counterForReportsInvocationSamrtPool++;
+	 	 //Console.OUT.println("Nodo " + info.place + " invocando a head en " + here.id + "Para insert en smartpool");
+	 	 //Console.OUT.println("Variables: " + info.vector);
+	 	 //Console.OUT.println("Costo: " + info.cost);
 		 monitor.atomicBlock(()=>tryInsertConf0(info));
 		 //if(counterForReportsInvocationSamrtPool%100 == 0){
 		 //	printSolutions();
