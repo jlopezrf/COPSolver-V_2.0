@@ -140,7 +140,7 @@ public class CPLSNode(sz:Long){
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		//this.heuristicSolver.initVariables();
- 		this.heuristicSolver.initVar();
+ 		//this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
  		//printVector(this.heuristicSolver.getVariables());
  	}
@@ -240,9 +240,9 @@ public class CPLSNode(sz:Long){
  					nRestart++;
  					this.heuristicSolver.initVariables(); 
  					currentCost = this.heuristicSolver.costOfSolution();
- 					//Console.OUT.println("Current cost: " + currentCost);
  					updateTotStats();
- 					bestSent = false;
+ 					restartVar();
+ 					//bestSent = false;
  					continue;
  				}
  			}
@@ -281,6 +281,11 @@ public class CPLSNode(sz:Long){
  		//Console.OUT.println("End maIN LOOP " + here.id);
  		updateTotStats();
  		return this.currentCost;
+ 	}
+ 
+ 	protected def restartVar(){
+ 		this.bestSent = false;
+ 		//this.heuristicSolver.restartVar();
  	}
  
  	protected def initVar(tCost : Long, sLow: Boolean){
@@ -330,7 +335,7 @@ public class CPLSNode(sz:Long){
  				this.targetSucc = true;
  				this.kill = true;
  			}
-
+ 			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
  			//nIterWhitoutImprovements = 0n;
 
  		}/*else{
@@ -407,7 +412,7 @@ public class CPLSNode(sz:Long){
  				val result = getIPVector(this.currentCost);
  				if (result) {
  					this.nChangeV++;
- 					bestSent = false;
+ 					restartVar();
  				}
  				this.nItersForUpdate = 0n;
  			}
@@ -423,7 +428,7 @@ public class CPLSNode(sz:Long){
  					if(this.nodeConfig.getChangeOnDiver() == 1n) {
  						this.heuristicSolver.setVariables(result().vector);
  						this.currentCost = this.heuristicSolver.costOfSolution();
- 						bestSent = false;
+ 						restartVar();
  					}
  					//if(this.modParams == 1n) //Solo para RoTS y para EOSearch
  						//processSolverState(result().solverState);
@@ -431,7 +436,7 @@ public class CPLSNode(sz:Long){
  					if(this.nodeConfig.getChangeOnDiver() == 1n) {
  						this.heuristicSolver.initVariables();
  						this.currentCost = this.heuristicSolver.costOfSolution();
- 						bestSent = false;
+ 						restartVar();
  					}
  				}
  			}
@@ -882,7 +887,7 @@ public class CPLSNode(sz:Long){
   	//		p.print("\033[2K\rDiv Pool Costs: "+s);
   	//		p.flush();
     //	}*/
-   	//return;
+   	//	return;
  	//}
  	
  	//public def tryInsertLM(info:State(sz)){

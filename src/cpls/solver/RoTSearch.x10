@@ -51,7 +51,7 @@ public class RoTSearch extends SingleSolHeuristic{
 	 */
 	public def initVar(){
 		super.initVar();
-		
+		this.tabuList.clear();
 		if (this.tabuDurationFactorUS < 0){
 			this.tabuDurationFactor = -this.tabuDurationFactorUS;
 		} else {
@@ -75,7 +75,7 @@ public class RoTSearch extends SingleSolHeuristic{
 			}
 	}
 	
-	public def search(problemModel:ProblemGenericModel, currentCost:Long, bestCost:Long, nIter:Int) : Long{
+	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
 		var i : Long;
 		var j : Long;
 		
@@ -88,10 +88,11 @@ public class RoTSearch extends SingleSolHeuristic{
 		
 		//Utils.show("Solution",cop_.getVariables());
 		
-		for (i = 0; i < super.problemModel.size - 1; i++)
+		for (i = 0; i < super.problemModel.size - 1; i++){
 			for (j = i + 1; j < super.problemModel.size; j++) {
 				
 				newCost = problemModel.costIfSwap(currentCost,i,j);
+ 				//Console.OUT.println("Costifswap in RoTS: " + newCost);
 				delta = newCost - currentCost;
 				
 				this.autorized =
@@ -131,6 +132,7 @@ public class RoTSearch extends SingleSolHeuristic{
 						alreadyAspired = true;
 				}
 			}
+		}
 		
 		
 		if(move.getFirst() == Long.MAX_VALUE){
@@ -138,12 +140,15 @@ public class RoTSearch extends SingleSolHeuristic{
 			return currentCost;
 		}else{
 			//Console.OUT.println("swap pos "+move.getFirst()+" "+move.getSecond());
-			
-			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
-			nSwap++;
+			//Console.OUT.println("move.getFirst(): " + move.getFirst() + ". move.getSecond(): " + move.getSecond());
+ 			//Utils.show("Variables antes del swapVariables", super.variables);
+ 			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
+  			//Utils.show("Variables antes del swapVariables", super.variables);
+ 			nSwap++;
 			//val sz =  super.problemModel.size;
+ 			//Utils.show("Variables antes del executedSwap", super.variables);
 			super.problemModel.executedSwap(sz, move.getFirst(), move.getSecond(), super.variables  as Valuation(sz));
-			
+ 			//Utils.show("Variables despues del executedSwap", super.variables);
 			/* forbid reverse move for a random number of iterations */
 			
 			//tabuList( move.getFirst(), cop_.variables(move.getSecond())) = this.nIter + (cube() * this.tabuDuration) as Int;
@@ -159,14 +164,8 @@ public class RoTSearch extends SingleSolHeuristic{
 			
 			//Utils.show("after swap",cop_.getVariables());
 			// detect loc min
-			if (minDelta >= 0)
-				onLocMin();
- 			val v = currentCost + minDelta;
- 			/*if(v < currentCost){
- 				Console.OUT.print("Costo (RoTSearch): " + v);
- 				Utils.show(". Con variables: " ,super.variables);
- 				//Console.OUT.print("\n");
- 			}*/
+			//if (minDelta >= 0)
+			//	onLocMin();
  			
 			return currentCost + minDelta;
 		}
@@ -225,15 +224,19 @@ public class RoTSearch extends SingleSolHeuristic{
 			this.aspiration = (this.aspirationFactor * super.problemModel.size * super.problemModel.size) as Int;
 		}
 	} 	 
+
+ 	//public def restartVar(){
+ 	//	this.tabuList.clear();
+ 	//}
 	
 	/**
 	 *  Interact when Loc min is reached
 	 */
-	private def onLocMin(){
+	//private def onLocMin(){
 		// communicate Local Minimum
 		// solver.communicateLM( this.currentCost, cop.getVariables() as Valuation(sz));
-		val solverState = this.createSolverState();
-		//Jason: Line of interaction -> this.solver.communicateLM( new State(sz, this.currentCost, cop.getVariables() as Valuation(sz), here.id as Int, solverState) );
-	}
+		//val solverState = this.createSolverState();
+		//this.solver.communicateLM( new State(sz, this.currentCost, cop.getVariables() as Valuation(sz), here.id as Int, solverState) );
+	//}
 }
 public type RoTSearch(s:Long)=RoTSearch{self.sz==s};

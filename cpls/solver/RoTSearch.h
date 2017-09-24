@@ -55,14 +55,14 @@ class ParamManager;
 namespace x10 { namespace util { 
 class OptionsParser;
 } } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
 namespace x10 { namespace util { 
 class Random;
 } } 
 namespace x10 { namespace lang { 
 class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
 } } 
 namespace cpls { namespace util { 
 class MovePermutation;
@@ -87,8 +87,6 @@ namespace cpls { namespace solver {
 class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     public:
     RTT_H_DECLS_CLASS
-    
-    using ::cpls::solver::HeuristicSolver::search;
     
     x10_double FMGL(tabuDurationFactorUS);
     
@@ -129,14 +127,12 @@ class RoTSearch : public ::cpls::solver::SingleSolHeuristic   {
     x10_int FMGL(tabuDurationUpper);
     
     virtual void initVar();
-    virtual x10_long search(::cpls::problem::ProblemGenericModel* problemModel,
-                            x10_long currentCost, x10_long bestCost,
+    virtual x10_long search(x10_long currentCost, x10_long bestCost,
                             x10_int nIter);
     virtual x10_int randomInterval(x10_int low, x10_int up);
     x10_double cube();
     virtual ::x10::lang::Rail< x10_int >* createSolverState();
     virtual void processSolverState(::x10::lang::Rail< x10_int >* state);
-    void onLocMin();
     virtual ::cpls::solver::RoTSearch* cpls__solver__RoTSearch____this__cpls__solver__RoTSearch(
       );
     virtual void __fieldInitializers_cpls_solver_RoTSearch(

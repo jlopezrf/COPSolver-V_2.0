@@ -197,6 +197,7 @@ public class NodeInstancer{
  				val masterConfig = configCPLS.getMasterConfig();
  				Console.OUT.println("************************************************************************************************");
  				Console.OUT.println("************************Informacion del nodo master**************************");
+ 				Console.OUT.println("Heuristica: " + masterConfig.getHeuristic());
  				Console.OUT.println("Report time: " + masterConfig.getReportI());
  				Console.OUT.println("Update time: " + masterConfig.getUpdateI());
  				Console.OUT.println("MaxUpdate time: " + masterConfig.getMaxUpdateI());
@@ -251,7 +252,7 @@ public class NodeInstancer{
  		 	Console.OUT.println("UpdateTime: " + conf.getUpdateI());
  		 	Console.OUT.println("MaxUpdateI?: " + conf.getMaxUpdateI());
  		 	Console.OUT.println("NodeRole: " + conf.getRol());
- 		 	Console.OUT.println("MasterHeuristic: " + conf.getModeIndicator());
+ 		 	Console.OUT.println("ModeIndicator: " + conf.getModeIndicator());
  		 	/**********************************************/
  		 }
 		 

@@ -112,6 +112,10 @@ public class HeuristicSolver(sz:Long){
   		return -1n;
   	}
  
+ 	public def restartVar(){
+ 
+ 	}
+ 
  	public def initVariables(){
  		this.variables = this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
  	}

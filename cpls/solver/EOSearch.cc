@@ -13,6 +13,9 @@
 #include <cpls/problem/ProblemGenericModel.h>
 #include <cpls/ParamManager.h>
 #include <x10/util/OptionsParser.h>
+#include <x10/io/Printer.h>
+#include <x10/io/Console.h>
+#include <x10/lang/Any.h>
 #include <x10/util/Random.h>
 #include <x10/lang/Boolean.h>
 #include <cpls/util/MovePermutation.h>
@@ -333,17 +336,17 @@ void cpls::solver::EOSearch::configHeuristic(::cpls::problem::ProblemGenericMode
     
     //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(tauUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__12920 = ::x10aux::makeStringLit("-EO_t"); strLit__12920; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__13167 = ::x10aux::makeStringLit("-EO_t"); strLit__13167; })),
                                ((1.0) + (((1.0) / (::x10::lang::MathNatives::log(((x10_double) (::x10aux::nullCheck(problemModel)->FMGL(size)))))))));
     
     //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(pdfUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__12921 = ::x10aux::makeStringLit("-EO_p"); strLit__12921; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__13168 = ::x10aux::makeStringLit("-EO_p"); strLit__13168; })),
                                ((x10_int)-1));
     
     //#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(selSecond) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                              (__extension__ ({ static ::x10::lang::String* strLit__12922 = ::x10aux::makeStringLit("-EO_ss"); strLit__12922; })),
+                              (__extension__ ({ static ::x10::lang::String* strLit__13169 = ::x10aux::makeStringLit("-EO_ss"); strLit__13169; })),
                               ((x10_int)1));
 }
 
@@ -354,279 +357,283 @@ void cpls::solver::EOSearch::initVar() {
     ::cpls::solver::SingleSolHeuristic::initVar();
     
     //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__13170 = ::x10aux::makeStringLit("Se llega al initvar de EOSearch"); strLit__13170; }))));
+    
+    //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(pdfUserSel), ((x10_int)-1))))
     {
         
-        //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->FMGL(pdfS) = ((::x10aux::nullCheck(this->FMGL(random))->nextInt(
                                ((x10_int)2))) + (((x10_int)1)));
     } else {
         
-        //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->FMGL(pdfS) = this->FMGL(pdfUserSel);
     }
     
-    //#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 81 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(tauUserSel), -1.0)))
     {
         
-        //#line 81 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)1))))
         {
             
-            //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->FMGL(tau) = ((this->FMGL(powDown)) + (((((this->FMGL(powUp)) - (this->FMGL(powDown)))) * (::x10aux::nullCheck(this->FMGL(random))->nextDouble()))));
         } else 
-        //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)2))))
         {
             
-            //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->FMGL(tau) = ((this->FMGL(expDown)) + (((((this->FMGL(expUp)) - (this->FMGL(expDown)))) * (::x10aux::nullCheck(this->FMGL(random))->nextDouble()))));
         }
         
     } else {
         
-        //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->FMGL(tau) = this->FMGL(tauUserSel);
     }
     
-    //#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)3))))
     {
         
-        //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->initPDF(this->FMGL(gammaFnc));
     } else 
-    //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)2))))
     {
         
-        //#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->initPDF(this->FMGL(expFnc));
     } else {
         
-        //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->initPDF(this->FMGL(powFnc));
     }
     
 }
 
-//#line 97 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 void cpls::solver::EOSearch::initPDF(::x10::lang::Fun_0_2<x10_double, x10_long, x10_double>* fnc) {
     
-    //#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_double sum = 0.0;
     
-    //#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_double y = 0.0;
     
-    //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     {
         x10_int x;
         for (x = ((x10_int)1); ((((x10_long)(x))) <= (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
              x = ((x) + (((x10_int)1)))) {
             
-            //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             y = ::x10::lang::Fun_0_2<x10_double, x10_long, x10_double>::__apply(::x10aux::nullCheck(fnc), 
               this->FMGL(tau), ((x10_long)(x)));
             
-            //#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             ::x10aux::nullCheck(this->FMGL(pdf))->x10::lang::Rail< x10_double >::__set(
               ((x10_long)(x)), y);
             
-            //#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             sum = ((sum) + (y));
         }
     }
     
-    //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     {
         x10_int x;
         for (x = ((x10_int)1); ((((x10_long)(x))) <= (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
              x = ((x) + (((x10_int)1)))) {
             
-            //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-            ::x10::lang::Rail< x10_double >* a__12913 = this->FMGL(pdf);
-            x10_long i__12914 = ((x10_long)(x));
-            x10_double r__12915 = ((::x10aux::nullCheck(a__12913)->x10::lang::Rail< x10_double >::__apply(
-                                      i__12914)) / (sum));
-            ::x10aux::nullCheck(a__12913)->x10::lang::Rail< x10_double >::__set(
-              i__12914, r__12915);
+            //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            ::x10::lang::Rail< x10_double >* a__13160 = this->FMGL(pdf);
+            x10_long i__13161 = ((x10_long)(x));
+            x10_double r__13162 = ((::x10aux::nullCheck(a__13160)->x10::lang::Rail< x10_double >::__apply(
+                                      i__13161)) / (sum));
+            ::x10aux::nullCheck(a__13160)->x10::lang::Rail< x10_double >::__set(
+              i__13161, r__13162);
         }
     }
     
 }
 
-//#line 115 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 x10_long cpls::solver::EOSearch::search(x10_long currentCost,
                                         x10_long bestCost,
                                         x10_int nIter) {
     
-    //#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 117 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->selFirstVar(this->FMGL(move), this->FMGL(problemModel));
     
-    //#line 118 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 119 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long newCost = currentCost;
     
-    //#line 119 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(this->FMGL(selSecond), ((x10_int)0))))
     {
         
-        //#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 121 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         newCost = this->selSecondRandom(this->::cpls::solver::SingleSolHeuristic::FMGL(move),
                                         this->FMGL(problemModel),
                                         currentCost);
     } else {
         
-        //#line 122 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 123 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         newCost = this->selSecondMinConf(this->::cpls::solver::SingleSolHeuristic::FMGL(move),
                                          this->FMGL(problemModel),
                                          currentCost);
     }
     
-    //#line 123 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 124 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->swapVariables(this->::cpls::solver::SingleSolHeuristic::FMGL(move)->getFirst(),
                         this->::cpls::solver::SingleSolHeuristic::FMGL(move)->getSecond());
     
-    //#line 124 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 125 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->::cpls::solver::SingleSolHeuristic::FMGL(nSwap) =
       ((this->::cpls::solver::SingleSolHeuristic::FMGL(nSwap)) + (((x10_int)1)));
     
-    //#line 125 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 126 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     ::x10aux::nullCheck(this->FMGL(problemModel))->executedSwap(
       this->FMGL(sz), this->::cpls::solver::SingleSolHeuristic::FMGL(move)->getFirst(),
       this->::cpls::solver::SingleSolHeuristic::FMGL(move)->getSecond(),
       this->::cpls::solver::SingleSolHeuristic::FMGL(variables));
     
-    //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     return newCost;
     
 }
 
-//#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 x10_int cpls::solver::EOSearch::pdfPick() {
     
-    //#line 136 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_double p = ::x10aux::nullCheck(this->FMGL(random))->nextDouble();
     
-    //#line 137 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_double fx;
     
-    //#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_int x = ((x10_int)0);
     
-    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     while (((fx = ::x10aux::nullCheck(this->FMGL(pdf))->x10::lang::Rail< x10_double >::__apply(
                     ((x10_long)(x = ((x) + (((x10_int)1))))))) < (p)))
     {
         
-        //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         p = ((p) - (fx));
     }
     
-    //#line 143 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     return ((x) - (((x10_int)1)));
     
 }
 
-//#line 146 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 void cpls::solver::EOSearch::selFirstVar(::cpls::util::MovePermutation* move,
                                          ::cpls::problem::ProblemGenericModel* problemModel) {
     
-    //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long i = ((x10_long)(((x10_int)-1)));
     
-    //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long cost;
     
-    //#line 149 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 150 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long selIndex = ((x10_long)0ll);
     
-    //#line 150 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 151 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_boolean locMin = true;
     
-    //#line 151 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     while (((((x10_ulong) (i = ::x10aux::nullCheck(problemModel)->nextI(
                                  i)))) < (((x10_ulong) (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size))))))
     {
         
-        //#line 152 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 153 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         cost = ::x10aux::nullCheck(problemModel)->costOnVariable(
                  i);
         
-        //#line 156 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 157 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         ::x10aux::nullCheck(this->FMGL(fit))->x10::lang::Rail< x10_long >::__set(
           i, ((((cost) << (0x3f & (x10_int)(((x10_long)10ll))))) | (i)));
         
-        //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if (((cost) > (((x10_long)0ll)))) {
             
-            //#line 161 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 162 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             locMin = false;
         }
         
     }
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::lang::Rail< x10_long >* a__12918 = this->FMGL(fit);
-    ::x10::lang::Fun_0_2<x10_long, x10_long, x10_int>* cmp__12919 =
+    ::x10::lang::Rail< x10_long >* a__13165 = this->FMGL(fit);
+    ::x10::lang::Fun_0_2<x10_long, x10_long, x10_int>* cmp__13166 =
       this->FMGL(cmp);
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::util::RailUtils::qsort< x10_long >(a__12918, ((x10_long)0ll),
-                                              (((x10_long)(::x10aux::nullCheck(a__12918)->FMGL(size))) - (((x10_long)1ll))),
-                                              cmp__12919);
+    ::x10::util::RailUtils::qsort< x10_long >(a__13165, ((x10_long)0ll),
+                                              (((x10_long)(::x10aux::nullCheck(a__13165)->FMGL(size))) - (((x10_long)1ll))),
+                                              cmp__13166);
     
-    //#line 165 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 166 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if (locMin) {
-        ::cpls::solver::EOSearch* this__12917 = this;
+        ::cpls::solver::EOSearch* this__13164 = this;
         
-        //#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-        ::x10::lang::Rail< x10_int >* solverState__12916 =
-          ::x10aux::nullCheck(this__12917)->createSolverState();
+        //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        ::x10::lang::Rail< x10_int >* solverState__13163 =
+          ::x10aux::nullCheck(this__13164)->createSolverState();
         
     }
     
-    //#line 168 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_int index = this->pdfPick();
     
-    //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long sVar = ((::x10aux::nullCheck(this->FMGL(fit))->x10::lang::Rail< x10_long >::__apply(
                         ((x10_long)(index)))) & (((x10_long)1023ll)));
     
-    //#line 170 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 171 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long sCost = ((::x10aux::nullCheck(this->FMGL(fit))->x10::lang::Rail< x10_long >::__apply(
                          ((x10_long)(index)))) >> (0x3f & (x10_int)(((x10_long)10ll))));
     
-    //#line 172 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 173 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_int nSameFit = ((x10_int)0);
     
-    //#line 173 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     {
         x10_int k;
         for (k = ((x10_int)0); ((((x10_long)(k))) < (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
              k = ((k) + (((x10_int)1)))) {
             
-            //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             x10_long cCost = ((::x10aux::nullCheck(this->FMGL(fit))->x10::lang::Rail< x10_long >::__apply(
                                  ((x10_long)(k)))) >> (0x3f & (x10_int)(((x10_long)10ll))));
             
-            //#line 176 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             if (((cCost) < (sCost))) {
                 
-                //#line 177 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 178 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 break;
             }
             
-            //#line 179 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             if (((::x10aux::struct_equals(cCost, sCost)) &&
                 (::x10aux::struct_equals(::x10aux::nullCheck(this->FMGL(random))->nextInt(
                                            nSameFit = ((nSameFit) + (((x10_int)1)))),
                                          ((x10_int)0)))))
             {
                 
-                //#line 180 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 181 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 selIndex = ((::x10aux::nullCheck(this->FMGL(fit))->x10::lang::Rail< x10_long >::__apply(
                                ((x10_long)(k)))) & (((x10_long)1023ll)));
             }
@@ -634,192 +641,192 @@ void cpls::solver::EOSearch::selFirstVar(::cpls::util::MovePermutation* move,
         }
     }
     
-    //#line 183 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 184 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(move)->setFirst(selIndex);
 }
 
-//#line 193 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 x10_long cpls::solver::EOSearch::selSecondMinConf(::cpls::util::MovePermutation* move,
                                                   ::cpls::problem::ProblemGenericModel* problemModel,
                                                   x10_long currentCost) {
     
-    //#line 194 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long j;
     
-    //#line 195 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long cost;
     
-    //#line 196 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long second = ((x10_long)0ll);
     
-    //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_int nSameMin = ((x10_int)0);
     
-    //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long minCost = (x10_long)0x7fffffffffffffffLL;
     
-    //#line 199 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 200 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long first = this->FMGL(move)->getFirst();
     
-    //#line 200 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 201 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     {
         for (j = ((x10_long)0ll); ((j) < (::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)));
              j = ((j) + (((x10_long)1ll)))) {
             
-            //#line 201 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 202 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             if ((::x10aux::struct_equals(first, j))) {
                 continue;
             }
             
-            //#line 202 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             cost = ::x10aux::nullCheck(problemModel)->costIfSwap(
                      currentCost, j, first);
             
-            //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 204 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             if (((cost) < (minCost))) {
                 
-                //#line 204 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 minCost = cost;
                 
-                //#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 206 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 second = j;
                 
-                //#line 206 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 207 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 nSameMin = ((x10_int)1);
             } else 
-            //#line 207 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 208 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             if (((::x10aux::struct_equals(cost, minCost)) &&
                 (::x10aux::struct_equals(::x10aux::nullCheck(this->FMGL(random))->nextInt(
                                            nSameMin = ((nSameMin) + (((x10_int)1)))),
                                          ((x10_int)0)))))
             {
                 
-                //#line 208 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+                //#line 209 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
                 second = j;
             }
             
         }
     }
     
-    //#line 211 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(move)->setSecond(second);
     
-    //#line 212 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 213 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     return minCost;
     
 }
 
-//#line 217 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 x10_long cpls::solver::EOSearch::selSecondRandom(::cpls::util::MovePermutation* move,
                                                  ::cpls::problem::ProblemGenericModel* problemModel,
                                                  x10_long currentCost) {
     
-    //#line 218 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long randomJ = ::x10aux::nullCheck(this->FMGL(random))->nextLong(
                          ::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size));
     
-    //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 220 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_long newCost = ::x10aux::nullCheck(problemModel)->costIfSwap(
                          currentCost, randomJ, this->FMGL(move)->getFirst());
     
-    //#line 220 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(move)->setSecond(randomJ);
     
-    //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 222 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     return newCost;
     
 }
 
-//#line 227 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 228 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 void cpls::solver::EOSearch::onLocMin() {
     
-    //#line 230 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     ::x10::lang::Rail< x10_int >* solverState = this->createSolverState();
     
 }
 
-//#line 241 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 242 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 ::x10::lang::Rail< x10_int >* cpls::solver::EOSearch::createSolverState(
   ) {
     
-    //#line 242 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 243 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     ::x10::lang::Rail< x10_int >* eoState = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
                                                                                 ((x10_int)-1));
     
-    //#line 243 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 244 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     eoState->x10::lang::Rail< x10_int >::__set(((x10_long)0ll),
                                                this->::cpls::solver::SingleSolHeuristic::FMGL(mySolverType));
     
-    //#line 244 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 245 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     eoState->x10::lang::Rail< x10_int >::__set(((x10_long)1ll),
                                                this->FMGL(pdfS));
     
-    //#line 245 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 246 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     eoState->x10::lang::Rail< x10_int >::__set(((x10_long)2ll),
                                                ::x10::lang::DoubleNatives::toInt(((this->FMGL(tau)) * (1000.0))));
     
-    //#line 246 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     return eoState;
     
 }
 
-//#line 253 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+//#line 254 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
 void cpls::solver::EOSearch::processSolverState(::x10::lang::Rail< x10_int >* state) {
     
-    //#line 255 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 256 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     x10_int inSolverType = ::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                              ((x10_long)0ll));
     
-    //#line 256 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+    //#line 257 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if ((::x10aux::struct_equals(inSolverType, this->::cpls::solver::SingleSolHeuristic::FMGL(mySolverType))))
     {
         
-        //#line 257 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 258 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         x10_int inpdf = ::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                           ((x10_long)1ll));
         
-        //#line 258 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 259 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         x10_double intau = ((((x10_double) (::x10aux::nullCheck(state)->x10::lang::Rail< x10_int >::__apply(
                                               ((x10_long)2ll))))) / (1000.0));
         
-        //#line 259 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 260 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), inpdf)))
         {
             
-            //#line 260 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 261 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->FMGL(tau) = intau;
         } else 
-        //#line 262 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)1))))
         {
             
-            //#line 263 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 264 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->FMGL(tau) = ((this->FMGL(powDown)) + (((((this->FMGL(powUp)) - (this->FMGL(powDown)))) * (::x10aux::nullCheck(this->FMGL(random))->nextDouble()))));
         } else 
-        //#line 264 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 265 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)2))))
         {
             
-            //#line 265 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 266 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->FMGL(tau) = ((this->FMGL(expDown)) + (((((this->FMGL(expUp)) - (this->FMGL(expDown)))) * (::x10aux::nullCheck(this->FMGL(random))->nextDouble()))));
         }
         
-        //#line 268 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 269 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)3))))
         {
             
-            //#line 269 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 270 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->initPDF(this->FMGL(gammaFnc));
         } else 
-        //#line 270 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 271 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         if ((::x10aux::struct_equals(this->FMGL(pdfS), ((x10_int)2))))
         {
             
-            //#line 271 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+            //#line 272 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
             this->initPDF(this->FMGL(expFnc));
         }
         
-        //#line 272 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
+        //#line 273 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
         this->initPDF(this->FMGL(powFnc));
     }
     

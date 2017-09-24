@@ -136,7 +136,7 @@ public class AdaptiveSearch extends SingleSolHeuristic{
  		return returnCost;
  	}
 
- 	protected def restartVar(){
+ 	public def restartVar(){
  		//super.restartVar();
  		mark.clear();
  	}
