@@ -131,7 +131,7 @@ public class CPLSNode(sz:Long){
  			//}
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		printConfig();
+ 		//printConfig();
  	}
  
  	public def reInitialize(){
@@ -278,7 +278,7 @@ public class CPLSNode(sz:Long){
  			interact();
  		}
  		//this.heuristicSolver.printPopulation();
- 		Console.OUT.println("Saliendo para el finish " + here);
+ 		//Console.OUT.println("Saliendo para el finish " + here);
  		updateTotStats();
  		return this.currentCost;
  	}
@@ -335,7 +335,7 @@ public class CPLSNode(sz:Long){
  					||(!this.strictLow && this.bestCost <= this.target)){
  				this.targetSucc = true;
  				this.kill = true;
- 				Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
+ 				//Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
  			//nIterWhitoutImprovements = 0n;
@@ -405,7 +405,7 @@ public class CPLSNode(sz:Long){
  						communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
  					}		  
  				}
- 				Console.OUT.println("Ingresa a Report " + here + "nIters: " + nIter);
+ 				//Console.OUT.println("Ingresa a Report " + here + "nIters: " + nIter);
  			}
  
  			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n){// && !this.isOnDiversification){
@@ -418,7 +418,7 @@ public class CPLSNode(sz:Long){
  					restartVar();
  				}
  				this.nItersForUpdate = 0n;
- 				Console.OUT.println("Ingresa a Update " + here);
+ 				//Console.OUT.println("Ingresa a Update " + here);
  			}
  			// Force Restart: Inter Team Communication
  			if (this.forceRestart){
