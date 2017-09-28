@@ -72,7 +72,7 @@ public class EOSearch extends SingleSolHeuristic{
   	*/
  	public def initVar(){
  		super.initVar();
- 		Console.OUT.println("Se llega al initvar de EOSearch");
+ 		//Console.OUT.println("Se llega al initvar de EOSearch");
  		if ( this.pdfUserSel == -1n ) { // Select a random PDF
  			this.pdfS = random.nextInt(2n)+1n;
  		}else

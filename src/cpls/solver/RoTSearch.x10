@@ -50,6 +50,7 @@ public class RoTSearch extends SingleSolHeuristic{
 	 *  Executed once before the main solving loop
 	 */
 	public def initVar(){
+ 		//Console.OUT.println("InitVar ejecutado en " + here);
 		super.initVar();
 		this.tabuList.clear();
 		if (this.tabuDurationFactorUS < 0){

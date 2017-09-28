@@ -131,7 +131,7 @@ public class CPLSNode(sz:Long){
  			//}
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		//printConfig();
+ 		printConfig();
  	}
  
  	public def reInitialize(){
@@ -278,7 +278,7 @@ public class CPLSNode(sz:Long){
  			interact();
  		}
  		//this.heuristicSolver.printPopulation();
- 		//Console.OUT.println("End maIN LOOP " + here.id);
+ 		Console.OUT.println("Saliendo para el finish " + here);
  		updateTotStats();
  		return this.currentCost;
  	}
@@ -318,6 +318,7 @@ public class CPLSNode(sz:Long){
  	protected def updateCosts(){
  		//val sz = this.heuristicSolver.getSizeProblem();
  		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
+ 			//Console.OUT.println("Por lo menos una vez se supera " + here);
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
  			this.bestCost = this.currentCost;
  
@@ -334,6 +335,7 @@ public class CPLSNode(sz:Long){
  					||(!this.strictLow && this.bestCost <= this.target)){
  				this.targetSucc = true;
  				this.kill = true;
+ 				Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
  			//nIterWhitoutImprovements = 0n;
@@ -403,9 +405,10 @@ public class CPLSNode(sz:Long){
  						communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
  					}		  
  				}
+ 				Console.OUT.println("Ingresa a Report " + here + "nIters: " + nIter);
  			}
  
- 			if( this.nodeConfig.getUpdateI() != 0n && this.nItersForUpdate % this.nodeConfig.getUpdateI() == 0n){// && !this.isOnDiversification){
+ 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI() == 0n){// && !this.isOnDiversification){
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
  				}
@@ -415,10 +418,12 @@ public class CPLSNode(sz:Long){
  					restartVar();
  				}
  				this.nItersForUpdate = 0n;
+ 				Console.OUT.println("Ingresa a Update " + here);
  			}
  			// Force Restart: Inter Team Communication
  			if (this.forceRestart){
  				//restart
+ 				Console.OUT.println("Entra en el forceRestart de interactForIntensification() " + here);
  				Logger.info(()=>{"   AdaptiveSearch : force Restart"});
  				this.forceRestart = false;
  				this.nForceRestart++;
@@ -709,7 +714,7 @@ public class CPLSNode(sz:Long){
  		val placeid = here.id as Int;
  		if ( Place(nodeConfig.getTeamId()) == here ){
  			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
- 			this.tryInsertConf(info);
+ 			async this.tryInsertConf(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
  		}else{
  			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
  			at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConf( info );
@@ -1180,26 +1185,28 @@ public class CPLSNode(sz:Long){
  		stats.printChangesForDivs();
  	}
  
- 	/*public def printConfig(){
+ 	public def printConfig(){
  		Console.OUT.println("************************************************************************************************");
  		Console.OUT.println("****************Informacion comun a todos los nodos*************************");
- 		Console.OUT.println("Numero de equipos: " + this.nodeConfig.getNumberOfTeams());
- 		Console.OUT.println("Nodos por equipo: " + this.nodeConfig.getNodesPerTeam());
- 		Console.OUT.println("InterTeamCommTime: " + this.nodeConfig.getInterTeamCommTime());
- 		Console.OUT.println("AffectedPer: " + this.nodeConfig.getAffectedPer());
- 		Console.OUT.println("IniDelay (InterTeamCommTime): " + this.nodeConfig.getIniDelay());
- 		Console.OUT.println("Verify: " + this.nodeConfig.getVerify());
- 		Console.OUT.println("ChangeProb?: " + this.nodeConfig.getChangeProb());
- 		Console.OUT.println("DiversificationOption?: " + this.nodeConfig.getDiversificationOption());
- 		Console.OUT.println("Tiempo maximo de ejecucion: " + this.nodeConfig.getMaxTime());
- 		Console.OUT.println("Maximo numero de iteraciones: " + this.nodeConfig.getMaxIters());
- 		Console.OUT.println("Maximo numero de restarts: " + this.nodeConfig.getMaxRestarts());
- 		Console.OUT.println("ReportPart?: " + this.nodeConfig.getReportPart());
- 		Console.OUT.println("Modo de ingreso de parametros: " + this.nodeConfig.getModParams());
- 		Console.OUT.println("ChangeOnDiver: " + this.nodeConfig.getChangeOnDiver());
- 		Console.OUT.println("ReportTime: " + this.nodeConfig.getReportI());
- 		Console.OUT.println("UpdateTime: " + this.nodeConfig.getUpdateI());
- 		Console.OUT.println("MaxUpdateI?: " + this.nodeConfig.getMaxUpdateI());
- 	}*/
+ 		Console.OUT.println("Id del equipo: " + this.nodeConfig.getTeamId() + " Nodo: " + here);
+ 		Console.OUT.println("Heuristica: " + this.nodeConfig.getHeuristic() + " Nodo: " + here);
+ 		Console.OUT.println("Numero de equipos: " + this.nodeConfig.getNumberOfTeams() + " Nodo: " + here);
+ 		Console.OUT.println("Nodos por equipo: " + this.nodeConfig.getNodesPerTeam() + " Nodo: " + here);
+ 		Console.OUT.println("InterTeamCommTime: " + this.nodeConfig.getInterTeamCommTime() + " Nodo: " + here);
+ 		Console.OUT.println("AffectedPer: " + this.nodeConfig.getAffectedPer() + " Nodo: " + here);
+ 		Console.OUT.println("IniDelay (InterTeamCommTime): " + this.nodeConfig.getIniDelay() + " Nodo: " + here);
+ 		Console.OUT.println("Verify: " + this.nodeConfig.getVerify() + " Nodo: " + here);
+ 		Console.OUT.println("ChangeProb?: " + this.nodeConfig.getChangeProb() + " Nodo: " + here);
+ 		Console.OUT.println("DiversificationOption?: " + this.nodeConfig.getDiversificationOption() + " Nodo: " + here);
+ 		Console.OUT.println("Tiempo maximo de ejecucion: " + this.nodeConfig.getMaxTime() + " Nodo: " + here);
+ 		Console.OUT.println("Maximo numero de iteraciones: " + this.nodeConfig.getMaxIters() + " Nodo: " + here);
+ 		Console.OUT.println("Maximo numero de restarts: " + this.nodeConfig.getMaxRestarts() + " Nodo: " + here);
+ 		Console.OUT.println("ReportPart?: " + this.nodeConfig.getReportPart() + " Nodo: " + here);
+ 		Console.OUT.println("Modo de ingreso de parametros: " + this.nodeConfig.getModParams() + " Nodo: " + here);
+ 		Console.OUT.println("ChangeOnDiver: " + this.nodeConfig.getChangeOnDiver() + " Nodo: " + here);
+ 		Console.OUT.println("ReportTime: " + this.nodeConfig.getReportI() + " Nodo: " + here);
+ 		Console.OUT.println("UpdateTime: " + this.nodeConfig.getUpdateI() + " Nodo: " + here);
+ 		Console.OUT.println("MaxUpdateI?: " + this.nodeConfig.getMaxUpdateI() + " Nodo: " + here);
+ 	}
 }
 public type CPLSNode(s:Long) = CPLSNode{self.sz==s};
