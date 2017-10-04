@@ -130,7 +130,7 @@ public class CPLSNode(sz:Long){
  			//}
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		printConfig();
+ 		//printConfig();
  	}
  
  	public def reInitialize(){
