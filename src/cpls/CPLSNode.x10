@@ -771,7 +771,7 @@ public class CPLSNode(sz:Long){
  				this.heuristicSolver.tryInsertIndividual(a().vector as Valuation(sz), sz);
  			}else{
  				this.heuristicSolver.setVariables(a().vector as Valuation(sz));
- 				this.heuristicSolver.costOfSolution();
+ 				this.currentCost = this.heuristicSolver.costOfSolution();
  				return true; 
  			}
  			

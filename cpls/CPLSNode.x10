@@ -130,7 +130,7 @@ public class CPLSNode(sz:Long){
  			//}
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		printConfig();
+ 		//printConfig();
  	}
  
  	public def reInitialize(){
@@ -771,7 +771,7 @@ public class CPLSNode(sz:Long){
  				this.heuristicSolver.tryInsertIndividual(a().vector as Valuation(sz), sz);
  			}else{
  				this.heuristicSolver.setVariables(a().vector as Valuation(sz));
- 				this.heuristicSolver.costOfSolution();
+ 				this.currentCost = this.heuristicSolver.costOfSolution();
  				return true; 
  			}
  			
