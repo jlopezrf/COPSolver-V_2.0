@@ -151,6 +151,10 @@ public class ProblemGenericModel(size:Long){
   		return variables as Valuation(size);
  	}
   
+  	public def clearProblemModel(){
+  		Console.OUT.println("Error. clearProblemModel invoke in HeuristicSolver");
+  	}
+  
   /**
    * 	Default Reset function
    * 	@param n number of variables to reset

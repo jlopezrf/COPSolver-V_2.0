@@ -120,6 +120,10 @@ public class HeuristicSolver(sz:Long){
  		this.variables = this.problemModel.initialize(this.random.nextLong()) as Valuation(sz);
  	}
  
+ 	public def clearProblemModel(){
+ 		this.problemModel.clearProblemModel();
+ 	}
+ 
  	public def createNewSol(){
  		val conf = this.problemModel.createNewSol();
  		//Console.OUT.println("at Heuristic Sover created Solution: " + conf);

@@ -96,6 +96,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual x10_long reset(x10_long n, x10_long totalCost);
     virtual void restartVar();
     virtual void initVariables();
+    virtual void clearProblemModel();
     virtual ::x10::lang::Rail< x10_int >* createNewSol();
     virtual ::x10::lang::Rail< x10_int >* createNewConf();
     virtual x10_long costOfSolution();

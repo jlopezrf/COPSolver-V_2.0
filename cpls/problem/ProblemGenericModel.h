@@ -93,6 +93,7 @@ class ProblemGenericModel : public ::x10::lang::X10Class   {
     virtual x10_long costOfSolution(x10_long sz, ::x10::lang::Rail< x10_int >* solution);
     static void show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d);
     virtual ::x10::lang::Rail< x10_int >* initialize(x10_long inSeed);
+    virtual void clearProblemModel();
     virtual void displaySolution(x10_long sz, ::x10::lang::Rail< x10_int >* conf);
     virtual x10_boolean verify(x10_long sz, ::x10::lang::Rail< x10_int >* conf);
     virtual x10_long nextJ(x10_long i, x10_long j, x10_boolean exhaustive);

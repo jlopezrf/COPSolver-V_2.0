@@ -57,7 +57,7 @@ public class CPLSNode(sz:Long){
  	protected var nIter : Int;
  	//Jason: Migration begin
  	//protected var nIterWhitoutImprovements : Int = 0n;
- 	protected var nItersForUpdate:Int = 0n;
+ 	//protected var nItersForUpdate:Int = 0n;
  	//Jason: Migration end
  	protected var nForceRestart : Int = 0n;
  	/** Total Statistics */
@@ -82,7 +82,6 @@ public class CPLSNode(sz:Long){
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
-
  	//protected var spreadDivConf:Boolean = false;
  	//protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
@@ -131,13 +130,14 @@ public class CPLSNode(sz:Long){
  			//}
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en head. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}
- 		//printConfig();
+ 		printConfig();
  	}
  
  	public def reInitialize(){
  		clear();
  		//val semill = random.nextLong();
  		this.heuristicSolver.setSeed(random.nextLong());
+ 		this.heuristicSolver.clearProblemModel();
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		//this.heuristicSolver.initVariables();
  		//this.heuristicSolver.initVar();
@@ -301,7 +301,7 @@ public class CPLSNode(sz:Long){
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
  		//this.nIterWhitoutImprovements = 0n;
- 		this.nItersForUpdate = 0n;
+ 		//this.nItersForUpdate = 0n;
  		//Jason: Migration end
  		this.nSwapTot = 0n;
  		this.initialTime = System.nanoTime();
@@ -417,7 +417,7 @@ public class CPLSNode(sz:Long){
  					this.nChangeV++;
  					restartVar();
  				}
- 				this.nItersForUpdate = 0n;
+ 				//this.nItersForUpdate = 0n;
  				//Console.OUT.println("Ingresa a Update " + here);
  			}
  			// Force Restart: Inter Team Communication
@@ -1040,7 +1040,7 @@ public class CPLSNode(sz:Long){
  		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
  		this.newBestConfReportedForTeam = false;
  		//this.spreadDivConf = false;
- 		this.nItersForUpdate = 0n;
+ 		//this.nItersForUpdate = 0n;
  		//this.nIterWhitoutImprovements = 0n;
  		//this.isOnIntensification = false;
  	}

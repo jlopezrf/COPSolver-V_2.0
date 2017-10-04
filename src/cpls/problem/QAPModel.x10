@@ -93,8 +93,10 @@ public class QAPModel extends ProblemGenericModel{
  				r += this.flow(i)(j) * this.dist(variables(i))(variables(j));
  				if (shouldBeRecorded)
  					for(i = 0; i < size; i++)
- 						for(j = i + 1; j < size; j++)
+ 						for(j = i + 1; j < size; j++){
  							delta(i,j) = computeDelta(sz, i, j, variables);
+  							//Console.OUT.println("DeltaPart calculado");
+  						}
  		//Console.OUT.println("MsgType_0. CostOfSolution ejecutado en QAPModel");
  		return r;
  	}
@@ -117,6 +119,7 @@ public class QAPModel extends ProblemGenericModel{
  			i1v = i2;
  			i2v = i1;
  		}
+ 		//Console.OUT.println("currentCost + delta(i1v, i2v): " + (currentCost + delta(i1v, i2v)));
  		return currentCost + delta(i1v, i2v);
  	}
 
@@ -265,6 +268,10 @@ public class QAPModel extends ProblemGenericModel{
  			Console.OUT.println("Error reading file");
  			//EOF
  		}
+ 	}
+ 
+ 	public def clearProblemModel(){
+ 		this.delta = new Array_2 [Long](size, size , 0);
  	}
  
  	public def printMatrix(size:Int, matrix:Rail[Rail[Int]]){

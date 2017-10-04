@@ -50,7 +50,6 @@ public class RoTSearch extends SingleSolHeuristic{
 	 *  Executed once before the main solving loop
 	 */
 	public def initVar(){
- 		//Console.OUT.println("InitVar ejecutado en " + here);
 		super.initVar();
 		this.tabuList.clear();
 		if (this.tabuDurationFactorUS < 0){
@@ -58,22 +57,24 @@ public class RoTSearch extends SingleSolHeuristic{
 		} else {
 			this.tabuDurationFactor = this.tabuDurationFactorUS;
 		}
+ 		//Console.OUT.println("this.tabuDurationFactor: " + this.tabuDurationFactor);
 		this.tabuDuration = (this.tabuDurationFactor * super.problemModel.size) as Int;
-		
-		if (this.aspirationFactorUS == -1.0) // Random initialitation of Tabu duration Factor 
+ 		//Console.OUT.println("this.tabuDuration: " + this.tabuDuration);
+		if (this.aspirationFactorUS == -1.0) 
 			this.aspirationFactor = al + (au-al) * random.nextDouble();
 		else
 			this.aspirationFactor = this.aspirationFactorUS;
-		
+ 		//Console.OUT.println("this.aspirationFactor: " + this.aspirationFactor);
 		
 		this.aspiration = (this.aspirationFactor * super.problemModel.size * super.problemModel.size) as Int;
-		
-		for (var i:Long = 0 ; i < super.problemModel.size; i++)
+ 		//Console.OUT.println("this.aspiration: " + this.aspiration + "\n" + "Matriz tabulist: ");
+		for (var i:Long = 0 ; i < super.problemModel.size; i++){
 			for (var j:Long = 0 ; j < super.problemModel.size; j++){
- 				//Console.OUT.println("Este es el punto del error antes");
 				this.tabuList(i,j) = -(super.problemModel.size * i + j);
- 				//Console.OUT.println("Este es el punto del error antes");
+ 				//Console.OUT.print(this.tabuList(i,j) + " ");
 			}
+ 			//Console.OUT.println("\n");
+		}
 	}
 	
 	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
@@ -87,13 +88,13 @@ public class RoTSearch extends SingleSolHeuristic{
 		move.setSecond(Long.MAX_VALUE);
 		this.alreadyAspired = false;
 		
-		//Utils.show("Solution",cop_.getVariables());
+		//Utils.show("Solution",super.variables);
 		
 		for (i = 0; i < super.problemModel.size - 1; i++){
 			for (j = i + 1; j < super.problemModel.size; j++) {
 				
 				newCost = problemModel.costIfSwap(currentCost,i,j);
- 				//Console.OUT.println("Costifswap in RoTS: " + newCost);
+ 				//Console.OUT.println("Costifswap in RoTS " + i + "," + j + ": " + newCost);
 				delta = newCost - currentCost;
 				
 				this.autorized =
@@ -141,15 +142,10 @@ public class RoTSearch extends SingleSolHeuristic{
 			return currentCost;
 		}else{
 			//Console.OUT.println("swap pos "+move.getFirst()+" "+move.getSecond());
-			//Console.OUT.println("move.getFirst(): " + move.getFirst() + ". move.getSecond(): " + move.getSecond());
- 			//Utils.show("Variables antes del swapVariables", super.variables);
  			swapVariables(move.getFirst(), move.getSecond()); //adSwap(maxI, minJ,csp);	
-  			//Utils.show("Variables antes del swapVariables", super.variables);
  			nSwap++;
 			//val sz =  super.problemModel.size;
- 			//Utils.show("Variables antes del executedSwap", super.variables);
 			super.problemModel.executedSwap(sz, move.getFirst(), move.getSecond(), super.variables  as Valuation(sz));
- 			//Utils.show("Variables despues del executedSwap", super.variables);
 			/* forbid reverse move for a random number of iterations */
 			
 			//tabuList( move.getFirst(), cop_.variables(move.getSecond())) = this.nIter + (cube() * this.tabuDuration) as Int;
@@ -163,7 +159,7 @@ public class RoTSearch extends SingleSolHeuristic{
 			tabuList( move.getFirst(), super.variables(move.getSecond())) = nIter + t1;
 			tabuList( move.getSecond(), super.variables(move.getFirst())) = nIter + t2;
 			
-			//Utils.show("after swap",cop_.getVariables());
+			//Utils.show("after swap", super.variables);
 			// detect loc min
 			//if (minDelta >= 0)
 			//	onLocMin();
