@@ -8,6 +8,7 @@ import cpls.util.Valuation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
 import x10.util.ArrayList;
+//import cpls.util.Utils;
 
 
 public class GeneticAlgorithm extends PopulBasedHeuristic{
@@ -83,6 +84,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			if(nIter%eachIterMigration == 0n){
  				mutatedSons = migrate(sons);
  			}else{
+ 				for(var i:Int = 0n; i< sons.size; i++){
+ 					sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
+ 					//Utils.show("son " + i + ": ",sons(i).getGenes());
+ 				}
  				mutatedSons = sons;
  			}
  		}else{
@@ -179,12 +184,12 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	/**En el mecanismo de migración, la tasa indica cada tantas iteraciones se realiza una migración a partir de los indiv cruzados*/
  	public def migrate(sons:Rail[GAIndividual]){
  		var variab:Rail[Int];
- 		if(this.random.nextFloat() < this.rate){
+ 		//if(this.random.nextFloat() < this.rate){
  			for(var l:Int = 0n; l < sons.size; l++){
  				variab = sons(l).getGenes();
- 				for(k in variab.range()){
- 					variab(k) = 0n + k as Int;
- 				}
+ 				//for(k in variab.range()){
+ 				//	variab(k) = 0n + k as Int;
+ 				//}
  				for( var i:Long = sz - 1 ; i > 0 ; i-- ){
  					val j = super.random.nextLong( i + 1 );
  					val x = variab(i);
@@ -194,9 +199,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  				sons(l).setGenes(variab);
  				//sons(l).setCost(this.problemModel.costOfSolution(sz, variab as Rail[Int]{self.size == sz}));
  			}
- 		}
+ 		//}
  		for(var i:Int = 0n; i< sons.size; i++){
  			sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
+ 			//Utils.show("son " + i + ": ",sons(i).getGenes());
  		}
  		return sons;
  	}
