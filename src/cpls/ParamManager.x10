@@ -77,9 +77,9 @@ public class ParamManager extends OptionsParser{
  				Option("RoTS_a", "RoTS_aspiration", "Set aspiration factor (x NxN). Default 5"),
  				// Parameters for GA. Jason
  				Option("GA_pz", "GA_population_size", "Set the population size. Default 2*n"),
- 				Option("GA_mr", "GA_mutation_rate", "Set the mutation rate. Default 40\\%"),
+ 				Option("GA_r", "GA_rate", "Set the rate for mutation and migration. Default 40\\%"),
  				Option("-GA_co", "GA_Crossing_Operator", "Set the crossing operator. Default UniforCrossover"),
- 				Option("-GA_mo", "GA_Mutate_Operator", "Set the mutate operator. 0 Swap N2, 1 shuffle. Default swap N2"),
+ 				Option("-GA_do", "GA_diver_Operator", "Select the div operator. 0 mutate, 1 migrate. Default mutate"),
  				// Parameters for Problem Models
  				Option("if", "input_vector_file", "file path for input vector . Default ."),
  				Option("bv", "model_baseValue", "Domain base value for the model . 0 or 1"),

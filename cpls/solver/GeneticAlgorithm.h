@@ -31,18 +31,6 @@ class GAPopulation;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
-namespace x10 { namespace util { 
-class Random;
-} } 
-namespace cpls { namespace solver { 
-class GAIndividual;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
-} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -55,6 +43,18 @@ class OptionsParser;
 namespace x10 { namespace lang { 
 class Place;
 } } 
+namespace x10 { namespace util { 
+class Random;
+} } 
+namespace cpls { namespace solver { 
+class GAIndividual;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -66,6 +66,9 @@ class String;
 } } 
 namespace x10 { namespace lang { 
 class Runtime;
+} } 
+namespace x10 { namespace util { 
+template<class TPMGL(T)> class ArrayList;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -80,28 +83,31 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     
     x10_int FMGL(populationSize);
     
-    x10_float FMGL(mutationRate);
+    x10_float FMGL(rate);
     
     x10_int FMGL(crossingOperator);
     
-    x10_int FMGL(mutationOperator);
+    x10_int FMGL(divOperator);
     
     x10_long FMGL(bestCostGA);
     
     x10_long FMGL(currentCostGA);
     
+    x10_int FMGL(eachIterMigration);
+    
     void _constructor(x10_long sz);
     
     static ::cpls::solver::GeneticAlgorithm* _make(x10_long sz);
     
-    virtual x10_long search(x10_long currentCost, x10_long bestCost, x10_int nIter);
+    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
+                                 ::cpls::ParamManager* opts);
+    virtual void initVariables();
+    virtual x10_long search(x10_long currentCost, x10_long bestCost,
+                            x10_int nIter);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*
       FMGL(cmp);
     
     virtual void sortPopulation();
-    virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
-                                 ::cpls::ParamManager* opts);
-    virtual void initVariables();
     virtual void printPopulation();
     static void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
@@ -109,7 +115,7 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
-      mutate2(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
+      migrate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       transformIndiv(::cpls::solver::GAIndividual* indiv);
     virtual x10_boolean tryInsertIndividual(::x10::lang::Rail< x10_int >* varables,

@@ -7,18 +7,20 @@ import cpls.ParamManager;
 import cpls.util.Valuation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
+import x10.util.ArrayList;
 
 
 public class GeneticAlgorithm extends PopulBasedHeuristic{
 	
 	var population:GAPopulation = new GAPopulation();
  	var populationSize:Int;
- 	var mutationRate:float;
+ 	var rate:float;
  	var crossingOperator:Int;
- 	var mutationOperator:Int;
+ 	var divOperator:Int;
  	//val random:Random;
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
+ 	var eachIterMigration:Int = Int.MAX_VALUE;
  	//var auxCounterIter:Int = 0n;
 	
 	public def this(sz:Long){
@@ -27,6 +29,28 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//this.random = new Random();
  		//this.random.setSeed(System.nanoTime());
 	}
+
+ 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		super.configHeuristic(problemModel, opts);
+ 		//this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
+ 		this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
+ 		this.rate = opts("-GA_r", 0.4f);
+ 		this.crossingOperator = opts("-GA_co", 0n);
+ 		this.divOperator = opts("-GA_do", 0n);
+ 		if(divOperator == 1n){
+ 			eachIterMigration = (super.sz*rate) as Int;
+ 		}
+ 		//initialize(populationSize, problemModel.size);
+ 		//sortPopulation();
+ 	}
+
+ 	public def initVariables(){
+ 		//initialize(this.populationSize, super.sz);
+ 		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
+ 		this.population.sort();
+ 		//Console.OUT.println("Poblacion inicial: ");
+ 		//printPopulation();
+ 	}
 
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		val index1 = super.random.nextLong(populationSize);
@@ -54,7 +78,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(sons(0).getGenes());
  		Console.OUT.print("Hijo 2. Costo: " + sons(1).getCost() + ".Variables: ");
  		printVector(sons(1).getGenes());*/
- 		var mutatedSons:Rail[GAIndividual] = this.mutationOperator == 0n ? mutate(sons):mutate2(sons);
+ 		var mutatedSons:Rail[GAIndividual];
+ 		if(divOperator == 1n){
+ 			if(nIter%eachIterMigration == 0n){
+ 				mutatedSons = migrate(sons);
+ 			}else{
+ 				mutatedSons = sons;
+ 			}
+ 		}else{
+ 			mutatedSons = mutate(sons);
+ 		}
  		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
  		Console.OUT.print("Hijo 2 despues de mutacion. Afuera. Costo: " + mutatedSons(1).getCost() + ".Variables: ");
@@ -74,25 +107,6 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	protected def sortPopulation(){
  		this.population.sort();
- 	}
- 
- 	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		super.configHeuristic(problemModel, opts);
- 		//this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
- 		this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
- 		this.mutationRate = opts("-GA_mr", 0.4f);
- 		this.crossingOperator = opts("-GA_co", 0n);
- 		this.mutationOperator = opts("-GA_mo", 0n);
- 		//initialize(populationSize, problemModel.size);
- 		//sortPopulation();
- 	}
- 
- 	public def initVariables(){
- 		//initialize(this.populationSize, super.sz);
- 		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
- 		this.population.sort();
- 		//Console.OUT.println("Poblacion inicial: ");
- 		//printPopulation();
  	}
 
  	public def printPopulation(){
@@ -123,22 +137,30 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		return sons;
  	}
  
+ 	/*En el mecanismo de mutación, la tasa de mutación se interpreta como la cantidad de swaps que se haran sobre el individuo a mutar*/
  	public def mutate(sons:Rail[GAIndividual]){
+ 		var posChanged:Int = ((super.sz/2)*this.rate) as Int;
  		var index1:Long;
  		var index2:Long;
+ 		var indexBank:ArrayList[Int];
  		for(son in sons){
- 			if(this.random.nextFloat() < this.mutationRate){
- 				index1 = super.random.nextLong(son.getSize());
- 				do{
- 					index2 = super.random.nextLong(son.getSize());
- 				}while(index2 == index1);	
- 				//Console.OUT.println("Index1 para mutacion: " + index1);
- 				//Console.OUT.println("Index2 para mutacion: " + index2);
- 				son.swap(index1 as Int, index2 as Int);
- 				//swap(son, index1, index2);
- 			}//else{
- 			 //	Console.OUT.println("No muta");
- 			 //}
+ 			indexBank = new ArrayList[Int](posChanged*2n);
+ 			for(var i:Int = 0n; i<posChanged; i++){
+	 			if(this.random.nextFloat() < this.rate){
+	 				index1 = super.random.nextLong(son.getSize());
+	 				do{
+	 					index2 = super.random.nextLong(son.getSize());
+	 				}while(index2 == index1 && (!indexBank.contains(index1 as Int) && !indexBank.contains(index2 as Int)));	
+	 				indexBank.add(index1 as Int);
+	 				indexBank.add(index2 as Int);
+	 				//Console.OUT.println("Index1 para mutacion: " + index1);
+	 				//Console.OUT.println("Index2 para mutacion: " + index2);
+	 				son.swap(index1 as Int, index2 as Int);
+	 				//swap(son, index1, index2);
+	 			}//else{
+	 			 //	Console.OUT.println("No muta");
+	 			 //}
+ 			}
  		}
  		for(var i:Int = 0n; i< sons.size; i++){
  			sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
@@ -152,9 +174,12 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		return sons;
  	}
  
- 	public def mutate2(sons:Rail[GAIndividual]){
+ 
+    /**Este método es mas bien un mecanismo de migración**/
+ 	/**En el mecanismo de migración, la tasa indica cada tantas iteraciones se realiza una migración a partir de los indiv cruzados*/
+ 	public def migrate(sons:Rail[GAIndividual]){
  		var variab:Rail[Int];
- 		if(this.random.nextFloat() < this.mutationRate){
+ 		if(this.random.nextFloat() < this.rate){
  			for(var l:Int = 0n; l < sons.size; l++){
  				variab = sons(l).getGenes();
  				for(k in variab.range()){
