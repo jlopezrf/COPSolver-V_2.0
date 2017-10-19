@@ -56,7 +56,7 @@ public class CPLSNode(sz:Long){
  	protected var nRestart : Int = 0n;
  	protected var nIter : Int;
  	//Jason: Migration begin
- 	//protected var nIterWhitoutImprovements : Int = 0n;
+ 	protected var itersWhitoutImprovements : Int = 0n;
  	//protected var nItersForUpdate:Int = 0n;
  	//Jason: Migration end
  	protected var nForceRestart : Int = 0n;
@@ -230,7 +230,8 @@ public class CPLSNode(sz:Long){
  			this.bestCost = currentCost;
  		else
  			this.bestCost = x10.lang.Int.MAX_VALUE;
-
+ 
+ 		var count:Int = 1n;
  		while( this.currentCost != 0 ){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
@@ -275,6 +276,11 @@ public class CPLSNode(sz:Long){
  					break;
  				}
  			}
+ 			val eTime = System.nanoTime() - this.initialTime;
+ 			if((eTime/1e6)/30000 > count){
+ 				count++;
+ 				this.heuristicSolver.displayInfo();
+ 			}
  			interact();
  		}
  		//this.heuristicSolver.printPopulation();
@@ -300,7 +306,7 @@ public class CPLSNode(sz:Long){
  		// clear Tot stats
  		this.nIterTot = 0n;
  		//Jason: Migration begin		
- 		//this.nIterWhitoutImprovements = 0n;
+ 		this.itersWhitoutImprovements = 0n;
  		//this.nItersForUpdate = 0n;
  		//Jason: Migration end
  		this.nSwapTot = 0n;
@@ -338,11 +344,18 @@ public class CPLSNode(sz:Long){
  				//Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
- 			//nIterWhitoutImprovements = 0n;
+ 			this.itersWhitoutImprovements = 0n;
 
- 		}/*else{
- 			this.nIterWhitoutImprovements++;
- 		}*/
+ 		}else{
+ 			this.itersWhitoutImprovements++;
+ 		}
+ 		if(this.itersWhitoutImprovements == this.nodeConfig.getItersWhitoutImprovements()){
+ 			this.itersWhitoutImprovements = 0n;
+ 			bestSent = false;
+ 			this.heuristicSolver.launchEventForStagnation();
+ 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+ 			this.bestCost = this.heuristicSolver.costOfSolution();
+ 		}
  	}
  
  	/*********************************************This is the comunication section****************************************/
@@ -1041,7 +1054,7 @@ public class CPLSNode(sz:Long){
  		this.newBestConfReportedForTeam = false;
  		//this.spreadDivConf = false;
  		//this.nItersForUpdate = 0n;
- 		//this.nIterWhitoutImprovements = 0n;
+ 		this.itersWhitoutImprovements = 0n;
  		//this.isOnIntensification = false;
  	}
  	

@@ -333,17 +333,17 @@ void cpls::solver::EOSearch::configHeuristic(::cpls::problem::ProblemGenericMode
     
     //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(tauUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__12920 = ::x10aux::makeStringLit("-EO_t"); strLit__12920; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__12923 = ::x10aux::makeStringLit("-EO_t"); strLit__12923; })),
                                ((1.0) + (((1.0) / (::x10::lang::MathNatives::log(((x10_double) (::x10aux::nullCheck(problemModel)->FMGL(size)))))))));
     
     //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(pdfUserSel) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__12921 = ::x10aux::makeStringLit("-EO_p"); strLit__12921; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__12924 = ::x10aux::makeStringLit("-EO_p"); strLit__12924; })),
                                ((x10_int)-1));
     
     //#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     this->FMGL(selSecond) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                              (__extension__ ({ static ::x10::lang::String* strLit__12922 = ::x10aux::makeStringLit("-EO_ss"); strLit__12922; })),
+                              (__extension__ ({ static ::x10::lang::String* strLit__12925 = ::x10aux::makeStringLit("-EO_ss"); strLit__12925; })),
                               ((x10_int)1));
 }
 
@@ -447,12 +447,12 @@ void cpls::solver::EOSearch::initPDF(::x10::lang::Fun_0_2<x10_double, x10_long, 
              x = ((x) + (((x10_int)1)))) {
             
             //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-            ::x10::lang::Rail< x10_double >* a__12913 = this->FMGL(pdf);
-            x10_long i__12914 = ((x10_long)(x));
-            x10_double r__12915 = ((::x10aux::nullCheck(a__12913)->x10::lang::Rail< x10_double >::__apply(
-                                      i__12914)) / (sum));
-            ::x10aux::nullCheck(a__12913)->x10::lang::Rail< x10_double >::__set(
-              i__12914, r__12915);
+            ::x10::lang::Rail< x10_double >* a__12916 = this->FMGL(pdf);
+            x10_long i__12917 = ((x10_long)(x));
+            x10_double r__12918 = ((::x10aux::nullCheck(a__12916)->x10::lang::Rail< x10_double >::__apply(
+                                      i__12917)) / (sum));
+            ::x10aux::nullCheck(a__12916)->x10::lang::Rail< x10_double >::__set(
+              i__12917, r__12918);
         }
     }
     
@@ -569,22 +569,22 @@ void cpls::solver::EOSearch::selFirstVar(::cpls::util::MovePermutation* move,
     }
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::lang::Rail< x10_long >* a__12918 = this->FMGL(fit);
-    ::x10::lang::Fun_0_2<x10_long, x10_long, x10_int>* cmp__12919 =
+    ::x10::lang::Rail< x10_long >* a__12921 = this->FMGL(fit);
+    ::x10::lang::Fun_0_2<x10_long, x10_long, x10_int>* cmp__12922 =
       this->FMGL(cmp);
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::util::RailUtils::qsort< x10_long >(a__12918, ((x10_long)0ll),
-                                              (((x10_long)(::x10aux::nullCheck(a__12918)->FMGL(size))) - (((x10_long)1ll))),
-                                              cmp__12919);
+    ::x10::util::RailUtils::qsort< x10_long >(a__12921, ((x10_long)0ll),
+                                              (((x10_long)(::x10aux::nullCheck(a__12921)->FMGL(size))) - (((x10_long)1ll))),
+                                              cmp__12922);
     
     //#line 166 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
     if (locMin) {
-        ::cpls::solver::EOSearch* this__12917 = this;
+        ::cpls::solver::EOSearch* this__12920 = this;
         
         //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/EOSearch.x10"
-        ::x10::lang::Rail< x10_int >* solverState__12916 =
-          ::x10aux::nullCheck(this__12917)->createSolverState();
+        ::x10::lang::Rail< x10_int >* solverState__12919 =
+          ::x10aux::nullCheck(this__12920)->createSolverState();
         
     }
     

@@ -15,7 +15,7 @@ void cpls::problem::CAPModel::_constructor(x10_long sz) {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
-    ::cpls::problem::CAPModel* this__1115 = this;
+    ::cpls::problem::CAPModel* this__1116 = this;
     
 }
 ::cpls::problem::CAPModel* cpls::problem::CAPModel::_make(x10_long sz) {

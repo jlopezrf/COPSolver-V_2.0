@@ -98,8 +98,12 @@ public class HeuristicSolver(sz:Long){
  		return null;
  	}
  
- 	public def printPopulation(){
+ 	public def launchEventForStagnation(){
+ 		Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
+ 	}
  
+ 	public def displayInfo(){
+ 		Console.OUT.println("Error. displayInfo() invokation in HeuristicSolver");
  	}
  
  	public def reset ( var n : Long, totalCost : Long ) : Long {

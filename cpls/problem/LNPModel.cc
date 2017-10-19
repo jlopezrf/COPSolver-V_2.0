@@ -15,7 +15,7 @@ void cpls::problem::LNPModel::_constructor(x10_long sz) {
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/LNPModel.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/LNPModel.x10"
-    ::cpls::problem::LNPModel* this__1115 = this;
+    ::cpls::problem::LNPModel* this__1116 = this;
     
 }
 ::cpls::problem::LNPModel* cpls::problem::LNPModel::_make(x10_long sz) {

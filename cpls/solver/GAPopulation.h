@@ -10,6 +10,9 @@
 #define X10_LANG_LONG_H_NODEPS
 #include <x10/lang/Long.h>
 #undef X10_LANG_LONG_H_NODEPS
+#define X10_LANG_DOUBLE_H_NODEPS
+#include <x10/lang/Double.h>
+#undef X10_LANG_DOUBLE_H_NODEPS
 #define X10_LANG_INT_H_NODEPS
 #include <x10/lang/Int.h>
 #undef X10_LANG_INT_H_NODEPS
@@ -22,6 +25,9 @@ class GAIndividual;
 namespace cpls { namespace util { 
 class Monitor;
 } } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array_2;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -33,6 +39,18 @@ template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace util { 
 class RailUtils;
+} } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
+namespace x10 { namespace lang { 
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace x10 { namespace lang { 
+class Math;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -52,6 +70,10 @@ class GAPopulation : public ::x10::lang::X10Class   {
     
     ::cpls::util::Monitor* FMGL(monitor);
     
+    ::x10::array::Array_2<x10_double>* FMGL(distanceMatrix);
+    
+    ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
+    
     virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long seed);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
@@ -59,6 +81,9 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
+    virtual void renewPopulation();
+    virtual x10_double calculateMidDistance();
+    virtual x10_double calculateStandardDesviation(x10_double media);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,
                                 ::x10::lang::Rail< x10_int >* indiv2);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*

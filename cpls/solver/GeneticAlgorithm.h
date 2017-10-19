@@ -62,10 +62,10 @@ namespace x10 { namespace io {
 class Console;
 } } 
 namespace x10 { namespace lang { 
-class String;
+class Any;
 } } 
 namespace x10 { namespace lang { 
-class Runtime;
+class String;
 } } 
 namespace x10 { namespace util { 
 template<class TPMGL(T)> class ArrayList;
@@ -108,10 +108,11 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       FMGL(cmp);
     
     virtual void sortPopulation();
-    virtual void printPopulation();
+    virtual void displayInfo();
     static void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       crossing(::cpls::solver::GAIndividual* i1, ::cpls::solver::GAIndividual* i2);
+    virtual void launchEventForStagnation();
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*

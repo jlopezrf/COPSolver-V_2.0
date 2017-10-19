@@ -27,8 +27,6 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	public def this(sz:Long){
 		super(sz);
  		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
- 		//this.random = new Random();
- 		//this.random.setSeed(System.nanoTime());
 	}
 
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -49,6 +47,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//initialize(this.populationSize, super.sz);
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.sort();
+ 		displayInfo();
  		//Console.OUT.println("Poblacion inicial: ");
  		//printPopulation();
  	}
@@ -114,11 +113,16 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.population.sort();
  	}
 
- 	public def printPopulation(){
- 		for(var i:Int = 0n; i < population.getPopulationSize(); i++){
- 			Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population.getIndividual(i).getCost() + ". Variables: ");
- 			printVector(population.getIndividual(i).getGenes());
- 		}
+ 	public def displayInfo(){
+ 		//PrintPopulation
+ 		//for(var i:Int = 0n; i < population.getPopulationSize(); i++){
+ 		//	Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population.getIndividual(i).getCost() + ". Variables: ");
+ 		//	printVector(population.getIndividual(i).getGenes());
+ 		//}
+ 		val media = population.calculateMidDistance();
+ 		//val stdrdDesv = population.calculateStandardDesviation(media);
+ 		Console.OUT.println("Media de la poblacion: " + media);
+ 		//Console.OUT.println("Desviacion estandar: " + stdrdDesv);
  	}
 
  	public static def printVector(vector:Rail[Int]){
@@ -140,6 +144,13 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			sons = indiv1.insertPathCrossover(indiv2);
  		}
  		return sons;
+ 	}
+ 
+ 	public def launchEventForStagnation(){
+ 		this.population.renewPopulation();
+ 		val genes = this.population.getIndividual(0).getGenes();
+ 		Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
+
  	}
  
  	/*En el mecanismo de mutación, la tasa de mutación se interpreta como la cantidad de swaps que se haran sobre el individuo a mutar*/

@@ -83,22 +83,22 @@ void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericMod
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuList) = (__extension__ ({
-        ::x10::array::Array_2<x10_long>* alloc__1525 =  (new (::x10aux::alloc_z< ::x10::array::Array_2<x10_long> >()) ::x10::array::Array_2<x10_long>());
-        (alloc__1525)->::x10::array::Array_2<x10_long>::_constructor(
+        ::x10::array::Array_2<x10_long>* alloc__1527 =  (new (::x10aux::alloc_z< ::x10::array::Array_2<x10_long> >()) ::x10::array::Array_2<x10_long>());
+        (alloc__1527)->::x10::array::Array_2<x10_long>::_constructor(
           ::x10aux::nullCheck(problemModel)->FMGL(size), ::x10aux::nullCheck(problemModel)->FMGL(size),
           ((x10_long)0ll));
-        alloc__1525;
+        alloc__1527;
     }))
     ;
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__12781 = ::x10aux::makeStringLit("-RoTS_t"); strLit__12781; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__12783 = ::x10aux::makeStringLit("-RoTS_t"); strLit__12783; })),
                                          -1.0);
     
     //#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__12782 = ::x10aux::makeStringLit("-RoTS_a"); strLit__12782; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__12784 = ::x10aux::makeStringLit("-RoTS_a"); strLit__12784; })),
                                        -1.0);
 }
 
@@ -158,30 +158,30 @@ void cpls::solver::RoTSearch::initVar() {
                      j = ((j) + (((x10_long)1ll)))) {
                     
                     //#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-                    ::x10::array::Array_2<x10_long>* this__12754 =
+                    ::x10::array::Array_2<x10_long>* this__12756 =
                       this->FMGL(tabuList);
                     
                     //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                    x10_long i__12755 = i;
-                    x10_long j__12756 = j;
-                    x10_long v__12757 = (-(((((::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)) * (i))) + (j))));
-                    x10_long ret__12758;
+                    x10_long i__12757 = i;
+                    x10_long j__12758 = j;
+                    x10_long v__12759 = (-(((((::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->FMGL(size)) * (i))) + (j))));
+                    x10_long ret__12760;
                     
                     //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                    (::x10aux::nullCheck(this__12754)->FMGL(raw))->unchecked_set((__extension__ ({
+                    (::x10aux::nullCheck(this__12756)->FMGL(raw))->unchecked_set((__extension__ ({
                         
                         //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__12752 = i__12755;
-                        x10_long j__12753 = j__12756;
-                        ((j__12753) + (((i__12752) * (::x10aux::nullCheck(this__12754)->FMGL(numElems_2)))));
+                        x10_long i__12754 = i__12757;
+                        x10_long j__12755 = j__12758;
+                        ((j__12755) + (((i__12754) * (::x10aux::nullCheck(this__12756)->FMGL(numElems_2)))));
                     }))
-                    , v__12757);
+                    , v__12759);
                     
                     //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                    ret__12758 = v__12757;
+                    ret__12760 = v__12759;
                     
                     //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                    ret__12758;
+                    ret__12760;
                 }
             }
             
@@ -240,48 +240,48 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
                     this->FMGL(autorized) = ((((__extension__ ({
                         
                         //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-                        ::x10::array::Array_2<x10_long>* this__12455 =
+                        ::x10::array::Array_2<x10_long>* this__12457 =
                           this->FMGL(tabuList);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__12453 = i;
-                        x10_long j__12454 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+                        x10_long i__12455 = i;
+                        x10_long j__12456 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                           j)));
-                        x10_long ret__12456;
+                        x10_long ret__12458;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__12456 = (::x10aux::nullCheck(this__12455)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__12458 = (::x10aux::nullCheck(this__12457)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__12759 = i__12453;
-                            x10_long j__12760 = j__12454;
-                            ((j__12760) + (((i__12759) * (::x10aux::nullCheck(this__12455)->FMGL(numElems_2)))));
+                            x10_long i__12761 = i__12455;
+                            x10_long j__12762 = j__12456;
+                            ((j__12762) + (((i__12761) * (::x10aux::nullCheck(this__12457)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__12456;
+                        ret__12458;
                     }))
                     ) < (((x10_long)(nIter)))) || (((__extension__ ({
                         
                         //#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-                        ::x10::array::Array_2<x10_long>* this__12462 =
+                        ::x10::array::Array_2<x10_long>* this__12464 =
                           this->FMGL(tabuList);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__12460 = j;
-                        x10_long j__12461 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+                        x10_long i__12462 = j;
+                        x10_long j__12463 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                           i)));
-                        x10_long ret__12463;
+                        x10_long ret__12465;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__12463 = (::x10aux::nullCheck(this__12462)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__12465 = (::x10aux::nullCheck(this__12464)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__12761 = i__12460;
-                            x10_long j__12762 = j__12461;
-                            ((j__12762) + (((i__12761) * (::x10aux::nullCheck(this__12462)->FMGL(numElems_2)))));
+                            x10_long i__12763 = i__12462;
+                            x10_long j__12764 = j__12463;
+                            ((j__12764) + (((i__12763) * (::x10aux::nullCheck(this__12464)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__12463;
+                        ret__12465;
                     }))
                     ) < (((x10_long)(nIter)))));
                     
@@ -289,49 +289,49 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
                     this->FMGL(aspired) = (((((__extension__ ({
                         
                         //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-                        ::x10::array::Array_2<x10_long>* this__12469 =
+                        ::x10::array::Array_2<x10_long>* this__12471 =
                           this->FMGL(tabuList);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__12467 = i;
-                        x10_long j__12468 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+                        x10_long i__12469 = i;
+                        x10_long j__12470 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                           j)));
-                        x10_long ret__12470;
+                        x10_long ret__12472;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__12470 = (::x10aux::nullCheck(this__12469)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__12472 = (::x10aux::nullCheck(this__12471)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__12763 = i__12467;
-                            x10_long j__12764 = j__12468;
-                            ((j__12764) + (((i__12763) * (::x10aux::nullCheck(this__12469)->FMGL(numElems_2)))));
+                            x10_long i__12765 = i__12469;
+                            x10_long j__12766 = j__12470;
+                            ((j__12766) + (((i__12765) * (::x10aux::nullCheck(this__12471)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__12470;
+                        ret__12472;
                     }))
                     ) < (((x10_long)(((nIter) - (this->FMGL(aspiration))))))) ||
                     (((__extension__ ({
                         
                         //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-                        ::x10::array::Array_2<x10_long>* this__12476 =
+                        ::x10::array::Array_2<x10_long>* this__12478 =
                           this->FMGL(tabuList);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__12474 = j;
-                        x10_long j__12475 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+                        x10_long i__12476 = j;
+                        x10_long j__12477 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                                           i)));
-                        x10_long ret__12477;
+                        x10_long ret__12479;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__12477 = (::x10aux::nullCheck(this__12476)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__12479 = (::x10aux::nullCheck(this__12478)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__12765 = i__12474;
-                            x10_long j__12766 = j__12475;
-                            ((j__12766) + (((i__12765) * (::x10aux::nullCheck(this__12476)->FMGL(numElems_2)))));
+                            x10_long i__12767 = i__12476;
+                            x10_long j__12768 = j__12477;
+                            ((j__12768) + (((i__12767) * (::x10aux::nullCheck(this__12478)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__12477;
+                        ret__12479;
                     }))
                     ) < (((x10_long)(((nIter) - (this->FMGL(aspiration)))))))) ||
                     ((newCost) < (bestCost)));
@@ -375,7 +375,7 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
         
         //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__12790 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__12790; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__12792 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__12792; }))));
         
         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
         return currentCost;
@@ -409,56 +409,56 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
         } while (((((x10_long)(t2))) <= (((x10_long)2ll))));
         
         //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-        ::x10::array::Array_2<x10_long>* this__12771 = this->FMGL(tabuList);
+        ::x10::array::Array_2<x10_long>* this__12773 = this->FMGL(tabuList);
         
         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        x10_long i__12772 = this->FMGL(move)->getFirst();
-        x10_long j__12773 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+        x10_long i__12774 = this->FMGL(move)->getFirst();
+        x10_long j__12775 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                           this->FMGL(move)->getSecond())));
-        x10_long v__12774 = ((x10_long)(((nIter) + (t1))));
-        x10_long ret__12775;
+        x10_long v__12776 = ((x10_long)(((nIter) + (t1))));
+        x10_long ret__12777;
         
         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        (::x10aux::nullCheck(this__12771)->FMGL(raw))->unchecked_set((__extension__ ({
+        (::x10aux::nullCheck(this__12773)->FMGL(raw))->unchecked_set((__extension__ ({
             
             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-            x10_long i__12767 = i__12772;
-            x10_long j__12768 = j__12773;
-            ((j__12768) + (((i__12767) * (::x10aux::nullCheck(this__12771)->FMGL(numElems_2)))));
+            x10_long i__12769 = i__12774;
+            x10_long j__12770 = j__12775;
+            ((j__12770) + (((i__12769) * (::x10aux::nullCheck(this__12773)->FMGL(numElems_2)))));
         }))
-        , v__12774);
+        , v__12776);
         
         //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        ret__12775 = v__12774;
+        ret__12777 = v__12776;
         
         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        ret__12775;
+        ret__12777;
         
         //#line 160 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
-        ::x10::array::Array_2<x10_long>* this__12776 = this->FMGL(tabuList);
+        ::x10::array::Array_2<x10_long>* this__12778 = this->FMGL(tabuList);
         
         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        x10_long i__12777 = this->FMGL(move)->getSecond();
-        x10_long j__12778 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
+        x10_long i__12779 = this->FMGL(move)->getSecond();
+        x10_long j__12780 = ((x10_long)(::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(variables))->x10::lang::Rail< x10_int >::__apply(
                                           this->FMGL(move)->getFirst())));
-        x10_long v__12779 = ((x10_long)(((nIter) + (t2))));
-        x10_long ret__12780;
+        x10_long v__12781 = ((x10_long)(((nIter) + (t2))));
+        x10_long ret__12782;
         
         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        (::x10aux::nullCheck(this__12776)->FMGL(raw))->unchecked_set((__extension__ ({
+        (::x10aux::nullCheck(this__12778)->FMGL(raw))->unchecked_set((__extension__ ({
             
             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-            x10_long i__12769 = i__12777;
-            x10_long j__12770 = j__12778;
-            ((j__12770) + (((i__12769) * (::x10aux::nullCheck(this__12776)->FMGL(numElems_2)))));
+            x10_long i__12771 = i__12779;
+            x10_long j__12772 = j__12780;
+            ((j__12772) + (((i__12771) * (::x10aux::nullCheck(this__12778)->FMGL(numElems_2)))));
         }))
-        , v__12779);
+        , v__12781);
         
         //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        ret__12780 = v__12779;
+        ret__12782 = v__12781;
         
         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-        ret__12780;
+        ret__12782;
         
         //#line 167 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/RoTSearch.x10"
         return ((currentCost) + (minDelta));
