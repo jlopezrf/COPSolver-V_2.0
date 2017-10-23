@@ -79,8 +79,6 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     public:
     RTT_H_DECLS_CLASS
     
-    using ::cpls::solver::HeuristicSolver::displayInfo;
-    
     ::cpls::solver::GAPopulation* FMGL(population);
     
     x10_int FMGL(populationSize);

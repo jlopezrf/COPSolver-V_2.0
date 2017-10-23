@@ -47,7 +47,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//initialize(this.populationSize, super.sz);
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.sort();
- 		displayInfo();
+ 		//displayInfo("Mensaje: ");
  		//Console.OUT.println("Poblacion inicial: ");
  		//printPopulation();
  	}
@@ -147,9 +147,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	}
  
  	public def launchEventForStagnation(){
- 		displayInfo("Media poblacion antes: ");
+ 		//displayInfo("Media poblacion antes: ");
  		this.population.renewPopulation();
- 		displayInfo("Media poblacion despues: ");
+ 		//displayInfo("Media poblacion despues: ");
  		val genes = this.population.getIndividual(0).getGenes();
  		Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
  	}

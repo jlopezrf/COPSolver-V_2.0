@@ -16,6 +16,7 @@
 #include <x10/io/Printer.h>
 #include <x10/io/Console.h>
 #include <x10/lang/Any.h>
+#include <x10/lang/String.h>
 #include <x10/lang/Double.h>
 #include <x10/compiler/Synthetic.h>
 #ifndef CPLS_SOLVER_HEURISTICSOLVER__CLOSURE__1_CLOSURE
@@ -259,7 +260,7 @@ void cpls::solver::HeuristicSolver::launchEventForStagnation(
 }
 
 //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-void cpls::solver::HeuristicSolver::displayInfo() {
+void cpls::solver::HeuristicSolver::displayInfo(::x10::lang::String* string) {
     
     //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
