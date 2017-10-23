@@ -113,7 +113,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.population.sort();
  	}
 
- 	public def displayInfo(){
+ 	public def displayInfo(stringMsg:String){
  		//PrintPopulation
  		//for(var i:Int = 0n; i < population.getPopulationSize(); i++){
  		//	Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population.getIndividual(i).getCost() + ". Variables: ");
@@ -121,7 +121,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//}
  		val media = population.calculateMidDistance();
  		//val stdrdDesv = population.calculateStandardDesviation(media);
- 		Console.OUT.println("Media de la poblacion: " + media);
+ 		Console.OUT.println(stringMsg + media);
  		//Console.OUT.println("Desviacion estandar: " + stdrdDesv);
  	}
 
@@ -147,10 +147,11 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	}
  
  	public def launchEventForStagnation(){
+ 		displayInfo("Media poblacion antes: ");
  		this.population.renewPopulation();
+ 		displayInfo("Media poblacion despues: ");
  		val genes = this.population.getIndividual(0).getGenes();
  		Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
-
  	}
  
  	/*En el mecanismo de mutación, la tasa de mutación se interpreta como la cantidad de swaps que se haran sobre el individuo a mutar*/

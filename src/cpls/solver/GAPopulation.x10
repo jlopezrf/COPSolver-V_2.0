@@ -53,7 +53,7 @@ public class GAPopulation{
 	 			meanDist += dist;
 	 		}
 	 		meanDist = meanDist/populationSize;
-	 		if(meanDist > 0.3){
+	 		if(meanDist > 0.0){
 	 			this.population(populationSize - (2 - count)) = mutSon;
 	 		}
 	 		count++;
@@ -62,7 +62,7 @@ public class GAPopulation{
  	}
  
     public def renewPopulation(){
-    	for(var i:Int = (this.population.size/2n) as Int ; i < this.population.size; i++){
+    	for(var i:Int = (this.population.size*0.75) as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
     		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
     	}

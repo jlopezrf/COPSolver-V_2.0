@@ -55,6 +55,9 @@ template<class TPMGL(T)> class Rail;
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
+namespace x10 { namespace lang { 
+class String;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -63,9 +66,6 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
-} } 
-namespace x10 { namespace lang { 
-class String;
 } } 
 namespace x10 { namespace util { 
 template<class TPMGL(T)> class ArrayList;
@@ -78,6 +78,8 @@ namespace cpls { namespace solver {
 class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     public:
     RTT_H_DECLS_CLASS
+    
+    using ::cpls::solver::HeuristicSolver::displayInfo;
     
     ::cpls::solver::GAPopulation* FMGL(population);
     
@@ -108,7 +110,7 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       FMGL(cmp);
     
     virtual void sortPopulation();
-    virtual void displayInfo();
+    virtual void displayInfo(::x10::lang::String* stringMsg);
     static void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       crossing(::cpls::solver::GAIndividual* i1, ::cpls::solver::GAIndividual* i2);

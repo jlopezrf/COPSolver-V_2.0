@@ -109,11 +109,10 @@ public class NodeInstancer{
  	}
  	
  	public static def verifyWinner(sz:Long, val refPlaces:PlaceLocalHandle[CPLSNode(sz)], verify:Boolean, val targetCost:Long, explorerWinner:Int):void{
- 		//Console.OUT.println("Y realiza el verifyWinner");
  		var minCost:Long = Long.MAX_VALUE;
  		var bestPlace:Place = here;
  		if(explorerWinner == -1n){
- 			//Console.OUT.println("MsgType_0. No se llego al valor objetivo");
+ 			Console.OUT.println("No se encontro ningun ganador");
  			Logger.debug(()=>"No winner found");
  			for (k in Place.places()){
  				val cCost = at(k) refPlaces().getCost();
@@ -126,27 +125,16 @@ public class NodeInstancer{
  			var solWin2:Rail[Int];
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
-
- 				//val changeForDiv = refPlaces().getChangeforDiv();
- 				//Console.OUT.println("Numero de reinicios por diversificacion: " + changeForDiv + ". Soy place: " + here.id);
  				refPlaces().setStats_(targetCost, place.id as Int, 0n);
  				if (verify){
  					refPlaces().verify_();
  				}
  			}
- 			//val iterMaster = at(Place.place(0)) refPlaces().getnIter();
- 			//Console.OUT.println("El master itero veces: " + iterMaster);
  			val solWin = at(bestPlace) refPlaces().getBestConf();
- 			//Console.OUT.print("MsgType_0. El place ganador es: " + place + ", con un costo de: " + minCost + ", y variables: ");
- 			//printVector(solWin);
  		}else{
- 			//Console.OUT.println("MsgType_0. Hubo un ganador en la ejecucion.");
+ 			Console.OUT.println("Ya fue, hubo un ganador");
  			val solWin = at(Place(explorerWinner)) refPlaces().getBestConf();
  			val cCost = at(Place(explorerWinner)) refPlaces().getCost();
- 			//val restartsForDivs = at(Place(explorerWinner)) refPlaces().getChangeforDiv();
- 			//Console.OUT.println("Numero de reinicios por diversificacion: " + restartsForDivs + ". Soy place: " + explorerWinner);
- 			//Console.OUT.print("MsgType_0. El place ganador es: " + explorerWinner + ", con un costo de: " + cCost + ", y variables: ");
- 			//printVector(solWin);
  		}
  	}
  

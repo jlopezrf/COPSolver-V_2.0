@@ -25,6 +25,7 @@ public class CPLSNode(sz:Long){
  	protected var heuristicSolver:HeuristicSolver(sz);
  	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
  	var teamPool:SmartPool(sz);
+ 	var offspringPool:SmartPool(sz);
  	var stackForDiv:StackForDiv(sz);
  	var globalBestConf:GlobalBestConf(sz);
  	/***********************************************************/
@@ -123,6 +124,7 @@ public class CPLSNode(sz:Long){
  			//Console.OUT.println("MsgType_0. Se inicializa smartpool en el master. Place: " + here.id + ". TeamId: " + config.getTeamId());
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
+ 			this.offspringPool = new SmartPool(sz, cplsPoolConfig);
  			this.stackForDiv = new StackForDiv(sz);
  			//this.divCplsPool = new SmartPool(sz, cplsPoolConfig);
  			//if(this.nodeConfig.getMasterHeuristic() != null && this.nodeConfig.getMasterHeuristic().equals("GA")){
@@ -231,7 +233,7 @@ public class CPLSNode(sz:Long){
  		else
  			this.bestCost = x10.lang.Int.MAX_VALUE;
  
- 		var count:Int = 1n;
+ 		//var count:Int = 1n;
  		while( this.currentCost != 0 ){
  			if (this.nIter >= this.nodeConfig.getMaxIters() as Int){
  				//restart or finish
@@ -276,11 +278,11 @@ public class CPLSNode(sz:Long){
  					break;
  				}
  			}
- 			val eTime = System.nanoTime() - this.initialTime;
- 			if((eTime/1e6)/30000 > count){
- 				count++;
- 				this.heuristicSolver.displayInfo();
- 			}
+ 			//val eTime = System.nanoTime() - this.initialTime;
+ 			//if((eTime/1e6)/30000 > count){
+ 			//	count++;
+ 			//	this.heuristicSolver.displayInfo();
+ 			//}
  			interact();
  		}
  		//this.heuristicSolver.printPopulation();
@@ -349,12 +351,14 @@ public class CPLSNode(sz:Long){
  		}else{
  			this.itersWhitoutImprovements++;
  		}
- 		if(this.itersWhitoutImprovements == this.nodeConfig.getItersWhitoutImprovements()){
- 			this.itersWhitoutImprovements = 0n;
- 			bestSent = false;
- 			this.heuristicSolver.launchEventForStagnation();
- 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
- 			this.bestCost = this.heuristicSolver.costOfSolution();
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+	 		if(this.itersWhitoutImprovements == this.nodeConfig.getItersWhitoutImprovements()){
+	 			this.itersWhitoutImprovements = 0n;
+	 			bestSent = false;
+	 			this.heuristicSolver.launchEventForStagnation();
+	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+	 			this.bestCost = this.heuristicSolver.costOfSolution();
+	 		}
  		}
  	}
  
@@ -721,17 +725,28 @@ public class CPLSNode(sz:Long){
  			return false;
  	});*/
  
- 	public def communicate( info:State(sz)) {  
- 		val refsToPlaces = pointersComunication;
+ 	public def communicate( info:State(sz)) {
  		Logger.debug(()=>" communicate: entering.");
+ 		val refsToPlaces = pointersComunication;
  		val placeid = here.id as Int;
- 		if ( Place(nodeConfig.getTeamId()) == here ){
- 			Logger.debug(()=>"CommManager: try to insert in local place: "+here);
- 			async this.tryInsertConf(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 			if ( Place(nodeConfig.getTeamId()) == here ){
+ 				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 				async this.tryInsertConfOffspringPool(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
+ 			}else{
+ 				Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfOffspringPool(info);
+ 			}
  		}else{
- 			Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
- 			at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConf( info );
+			if ( Place(nodeConfig.getTeamId()) == here ){
+				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+			 	async this.tryInsertConfTeamPool(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
+			}else{
+				Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfTeamPool( info );
+			}
  		}
+ 		
  		//Jason: Pruebas para debuguiar la comunicación
  		//if(this.counterForReport%100 == 0){
  		//	Console.OUT.println("Nodo " + here + ". Reportando a head en place: " + this.nodeConfig.getTeamId());
@@ -755,10 +770,15 @@ public class CPLSNode(sz:Long){
  		return;
  	}
  
- 	public def tryInsertConf(info:State(sz)){
- 		//val sz = this.heuristicSolver.getSizeProblem();
+ 	public def tryInsertConfTeamPool(info:State(sz)){
  		if(teamPool != null){
- 			teamPool.tryInsertConf(info);
+ 			this.teamPool.tryInsertConf(info);
+ 		}
+ 	}
+ 
+ 	public def tryInsertConfOffspringPool(info:State(sz)){
+ 		if(offspringPool != null){
+ 			this.offspringPool.tryInsertConf(info);
  		}
  	}
  
@@ -768,16 +788,11 @@ public class CPLSNode(sz:Long){
  		val a : Maybe[State];
  		val place = Place(nodeConfig.getTeamId());
  		val refsToPlace = pointersComunication;
- 		//if (place == here )
- 		//	a = getPConf();
- 		//else{
- 		//Console.OUT.println();
- 		a = at(place) refsToPlace().getPConf();
- 		//Jason: Pruebas para debuguiar la comunicación
- 		//if(this.counterForReport%100 == 0){
- 		//	Console.OUT.println("Nodo " + here + ". Actualizando desde head en place: " + this.nodeConfig.getTeamId());
- 		//}
- 		//}
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 			a = at(place) refsToPlace().getPConfFromTeamPool();
+ 		}else{
+ 			a = at(place) refsToPlace().getPConfFromOffspringPool();
+ 		}
  		if ( a!=null && myCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
  			//Jason: Migración
  			if(this.nodeConfig.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.GA_SOL){
@@ -792,9 +807,16 @@ public class CPLSNode(sz:Long){
  		return false;
  	}
  
- 	public def getPConf(): Maybe[State(sz)]{
+ 	public def getPConfFromTeamPool(): Maybe[State(sz)]{
  		if(teamPool != null){
  			return teamPool.getPConf();
+ 		}
+ 		return null;
+ 	}
+ 
+ 	public def getPConfFromOffspringPool(): Maybe[State(sz)]{
+ 		if(offspringPool != null){
+ 			return offspringPool.getPConf();
  		}
  		return null;
  	}
@@ -876,8 +898,13 @@ public class CPLSNode(sz:Long){
  				if (random.nextDouble() <= nodeConfig.getAffectedPer());
  					at(Place(i)) refsToPlaces().diversify();
  			}
- 			at(Place(teamToRest)) refsToPlaces().teamPool.clear();
+ 			at(Place(teamToRest)) refsToPlaces().clearPools();
  		}	
+ 	}
+ 
+ 	public def clearPools(){
+ 		this.teamPool.clear();
+ 		this.offspringPool.clear();
  	}
  	
  	//public def communicateLM(info:State(sz)){
@@ -1033,6 +1060,8 @@ public class CPLSNode(sz:Long){
  		winnerLatchForDivs.set(false);
  		if(teamPool != null)
  			teamPool.clear();
+ 		if(offspringPool != null)
+ 			offspringPool.clear();
  		this.stackForDiv = new StackForDiv(sz);
  		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.globalBestConf = new GlobalBestConf(sz, nodeConfig.getNumberOfTeams(), this.random.nextLong());
