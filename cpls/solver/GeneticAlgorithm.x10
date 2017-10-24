@@ -8,6 +8,8 @@ import cpls.util.Valuation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
 import x10.util.ArrayList;
+import cpls.solver.EOSearch;
+import cpls.solver.HeuristicSolver;
 //import cpls.util.Utils;
 
 
@@ -22,11 +24,15 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
  	var eachIterMigration:Int = Int.MAX_VALUE;
+ 	protected var heuristicSolverAux:HeuristicSolver(sz);
  	//var auxCounterIter:Int = 0n;
 	
 	public def this(sz:Long){
 		super(sz);
  		super.mySolverType = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
+ 		this.heuristicSolverAux = new EOSearch(sz);
+ 		//Jason: Nueva prueba
+
 	}
 
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
@@ -39,13 +45,15 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		if(divOperator == 1n){
  			eachIterMigration = (super.sz*rate) as Int;
  		}
- 		//initialize(populationSize, problemModel.size);
- 		//sortPopulation();
+ 		this.heuristicSolverAux.configHeuristic(problemModel, opts);
+ 		this.heuristicSolverAux.initVar();
+ 		this.heuristicSolverAux.setSeed(super.random.nextLong());
  	}
 
  	public def initVariables(){
  		//initialize(this.populationSize, super.sz);
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
+ 		this.population.applyLS(super.sz, this.heuristicSolverAux);
  		this.population.sort();
  		//displayInfo("Mensaje: ");
  		//Console.OUT.println("Poblacion inicial: ");
@@ -149,6 +157,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def launchEventForStagnation(){
  		//displayInfo("Media poblacion antes: ");
  		this.population.renewPopulation();
+ 		this.population.applyLS(super.sz, this.heuristicSolverAux);
  		//displayInfo("Media poblacion despues: ");
  		val genes = this.population.getIndividual(0).getGenes();
  		Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));

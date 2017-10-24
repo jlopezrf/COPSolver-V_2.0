@@ -11,6 +11,7 @@ import cpls.util.Utils;
 import cpls.util.Maybe;
 import cpls.util.Valuation;
 import cpls.solver.HeuristicSolver;
+import cpls.solver.EOSearch;
 import cpls.solver.PopulBasedHeuristic;
 import x10.util.Random;
 import x10.util.concurrent.AtomicBoolean;
@@ -23,6 +24,7 @@ public class CPLSNode(sz:Long){
  	/*********Variables para la configuración del nodo**********/
  	private var nodeConfig:NodeConfig;
  	protected var heuristicSolver:HeuristicSolver(sz);
+ 	
  	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
  	var teamPool:SmartPool(sz);
  	var offspringPool:SmartPool(sz);
@@ -98,10 +100,6 @@ public class CPLSNode(sz:Long){
  			pSendLM = StringUtil.parseInt(lmstr)/ 100.0;
  	}
  
- 	/*public def getHeuristicType(){
- 		return HeuristicFactory.getHeuristicType(this.heuristicSolver);
- 	}*/
- 
  	public def initialize(config:NodeConfig, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long){
  		val nsStr = System.getenv("NS");
  		if (nsStr != null) 
@@ -109,9 +107,9 @@ public class CPLSNode(sz:Long){
  		else
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
- 		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		this.random.setSeed(inSeed + here.id);
  		this.heuristicSolver.setSeed(random.nextLong());
+ 		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
  		this.nodeConfig = config;
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización

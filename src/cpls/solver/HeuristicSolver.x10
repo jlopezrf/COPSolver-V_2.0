@@ -50,6 +50,10 @@ public class HeuristicSolver(sz:Long){
  		}*/
  		return costo;
  	}
+ 
+ 	//public def setBaseVariables(variablesIn:Rail[Int]){
+ 	//	Rail.copy(variablesIn as Valuation(sz), this.variables as Valuation(sz));
+ 	//}
  	
  	public def initVar(){
  		this.nSwap = 0n;
@@ -66,7 +70,7 @@ public class HeuristicSolver(sz:Long){
  	public def setSeed(inSeed:Long){
  		this.random = new Random(inSeed + here.id);
  	}
- 	
+ 
  	public def setSolverType(mySolverType:Int){
  		this.mySolverType = mySolverType;
  	}

@@ -31,6 +31,9 @@ class GAPopulation;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
+namespace cpls { namespace solver { 
+class EOSearch;
+} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -94,6 +97,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     x10_long FMGL(currentCostGA);
     
     x10_int FMGL(eachIterMigration);
+    
+    ::cpls::solver::HeuristicSolver* FMGL(heuristicSolverAux);
     
     void _constructor(x10_long sz);
     

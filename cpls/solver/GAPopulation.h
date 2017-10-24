@@ -34,14 +34,26 @@ class ProblemGenericModel;
 namespace x10 { namespace util { 
 class Random;
 } } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
+namespace x10 { namespace io { 
+class Printer;
+} } 
+namespace x10 { namespace io { 
+class Console;
+} } 
+namespace x10 { namespace lang { 
+class String;
+} } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace util { 
 class RailUtils;
-} } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace lang { 
 class Unsafe;
@@ -54,9 +66,6 @@ class Math;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
-} } 
-namespace x10 { namespace lang { 
-class String;
 } } 
 namespace cpls { namespace solver { 
 
@@ -76,6 +85,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     
     virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long seed);
+    virtual void applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux);
+    virtual void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,

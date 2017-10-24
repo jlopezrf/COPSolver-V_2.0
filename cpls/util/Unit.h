@@ -61,8 +61,7 @@ class Unit   {
         
     }
     void _constructor() {
-        ::cpls::util::Unit this__44 = (*this);
-        
+        (*this)->cpls::util::Unit::__fieldInitializers_cpls_util_Unit();
     }
     static ::cpls::util::Unit _make() {
         ::cpls::util::Unit this_; 

@@ -6,6 +6,7 @@ import cpls.util.Monitor;
 import x10.util.Random;
 import x10.array.Array_2;
 import x10.lang.Math;
+import cpls.util.Valuation;
 
 public class GAPopulation{
 
@@ -22,12 +23,45 @@ public class GAPopulation{
  		val random = new Random(seed);
  		this.distanceMatrix = new Array_2[Double](populationSize, populationSize, 0n);
  		for(var k:Int = 0n; k < this.population.size; k++){
+ 			var newCost:Long;// = Long.MAX_VALUE;
+ 			var indivCost:Long;// = Long.MAX_VALUE;
  			val seed1 = random.nextLong();
  			//Console.OUT.println("Semilla individuo " + k + ": " + seed1);
  			this.population(k) = new GAIndividual(size, seed1);
  			this.population(k).initialize();
- 			this.population(k).setCost(problemModel.costOfSolution(size, this.population(k).getGenes() as Rail[Int]{self.size == size}));
  		}
+ 	}
+ 
+ 	public def applyLS(size:Long, heuristicSolverAux:HeuristicSolver){
+ 		var indivCost:Long;// = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
+ 		var newCost:Long;// = indivCost;
+ 		for(var k:Int = 0n; k < this.population.size; k++){
+ 			heuristicSolverAux.clearProblemModel();
+ 			//heuristicSolverAux.initVariables();
+ 			heuristicSolverAux.setVariables(this.population(k).getGenes());
+ 			indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
+ 			newCost = indivCost;
+ 			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
+ 			//indivCost = heuristicSolverAux.costOfSolution();
+ 			var bestConf:Rail[Int] = new Rail[Int](size, 0n);
+ 			for(var i:Int = 0n; i < 5000; i++){
+ 				newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, 0n);
+ 				//Console.OUT.println("Costo intermedio " + i + " individuo " + k + ": " + newCost);
+ 				if(newCost < indivCost){
+ 					Rail.copy(heuristicSolverAux.getVariables() as Valuation(size), bestConf as Valuation(size));
+ 					indivCost = newCost;
+ 				}
+ 			}	
+ 			this.population(k).setCost(indivCost);
+ 			this.population(k).setGenes(bestConf);
+ 		}
+ 	}
+ 
+ 	public def printVector(vector:Rail[Int]){
+ 		for(var i:Int = 0n; i < vector.size; i++){
+ 			Console.OUT.print(vector(i) + "  ");
+ 		}
+ 		Console.OUT.print("\n");
  	}
 
  	public def getIndividual(index:Long){

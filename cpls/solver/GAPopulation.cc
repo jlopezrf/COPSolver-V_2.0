@@ -12,14 +12,17 @@
 #include <cpls/problem/ProblemGenericModel.h>
 #include <x10/util/Random.h>
 #include <x10/lang/Boolean.h>
+#include <cpls/solver/HeuristicSolver.h>
+#include <x10/lang/FailedDynamicCheckException.h>
+#include <x10/io/Printer.h>
+#include <x10/io/Console.h>
+#include <x10/lang/String.h>
 #include <x10/lang/Fun_0_2.h>
 #include <x10/util/RailUtils.h>
-#include <x10/lang/FailedDynamicCheckException.h>
 #include <x10/lang/Unsafe.h>
 #include <x10/array/Array.h>
 #include <x10/lang/Math.h>
 #include <x10/compiler/Synthetic.h>
-#include <x10/lang/String.h>
 #ifndef CPLS_SOLVER_GAPOPULATION__CLOSURE__1_CLOSURE
 #define CPLS_SOLVER_GAPOPULATION__CLOSURE__1_CLOSURE
 #include <x10/lang/Closure.h>
@@ -35,7 +38,7 @@ class cpls_solver_GAPopulation__closure__1 : public ::x10::lang::Closure {
     // closure body
     x10_int __apply(::cpls::solver::GAIndividual* a, ::cpls::solver::GAIndividual* b) {
         
-        //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+        //#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
         return ((x10_int) (((::x10aux::nullCheck(a)->getCost()) - (::x10aux::nullCheck(b)->getCost()))));
         
     }
@@ -65,14 +68,12 @@ class cpls_solver_GAPopulation__closure__1 : public ::x10::lang::Closure {
     virtual const ::x10aux::RuntimeType *_type() const { return ::x10aux::getRTT< ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int> >(); }
     
     const char* toNativeString() {
-        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10:114";
+        return "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10:148";
     }
 
 };
 
 #endif // CPLS_SOLVER_GAPOPULATION__CLOSURE__1_CLOSURE
-
-//#line 12 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 
 //#line 13 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 
@@ -82,327 +83,427 @@ class cpls_solver_GAPopulation__closure__1 : public ::x10::lang::Closure {
 
 //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 
-//#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+
+//#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::initialize(x10_long populationSize, x10_long size,
                                             ::cpls::problem::ProblemGenericModel* problemModel,
                                             x10_long seed) {
     
-    //#line 19 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     this->FMGL(population) = ::x10::lang::Rail< ::cpls::solver::GAIndividual* >::_make(populationSize);
     
-    //#line 20 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     this->FMGL(populationSize) = populationSize;
     
-    //#line 21 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     this->FMGL(problemModel) = problemModel;
     
-    //#line 22 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     ::x10::util::Random* random =  (new (::x10aux::alloc_z< ::x10::util::Random>()) ::x10::util::Random());
     (random)->::x10::util::Random::_constructor(seed);
     
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     this->FMGL(distanceMatrix) = (__extension__ ({
-        ::x10::array::Array_2<x10_double>* alloc__1297 = 
+        ::x10::array::Array_2<x10_double>* alloc__1501 = 
         (new (::x10aux::alloc_z< ::x10::array::Array_2<x10_double> >()) ::x10::array::Array_2<x10_double>());
-        (alloc__1297)->::x10::array::Array_2<x10_double>::_constructor(
+        (alloc__1501)->::x10::array::Array_2<x10_double>::_constructor(
           populationSize, populationSize, ((x10_double) (((x10_int)0))));
-        alloc__1297;
+        alloc__1501;
     }))
     ;
     
-    //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     {
         x10_int k;
         for (k = ((x10_int)0); ((((x10_long)(k))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
              k = ((k) + (((x10_int)1)))) {
             
-            //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-            x10_long seed1 = random->nextLong();
+            //#line 26 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            x10_long newCost;
             
             //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            x10_long indivCost;
+            
+            //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            x10_long seed1 = random->nextLong();
+            
+            //#line 30 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             ::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__set(
               ((x10_long)(k)), (__extension__ ({
-                  ::cpls::solver::GAIndividual* alloc__1298 =
+                  ::cpls::solver::GAIndividual* alloc__1502 =
                      (new (::x10aux::alloc_z< ::cpls::solver::GAIndividual>()) ::cpls::solver::GAIndividual());
-                  (alloc__1298)->::cpls::solver::GAIndividual::_constructor(
+                  (alloc__1502)->::cpls::solver::GAIndividual::_constructor(
                     size, seed1);
-                  alloc__1298;
+                  alloc__1502;
               }))
               );
             
-            //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 31 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                   ((x10_long)(k))))->initialize();
-            
-            //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-            ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
-                                  ((x10_long)(k))))->setCost(
-              ::x10aux::nullCheck(problemModel)->costOfSolution(
-                size, ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
-                                            ((x10_long)(k))))->getGenes()));
         }
     }
     
 }
 
-//#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+void cpls::solver::GAPopulation::applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux) {
+    
+    //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    x10_long indivCost;
+    
+    //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    x10_long newCost;
+    
+    //#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    {
+        x10_int k;
+        for (k = ((x10_int)0); ((((x10_long)(k))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
+             k = ((k) + (((x10_int)1)))) {
+            
+            //#line 39 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::x10aux::nullCheck(heuristicSolverAux)->clearProblemModel();
+            
+            //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::cpls::solver::HeuristicSolver* t__9929 = heuristicSolverAux;
+            ::x10::lang::Rail< x10_int >* variables__9930 =
+              ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                                    ((x10_long)(k))))->getGenes();
+            if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(variables__9930)->FMGL(size)),
+                                           ::x10aux::nullCheck(t__9929)->FMGL(sz)))))
+            {
+                ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__9970 = ::x10aux::makeStringLit("!(variables$1249.size == t$1248.sz)"); strLit__9970; })))));
+            }
+            ::x10aux::nullCheck(t__9929)->setVariables(variables__9930);
+            
+            //#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            indivCost = ::x10aux::nullCheck(heuristicSolverAux)->costOfSolution();
+            
+            //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            newCost = indivCost;
+            
+            //#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::x10::lang::Rail< x10_int >* bestConf = ::x10::lang::Rail< x10_int >::_make(size,
+                                                                                         ((x10_int)0));
+            
+            //#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            {
+                x10_int i;
+                for (i = ((x10_int)0); ((((x10_long)(i))) < (((x10_long)5000ll)));
+                     i = ((i) + (((x10_int)1)))) {
+                    
+                    //#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    newCost = ::x10aux::nullCheck(heuristicSolverAux)->search(
+                                newCost, (x10_long)0x7fffffffffffffffLL,
+                                ((x10_int)0));
+                    
+                    //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    if (((newCost) < (indivCost))) {
+                        
+                        //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        ::x10::lang::Rail< void >::copy< x10_int >(
+                          ::x10aux::nullCheck(heuristicSolverAux)->getVariables(),
+                          bestConf);
+                        
+                        //#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        indivCost = newCost;
+                    }
+                    
+                }
+            }
+            
+            //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                                  ((x10_long)(k))))->setCost(
+              indivCost);
+            
+            //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                                  ((x10_long)(k))))->setGenes(
+              bestConf);
+        }
+    }
+    
+}
+
+//#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+void cpls::solver::GAPopulation::printVector(::x10::lang::Rail< x10_int >* vector) {
+    
+    //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    {
+        x10_int i;
+        for (i = ((x10_int)0); ((((x10_long)(i))) < ((x10_long)(::x10aux::nullCheck(vector)->FMGL(size))));
+             i = ((i) + (((x10_int)1)))) {
+            
+            //#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10aux::nullCheck(vector)->x10::lang::Rail< x10_int >::__apply(
+                                                                                      ((x10_long)(i))), (__extension__ ({ static ::x10::lang::String* strLit__9974 = ::x10aux::makeStringLit("  "); strLit__9974; }))));
+        }
+    }
+    
+    //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->print((__extension__ ({ static ::x10::lang::String* strLit__9975 = ::x10aux::makeStringLit("\n"); strLit__9975; })));
+}
+
+//#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 ::cpls::solver::GAIndividual* cpls::solver::GAPopulation::getIndividual(
   x10_long index) {
     
-    //#line 34 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     return ::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
              index);
     
 }
 
-//#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::setIndividual(x10_long index,
                                                ::cpls::solver::GAIndividual* individual) {
     
-    //#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     ::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__set(
       index, individual);
 }
 
-//#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                                    x10_long index1,
                                                    x10_long index2,
                                                    ::x10::util::Random* random) {
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* a__9263 =
+    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* a__9932 =
       mutatedSons;
-    ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>* cmp__9264 =
+    ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>* cmp__9933 =
       this->FMGL(cmp);
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
     ::x10::util::RailUtils::qsort< ::cpls::solver::GAIndividual* >(
-      a__9263, ((x10_long)0ll), (((x10_long)(::x10aux::nullCheck(a__9263)->FMGL(size))) - (((x10_long)1ll))),
-      cmp__9264);
+      a__9932, ((x10_long)0ll), (((x10_long)(::x10aux::nullCheck(a__9932)->FMGL(size))) - (((x10_long)1ll))),
+      cmp__9933);
     
-    //#line 43 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double dist = 0.0;
     
-    //#line 44 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double meanDist = 0.0;
     
-    //#line 45 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 79 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_int count = ((x10_int)0);
     
-    //#line 46 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* rail__9265 =
+    //#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* rail__9934 =
       mutatedSons;
-    x10_long size__9266 = (x10_long)(::x10aux::nullCheck(rail__9265)->FMGL(size));
+    x10_long size__9935 = (x10_long)(::x10aux::nullCheck(rail__9934)->FMGL(size));
     {
-        x10_long idx__9267;
-        for (idx__9267 = ((x10_long)0ll); ((idx__9267) < (size__9266));
-             idx__9267 = ((idx__9267) + (((x10_long)1ll))))
+        x10_long idx__9936;
+        for (idx__9936 = ((x10_long)0ll); ((idx__9936) < (size__9935));
+             idx__9936 = ((idx__9936) + (((x10_long)1ll))))
         {
-            ::cpls::solver::GAIndividual* mutSon__9268 = ::x10aux::nullCheck(rail__9265)->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
-                                                           idx__9267);
+            ::cpls::solver::GAIndividual* mutSon__9937 = ::x10aux::nullCheck(rail__9934)->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                                                           idx__9936);
             
-            //#line 47 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 81 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             {
-                x10_int i__9262;
-                for (i__9262 = ((x10_int)0); ((((x10_long)(i__9262))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
-                     i__9262 = ((i__9262) + (((x10_int)1))))
+                x10_int i__9931;
+                for (i__9931 = ((x10_int)0); ((((x10_long)(i__9931))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
+                     i__9931 = ((i__9931) + (((x10_int)1))))
                 {
                     
-                    //#line 48 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-                    dist = this->distance(::x10aux::nullCheck(mutSon__9268)->getGenes(),
+                    //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    dist = this->distance(::x10aux::nullCheck(mutSon__9937)->getGenes(),
                                           ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
-                                                                ((x10_long)(i__9262))))->getGenes());
+                                                                ((x10_long)(i__9931))))->getGenes());
                     
-                    //#line 49 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                     if ((::x10aux::struct_equals(dist, 0.0)))
                     {
                         
-                        //#line 50 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                         meanDist = 0.0;
                         
-                        //#line 51 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        //#line 85 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                         break;
                     }
                     
-                    //#line 53 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                     meanDist = ((meanDist) + (dist));
                 }
             }
             
-            //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             meanDist = ((meanDist) / (((x10_double) (this->FMGL(populationSize)))));
             
-            //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             if (((meanDist) > (0.0))) {
                 
-                //#line 57 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                 ::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__set(
                   ((this->FMGL(populationSize)) - (((((x10_long)2ll)) - (((x10_long)(count)))))),
-                  mutSon__9268);
+                  mutSon__9937);
             }
             
-            //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             count = ((count) + (((x10_int)1)));
             
-            //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             meanDist = 0.0;
         }
     }
     
 }
 
-//#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::renewPopulation() {
     
-    //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 99 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     {
         x10_int i;
         for (i = ::x10::lang::DoubleNatives::toInt(((((x10_double) ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))))) * (0.75)));
              ((((x10_long)(i))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
              i = ((i) + (((x10_int)1)))) {
             
-            //#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 100 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                   ((x10_long)(i))))->initialize();
             
-            //#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                   ((x10_long)(i))))->setCost(
               (__extension__ ({
-                  ::cpls::problem::ProblemGenericModel* t__1151 =
+                  ::cpls::problem::ProblemGenericModel* t__1355 =
                     this->FMGL(problemModel);
-                  x10_long sz__1152 = ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
+                  x10_long sz__1356 = ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                                             ((x10_long)(i))))->FMGL(size);
-                  ::x10::lang::Rail< x10_int >* solution__1153 =
+                  ::x10::lang::Rail< x10_int >* solution__1357 =
                     ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                           ((x10_long)(i))))->getGenes();
-                  if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(solution__1153)->FMGL(size)),
-                                                 sz__1152))))
+                  if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(solution__1357)->FMGL(size)),
+                                                 sz__1356))))
                   {
-                      ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__9309 = ::x10aux::makeStringLit("!(solution$1153.size == sz$1152)"); strLit__9309; })))));
+                      ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__9983 = ::x10aux::makeStringLit("!(solution$1357.size == sz$1356)"); strLit__9983; })))));
                   }
-                  ::x10aux::nullCheck(t__1151)->costOfSolution(
-                    sz__1152, solution__1153);
+                  ::x10aux::nullCheck(t__1355)->costOfSolution(
+                    sz__1356, solution__1357);
               }))
               );
         }
     }
     
-    //#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 103 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     this->sort();
 }
 
-//#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 x10_double cpls::solver::GAPopulation::calculateMidDistance(
   ) {
     
-    //#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double dist = ((x10_double) (((x10_int)0)));
     
-    //#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 108 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double media = 0.0;
     
-    //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     {
         x10_int i;
         for (i = ((x10_int)0); ((((x10_long)(i))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
              i = ((i) + (((x10_int)1)))) {
             
-            //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             {
                 x10_int j;
                 for (j = i; ((((x10_long)(j))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
                      j = ((j) + (((x10_int)1)))) {
                     
-                    //#line 77 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    //#line 111 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                     if ((::x10aux::struct_equals(i, j))) {
                         
-                        //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-                        ::x10::array::Array_2<x10_double>* this__9271 =
+                        //#line 112 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        ::x10::array::Array_2<x10_double>* this__9940 =
                           this->FMGL(distanceMatrix);
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__9272 = ((x10_long)(i));
-                        x10_long j__9273 = ((x10_long)(j));
-                        x10_double ret__9274;
+                        x10_long i__9941 = ((x10_long)(i));
+                        x10_long j__9942 = ((x10_long)(j));
+                        x10_double ret__9943;
                         
                         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        (::x10aux::nullCheck(this__9271)->FMGL(raw))->unchecked_set((__extension__ ({
+                        (::x10aux::nullCheck(this__9940)->FMGL(raw))->unchecked_set((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__9269 = i__9272;
-                            x10_long j__9270 = j__9273;
-                            ((j__9270) + (((i__9269) * (::x10aux::nullCheck(this__9271)->FMGL(numElems_2)))));
+                            x10_long i__9938 = i__9941;
+                            x10_long j__9939 = j__9942;
+                            ((j__9939) + (((i__9938) * (::x10aux::nullCheck(this__9940)->FMGL(numElems_2)))));
                         }))
                         , 0.0);
                         
                         //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9274 = 0.0;
+                        ret__9943 = 0.0;
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9274;
+                        ret__9943;
                     } else {
                         
-                        //#line 80 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                         dist = this->distance(::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                                                     ((x10_long)(i))))->getGenes(),
                                               ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                                                                     ((x10_long)(j))))->getGenes());
                         
-                        //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-                        ::x10::array::Array_2<x10_double>* this__9279 =
+                        //#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        ::x10::array::Array_2<x10_double>* this__9948 =
                           this->FMGL(distanceMatrix);
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__9280 = ((x10_long)(i));
-                        x10_long j__9281 = ((x10_long)(j));
-                        x10_double v__9282 = dist;
-                        x10_double ret__9283;
+                        x10_long i__9949 = ((x10_long)(i));
+                        x10_long j__9950 = ((x10_long)(j));
+                        x10_double v__9951 = dist;
+                        x10_double ret__9952;
                         
                         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        (::x10aux::nullCheck(this__9279)->FMGL(raw))->unchecked_set((__extension__ ({
+                        (::x10aux::nullCheck(this__9948)->FMGL(raw))->unchecked_set((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__9275 = i__9280;
-                            x10_long j__9276 = j__9281;
-                            ((j__9276) + (((i__9275) * (::x10aux::nullCheck(this__9279)->FMGL(numElems_2)))));
+                            x10_long i__9944 = i__9949;
+                            x10_long j__9945 = j__9950;
+                            ((j__9945) + (((i__9944) * (::x10aux::nullCheck(this__9948)->FMGL(numElems_2)))));
                         }))
-                        , v__9282);
+                        , v__9951);
                         
                         //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9283 = v__9282;
+                        ret__9952 = v__9951;
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9283;
+                        ret__9952;
                         
-                        //#line 83 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-                        ::x10::array::Array_2<x10_double>* this__9284 =
+                        //#line 117 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        ::x10::array::Array_2<x10_double>* this__9953 =
                           this->FMGL(distanceMatrix);
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__9285 = ((x10_long)(j));
-                        x10_long j__9286 = ((x10_long)(i));
-                        x10_double v__9287 = dist;
-                        x10_double ret__9288;
+                        x10_long i__9954 = ((x10_long)(j));
+                        x10_long j__9955 = ((x10_long)(i));
+                        x10_double v__9956 = dist;
+                        x10_double ret__9957;
                         
                         //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        (::x10aux::nullCheck(this__9284)->FMGL(raw))->unchecked_set((__extension__ ({
+                        (::x10aux::nullCheck(this__9953)->FMGL(raw))->unchecked_set((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__9277 = i__9285;
-                            x10_long j__9278 = j__9286;
-                            ((j__9278) + (((i__9277) * (::x10aux::nullCheck(this__9284)->FMGL(numElems_2)))));
+                            x10_long i__9946 = i__9954;
+                            x10_long j__9947 = j__9955;
+                            ((j__9947) + (((i__9946) * (::x10aux::nullCheck(this__9953)->FMGL(numElems_2)))));
                         }))
-                        , v__9287);
+                        , v__9956);
                         
                         //#line 175 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9288 = v__9287;
+                        ret__9957 = v__9956;
                         
                         //#line 169 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__9288;
+                        ret__9957;
                         
-                        //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                        //#line 118 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                         media = ((media) + (((((x10_double) (((x10_long)2ll)))) * (dist))));
                     }
                     
@@ -412,79 +513,79 @@ x10_double cpls::solver::GAPopulation::calculateMidDistance(
         }
     }
     
-    //#line 88 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 122 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     media = ((media) / (((x10_double) ((((((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))) - (((x10_long)1ll)))) * ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))))))));
     
-    //#line 89 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 123 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     return media;
     
 }
 
-//#line 92 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 126 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 x10_double cpls::solver::GAPopulation::calculateStandardDesviation(
   x10_double media) {
     
-    //#line 93 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 127 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double standardDesviation = 0.0;
     
-    //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 128 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double counter = 0.0;
     
-    //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 129 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     {
         x10_int i;
         for (i = ((x10_int)0); ((((x10_long)(i))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
              i = ((i) + (((x10_int)1)))) {
             
-            //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             {
                 x10_int j;
                 for (j = ((i) + (((x10_int)1))); ((((x10_long)(j))) < ((x10_long)(::x10aux::nullCheck(this->FMGL(population))->FMGL(size))));
                      j = ((j) + (((x10_int)1)))) {
                     
-                    //#line 97 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    //#line 131 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                     counter = ((counter) + (1.0));
                     
-                    //#line 98 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+                    //#line 132 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
                     standardDesviation = (((((__extension__ ({
-                        ::x10::array::Array_2<x10_double>* this__7453 =
+                        ::x10::array::Array_2<x10_double>* this__8123 =
                           this->FMGL(distanceMatrix);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__7451 = ((x10_long)(i));
-                        x10_long j__7452 = ((x10_long)(j));
-                        x10_double ret__7454;
+                        x10_long i__8121 = ((x10_long)(i));
+                        x10_long j__8122 = ((x10_long)(j));
+                        x10_double ret__8124;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__7454 = (::x10aux::nullCheck(this__7453)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__8124 = (::x10aux::nullCheck(this__8123)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__9289 = i__7451;
-                            x10_long j__9290 = j__7452;
-                            ((j__9290) + (((i__9289) * (::x10aux::nullCheck(this__7453)->FMGL(numElems_2)))));
+                            x10_long i__9958 = i__8121;
+                            x10_long j__9959 = j__8122;
+                            ((j__9959) + (((i__9958) * (::x10aux::nullCheck(this__8123)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__7454;
+                        ret__8124;
                     }))
                     ) - (media))) * ((((__extension__ ({
-                        ::x10::array::Array_2<x10_double>* this__7460 =
+                        ::x10::array::Array_2<x10_double>* this__8130 =
                           this->FMGL(distanceMatrix);
                         
                         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        x10_long i__7458 = ((x10_long)(i));
-                        x10_long j__7459 = ((x10_long)(j));
-                        x10_double ret__7461;
+                        x10_long i__8128 = ((x10_long)(i));
+                        x10_long j__8129 = ((x10_long)(j));
+                        x10_double ret__8131;
                         
                         //#line 147 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                        ret__7461 = (::x10aux::nullCheck(this__7460)->FMGL(raw))->unchecked_apply((__extension__ ({
+                        ret__8131 = (::x10aux::nullCheck(this__8130)->FMGL(raw))->unchecked_apply((__extension__ ({
                             
                             //#line 130 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/array/Array_2.x10"
-                            x10_long i__9291 = i__7458;
-                            x10_long j__9292 = j__7459;
-                            ((j__9292) + (((i__9291) * (::x10aux::nullCheck(this__7460)->FMGL(numElems_2)))));
+                            x10_long i__9960 = i__8128;
+                            x10_long j__9961 = j__8129;
+                            ((j__9961) + (((i__9960) * (::x10aux::nullCheck(this__8130)->FMGL(numElems_2)))));
                         }))
                         );
-                        ret__7461;
+                        ret__8131;
                     }))
                     ) - (media))));
                 }
@@ -493,34 +594,34 @@ x10_double cpls::solver::GAPopulation::calculateStandardDesviation(
         }
     }
     
-    //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 135 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     return ::x10::lang::MathNatives::sqrt(((standardDesviation) / (counter)));
     
 }
 
-//#line 104 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 138 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 x10_double cpls::solver::GAPopulation::distance(::x10::lang::Rail< x10_int >* indiv1,
                                                 ::x10::lang::Rail< x10_int >* indiv2) {
     
-    //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 139 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_int count = ((x10_int)0);
     
-    //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 140 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_long siz = (x10_long)(::x10aux::nullCheck(indiv1)->FMGL(size));
     
-    //#line 107 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-    x10_int i__1360max__9293 = ((((x10_int) (siz))) - (((x10_int)1)));
+    //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    x10_int i__1564max__9962 = ((((x10_int) (siz))) - (((x10_int)1)));
     {
-        x10_int i__9294;
-        for (i__9294 = ((x10_int)0); ((i__9294) <= (i__1360max__9293));
-             i__9294 = ((i__9294) + (((x10_int)1)))) {
-            x10_int i__9295 = i__9294;
+        x10_int i__9963;
+        for (i__9963 = ((x10_int)0); ((i__9963) <= (i__1564max__9962));
+             i__9963 = ((i__9963) + (((x10_int)1)))) {
+            x10_int i__9964 = i__9963;
             
-            //#line 108 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+            //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
             if ((!::x10aux::struct_equals(::x10aux::nullCheck(indiv1)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__9295))),
+                                            ((x10_long)(i__9964))),
                                           ::x10aux::nullCheck(indiv2)->x10::lang::Rail< x10_int >::__apply(
-                                            ((x10_long)(i__9295))))))
+                                            ((x10_long)(i__9964))))))
             {
                 count = ((count) + (((x10_int)1)));
             }
@@ -528,48 +629,48 @@ x10_double cpls::solver::GAPopulation::distance(::x10::lang::Rail< x10_int >* in
         }
     }
     
-    //#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 144 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     x10_double dist = ((((x10_double) (count))) / (((x10_double) (siz))));
     
-    //#line 111 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 145 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     return dist;
     
 }
 
-//#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 148 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 
-//#line 116 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 150 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::sort() {
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
-    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* a__9296 =
+    ::x10::lang::Rail< ::cpls::solver::GAIndividual* >* a__9965 =
       this->FMGL(population);
-    ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>* cmp__9297 =
+    ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>* cmp__9966 =
       this->FMGL(cmp);
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/RailUtils.x10"
     ::x10::util::RailUtils::qsort< ::cpls::solver::GAIndividual* >(
-      a__9296, ((x10_long)0ll), (((x10_long)(::x10aux::nullCheck(a__9296)->FMGL(size))) - (((x10_long)1ll))),
-      cmp__9297);
+      a__9965, ((x10_long)0ll), (((x10_long)(::x10aux::nullCheck(a__9965)->FMGL(size))) - (((x10_long)1ll))),
+      cmp__9966);
 }
 
-//#line 120 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 154 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 x10_long cpls::solver::GAPopulation::getPopulationSize() {
     
-    //#line 121 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 155 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     return this->FMGL(populationSize);
     
 }
 
-//#line 124 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 158 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 void cpls::solver::GAPopulation::setCost(x10_long index, x10_long cost) {
     
-    //#line 125 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+    //#line 159 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
     ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(population))->x10::lang::Rail< ::cpls::solver::GAIndividual* >::__apply(
                           index))->setCost(cost);
 }
 
-//#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+//#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
 ::cpls::solver::GAPopulation* cpls::solver::GAPopulation::cpls__solver__GAPopulation____this__cpls__solver__GAPopulation(
   ) {
     return this;
@@ -592,18 +693,18 @@ void cpls::solver::GAPopulation::__fieldInitializers_cpls_solver_GAPopulation(
     this->FMGL(populationSize) = ((x10_long)0ll);
     this->FMGL(monitor) = (__extension__ ({
         
-        //#line 14 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
-        ::cpls::util::Monitor* alloc__1299 =  (new (::x10aux::alloc_z< ::cpls::util::Monitor>()) ::cpls::util::Monitor());
+        //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAPopulation.x10"
+        ::cpls::util::Monitor* alloc__1503 =  (new (::x10aux::alloc_z< ::cpls::util::Monitor>()) ::cpls::util::Monitor());
         
         //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-        ::x10::lang::String* n__9298 = (__extension__ ({ static ::x10::lang::String* strLit__9315 = ::x10aux::makeStringLit("CPLSNode"); strLit__9315; }));
+        ::x10::lang::String* n__9967 = (__extension__ ({ static ::x10::lang::String* strLit__9989 = ::x10aux::makeStringLit("CPLSNode"); strLit__9989; }));
         
         //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-        alloc__1299->cpls::util::Monitor::__fieldInitializers_cpls_util_Monitor();
+        alloc__1503->cpls::util::Monitor::__fieldInitializers_cpls_util_Monitor();
         
         //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-        alloc__1299->FMGL(name) = n__9298;
-        alloc__1299;
+        alloc__1503->FMGL(name) = n__9967;
+        alloc__1503;
     }))
     ;
     this->FMGL(distanceMatrix) = (::x10aux::class_cast_unchecked< ::x10::array::Array_2<x10_double>*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
