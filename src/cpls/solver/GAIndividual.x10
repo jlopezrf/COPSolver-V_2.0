@@ -50,6 +50,29 @@ public class GAIndividual(size:Long){
  		}
  	}
  
+ 	public def applyLS(heuristicSolverAux:HeuristicSolver){
+ 		var indivCost:Long;// = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
+ 		var newCost:Long;// = indivCost;
+ 		heuristicSolverAux.clearProblemModel();
+ 		//heuristicSolverAux.initVariables();
+ 		heuristicSolverAux.setVariables(this.genes);
+ 		indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
+ 		newCost = indivCost;
+ 		//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
+ 		//indivCost = heuristicSolverAux.costOfSolution();
+ 		var bestConf:Rail[Int] = this.genes;
+ 		for(var i:Int = 0n; i < 5000; i++){
+ 			newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, i);
+ 			//Console.OUT.println("Costo intermedio " + i + " individuo " + k + ": " + newCost);
+ 			if(newCost < indivCost){
+ 				Rail.copy(heuristicSolverAux.getVariables() as Valuation(size), bestConf as Valuation(size));
+ 				indivCost = newCost;
+ 			}
+ 		}	
+ 		this.cost = indivCost;
+ 		this.genes = bestConf;
+ 	}
+ 
  	/*@NonEscaping private def printGenes(){
  		Console.OUT.println("Individuo inicializado con: ");
  		for(var i:Int = 0n; i < this.genes.size; i++){

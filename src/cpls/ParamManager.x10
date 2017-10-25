@@ -79,7 +79,7 @@ public class ParamManager extends OptionsParser{
  				Option("GA_pz", "GA_population_size", "Set the population size. Default 2*n"),
  				Option("GA_r", "GA_rate", "Set the rate for mutation and migration. Default 40\\%"),
  				Option("-GA_co", "GA_Crossing_Operator", "Set the crossing operator. Default UniforCrossover"),
- 				Option("-GA_do", "GA_diver_Operator", "Select the div operator. 0 mutate, 1 migrate. Default mutate"),
+ 				Option("-GA_do", "GA_diver_Operator", "Select the div operator. 0 mutate, 1 migrate, 2 Apply LS Default mutate"),
  				// Parameters for Problem Models
  				Option("if", "input_vector_file", "file path for input vector . Default ."),
  				Option("bv", "model_baseValue", "Domain base value for the model . 0 or 1"),

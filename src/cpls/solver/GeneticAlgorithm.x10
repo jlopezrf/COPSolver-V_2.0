@@ -97,8 +97,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  				}
  				mutatedSons = sons;
  			}
- 		}else{
+ 		}else if(divOperator == 0n){
  			mutatedSons = mutate(sons);
+ 		}else{
+ 			mutatedSons = applyLSToSons(sons);
  		}
  		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
@@ -224,6 +226,13 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		for(var i:Int = 0n; i< sons.size; i++){
  			sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
  			//Utils.show("son " + i + ": ",sons(i).getGenes());
+ 		}
+ 		return sons;
+ 	}
+ 
+ 	public def applyLSToSons(sons:Rail[GAIndividual]){
+ 		for(son in sons){
+ 			son.applyLS(this.heuristicSolverAux);
  		}
  		return sons;
  	}
