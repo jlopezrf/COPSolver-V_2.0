@@ -92,7 +92,7 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
-    virtual void renewPopulation();
+    virtual void renewPopulation(x10_float percentaje);
     virtual x10_double calculateMidDistance();
     virtual x10_double calculateStandardDesviation(x10_double media);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,

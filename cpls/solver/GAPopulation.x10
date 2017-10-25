@@ -95,8 +95,8 @@ public class GAPopulation{
  		}
  	}
  
-    public def renewPopulation(){
-    	for(var i:Int = (this.population.size*0.5) as Int ; i < this.population.size; i++){
+    public def renewPopulation(percentaje:Float){
+    	for(var i:Int = (this.population.size*percentaje) as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
     		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
     	}

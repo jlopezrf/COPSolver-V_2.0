@@ -43,7 +43,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.crossingOperator = opts("-GA_co", 0n);
  		this.divOperator = opts("-GA_do", 0n);
  		if(divOperator == 1n){
- 			eachIterMigration = (super.sz*rate) as Int;
+ 			this.eachIterMigration = (super.sz*rate) as Int;
  		}
  		this.heuristicSolverAux.configHeuristic(problemModel, opts);
  		this.heuristicSolverAux.initVar();
@@ -59,8 +59,23 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//Console.OUT.println("Poblacion inicial: ");
  		//printPopulation();
  	}
+ 
+ 	public def setValuesToParameters(){
+ 		//this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
+ 		do{
+ 			this.rate = super.random.nextFloat();
+ 		}while(0.3 > this.rate || this.rate > 0.9);
+ 		
+ 		this.crossingOperator = super.random.nextInt(3n);
+ 		this.divOperator = super.random.nextInt(3n);
+ 		//if(divOperator == 1n){
+ 		//	this.eachIterMigration = (super.sz*rate) as Int;
+ 		//}
+ 
+ 	}
 
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
+ 		setValuesToParameters();
  		val index1 = super.random.nextLong(populationSize);
  		var index2:Long;
  		do{
@@ -88,17 +103,19 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(sons(1).getGenes());*/
  		var mutatedSons:Rail[GAIndividual];
  		if(divOperator == 1n){
- 			if(nIter%eachIterMigration == 0n){
+ 			//if(nIter%eachIterMigration == 0n){
  				mutatedSons = migrate(sons);
- 			}else{
- 				for(var i:Int = 0n; i< sons.size; i++){
- 					sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
- 					//Utils.show("son " + i + ": ",sons(i).getGenes());
- 				}
- 				mutatedSons = sons;
- 			}
- 		}else{
+ 			//}else{
+ 			//	for(var i:Int = 0n; i< sons.size; i++){
+ 			//		sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
+ 			//		//Utils.show("son " + i + ": ",sons(i).getGenes());
+ 			//	}
+ 			//	mutatedSons = sons;
+ 			//}
+ 		}else if(divOperator == 0n){
  			mutatedSons = mutate(sons);
+ 		}else{
+ 			mutatedSons = applyLSToSons(sons);
  		}
  		/*Console.OUT.print("Hijo 1 despues de mutacion. Afuera. Costo: " + mutatedSons(0).getCost() + ".Variables: ");
  		printVector(mutatedSons(0).getGenes());
@@ -156,7 +173,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	public def launchEventForStagnation(){
  		//displayInfo("Media poblacion antes: ");
- 		this.population.renewPopulation();
+ 		this.population.renewPopulation(1-rate);
  		this.population.applyLS(super.sz, this.heuristicSolverAux);
  		//displayInfo("Media poblacion despues: ");
  		val genes = this.population.getIndividual(0).getGenes();
@@ -224,6 +241,13 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		for(var i:Int = 0n; i< sons.size; i++){
  			sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
  			//Utils.show("son " + i + ": ",sons(i).getGenes());
+ 		}
+ 		return sons;
+ 	}
+ 
+ 	public def applyLSToSons(sons:Rail[GAIndividual]){
+ 		for(son in sons){
+ 			son.applyLS(this.heuristicSolverAux);
  		}
  		return sons;
  	}

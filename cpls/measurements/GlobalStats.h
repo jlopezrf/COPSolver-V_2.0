@@ -43,9 +43,6 @@ class String;
 namespace x10 { namespace lang { 
 class Any;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__SupportedProblems;
-} 
 namespace x10 { namespace compiler { 
 class Synthetic;
 } } 

@@ -107,6 +107,7 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);
     virtual void initVariables();
+    virtual void setValuesToParameters();
     virtual x10_long search(x10_long currentCost, x10_long bestCost,
                             x10_int nIter);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*
@@ -122,6 +123,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       migrate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
+    virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
+      applyLSToSons(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       transformIndiv(::cpls::solver::GAIndividual* indiv);
     virtual x10_boolean tryInsertIndividual(::x10::lang::Rail< x10_int >* varables,

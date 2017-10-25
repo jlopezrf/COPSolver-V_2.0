@@ -85,6 +85,7 @@ public class CPLSNode(sz:Long){
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
+ 	protected var randomIWI:Int;
  	//protected var spreadDivConf:Boolean = false;
  	//protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
@@ -108,6 +109,9 @@ public class CPLSNode(sz:Long){
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
  		this.random.setSeed(inSeed + here.id);
+ 		do{
+ 			this.randomIWI = this.random.nextInt((5000*sz) as Int);
+ 		}while(this.randomIWI < 50*sz); 
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
@@ -349,9 +353,12 @@ public class CPLSNode(sz:Long){
  		}else{
  			this.itersWhitoutImprovements++;
  		}
+ 		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
-	 		if(this.itersWhitoutImprovements == this.nodeConfig.getItersWhitoutImprovements()){
+	 		if(this.itersWhitoutImprovements == this.randomIWI ){//this.nodeConfig.getItersWhitoutImprovements()){
 	 			this.itersWhitoutImprovements = 0n;
+	 			val solverState = createSolverState();
+	 			communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
 	 			bestSent = false;
 	 			this.heuristicSolver.launchEventForStagnation();
 	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));

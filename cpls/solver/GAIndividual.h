@@ -22,6 +22,12 @@ class Random;
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
+namespace x10 { namespace util { 
+class Timer;
+} } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
 namespace x10 { namespace lang { 
 class FailedDynamicCheckException;
 } } 
@@ -57,6 +63,7 @@ class GAIndividual : public ::x10::lang::X10Class   {
                                                x10_long seed);
     
     virtual void initialize();
+    virtual void applyLS(::cpls::solver::HeuristicSolver* heuristicSolverAux);
     virtual x10_long getSize();
     virtual ::x10::lang::Rail< x10_int >* getGenes();
     virtual void setGenes(::x10::lang::Rail< x10_int >* genes);
