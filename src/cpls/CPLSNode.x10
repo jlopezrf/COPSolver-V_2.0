@@ -349,9 +349,12 @@ public class CPLSNode(sz:Long){
  		}else{
  			this.itersWhitoutImprovements++;
  		}
+ 		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 		if(this.itersWhitoutImprovements == this.nodeConfig.getItersWhitoutImprovements()){
 	 			this.itersWhitoutImprovements = 0n;
+	 			val solverState = createSolverState();
+	 			communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
 	 			bestSent = false;
 	 			this.heuristicSolver.launchEventForStagnation();
 	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
