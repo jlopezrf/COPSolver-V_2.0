@@ -111,7 +111,8 @@ public class CPLSNode(sz:Long){
  		this.random.setSeed(inSeed + here.id);
  		do{
  			this.randomIWI = this.random.nextInt((5000*sz) as Int);
- 		}while(this.randomIWI < 50*sz); 
+ 		}while(this.randomIWI < 50*sz);
+ 		Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
@@ -143,6 +144,10 @@ public class CPLSNode(sz:Long){
  		this.heuristicSolver.setSeed(random.nextLong());
  		this.heuristicSolver.clearProblemModel();
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
+ 		do{
+ 			this.randomIWI = this.random.nextInt((5000*sz) as Int);
+ 		}while(this.randomIWI < 50*sz);
+ 		Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		//this.heuristicSolver.initVariables();
  		//this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
@@ -363,6 +368,12 @@ public class CPLSNode(sz:Long){
 	 			this.heuristicSolver.launchEventForStagnation();
 	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
 	 			this.bestCost = this.heuristicSolver.costOfSolution();
+	 		}else{
+	 			val result = getIPVector(this.currentCost);
+	 			if (result) {
+	 				//this.nChangeV++;
+	 				restartVar();
+	 			}
 	 		}
  		}
  	}

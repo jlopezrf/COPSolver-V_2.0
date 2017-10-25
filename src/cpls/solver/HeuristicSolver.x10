@@ -103,7 +103,7 @@ public class HeuristicSolver(sz:Long){
  	}
  
  	public def launchEventForStagnation(){
- 		Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
+ 		//Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
  	}
  
  	public def displayInfo(string:String){

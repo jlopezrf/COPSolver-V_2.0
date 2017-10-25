@@ -176,9 +176,9 @@ void cpls::solver::HeuristicSolver::setSeed(x10_long inSeed) {
     
     //#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     this->FMGL(random) = (__extension__ ({
-        ::x10::util::Random* alloc__380 =  (new (::x10aux::alloc_z< ::x10::util::Random>()) ::x10::util::Random());
-        (alloc__380)->::x10::util::Random::_constructor(((inSeed) + (::x10::lang::Place::_make(::x10aux::here)->FMGL(id))));
-        alloc__380;
+        ::x10::util::Random* alloc__379 =  (new (::x10aux::alloc_z< ::x10::util::Random>()) ::x10::util::Random());
+        (alloc__379)->::x10::util::Random::_constructor(((inSeed) + (::x10::lang::Place::_make(::x10aux::here)->FMGL(id))));
+        alloc__379;
     }))
     ;
 }
@@ -230,7 +230,7 @@ x10_boolean cpls::solver::HeuristicSolver::tryInsertIndividual(
     
     //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2992 = ::x10aux::makeStringLit("BadInvocation of tryInsertIndividual, this its not a GA Heuristic"); strLit__2992; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2991 = ::x10aux::makeStringLit("BadInvocation of tryInsertIndividual, this its not a GA Heuristic"); strLit__2991; }))));
     
     //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     return false;
@@ -243,7 +243,7 @@ x10_boolean cpls::solver::HeuristicSolver::tryInsertIndividual(
     
     //#line 101 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2993 = ::x10aux::makeStringLit("BadInvocation of getConfigForPop, this is not a GA Heuristic"); strLit__2993; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2992 = ::x10aux::makeStringLit("BadInvocation of getConfigForPop, this is not a GA Heuristic"); strLit__2992; }))));
     
     //#line 102 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     return ::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
@@ -253,10 +253,7 @@ x10_boolean cpls::solver::HeuristicSolver::tryInsertIndividual(
 //#line 105 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
 void cpls::solver::HeuristicSolver::launchEventForStagnation(
   ) {
-    
-    //#line 106 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2994 = ::x10aux::makeStringLit("Error. launchEventForStagnation() invokation in HeuristicSolver"); strLit__2994; }))));
+ 
 }
 
 //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
@@ -264,7 +261,7 @@ void cpls::solver::HeuristicSolver::displayInfo(::x10::lang::String* string) {
     
     //#line 110 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2995 = ::x10aux::makeStringLit("Error. displayInfo() invokation in HeuristicSolver"); strLit__2995; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__2993 = ::x10aux::makeStringLit("Error. displayInfo() invokation in HeuristicSolver"); strLit__2993; }))));
 }
 
 //#line 113 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
@@ -273,10 +270,10 @@ x10_long cpls::solver::HeuristicSolver::reset(x10_long n,
     
     //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
     while ((!::x10aux::struct_equals((__extension__ ({
-                                         x10_long pre__373 =
+                                         x10_long pre__372 =
                                            n;
                                          n = ((n) - (((x10_long)1ll)));
-                                         pre__373;
+                                         pre__372;
                                      }))
                                      , ((x10_long)0ll))))
     {
@@ -408,22 +405,22 @@ void cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSol
     this->FMGL(move) = (__extension__ ({
         
         //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-        ::cpls::util::MovePermutation* alloc__381 =  (new (::x10aux::alloc_z< ::cpls::util::MovePermutation>()) ::cpls::util::MovePermutation());
+        ::cpls::util::MovePermutation* alloc__380 =  (new (::x10aux::alloc_z< ::cpls::util::MovePermutation>()) ::cpls::util::MovePermutation());
         
         //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-        x10_long f__2988 = ((x10_long)(((x10_int)-1)));
-        x10_long s__2989 = ((x10_long)(((x10_int)-1)));
+        x10_long f__2987 = ((x10_long)(((x10_int)-1)));
+        x10_long s__2988 = ((x10_long)(((x10_int)-1)));
         
         //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-        alloc__381->FMGL(first) = ((x10_long)-1ll);
-        alloc__381->FMGL(second) = ((x10_long)-1ll);
+        alloc__380->FMGL(first) = ((x10_long)-1ll);
+        alloc__380->FMGL(second) = ((x10_long)-1ll);
         
         //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-        alloc__381->FMGL(first) = f__2988;
+        alloc__380->FMGL(first) = f__2987;
         
         //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-        alloc__381->FMGL(second) = s__2989;
-        alloc__381;
+        alloc__380->FMGL(second) = s__2988;
+        alloc__380;
     }))
     ;
     this->FMGL(random) = (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));

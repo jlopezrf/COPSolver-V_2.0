@@ -49,18 +49,6 @@ class Place;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace cpls { namespace solver { 
-class GAIndividual;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(T)> class Rail;
-} } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
-} } 
-namespace x10 { namespace lang { 
-class String;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -69,6 +57,21 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+class String;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
+} } 
+namespace cpls { namespace solver { 
+class GAIndividual;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(T)> class Rail;
+} } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace util { 
 template<class TPMGL(T)> class ArrayList;

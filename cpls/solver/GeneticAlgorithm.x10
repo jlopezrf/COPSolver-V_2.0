@@ -39,9 +39,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		super.configHeuristic(problemModel, opts);
  		//this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
  		this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
- 		this.rate = opts("-GA_r", 0.4f);
- 		this.crossingOperator = opts("-GA_co", 0n);
- 		this.divOperator = opts("-GA_do", 0n);
+ 		setValuesToParameters();
+ 		//this.rate = opts("-GA_r", 0.4f);
+ 		//this.crossingOperator = opts("-GA_co", 0n);
+ 		//this.divOperator = opts("-GA_do", 0n);
  		if(divOperator == 1n){
  			this.eachIterMigration = (super.sz*rate) as Int;
  		}
@@ -55,6 +56,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.applyLS(super.sz, this.heuristicSolverAux);
  		this.population.sort();
+ 		setValuesToParameters();
  		//displayInfo("Mensaje: ");
  		//Console.OUT.println("Poblacion inicial: ");
  		//printPopulation();
@@ -71,11 +73,14 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//if(divOperator == 1n){
  		//	this.eachIterMigration = (super.sz*rate) as Int;
  		//}
+ 		Console.OUT.println("Nodo " + here.id + " rate: " + this.rate);
+ 		Console.OUT.println("Nodo " + here.id + " crossingOperator: " + this.crossingOperator);
+ 		Console.OUT.println("Nodo " + here.id + " diversificationOperator: " + this.divOperator);
  
  	}
 
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
- 		setValuesToParameters();
+ 		//setValuesToParameters();
  		val index1 = super.random.nextLong(populationSize);
  		var index2:Long;
  		do{
@@ -103,15 +108,15 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		printVector(sons(1).getGenes());*/
  		var mutatedSons:Rail[GAIndividual];
  		if(divOperator == 1n){
- 			//if(nIter%eachIterMigration == 0n){
+ 			if(nIter%eachIterMigration == 0n){
  				mutatedSons = migrate(sons);
- 			//}else{
- 			//	for(var i:Int = 0n; i< sons.size; i++){
- 			//		sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
- 			//		//Utils.show("son " + i + ": ",sons(i).getGenes());
- 			//	}
- 			//	mutatedSons = sons;
- 			//}
+ 			}else{
+ 				for(var i:Int = 0n; i< sons.size; i++){
+ 					sons(i).setCost(this.problemModel.costOfSolution(sz, sons(i).getGenes() as Rail[Int]{self.size == sz}));
+ 					//Utils.show("son " + i + ": ",sons(i).getGenes());
+ 				}
+ 				mutatedSons = sons;
+ 			}
  		}else if(divOperator == 0n){
  			mutatedSons = mutate(sons);
  		}else{
