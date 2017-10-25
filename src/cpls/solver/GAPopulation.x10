@@ -43,9 +43,9 @@ public class GAPopulation{
  			newCost = indivCost;
  			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
  			//indivCost = heuristicSolverAux.costOfSolution();
- 			var bestConf:Rail[Int] = new Rail[Int](size, 0n);
+ 			var bestConf:Rail[Int] = this.population(k).getGenes();
  			for(var i:Int = 0n; i < 5000; i++){
- 				newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, 0n);
+ 				newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, i);
  				//Console.OUT.println("Costo intermedio " + i + " individuo " + k + ": " + newCost);
  				if(newCost < indivCost){
  					Rail.copy(heuristicSolverAux.getVariables() as Valuation(size), bestConf as Valuation(size));
@@ -96,7 +96,7 @@ public class GAPopulation{
  	}
  
     public def renewPopulation(){
-    	for(var i:Int = (this.population.size*0.75) as Int ; i < this.population.size; i++){
+    	for(var i:Int = (this.population.size*0.5) as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
     		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
     	}
