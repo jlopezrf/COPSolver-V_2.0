@@ -31,9 +31,6 @@ class GAPopulation;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
-namespace cpls { namespace solver { 
-class EOSearch;
-} } 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -45,6 +42,12 @@ class OptionsParser;
 } } 
 namespace x10 { namespace lang { 
 class Place;
+} } 
+namespace cpls { namespace solver { 
+class RoTSearch;
+} } 
+namespace cpls { namespace solver { 
+class EOSearch;
 } } 
 namespace x10 { namespace util { 
 class Random;
