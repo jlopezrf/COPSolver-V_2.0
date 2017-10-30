@@ -368,14 +368,16 @@ public class CPLSNode(sz:Long){
 	 			this.heuristicSolver.launchEventForStagnation();
 	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
 	 			this.bestCost = this.heuristicSolver.costOfSolution();
-	 		}else{
-	 			val result = getIPVector(this.currentCost);
-	 			if (result) {
-	 				//this.nChangeV++;
-	 				restartVar();
-	 			}
 	 		}
- 		}
+ 		}//else{
+ 		//	if(this.itersWhitoutImprovements == this.randomIWI ){
+ 		//		val result = getIPVector(this.currentCost);
+ 		//		if (result) {
+ 		//			//this.nChangeV++;
+ 		//			restartVar();
+ 		//		}
+ 		//	}
+ 		//}
  	}
  
  	/*********************************************This is the comunication section****************************************/
