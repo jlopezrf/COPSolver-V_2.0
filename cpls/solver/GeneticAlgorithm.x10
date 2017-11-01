@@ -37,17 +37,17 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//this.populationSize = opts("-GA_pz", 2n*problemModel.size as Int);
  		this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
  		//Jason: Nueva prueba
- 		val ls = opts("-GA_ls", 1);
- 		if(ls == 0){
- 			this.heuristicSolverAux = new RoTSearch(sz);
- 		}else{
+ 		//val ls = opts("-GA_ls", 1);
+ 		//if(ls == 0){
+ 		//	this.heuristicSolverAux = new RoTSearch(sz);
+ 		//}else{
  			this.heuristicSolverAux = new EOSearch(sz);
- 		}
+ 		//}
  		
- 		setValuesToParameters();
- 		//this.rate = opts("-GA_r", 0.4f);
- 		//this.crossingOperator = opts("-GA_co", 0n);
- 		//this.divOperator = opts("-GA_do", 0n);
+ 		//setValuesToParameters();
+ 		this.rate = opts("-GA_r", 0.4f);
+ 		this.crossingOperator = opts("-GA_co", 0n);
+ 		this.divOperator = opts("-GA_do", 0n);
  		if(divOperator == 1n){
  			this.eachIterMigration = (super.sz*rate) as Int;
  		}

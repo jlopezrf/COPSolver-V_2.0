@@ -123,6 +123,7 @@ public class NodeInstancer{
  			}
  			val place = bestPlace; val mC = minCost;
  			var solWin2:Rail[Int];
+
  			Logger.debug(()=>"winner "+ place + " final cost "+ mC);
  			at (bestPlace){
  				refPlaces().setStats_(targetCost, place.id as Int, 0n);
@@ -131,11 +132,15 @@ public class NodeInstancer{
  				}
  			}
  			val solWin = at(bestPlace) refPlaces().getBestConf();
- 		}//else{
+ 			val iwiTimes = at(bestPlace) refPlaces().getChangeforiwi();
+ 			Console.OUT.println("El nodo " + bestPlace + " ganador con iwiTimes = " + iwiTimes);
+ 		}else{
+ 			val iwiTimes = at(Place(explorerWinner)) refPlaces().getChangeforiwi();
+ 			Console.OUT.println("El nodo " + bestPlace + " ganador con iwiTimes = " + iwiTimes);
  		//	Console.OUT.println("Ya fue, hubo un ganador");
  		//	val solWin = at(Place(explorerWinner)) refPlaces().getBestConf();
  		//	val cCost = at(Place(explorerWinner)) refPlaces().getCost();
- 		//}
+ 		}
  	}
  
  	public static def printVector(vector:Rail[Int]){

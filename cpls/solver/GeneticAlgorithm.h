@@ -44,9 +44,6 @@ namespace x10 { namespace lang {
 class Place;
 } } 
 namespace cpls { namespace solver { 
-class RoTSearch;
-} } 
-namespace cpls { namespace solver { 
 class EOSearch;
 } } 
 namespace x10 { namespace util { 

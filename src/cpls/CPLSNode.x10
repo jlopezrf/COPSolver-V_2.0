@@ -81,7 +81,7 @@ public class CPLSNode(sz:Long){
  	protected var forceRestart : Boolean = false;
  	/** Number time to change vector due to communication */ 
  	protected var nChangeV : Int = 0n;
- 	//protected var nChangeforDiv : Int = 0n;
+ 	protected var nChangeforiwi : Int = 0n;
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
@@ -109,9 +109,10 @@ public class CPLSNode(sz:Long){
  			this.ns = sz as Int / 4n;
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
  		this.random.setSeed(inSeed + here.id);
- 		do{
- 			this.randomIWI = this.random.nextInt((5000*sz) as Int);
- 		}while(this.randomIWI < 50*sz);
+ 		//do{
+ 		//	this.randomIWI = this.random.nextInt((5000*sz) as Int);
+ 		//}while(this.randomIWI < 50*sz);
+ 		this.randomIWI = (50*problemSize) as Int;
  		Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
@@ -324,7 +325,7 @@ public class CPLSNode(sz:Long){
  		this.bestSent = false;
  		this.nForceRestart = 0n;
  		this.nChangeV = 0n;
- 		//this.nChangeforDiv = 0n;
+ 		this.nChangeforiwi = 0n;
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
@@ -450,6 +451,7 @@ public class CPLSNode(sz:Long){
  				val result = getIPVector(this.currentCost);
  				if (result) {
  					this.nChangeV++;
+ 					this.itersWhitoutImprovements = 0n;
  					restartVar();
  				}
  				//this.nItersForUpdate = 0n;
@@ -1094,7 +1096,7 @@ public class CPLSNode(sz:Long){
  		//this.counterForReport = 0n;
  		//this.counterForUpdate = 0n;
  		this.nForceRestart = 0n;
- 		//this.nChangeforDiv = 0n;
+ 		this.nChangeforiwi = 0n;
  		this.heuristicSolver.initVariables();
  		this.bestConf = new Rail[Int](this.heuristicSolver.getSizeProblem(), 0n);
  		this.bestConfForTeam = new State(sz, Long.MAX_VALUE, null, -1 as Int,null);
@@ -1111,9 +1113,9 @@ public class CPLSNode(sz:Long){
  		//Console.OUT.println("Changes for diversification: " + this.nChangeforDiv);
  	}
  
- 	/*public def getChangeforDiv(){
- 		return this.nChangeforDiv; 
- 	}*/
+ 	public def getChangeforiwi(){
+ 		return this.nChangeforiwi; 
+ 	}
  	
  	public def verify(){
  		//val sz = this.heuristicSolver.getSizeProblem();
