@@ -61,7 +61,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.applyLS(super.sz, this.heuristicSolverAux);
  		this.population.sort();
- 		setValuesToParameters();
+ 		//setValuesToParameters();
  		//displayInfo("Mensaje: ");
  		//Console.OUT.println("Poblacion inicial: ");
  		//printPopulation();

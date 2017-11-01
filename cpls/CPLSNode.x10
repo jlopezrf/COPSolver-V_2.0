@@ -113,7 +113,7 @@ public class CPLSNode(sz:Long){
  		//	this.randomIWI = this.random.nextInt((5000*sz) as Int);
  		//}while(this.randomIWI < 50*sz);
  		this.randomIWI = (50*problemSize) as Int;
- 		Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
+ 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
