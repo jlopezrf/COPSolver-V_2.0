@@ -37,10 +37,6 @@ public class GAPopulation{
  		var indivCost:Long;// = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  		var newCost:Long;// = indivCost;
  		for(var k:Int = 0n; k < this.population.size; k++){
- 			Runtime.probe();
- 			if(kill){
- 				break;
- 			}
  			heuristicSolverAux.clearProblemModel();
  			//heuristicSolverAux.initVariables();
  			heuristicSolverAux.setVariables(this.population(k).getGenes());
@@ -59,6 +55,10 @@ public class GAPopulation{
  			}	
  			this.population(k).setCost(indivCost);
  			this.population(k).setGenes(bestConf);
+ 			Runtime.probe();
+ 			if(kill){
+ 				break;
+ 			}
  		}
  	}
  

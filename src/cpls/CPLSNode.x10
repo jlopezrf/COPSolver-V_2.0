@@ -352,7 +352,7 @@ public class CPLSNode(sz:Long){
  					||(!this.strictLow && this.bestCost <= this.target)){
  				this.targetSucc = true;
  				this.kill = true;
- 				this.heuristicSolver.kill();
+ 				this.heuristicSolver.switchKill();
  				//Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
@@ -418,7 +418,7 @@ public class CPLSNode(sz:Long){
  	public def kill(){
  		if (heuristicSolver != null){
  			this.kill = true; 
- 			this.heuristicSolver.kill();
+ 			this.heuristicSolver.switchKill();
  			this.interTeamKill = true;
  			//Console.OUT.println("MsgType_0. Nodo: " + here + "y pasaron a killiarme");
  		}else{

@@ -44,10 +44,10 @@ namespace cpls { namespace solver {
 class HeuristicSolver;
 } } 
 namespace x10 { namespace lang { 
-class Runtime;
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
+class Runtime;
 } } 
 namespace x10 { namespace io { 
 class Printer;
