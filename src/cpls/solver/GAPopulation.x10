@@ -101,7 +101,7 @@ public class GAPopulation{
 	 		}
 	 		meanDist = meanDist/populationSize;
 	 		if(meanDist > 0.0){
-	 			this.population(populationSize - (2 - count)) = mutSon;
+	 			this.population(populationSize - (2 - count)) = mutSon; //Este dos es porque siempre son dos hijos
 	 		}
 	 		count++;
 	 		meanDist = 0.0;

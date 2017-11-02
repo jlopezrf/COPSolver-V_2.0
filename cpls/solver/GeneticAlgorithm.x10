@@ -199,18 +199,18 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		for(son in sons){
  			indexBank = new ArrayList[Int](posChanged*2n);
  			for(var i:Int = 0n; i<posChanged; i++){
-	 			if(this.random.nextFloat() < this.rate){
-	 				index1 = super.random.nextLong(son.getSize());
+	 			//if(this.random.nextFloat() < this.rate){
 	 				do{
+	 					index1 = super.random.nextLong(son.getSize());
 	 					index2 = super.random.nextLong(son.getSize());
-	 				}while(index2 == index1 && (!indexBank.contains(index1 as Int) && !indexBank.contains(index2 as Int)));	
+	 				}while(index2 == index1 || indexBank.contains(index1 as Int) || indexBank.contains(index2 as Int));	
 	 				indexBank.add(index1 as Int);
 	 				indexBank.add(index2 as Int);
 	 				//Console.OUT.println("Index1 para mutacion: " + index1);
 	 				//Console.OUT.println("Index2 para mutacion: " + index2);
 	 				son.swap(index1 as Int, index2 as Int);
 	 				//swap(son, index1, index2);
-	 			}//else{
+	 			//}//else{
 	 			 //	Console.OUT.println("No muta");
 	 			 //}
  			}
