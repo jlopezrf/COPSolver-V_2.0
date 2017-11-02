@@ -112,7 +112,7 @@ public class CPLSNode(sz:Long){
  		//do{
  		//	this.randomIWI = this.random.nextInt((5000*sz) as Int);
  		//}while(this.randomIWI < 50*sz);
- 		this.randomIWI = (50*problemSize) as Int;
+ 	
  		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
@@ -148,7 +148,7 @@ public class CPLSNode(sz:Long){
  		do{
  			this.randomIWI = this.random.nextInt((5000*sz) as Int);
  		}while(this.randomIWI < 50*sz);
- 		Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
+ 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
  		//this.heuristicSolver.initVariables();
  		//this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
@@ -160,6 +160,7 @@ public class CPLSNode(sz:Long){
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		this.randomIWI = opts("-iwi", 100n);//(50*problemSize) as Int;
  		this.heuristicSolver.configHeuristic(problemModel, opts);
  		this.heuristicSolver.initVariables();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ". TeamId: " + this.nodeConfig.getTeamId() + ", inicializado con semilla: " + semilla + ", variables: ");
