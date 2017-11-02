@@ -106,7 +106,7 @@ public class HeuristicSolver(sz:Long){
  		//Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
  	}
  
- 	public def switchKill(){
+ 	public def setKill(value:Boolean){
  
  	}
  

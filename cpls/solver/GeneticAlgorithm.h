@@ -85,6 +85,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     public:
     RTT_H_DECLS_CLASS
     
+    using ::cpls::solver::HeuristicSolver::setKill;
+    
     ::cpls::solver::GAPopulation* FMGL(population);
     
     x10_int FMGL(populationSize);
@@ -126,7 +128,7 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       migrate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
-    virtual void switchKill();
+    virtual void setKill(x10_boolean value);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       applyLSToSons(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*

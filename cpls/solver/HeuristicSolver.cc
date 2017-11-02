@@ -257,7 +257,7 @@ void cpls::solver::HeuristicSolver::launchEventForStagnation(
 }
 
 //#line 109 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-void cpls::solver::HeuristicSolver::switchKill() {
+void cpls::solver::HeuristicSolver::setKill(x10_boolean value) {
  
 }
 

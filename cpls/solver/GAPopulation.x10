@@ -52,6 +52,10 @@ public class GAPopulation{
  					Rail.copy(heuristicSolverAux.getVariables() as Valuation(size), bestConf as Valuation(size));
  					indivCost = newCost;
  				}
+ 				Runtime.probe();
+ 				if(kill){
+ 					break;
+ 				}
  			}	
  			this.population(k).setCost(indivCost);
  			this.population(k).setGenes(bestConf);
@@ -77,8 +81,8 @@ public class GAPopulation{
  		this.population(index) = individual;
  	}
  
- 	public def switchKill(){
- 		this.kill = !kill;
+ 	public def setKill(value:Boolean){
+ 		this.kill = value;
  	}
  
  	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long, random:Random){

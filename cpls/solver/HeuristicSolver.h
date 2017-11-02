@@ -96,7 +96,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual ::x10::lang::Rail< x10_int >* getConfigForPop(
       x10_boolean replace);
     virtual void launchEventForStagnation();
-    virtual void switchKill();
+    virtual void setKill(x10_boolean value);
     virtual void displayInfo(::x10::lang::String* string);
     virtual x10_long reset(x10_long n, x10_long totalCost);
     virtual void restartVar();

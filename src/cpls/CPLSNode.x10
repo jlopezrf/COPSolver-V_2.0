@@ -352,7 +352,7 @@ public class CPLSNode(sz:Long){
  					||(!this.strictLow && this.bestCost <= this.target)){
  				this.targetSucc = true;
  				this.kill = true;
- 				this.heuristicSolver.switchKill();
+ 				this.heuristicSolver.setKill(true);
  				//Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
@@ -418,7 +418,7 @@ public class CPLSNode(sz:Long){
  	public def kill(){
  		if (heuristicSolver != null){
  			this.kill = true; 
- 			this.heuristicSolver.switchKill();
+ 			this.heuristicSolver.setKill(true);
  			this.interTeamKill = true;
  			//Console.OUT.println("MsgType_0. Nodo: " + here + "y pasaron a killiarme");
  		}else{
@@ -1096,7 +1096,7 @@ public class CPLSNode(sz:Long){
  		stats.clear();
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
- 		this.heuristicSolver.switchKill();
+ 		this.heuristicSolver.setKill(false);
  		cGroupReset = 0n;
  		//this.counterForReport = 0n;
  		//this.counterForUpdate = 0n;

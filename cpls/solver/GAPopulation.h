@@ -100,7 +100,7 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
-    virtual void switchKill();
+    virtual void setKill(x10_boolean value);
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
