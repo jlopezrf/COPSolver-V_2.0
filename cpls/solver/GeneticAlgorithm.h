@@ -126,6 +126,7 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
       mutate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       migrate(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
+    virtual void switchKill();
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*
       applyLSToSons(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* sons);
     virtual ::x10::lang::Rail< ::cpls::solver::GAIndividual* >*

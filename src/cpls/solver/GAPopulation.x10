@@ -15,6 +15,7 @@ public class GAPopulation{
  	protected val monitor = new Monitor("CPLSNode");
  	private var distanceMatrix:Array_2[Double];
  	private var problemModel:ProblemGenericModel;
+ 	protected var kill:Boolean = false;
 
  	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel, seed:Long){
  		this.population = new Rail[GAIndividual](populationSize);
@@ -54,6 +55,10 @@ public class GAPopulation{
  			}	
  			this.population(k).setCost(indivCost);
  			this.population(k).setGenes(bestConf);
+ 			Runtime.probe();
+ 			if(kill){
+ 				break;
+ 			}
  		}
  	}
  
@@ -70,6 +75,10 @@ public class GAPopulation{
 
  	public def setIndividual(index:Long, individual:GAIndividual){
  		this.population(index) = individual;
+ 	}
+ 
+ 	public def switchKill(){
+ 		this.kill = !kill;
  	}
  
  	public def refreshPopulation(mutatedSons:Rail[GAIndividual], index1:Long, index2:Long, random:Random){

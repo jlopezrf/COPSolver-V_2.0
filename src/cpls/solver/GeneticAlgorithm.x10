@@ -255,6 +255,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		return sons;
  	}
  
+ 	public def switchKill(){
+ 		this.population.switchKill();
+ 	}
+ 
  	public def applyLSToSons(sons:Rail[GAIndividual]){
  		for(son in sons){
  			son.applyLS(this.heuristicSolverAux);

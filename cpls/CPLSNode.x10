@@ -352,6 +352,7 @@ public class CPLSNode(sz:Long){
  					||(!this.strictLow && this.bestCost <= this.target)){
  				this.targetSucc = true;
  				this.kill = true;
+ 				this.heuristicSolver.kill();
  				//Console.OUT.println("Soy nodo " + here + " y he encontrado la solucion");
  			}
  			//Console.OUT.println("La heuristica consigue mejorar el costo. CPLSNode en " + here);
@@ -364,6 +365,7 @@ public class CPLSNode(sz:Long){
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 		if(this.itersWhitoutImprovements == this.randomIWI ){//this.nodeConfig.getItersWhitoutImprovements()){
 	 			this.itersWhitoutImprovements = 0n;
+	 			this.nChangeforiwi++;
 	 			val solverState = createSolverState();
 	 			communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
 	 			bestSent = false;
@@ -416,6 +418,7 @@ public class CPLSNode(sz:Long){
  	public def kill(){
  		if (heuristicSolver != null){
  			this.kill = true; 
+ 			this.heuristicSolver.kill();
  			this.interTeamKill = true;
  			//Console.OUT.println("MsgType_0. Nodo: " + here + "y pasaron a killiarme");
  		}else{
@@ -1093,6 +1096,7 @@ public class CPLSNode(sz:Long){
  		stats.clear();
  		//bestC.clear(); //TODO: Jason. Esta variable la borré porque al parecer nunca es accedida
  		this.kill = false;
+ 		this.heuristicSolver.switchKill();
  		cGroupReset = 0n;
  		//this.counterForReport = 0n;
  		//this.counterForUpdate = 0n;

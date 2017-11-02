@@ -13,6 +13,12 @@
 #define X10_LANG_DOUBLE_H_NODEPS
 #include <x10/lang/Double.h>
 #undef X10_LANG_DOUBLE_H_NODEPS
+#define X10_LANG_BOOLEAN_H_NODEPS
+#include <x10/lang/Boolean.h>
+#undef X10_LANG_BOOLEAN_H_NODEPS
+#define X10_LANG_BOOLEAN_H_NODEPS
+#include <x10/lang/Boolean.h>
+#undef X10_LANG_BOOLEAN_H_NODEPS
 #define X10_LANG_INT_H_NODEPS
 #include <x10/lang/Int.h>
 #undef X10_LANG_INT_H_NODEPS
@@ -36,6 +42,9 @@ class Random;
 } } 
 namespace cpls { namespace solver { 
 class HeuristicSolver;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
 } } 
 namespace x10 { namespace lang { 
 class FailedDynamicCheckException;
@@ -83,12 +92,15 @@ class GAPopulation : public ::x10::lang::X10Class   {
     
     ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
     
+    x10_boolean FMGL(kill);
+    
     virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long seed);
     virtual void applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux);
     virtual void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
+    virtual void switchKill();
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
