@@ -364,6 +364,7 @@ public class CPLSNode(sz:Long){
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 		if(this.itersWhitoutImprovements == this.randomIWI ){//this.nodeConfig.getItersWhitoutImprovements()){
 	 			this.itersWhitoutImprovements = 0n;
+	 			this.nChangeforiwi++;
 	 			val solverState = createSolverState();
 	 			communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
 	 			bestSent = false;
@@ -1116,6 +1117,10 @@ public class CPLSNode(sz:Long){
  
  	public def getChangeforiwi(){
  		return this.nChangeforiwi; 
+ 	}
+ 
+ 	public def getTeamId(){
+ 		return this.nodeConfig.getTeamId();
  	}
  	
  	public def verify(){

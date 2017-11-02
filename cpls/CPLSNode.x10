@@ -1117,6 +1117,10 @@ public class CPLSNode(sz:Long){
  	public def getChangeforiwi(){
  		return this.nChangeforiwi; 
  	}
+ 
+ 	public def getTeamId(){
+ 		return this.nodeConfig.getTeamId();
+ 	}
  	
  	public def verify(){
  		//val sz = this.heuristicSolver.getSizeProblem();
