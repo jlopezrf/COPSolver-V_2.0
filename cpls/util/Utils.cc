@@ -3,44 +3,43 @@
 #include <cpls/util/Utils.h>
 
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
 
-//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
 void cpls::util::Utils::show(::x10::lang::String* s, ::x10::lang::Rail< x10_int >* d) {
     
-    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__640 = ::x10aux::makeStringLit(" in "); strLit__640; }))), ::x10::lang::Place::_make(::x10aux::here)->FMGL(id)), (__extension__ ({ static ::x10::lang::String* strLit__641 = ::x10aux::makeStringLit(" : "); strLit__641; }))));
+    //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
+    ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(s, (__extension__ ({ static ::x10::lang::String* strLit__42979 = ::x10aux::makeStringLit(" in "); strLit__42979; }))), ::x10::lang::Place::_make(::x10aux::here)->FMGL(id)), (__extension__ ({ static ::x10::lang::String* strLit__42980 = ::x10aux::makeStringLit(" : "); strLit__42980; }))));
     
-    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-    ::x10::lang::Rail< x10_int >* rail__634 = d;
-    x10_long i__279max__635 = (x10_long)(::x10aux::nullCheck(rail__634)->FMGL(size));
+    //#line 8 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
+    ::x10::lang::Rail< x10_int >* rail__38620 = d;
+    x10_long i__38604min__38621 = ((x10_long)0ll);
+    x10_long i__38604max__38622 = (x10_long)(::x10aux::nullCheck(rail__38620)->FMGL(size));
     {
-        x10_long i__636;
-        for (i__636 = ((x10_long)0ll); ((i__636) < (i__279max__635)); i__636 =
-                                                                        ((i__636) + (((x10_long)1ll))))
-        {
-            x10_long k__637 = i__636;
+        x10_long i__38623;
+        for (i__38623 = i__38604min__38621; ((i__38623) < (i__38604max__38622));
+             i__38623 = ((i__38623) + (((x10_long)1ll)))) {
+            x10_long k__38624 = i__38623;
             
-            //#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__642 = ::x10aux::makeStringLit(" "); strLit__642; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
-                                                                                                                                                                                                  k__637)));
+            //#line 9 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42981 = ::x10aux::makeStringLit(" "); strLit__42981; })), ::x10aux::nullCheck(d)->x10::lang::Rail< x10_int >::__apply(
+                                                                                                                                                                                                      k__38624)));
         }
     }
     
-    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
+    //#line 10 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__644 = ::x10aux::makeStringLit(""); strLit__644; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42983 = ::x10aux::makeStringLit(""); strLit__42983; }))));
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Utils.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Utils.x10"
 ::cpls::util::Utils* cpls::util::Utils::cpls__util__Utils____this__cpls__util__Utils(
   ) {
     return this;
     
 }
 void cpls::util::Utils::_constructor() {
-    ::cpls::util::Utils* this__638 = this;
-    
+    this->cpls::util::Utils::__fieldInitializers_cpls_util_Utils();
 }
 ::cpls::util::Utils* cpls::util::Utils::_make() {
     ::cpls::util::Utils* this_ = new (::x10aux::alloc_z< ::cpls::util::Utils>()) ::cpls::util::Utils();

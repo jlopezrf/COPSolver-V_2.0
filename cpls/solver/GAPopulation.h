@@ -43,12 +43,6 @@ class Random;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -56,7 +50,19 @@ namespace x10 { namespace io {
 class Console;
 } } 
 namespace x10 { namespace lang { 
+class Any;
+} } 
+namespace x10 { namespace lang { 
 class String;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
+} } 
+namespace x10 { namespace lang { 
+class Place;
+} } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
@@ -96,7 +102,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     
     virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long seed);
-    virtual void applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux);
+    virtual void applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux,
+                         x10_int indexIni);
     virtual void printVector(::x10::lang::Rail< x10_int >* vector);
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
@@ -104,7 +111,7 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void refreshPopulation(::x10::lang::Rail< ::cpls::solver::GAIndividual* >* mutatedSons,
                                    x10_long index1, x10_long index2,
                                    ::x10::util::Random* random);
-    virtual void renewPopulation(x10_float percentaje);
+    virtual void renewPopulation(x10_int indexIni);
     virtual x10_double calculateMidDistance();
     virtual x10_double calculateStandardDesviation(x10_double media);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,

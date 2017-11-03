@@ -84,7 +84,7 @@ public class NodeInstancer{
  				//refsToPlaces().printChangesForDivs();
  			}
  			//Console.OUT.println("\n ");
- 			if(i<10){
+ 			if(i != timesPerInstance){
  				finish for (p in Place.places()) at (p) {   
  					//refsToPlaces().clear();
  					refsToPlaces().reInitialize();
@@ -138,7 +138,7 @@ public class NodeInstancer{
  		}else{
  			val headTeamOfBestNode = at(Place(explorerWinner)) refPlaces().getTeamId();
  			val iwiTimes = at(Place(headTeamOfBestNode)) refPlaces().getChangeforiwi();
- 			Console.OUT.println("El nodo " + bestPlace + " ganador con iwiTimes = " + iwiTimes);
+ 			Console.OUT.println("El nodo " + explorerWinner + " ganador con iwiTimes = " + iwiTimes);
  		//	Console.OUT.println("Ya fue, hubo un ganador");
  		//	val solWin = at(Place(explorerWinner)) refPlaces().getBestConf();
  		//	val cCost = at(Place(explorerWinner)) refPlaces().getCost();

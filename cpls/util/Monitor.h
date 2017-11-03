@@ -26,9 +26,6 @@ namespace x10 { namespace lang {
 class String;
 } } 
 namespace x10 { namespace lang { 
-class Runtime__Pool;
-} } 
-namespace x10 { namespace lang { 
 template<class TPMGL(U)> class Fun_0_0;
 } } 
 namespace cpls { namespace util { 
@@ -36,9 +33,6 @@ class Unit;
 } } 
 namespace x10 { namespace lang { 
 class CheckedThrowable;
-} } 
-namespace x10 { namespace lang { 
-class Thread;
 } } 
 namespace cpls { namespace util { 
 class Logger;
@@ -182,11 +176,9 @@ class Monitor;
 #include <x10/lang/Runtime.h>
 #include <x10/lang/String.h>
 #include <x10/lang/Boolean.h>
-#include <x10/lang/Runtime__Pool.h>
 #include <x10/lang/Fun_0_0.h>
 #include <cpls/util/Unit.h>
 #include <x10/lang/CheckedThrowable.h>
-#include <x10/lang/Thread.h>
 #include <x10/lang/Long.h>
 #include <cpls/util/Logger.h>
 #include <x10/compiler/Finalization.h>
@@ -210,95 +202,87 @@ inline ::x10::lang::Fun_0_0< ::cpls::util::Unit>* cpls::util::Monitor::FMGL(NOTH
     return cpls::util::Monitor::FMGL(NOTHING);
 }
 
-#ifndef CPLS_UTIL_MONITOR_H_atomicBlock_6
-#define CPLS_UTIL_MONITOR_H_atomicBlock_6
+#ifndef CPLS_UTIL_MONITOR_H_atomicBlock_487
+#define CPLS_UTIL_MONITOR_H_atomicBlock_487
 template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::atomicBlock(::x10::lang::Fun_0_0<TPMGL(T)>* action) {
     return this->template on< TPMGL(T) >(::cpls::util::Monitor::FMGL(TRUE__get)(),
                                          action);
     
 }
-#endif // CPLS_UTIL_MONITOR_H_atomicBlock_6
-#ifndef CPLS_UTIL_MONITOR_H_on_7
-#define CPLS_UTIL_MONITOR_H_on_7
+#endif // CPLS_UTIL_MONITOR_H_atomicBlock_487
+#ifndef CPLS_UTIL_MONITOR_H_on_488
+#define CPLS_UTIL_MONITOR_H_on_488
 template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::on(::x10::lang::Fun_0_0<x10_boolean>* cond,
                                                           ::x10::lang::Fun_0_0<TPMGL(T)>* action) {
     {
         
-        //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-        ::x10::lang::CheckedThrowable* throwable__3041 = ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
+        //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+        ::x10::lang::CheckedThrowable* throwable__38428 =
+          ::x10aux::class_cast_unchecked< ::x10::lang::CheckedThrowable*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL));
         try {
             {
                 
-                //#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                //#line 66 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                 this->lock();
                 
-                //#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                //#line 69 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                 while (!(::x10::lang::Fun_0_0<x10_boolean>::__apply(::x10aux::nullCheck(cond))))
                 {
                     
-                    //#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                    //#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                     ::x10::lang::Runtime__Worker* thisWorker =
-                      ::x10aux::class_cast< ::x10::lang::Runtime__Worker*>(::x10::lang::Thread::currentThread());
+                      ::x10::lang::Runtime::worker();
                     
-                    //#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                    //#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                     x10_int s = this->FMGL(size);
                     
-                    //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                    //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                     this->FMGL(threads)->x10::lang::template Rail< ::x10::lang::Runtime__Worker* >::__set(
                       ((x10_long)(((this->FMGL(size) = ((this->FMGL(size)) + (((x10_int)1)))) - (((x10_int)1))))),
                       thisWorker);
                     
-                    //#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                    //#line 73 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                     while ((::x10aux::struct_equals(this->FMGL(threads)->x10::lang::template Rail< ::x10::lang::Runtime__Worker* >::__apply(
                                                       ((x10_long)(s))),
                                                     thisWorker)))
                     {
                         
-                        //#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 74 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         ::cpls::util::Logger::log(::cpls::util::Monitor::FMGL(suspending__get)());
                         
-                        //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 75 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->unlock();
                         
-                        //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 76 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         ::x10::lang::Runtime__Worker::park();
                         
-                        //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 78 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->lock();
                     }
                     
                 }
                 
-                //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                //#line 82 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                 TPMGL(T) result = ::x10::lang::Fun_0_0<TPMGL(T)>::__apply(::x10aux::nullCheck(action));
                 
-                //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                //#line 84 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                 x10_int m = this->FMGL(size);
                 
-                //#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                //#line 86 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                 {
                     x10_int i;
                     for (i = ((x10_int)0); ((i) < (m)); i =
                                                           ((i) + (((x10_int)1))))
                     {
                         
-                        //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 87 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->FMGL(size) = ((this->FMGL(size)) - (((x10_int)1)));
                         
-                        //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-                        ::x10::lang::Runtime__Worker* this__3039 =
-                          this->FMGL(threads)->x10::lang::template Rail< ::x10::lang::Runtime__Worker* >::__apply(
-                            ((x10_long)(this->FMGL(size))));
+                        //#line 90 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+                        ::x10aux::nullCheck(this->FMGL(threads)->x10::lang::template Rail< ::x10::lang::Runtime__Worker* >::__apply(
+                                              ((x10_long)(this->FMGL(size)))))->x10::lang::Runtime__Worker::unpark();
                         
-                        //#line 556 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/lang/Runtime.x10"
-                        if (!(::x10::lang::Runtime::FMGL(STATIC_THREADS__get)()))
-                        {
-                            
-                            //#line 557 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/lang/Runtime.x10"
-                            ::x10aux::nullCheck(this__3039)->x10::lang::Runtime__Worker::unpark();
-                        }
-                        
-                        //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 91 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->FMGL(threads)->x10::lang::template Rail< ::x10::lang::Runtime__Worker* >::__set(
                           ((x10_long)(this->FMGL(size))),
                           ::x10aux::class_cast_unchecked< ::x10::lang::Runtime__Worker*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
@@ -306,58 +290,60 @@ template<class TPMGL(T)> TPMGL(T) cpls::util::Monitor::on(::x10::lang::Fun_0_0<x
                 }
                 {
                     
-                    //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
-                    TPMGL(T) t__3040 = result;
+                    //#line 94 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
+                    TPMGL(T) t__38427 = result;
                     {
                         
-                        //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+                        //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
                         this->unlock();
                     }
-                    return t__3040;
+                    return t__38427;
                     
                 }
             }
             ::x10::compiler::Finalization::plausibleThrow();
         }
-        catch (::x10::lang::CheckedThrowable* __exc8) {
+        catch (::x10::lang::CheckedThrowable* __exc489) {
             if (true) {
-                ::x10::lang::CheckedThrowable* formal__3042 =
-                  static_cast< ::x10::lang::CheckedThrowable*>(__exc8);
+                ::x10::lang::CheckedThrowable* formal__38429 =
+                  static_cast< ::x10::lang::CheckedThrowable*>(__exc489);
                 {
-                    throwable__3041 = formal__3042;
+                    throwable__38428 = formal__38429;
                 }
             } else
             throw;
         }
         if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                      throwable__3041))) {
-            if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__3041))
+                                      throwable__38428)))
+        {
+            if (::x10aux::instanceof< ::x10::compiler::Abort*>(throwable__38428))
             {
-                ::x10aux::throwException(::x10aux::nullCheck(throwable__3041));
+                ::x10aux::throwException(::x10aux::nullCheck(throwable__38428));
             }
             
         }
         
-        //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+        //#line 95 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         if (true) {
             
-            //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+            //#line 96 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
             this->unlock();
         }
         
-        //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Monitor.x10"
+        //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
         if ((!::x10aux::struct_equals(reinterpret_cast< ::x10::lang::CheckedThrowable*>(X10_NULL),
-                                      throwable__3041))) {
-            if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__3041)))
+                                      throwable__38428)))
+        {
+            if (!(::x10aux::instanceof< ::x10::compiler::Finalization*>(throwable__38428)))
             {
-                ::x10aux::throwException(::x10aux::nullCheck(throwable__3041));
+                ::x10aux::throwException(::x10aux::nullCheck(throwable__38428));
             }
             
         }
         
     }
 }
-#endif // CPLS_UTIL_MONITOR_H_on_7
+#endif // CPLS_UTIL_MONITOR_H_on_488
 inline ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*
   cpls::util::Monitor::FMGL(waking__get)() {
     if (FMGL(waking__status) != ::x10aux::StaticInitController::INITIALIZED) {

@@ -55,7 +55,7 @@ public class GAIndividual(size:Long){
  		var newCost:Long;// = indivCost;
  		heuristicSolverAux.clearProblemModel();
  		//heuristicSolverAux.initVariables();
- 		heuristicSolverAux.setVariables(this.genes);
+ 		heuristicSolverAux.setVariables(this.genes as Valuation(size));
  		indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  		newCost = indivCost;
  		//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);

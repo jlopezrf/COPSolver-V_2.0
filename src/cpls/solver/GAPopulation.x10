@@ -33,13 +33,14 @@ public class GAPopulation{
  		}
  	}
  
- 	public def applyLS(size:Long, heuristicSolverAux:HeuristicSolver){
+ 	public def applyLS(size:Long, heuristicSolverAux:HeuristicSolver, indexIni:Int){
  		var indivCost:Long;// = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  		var newCost:Long;// = indivCost;
- 		for(var k:Int = 0n; k < this.population.size; k++){
+ 		for(var k:Int = indexIni; k < this.population.size; k++){
+ 			//Console.OUT.println("Se esta aplicando LS sobre la poblacion. Nodo: " + here + ". individuo: " + k);
  			heuristicSolverAux.clearProblemModel();
  			//heuristicSolverAux.initVariables();
- 			heuristicSolverAux.setVariables(this.population(k).getGenes());
+ 			heuristicSolverAux.setVariables(this.population(k).getGenes() as Valuation(size));
  			indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  			newCost = indivCost;
  			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
@@ -54,6 +55,7 @@ public class GAPopulation{
  				}
  				Runtime.probe();
  				if(kill){
+ 					Console.OUT.println("Kill detectado en el for interno de applyLS. Nodo: " + here);
  					break;
  				}
  			}	
@@ -61,6 +63,7 @@ public class GAPopulation{
  			this.population(k).setGenes(bestConf);
  			Runtime.probe();
  			if(kill){
+ 				Console.OUT.println("Kill detectado en el for externo de applyLS. Nodo: " + here);
  				break;
  			}
  		}
@@ -82,6 +85,7 @@ public class GAPopulation{
  	}
  
  	public def setKill(value:Boolean){
+ 		Console.OUT.println("Hubo un ganador y se setea el valor de kill");
  		this.kill = value;
  	}
  
@@ -108,8 +112,8 @@ public class GAPopulation{
  		}
  	}
  
-    public def renewPopulation(percentaje:Float){
-    	for(var i:Int = (this.population.size*percentaje) as Int ; i < this.population.size; i++){
+    public def renewPopulation(indexIni:Int){
+    	for(var i:Int = indexIni as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
     		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
     	}

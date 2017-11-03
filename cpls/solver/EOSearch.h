@@ -34,6 +34,9 @@ class Math;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
