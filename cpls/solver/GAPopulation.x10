@@ -37,7 +37,7 @@ public class GAPopulation{
  		var indivCost:Long;// = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  		var newCost:Long;// = indivCost;
  		for(var k:Int = indexIni; k < this.population.size; k++){
- 			Console.OUT.println("Se esta aplicando LS sobre la poblacion. Nodo: " + here + ". individuo: " + k);
+ 			//Console.OUT.println("Se esta aplicando LS sobre la poblacion. Nodo: " + here + ". individuo: " + k);
  			heuristicSolverAux.clearProblemModel();
  			//heuristicSolverAux.initVariables();
  			heuristicSolverAux.setVariables(this.population(k).getGenes() as Valuation(size));
@@ -85,7 +85,7 @@ public class GAPopulation{
  	}
  
  	public def setKill(value:Boolean){
- 		Console.OUT.println("Hubo un ganador y se setea el valor de kill");
+ 		Console.OUT.println("Hubo un ganador y se setea el valor de kill. Nodo: " + here);
  		this.kill = value;
  	}
  

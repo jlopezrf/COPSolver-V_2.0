@@ -25,6 +25,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var currentCostGA:Long = Long.MAX_VALUE;
  	var eachIterMigration:Int = Int.MAX_VALUE;
  	protected var heuristicSolverAux:HeuristicSolver(sz);
+ 	protected var kill:Boolean = false;
  	//var auxCounterIter:Int = 0n;
 	
 	public def this(sz:Long){
@@ -67,7 +68,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//printPopulation();
  	}
  
- 	public def setValuesToParameters(){
+ 	//Este método fue solo para las pruebas del seteo aleatorio de parametros 
+ 	/*public def setValuesToParameters(){
  		//this.populationSize = opts("-GA_pz", 2n*Place.MAX_PLACES as Int);
  		do{
  			this.rate = super.random.nextFloat();
@@ -82,7 +84,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		Console.OUT.println("Nodo " + here.id + " crossingOperator: " + this.crossingOperator);
  		Console.OUT.println("Nodo " + here.id + " diversificationOperator: " + this.divOperator);
  
- 	}
+ 	}*/
 
  	public def search(currentCost:Long, bestCost:Long, nIter:Int) : Long{
  		//setValuesToParameters();
@@ -204,6 +206,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	 				do{
 	 					index1 = super.random.nextLong(son.getSize());
 	 					index2 = super.random.nextLong(son.getSize());
+	 					if(kill){
+	 						Console.OUT.println("Se esta quedando estancado en el While. Nodo: " + here);
+	 					}
 	 				}while(index2 == index1 || indexBank.contains(index1 as Int) || indexBank.contains(index2 as Int));	
 	 				indexBank.add(index1 as Int);
 	 				indexBank.add(index2 as Int);
@@ -258,6 +263,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	public def setKill(value:Boolean){
  		this.population.setKill(value);
+ 		this.kill = value;
  	}
  
  	public def applyLSToSons(sons:Rail[GAIndividual]){

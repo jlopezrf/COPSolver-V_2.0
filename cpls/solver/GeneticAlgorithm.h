@@ -25,6 +25,12 @@
 #define X10_LANG_LONG_H_NODEPS
 #include <x10/lang/Long.h>
 #undef X10_LANG_LONG_H_NODEPS
+#define X10_LANG_BOOLEAN_H_NODEPS
+#include <x10/lang/Boolean.h>
+#undef X10_LANG_BOOLEAN_H_NODEPS
+#define X10_LANG_BOOLEAN_H_NODEPS
+#include <x10/lang/Boolean.h>
+#undef X10_LANG_BOOLEAN_H_NODEPS
 namespace cpls { namespace solver { 
 class GAPopulation;
 } } 
@@ -49,21 +55,6 @@ class EOSearch;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace io { 
-class Printer;
-} } 
-namespace x10 { namespace io { 
-class Console;
-} } 
-namespace x10 { namespace lang { 
-class Any;
-} } 
-namespace x10 { namespace lang { 
-class String;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
 namespace cpls { namespace solver { 
 class GAIndividual;
 } } 
@@ -73,8 +64,23 @@ template<class TPMGL(T)> class Rail;
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
+namespace x10 { namespace lang { 
+class String;
+} } 
+namespace x10 { namespace io { 
+class Printer;
+} } 
+namespace x10 { namespace io { 
+class Console;
+} } 
+namespace x10 { namespace lang { 
+class Any;
+} } 
 namespace x10 { namespace util { 
 template<class TPMGL(T)> class ArrayList;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -103,6 +109,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     
     ::cpls::solver::HeuristicSolver* FMGL(heuristicSolverAux);
     
+    x10_boolean FMGL(kill);
+    
     void _constructor(x10_long sz);
     
     static ::cpls::solver::GeneticAlgorithm* _make(x10_long sz);
@@ -110,7 +118,6 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     virtual void configHeuristic(::cpls::problem::ProblemGenericModel* problemModel,
                                  ::cpls::ParamManager* opts);
     virtual void initVariables();
-    virtual void setValuesToParameters();
     virtual x10_long search(x10_long currentCost, x10_long bestCost,
                             x10_int nIter);
     ::x10::lang::Fun_0_2< ::cpls::solver::GAIndividual*, ::cpls::solver::GAIndividual*, x10_int>*
