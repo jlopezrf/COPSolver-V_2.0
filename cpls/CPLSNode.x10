@@ -28,7 +28,7 @@ public class CPLSNode(sz:Long){
  	private var pointersComunication:PlaceLocalHandle[CPLSNode(sz)];
  	var teamPool:SmartPool(sz);
  	var offspringPool:SmartPool(sz);
- 	var stackForDiv:StackForDiv(sz);
+ 	//var stackForDiv:StackForDiv(sz);
  	var globalBestConf:GlobalBestConf(sz);
  	/***********************************************************/
  	/*********Variables para el manejo de estadísticas**********/
@@ -129,7 +129,7 @@ public class CPLSNode(sz:Long){
  		}else if(config.getRol() == CPLSOptionsEnum.NodeRoles.HEAD_NODE){
  			this.teamPool = new SmartPool(sz, cplsPoolConfig);
  			this.offspringPool = new SmartPool(sz, cplsPoolConfig);
- 			this.stackForDiv = new StackForDiv(sz);
+ 			//this.stackForDiv = new StackForDiv(sz);
  			//this.divCplsPool = new SmartPool(sz, cplsPoolConfig);
  			//if(this.nodeConfig.getMasterHeuristic() != null && this.nodeConfig.getMasterHeuristic().equals("GA")){
  				//this.fromTheExplorersConfigs = new Rail[Rail[Int]](this.nodeConfig.getNodesPerTeam(), new Rail[Int](sz));
@@ -420,7 +420,7 @@ public class CPLSNode(sz:Long){
  			this.kill = true; 
  			this.heuristicSolver.setKill(true);
  			this.interTeamKill = true;
- 			//Console.OUT.println("MsgType_0. Nodo: " + here + "y pasaron a killiarme");
+ 			Console.OUT.println("Nodo: " + here + " y pasaron a killiarme");
  		}else{
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
  		}
@@ -631,9 +631,9 @@ public class CPLSNode(sz:Long){
  	/**
  	 * Método que se ejecuta en el head cuando lo llaman porque un team mejoró la mejor solución
  	 **/
- 	public def insertConfOnDivPool(newDivConf:State(sz)){
- 		this.stackForDiv.push(newDivConf);
- 	}
+ 	//public def insertConfOnDivPool(newDivConf:State(sz)){
+ 	//	this.stackForDiv.push(newDivConf);
+ 	//}
  	
  	/**
   	* Método que se ejecuta en el master para generar las soluciones que va a distribuir
@@ -1086,7 +1086,7 @@ public class CPLSNode(sz:Long){
  			teamPool.clear();
  		if(offspringPool != null)
  			offspringPool.clear();
- 		this.stackForDiv = new StackForDiv(sz);
+ 		//this.stackForDiv = new StackForDiv(sz);
  		if(this.nodeConfig.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
  			this.globalBestConf = new GlobalBestConf(sz, nodeConfig.getNumberOfTeams(), this.random.nextLong());
  		}
