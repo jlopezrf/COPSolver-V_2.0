@@ -366,7 +366,7 @@ public class CPLSNode(sz:Long){
  		}
  		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
-	 		if(this.itersWhitoutImprovements == this.randomIWI ){//this.nodeConfig.getItersWhitoutImprovements()){
+	 		if(this.itersWhitoutImprovements%this.randomIWI == 0n){//this.nodeConfig.getItersWhitoutImprovements()){
 	 			if(this.heuristicSolver.launchEventForStagnation()){
 	 				this.itersWhitoutImprovements = 0n;
 	 				this.nChangeforiwi++;
@@ -424,7 +424,7 @@ public class CPLSNode(sz:Long){
  			this.kill = true; 
  			this.heuristicSolver.setKill(true);
  			this.interTeamKill = true;
- 			Console.OUT.println("Nodo: " + here + " y pasaron a killiarme");
+ 			//Console.OUT.println("Nodo: " + here + " y pasaron a killiarme");
  		}else{
  			Logger.debug(()=>{"Solver is not yet started. Kill is not set"});	
  		}

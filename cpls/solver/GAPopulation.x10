@@ -85,9 +85,9 @@ public class GAPopulation{
  	}
  
  	public def setKill(value:Boolean){
- 		if(value){
+ 		/*if(value){
  			Console.OUT.println("Hubo un ganador y se setea el valor de kill. Nodo: " + here);	
- 		}
+ 		}*/
  		this.kill = value;
  	}
  
