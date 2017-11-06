@@ -59,6 +59,9 @@ public class HeuristicSolver(sz:Long){
  		this.nSwap = 0n;
  	}
  	
+ 	public def applyLS(){
+ 	}
+ 	
  	public def clearNSwap(){
  		this.nSwap = 0n;
  	}
@@ -102,8 +105,8 @@ public class HeuristicSolver(sz:Long){
  		return null;
  	}
  
- 	public def launchEventForStagnation(){
- 		//Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
+ 	public def launchEventForStagnation():Boolean{
+ 		return false;//Console.OUT.println("Error. launchEventForStagnation() invokation in HeuristicSolver");
  	}
  
  	public def setKill(value:Boolean){

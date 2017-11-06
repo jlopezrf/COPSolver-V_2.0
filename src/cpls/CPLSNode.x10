@@ -230,6 +230,9 @@ public class CPLSNode(sz:Long){
  	public def solve(tCost : Long, sLow: Boolean):Long{
  		//Console.OUT.println("MsgType_0. Nodo: " + here + " pasando por solve.");
  		initVar(tCost, sLow);
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 			this.heuristicSolver.applyLS();	
+ 		}
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
@@ -364,14 +367,15 @@ public class CPLSNode(sz:Long){
  		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 		if(this.itersWhitoutImprovements == this.randomIWI ){//this.nodeConfig.getItersWhitoutImprovements()){
-	 			this.itersWhitoutImprovements = 0n;
-	 			this.nChangeforiwi++;
-	 			val solverState = createSolverState();
-	 			communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
-	 			bestSent = false;
-	 			this.heuristicSolver.launchEventForStagnation();
-	 			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
-	 			this.bestCost = this.heuristicSolver.costOfSolution();
+	 			if(this.heuristicSolver.launchEventForStagnation()){
+	 				this.itersWhitoutImprovements = 0n;
+	 				this.nChangeforiwi++;
+	 				val solverState = createSolverState();
+	 				communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
+	 				bestSent = false;	 
+	 				Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+	 				this.bestCost = this.heuristicSolver.costOfSolution();
+	 			}
 	 		}
  		}//else{
  		//	if(this.itersWhitoutImprovements == this.randomIWI ){

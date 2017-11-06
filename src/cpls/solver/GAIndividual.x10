@@ -61,7 +61,7 @@ public class GAIndividual(size:Long){
  		//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
  		//indivCost = heuristicSolverAux.costOfSolution();
  		var bestConf:Rail[Int] = this.genes;
- 		for(var i:Int = 0n; i < 5000; i++){
+ 		for(var i:Int = 0n; i < 1000; i++){
  			newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, i);
  			//Console.OUT.println("Costo intermedio " + i + " individuo " + k + ": " + newCost);
  			if(newCost < indivCost){

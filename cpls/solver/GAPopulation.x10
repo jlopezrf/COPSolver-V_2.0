@@ -46,7 +46,7 @@ public class GAPopulation{
  			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
  			//indivCost = heuristicSolverAux.costOfSolution();
  			var bestConf:Rail[Int] = this.population(k).getGenes();
- 			for(var i:Int = 0n; i < 5000; i++){
+ 			for(var i:Int = 0n; i < 1000; i++){
  				newCost = heuristicSolverAux.search(newCost, Long.MAX_VALUE, i);
  				//Console.OUT.println("Costo intermedio " + i + " individuo " + k + ": " + newCost);
  				if(newCost < indivCost){
@@ -85,7 +85,9 @@ public class GAPopulation{
  	}
  
  	public def setKill(value:Boolean){
- 		Console.OUT.println("Hubo un ganador y se setea el valor de kill. Nodo: " + here);
+ 		if(value){
+ 			Console.OUT.println("Hubo un ganador y se setea el valor de kill. Nodo: " + here);	
+ 		}
  		this.kill = value;
  	}
  

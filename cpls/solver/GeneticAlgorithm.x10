@@ -60,7 +60,6 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	public def initVariables(){
  		//initialize(this.populationSize, super.sz);
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
- 		this.population.applyLS(super.sz, this.heuristicSolverAux, 0n);
  		this.population.sort();
  		//setValuesToParameters();
  		//displayInfo("Mensaje: ");
@@ -182,15 +181,23 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		}
  		return sons;
  	}
+ 	
+ 	public def applyLS(){
+ 		this.population.applyLS(super.sz, this.heuristicSolverAux, 0n);
+ 	}
  
- 	public def launchEventForStagnation(){
- 		//displayInfo("Media poblacion antes: ");
- 		val indexIni = ((1-rate)*this.population.getPopulationSize()) as Int;
- 		this.population.renewPopulation(indexIni);
- 		this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
- 		//displayInfo("Media poblacion despues: ");
- 		val genes = this.population.getIndividual(0).getGenes();
- 		Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
+ 	public def launchEventForStagnation():Boolean{
+ 		if(population.calculateMidDistance() < 0.6){
+ 			displayInfo("Media poblacion antes: ");
+ 			val indexIni = ((1-rate)*this.population.getPopulationSize()) as Int;
+ 			this.population.renewPopulation(indexIni);
+ 			this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
+ 			displayInfo("Media poblacion despues: ");
+ 			val genes = this.population.getIndividual(0).getGenes();
+ 			Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
+ 			return true;
+ 		}
+ 		return false;
  	}
  
  	/*En el mecanismo de mutación, la tasa de mutación se interpreta como la cantidad de swaps que se haran sobre el individuo a mutar*/
@@ -198,20 +205,21 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		var posChanged:Int = ((super.sz/2)*this.rate) as Int;
  		var index1:Long;
  		var index2:Long;
- 		var indexBank:ArrayList[Int];
+ 		//var indexBank:ArrayList[Int];
  		for(son in sons){
- 			indexBank = new ArrayList[Int](posChanged*2n);
+ 			//indexBank = new ArrayList[Int](posChanged*2n);
  			for(var i:Int = 0n; i<posChanged; i++){
 	 			//if(this.random.nextFloat() < this.rate){
-	 				do{
-	 					index1 = super.random.nextLong(son.getSize());
+ 					index1 = super.random.nextLong(son.getSize());
+ 					do{	
 	 					index2 = super.random.nextLong(son.getSize());
 	 					if(kill){
 	 						Console.OUT.println("Se esta quedando estancado en el While. Nodo: " + here);
+	 						break;
 	 					}
-	 				}while(index2 == index1 || indexBank.contains(index1 as Int) || indexBank.contains(index2 as Int));	
-	 				indexBank.add(index1 as Int);
-	 				indexBank.add(index2 as Int);
+	 				}while(index2 == index1);// || indexBank.contains(index1 as Int) || indexBank.contains(index2 as Int));	
+	 				//indexBank.add(index1 as Int);
+	 				//indexBank.add(index2 as Int);
 	 				//Console.OUT.println("Index1 para mutacion: " + index1);
 	 				//Console.OUT.println("Index2 para mutacion: " + index2);
 	 				son.swap(index1 as Int, index2 as Int);
@@ -219,6 +227,12 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 	 			//}//else{
 	 			 //	Console.OUT.println("No muta");
 	 			 //}
+	 			if(kill){
+	 				break;
+	 			}
+ 			}
+ 			if(kill){
+ 				break;
  			}
  		}
  		for(var i:Int = 0n; i< sons.size; i++){
