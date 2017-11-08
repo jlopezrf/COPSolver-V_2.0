@@ -26,6 +26,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var eachIterMigration:Int = Int.MAX_VALUE;
  	protected var heuristicSolverAux:HeuristicSolver(sz);
  	protected var kill:Boolean = false;
+ 	var insertedFromPool:Int = 0n;
+ 	var attempsInsertFromPool:Int = 0n;
  	//var auxCounterIter:Int = 0n;
 	
 	public def this(sz:Long){
@@ -59,6 +61,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 
  	public def initVariables(){
  		//initialize(this.populationSize, super.sz);
+ 		this.insertedFromPool = 0n;
+ 		this.attempsInsertFromPool = 0n;
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.sort();
  		//setValuesToParameters();
@@ -155,10 +159,12 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//	Console.OUT.print("MsgType_0." + "Nodo: " + here + ". Costo: " + population.getIndividual(i).getCost() + ". Variables: ");
  		//	printVector(population.getIndividual(i).getGenes());
  		//}
- 		val media = population.calculateMidDistance();
+ 		//val media = population.calculateMidDistance();
  		//val stdrdDesv = population.calculateStandardDesviation(media);
- 		Console.OUT.println(stringMsg + media);
+ 		//Console.OUT.println(stringMsg + media);
  		//Console.OUT.println("Desviacion estandar: " + stdrdDesv);
+ 		Console.OUT.println("Nodo " + here + " insertedFromPool: " + this.insertedFromPool);
+ 		Console.OUT.println("Nodo " + here + " attempsInsertFromPool: " + this.attempsInsertFromPool);
  	}
 
  	public static def printVector(vector:Rail[Int]){
@@ -191,13 +197,14 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			displayInfo("Media poblacion antes: ");
  			val indexIni = ((1-rate)*this.population.getPopulationSize()) as Int;
  			this.population.renewPopulation(indexIni);
- 			this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
+ 			//this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
  			displayInfo("Media poblacion despues: ");
  			val genes = this.population.getIndividual(0).getGenes();
  			Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
  			return true;
+ 		}else{
+ 			return false;
  		}
- 		return false;
  	}
  
  	/*En el mecanismo de mutación, la tasa de mutación se interpreta como la cantidad de swaps que se haran sobre el individuo a mutar*/
@@ -214,7 +221,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  					do{	
 	 					index2 = super.random.nextLong(son.getSize());
 	 					if(kill){
-	 						Console.OUT.println("Se esta quedando estancado en el While. Nodo: " + here);
+	 						//Console.OUT.println("Se esta quedando estancado en el While. Nodo: " + here);
 	 						break;
 	 					}
 	 				}while(index2 == index1);// || indexBank.contains(index1 as Int) || indexBank.contains(index2 as Int));	
@@ -310,6 +317,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	//Jason: Migration
  	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
  		//Console.OUT.println("Soy nodo master: " + here.id + ", y acabo de ingresar a tryInsertIndividual");
+ 		this.attempsInsertFromPool++;
  		var minDistance: Double = Double.MAX_VALUE;
  		var distance: Double = 0n;
  		for(var i:Int = 0n; i < population.getPopulationSize(); i++){
@@ -323,10 +331,19 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			val index = super.random.nextInt(populationSize);
  			population.setIndividual(index, new GAIndividual(varables, super.random.nextLong()));
  			population.setCost(index, this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
+ 			this.insertedFromPool++;
  			//population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
  			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
  		}
  		return true;
+ 	}
+ 
+ 	public def getInsertedFromPool(){
+ 		return this.insertedFromPool;
+ 	}
+ 
+ 	public def getAttempsInsertFromPool(){
+ 		return this.attempsInsertFromPool;
  	}
  
  	//Jason: Migration

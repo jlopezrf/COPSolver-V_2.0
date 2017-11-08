@@ -70,11 +70,11 @@ void cpls::solver::GAOperators::_constructor(x10_int longIndv, x10_float mutRate
             
             //#line 36 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
             if (((i) < (this->FMGL(longIndiv)))) {
-                this->FMGL(mask) = ::x10::lang::String::__plus(this->FMGL(mask), (__extension__ ({ static ::x10::lang::String* strLit__43101 = ::x10aux::makeStringLit("1"); strLit__43101; })));
+                this->FMGL(mask) = ::x10::lang::String::__plus(this->FMGL(mask), (__extension__ ({ static ::x10::lang::String* strLit__42740 = ::x10aux::makeStringLit("1"); strLit__42740; })));
             } else {
                 
                 //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-                this->FMGL(mask) = ::x10::lang::String::__plus(this->FMGL(mask), (__extension__ ({ static ::x10::lang::String* strLit__43102 = ::x10aux::makeStringLit("0"); strLit__43102; })));
+                this->FMGL(mask) = ::x10::lang::String::__plus(this->FMGL(mask), (__extension__ ({ static ::x10::lang::String* strLit__42741 = ::x10aux::makeStringLit("0"); strLit__42741; })));
             }
             
         }
@@ -105,7 +105,7 @@ void cpls::solver::GAOperators::setMutRate(x10_double mutRate) {
   ) {
     
     //#line 55 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-    ::x10::lang::String* crossingMask = (__extension__ ({ static ::x10::lang::String* strLit__43103 = ::x10aux::makeStringLit(""); strLit__43103; }));
+    ::x10::lang::String* crossingMask = (__extension__ ({ static ::x10::lang::String* strLit__42742 = ::x10aux::makeStringLit(""); strLit__42742; }));
     
     //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
     x10_int posCrossing = ::x10::lang::DoubleNatives::toInt(((::x10aux::nullCheck(this->FMGL(randomGenerator))->nextDouble()) * (((x10_double) (this->FMGL(longIndiv))))));
@@ -118,11 +118,11 @@ void cpls::solver::GAOperators::setMutRate(x10_double mutRate) {
             
             //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
             if (((i) < (posCrossing))) {
-                crossingMask = ::x10::lang::String::__plus(crossingMask, (__extension__ ({ static ::x10::lang::String* strLit__43104 = ::x10aux::makeStringLit("1"); strLit__43104; })));
+                crossingMask = ::x10::lang::String::__plus(crossingMask, (__extension__ ({ static ::x10::lang::String* strLit__42743 = ::x10aux::makeStringLit("1"); strLit__42743; })));
             } else {
                 
                 //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-                crossingMask = ::x10::lang::String::__plus(crossingMask, (__extension__ ({ static ::x10::lang::String* strLit__43105 = ::x10aux::makeStringLit("0"); strLit__43105; })));
+                crossingMask = ::x10::lang::String::__plus(crossingMask, (__extension__ ({ static ::x10::lang::String* strLit__42744 = ::x10aux::makeStringLit("0"); strLit__42744; })));
             }
             
         }
@@ -137,7 +137,7 @@ void cpls::solver::GAOperators::setMutRate(x10_double mutRate) {
 x10_int cpls::solver::GAOperators::mutating(x10_int genes) {
     
     //#line 67 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-    ::x10::lang::String* maskMut = (__extension__ ({ static ::x10::lang::String* strLit__43106 = ::x10aux::makeStringLit(""); strLit__43106; }));
+    ::x10::lang::String* maskMut = (__extension__ ({ static ::x10::lang::String* strLit__42745 = ::x10aux::makeStringLit(""); strLit__42745; }));
     
     //#line 68 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
     {
@@ -151,17 +151,17 @@ x10_int cpls::solver::GAOperators::mutating(x10_int genes) {
                 //#line 70 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
                 if (((::x10aux::nullCheck(this->FMGL(randomGenerator))->nextDouble()) < (this->FMGL(mutRate))))
                 {
-                    maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__43107 = ::x10aux::makeStringLit("1"); strLit__43107; })));
+                    maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__42746 = ::x10aux::makeStringLit("1"); strLit__42746; })));
                 } else {
                     
                     //#line 71 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-                    maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__43108 = ::x10aux::makeStringLit("0"); strLit__43108; })));
+                    maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__42747 = ::x10aux::makeStringLit("0"); strLit__42747; })));
                 }
                 
             } else {
                 
                 //#line 72 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/GAOperators.x10"
-                maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__43109 = ::x10aux::makeStringLit("0"); strLit__43109; })));
+                maskMut = ::x10::lang::String::__plus(maskMut, (__extension__ ({ static ::x10::lang::String* strLit__42748 = ::x10aux::makeStringLit("0"); strLit__42748; })));
             }
             
         }
@@ -438,7 +438,7 @@ x10_double cpls::solver::GAOperators::power(x10_double number,
 void cpls::solver::GAOperators::__fieldInitializers_cpls_solver_GAOperators(
   ) {
     this->FMGL(mutRate) = 0.0;
-    this->FMGL(mask) = (__extension__ ({ static ::x10::lang::String* strLit__43116 = ::x10aux::makeStringLit(""); strLit__43116; }));
+    this->FMGL(mask) = (__extension__ ({ static ::x10::lang::String* strLit__42755 = ::x10aux::makeStringLit(""); strLit__42755; }));
     this->FMGL(longIndiv) = ((x10_int)0);
     this->FMGL(scalingFactor) = ((x10_int)0);
     this->FMGL(randomGenerator) = (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));

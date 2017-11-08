@@ -85,7 +85,7 @@ public class CPLSNode(sz:Long){
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
  	protected var numberofTeams:Int;
- 	protected var randomIWI:Int;
+ 	protected var iwi:Int;
  	//protected var spreadDivConf:Boolean = false;
  	//protected var isOnDiversification:Boolean = false;
  	/*************************************************************************************/
@@ -110,10 +110,10 @@ public class CPLSNode(sz:Long){
  		this.heuristicSolver = HeuristicFactory.make(config.getHeuristic(), this.sz);
  		this.random.setSeed(inSeed + here.id);
  		//do{
- 		//	this.randomIWI = this.random.nextInt((5000*sz) as Int);
- 		//}while(this.randomIWI < 50*sz);
+ 		//	this.iwi = this.random.nextInt((5000*sz) as Int);
+ 		//}while(this.iwi < 50*sz);
  	
- 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
+ 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.iwi);
  		this.heuristicSolver.setSeed(random.nextLong());
  		//semilla = inSeed + here.id; //La conservo solo para imprimirla juntos con la solución inicial
  		//this.heuristicSolver.setSolverType(config.getHeuristic()); //Ya fue seteado en el constructor de la heurística
@@ -146,9 +146,9 @@ public class CPLSNode(sz:Long){
  		this.heuristicSolver.clearProblemModel();
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		//do{
- 		//	this.randomIWI = this.random.nextInt((5000*sz) as Int);
- 		//}while(this.randomIWI < 50*sz);
- 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.randomIWI);
+ 		//	this.iwi = this.random.nextInt((5000*sz) as Int);
+ 		//}while(this.iwi < 50*sz);
+ 		//Console.OUT.println("Nodo: " + here.id + " IWI: " + this.iwi);
  		//this.heuristicSolver.initVariables();
  		//this.heuristicSolver.initVar();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ", re-inicializado con semilla: " + semill + ", variables: ");
@@ -160,7 +160,7 @@ public class CPLSNode(sz:Long){
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
- 		this.randomIWI = opts("-iwi", 100n);//(50*problemSize) as Int;
+ 		this.iwi = opts("-iwi", 100n);//(50*problemSize) as Int;
  		this.heuristicSolver.configHeuristic(problemModel, opts);
  		this.heuristicSolver.initVariables();
  		//Console.OUT.print("MsgType_0. Nodo " + here.id + ". TeamId: " + this.nodeConfig.getTeamId() + ", inicializado con semilla: " + semilla + ", variables: ");
@@ -230,9 +230,9 @@ public class CPLSNode(sz:Long){
  	public def solve(tCost : Long, sLow: Boolean):Long{
  		//Console.OUT.println("MsgType_0. Nodo: " + here + " pasando por solve.");
  		initVar(tCost, sLow);
- 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
- 			this.heuristicSolver.applyLS();	
- 		}
+ 		//if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 		//	this.heuristicSolver.applyLS();	
+ 		//}
  		this.currentCost = this.heuristicSolver.costOfSolution();
  		try{
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
@@ -366,7 +366,7 @@ public class CPLSNode(sz:Long){
  		}
  		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
-	 		if(this.itersWhitoutImprovements%this.randomIWI == 0n){//this.nodeConfig.getItersWhitoutImprovements()){
+	 		if(this.itersWhitoutImprovements%this.iwi == 0n){//this.nodeConfig.getItersWhitoutImprovements()){
 	 			if(this.heuristicSolver.launchEventForStagnation()){
 	 				this.itersWhitoutImprovements = 0n;
 	 				this.nChangeforiwi++;
@@ -378,7 +378,7 @@ public class CPLSNode(sz:Long){
 	 			}
 	 		}
  		}//else{
- 		//	if(this.itersWhitoutImprovements == this.randomIWI ){
+ 		//	if(this.itersWhitoutImprovements == this.iwi ){
  		//		val result = getIPVector(this.currentCost);
  		//		if (result) {
  		//			//this.nChangeV++;
@@ -405,6 +405,10 @@ public class CPLSNode(sz:Long){
  		}
  		//winnerLatch.set(false); //Jason: Esto fue solo para probar que no se quede colgado
  		return result;
+ 	}
+ 
+ 	public def printOtherValues(){
+ 		this.heuristicSolver.displayInfo("Other Values: ");
  	}
  
  	/*Jason: Se crea este método para reemplazar el mecanismo de generación de soluciones hacia los StackForDivs*/

@@ -114,7 +114,7 @@ class cpls_util_Monitor__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply(::x10::lang::String* t) {
-        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42955 = ::x10aux::makeStringLit("Monitor: waking "); strLit__42955; })), t);
+        return ::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42594 = ::x10aux::makeStringLit("Monitor: waking "); strLit__42594; })), t);
         
     }
     
@@ -163,7 +163,7 @@ class cpls_util_Monitor__closure__4 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42956 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__42956; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42595 = ::x10aux::makeStringLit("Monitor: Trying cond "); strLit__42595; }));
         
     }
     
@@ -212,7 +212,7 @@ class cpls_util_Monitor__closure__5 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42957 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__42957; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42596 = ::x10aux::makeStringLit("Monitor: Retrying cond "); strLit__42596; }));
         
     }
     
@@ -261,7 +261,7 @@ class cpls_util_Monitor__closure__6 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42958 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__42958; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42597 = ::x10aux::makeStringLit("Monitor:  Suspending. "); strLit__42597; }));
         
     }
     
@@ -310,7 +310,7 @@ class cpls_util_Monitor__closure__7 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42959 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__42959; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42598 = ::x10aux::makeStringLit("Monitor: Trying action."); strLit__42598; }));
         
     }
     
@@ -359,7 +359,7 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42960 = ::x10aux::makeStringLit("Monitor: done"); strLit__42960; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42599 = ::x10aux::makeStringLit("Monitor: done"); strLit__42599; }));
         
     }
     
@@ -405,7 +405,7 @@ class cpls_util_Monitor__closure__8 : public ::x10::lang::Closure {
 
 //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Monitor.x10"
 void cpls::util::Monitor::_constructor() {
-    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__42952 = ::x10aux::makeStringLit(""); strLit__42952; })));
+    (this)->::cpls::util::Monitor::_constructor((__extension__ ({ static ::x10::lang::String* strLit__42591 = ::x10aux::makeStringLit(""); strLit__42591; })));
     
 }
 ::cpls::util::Monitor* cpls::util::Monitor::_make() {
@@ -462,8 +462,8 @@ void cpls::util::Monitor::unlock() {
 void cpls::util::Monitor::FMGL(TRUE__do_init)() {
     FMGL(TRUE__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.TRUE");
-    ::x10::lang::Fun_0_0<x10_boolean>* __var483__ = reinterpret_cast< ::x10::lang::Fun_0_0<x10_boolean>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0<x10_boolean> >(sizeof(cpls_util_Monitor__closure__1)))cpls_util_Monitor__closure__1()));
-    FMGL(TRUE) = __var483__;
+    ::x10::lang::Fun_0_0<x10_boolean>* __var482__ = reinterpret_cast< ::x10::lang::Fun_0_0<x10_boolean>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0<x10_boolean> >(sizeof(cpls_util_Monitor__closure__1)))cpls_util_Monitor__closure__1()));
+    FMGL(TRUE) = __var482__;
     FMGL(TRUE__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(TRUE__init)() {
@@ -478,8 +478,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(TRUE__
 void cpls::util::Monitor::FMGL(NOTHING__do_init)() {
     FMGL(NOTHING__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.NOTHING");
-    ::x10::lang::Fun_0_0< ::cpls::util::Unit>* __var484__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Unit>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(sizeof(cpls_util_Monitor__closure__2)))cpls_util_Monitor__closure__2()));
-    FMGL(NOTHING) = __var484__;
+    ::x10::lang::Fun_0_0< ::cpls::util::Unit>* __var483__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::cpls::util::Unit>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::cpls::util::Unit> >(sizeof(cpls_util_Monitor__closure__2)))cpls_util_Monitor__closure__2()));
+    FMGL(NOTHING) = __var483__;
     FMGL(NOTHING__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(NOTHING__init)() {
@@ -509,8 +509,8 @@ void cpls::util::Monitor::await(::x10::lang::Fun_0_0<x10_boolean>* cond) {
 void cpls::util::Monitor::FMGL(waking__do_init)() {
     FMGL(waking__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.waking");
-    ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>* __var490__ = reinterpret_cast< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__3)))cpls_util_Monitor__closure__3()));
-    FMGL(waking) = __var490__;
+    ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>* __var489__ = reinterpret_cast< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_1< ::x10::lang::String*, ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__3)))cpls_util_Monitor__closure__3()));
+    FMGL(waking) = __var489__;
     FMGL(waking__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(waking__init)() {
@@ -525,8 +525,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(waking
 void cpls::util::Monitor::FMGL(trying__do_init)() {
     FMGL(trying__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.trying");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var491__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__4)))cpls_util_Monitor__closure__4()));
-    FMGL(trying) = __var491__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var490__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__4)))cpls_util_Monitor__closure__4()));
+    FMGL(trying) = __var490__;
     FMGL(trying__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(trying__init)() {
@@ -541,8 +541,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(trying
 void cpls::util::Monitor::FMGL(retrying__do_init)() {
     FMGL(retrying__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.retrying");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var492__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__5)))cpls_util_Monitor__closure__5()));
-    FMGL(retrying) = __var492__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var491__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__5)))cpls_util_Monitor__closure__5()));
+    FMGL(retrying) = __var491__;
     FMGL(retrying__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(retrying__init)() {
@@ -557,8 +557,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(retryi
 void cpls::util::Monitor::FMGL(suspending__do_init)() {
     FMGL(suspending__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.suspending");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var493__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__6)))cpls_util_Monitor__closure__6()));
-    FMGL(suspending) = __var493__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var492__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__6)))cpls_util_Monitor__closure__6()));
+    FMGL(suspending) = __var492__;
     FMGL(suspending__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(suspending__init)() {
@@ -573,8 +573,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(suspen
 void cpls::util::Monitor::FMGL(acting__do_init)() {
     FMGL(acting__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.acting");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var494__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__7)))cpls_util_Monitor__closure__7()));
-    FMGL(acting) = __var494__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var493__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__7)))cpls_util_Monitor__closure__7()));
+    FMGL(acting) = __var493__;
     FMGL(acting__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(acting__init)() {
@@ -589,8 +589,8 @@ volatile ::x10aux::StaticInitController::status cpls::util::Monitor::FMGL(acting
 void cpls::util::Monitor::FMGL(finished__do_init)() {
     FMGL(finished__status) = ::x10aux::StaticInitController::INITIALIZING;
     _SI_("Doing static initialization for field: cpls::util::Monitor.finished");
-    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var495__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__8)))cpls_util_Monitor__closure__8()));
-    FMGL(finished) = __var495__;
+    ::x10::lang::Fun_0_0< ::x10::lang::String*>* __var494__ = reinterpret_cast< ::x10::lang::Fun_0_0< ::x10::lang::String*>*>((new (::x10aux::alloc< ::x10::lang::Fun_0_0< ::x10::lang::String*> >(sizeof(cpls_util_Monitor__closure__8)))cpls_util_Monitor__closure__8()));
+    FMGL(finished) = __var494__;
     FMGL(finished__status) = ::x10aux::StaticInitController::INITIALIZED;
 }
 void cpls::util::Monitor::FMGL(finished__init)() {

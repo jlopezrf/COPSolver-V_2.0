@@ -34,7 +34,7 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return (__extension__ ({ static ::x10::lang::String* strLit__42943 = ::x10aux::makeStringLit("solving all problems into this directory"); strLit__42943; }));
+        return (__extension__ ({ static ::x10::lang::String* strLit__42582 = ::x10aux::makeStringLit("solving all problems into this directory"); strLit__42582; }));
         
     }
     
@@ -126,7 +126,7 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
     x10_int j = ((x10_int)0);
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
-    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__42941 = ::x10aux::makeStringLit(""); strLit__42941; }));
+    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__42580 = ::x10aux::makeStringLit(""); strLit__42580; }));
     
     //#line 29 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
     ::x10::lang::Rail< x10_int >* x = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
@@ -146,16 +146,16 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
                 
                 //#line 32 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
                 x->x10::lang::Rail< x10_int >::__set(((x10_long)((__extension__ ({
-                                                         x10_int pre__38053 =
+                                                         x10_int pre__37839 =
                                                            j;
                                                          j =
                                                            ((j) + (((x10_int)1)));
-                                                         pre__38053;
+                                                         pre__37839;
                                                      }))
                                                      )), ::x10::lang::IntNatives::parseInt(buffer));
                 
                 //#line 33 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
-                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42942 = ::x10aux::makeStringLit(""); strLit__42942; }));
+                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42581 = ::x10aux::makeStringLit(""); strLit__42581; }));
             } else {
                 
                 //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
@@ -202,11 +202,11 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
         
         //#line 52 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         execList = (__extension__ ({
-            ::x10::lang::Rail< ::x10::lang::String* >* t__42937 =
+            ::x10::lang::Rail< ::x10::lang::String* >* t__42576 =
               ::x10::lang::Rail< ::x10::lang::String* >::_makeUnsafe(((x10_long)1ll), false);
-            t__42937->x10::lang::Rail< ::x10::lang::String* >::__set(
+            t__42576->x10::lang::Rail< ::x10::lang::String* >::__set(
               ((x10_long)0ll), fp->getName());
-            t__42937;
+            t__42576;
         }))
         ;
         
@@ -215,7 +215,7 @@ class cpls_util_CPLSFileReader__closure__1 : public ::x10::lang::Closure {
         
         //#line 54 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(nPath, (__extension__ ({ static ::x10::lang::String* strLit__42944 = ::x10aux::makeStringLit(" "); strLit__42944; }))), fp->getName())));
+          reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus(nPath, (__extension__ ({ static ::x10::lang::String* strLit__42583 = ::x10aux::makeStringLit(" "); strLit__42583; }))), fp->getName())));
     }
     
     //#line 56 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/CPLSFileReader.x10"

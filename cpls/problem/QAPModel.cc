@@ -140,7 +140,7 @@ class cpls_problem_QAPModel__closure__3 : public ::x10::lang::Closure {
     
     // closure body
     ::x10::lang::String* __apply() {
-        return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42883 = ::x10aux::makeStringLit("file: "); strLit__42883; })), filePath), (__extension__ ({ static ::x10::lang::String* strLit__42884 = ::x10aux::makeStringLit(" size: "); strLit__42884; }))), sizeF), (__extension__ ({ static ::x10::lang::String* strLit__42885 = ::x10aux::makeStringLit(" bound: "); strLit__42885; }))), vb), (__extension__ ({ static ::x10::lang::String* strLit__42886 = ::x10aux::makeStringLit(" opt: "); strLit__42886; }))), vopt), (__extension__ ({ static ::x10::lang::String* strLit__42887 = ::x10aux::makeStringLit(" bks: "); strLit__42887; }))), bks);
+        return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42522 = ::x10aux::makeStringLit("file: "); strLit__42522; })), filePath), (__extension__ ({ static ::x10::lang::String* strLit__42523 = ::x10aux::makeStringLit(" size: "); strLit__42523; }))), sizeF), (__extension__ ({ static ::x10::lang::String* strLit__42524 = ::x10aux::makeStringLit(" bound: "); strLit__42524; }))), vb), (__extension__ ({ static ::x10::lang::String* strLit__42525 = ::x10aux::makeStringLit(" opt: "); strLit__42525; }))), vopt), (__extension__ ({ static ::x10::lang::String* strLit__42526 = ::x10aux::makeStringLit(" bks: "); strLit__42526; }))), bks);
         
     }
     
@@ -751,7 +751,7 @@ x10_boolean cpls::problem::QAPModel::loadData(::x10::lang::String* filePath) {
     
     //#line 172 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42878 = ::x10aux::makeStringLit("\n--   Solving "); strLit__42878; })), filePath), (__extension__ ({ static ::x10::lang::String* strLit__42879 = ::x10aux::makeStringLit(" "); strLit__42879; })))));
+      reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42517 = ::x10aux::makeStringLit("\n--   Solving "); strLit__42517; })), filePath), (__extension__ ({ static ::x10::lang::String* strLit__42518 = ::x10aux::makeStringLit(" "); strLit__42518; })))));
     
     //#line 174 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::io::FileReader* fr = filep->openRead();
@@ -817,7 +817,7 @@ x10_boolean cpls::problem::QAPModel::loadData(::x10::lang::String* filePath) {
     x10_int j = ((x10_int)0);
     
     //#line 197 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__42888 = ::x10aux::makeStringLit(""); strLit__42888; }));
+    ::x10::lang::String* buffer = (__extension__ ({ static ::x10::lang::String* strLit__42527 = ::x10aux::makeStringLit(""); strLit__42527; }));
     
     //#line 198 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::lang::Rail< x10_int >* x = ::x10::lang::Rail< x10_int >::_make(((x10_long)3ll),
@@ -837,16 +837,16 @@ x10_boolean cpls::problem::QAPModel::loadData(::x10::lang::String* filePath) {
                 
                 //#line 201 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                 x->x10::lang::Rail< x10_int >::__set(((x10_long)((__extension__ ({
-                                                         x10_int pre__37541 =
+                                                         x10_int pre__37327 =
                                                            j;
                                                          j =
                                                            ((j) + (((x10_int)1)));
-                                                         pre__37541;
+                                                         pre__37327;
                                                      }))
                                                      )), ::x10::lang::IntNatives::parseInt(buffer));
                 
                 //#line 203 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42889 = ::x10aux::makeStringLit(""); strLit__42889; }));
+                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42528 = ::x10aux::makeStringLit(""); strLit__42528; }));
             } else {
                 
                 //#line 205 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
@@ -889,17 +889,17 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
         
         //#line 219 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
         {
-            ::x10::lang::Iterator< ::x10::lang::String*>* line__37940;
-            for (line__37940 = ::x10aux::nullCheck(::x10aux::nullCheck(fr)->lines())->iterator();
-                 ::x10::lang::Iterator< ::x10::lang::String*>::hasNext(::x10aux::nullCheck(line__37940));
+            ::x10::lang::Iterator< ::x10::lang::String*>* line__37726;
+            for (line__37726 = ::x10aux::nullCheck(::x10aux::nullCheck(fr)->lines())->iterator();
+                 ::x10::lang::Iterator< ::x10::lang::String*>::hasNext(::x10aux::nullCheck(line__37726));
                  ) {
-                ::x10::lang::String* line = ::x10::lang::Iterator< ::x10::lang::String*>::next(::x10aux::nullCheck(line__37940));
+                ::x10::lang::String* line = ::x10::lang::Iterator< ::x10::lang::String*>::next(::x10aux::nullCheck(line__37726));
                 
                 //#line 221 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                 i = ((i) + (((x10_int)1)));
                 
                 //#line 222 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42890 = ::x10aux::makeStringLit(""); strLit__42890; }));
+                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42529 = ::x10aux::makeStringLit(""); strLit__42529; }));
                 j = ((x10_int)0);
                 
                 //#line 223 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
@@ -907,25 +907,25 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                 {
                     
                     //#line 224 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                    ::x10::lang::Rail< x10_char >* rail__38003 =
+                    ::x10::lang::Rail< x10_char >* rail__37789 =
                       ::x10aux::nullCheck(line)->x10::lang::String::chars();
-                    x10_long size__38004 = (x10_long)(::x10aux::nullCheck(rail__38003)->FMGL(size));
+                    x10_long size__37790 = (x10_long)(::x10aux::nullCheck(rail__37789)->FMGL(size));
                     {
-                        x10_long idx__38005;
-                        for (idx__38005 = ((x10_long)0ll);
-                             ((idx__38005) < (size__38004));
-                             idx__38005 = ((idx__38005) + (((x10_long)1ll))))
+                        x10_long idx__37791;
+                        for (idx__37791 = ((x10_long)0ll);
+                             ((idx__37791) < (size__37790));
+                             idx__37791 = ((idx__37791) + (((x10_long)1ll))))
                         {
-                            x10_char char__38006 = ::x10aux::nullCheck(rail__38003)->x10::lang::Rail< x10_char >::__apply(
-                                                     idx__38005);
+                            x10_char char__37792 = ::x10aux::nullCheck(rail__37789)->x10::lang::Rail< x10_char >::__apply(
+                                                     idx__37791);
                             
                             //#line 225 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                            if ((::x10aux::struct_equals(char__38006,
+                            if ((::x10aux::struct_equals(char__37792,
                                                          ((x10_char)' '))))
                             {
                                 
                                 //#line 226 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42892 = ::x10aux::makeStringLit(""); strLit__42892; })))))
+                                if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42531 = ::x10aux::makeStringLit(""); strLit__42531; })))))
                                 {
                                     
                                     //#line 227 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
@@ -935,10 +935,10 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                                         ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(flow))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                                               ((x10_long)(fLine))))->x10::lang::Rail< x10_int >::__set(
                                           ((x10_long)((__extension__ ({
-                                              x10_int pre__38002 =
+                                              x10_int pre__37788 =
                                                 j;
                                               j = ((j) + (((x10_int)1)));
-                                              pre__38002;
+                                              pre__37788;
                                           }))
                                           )), ::x10::lang::IntNatives::parseInt(buffer));
                                     }
@@ -946,27 +946,27 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                                 }
                                 
                                 //#line 231 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42894 = ::x10aux::makeStringLit(""); strLit__42894; }));
+                                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42533 = ::x10aux::makeStringLit(""); strLit__42533; }));
                             } else {
                                 
                                 //#line 233 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                buffer = ::x10::lang::String::__plus(buffer, char__38006);
+                                buffer = ::x10::lang::String::__plus(buffer, char__37792);
                             }
                             
                         }
                     }
                     
                     //#line 237 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                    if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42895 = ::x10aux::makeStringLit(""); strLit__42895; })))))
+                    if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42534 = ::x10aux::makeStringLit(""); strLit__42534; })))))
                     {
                         
                         //#line 238 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                         ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(flow))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                               ((x10_long)(fLine))))->x10::lang::Rail< x10_int >::__set(
                           ((x10_long)((__extension__ ({
-                              x10_int pre__37603 = j;
+                              x10_int pre__37389 = j;
                               j = ((j) + (((x10_int)1)));
-                              pre__37603;
+                              pre__37389;
                           }))
                           )), ::x10::lang::IntNatives::parseInt(buffer));
                     }
@@ -980,25 +980,25 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                 {
                     
                     //#line 244 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                    ::x10::lang::Rail< x10_char >* rail__38008 =
+                    ::x10::lang::Rail< x10_char >* rail__37794 =
                       ::x10aux::nullCheck(line)->x10::lang::String::chars();
-                    x10_long size__38009 = (x10_long)(::x10aux::nullCheck(rail__38008)->FMGL(size));
+                    x10_long size__37795 = (x10_long)(::x10aux::nullCheck(rail__37794)->FMGL(size));
                     {
-                        x10_long idx__38010;
-                        for (idx__38010 = ((x10_long)0ll);
-                             ((idx__38010) < (size__38009));
-                             idx__38010 = ((idx__38010) + (((x10_long)1ll))))
+                        x10_long idx__37796;
+                        for (idx__37796 = ((x10_long)0ll);
+                             ((idx__37796) < (size__37795));
+                             idx__37796 = ((idx__37796) + (((x10_long)1ll))))
                         {
-                            x10_char char__38011 = ::x10aux::nullCheck(rail__38008)->x10::lang::Rail< x10_char >::__apply(
-                                                     idx__38010);
+                            x10_char char__37797 = ::x10aux::nullCheck(rail__37794)->x10::lang::Rail< x10_char >::__apply(
+                                                     idx__37796);
                             
                             //#line 245 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                            if ((::x10aux::struct_equals(char__38011,
+                            if ((::x10aux::struct_equals(char__37797,
                                                          ((x10_char)' '))))
                             {
                                 
                                 //#line 246 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42898 = ::x10aux::makeStringLit(""); strLit__42898; })))))
+                                if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42537 = ::x10aux::makeStringLit(""); strLit__42537; })))))
                                 {
                                     
                                     //#line 247 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
@@ -1008,10 +1008,10 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                                         ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(dist))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                                               ((x10_long)(dLine))))->x10::lang::Rail< x10_int >::__set(
                                           ((x10_long)((__extension__ ({
-                                              x10_int pre__38007 =
+                                              x10_int pre__37793 =
                                                 j;
                                               j = ((j) + (((x10_int)1)));
-                                              pre__38007;
+                                              pre__37793;
                                           }))
                                           )), ::x10::lang::IntNatives::parseInt(buffer));
                                     }
@@ -1019,27 +1019,27 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
                                 }
                                 
                                 //#line 252 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42900 = ::x10aux::makeStringLit(""); strLit__42900; }));
+                                buffer = (__extension__ ({ static ::x10::lang::String* strLit__42539 = ::x10aux::makeStringLit(""); strLit__42539; }));
                             } else {
                                 
                                 //#line 254 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                                buffer = ::x10::lang::String::__plus(buffer, char__38011);
+                                buffer = ::x10::lang::String::__plus(buffer, char__37797);
                             }
                             
                         }
                     }
                     
                     //#line 258 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-                    if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42901 = ::x10aux::makeStringLit(""); strLit__42901; })))))
+                    if (!(::x10aux::equals(buffer,(__extension__ ({ static ::x10::lang::String* strLit__42540 = ::x10aux::makeStringLit(""); strLit__42540; })))))
                     {
                         
                         //#line 259 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                         ::x10aux::nullCheck(::x10aux::nullCheck(this->FMGL(dist))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                               ((x10_long)(dLine))))->x10::lang::Rail< x10_int >::__set(
                           ((x10_long)((__extension__ ({
-                              x10_int pre__37668 = j;
+                              x10_int pre__37454 = j;
                               j = ((j) + (((x10_int)1)));
-                              pre__37668;
+                              pre__37454;
                           }))
                           )), ::x10::lang::IntNatives::parseInt(buffer));
                     }
@@ -1052,14 +1052,14 @@ void cpls::problem::QAPModel::readMatrix(::x10::io::FileReader* fr,
         }
         
     }
-    catch (::x10::lang::CheckedThrowable* __exc448) {
-        if (::x10aux::instanceof< ::x10::lang::Exception*>(__exc448)) {
-            ::x10::lang::Exception* id__7 = static_cast< ::x10::lang::Exception*>(__exc448);
+    catch (::x10::lang::CheckedThrowable* __exc447) {
+        if (::x10aux::instanceof< ::x10::lang::Exception*>(__exc447)) {
+            ::x10::lang::Exception* id__7 = static_cast< ::x10::lang::Exception*>(__exc447);
             {
                 
                 //#line 268 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                 ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-                  reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42903 = ::x10aux::makeStringLit("Error reading file"); strLit__42903; }))));
+                  reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42542 = ::x10aux::makeStringLit("Error reading file"); strLit__42542; }))));
             }
         } else
         throw;
@@ -1080,7 +1080,7 @@ void cpls::problem::QAPModel::printMatrix(x10_int size, ::x10::lang::Rail< ::x10
     
     //#line 278 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42904 = ::x10aux::makeStringLit("*******"); strLit__42904; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42543 = ::x10aux::makeStringLit("*******"); strLit__42543; }))));
     
     //#line 279 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     {
@@ -1099,13 +1099,13 @@ void cpls::problem::QAPModel::printMatrix(x10_int size, ::x10::lang::Rail< ::x10
                     ::x10::io::Console::FMGL(OUT__get)()->print(
                       ::x10::lang::String::__plus(::x10aux::nullCheck(::x10aux::nullCheck(matrix)->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                                                         ((x10_long)(i))))->x10::lang::Rail< x10_int >::__apply(
-                                                    ((x10_long)(j))), (__extension__ ({ static ::x10::lang::String* strLit__42907 = ::x10aux::makeStringLit(" "); strLit__42907; }))));
+                                                    ((x10_long)(j))), (__extension__ ({ static ::x10::lang::String* strLit__42546 = ::x10aux::makeStringLit(" "); strLit__42546; }))));
                 }
             }
             
             //#line 283 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42908 = ::x10aux::makeStringLit(""); strLit__42908; }))));
+              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42547 = ::x10aux::makeStringLit(""); strLit__42547; }))));
         }
     }
     
@@ -1122,36 +1122,36 @@ x10_boolean cpls::problem::QAPModel::verify(x10_long sz, ::x10::lang::Rail< x10_
     x10_int baseV = this->FMGL(baseValue);
     
     //#line 297 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-    ::x10::lang::Rail< x10_int >* rail__38016 = match;
-    x10_long i__37942min__38017 = ((x10_long)0ll);
-    x10_long i__37942max__38018 = (x10_long)(::x10aux::nullCheck(rail__38016)->FMGL(size));
+    ::x10::lang::Rail< x10_int >* rail__37802 = match;
+    x10_long i__37728min__37803 = ((x10_long)0ll);
+    x10_long i__37728max__37804 = (x10_long)(::x10aux::nullCheck(rail__37802)->FMGL(size));
     {
-        x10_long i__38019;
-        for (i__38019 = i__37942min__38017; ((i__38019) < (i__37942max__38018));
-             i__38019 = ((i__38019) + (((x10_long)1ll))))
+        x10_long i__37805;
+        for (i__37805 = i__37728min__37803; ((i__37805) < (i__37728max__37804));
+             i__37805 = ((i__37805) + (((x10_long)1ll))))
         {
-            x10_long mi__38020 = i__38019;
+            x10_long mi__37806 = i__37805;
             
             //#line 298 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            x10_int value__38015 = ::x10aux::nullCheck(match)->x10::lang::Rail< x10_int >::__apply(
-                                     mi__38020);
+            x10_int value__37801 = ::x10aux::nullCheck(match)->x10::lang::Rail< x10_int >::__apply(
+                                     mi__37806);
             
             //#line 299 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            ::x10::lang::Rail< x10_int >* a__38012 = permutV;
-            x10_long i__38013 = ((x10_long)(((value__38015) - (baseV))));
-            x10_int r__38014 = ((a__38012->x10::lang::Rail< x10_int >::__apply(
-                                   i__38013)) + (((x10_int)1)));
-            a__38012->x10::lang::Rail< x10_int >::__set(i__38013,
-                                                        r__38014);
+            ::x10::lang::Rail< x10_int >* a__37798 = permutV;
+            x10_long i__37799 = ((x10_long)(((value__37801) - (baseV))));
+            x10_int r__37800 = ((a__37798->x10::lang::Rail< x10_int >::__apply(
+                                   i__37799)) + (((x10_int)1)));
+            a__37798->x10::lang::Rail< x10_int >::__set(i__37799,
+                                                        r__37800);
             
             //#line 300 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
             if (((((x10_long)(permutV->x10::lang::Rail< x10_int >::__apply(
-                                ((x10_long)(((value__38015) - (baseV)))))))) > (((x10_long)1ll))))
+                                ((x10_long)(((value__37801) - (baseV)))))))) > (((x10_long)1ll))))
             {
                 
                 //#line 301 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                 ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42914 = ::x10aux::makeStringLit("Not valid permutation, value "); strLit__42914; })), value__38015), (__extension__ ({ static ::x10::lang::String* strLit__42915 = ::x10aux::makeStringLit(" is repeted"); strLit__42915; })))));
+                  reinterpret_cast< ::x10::lang::Any*>(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__42553 = ::x10aux::makeStringLit("Not valid permutation, value "); strLit__42553; })), value__37801), (__extension__ ({ static ::x10::lang::String* strLit__42554 = ::x10aux::makeStringLit(" is repeted"); strLit__42554; })))));
             }
             
         }
@@ -1199,7 +1199,7 @@ void cpls::problem::QAPModel::printMatrices() {
     
     //#line 314 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42924 = ::x10aux::makeStringLit("\nMatrix1"); strLit__42924; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42563 = ::x10aux::makeStringLit("\nMatrix1"); strLit__42563; }))));
     
     //#line 315 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     x10_int i = ((x10_int)0);
@@ -1210,35 +1210,35 @@ void cpls::problem::QAPModel::printMatrices() {
              i = ((i) + (((x10_int)1)))) {
             
             //#line 317 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(((((x10_long)(i))) + (((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__42925 = ::x10aux::makeStringLit(" : "); strLit__42925; }))));
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(((((x10_long)(i))) + (((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__42564 = ::x10aux::makeStringLit(" : "); strLit__42564; }))));
             
             //#line 318 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            ::x10::lang::Rail< x10_int >* rail__38021 = ::x10aux::nullCheck(this->FMGL(flow))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
+            ::x10::lang::Rail< x10_int >* rail__37807 = ::x10aux::nullCheck(this->FMGL(flow))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                                           ((x10_long)(i)));
-            x10_long size__38022 = (x10_long)(::x10aux::nullCheck(rail__38021)->FMGL(size));
+            x10_long size__37808 = (x10_long)(::x10aux::nullCheck(rail__37807)->FMGL(size));
             {
-                x10_long idx__38023;
-                for (idx__38023 = ((x10_long)0ll); ((idx__38023) < (size__38022));
-                     idx__38023 = ((idx__38023) + (((x10_long)1ll))))
+                x10_long idx__37809;
+                for (idx__37809 = ((x10_long)0ll); ((idx__37809) < (size__37808));
+                     idx__37809 = ((idx__37809) + (((x10_long)1ll))))
                 {
-                    x10_int j__38024 = ::x10aux::nullCheck(rail__38021)->x10::lang::Rail< x10_int >::__apply(
-                                         idx__38023);
+                    x10_int j__37810 = ::x10aux::nullCheck(rail__37807)->x10::lang::Rail< x10_int >::__apply(
+                                         idx__37809);
                     
                     //#line 319 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                     ::x10::io::Console::FMGL(OUT__get)()->print(
-                      ::x10::lang::String::__plus(j__38024, (__extension__ ({ static ::x10::lang::String* strLit__42928 = ::x10aux::makeStringLit(" "); strLit__42928; }))));
+                      ::x10::lang::String::__plus(j__37810, (__extension__ ({ static ::x10::lang::String* strLit__42567 = ::x10aux::makeStringLit(" "); strLit__42567; }))));
                 }
             }
             
             //#line 320 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42929 = ::x10aux::makeStringLit(""); strLit__42929; }))));
+              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42568 = ::x10aux::makeStringLit(""); strLit__42568; }))));
         }
     }
     
     //#line 322 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42930 = ::x10aux::makeStringLit("Matrix2"); strLit__42930; }))));
+      reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42569 = ::x10aux::makeStringLit("Matrix2"); strLit__42569; }))));
     
     //#line 323 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
     {
@@ -1246,29 +1246,29 @@ void cpls::problem::QAPModel::printMatrices() {
              i = ((i) + (((x10_int)1)))) {
             
             //#line 324 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(((((x10_long)(i))) + (((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__42931 = ::x10aux::makeStringLit(": "); strLit__42931; }))));
+            ::x10::io::Console::FMGL(OUT__get)()->print(::x10::lang::String::__plus(((((x10_long)(i))) + (((x10_long)1ll))), (__extension__ ({ static ::x10::lang::String* strLit__42570 = ::x10aux::makeStringLit(": "); strLit__42570; }))));
             
             //#line 325 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
-            ::x10::lang::Rail< x10_int >* rail__38025 = ::x10aux::nullCheck(this->FMGL(dist))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
+            ::x10::lang::Rail< x10_int >* rail__37811 = ::x10aux::nullCheck(this->FMGL(dist))->x10::lang::Rail< ::x10::lang::Rail< x10_int >* >::__apply(
                                                           ((x10_long)(i)));
-            x10_long size__38026 = (x10_long)(::x10aux::nullCheck(rail__38025)->FMGL(size));
+            x10_long size__37812 = (x10_long)(::x10aux::nullCheck(rail__37811)->FMGL(size));
             {
-                x10_long idx__38027;
-                for (idx__38027 = ((x10_long)0ll); ((idx__38027) < (size__38026));
-                     idx__38027 = ((idx__38027) + (((x10_long)1ll))))
+                x10_long idx__37813;
+                for (idx__37813 = ((x10_long)0ll); ((idx__37813) < (size__37812));
+                     idx__37813 = ((idx__37813) + (((x10_long)1ll))))
                 {
-                    x10_int j__38028 = ::x10aux::nullCheck(rail__38025)->x10::lang::Rail< x10_int >::__apply(
-                                         idx__38027);
+                    x10_int j__37814 = ::x10aux::nullCheck(rail__37811)->x10::lang::Rail< x10_int >::__apply(
+                                         idx__37813);
                     
                     //#line 326 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
                     ::x10::io::Console::FMGL(OUT__get)()->print(
-                      ::x10::lang::String::__plus(j__38028, (__extension__ ({ static ::x10::lang::String* strLit__42934 = ::x10aux::makeStringLit(" "); strLit__42934; }))));
+                      ::x10::lang::String::__plus(j__37814, (__extension__ ({ static ::x10::lang::String* strLit__42573 = ::x10aux::makeStringLit(" "); strLit__42573; }))));
                 }
             }
             
             //#line 327 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/problem/QAPModel.x10"
             ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42935 = ::x10aux::makeStringLit(""); strLit__42935; }))));
+              reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42574 = ::x10aux::makeStringLit(""); strLit__42574; }))));
         }
     }
     

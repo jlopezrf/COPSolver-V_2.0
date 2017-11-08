@@ -89,12 +89,12 @@ void cpls::solver::RoTSearch::configHeuristic(::cpls::problem::ProblemGenericMod
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(tabuDurationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                         (__extension__ ({ static ::x10::lang::String* strLit__43232 = ::x10aux::makeStringLit("-RoTS_t"); strLit__43232; })),
+                                         (__extension__ ({ static ::x10::lang::String* strLit__42851 = ::x10aux::makeStringLit("-RoTS_t"); strLit__42851; })),
                                          (-(1.0)));
     
     //#line 42 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
     this->FMGL(aspirationFactorUS) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                       (__extension__ ({ static ::x10::lang::String* strLit__43233 = ::x10aux::makeStringLit("-RoTS_a"); strLit__43233; })),
+                                       (__extension__ ({ static ::x10::lang::String* strLit__42852 = ::x10aux::makeStringLit("-RoTS_a"); strLit__42852; })),
                                        (-(1.0)));
 }
 
@@ -266,7 +266,7 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
         
         //#line 141 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         ::x10::io::Console::FMGL(OUT__get)()->x10::io::Printer::println(
-          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__43249 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__43249; }))));
+          reinterpret_cast< ::x10::lang::Any*>((__extension__ ({ static ::x10::lang::String* strLit__42868 = ::x10aux::makeStringLit("All moves are tabu!"); strLit__42868; }))));
         
         //#line 142 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/solver/RoTSearch.x10"
         return currentCost;
@@ -284,13 +284,13 @@ x10_long cpls::solver::RoTSearch::search(x10_long currentCost,
         ::x10aux::nullCheck(this->::cpls::solver::SingleSolHeuristic::FMGL(problemModel))->executedSwap(
           this->FMGL(sz), this->FMGL(move)->getFirst(), this->FMGL(move)->getSecond(),
           (__extension__ ({
-              ::x10::lang::Rail< x10_int >* t__41461 = this->::cpls::solver::SingleSolHeuristic::FMGL(variables);
-              if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__41461)->FMGL(size)),
+              ::x10::lang::Rail< x10_int >* t__41100 = this->::cpls::solver::SingleSolHeuristic::FMGL(variables);
+              if (!((::x10aux::struct_equals((x10_long)(::x10aux::nullCheck(t__41100)->FMGL(size)),
                                              ::x10aux::nullCheck(this)->FMGL(sz)))))
               {
-                  ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__43253 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==this(:cpls.solver.RoTSearch).sz}"); strLit__43253; })))));
+                  ::x10aux::throwException(::x10aux::nullCheck(::x10::lang::FailedDynamicCheckException::_make((__extension__ ({ static ::x10::lang::String* strLit__42872 = ::x10aux::makeStringLit("x10.lang.Rail[x10.lang.Int]{self.size==this(:cpls.solver.RoTSearch).sz}"); strLit__42872; })))));
               }
-              t__41461;
+              t__41100;
           }))
           );
         

@@ -30,6 +30,7 @@ public class GAPopulation{
  			//Console.OUT.println("Semilla individuo " + k + ": " + seed1);
  			this.population(k) = new GAIndividual(size, seed1);
  			this.population(k).initialize();
+ 			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes()));
  		}
  	}
  
@@ -55,7 +56,7 @@ public class GAPopulation{
  				}
  				Runtime.probe();
  				if(kill){
- 					Console.OUT.println("Kill detectado en el for interno de applyLS. Nodo: " + here);
+ 					//Console.OUT.println("Kill detectado en el for interno de applyLS. Nodo: " + here);
  					break;
  				}
  			}	
@@ -63,7 +64,7 @@ public class GAPopulation{
  			this.population(k).setGenes(bestConf);
  			Runtime.probe();
  			if(kill){
- 				Console.OUT.println("Kill detectado en el for externo de applyLS. Nodo: " + here);
+ 				//Console.OUT.println("Kill detectado en el for externo de applyLS. Nodo: " + here);
  				break;
  			}
  		}
