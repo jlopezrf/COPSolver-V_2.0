@@ -99,6 +99,11 @@ public class HeuristicSolver(sz:Long){
  		return false;
  	}
  
+ 	public def getWorstCost():Long{
+ 		Console.OUT.println("BadInvocation of getWorstCost, this its not a GA Heuristic");
+ 		return Long.MAX_VALUE;
+ 	}
+ 
  	//Jason: Migration
  	public def getConfigForPop(replace:Boolean):Rail[Int]{
  		Console.OUT.println("BadInvocation of getConfigForPop, this is not a GA Heuristic");

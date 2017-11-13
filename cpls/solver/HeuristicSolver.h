@@ -35,9 +35,6 @@ namespace x10 { namespace lang {
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
 class Place;
 } } 
 namespace x10 { namespace lang { 
@@ -97,6 +94,7 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual void swapVariables(x10_long i, x10_long j);
     virtual x10_boolean tryInsertIndividual(::x10::lang::Rail< x10_int >* varables,
                                             x10_long sze);
+    virtual x10_long getWorstCost();
     virtual ::x10::lang::Rail< x10_int >* getConfigForPop(
       x10_boolean replace);
     virtual x10_boolean launchEventForStagnation();

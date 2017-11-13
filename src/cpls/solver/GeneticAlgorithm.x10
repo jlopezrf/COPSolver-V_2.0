@@ -26,8 +26,6 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var eachIterMigration:Int = Int.MAX_VALUE;
  	protected var heuristicSolverAux:HeuristicSolver(sz);
  	protected var kill:Boolean = false;
- 	var insertedFromPool:Int = 0n;
- 	var attempsInsertFromPool:Int = 0n;
  	//var auxCounterIter:Int = 0n;
 	
 	public def this(sz:Long){
@@ -61,8 +59,6 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
 
  	public def initVariables(){
  		//initialize(this.populationSize, super.sz);
- 		this.insertedFromPool = 0n;
- 		this.attempsInsertFromPool = 0n;
  		this.population.initialize(populationSize, super.sz, super.problemModel, super.random.nextLong());
  		this.population.sort();
  		//setValuesToParameters();
@@ -163,8 +159,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//val stdrdDesv = population.calculateStandardDesviation(media);
  		//Console.OUT.println(stringMsg + media);
  		//Console.OUT.println("Desviacion estandar: " + stdrdDesv);
- 		Console.OUT.println("Nodo " + here + " insertedFromPool: " + this.insertedFromPool);
- 		Console.OUT.println("Nodo " + here + " attempsInsertFromPool: " + this.attempsInsertFromPool);
+ 		//Console.OUT.println("Nodo " + here + " insertedFromPool: " + this.insertedFromPool);
+ 		//Console.OUT.println("Nodo " + here + " attempsInsertFromPool: " + this.attempsInsertFromPool);
  	}
 
  	public static def printVector(vector:Rail[Int]){
@@ -317,7 +313,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	//Jason: Migration
  	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
  		//Console.OUT.println("Soy nodo master: " + here.id + ", y acabo de ingresar a tryInsertIndividual");
- 		this.attempsInsertFromPool++;
+ 		
  		var minDistance: Double = Double.MAX_VALUE;
  		var distance: Double = 0n;
  		for(var i:Int = 0n; i < population.getPopulationSize(); i++){
@@ -331,19 +327,17 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  			val index = super.random.nextInt(populationSize);
  			population.setIndividual(index, new GAIndividual(varables, super.random.nextLong()));
  			population.setCost(index, this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
- 			this.insertedFromPool++;
+
+ 			return true;
  			//population(index).setCost(this.problemModel.costOfSolution(sz, varables as Rail[Int]{self.size == sz}));
  			//Console.OUT.println("Soy nodo master: " + here.id + ", y voy saliendo de tryInsertIndividual");
+ 		}else{
+ 			return false;
  		}
- 		return true;
  	}
  
- 	public def getInsertedFromPool(){
- 		return this.insertedFromPool;
- 	}
- 
- 	public def getAttempsInsertFromPool(){
- 		return this.attempsInsertFromPool;
+ 	public def getWorstCost():Long{
+ 		return this.population.getIndividual(populationSize -1).getCost();
  	}
  
  	//Jason: Migration
