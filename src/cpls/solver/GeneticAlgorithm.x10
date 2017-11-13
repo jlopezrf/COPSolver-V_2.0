@@ -189,12 +189,10 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	}
  
  	public def launchEventForStagnation():Boolean{
- 		if(population.calculateMidDistance() < 0.6){
- 			displayInfo("Media poblacion antes: ");
- 			val indexIni = ((1-rate)*this.population.getPopulationSize()) as Int;
+ 		if(population.calculateMidDistance() < 0.7){
+ 			val indexIni = (rate*this.population.getPopulationSize()) as Int;
  			this.population.renewPopulation(indexIni);
  			//this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
- 			displayInfo("Media poblacion despues: ");
  			val genes = this.population.getIndividual(0).getGenes();
  			Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
  			return true;

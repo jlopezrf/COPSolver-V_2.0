@@ -81,6 +81,7 @@ public class CPLSNode(sz:Long){
  	protected var forceRestart : Boolean = false;
  	/** Number time to change vector due to communication */ 
  	protected var nChangeV : Int = 0n;
+ 	protected var attempsChangeForIwi:Int = 0n;
  	protected var nChangeforiwi : Int = 0n;
  	protected var bestSent:Boolean=false;
  	protected var newBestConfReportedForTeam:Boolean = false;
@@ -110,7 +111,6 @@ public class CPLSNode(sz:Long){
  		val lmstr = System.getenv("LM");
  		if (lmstr != null)
  			pSendLM = StringUtil.parseInt(lmstr)/ 100.0;
- 		Console.OUT.println("DeltaFact: " + this.deltaFact + "Nodo: " + here);
  	}
  
  	public def initialize(config:NodeConfig, cplsPoolConfig:PoolConfig, problemSize:Long, inSeed:Long){
@@ -294,7 +294,7 @@ public class CPLSNode(sz:Long){
  			//Kill solving process	
  			Runtime.probe();	// Give a chance to the other activities
  			if (kill){
- 				Console.OUT.println("Nodo : " + here + ". " + "Me matan con iteraciones: " + this.nIter);
+ 				//Console.OUT.println("Nodo : " + here + ". " + "Me matan con iteraciones: " + this.nIter);
  				break;  // kill: End solving process
  			}
  			//if(solForDiv){
@@ -352,6 +352,7 @@ public class CPLSNode(sz:Long){
  		this.nForceRestart = 0n;
  		this.nChangeV = 0n;
  		this.nChangeforiwi = 0n;
+ 		this.attempsChangeForIwi = 0n;
  
  		if (this.nodeConfig.getAdaptiveComm())
  			this.nodeConfig.setUpdateI(2n * this.nodeConfig.getReportI());
@@ -389,6 +390,7 @@ public class CPLSNode(sz:Long){
  		
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 		if(this.itersWhitoutImprovements%this.iwi == 0n){//this.nodeConfig.getItersWhitoutImprovements())
+	 			this.attempsChangeForIwi++;
 	 			if(this.heuristicSolver.launchEventForStagnation()){
 	 				this.itersWhitoutImprovements = 0n;
 	 				this.nChangeforiwi++;
@@ -397,6 +399,8 @@ public class CPLSNode(sz:Long){
 	 				bestSent = false;	 
 	 				Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
 	 				this.bestCost = this.heuristicSolver.costOfSolution();
+	 			}else{
+	 
 	 			}
 	 		}
  		}//else{
@@ -430,14 +434,16 @@ public class CPLSNode(sz:Long){
  	}
  
  	public def printOtherValues(){
- 		Console.OUT.println("Report: " + this.report + ". " + here);
- 		Console.OUT.println("Update: " + this.update + ". " + here);
- 		Console.OUT.println("Reinicios por iwi: " + this.nChangeforiwi + ". " + here);
- 		Console.OUT.println("Intentos de insercion: " + this.attempsInsertFromPool);
- 		Console.OUT.println("Inserciones exitosas: " + this.insertedFromPool);
- 		Console.OUT.println("No inserciones por pool vacio: " + this.notInsertedForempyPool);
- 		Console.OUT.println("No inserciones por distania cero: " + this.notInsertedForDistance); 	
- 		Console.OUT.println("No inserciones por peor costo: " + this.notInsertedForWorstCost); 
+ 		Console.OUT.println("Node: " + here + "," + this.attempsChangeForIwi + "," + this.nChangeforiwi + ","
+ 							+ this.attempsInsertFromPool + "," + this.insertedFromPool + "," + this.notInsertedForempyPool + "," +
+ 							this.notInsertedForDistance + "," + this.notInsertedForWorstCost);
+ 		//Console.OUT.println("Intentos de reinicio por iwi: " + this.attempsChangeForIwi + ". " + here);
+ 		//Console.OUT.println("Reinicios por iwi efectivos: " + this.nChangeforiwi + ". " + here);
+ 		//Console.OUT.println("Intentos de insercion: " + this.attempsInsertFromPool);
+ 		//Console.OUT.println("Inserciones exitosas: " + this.insertedFromPool);
+ 		//Console.OUT.println("No inserciones por pool vacio: " + this.notInsertedForempyPool);
+ 		//Console.OUT.println("No inserciones por distania cero: " + this.notInsertedForDistance); 	
+ 		//Console.OUT.println("No inserciones por peor costo: " + this.notInsertedForWorstCost); 
  	}
  
  	/*Jason: Se crea este método para reemplazar el mecanismo de generación de soluciones hacia los StackForDivs*/
