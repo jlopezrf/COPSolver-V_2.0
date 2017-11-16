@@ -16,9 +16,11 @@ public class GAPopulation{
  	private var distanceMatrix:Array_2[Double];
  	private var problemModel:ProblemGenericModel;
  	protected var kill:Boolean = false;
+ 	protected var size:Long = 0n;
 
  	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel, seed:Long){
  		this.population = new Rail[GAIndividual](populationSize);
+ 		this.size = size;
  		this.populationSize = populationSize;
  		this.problemModel = problemModel;
  		val random = new Random(seed);
@@ -30,7 +32,7 @@ public class GAPopulation{
  			//Console.OUT.println("Semilla individuo " + k + ": " + seed1);
  			this.population(k) = new GAIndividual(size, seed1);
  			this.population(k).initialize();
- 			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes()));
+ 			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes() as Valuation(size)));
  		}
  	}
  
@@ -41,7 +43,7 @@ public class GAPopulation{
  			//Console.OUT.println("Se esta aplicando LS sobre la poblacion. Nodo: " + here + ". individuo: " + k);
  			heuristicSolverAux.clearProblemModel();
  			//heuristicSolverAux.initVariables();
- 			heuristicSolverAux.setVariables(this.population(k).getGenes() as Valuation(size));
+ 			heuristicSolverAux.setVariables(size, this.population(k).getGenes() as Valuation(size));
  			indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  			newCost = indivCost;
  			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
@@ -116,9 +118,10 @@ public class GAPopulation{
  	}
  
     public def renewPopulation(indexIni:Int){
+    val sz = size;
     	for(var i:Int = indexIni as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
-    		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
+    		this.population(i).setCost(problemModel.costOfSolution(sz, this.population(i).getGenes() as Valuation(sz)));
     	}
     	sort();
     }

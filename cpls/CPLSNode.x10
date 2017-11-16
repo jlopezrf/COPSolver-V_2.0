@@ -100,6 +100,8 @@ public class CPLSNode(sz:Long){
  	var notInsertedForWorstCost:Int = 0n;
  	var report:Int = 0n;
  	var update:Int = 0n;
+ 
+ 	var attempsReport:Int = 0n;
  	/*************************************************************************************/
  
  	public def this(size:Long){
@@ -400,7 +402,7 @@ public class CPLSNode(sz:Long){
 	 				Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
 	 				this.bestCost = this.heuristicSolver.costOfSolution();
 	 			}else{
-	 
+	 				//Acá no se pone nada porque se deduce: attempsChangeForIwi - nChangeforiwi = noChangesIWIForDistance
 	 			}
 	 		}
  		}//else{
@@ -436,7 +438,7 @@ public class CPLSNode(sz:Long){
  	public def printOtherValues(){
  		Console.OUT.println("Node: " + here + "," + this.attempsChangeForIwi + "," + this.nChangeforiwi + ","
  							+ this.attempsInsertFromPool + "," + this.insertedFromPool + "," + this.notInsertedForempyPool + "," +
- 							this.notInsertedForDistance + "," + this.notInsertedForWorstCost);
+ 							this.notInsertedForDistance + "," + this.notInsertedForWorstCost + "," + this.attempsReport);
  		//Console.OUT.println("Intentos de reinicio por iwi: " + this.attempsChangeForIwi + ". " + here);
  		//Console.OUT.println("Reinicios por iwi efectivos: " + this.nChangeforiwi + ". " + here);
  		//Console.OUT.println("Intentos de insercion: " + this.attempsInsertFromPool);
@@ -483,6 +485,7 @@ public class CPLSNode(sz:Long){
  					bestSent = true;
  					
  				}else{
+ 					//Jason: Esto no parece tener mucho sentido, las probabilidades de que se cumpla el condicional son mínimas
  					if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
  						val solverState = createSolverState();
  						communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
@@ -490,11 +493,25 @@ public class CPLSNode(sz:Long){
  				}
  			}
  
- 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.update == 0n){// && !this.isOnDiversification){
+ 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.update == 0n){// && !this.isOnDiversification)
+ 				//Jason: De acuerdo con las modificaciones realizadas, esto no modifica en nada la ejecución
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
  				}
- 				val result = getIPVector();
+ 				/**********************************************************************************************
+ 				*Cambio esta parte para que las LS solo adopten la nueva solución si resulta
+  				* que ya han pasado iwi iteraciones sin mejora; esto ayuda a dejar que la intensificación
+  				* opere mientras sea necesario.
+  				***********************************************************************************************/
+ 				var result:Boolean = false;
+ 				if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 					result = getIPVector();
+ 				}else{
+ 					if(this.itersWhitoutImprovements >= this.iwi){
+ 						result = getIPVector();
+ 					}
+ 				}
+ 				/***********************************************************************************/
  				if (result) {
  					this.nChangeV++;
  					this.itersWhitoutImprovements = 0n;
@@ -793,6 +810,7 @@ public class CPLSNode(sz:Long){
  
  	public def communicate( info:State(sz)) {
  		Logger.debug(()=>" communicate: entering.");
+ 		this.attempsReport++;
  		val refsToPlaces = pointersComunication;
  		val placeid = here.id as Int;
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
@@ -864,7 +882,7 @@ public class CPLSNode(sz:Long){
  
  		if ( a!=null){
  			if( compareCost  > a().cost * deltaFact &&  random.nextInt(100n) < this.nodeConfig.getChangeProb() ){
-	 			if(this.nodeConfig.getHeuristic() == CPLSOptionsEnum.HeuristicsSupported.GA_SOL){
+	 			if(this.heuristicSolver instanceof PopulBasedHeuristic){
 	 				if(this.heuristicSolver.tryInsertIndividual(a().vector as Valuation(sz), sz)){
 	 					this.insertedFromPool++;
 	 					return true;
@@ -872,6 +890,7 @@ public class CPLSNode(sz:Long){
 	 					this.notInsertedForDistance++;
 	 				}
 	 			}else{
+	 				this.insertedFromPool++;
 	 				this.heuristicSolver.setVariables(a().vector as Valuation(sz));
 	 				this.currentCost = this.heuristicSolver.costOfSolution();
 	 				return true; 
@@ -1168,6 +1187,7 @@ public class CPLSNode(sz:Long){
  		this.notInsertedForempyPool = 0n;
  		this.notInsertedForDistance = 0n;
  		this.notInsertedForWorstCost = 0n;
+ 		this.attempsReport = 0n;
  		//this.isOnIntensification = false;
  	}
  	

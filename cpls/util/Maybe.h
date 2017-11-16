@@ -77,15 +77,15 @@ template<class TPMGL(T)> class Maybe;
 #include <cpls/util/Maybe.h>
 
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
+//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
 
-//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
+//#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
 template<class TPMGL(T)> void cpls::util::Maybe<TPMGL(T)>::_constructor(TPMGL(T) t) {
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
-    ::cpls::util::Maybe<TPMGL(T)>* this__3 = this;
+    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
+    this->cpls::util::template Maybe<TPMGL(T)>::__fieldInitializers_cpls_util_Maybe();
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
+    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
     this->FMGL(data) = t;
 }
 template<class TPMGL(T)> ::cpls::util::Maybe<TPMGL(T)>* cpls::util::Maybe<TPMGL(T)>::_make(
@@ -97,14 +97,14 @@ template<class TPMGL(T)> ::cpls::util::Maybe<TPMGL(T)>* cpls::util::Maybe<TPMGL(
 
 
 
-//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
+//#line 6 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
 template<class TPMGL(T)> TPMGL(T) cpls::util::Maybe<TPMGL(T)>::__apply(
   ) {
     return this->FMGL(data);
     
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Maybe.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Maybe.x10"
 template<class TPMGL(T)> ::cpls::util::Maybe<TPMGL(T)>* cpls::util::Maybe<TPMGL(T)>::cpls__util__Maybe____this__cpls__util__Maybe(
   ) {
     return this;

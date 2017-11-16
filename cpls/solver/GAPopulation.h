@@ -58,17 +58,11 @@ class Console;
 namespace x10 { namespace lang { 
 class String;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
-} } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
 namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace lang { 
 class Math;
@@ -93,6 +87,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
     ::cpls::problem::ProblemGenericModel* FMGL(problemModel);
     
     x10_boolean FMGL(kill);
+    
+    x10_long FMGL(size);
     
     virtual void initialize(x10_long populationSize, x10_long size, ::cpls::problem::ProblemGenericModel* problemModel,
                             x10_long seed);

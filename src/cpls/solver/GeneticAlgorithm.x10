@@ -10,6 +10,8 @@ import x10.util.RailUtils;
 import x10.util.ArrayList;
 import cpls.solver.EOSearch;
 import cpls.solver.HeuristicSolver;
+import cpls.HeuristicFactory;
+import cpls.CPLSOptionsEnum;
 //import cpls.util.Utils;
 
 
@@ -41,8 +43,8 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//val ls = opts("-GA_ls", 1);
  		//if(ls == 0){
  		//	this.heuristicSolverAux = new RoTSearch(sz);
- 		//}else{
- 			this.heuristicSolverAux = new EOSearch(sz);
+ 		//}else{CPLSOptionsEnum.HeuristicsSupported.EO_SOL
+ 			this.heuristicSolverAux = HeuristicFactory.make(CPLSOptionsEnum.HeuristicsSupported.EO_SOL, this.sz); 
  		//}
  		
  		//setValuesToParameters();

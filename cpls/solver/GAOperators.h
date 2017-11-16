@@ -22,9 +22,6 @@ class String;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
 } } 
