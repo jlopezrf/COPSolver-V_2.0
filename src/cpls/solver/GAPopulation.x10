@@ -78,6 +78,12 @@ public class GAPopulation{
  		}
  		Console.OUT.print("\n");
  	}
+ 
+ 	public def printPopulation(){
+ 		for(var i:Int = 0n; i<populationSize; i++){
+ 			printVector(this.population(i).getGenes());
+ 		}
+ 	}
 
  	public def getIndividual(index:Long){
  		return this.population(index);
@@ -144,6 +150,48 @@ public class GAPopulation{
  		}
  		media = media/((this.population.size -1 )*this.population.size);
  		return media;
+ 	}
+ 
+ 	public def entropyOfPopulation():Double{
+ 		Console.OUT.println("Mostrando la población antes del calculo de la entropia");
+ 		printPopulation();
+ 		var countsOfTimesForSite:Rail[Rail[Double]] = new Rail[Rail[Double]](size, new Rail[Double](size,0.0));
+ 		var entropyRow:Double = 0.0;
+ 		var entropyTotal:Double = 0.0;
+ 		/*for(var j:Int = 0n; j < populationSize; j++){
+ 			for(var i:Int = 0n; i<size; i++){
+ 				countsOfTimesForSite(i)(population(j).getGenes()(i))++;
+ 			}
+ 			for(var k:Int = 0n; k<size; k++){
+ 				entropyRow += (-1*countsOfTimesForSite(j)(k)/populationSize)*Math.log10(countsOfTimesForSite(j)(k)/populationSize);
+ 			}
+ 			entropyTotal += entropyRow;
+ 			entropyRow = 0.0;
+ 		}*/
+ 
+ 		for(var i:Int = 0n; i<size; i++){
+ 			for(var j:Int = 0n; j < populationSize; j++){
+ 				countsOfTimesForSite(i)((population(j).getGenes())(i))++;
+ 			}
+ 			for(var k:Int = 0n; k<size; k++){
+ 				entropyRow += (-1*countsOfTimesForSite(i)(k)/populationSize)*Math.log10(countsOfTimesForSite(i)(k)/populationSize);
+ 			}
+ 			entropyTotal += entropyRow;
+ 			entropyRow = 0.0;
+ 		}
+ 		entropyTotal = entropyTotal/(populationSize*Math.log10(populationSize));
+ 		printMatrix(size as Int,countsOfTimesForSite);
+ 		return entropyTotal;
+ 	}
+ 
+ 	public def printMatrix(size:Int, matrix:Rail[Rail[Double]]){
+ 		Console.OUT.println("*******");
+ 		for(var i:Int = 0n; i < size; i++){
+ 			for(var j:Int = 0n; j < size; j++){
+ 				Console.OUT.print(matrix(i)(j) + " ");
+ 			}
+ 			Console.OUT.println("");
+ 		}
  	}
  
  	public def calculateStandardDesviation(media:Double):Double{

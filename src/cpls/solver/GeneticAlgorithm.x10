@@ -22,6 +22,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var rate:float;
  	var crossingOperator:Int;
  	var divOperator:Int;
+ 	var valueForRenewPopulation:Float;
  	//val random:Random;
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
@@ -50,6 +51,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		//setValuesToParameters();
  		this.rate = opts("-GA_r", 0.4f);
  		this.crossingOperator = opts("-GA_co", 0n);
+ 		this.valueForRenewPopulation = opts("-GA_rpv", 0.7f);
  		this.divOperator = opts("-GA_do", 0n);
  		if(divOperator == 1n){
  			this.eachIterMigration = (super.sz*rate) as Int;
@@ -191,7 +193,9 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	}
  
  	public def launchEventForStagnation():Boolean{
- 		if(population.calculateMidDistance() < 0.7){
+ 		val entropy = population.entropyOfPopulation();
+ 		Console.OUT.println("Entropia de la poblacion: " + entropy);
+ 		if(entropy < this.valueForRenewPopulation){
  			val indexIni = (rate*this.population.getPopulationSize()) as Int;
  			this.population.renewPopulation(indexIni);
  			//this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);

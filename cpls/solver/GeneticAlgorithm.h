@@ -37,9 +37,6 @@ class GAPopulation;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
-namespace cpls { 
-class CPLSOptionsEnum__HeuristicsSupported;
-} 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -65,9 +62,6 @@ namespace x10 { namespace lang {
 template<class TPMGL(T)> class Rail;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace lang { 
@@ -78,6 +72,9 @@ class Printer;
 } } 
 namespace x10 { namespace io { 
 class Console;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -97,6 +94,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     x10_int FMGL(crossingOperator);
     
     x10_int FMGL(divOperator);
+    
+    x10_float FMGL(valueForRenewPopulation);
     
     x10_long FMGL(bestCostGA);
     

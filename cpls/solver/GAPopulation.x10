@@ -16,9 +16,11 @@ public class GAPopulation{
  	private var distanceMatrix:Array_2[Double];
  	private var problemModel:ProblemGenericModel;
  	protected var kill:Boolean = false;
+ 	protected var size:Long = 0n;
 
  	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel, seed:Long){
  		this.population = new Rail[GAIndividual](populationSize);
+ 		this.size = size;
  		this.populationSize = populationSize;
  		this.problemModel = problemModel;
  		val random = new Random(seed);
@@ -30,7 +32,7 @@ public class GAPopulation{
  			//Console.OUT.println("Semilla individuo " + k + ": " + seed1);
  			this.population(k) = new GAIndividual(size, seed1);
  			this.population(k).initialize();
- 			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes()));
+ 			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes() as Valuation(size)));
  		}
  	}
  
@@ -41,7 +43,7 @@ public class GAPopulation{
  			//Console.OUT.println("Se esta aplicando LS sobre la poblacion. Nodo: " + here + ". individuo: " + k);
  			heuristicSolverAux.clearProblemModel();
  			//heuristicSolverAux.initVariables();
- 			heuristicSolverAux.setVariables(this.population(k).getGenes() as Valuation(size));
+ 			heuristicSolverAux.setVariables(size, this.population(k).getGenes() as Valuation(size));
  			indivCost = heuristicSolverAux.costOfSolution();//size, this.population(k).getGenes() as Rail[Int]{self.size == size});
  			newCost = indivCost;
  			//Console.OUT.println("Costo inicial del individuo " + k + ": " + indivCost);
@@ -75,6 +77,12 @@ public class GAPopulation{
  			Console.OUT.print(vector(i) + "  ");
  		}
  		Console.OUT.print("\n");
+ 	}
+ 
+ 	public def printPopulation(){
+ 		for(var i:Int = 0n; i<populationSize; i++){
+ 			printVector(this.population(i).getGenes());
+ 		}
  	}
 
  	public def getIndividual(index:Long){
@@ -116,9 +124,10 @@ public class GAPopulation{
  	}
  
     public def renewPopulation(indexIni:Int){
+    val sz = size;
     	for(var i:Int = indexIni as Int ; i < this.population.size; i++){
     		this.population(i).initialize();
-    		this.population(i).setCost(problemModel.costOfSolution(this.population(i).size, this.population(i).getGenes() as Rail[Int]{self.size == size}));
+    		this.population(i).setCost(problemModel.costOfSolution(sz, this.population(i).getGenes() as Valuation(sz)));
     	}
     	sort();
     }
@@ -141,6 +150,48 @@ public class GAPopulation{
  		}
  		media = media/((this.population.size -1 )*this.population.size);
  		return media;
+ 	}
+ 
+ 	public def entropyOfPopulation():Double{
+ 		Console.OUT.println("Mostrando la población antes del calculo de la entropia");
+ 		printPopulation();
+ 		var countsOfTimesForSite:Rail[Rail[Double]] = new Rail[Rail[Double]](size, new Rail[Double](size,0.0));
+ 		var entropyRow:Double = 0.0;
+ 		var entropyTotal:Double = 0.0;
+ 		/*for(var j:Int = 0n; j < populationSize; j++){
+ 			for(var i:Int = 0n; i<size; i++){
+ 				countsOfTimesForSite(i)(population(j).getGenes()(i))++;
+ 			}
+ 			for(var k:Int = 0n; k<size; k++){
+ 				entropyRow += (-1*countsOfTimesForSite(j)(k)/populationSize)*Math.log10(countsOfTimesForSite(j)(k)/populationSize);
+ 			}
+ 			entropyTotal += entropyRow;
+ 			entropyRow = 0.0;
+ 		}*/
+ 
+ 		for(var i:Int = 0n; i<size; i++){
+ 			for(var j:Int = 0n; j < populationSize; j++){
+ 				countsOfTimesForSite(i)((population(j).getGenes())(i))++;
+ 			}
+ 			for(var k:Int = 0n; k<size; k++){
+ 				entropyRow += (-1*countsOfTimesForSite(i)(k)/populationSize)*Math.log10(countsOfTimesForSite(i)(k)/populationSize);
+ 			}
+ 			entropyTotal += entropyRow;
+ 			entropyRow = 0.0;
+ 		}
+ 		entropyTotal = entropyTotal/(populationSize*Math.log10(populationSize));
+ 		printMatrix(size as Int,countsOfTimesForSite);
+ 		return entropyTotal;
+ 	}
+ 
+ 	public def printMatrix(size:Int, matrix:Rail[Rail[Double]]){
+ 		Console.OUT.println("*******");
+ 		for(var i:Int = 0n; i < size; i++){
+ 			for(var j:Int = 0n; j < size; j++){
+ 				Console.OUT.print(matrix(i)(j) + " ");
+ 			}
+ 			Console.OUT.println("");
+ 		}
  	}
  
  	public def calculateStandardDesviation(media:Double):Double{

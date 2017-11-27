@@ -40,9 +40,6 @@ class ProblemGenericModel;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
@@ -58,11 +55,20 @@ class Console;
 namespace x10 { namespace lang { 
 class String;
 } } 
+namespace x10 { namespace lang { 
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
+} } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
 namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
+class Unsafe;
+} } 
+namespace x10 { namespace array { 
+template<class TPMGL(T)> class Array;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace lang { 
 class Math;
@@ -95,6 +101,7 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void applyLS(x10_long size, ::cpls::solver::HeuristicSolver* heuristicSolverAux,
                          x10_int indexIni);
     virtual void printVector(::x10::lang::Rail< x10_int >* vector);
+    virtual void printPopulation();
     virtual ::cpls::solver::GAIndividual* getIndividual(x10_long index);
     virtual void setIndividual(x10_long index, ::cpls::solver::GAIndividual* individual);
     virtual void setKill(x10_boolean value);
@@ -103,6 +110,8 @@ class GAPopulation : public ::x10::lang::X10Class   {
                                    ::x10::util::Random* random);
     virtual void renewPopulation(x10_int indexIni);
     virtual x10_double calculateMidDistance();
+    virtual x10_double entropyOfPopulation();
+    virtual void printMatrix(x10_int size, ::x10::lang::Rail< ::x10::lang::Rail< x10_double >* >* matrix);
     virtual x10_double calculateStandardDesviation(x10_double media);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,
                                 ::x10::lang::Rail< x10_int >* indiv2);

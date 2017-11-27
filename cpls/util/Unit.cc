@@ -33,12 +33,12 @@ public:
 ::x10aux::itable_entry cpls::util::Unit::_itables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::util::Unit::_itable_0), ::x10aux::itable_entry(NULL, (void*)"::cpls::util::Unit")};
 ::x10aux::itable_entry cpls::util::Unit::_iboxitables[2] = {::x10aux::itable_entry(&::x10aux::getRTT< ::x10::lang::Any>, &cpls::util::Unit_ibox0::itable), ::x10aux::itable_entry(NULL, (void*)"::cpls::util::Unit")};
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/src/cpls/util/Unit.x10"
+//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/Unit.x10"
 ::x10::lang::String* cpls::util::Unit::typeName(){
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::util::Unit::toString() {
-    return (__extension__ ({ static ::x10::lang::String* strLit__43239 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__43239; }));
+    return (__extension__ ({ static ::x10::lang::String* strLit__51 = ::x10aux::makeStringLit("struct cpls.util.Unit"); strLit__51; }));
     
 }
 x10_boolean cpls::util::Unit::equals(::x10::lang::Any* other) {
@@ -46,7 +46,9 @@ x10_boolean cpls::util::Unit::equals(::x10::lang::Any* other) {
         return false;
         
     }
-    return (*this)->cpls::util::Unit::equals(::x10aux::class_cast< ::cpls::util::Unit>(other));
+    ::cpls::util::Unit this__40 = (*this);
+    ::cpls::util::Unit other__41 = ::x10aux::class_cast< ::cpls::util::Unit>(other);
+    return true;
     
 }
 x10_boolean cpls::util::Unit::_struct_equals(::x10::lang::Any* other) {
@@ -54,7 +56,9 @@ x10_boolean cpls::util::Unit::_struct_equals(::x10::lang::Any* other) {
         return false;
         
     }
-    return (*this)->cpls::util::Unit::_struct_equals(::x10aux::class_cast< ::cpls::util::Unit>(other));
+    ::cpls::util::Unit this__42 = (*this);
+    ::cpls::util::Unit other__43 = ::x10aux::class_cast< ::cpls::util::Unit>(other);
+    return true;
     
 }
 

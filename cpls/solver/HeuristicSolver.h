@@ -35,9 +35,6 @@ namespace x10 { namespace lang {
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
 } } 
 namespace x10 { namespace lang { 
-class FailedDynamicCheckException;
-} } 
-namespace x10 { namespace lang { 
 class Place;
 } } 
 namespace x10 { namespace lang { 

@@ -87,6 +87,10 @@ public class HeuristicSolver(sz:Long){
  		this.variables = variables;
  	}
  
+ 	public def setVariables(sze:Long, variables:Rail[Int]{size == sze}){
+ 		this.variables = variables;
+ 	}
+ 
  	public def swapVariables( i:Long, j:Long):void{
  		val x = variables(i);
  		variables(i) = variables(j); 

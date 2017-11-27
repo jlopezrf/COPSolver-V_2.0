@@ -498,19 +498,19 @@ public class CPLSNode(sz:Long){
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
  				}
- 				/**********************************************************************************************
- 				*Cambio esta parte para que las LS solo adopten la nueva solución si resulta
-  				* que ya han pasado iwi iteraciones sin mejora; esto ayuda a dejar que la intensificación
-  				* opere mientras sea necesario.
-  				***********************************************************************************************/
+ 				///**********************************************************************************************
+ 				//*Cambio esta parte para que las LS solo adopten la nueva solución si resulta
+  				//* que ya han pasado iwi iteraciones sin mejora; esto ayuda a dejar que la intensificación
+  				//* opere mientras sea necesario.
+  				//***********************************************************************************************/
  				var result:Boolean = false;
- 				if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 				//if(this.heuristicSolver instanceof PopulBasedHeuristic){
  					result = getIPVector();
- 				}else{
- 					if(this.itersWhitoutImprovements >= this.iwi){
- 						result = getIPVector();
- 					}
- 				}
+ 				//}else{
+ 				//	if(this.itersWhitoutImprovements >= this.iwi){
+ 				//		result = getIPVector();
+ 				//	}
+ 				//}
  				/***********************************************************************************/
  				if (result) {
  					this.nChangeV++;
@@ -1286,7 +1286,7 @@ public class CPLSNode(sz:Long){
  		val gReset = (c.getForceRestart() > gR)? c.getForceRestart() : gR;
  		val fft = c.getCost() - targetCost;
  		c.setTime(time);
- 		c.setTeam(winPlace as Int);
+ 		c.setTeam(placeHead.id() as Int);
  		c.setGroupR(gReset);
  		c.setFFTarget(fft as Int);
  		c.setChangeForDiv(nChangesForDivers);
