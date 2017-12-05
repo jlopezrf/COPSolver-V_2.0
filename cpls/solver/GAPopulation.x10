@@ -20,6 +20,7 @@ public class GAPopulation{
 
  	public def initialize(populationSize:Long, size:Long, problemModel:ProblemGenericModel, seed:Long){
  		this.population = new Rail[GAIndividual](populationSize);
+ 		//Console.OUT.println("Size: " + size + ". PopulationSize: " + populationSize);
  		this.size = size;
  		this.populationSize = populationSize;
  		this.problemModel = problemModel;
@@ -34,6 +35,7 @@ public class GAPopulation{
  			this.population(k).initialize();
  			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes() as Valuation(size)));
  		}
+ 		Console.OUT.println("Entropia inicial de la poblacion: " + entropyOfPopulation());
  	}
  
  	public def applyLS(size:Long, heuristicSolverAux:HeuristicSolver, indexIni:Int){
@@ -153,42 +155,34 @@ public class GAPopulation{
  	}
  
  	public def entropyOfPopulation():Double{
- 		Console.OUT.println("Mostrando la población antes del calculo de la entropia");
- 		printPopulation();
- 		var countsOfTimesForSite:Rail[Rail[Double]] = new Rail[Rail[Double]](size, new Rail[Double](size,0.0));
+ 		//Console.OUT.println("Mostrando la población antes del calculo de la entropia");
+ 		//printPopulation();
+ 		var countsOfTimesForSite:Array_2[Double] = new Array_2[Double](size, size, 0n);//new Rail[Rail[Double]](size, new Rail[Double](size,0.0));
  		var entropyRow:Double = 0.0;
  		var entropyTotal:Double = 0.0;
- 		/*for(var j:Int = 0n; j < populationSize; j++){
- 			for(var i:Int = 0n; i<size; i++){
- 				countsOfTimesForSite(i)(population(j).getGenes()(i))++;
- 			}
- 			for(var k:Int = 0n; k<size; k++){
- 				entropyRow += (-1*countsOfTimesForSite(j)(k)/populationSize)*Math.log10(countsOfTimesForSite(j)(k)/populationSize);
- 			}
- 			entropyTotal += entropyRow;
- 			entropyRow = 0.0;
- 		}*/
- 
+
  		for(var i:Int = 0n; i<size; i++){
  			for(var j:Int = 0n; j < populationSize; j++){
- 				countsOfTimesForSite(i)((population(j).getGenes())(i))++;
+ 				countsOfTimesForSite(i,population(j).getGenes()(i))++;//countsOfTimesForSite(i)((population(j).getGenes())(i))++;
  			}
  			for(var k:Int = 0n; k<size; k++){
- 				entropyRow += (-1*countsOfTimesForSite(i)(k)/populationSize)*Math.log10(countsOfTimesForSite(i)(k)/populationSize);
+ 				if(countsOfTimesForSite(i,k) != 0.0){
+ 					entropyRow += (-1*countsOfTimesForSite(i,k)/populationSize)*Math.log10(countsOfTimesForSite(i,k)/populationSize);
+ 				}
+ 				
  			}
  			entropyTotal += entropyRow;
  			entropyRow = 0.0;
  		}
- 		entropyTotal = entropyTotal/(populationSize*Math.log10(populationSize));
- 		printMatrix(size as Int,countsOfTimesForSite);
+ 		entropyTotal = entropyTotal/(size*Math.log10(size));
  		return entropyTotal;
  	}
  
- 	public def printMatrix(size:Int, matrix:Rail[Rail[Double]]){
+ 	public def printMatrix(size:Int, matrix:Array_2[Double]){
  		Console.OUT.println("*******");
  		for(var i:Int = 0n; i < size; i++){
  			for(var j:Int = 0n; j < size; j++){
- 				Console.OUT.print(matrix(i)(j) + " ");
+ 				Console.OUT.print(matrix(i,j) + " ");
  			}
  			Console.OUT.println("");
  		}

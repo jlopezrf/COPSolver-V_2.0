@@ -40,12 +40,6 @@ class ProblemGenericModel;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
-} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -53,7 +47,16 @@ namespace x10 { namespace io {
 class Console;
 } } 
 namespace x10 { namespace lang { 
+class Any;
+} } 
+namespace x10 { namespace lang { 
 class String;
+} } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
@@ -66,9 +69,6 @@ class Unsafe;
 } } 
 namespace x10 { namespace array { 
 template<class TPMGL(T)> class Array;
-} } 
-namespace x10 { namespace lang { 
-class Any;
 } } 
 namespace x10 { namespace lang { 
 class Math;
@@ -111,7 +111,7 @@ class GAPopulation : public ::x10::lang::X10Class   {
     virtual void renewPopulation(x10_int indexIni);
     virtual x10_double calculateMidDistance();
     virtual x10_double entropyOfPopulation();
-    virtual void printMatrix(x10_int size, ::x10::lang::Rail< ::x10::lang::Rail< x10_double >* >* matrix);
+    virtual void printMatrix(x10_int size, ::x10::array::Array_2<x10_double>* matrix);
     virtual x10_double calculateStandardDesviation(x10_double media);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* indiv1,
                                 ::x10::lang::Rail< x10_int >* indiv2);
