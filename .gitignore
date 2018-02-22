@@ -14,6 +14,11 @@ cpls/measurements/*.h
 cpls/problem/*.h
 cpls/solver/*.h
 cpls/util/*.h
+cpls/entities/*.o
+cpls/measurements/*.o
+cpls/problem/*.o
+cpls/solver/*.o
+cpls/util/*.o
 .metadata
 Main
 MainX
