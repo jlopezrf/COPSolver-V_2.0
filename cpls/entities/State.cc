@@ -12,9 +12,9 @@
 #include <x10/compiler/Synthetic.h>
 #include <x10/lang/Boolean.h>
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 4 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
 namespace cpls { namespace entities { 
 class State_ibox0 : public ::x10::lang::IBox< ::cpls::entities::State> {
 public:
@@ -42,7 +42,7 @@ public:
     return ::x10aux::type_name((*this));
 }
 ::x10::lang::String* cpls::entities::State::toString() {
-    return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__729 = ::x10aux::makeStringLit("struct cpls.entities.State:"); strLit__729; })), (__extension__ ({ static ::x10::lang::String* strLit__730 = ::x10aux::makeStringLit(" sz="); strLit__730; }))), (*this)->FMGL(sz)), (__extension__ ({ static ::x10::lang::String* strLit__731 = ::x10aux::makeStringLit(" cost="); strLit__731; }))), (*this)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__732 = ::x10aux::makeStringLit(" vector="); strLit__732; }))), (*this)->FMGL(vector)), (__extension__ ({ static ::x10::lang::String* strLit__733 = ::x10aux::makeStringLit(" place="); strLit__733; }))), (*this)->FMGL(place)), (__extension__ ({ static ::x10::lang::String* strLit__734 = ::x10aux::makeStringLit(" solverState="); strLit__734; }))), (*this)->FMGL(solverState));
+    return ::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus(::x10::lang::String::__plus((__extension__ ({ static ::x10::lang::String* strLit__43598 = ::x10aux::makeStringLit("struct cpls.entities.State:"); strLit__43598; })), (__extension__ ({ static ::x10::lang::String* strLit__43599 = ::x10aux::makeStringLit(" sz="); strLit__43599; }))), (*this)->FMGL(sz)), (__extension__ ({ static ::x10::lang::String* strLit__43600 = ::x10aux::makeStringLit(" cost="); strLit__43600; }))), (*this)->FMGL(cost)), (__extension__ ({ static ::x10::lang::String* strLit__43601 = ::x10aux::makeStringLit(" vector="); strLit__43601; }))), (*this)->FMGL(vector)), (__extension__ ({ static ::x10::lang::String* strLit__43602 = ::x10aux::makeStringLit(" place="); strLit__43602; }))), (*this)->FMGL(place)), (__extension__ ({ static ::x10::lang::String* strLit__43603 = ::x10aux::makeStringLit(" solverState="); strLit__43603; }))), (*this)->FMGL(solverState));
     
 }
 x10_int cpls::entities::State::hashCode() {
@@ -72,9 +72,9 @@ x10_boolean cpls::entities::State::_struct_equals(::x10::lang::Any* other) {
     
 }
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 4 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
 void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang::Rail< x10_int >* vector,
                                          x10_int place, ::x10::lang::Rail< x10_int >* solverState) {
     FMGL(sz) = sz;
@@ -83,9 +83,8 @@ void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang
     FMGL(place) = place;
     FMGL(solverState) = solverState;
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
-    ::cpls::entities::State this__722 = (*this);
-    
+    //#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
+    (*this)->cpls::entities::State::__fieldInitializers_cpls_entities_State();
 }
 ::cpls::entities::State cpls::entities::State::_make(x10_long sz,
                                                      x10_long cost,
@@ -100,7 +99,7 @@ void cpls::entities::State::_constructor(x10_long sz, x10_long cost, ::x10::lang
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/entities/State.x10"
+//#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/entities/State.x10"
 void ::cpls::entities::State::_serialize(::cpls::entities::State this_, ::x10aux::serialization_buffer& buf) {
     buf.write(this_->FMGL(sz));
     buf.write(this_->FMGL(cost));

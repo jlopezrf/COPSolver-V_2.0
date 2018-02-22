@@ -13,14 +13,14 @@
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace util { 
-class Timer;
-} } 
 namespace x10 { namespace lang { 
 template<class TPMGL(T)> class Rail;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(U)> class Fun_0_1;
+} } 
+namespace x10 { namespace lang { 
+class System;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;

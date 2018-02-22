@@ -46,6 +46,9 @@ template<class TPMGL(T)> class Array_2;
 namespace cpls { namespace solver { 
 class HeuristicSolver;
 } } 
+namespace cpls { 
+class CPLSOptionsEnum__HeuristicsSupported;
+} 
 namespace cpls { namespace problem { 
 class ProblemGenericModel;
 } } 
@@ -61,9 +64,6 @@ template<class TPMGL(T)> class Array;
 namespace x10 { namespace util { 
 class Random;
 } } 
-namespace x10 { namespace lang { 
-class Unsafe;
-} } 
 namespace cpls { namespace util { 
 class MovePermutation;
 } } 
@@ -78,6 +78,9 @@ class Console;
 } } 
 namespace x10 { namespace lang { 
 class Any;
+} } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;

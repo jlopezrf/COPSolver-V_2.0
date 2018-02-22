@@ -6,17 +6,16 @@
 #include <x10/lang/Long.h>
 #include <x10/compiler/Synthetic.h>
 
-//#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
+//#line 4 "/home/jason/COPSolver-V_2.0/src/cpls/problem/CAPModel.x10"
 void cpls::problem::CAPModel::_constructor(x10_long sz) {
     
-    //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
+    //#line 5 "/home/jason/COPSolver-V_2.0/src/cpls/problem/CAPModel.x10"
     (this)->::cpls::problem::ProblemGenericModel::_constructor(sz);
     
-    //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
+    //#line 4 "/home/jason/COPSolver-V_2.0/src/cpls/problem/CAPModel.x10"
     
-    //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
-    ::cpls::problem::CAPModel* this__1116 = this;
-    
+    //#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/problem/CAPModel.x10"
+    this->cpls::problem::CAPModel::__fieldInitializers_cpls_problem_CAPModel();
 }
 ::cpls::problem::CAPModel* cpls::problem::CAPModel::_make(x10_long sz) {
     ::cpls::problem::CAPModel* this_ = new (::x10aux::alloc_z< ::cpls::problem::CAPModel>()) ::cpls::problem::CAPModel();
@@ -26,7 +25,7 @@ void cpls::problem::CAPModel::_constructor(x10_long sz) {
 
 
 
-//#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/problem/CAPModel.x10"
+//#line 3 "/home/jason/COPSolver-V_2.0/src/cpls/problem/CAPModel.x10"
 ::cpls::problem::CAPModel* cpls::problem::CAPModel::cpls__problem__CAPModel____this__cpls__problem__CAPModel(
   ) {
     return this;

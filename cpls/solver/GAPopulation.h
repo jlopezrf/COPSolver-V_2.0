@@ -40,6 +40,9 @@ class ProblemGenericModel;
 namespace x10 { namespace util { 
 class Random;
 } } 
+namespace x10 { namespace lang { 
+class FailedDynamicCheckException;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -58,17 +61,11 @@ class HeuristicSolver;
 namespace x10 { namespace lang { 
 class Runtime;
 } } 
-namespace x10 { namespace lang { 
-template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
-} } 
 namespace x10 { namespace util { 
 class RailUtils;
 } } 
 namespace x10 { namespace lang { 
-class Unsafe;
-} } 
-namespace x10 { namespace array { 
-template<class TPMGL(T)> class Array;
+template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
 } } 
 namespace x10 { namespace lang { 
 class Math;
