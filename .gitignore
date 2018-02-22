@@ -1,4 +1,5 @@
 /csp
+cpls/
 cpls/*.h
 cpls/*.o
 cpls/*.d
