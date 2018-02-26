@@ -22,7 +22,7 @@ public class ParamManager extends OptionsParser{
  				Option("sm", "solver_mode", "Solver (m)ode distribution 0 for seq 1 for paralle. Default 1."),
  				//jason options
  				//Jason: Migration
- 				Option("iwi", "Iters Whitout Improvements" ,"In parallel mode, number of iters for take a new solution."),
+ 				Option("dCKI", "Diversity Check Interval" ,"In parallel mode, number of iters for restart population."),
  				Option("ce", "Control Strategy" ,"0-IW, 1-CW Whitout master, 2-CW with master"),
 
  				//end jason options

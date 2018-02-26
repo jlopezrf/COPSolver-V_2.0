@@ -3,6 +3,7 @@ package cpls.solver;
 import cpls.problem.ProblemGenericModel;
 import cpls.util.MovePermutation;
 import cpls.util.Utils;
+import cpls.entities.ConfigSol;
 import cpls.util.Valuation;
 import cpls.util.Logger;
 import cpls.measurements.GlobalStats;
@@ -101,6 +102,11 @@ public class HeuristicSolver(sz:Long){
  	public def tryInsertIndividual(varables:Rail[Int], sze:Long){varables.size == sze}:Boolean{
  		Console.OUT.println("BadInvocation of tryInsertIndividual, this its not a GA Heuristic");
  		return false;
+ 	}
+ 
+ 	public def getRandomConfigSol():ConfigSol{
+ 		Console.OUT.println("BadInvocation of getRandomConfigSol, this its not a GA Heuristic");
+ 		return null;
  	}
  
  	public def getWorstCost():Long{

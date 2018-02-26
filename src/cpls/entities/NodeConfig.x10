@@ -27,7 +27,7 @@ public class NodeConfig{
  	private var maxUpdateI:Int;
  	private var adaptiveComm:Boolean;
  	//Jason: Migration
- 	private var nIntersWhitoutImprovements:Int;
+ 	private var dCKI:Int;
  	private var modeIndicator:Int;
  
  	public def this(){}
@@ -55,7 +55,7 @@ public class NodeConfig{
  	public def setMaxUpdateI(maxUpdateI:Int){this.maxUpdateI = maxUpdateI;}
  	public def setAdaptiveComm(adaptiveComm:Boolean){this.adaptiveComm = adaptiveComm;}
  	//Jason: Migration
- 	public def setItersWhitoutImprovements(nIntersWhitoutImprovements:Int){this.nIntersWhitoutImprovements = nIntersWhitoutImprovements;}
+ 	public def setDCKI(dCKI:Int){this.dCKI = dCKI;}
  	public def setModeIndicator(modeIndicator:Int){this.modeIndicator = modeIndicator;}
  
  	public def getHeuristic(){return this.heuristic;}
@@ -80,6 +80,6 @@ public class NodeConfig{
  	public def getMaxUpdateI(){return this.maxUpdateI;}
  	public def getAdaptiveComm(){return this.adaptiveComm;}
  	//Jason: Migration
- 	public def getItersWhitoutImprovements(){return this.nIntersWhitoutImprovements;}
+ 	public def getDCKI(){return this.dCKI;}
  	public def getModeIndicator(){return this.modeIndicator;}
 }

@@ -18,90 +18,95 @@ import x10.util.Random;
 public class Main {
  	
  	public static def main(args: Rail[String]) {
- 		val problemParams = new Rail[Long](3, -1 );
+ 		
+ 		val problemParams = new Rail[Long](3, -1);
  		var opts:ParamManager = new ParamManager(args);
  		var configCPLS:CPLSConfig = new CPLSConfig();
- 
- 		//*********************Model Problem Creation**************************//
- 		val problemString = opts("-p", "QAP");
- 		val problem = problemDetect(problemString);
  		val inSeed = opts("-S", System.nanoTime());
- 		Console.OUT.println("La semilla de inicio es: " + inSeed);
- 		val problemModel = COPProblemModelFactory.make(opts, problem, problemParams, inSeed);
+ 		configCPLS.setSeed(inSeed);
+ 		Console.OUT.println("The initial seed is: " + inSeed);
+ 
+ 		/*********************Problem Model Creation**************************/
+ 		val problemString = opts("-p", "QAP");
+ 		val problemInt = CPLSOptionsEnum.stringToIntPassOfProblemId(problemString);
+ 		val problemModel = ProblemModelFactory.make(opts, problemInt, problemParams, inSeed);
  		configCPLS.setProblemModel(problemModel);
- 		//*********************************************************************//
+ 		/*********************************************************************/
  		
- 		//***************************Mode Definition***************************//
+ 		/***************************Mode Definition***************************************************/
+ 		/**ce=0 (Independent Walk), ce=1 (Cooperative Whitout master), ce=2 (Cooperative with master)*/
+ 		/*********************************************************************************************/
  		var modeIndicator:Int = opts("-ce", 0n);
- 		val verify  = opts("-v", 0n) == 1n;
+ 		val verify  = opts("-v", 0n) == 1n;	//For indicating if at the final of execution, will be verified if the solution does not have any error
  		configCPLS.setVerify(verify);
  		configCPLS.setModeIndicator(modeIndicator);
- 		//*********************************************************************//
+ 		/*********************************************************************************************/
  		
- 		//***********************Structure Definition*************************//
- 		var masterHeuristicAndOthers:Rail[String];
- 		var heuristicString:String = opts("-sl", "AS");
+ 		/*********************Solver Structure Definition*********************************************/
+ 		/** If the execution include a master node (ce=2), then, the fist metaheuristic indicate in the
+ 		 * -sl parameter will be set to the master node. This metaheuristic must be indicated separately
+ 		 * from the rest of the string indicated in -sl parameter by a '*' character
+ 		 * TODO: This part need more validations. It has some inconsistencies
+ 		/*********************************************************************************************/
+ 		var withmasterHeurusticSeparated:Rail[String];
  		var masterHeuristic:String = "";
+ 		var heuristicsString:String = opts("-sl", "AS");
 
- 		//If no heuristic for master is indicated, then the masterConfig atribute of the ConfigCPLS is empty
-
- 		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && heuristicString.indexOf('*') != -1n){
- 			 masterHeuristicAndOthers = heuristicString.split("*");
-			 heuristicString = masterHeuristicAndOthers(1);
-			 masterHeuristic = masterHeuristicAndOthers(0);
-			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristicAndOthers(0));
+ 		//If no indicate a metaheuristic for master, then the masterConfig atribute of the ConfigCPLS is empty
+ 		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && heuristicsString.indexOf('*') != -1n){
+ 			 withmasterHeurusticSeparated = heuristicsString.split("*");
+			 heuristicsString = withmasterHeurusticSeparated(1);//In the one position will be the metaheuristic for all teams 
+			 masterHeuristic = withmasterHeurusticSeparated(0); //In the zero position will be the master metaheuristic 
+			 masterConfig:NodeConfig = makeMasterConfig(opts, problemModel.size, masterHeuristic);
 			 configCPLS.setMasterConfig(masterConfig);
  		}
  
- 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicString);
+ 		val nodeConfigs = heuristicsAndRolesDefinition(opts, problemModel.size, heuristicsString);
  		
  		if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER && (Place.MAX_PLACES != (nodeConfigs.numElems_2*nodeConfigs.numElems_1 + 1))){
- 			Console.OUT.println("Error_Ini. if - Inconsistencia en el numero total de nodos: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
+ 			Console.OUT.println("Error_Ini. if - Inconsistency in the total number of nodes: " + nodeConfigs.numElems_2*nodeConfigs.numElems_1);
  				return;
  		}
  		configCPLS.setConfigNodes(nodeConfigs);
- 		//*********************************************************************//
+ 		/*********************************************************************************************/
  		
- 		//***************************Pools Options*****************************//
+ 		/***************************Pools Options*****************************/
+ 		/* We keep the cpls pool, but at the moment it is not being used	 */
+ 		/*********************************************************************/
  		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_lm", 4n), opts("-P_lmM", 0n), opts("-P_lmD", 0.5));
  		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_e", 4n), opts("-P_eM", 0n), opts("-P_eD", 0.5));
- 		/*val totalNodes = nodeConfigs.numElems_2*nodeConfigs.numElems_1;
- 		val nodesPerTeam:Int = opts("-N", 1n);
- 		val temPoolSize = 2n*nodesPerTeam;
- 		val numberOfTeams = Place.MAX_PLACES as Int/nodesPerTeam;
- 		val cplsPoolSize = 2n*numberOfTeams;
- 		val cplsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_lm", cplsPoolSize as Int), opts("-P_lmM", 0n), opts("-P_lmD", 0.5));
- 		val teamsPoolConfig = new PoolConfig(problemModel.size as Long, opts("-P_e", temPoolSize), opts("-P_eM", 0n), opts("-P_eD", 0.5));*/
  		configCPLS.setCPLSPoolConfig(cplsPoolConfig);
  		configCPLS.setTeamsPoolConfig(teamsPoolConfig);
- 		//*********************************************************************//
+ 		/*********************************************************************/
  		
- 		//*********************Generic Parameters******************************/
- 		configCPLS.setSeed(inSeed);
+ 		/*********************Generic Parameters******************************/
+ 		/** See the ParamManager class for understand every opts option 	 */
+ 		/*********************************************************************/
+ 		val testNb         = opts("-b", 10n);
  		configCPLS.setTimesPerInstance(opts("-b", 10n));
- 		//*************************In/Out forms of params************************//
+ 		
  		val outFormat	   = opts("-of", 1n);
+ 		configCPLS.setOutFormat(outFormat);
+ 		
  		val costFromF      = opts("-tf", 0);
  		val tCostFromCL    = opts("-tc", 0n);
- 		val testNb         = opts("-b", 10n);
- 		configCPLS.setOutFormat(outFormat);
- 		//**********************************************************************//
 
  		var c : Long = 0;
  		var sl : Boolean = false;
- 		Console.OUT.println("Semilla de inicio: " + inSeed);
- 		if ( costFromF == 0 ) { // target cost loaded from command line parameter
- 			if (tCostFromCL >= 0){ // get lower or equal to target 
+
+ 		if (costFromF == 0){ 		// target cost loaded from command line parameter
+ 			if (tCostFromCL >= 0){ 	// get lower or equal to target 
  				c = tCostFromCL;
  				sl = false;
+ 
  				Console.OUT.println("Info: Target from CL: lower or equal than "+c);
  			} else { 
  				c = tCostFromCL * -1;
  				sl = true;
  				Console.OUT.println("Info: Target from CL: strictly lower than "+c);
  			}
- 		} else { // target cost loaded from file
- 			sl = costFromF < 0; // strictly lower true for negative numbers
+ 		} else { 					// target cost loaded from file
+ 			sl = costFromF < 0; 	// strictly lower true for negative numbers
  			if ( costFromF == 1  || costFromF == -1  ) // try to get optimal cost
  				c = problemParams(1); //opt 
  			else
@@ -111,29 +116,23 @@ public class Main {
  		val tCost = c >= 0 ? c : 0; // if negative cost put default value
  		val sLow = sl;
  
- 		//Jason: Ver si esto modifica algo de forma considerable, estas lineas las comenté
- 		//insNb++;
- 		//if ( mode == 1 && outFormat == 1n )
- 		//	Console.OUT.println("\n"+instance);
- 		//printHeader(outFormat,problem);
-
- 		/***********************************************************************/
  		configCPLS.setTargetCost(tCost);
  		configCPLS.setStrictLow(sLow);
- 		//********************************************************************//
+ 		/*********************************************************************/
 
- 		//******************InterTeam Communication Parameters*****************//
- 		//Jason: Maybe this is only necessary for Master or Header Nodes, REVIEW !!
+ 		/****************** Parameters for master node action ****************/
  		configCPLS.setMinDistance(opts("-D", 0.3));
- 		//*********************************************************************//
+ 		/*********************************************************************/
+ 
  		NodeInstancer.installSolvers(configCPLS, opts);
  		 
     }
  
  	public static def makeMasterConfig(opts:ParamManager, problemSize:Long, solverIn:String):NodeConfig{
  		val nodesPerTeam:Int = opts("-N", 1n);
- 		masterConfig:NodeConfig = new NodeConfig(whichHeuristicInt(solverIn), CPLSOptionsEnum.NodeRoles.MASTER_NODE);
- 		masterConfig.setHeuristic(whichHeuristicInt(solverIn));
+ 		val intHeuristicId = CPLSOptionsEnum.stringToIntPassForHeuristicId(solverIn);
+ 		masterConfig:NodeConfig = new NodeConfig(intHeuristicId, CPLSOptionsEnum.NodeRoles.MASTER_NODE);
+ 		masterConfig.setHeuristic(CPLSOptionsEnum.stringToIntPassForHeuristicId(solverIn));
  		masterConfig.setNumberOfTeams(Place.MAX_PLACES as Int/nodesPerTeam);
  		masterConfig.setNodesPerTeam(nodesPerTeam);
  		masterConfig.setTeamId(-1n);//This is an indicator for the masterNodeTeam
@@ -150,13 +149,11 @@ public class Main {
  		masterConfig.setModParams(opts("-M", 1n));
  		masterConfig.setChangeOnDiver(opts("-CD", 1n));
  		//Jason: Migration
- 		var nItersWhitoutImprovements:Int;
- 		if(problemSize*1500n > 100000){
- 			nItersWhitoutImprovements = 100000n;
- 		}else{
- 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		var dCKI:Int = opts("-dCKI", problemSize*1500n) as Int;
+ 		if(dCKI > 100000){
+ 			dCKI = 100000n;
  		}
- 		masterConfig.setItersWhitoutImprovements(nItersWhitoutImprovements);
+ 		masterConfig.setDCKI(dCKI);
  		val rep = opts( "-R", 0n );
  		val upd = opts( "-U", 0n );
  		val adaptiveComm = ( rep == -1n );
@@ -174,13 +171,20 @@ public class Main {
  		return masterConfig;
  	}
  
- 	//Jason: Problemas a resolver en este procedimiento
- 	//Debería poderse identificar los nodos por equipo a partir del estring de las heuristicas que se utilizaran en la solución,
- 	//combinado con la cantidad de nodos a utilizar y la indicación del tipo de estrategia (ce)
+ 	/*****************************************************************************************/
+ 	/** This method has the logic for the logic for temas instantiotion **********************/
+ 	/** - The character ',', indicate the separation of every team.
+ 	*   - The multiplexity of each team must be indicated with the '/' character followed
+  	* 	by an integer indicating the times that this tema will be repeated
+ 	*   - The multiplexity of each metaheuristic must be indicated with the 'x' character
+  	* 	followed by an integer indicating the times that this heuristic will be repeated*/
+ 	/******** TODO: It should be possible to identify the nodes by team from the string
+  	*   of the heuristics that would be used in the solution, combined with the number
+  	*   of nodes to be used and the indication of the type of strategy (ce) **********/
+ 	/*****************************************************************************************/
  	public static def heuristicsAndRolesDefinition(opts:ParamManager, problemSize:Long, solverIn:String):Array_2[NodeConfig]{
  
  		val nodesPerTeam:Int = opts("-N", 1n);
- 		//Console.OUT.println("Cantidad de places: " + Place.MAX_PLACES);
  		val numberOfTeams:Int = Place.MAX_PLACES as Int/nodesPerTeam;
  		var modeIndicator:Int = opts("-ce", 0n);
 
@@ -192,11 +196,9 @@ public class Main {
 
  		val divOption:Int = opts("O", 0n);
  		//Jason: Migration
- 		var nItersWhitoutImprovements:Int;
- 		if(problemSize*1500n > 100000){
- 			nItersWhitoutImprovements = 100000n;
- 		}else{
- 			nItersWhitoutImprovements = opts("-iwi", problemSize*1500n) as Int;
+ 		var dCKI:Int = opts("-dCKI", problemSize*1500n) as Int;
+ 		if(dCKI > 100000){
+ 			dCKI = 100000n;
  		}
 
  		val maxTime = opts("-mt", 0);
@@ -227,7 +229,7 @@ public class Main {
  		var teams:Rail[String];
  		var nodesWithMultiplicity:Rail[String];
  		var nodes:Rail[String];
- 		var heuristic:String;
+ 		var intHeuristicId:Int;
  		var multiplicityOfTeam:Int;
  		var multiplicityOfNode:Int;
  		var counter:Int = 0n;
@@ -252,18 +254,18 @@ public class Main {
  								nodes = nodesWithMultiplicity(m).split("x");
  							}
  							multiplicityOfNode = Int.parseInt(nodes(1));	
- 							heuristic = nodes(0);
+ 							intHeuristicId = CPLSOptionsEnum.stringToIntPassForHeuristicId(nodes(0));
  							for(n = 0n; n < multiplicityOfNode; n++){
  								i = counter/nodesPerTeam;
  								j = counter%nodesPerTeam;
  								if(counter%nodesPerTeam == 0n && (modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER ||
  										modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITHOUT_MASTER))
-									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
+									nodeConfigs(i,j) = new NodeConfig(intHeuristicId,
 									 						CPLSOptionsEnum.NodeRoles.HEAD_NODE);
  								else
- 									nodeConfigs(i,j) = new NodeConfig(whichHeuristicInt(heuristic),
+ 									nodeConfigs(i,j) = new NodeConfig(intHeuristicId,
  															CPLSOptionsEnum.NodeRoles.EXPLORER_NODE);
-								nodeConfigs(i,j).setHeuristic(whichHeuristicInt(heuristic));
+								nodeConfigs(i,j).setHeuristic(intHeuristicId);
 								nodeConfigs(i,j).setNumberOfTeams(numberOfTeams);
 								nodeConfigs(i,j).setNodesPerTeam(nodesPerTeam);
 								if(modeIndicator == CPLSOptionsEnum.ModeIndicator.COOPERATIVE_WITH_MASTER){
@@ -287,7 +289,7 @@ public class Main {
 								nodeConfigs(i,j).setUpdateI(updateI);
 								nodeConfigs(i,j).setMaxUpdateI(maxUpdateI);
  								//Jason: Migration
- 								nodeConfigs(i,j).setItersWhitoutImprovements(nItersWhitoutImprovements as Int);
+ 								nodeConfigs(i,j).setDCKI(dCKI as Int);
  								nodeConfigs(i,j).setModeIndicator(modeIndicator);
  								counter++;
  							}
@@ -297,90 +299,5 @@ public class Main {
  			}
  		}
  		return nodeConfigs;
- 	}
- 
- 	/**
-  	* This method simply convert the string description problem into a correspond Int
-  	* defined in the CPLOptionsEnum class
-  	*/
- 	public static def problemDetect(problem:String):Int{
- 		var problemParam:Int;	//ter
- 		if (problem.equalsIgnoreCase("MSP")){
- 			Logger.debug(()=>{"Magic Square Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM;
- 		}else if(problem.equals("CAP")){
- 			Logger.debug(()=>{"Costas Array Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.COSTAS_PROBLEM;
- 		}else if(problem.equals("AIP")){
- 			Logger.debug(()=>{"All-Interval Array Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.ALL_INTERVAL_PROBLEM;
- 		}else if(problem.equals("LNP")){
- 			Logger.debug(()=>{"Langford Pairing Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.LANGFORD_PROBLEM;
- 		}else if(problem.equals("NPP")){
- 			Logger.debug(()=>{"Number Partition Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.PARTIT_PROBLEM;
- 		}else if(problem.equals("SMP")){
- 			Logger.debug(()=>{"Stable Marriage Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM;
- 		}else if(problem.equals("HRP")){
- 			Logger.debug(()=>{"HRP Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM;
- 		}else if(problem.equals("QAP")){
- 			Logger.debug(()=>{"QAP Problem"});
- 			problemParam = CPLSOptionsEnum.SupportedProblems.QA_PROBLEM;
- 		}else{
- 			problemParam = CPLSOptionsEnum.SupportedProblems.UNKNOWN_PROBLEM;
- 			Console.OUT.println("Error: Type a valid CSP example: MSP, CAP, AIP, LNP, NPP , SMP, HRP or QAP");
- 		}
- 		return problemParam;
- 	}
- 
- 	/*This method make the initialize of the correspond problem model
-  	* In the QAPModel: Read the size, the BKS and the flow and distance matrices
-  	*/
-  	public static struct COPProblemModelFactory{
- 		public static def make(opts:ParamManager, problem:Int, problemParams:Rail[Long], inSeed:Long){
- 			val size = opts("-s", 10); //Jason: Pilas con esto tamaño por defecto !!
- 			val baseValue = opts("-bv", 0n);
- 			val inPathDataProblem = opts("-f",".");
- 			val inPathVectorSol =  opts("-if",".");
- 			//val inSeed = opts("-S", System.nanoTime()); 
- 			val random = new Random();
- 			random.setSeed(inSeed);
- 			switch(problem as Int){
- 				case CPLSOptionsEnum.SupportedProblems.MAGIC_SQUARE_PROBLEM:
- 					return new MSPModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.COSTAS_PROBLEM: return new CAPModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.ALL_INTERVAL_PROBLEM: return new AIPModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.LANGFORD_PROBLEM: return new LNPModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.STABLE_MARRIAGE_PROBLEM: return new SMTIModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.HOSPITAL_RESIDENT_PROBLEM: return new SMTIModel(size);
- 				case CPLSOptionsEnum.SupportedProblems.QA_PROBLEM:
- 					val params:Rail[Long] = CPLSFileReader.tryReadParameters(inPathDataProblem, problemParams);
- 					val n1 = params(0) < 0 ? 1 : params(0); //params(0) correspond to the problem size
- 					var problemModel:QAPModel = new QAPModel(n1, inPathDataProblem, inPathVectorSol, baseValue);
- 					problemModel.loadData(inPathDataProblem);
- 					return problemModel;
- 				default: return new PNPModel(size);
- 			}
- 		}
- 	}
-
- 	public static def whichHeuristicInt(solverIn:String):Int{
- 		var heuParam:Int;
- 		if (solverIn.equalsIgnoreCase("AS"))
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.AS_SOL;
- 		else if(solverIn.equals("EO"))
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.EO_SOL;
- 		else if(solverIn.equals("RoTS"))
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.RoTS_SOL;
- 		else if(solverIn.equals("GA"))
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.GA_SOL;
- 		else if(solverIn.equals("HY"))
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.Hybrid_SOL;
- 		else
- 			heuParam = CPLSOptionsEnum.HeuristicsSupported.UNKNOWN_SOL;
- 		return heuParam;
  	}
 }
