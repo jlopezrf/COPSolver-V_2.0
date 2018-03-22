@@ -165,6 +165,7 @@ public class Main {
  			maxUpdateI = StringUtil.parseInt(mustr);
  		else
  			maxUpdateI = 100000n;
+ 
  		masterConfig.setReportI(reportI);
  		masterConfig.setUpdateI(updateI);
  		masterConfig.setMaxUpdateI(maxUpdateI);
