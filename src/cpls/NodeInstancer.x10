@@ -16,6 +16,9 @@ public class NodeInstancer{
 	
  	public static def installSolvers(configCPLS:CPLSConfig, opts:ParamManager){
  		//printStructure(configCPLS);
+ 		val inPathDataProblem:String = opts("-f",".");
+ 		var pathString:Rail[String] = inPathDataProblem.split("/");
+ 		pathString = pathString(1).split(".");
  		val configNodes:Array_2[NodeConfig] = configCPLS.getConfigNodes();	
  		val sz = configCPLS.getProblemModel().size;
  		val refsToPlaces = PlaceLocalHandle.make[CPLSNode(sz)](PlaceGroup.WORLD, () => new CPLSNode(sz));
@@ -71,7 +74,7 @@ public class NodeInstancer{
  			totalWallT += wallTime;
  			fWall += wallTime;
  			if(configCPLS.getOutFormat() == 0n){
- 				//if (fileMode) Console.OUT.print(instance+",");
+ 				Console.OUT.print(pathString(0)+",");
  				refsToPlaces().printStats(i,configCPLS.getOutFormat(), 8n);
  				Console.OUT.println(","+wallTime/1e9);
  			}else if (configCPLS.getOutFormat() == 1n){
@@ -95,6 +98,7 @@ public class NodeInstancer{
  		//Jason: Descomentar para la tabla de resultados
  		if(configCPLS.getOutFormat() == 0n){
  			//Console.OUT.print(cFile+",");
+ 			Console.OUT.print("TOTAL,");
  			refsToPlaces().printAVG(timesPerInstance,configCPLS.getOutFormat(), 8n);
  			Console.OUT.println(","+(fWall/(timesPerInstance*1e9)));
  		}else if (configCPLS.getOutFormat() == 1n){
