@@ -40,6 +40,12 @@ class ProblemGenericModel;
 namespace x10 { namespace util { 
 class Random;
 } } 
+namespace cpls { namespace solver { 
+class HeuristicSolver;
+} } 
+namespace x10 { namespace lang { 
+class Runtime;
+} } 
 namespace x10 { namespace io { 
 class Printer;
 } } 
@@ -47,16 +53,7 @@ namespace x10 { namespace io {
 class Console;
 } } 
 namespace x10 { namespace lang { 
-class Any;
-} } 
-namespace x10 { namespace lang { 
 class String;
-} } 
-namespace cpls { namespace solver { 
-class HeuristicSolver;
-} } 
-namespace x10 { namespace lang { 
-class Runtime;
 } } 
 namespace x10 { namespace lang { 
 template<class TPMGL(Z1), class TPMGL(Z2), class TPMGL(U)> class Fun_0_2;
@@ -72,6 +69,9 @@ template<class TPMGL(T)> class Array;
 } } 
 namespace x10 { namespace lang { 
 class Math;
+} } 
+namespace x10 { namespace lang { 
+class Any;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;

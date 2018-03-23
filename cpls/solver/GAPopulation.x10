@@ -35,7 +35,7 @@ public class GAPopulation{
  			this.population(k).initialize();
  			this.population(k).setCost(problemModel.costOfSolution(size,this.population(k).getGenes() as Valuation(size)));
  		}
- 		Console.OUT.println("Entropia inicial de la poblacion: " + entropyOfPopulation());
+ 		//Console.OUT.println("Entropia inicial de la poblacion: " + entropyOfPopulation());
  	}
  
  	public def applyLS(size:Long, heuristicSolverAux:HeuristicSolver, indexIni:Int){

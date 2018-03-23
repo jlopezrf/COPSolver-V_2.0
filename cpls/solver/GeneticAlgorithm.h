@@ -73,8 +73,8 @@ class Printer;
 namespace x10 { namespace io { 
 class Console;
 } } 
-namespace x10 { namespace lang { 
-class Any;
+namespace cpls { namespace entities { 
+class ConfigSol;
 } } 
 namespace x10 { namespace compiler { 
 class Synthetic;
@@ -96,6 +96,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     x10_int FMGL(divOperator);
     
     x10_float FMGL(valueForRenewPopulation);
+    
+    x10_float FMGL(percentagePopElegibleForReport);
     
     x10_long FMGL(bestCostGA);
     
@@ -138,6 +140,8 @@ class GeneticAlgorithm : public ::cpls::solver::PopulBasedHeuristic   {
     virtual x10_boolean tryInsertIndividual(::x10::lang::Rail< x10_int >* varables,
                                             x10_long sze);
     virtual x10_long getWorstCost();
+    virtual ::cpls::entities::ConfigSol* getRandomConfigSol(
+      );
     virtual ::x10::lang::Rail< x10_int >* getConfigForPop(
       x10_boolean replace);
     virtual x10_double distance(::x10::lang::Rail< x10_int >* conf1,

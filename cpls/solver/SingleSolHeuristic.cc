@@ -10,21 +10,21 @@
 void cpls::solver::SingleSolHeuristic::_constructor(x10_long sz) {
     
     //#line 5 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::HeuristicSolver* this__390 = this;
-    
-    //#line 23 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    x10_long sz__391 = sz;
+    ::cpls::solver::HeuristicSolver* this__391 = this;
     
     //#line 24 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10aux::nullCheck(this__390)->FMGL(sz) = sz__391;
+    x10_long sz__392 = sz;
     
-    //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
-    ::x10aux::nullCheck(this__390)->cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSolver();
+    //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
+    ::x10aux::nullCheck(this__391)->FMGL(sz) = sz__392;
+    
+    //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/HeuristicSolver.x10"
+    ::x10aux::nullCheck(this__391)->cpls::solver::HeuristicSolver::__fieldInitializers_cpls_solver_HeuristicSolver();
     
     //#line 4 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
     
     //#line 3 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/SingleSolHeuristic.x10"
-    ::cpls::solver::SingleSolHeuristic* this__389 = this;
+    ::cpls::solver::SingleSolHeuristic* this__390 = this;
     
 }
 ::cpls::solver::SingleSolHeuristic* cpls::solver::SingleSolHeuristic::_make(

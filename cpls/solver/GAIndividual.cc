@@ -176,10 +176,10 @@ void cpls::solver::GAIndividual::_constructor(x10_long individualSize, x10_long 
     FMGL(size) = individualSize;
     
     //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::cpls::solver::GAIndividual* this__4229 = this;
-    ::x10aux::nullCheck(this__4229)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__4229)->FMGL(cost) = ((x10_long)0ll);
-    ::x10aux::nullCheck(this__4229)->FMGL(randomGenerator) = (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::cpls::solver::GAIndividual* this__4230 = this;
+    ::x10aux::nullCheck(this__4230)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::x10aux::nullCheck(this__4230)->FMGL(cost) = ((x10_long)0ll);
+    ::x10aux::nullCheck(this__4230)->FMGL(randomGenerator) = (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
     
     //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
     this->FMGL(genes) = ::x10::lang::Rail< x10_int >::_make(individualSize,
@@ -196,13 +196,13 @@ void cpls::solver::GAIndividual::_constructor(x10_long individualSize, x10_long 
     ;
     
     //#line 18 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::x10::util::Random* this__4230 = this->FMGL(randomGenerator);
+    ::x10::util::Random* this__4231 = this->FMGL(randomGenerator);
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    x10_long seed__4231 = seed;
+    x10_long seed__4232 = seed;
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    ::x10aux::nullCheck(this__4230)->x10::util::Random::init(seed__4231);
+    ::x10aux::nullCheck(this__4231)->x10::util::Random::init(seed__4232);
 }
 ::cpls::solver::GAIndividual* cpls::solver::GAIndividual::_make(x10_long individualSize,
                                                                 x10_long seed)
@@ -222,10 +222,10 @@ void cpls::solver::GAIndividual::_constructor(::x10::lang::Rail< x10_int >* gene
     FMGL(size) = (x10_long)(::x10aux::nullCheck(genes)->FMGL(size));
     
     //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::cpls::solver::GAIndividual* this__4232 = this;
-    ::x10aux::nullCheck(this__4232)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__4232)->FMGL(cost) = ((x10_long)0ll);
-    ::x10aux::nullCheck(this__4232)->FMGL(randomGenerator) =
+    ::cpls::solver::GAIndividual* this__4233 = this;
+    ::x10aux::nullCheck(this__4233)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::x10aux::nullCheck(this__4233)->FMGL(cost) = ((x10_long)0ll);
+    ::x10aux::nullCheck(this__4233)->FMGL(randomGenerator) =
       (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
     
     //#line 25 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
@@ -244,14 +244,14 @@ void cpls::solver::GAIndividual::_constructor(::x10::lang::Rail< x10_int >* gene
     ;
     
     //#line 27 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::x10::util::Random* this__4233 = this->FMGL(randomGenerator);
+    ::x10::util::Random* this__4234 = this->FMGL(randomGenerator);
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    x10_long seed__4234 = seed;
+    x10_long seed__4235 = seed;
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    ::x10aux::nullCheck(this__4233)->x10::util::Random::init(
-      seed__4234);
+    ::x10aux::nullCheck(this__4234)->x10::util::Random::init(
+      seed__4235);
     
     //#line 28 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
     ::x10::lang::Rail< void >::copy< x10_int >(genes, this->FMGL(genes));
@@ -273,10 +273,10 @@ void cpls::solver::GAIndividual::_constructor(::cpls::solver::GAIndividual* indi
     FMGL(size) = ::x10aux::nullCheck(indiv)->FMGL(size);
     
     //#line 7 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::cpls::solver::GAIndividual* this__4235 = this;
-    ::x10aux::nullCheck(this__4235)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
-    ::x10aux::nullCheck(this__4235)->FMGL(cost) = ((x10_long)0ll);
-    ::x10aux::nullCheck(this__4235)->FMGL(randomGenerator) =
+    ::cpls::solver::GAIndividual* this__4236 = this;
+    ::x10aux::nullCheck(this__4236)->FMGL(genes) = (::x10aux::class_cast_unchecked< ::x10::lang::Rail< x10_int >*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
+    ::x10aux::nullCheck(this__4236)->FMGL(cost) = ((x10_long)0ll);
+    ::x10aux::nullCheck(this__4236)->FMGL(randomGenerator) =
       (::x10aux::class_cast_unchecked< ::x10::util::Random*>(reinterpret_cast< ::x10::lang::NullType*>(X10_NULL)));
     
     //#line 35 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
@@ -295,14 +295,14 @@ void cpls::solver::GAIndividual::_constructor(::cpls::solver::GAIndividual* indi
     ;
     
     //#line 37 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
-    ::x10::util::Random* this__4236 = this->FMGL(randomGenerator);
+    ::x10::util::Random* this__4237 = this->FMGL(randomGenerator);
     
     //#line 40 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    x10_long seed__4237 = seed;
+    x10_long seed__4238 = seed;
     
     //#line 41 "/home/jason/Documents/Maestria/Implementacion/X10/2-4-2/Building_for_source/x10-2.4.2-src/x10.dist/stdlib/x10.jar:x10/util/Random.x10"
-    ::x10aux::nullCheck(this__4236)->x10::util::Random::init(
-      seed__4237);
+    ::x10aux::nullCheck(this__4237)->x10::util::Random::init(
+      seed__4238);
     
     //#line 38 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/GAIndividual.x10"
     ::x10::lang::Rail< void >::copy< x10_int >(::x10aux::nullCheck(indiv)->getGenes(),

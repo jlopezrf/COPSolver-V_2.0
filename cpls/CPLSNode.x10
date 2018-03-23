@@ -135,13 +135,18 @@ public class CPLSNode(sz:Long){
  		this.numberofTeams = config.getNumberOfTeams(); //Es necesario guardarla para la reinicialización
  		this.confArray = new Rail[State](numberofTeams, new State(sz,-1n,null,-1n,null));
  		if(this.heuristicSolver instanceof PopulBasedHeuristic){
- 			this.report = this.nodeConfig.getReportI()/(this.nodeConfig.getNodesPerTeam()) as Int;
- 			this.update = this.nodeConfig.getUpdateI()/(this.nodeConfig.getNodesPerTeam()) as Int;
- 			//this.report = this.nodeConfig.getReportI()/(problemSize*this.nodeConfig.getNodesPerTeam()) as Int;
- 			//this.update = this.nodeConfig.getUpdateI()/(problemSize*this.nodeConfig.getNodesPerTeam()) as Int;
+ 			if(this.nodeConfig.getReportI()/(this.nodeConfig.getNodesPerTeam()) > problemSize){
+ 				this.nodeConfig.setReportI(this.nodeConfig.getReportI()/(this.nodeConfig.getNodesPerTeam()) as Int);
+ 				this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()/(this.nodeConfig.getNodesPerTeam()) as Int);
+ 				//this.report = this.nodeConfig.getReportI()/(this.nodeConfig.getNodesPerTeam()) as Int;
+ 				//this.update = this.nodeConfig.getUpdateI()/(this.nodeConfig.getNodesPerTeam()) as Int;
+ 			}
  		}else{
- 			this.report = (this.nodeConfig.getReportI()/problemSize) as Int;
- 			this.update = this.nodeConfig.getUpdateI();
+ 			if(this.nodeConfig.getReportI()/problemSize > problemSize){
+ 				this.nodeConfig.setReportI((this.nodeConfig.getReportI()/problemSize) as Int);
+ 				//this.report = (this.nodeConfig.getReportI()/problemSize) as Int;
+ 				//this.update = this.nodeConfig.getUpdateI();
+ 			}
  		}
  
  		if(config.getRol() == CPLSOptionsEnum.NodeRoles.MASTER_NODE){
@@ -397,7 +402,6 @@ public class CPLSNode(sz:Long){
 	 				this.itersWhitoutImprovements = 0n;
 	 				this.nChangeforiwi++;
 	 				val solverState = createSolverState();
-	 				communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
 	 				bestSent = false;	 
 	 				Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
 	 				this.bestCost = this.heuristicSolver.costOfSolution();
@@ -478,22 +482,22 @@ public class CPLSNode(sz:Long){
  
  	protected def interactForIntensification(){ 
  		if(this.nodeConfig.getRol() != CPLSOptionsEnum.NodeRoles.MASTER_NODE){
- 			if( this.nodeConfig.getReportI() != 0n && this.nIter % this.report == 0n){
- 				if(!bestSent){ 
- 					val solverState = createSolverState();
- 					communicate(new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState));
+ 			if( this.nodeConfig.getReportI() != 0n && this.nIter %  this.nodeConfig.getReportI() == 0n){
+ 				//if(!bestSent){ 
+ 					//val solverState = createSolverState();
+ 					communicate();
  					bestSent = true;
  					
- 				}else{
+ 				//}else{
  					//Jason: Esto no parece tener mucho sentido, las probabilidades de que se cumpla el condicional son mínimas
- 					if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
- 						val solverState = createSolverState();
- 						communicate(new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState));
- 					}		  
- 				}
+ 				//	if (random.nextInt(this.nodeConfig.getReportI()) == 0n){
+ 						//val solverState = createSolverState();
+ 				//		communicate();
+ 				//	}		  
+ 				//}
  			}
  
- 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.update == 0n){// && !this.isOnDiversification)
+ 			if( this.nodeConfig.getUpdateI() != 0n && this.nIter % this.nodeConfig.getUpdateI()  == 0n){// && !this.isOnDiversification)
  				//Jason: De acuerdo con las modificaciones realizadas, esto no modifica en nada la ejecución
  				if ( this.nodeConfig.getAdaptiveComm() && this.nodeConfig.getUpdateI() < this.nodeConfig.getMaxUpdateI()){ 
  					this.nodeConfig.setUpdateI(this.nodeConfig.getUpdateI()*2n);
@@ -808,7 +812,7 @@ public class CPLSNode(sz:Long){
  			return false;
  	});*/
  
- 	public def communicate( info:State(sz)) {
+ 	/*public def communicate( info:State(sz)) {
  		Logger.debug(()=>" communicate: entering.");
  		this.attempsReport++;
  		val refsToPlaces = pointersComunication;
@@ -822,35 +826,55 @@ public class CPLSNode(sz:Long){
  				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfOffspringPool(info);
  			}
  		}else{
-			if ( Place(nodeConfig.getTeamId()) == here ){
-				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
-			 	async this.tryInsertConfTeamPool(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
-			}else{
-				Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
-				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfTeamPool( info );
-			}
+ 			if ( Place(nodeConfig.getTeamId()) == here ){
+ 				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 				async this.tryInsertConfTeamPool(info); //Jason:Puse esta Async para que incluso si es el mismo nodo se lance esta actividad en paralelo
+ 			}else{
+ 				Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfTeamPool( info );
+ 			}
  		}
- 		
- 		//Jason: Pruebas para debuguiar la comunicación
- 		//if(this.counterForReport%100 == 0){
- 		//	Console.OUT.println("Nodo " + here + ". Reportando a head en place: " + this.nodeConfig.getTeamId());
- 		//}
- 		// Print debug information
- 		//Jason: Comente esta parte de debug
- 		/*if (this.debug && this.isHeadNode){
-  		* val bc = ep.getBestConf();
-  		* if (bc != null){
-  		* p.print ("\033[H\033["+ ( myTeamId + 1 ) + "B");
-  		* p.printf("\033[2K\rTeam %3d          best cost %10d    solver %1d  param1 %3d  param2 %3d",
-  		* myTeamId,bc().cost,bc().solverState(0),bc().solverState(1),bc().solverState(2));
-  		* p.flush();
-  		* }
-  		* }*/
- 		//Debug
- 		// if(here.id as Int == myTeamId ){ //group head
- 		//  Console.OUT.println("I'm "+myTeamId+" head group, here my ELITE pool Vectors");
- 		// ep.printVectors();
- 		// }
+ 		return;
+ 	}*/
+ 
+ 	public def communicate() {
+ 		Logger.debug(()=>" communicate: entering.");
+ 		this.attempsReport++;
+ 		val refsToPlaces = pointersComunication;
+ 		val placeid = here.id as Int;
+ 		val solverState = createSolverState();
+
+ 		if(this.heuristicSolver instanceof PopulBasedHeuristic){
+ 			val configSol = this.heuristicSolver.getRandomConfigSol();
+ 			val infoVal = new State(sz, configSol.getCost(), configSol.getVariables() as Valuation(sz), here.id as Int, solverState);
+ 			if ( Place(nodeConfig.getTeamId()) == here ){
+ 				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 				async this.tryInsertConfOffspringPool(infoVal);
+ 			}else{
+ 				Logger.debug(()=>"CommManager: try to insert in remote place: " + Place(nodeConfig.getTeamId()));
+ 				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfOffspringPool(infoVal);
+ 			}
+ 		}else{
+ 			var info:State(sz);
+ 			if(!bestSent){
+ 				info = new State(sz, this.bestCost, this.bestConf as Valuation(sz), here.id as Int, solverState);
+ 				bestSent = true;
+ 			}else{
+ 				if (random.nextInt(this.nodeConfig.getReportI()) == 0n){ //This condition has very little chance of being fulfilled 
+ 					info = new State(sz, this.currentCost, this.heuristicSolver.getVariables() as Valuation(sz), here.id as Int, solverState);
+ 				}else{
+ 					return; //If not prob, then no info is sent
+ 				}
+ 			}
+ 			val infoVal = info;
+ 			if ( Place(nodeConfig.getTeamId()) == here ){
+ 				Logger.debug(()=>"CommManager: try to insert in local place: "+here);
+ 				async this.tryInsertConfTeamPool(infoVal); 
+ 			}else{
+ 				Logger.debug(()=>"CommManager: try to insert in remote place: "+Place(nodeConfig.getTeamId()));
+ 				at(Place(nodeConfig.getTeamId())) async refsToPlaces().tryInsertConfTeamPool( infoVal );
+ 			}
+ 		}
  		return;
  	}
  

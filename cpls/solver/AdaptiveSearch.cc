@@ -109,43 +109,43 @@ void cpls::solver::AdaptiveSearch::configHeuristic(::cpls::problem::ProblemGener
     
     //#line 58 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(nVarToReset) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                (__extension__ ({ static ::x10::lang::String* strLit__10546 = ::x10aux::makeStringLit("--AS_varToReset"); strLit__10546; })),
+                                (__extension__ ({ static ::x10::lang::String* strLit__10547 = ::x10aux::makeStringLit("--AS_varToReset"); strLit__10547; })),
                                 ((x10_long)-1ll));
     
     //#line 59 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(resetPercent) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                 (__extension__ ({ static ::x10::lang::String* strLit__10547 = ::x10aux::makeStringLit("--AS_resetPer"); strLit__10547; })),
+                                 (__extension__ ({ static ::x10::lang::String* strLit__10548 = ::x10aux::makeStringLit("--AS_resetPer"); strLit__10548; })),
                                  ((x10_int)10));
     
     //#line 60 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(freezeLocMin) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                 (__extension__ ({ static ::x10::lang::String* strLit__10548 = ::x10aux::makeStringLit("--AS_freezeLocMin"); strLit__10548; })),
+                                 (__extension__ ({ static ::x10::lang::String* strLit__10549 = ::x10aux::makeStringLit("--AS_freezeLocMin"); strLit__10549; })),
                                  ((x10_int)5));
     
     //#line 61 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(freezeSwap) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__10549 = ::x10aux::makeStringLit("--AS_freezeSwap"); strLit__10549; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__10550 = ::x10aux::makeStringLit("--AS_freezeSwap"); strLit__10550; })),
                                ((x10_int)5));
     
     //#line 62 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(resetLimit) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                               (__extension__ ({ static ::x10::lang::String* strLit__10550 = ::x10aux::makeStringLit("--AS_resetLimit"); strLit__10550; })),
+                               (__extension__ ({ static ::x10::lang::String* strLit__10551 = ::x10aux::makeStringLit("--AS_resetLimit"); strLit__10551; })),
                                ((x10_int)5));
     
     //#line 63 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(probSelectLocMin) = ::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                     (__extension__ ({ static ::x10::lang::String* strLit__10551 = ::x10aux::makeStringLit("--AS_probSelecLocMin"); strLit__10551; })),
+                                     (__extension__ ({ static ::x10::lang::String* strLit__10552 = ::x10aux::makeStringLit("--AS_probSelecLocMin"); strLit__10552; })),
                                      ((x10_int)0));
     
     //#line 64 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(firstBest) = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                       (__extension__ ({ static ::x10::lang::String* strLit__10552 = ::x10aux::makeStringLit("--AS_firstBest"); strLit__10552; })),
+                                                       (__extension__ ({ static ::x10::lang::String* strLit__10553 = ::x10aux::makeStringLit("--AS_firstBest"); strLit__10553; })),
                                                        ((x10_int)0)),
                                                      ((x10_int)1)));
     
     //#line 65 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
     this->FMGL(exhaustive) = (::x10aux::struct_equals(::x10aux::nullCheck(opts)->cpls::ParamManager::__apply(
-                                                        (__extension__ ({ static ::x10::lang::String* strLit__10553 = ::x10aux::makeStringLit("--AS_exhaustive"); strLit__10553; })),
+                                                        (__extension__ ({ static ::x10::lang::String* strLit__10554 = ::x10aux::makeStringLit("--AS_exhaustive"); strLit__10554; })),
                                                         ((x10_int)0)),
                                                       ((x10_int)1)));
 }
@@ -257,7 +257,7 @@ x10_long cpls::solver::AdaptiveSearch::search(x10_long currentCost,
         {
             
             //#line 113 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
-            ::cpls::solver::AdaptiveSearch* this__10543 =
+            ::cpls::solver::AdaptiveSearch* this__10544 =
               this;
             
             //#line 114 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/solver/AdaptiveSearch.x10"
@@ -672,18 +672,18 @@ x10_long cpls::solver::AdaptiveSearch::selectVarsToSwap(x10_long currentCost) {
                          (new (::x10aux::alloc_z< ::cpls::util::MovePermutation>()) ::cpls::util::MovePermutation());
                       
                       //#line 15 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-                      x10_long f__10544 = first;
-                      x10_long s__10545 = second;
+                      x10_long f__10545 = first;
+                      x10_long s__10546 = second;
                       
                       //#line 11 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
                       alloc__1250->FMGL(first) = ((x10_long)-1ll);
                       alloc__1250->FMGL(second) = ((x10_long)-1ll);
                       
                       //#line 16 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-                      alloc__1250->FMGL(first) = f__10544;
+                      alloc__1250->FMGL(first) = f__10545;
                       
                       //#line 17 "/home/jason/Documents/Maestria/Implementacion/X10/Repositorio/COPSolver-V_2.0/cpls/util/MovePermutation.x10"
-                      alloc__1250->FMGL(second) = s__10545;
+                      alloc__1250->FMGL(second) = s__10546;
                       alloc__1250;
                   }))
                   );

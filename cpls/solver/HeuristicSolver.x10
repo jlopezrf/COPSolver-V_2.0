@@ -5,6 +5,7 @@ import cpls.util.MovePermutation;
 import cpls.util.Utils;
 import cpls.util.Valuation;
 import cpls.util.Logger;
+import cpls.entities.ConfigSol;
 import cpls.measurements.GlobalStats;
 import x10.util.Random;
 import cpls.ParamManager;
@@ -111,6 +112,11 @@ public class HeuristicSolver(sz:Long){
  	//Jason: Migration
  	public def getConfigForPop(replace:Boolean):Rail[Int]{
  		Console.OUT.println("BadInvocation of getConfigForPop, this is not a GA Heuristic");
+ 		return null;
+ 	}
+ 
+ 	public def getRandomConfigSol():ConfigSol{
+ 		Console.OUT.println("BadInvocation of getRandomConfigSol, this its not a GA Heuristic");
  		return null;
  	}
  

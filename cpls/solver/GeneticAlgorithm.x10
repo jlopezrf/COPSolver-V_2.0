@@ -8,6 +8,7 @@ import cpls.util.Valuation;
 import cpls.util.Utils;
 import x10.util.RailUtils;
 import x10.util.ArrayList;
+import cpls.entities.ConfigSol;
 import cpls.solver.EOSearch;
 import cpls.solver.HeuristicSolver;
 import cpls.HeuristicFactory;
@@ -23,6 +24,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  	var crossingOperator:Int;
  	var divOperator:Int;
  	var valueForRenewPopulation:Float;
+ 	var percentagePopElegibleForReport:Float;
  	//val random:Random;
  	var bestCostGA:Long = Long.MAX_VALUE;
  	var currentCostGA:Long = Long.MAX_VALUE;
@@ -53,6 +55,7 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  		this.crossingOperator = opts("-GA_co", 0n);
  		this.valueForRenewPopulation = opts("-GA_rpv", 0.3f);
  		this.divOperator = opts("-GA_do", 0n);
+ 		this.percentagePopElegibleForReport = opts("-GA_ppfr", 0.0f);
  		if(divOperator == 1n){
  			this.eachIterMigration = (super.sz*rate) as Int;
  		}
@@ -194,17 +197,17 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	public def launchEventForStagnation():Boolean{
  		val entropy = population.entropyOfPopulation();
- 		Console.OUT.println("Entropia de la poblacion antes del launchEventForStagnation: " + entropy);
+ 		//Console.OUT.println("Entropia de la poblacion antes del launchEventForStagnation: " + entropy);
  		if(entropy < this.valueForRenewPopulation){
  			val indexIni = (rate*this.population.getPopulationSize()) as Int;
  			this.population.renewPopulation(indexIni);
  			//this.population.applyLS(super.sz, this.heuristicSolverAux, indexIni);
  			val genes = this.population.getIndividual(0).getGenes();
  			Rail.copy(genes as Valuation(sz), super.variables as Valuation(sz));
- 			Console.OUT.println("Entropia de la poblacion despues del launchEventForStagnation: " + population.entropyOfPopulation());
+ 			//Console.OUT.println("Entropia de la poblacion despues del launchEventForStagnation: " + population.entropyOfPopulation());
  			return true;
  		}else{
- 			Console.OUT.println("No se renewPopulation porque la entropia no es baja");
+ 			//Console.OUT.println("No se renewPopulation porque la entropia no es baja");
  			return false;
  		}
  	}
@@ -344,6 +347,17 @@ public class GeneticAlgorithm extends PopulBasedHeuristic{
  
  	public def getWorstCost():Long{
  		return this.population.getIndividual(populationSize -1).getCost();
+ 	}
+ 
+ 	public def getRandomConfigSol():ConfigSol{
+ 		var percentageElegible:Int = populationSize*this.percentagePopElegibleForReport as Int;
+ 		if(percentageElegible == 0n){
+ 			percentageElegible = 1n;
+ 		}
+ 		val index = super.random.nextInt(percentageElegible);
+ 		val indiv = population.getIndividual(index);
+ 		//Console.OUT.println("Individuo tomado: " + indiv.getGenes() + "," + indiv.getCost());
+ 		return new ConfigSol(indiv.getGenes(), indiv.getCost());
  	}
  
  	//Jason: Migration

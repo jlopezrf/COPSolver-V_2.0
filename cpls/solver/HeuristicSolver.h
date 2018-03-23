@@ -49,6 +49,9 @@ class Console;
 namespace x10 { namespace lang { 
 class Any;
 } } 
+namespace cpls { namespace entities { 
+class ConfigSol;
+} } 
 namespace x10 { namespace lang { 
 class String;
 } } 
@@ -98,6 +101,8 @@ class HeuristicSolver : public ::x10::lang::X10Class   {
     virtual x10_long getWorstCost();
     virtual ::x10::lang::Rail< x10_int >* getConfigForPop(
       x10_boolean replace);
+    virtual ::cpls::entities::ConfigSol* getRandomConfigSol(
+      );
     virtual x10_boolean launchEventForStagnation();
     virtual void setKill(x10_boolean value);
     virtual void displayInfo(::x10::lang::String* string);
