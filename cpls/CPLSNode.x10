@@ -36,6 +36,7 @@ public class CPLSNode(sz:Long){
  	val sampleAccStats = new GlobalStats();
  	val genAccStats = new GlobalStats();
  	var time:Long;
+ 	var reportEachImprovement:Boolean = false;
  	/***********************************************************/
  	/***********************************************************/
  	val winnerLatch = new AtomicBoolean(false);
@@ -188,6 +189,7 @@ public class CPLSNode(sz:Long){
  	}
  
  	public def configHeuristic(problemModel:ProblemGenericModel, opts:ParamManager){
+ 		this.reportEachImprovement = opts("-rei", 0) == 0 ? false:true;
  		this.iwi = opts("-iwi", 100n);//(50*problemSize) as Int;
  		this.heuristicSolver.configHeuristic(problemModel, opts);
  		this.heuristicSolver.initVariables();
@@ -368,8 +370,11 @@ public class CPLSNode(sz:Long){
  	protected def updateCosts(){
  		//val sz = this.heuristicSolver.getSizeProblem();
  		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
- 			//Console.OUT.println("Por lo menos una vez se supera " + here);
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
+ 			if(reportEachImprovement){
+ 				Console.OUT.println("Node " + here + ". Actual time: " + System.nanoTime() + ". Cost: " + this.currentCost);
+ 				Utils.show("Solution: ",this.bestConf);
+ 			}
  			this.bestCost = this.currentCost;
  
  			bestSent = false; // new best found, I must send it!
@@ -443,13 +448,6 @@ public class CPLSNode(sz:Long){
  		Console.OUT.println("Node: " + here + "," + this.attempsChangeForIwi + "," + this.nChangeforiwi + ","
  							+ this.attempsInsertFromPool + "," + this.insertedFromPool + "," + this.notInsertedForempyPool + "," +
  							this.notInsertedForDistance + "," + this.notInsertedForWorstCost + "," + this.attempsReport);
- 		//Console.OUT.println("Intentos de reinicio por iwi: " + this.attempsChangeForIwi + ". " + here);
- 		//Console.OUT.println("Reinicios por iwi efectivos: " + this.nChangeforiwi + ". " + here);
- 		//Console.OUT.println("Intentos de insercion: " + this.attempsInsertFromPool);
- 		//Console.OUT.println("Inserciones exitosas: " + this.insertedFromPool);
- 		//Console.OUT.println("No inserciones por pool vacio: " + this.notInsertedForempyPool);
- 		//Console.OUT.println("No inserciones por distania cero: " + this.notInsertedForDistance); 	
- 		//Console.OUT.println("No inserciones por peor costo: " + this.notInsertedForWorstCost); 
  	}
  
  	/*Jason: Se crea este método para reemplazar el mecanismo de generación de soluciones hacia los StackForDivs*/

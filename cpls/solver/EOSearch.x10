@@ -14,15 +14,16 @@ public class EOSearch extends SingleSolHeuristic{
  	private var fit:Rail[Long];
 
  	// var index is stored in the 10 LSB and the cost is stored on the remaining MSB
- 	private val cmp : (Long,Long) => Int = (a:Long, b:Long) => {return((b >> 10) - (a >> 10))as Int;}; 
- 	val powFnc = (tau : Double, x : Long):Double => {return Math.pow(x, -tau);};
- 	val expFnc = (tau : Double, x : Long):Double => { return Math.exp(-tau * x);};
- 	val gammaFnc = (tau : Double, x : Long):Double => {val k = tau;
- 													   val theta = Math.exp(tau);
- 													   val constk = Math.pow(theta,k)*EOSearch.gamma(k);
- 													   val f =  Math.pow(x, k-1) * Math.exp(-x/theta) / constk;
- 													   return f;
- 	};
+ 	private val cmp : (Long,Long) => Int = (a:Long, b:Long) => {return((b >> 10) - (a >> 10))as Int;};
+ 
+ 	val powFnc = 	(tau : Double, x : Long):Double => {return Math.pow(x, -tau);};
+ 	val expFnc = 	(tau : Double, x : Long):Double => { return Math.exp(-tau * x);};
+ 	val gammaFnc = 	(tau : Double, x : Long):Double => { val k = tau;
+ 													   	 val theta = Math.exp(tau);
+ 													   	 val constk = Math.pow(theta,k)*EOSearch.gamma(k);
+ 													   	 val f =  Math.pow(x, k-1) * Math.exp(-x/theta) / constk;
+ 													   	 return f;
+ 														};
  
  	static def gamma(n:Double):Double{
  		val invn = 1.0 / n;

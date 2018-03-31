@@ -24,7 +24,7 @@ public class ParamManager extends OptionsParser{
  				//Jason: Migration
  				Option("iwi", "Iters Whitout Improvements" ,"In parallel mode, number of iters for take a new solution."),
  				Option("ce", "Control Strategy" ,"0-IW, 1-CW Whitout master, 2-CW with master"),
-
+ 				Option("rei", "Report Each Improvement" ,"0-Not, 1-Yes"),
  				//end jason options
  				Option("sl", "solver", "Solver to use"), //Jason: Can I make that this parameter have many values?(p.e: AS,RoTS,RS/AS,RoTS,RS)
  				Option("of", "out_format", "output format: csv 0, info 1"),
