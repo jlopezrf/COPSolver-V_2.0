@@ -372,7 +372,7 @@ public class CPLSNode(sz:Long){
  		if(this.currentCost < this.bestCost){ //(totalCost <= bestCost)
  			Rail.copy(this.heuristicSolver.getVariables() as Valuation(sz), this.bestConf as Valuation(sz));
  			if(reportEachImprovement){
- 				val stringReport:String = "Node " + here + ". Actual time: " + System.nanoTime() + ". Cost: " + this.currentCost + "Solution";
+ 				val stringReport:String = "Node " + here + ". Actual time: " + System.nanoTime() + ". Cost: " + this.currentCost + ". Solution";
  				Utils.show(stringReport,this.bestConf);
  			}
  			this.bestCost = this.currentCost;
