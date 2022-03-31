@@ -6,8 +6,9 @@ It also offers parallel execution based on the confugiration of X10 platform.
 
 PHYSH (Parallel HYbridization for Simple Heuristics) is framework to ease the design and implementation of hybrid metaheuristics via cooperative parallelism. With this framework, the user only needs encode each of the desired metaheuristics and may rely on PHYSH for parallelization, cooperation and hybridization. PHYSH supports the combination of population-based and single-solution metaheuristics and enables the user to control the tradeoff between intensification and diversification. This implementation tackle Quadratic Assignment Problem (QAP) with a hybrid solver, combining three metaheuristics. 
 
-
 (Unfortunatelly X10 language did not reached a "production grade" and so it is not so useful)
+
+For more information see [[1]](https://www.researchgate.net/profile/Danny-Munera/publication/327150907_Weaving_of_Metaheuristics_with_Cooperative_Parallelism/links/5baa1d05299bf13e604a8270/Weaving-of-Metaheuristics-with-Cooperative-Parallelism.pdf)
 
 ## Author
 Jheisson Argiro López Restrepo
