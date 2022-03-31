@@ -6,5 +6,8 @@ It also offers parallel execution based on the confugiration of X10 platform.
 
 (Unfortunatelly X10 languaje does not reach a "production grade" and so it is not a useful)
 
+## Author
+Jheisson Argiro López Restrepo
+
 ## Licence
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
